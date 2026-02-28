@@ -1,0 +1,441 @@
+# System Architecture - Doctor Blog & Medical Platform
+
+## 🏗️ High-Level Architecture
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                         CLIENT LAYER                             │
+│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐          │
+│  │   Patients   │  │   Doctors    │  │    Admin     │          │
+│  │   (Public)   │  │ (Registered) │  │ (Platform)   │          │
+│  └──────────────┘  └──────────────┘  └──────────────┘          │
+└─────────────────────────────────────────────────────────────────┘
+                              ↓
+┌─────────────────────────────────────────────────────────────────┐
+│                      PRESENTATION LAYER                          │
+│  ┌──────────────────────────────────────────────────────────┐  │
+│  │              Next.js Frontend (React 19)                  │  │
+│  │  • Home Page        • Doctor Listing   • Blog Pages      │  │
+│  │  • Auth Pages       • Dashboards       • Food Guide      │  │
+│  └──────────────────────────────────────────────────────────┘  │
+└─────────────────────────────────────────────────────────────────┘
+                              ↓
+┌─────────────────────────────────────────────────────────────────┐
+│                      APPLICATION LAYER                           │
+│  ┌──────────────────────────────────────────────────────────┐  │
+│  │              Next.js API Routes (App Router)              │  │
+│  │                                                            │  │
+│  │  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐      │  │
+│  │  │    Auth     │  │   Doctor    │  │    Blog     │      │  │
+│  │  │    APIs     │  │    APIs     │  │    APIs     │      │  │
+│  │  └─────────────┘  └─────────────┘  └─────────────┘      │  │
+│  │                                                            │  │
+│  │  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐      │  │
+│  │  │  Category   │  │    Food     │  │    Admin    │      │  │
+│  │  │    APIs     │  │    APIs     │  │    APIs     │      │  │
+│  │  └─────────────┘  └─────────────┘  └─────────────┘      │  │
+│  └──────────────────────────────────────────────────────────┘  │
+└─────────────────────────────────────────────────────────────────┘
+                              ↓
+┌─────────────────────────────────────────────────────────────────┐
+│                       BUSINESS LOGIC LAYER                       │
+│  ┌──────────────────────────────────────────────────────────┐  │
+│  │                    Core Utilities                         │  │
+│  │                                                            │  │
+│  │  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐ │  │
+│  │  │   Auth   │  │Validation│  │   API    │  │Middleware│ │  │
+│  │  │ (JWT)    │  │  (Zod)   │  │  Utils   │  │  (RBAC)  │ │  │
+│  │  └──────────┘  └──────────┘  └──────────┘  └──────────┘ │  │
+│  └──────────────────────────────────────────────────────────┘  │
+└─────────────────────────────────────────────────────────────────┘
+                              ↓
+┌─────────────────────────────────────────────────────────────────┐
+│                       DATA ACCESS LAYER                          │
+│  ┌──────────────────────────────────────────────────────────┐  │
+│  │                    Prisma ORM                             │  │
+│  │  • Query Builder    • Type Safety    • Migrations        │  │
+│  └──────────────────────────────────────────────────────────┘  │
+└─────────────────────────────────────────────────────────────────┘
+                              ↓
+┌─────────────────────────────────────────────────────────────────┐
+│                         DATABASE LAYER                           │
+│  ┌──────────────────────────────────────────────────────────┐  │
+│  │                      MySQL 8.0                            │  │
+│  │                                                            │  │
+│  │  ┌──────┐ ┌──────┐ ┌──────┐ ┌──────┐ ┌──────┐           │  │
+│  │  │Users │ │Doctor│ │Blogs │ │Rating│ │Review│           │  │
+│  │  └──────┘ └──────┘ └──────┘ └──────┘ └──────┘           │  │
+│  │                                                            │  │
+│  │  ┌──────┐ ┌──────┐ ┌──────┐ ┌──────┐ ┌──────┐           │  │
+│  │  │Categ.│ │Foods │ │Benefi│ │Commen│ │Sessio│           │  │
+│  │  └──────┘ └──────┘ └──────┘ └──────┘ └──────┘           │  │
+│  └──────────────────────────────────────────────────────────┘  │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 🔄 Data Flow Diagram
+
+### User Registration Flow
+```
+User → Frontend Form → Validation (Zod) → API Route
+                                              ↓
+                                    Hash Password (bcrypt)
+                                              ↓
+                                    Prisma ORM → MySQL
+                                              ↓
+                                    Return Success/Error
+                                              ↓
+                                    Frontend Updates
+```
+
+### Doctor Blog Creation Flow
+```
+Doctor → Rich Text Editor → Validation → API Route
+                                              ↓
+                                    Check Auth (JWT)
+                                              ↓
+                                    Verify Doctor Role
+                                              ↓
+                                    Upload Images (Cloudinary)
+                                              ↓
+                                    Create Blog (Prisma)
+                                              ↓
+                                    Status: PENDING
+                                              ↓
+                                    Admin Approval Required
+```
+
+### Patient Search Flow
+```
+Patient → Search Input → API Request
+                              ↓
+                    Build Query (Filters)
+                              ↓
+                    Prisma Search (MySQL)
+                              ↓
+                    Format Results
+                              ↓
+                    Return Paginated Data
+                              ↓
+                    Display in UI
+```
+
+---
+
+## 🔐 Authentication Flow
+
+```
+┌──────────────┐
+│   User Login │
+└──────┬───────┘
+       ↓
+┌──────────────────────┐
+│  Validate Credentials│
+└──────┬───────────────┘
+       ↓
+┌──────────────────────┐
+│  Generate JWT Token  │
+└──────┬───────────────┘
+       ↓
+┌──────────────────────┐
+│  Store in Session    │
+└──────┬───────────────┘
+       ↓
+┌──────────────────────┐
+│  Return to Client    │
+└──────┬───────────────┘
+       ↓
+┌──────────────────────┐
+│  Store in LocalStorage│
+└──────┬───────────────┘
+       ↓
+┌──────────────────────┐
+│  Include in Headers  │
+│  Authorization:      │
+│  Bearer <token>      │
+└──────────────────────┘
+```
+
+---
+
+## 📊 Database Relationships
+
+```
+┌─────────┐         ┌─────────┐
+│  Users  │────────→│ Doctors │
+└────┬────┘         └────┬────┘
+     │                   │
+     │                   ↓
+     │              ┌─────────┐
+     │              │  Blogs  │
+     │              └────┬────┘
+     │                   │
+     ↓                   ↓
+┌─────────┐         ┌─────────┐
+│ Ratings │         │Comments │
+└─────────┘         └─────────┘
+     ↓
+┌─────────┐
+│ Reviews │
+└─────────┘
+
+┌──────────┐         ┌──────────┐
+│Categories│────────→│  Blogs   │
+└────┬─────┘         └──────────┘
+     │
+     ↓
+┌──────────┐
+│  Foods   │
+└────┬─────┘
+     │
+     ↓
+┌──────────┐
+│ Benefits │
+└──────────┘
+```
+
+---
+
+## 🎯 User Journey Maps
+
+### Patient Journey
+```
+1. Visit Homepage
+   ↓
+2. Browse Categories / Search Doctors
+   ↓
+3. View Doctor Profile
+   ↓
+4. Read Doctor's Blogs
+   ↓
+5. Register/Login (Optional)
+   ↓
+6. Rate & Review Doctor
+   ↓
+7. Explore Medical Food Guide
+```
+
+### Doctor Journey
+```
+1. Register as Doctor
+   ↓
+2. Wait for Admin Approval
+   ↓
+3. Login to Dashboard
+   ↓
+4. Complete Profile (Upload Photos)
+   ↓
+5. Create Medical Blog
+   ↓
+6. Wait for Blog Approval
+   ↓
+7. View Ratings & Reviews
+   ↓
+8. Respond to Comments
+```
+
+### Admin Journey
+```
+1. Login to Admin Panel
+   ↓
+2. Review Pending Doctors
+   ↓
+3. Approve/Reject Registrations
+   ↓
+4. Review Pending Blogs
+   ↓
+5. Approve/Reject Content
+   ↓
+6. Manage Categories
+   ↓
+7. Moderate Reviews
+   ↓
+8. View Analytics
+```
+
+---
+
+## 🔒 Security Architecture
+
+```
+┌─────────────────────────────────────┐
+│         Security Layers             │
+├─────────────────────────────────────┤
+│                                     │
+│  1. Input Validation (Zod)         │
+│     ↓                               │
+│  2. Authentication (JWT)            │
+│     ↓                               │
+│  3. Authorization (RBAC)            │
+│     ↓                               │
+│  4. Rate Limiting                   │
+│     ↓                               │
+│  5. SQL Injection Prevention        │
+│     (Prisma ORM)                    │
+│     ↓                               │
+│  6. XSS Protection                  │
+│     (Input Sanitization)            │
+│     ↓                               │
+│  7. Password Hashing                │
+│     (bcrypt - 12 rounds)            │
+│                                     │
+└─────────────────────────────────────┘
+```
+
+---
+
+## 📦 Component Hierarchy
+
+```
+App (Root Layout)
+│
+├── Navbar
+│   ├── Logo
+│   ├── Navigation Links
+│   └── Auth Buttons
+│
+├── Main Content
+│   │
+│   ├── Home Page
+│   │   ├── Hero Section
+│   │   ├── Features
+│   │   ├── Categories
+│   │   ├── Featured Doctors
+│   │   └── Latest Blogs
+│   │
+│   ├── Doctor Pages
+│   │   ├── Doctor List
+│   │   │   ├── Search Bar
+│   │   │   ├── Filters
+│   │   │   └── Doctor Cards
+│   │   │
+│   │   └── Doctor Profile
+│   │       ├── Profile Info
+│   │       ├── Ratings
+│   │       ├── Reviews
+│   │       └── Blogs
+│   │
+│   ├── Blog Pages
+│   │   ├── Blog List
+│   │   └── Blog Detail
+│   │       ├── Content
+│   │       ├── Author Info
+│   │       └── Comments
+│   │
+│   └── Dashboards
+│       ├── Doctor Dashboard
+│       └── Admin Dashboard
+│
+└── Footer
+    ├── Links
+    ├── Contact
+    └── Copyright
+```
+
+---
+
+## 🚀 Deployment Architecture
+
+```
+┌─────────────────────────────────────────┐
+│           Production Setup              │
+├─────────────────────────────────────────┤
+│                                         │
+│  Frontend & API                         │
+│  ┌─────────────────┐                   │
+│  │   Vercel        │                   │
+│  │   (Next.js)     │                   │
+│  └────────┬────────┘                   │
+│           │                             │
+│           ↓                             │
+│  ┌─────────────────┐                   │
+│  │   MySQL DB      │                   │
+│  │   (PlanetScale  │                   │
+│  │   or AWS RDS)   │                   │
+│  └─────────────────┘                   │
+│           ↓                             │
+│  ┌─────────────────┐                   │
+│  │   Cloudinary    │                   │
+│  │   (Images/CDN)  │                   │
+│  └─────────────────┘                   │
+│                                         │
+└─────────────────────────────────────────┘
+```
+
+---
+
+## 📈 Scalability Considerations
+
+```
+Current Setup → Future Enhancements
+──────────────────────────────────
+
+1. Database
+   MySQL (Single)  →  MySQL (Replicated)
+                   →  Read Replicas
+                   →  Connection Pooling
+
+2. Caching
+   None           →  Redis Cache
+                   →  CDN Caching
+                   →  Browser Caching
+
+3. File Storage
+   Local          →  Cloudinary
+                   →  AWS S3
+                   →  CDN Delivery
+
+4. Search
+   SQL LIKE       →  Full-Text Search
+                   →  Elasticsearch
+                   →  Algolia
+
+5. Rate Limiting
+   In-Memory      →  Redis-based
+                   →  Distributed
+                   →  API Gateway
+```
+
+---
+
+## 🎯 Performance Optimization
+
+```
+┌─────────────────────────────────────┐
+│      Optimization Strategy          │
+├─────────────────────────────────────┤
+│                                     │
+│  Frontend                           │
+│  • Code Splitting                   │
+│  • Lazy Loading                     │
+│  • Image Optimization (WebP)        │
+│  • Minification                     │
+│  • Tree Shaking                     │
+│                                     │
+│  Backend                            │
+│  • Database Indexing                │
+│  • Query Optimization               │
+│  • Caching (Redis)                  │
+│  • Connection Pooling               │
+│  • Pagination                       │
+│                                     │
+│  Infrastructure                     │
+│  • CDN (Cloudinary)                 │
+│  • Compression (Gzip)               │
+│  • HTTP/2                           │
+│  • Load Balancing                   │
+│                                     │
+└─────────────────────────────────────┘
+```
+
+---
+
+**This architecture is designed to be:**
+- ✅ Scalable
+- ✅ Secure
+- ✅ Maintainable
+- ✅ Production-Ready
+- ✅ Future-Proof
+
