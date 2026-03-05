@@ -64,10 +64,10 @@ export default function Navbar() {
     }, [open])
 
     const specialtyItems = [
-        { label: "Cardiologist", href: "/blogs/specialty/cardiologist", description: "Heart health and cardiovascular advice." },
-        { label: "Nutritionist", href: "/blogs/specialty/nutritionist", description: "Dietary guidance and healthy eating." },
-        { label: "Dermatologist", href: "/blogs/specialty/dermatologist", description: "Skin care and dermatological treatments." },
-        { label: "Pediatrician", href: "/blogs/specialty/pediatrician", description: "Children's health and wellness." },
+        { label: "Cardiologist", href: "/blogs/specialty/Cardiologist", description: "Heart health and cardiovascular advice." },
+        { label: "Nutritionist", href: "/blogs/specialty/Nutritionist", description: "Dietary guidance and healthy eating." },
+        { label: "Dermatologist", href: "/blogs/specialty/Dermatologist", description: "Skin care and dermatological treatments." },
+        { label: "Pediatrician", href: "/blogs/specialty/Pediatrician", description: "Children's health and wellness." },
     ]
 
     const diseaseItems = [
@@ -175,7 +175,7 @@ export default function Navbar() {
                                     <ul className="grid w-[400px] gap-2 p-3 bg-white">
                                         {diseaseItems.map((item) => (
                                             <li key={item.href}>
-                                                <NavigationMenuLink asChild text-transform-none>
+                                                <NavigationMenuLink asChild>
                                                     <Link href={item.href} className="block select-none space-y-1 rounded-lg p-2 leading-none transition-colors hover:bg-stone-50 hover:text-[#22aa4f]">
                                                         <div className="text-xs font-bold text-[#21492f]">{item.label}</div>
                                                         <p className="line-clamp-1 text-[10px] text-stone-400 font-medium">{item.description}</p>
@@ -237,7 +237,7 @@ export default function Navbar() {
                             </NavigationMenuItem>
                             <NavigationMenuItem>
                                 <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), "bg-transparent font-bold text-stone-600 text-xs hover:text-[#22aa4f] hover:bg-stone-50")}>
-                                    <Link href="/contact">Contact Us</Link>
+                                    <Link href="/Contact">Contact Us</Link>
                                 </NavigationMenuLink>
                             </NavigationMenuItem>
                         </NavigationMenuList>
