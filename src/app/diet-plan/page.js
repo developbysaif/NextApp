@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import {
     Sparkles,
     Activity,
@@ -91,33 +92,63 @@ export default function DietPlanPage() {
         <div className="min-h-screen bg-[#FDFCF8] text-[#21492f] selection:bg-[#22aa4f]/20">
             {/* Hero Section */}
             <section className="relative overflow-hidden pt-20 pb-16 px-6">
-                <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_top_right,#22aa4f0a,transparent_50%)]" />
-                <div className="max-w-4xl mx-auto relative z-10 text-center">
+                <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#22aa4f]/10 rounded-full blur-[120px] -z-10" />
+                <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+                    <div className="relative z-10 text-left">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="inline-flex items-center gap-2 bg-[#21492f]/5 px-4 py-1.5 rounded-full text-[#21492f] font-bold text-xs uppercase tracking-widest mb-6"
+                        >
+                            <Sparkles size={14} className="text-[#22aa4f]" />
+                            AI-Powered Nutrition
+                        </motion.div>
+                        <motion.h1
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.1 }}
+                            className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight mb-6 leading-[1.1]"
+                        >
+                            “Your Body Is Unique — <br />
+                            <span className="text-[#22aa4f]">Your Diet Should Be Too”</span>
+                        </motion.h1>
+                        <motion.p
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.2 }}
+                            className="text-stone-500 text-lg md:text-xl font-medium mb-8 max-w-lg"
+                        >
+                            Organic healing meets AI precision. Get a detailed, personalized diet plan rooted in Sunnah and backed by science.
+                        </motion.p>
+                    </div>
+
+                    {/* Image Section */}
                     <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="inline-flex items-center gap-2 bg-[#21492f]/5 px-4 py-1.5 rounded-full text-[#21492f] font-bold text-xs uppercase tracking-widest mb-6"
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: 0.3 }}
+                        className="relative h-[400px] lg:h-[500px] w-full rounded-[40px] overflow-hidden shadow-2xl"
                     >
-                        <Sparkles size={14} className="text-[#22aa4f]" />
-                        AI-Powered Nutrition
+                        <Image
+                            src="https://images.unsplash.com/photo-1494390248081-4e521a5940db?q=80&w=2006&auto=format&fit=crop"
+                            alt="Healthy AI Diet"
+                            fill
+                            className="object-cover"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#21492f]/80 to-transparent" />
+                        <div className="absolute bottom-6 left-6 right-6">
+                            <div className="bg-white/20 backdrop-blur-md p-4 rounded-2xl border border-white/20 text-white flex items-center justify-between">
+                                <div>
+                                    <p className="text-white/70 text-xs font-bold uppercase tracking-widest mb-1">Success Rate</p>
+                                    <p className="font-black text-2xl">98%</p>
+                                </div>
+                                <div>
+                                    <p className="text-white/70 text-xs font-bold uppercase tracking-widest mb-1">Generated Plans</p>
+                                    <p className="font-black text-2xl">10k+</p>
+                                </div>
+                            </div>
+                        </div>
                     </motion.div>
-                    <motion.h1
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.1 }}
-                        className="text-4xl md:text-6xl font-black tracking-tight mb-6"
-                    >
-                        “Your Body Is Unique — <br />
-                        <span className="text-[#22aa4f]">Your Diet Should Be Too”</span>
-                    </motion.h1>
-                    <motion.p
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.2 }}
-                        className="text-stone-500 text-lg max-w-2xl mx-auto font-medium"
-                    >
-                        Organic healing meets AI precision. Get a diet plan rooted in Sunnah and backed by science.
-                    </motion.p>
                 </div>
             </section>
 

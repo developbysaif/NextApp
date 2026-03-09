@@ -1,217 +1,250 @@
 "use client";
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PageHeader from '../../component/PageHeader';
+import { motion } from 'framer-motion';
+import { Shield, Lock, Eye, Database, Share2, UserCheck, AlertTriangle } from 'lucide-react';
+import Image from 'next/image';
 
 export default function PrivacyPolicy() {
+    const [activeSection, setActiveSection] = useState("info");
+
+    const sections = [
+        { id: "info", title: "Information We Collect", icon: Database },
+        { id: "usage", title: "How We Use Your Info", icon: Eye },
+        { id: "ai", title: "AI Diet Planner Data", icon: Shield },
+        { id: "sharing", title: "Data Sharing", icon: Share2 },
+        { id: "security", title: "Data Security", icon: Lock },
+        { id: "rights", title: "User Rights", icon: UserCheck }
+    ];
+
+    const scrollTo = (id) => {
+        setActiveSection(id);
+        const element = document.getElementById(id);
+        if (element) {
+            const offset = 120;
+            const bodyRect = document.body.getBoundingClientRect().top;
+            const elementRect = element.getBoundingClientRect().top;
+            const elementPosition = elementRect - bodyRect;
+            const offsetPosition = elementPosition - offset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+        }
+    };
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const scrollPosition = window.scrollY + 200;
+            for (const section of sections) {
+                const element = document.getElementById(section.id);
+                if (element && element.offsetTop <= scrollPosition && (element.offsetTop + element.offsetHeight) > scrollPosition) {
+                    setActiveSection(section.id);
+                }
+            }
+        };
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
     return (
-        <div className="text-gray-800 antialiased font-[Poppins] bg-[#fdfdfd]">
+        <div className="min-h-screen bg-[#FDFCF8] font-sans selection:bg-[#22aa4f]/20">
             <PageHeader
                 title="Privacy Policy"
                 description="Your privacy is extremely important to us. Learn how we protect your data."
                 backgroundImage="/header.jpg"
             />
 
-            {/* Main Content */}
-            <section className="max-w-4xl mx-auto px-6 mt-16 md:px-12 py-14 text-[#21492f]">
+            <section className="max-w-7xl mx-auto px-6 py-20">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                    {/* Left Sidebar - Navigation */}
+                    <div className="lg:col-span-4 hidden lg:block">
+                        <div className="sticky top-32 bg-white p-6 rounded-[32px] shadow-[0_20px_50px_rgba(33,73,47,0.06)] border border-stone-100">
+                            <h3 className="text-xl font-black text-[#21492f] mb-6">Contents</h3>
+                            <nav className="space-y-2">
+                                {sections.map((section) => {
+                                    const Icon = section.icon;
+                                    return (
+                                        <button
+                                            key={section.id}
+                                            onClick={() => scrollTo(section.id)}
+                                            className={`w-full flex items-center gap-4 px-4 py-3 rounded-2xl text-left transition-all ${activeSection === section.id ? 'bg-[#22aa4f] text-white shadow-lg shadow-[#22aa4f]/20' : 'text-gray-500 hover:bg-stone-50 hover:text-[#21492f]'}`}
+                                        >
+                                            <Icon size={18} className={activeSection === section.id ? 'text-white' : 'text-gray-400'} />
+                                            <span className="font-bold text-sm">{section.title}</span>
+                                        </button>
+                                    );
+                                })}
+                            </nav>
 
-                <div className="mb-12">
-                    <h1 className="text-3xl md:text-4xl font-bold mb-6 text-[#21492f]">Welcome to IlajbilGhiza Privacy Policy</h1>
-                    <p className="text-gray-700 leading-relaxed text-lg">
-                        At IlajbilGhiza, your privacy is extremely important to us. This Privacy Policy explains how we collect, use, protect, and share your personal information when you use our website, mobile application, AI diet planner, and related services.
-                    </p>
-                    <p className="text-gray-700 leading-relaxed mt-4">
-                        By accessing or using IlajbilGhiza, you agree to the practices described in this policy.
-                    </p>
-                </div>
-
-                {/* 01. Information We Collect */}
-                <div className="mb-12">
-                    <h2 className="text-2xl font-bold mb-4 flex items-center gap-3">
-                        <span className="text-[#22aa4f]">01.</span> Information We Collect
-                    </h2>
-                    <p className="text-gray-700 leading-relaxed mb-6">
-                        We may collect the following types of information to provide better health and nutrition services:
-                    </p>
-
-                    <div className="grid md:grid-cols-2 gap-8">
-                        <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
-                            <h3 className="font-semibold text-[#8c8c4f] mb-3">Personal Information</h3>
-                            <ul className="list-disc list-inside space-y-2 text-gray-600">
-                                <li>Full name</li>
-                                <li>Email address</li>
-                                <li>Phone number</li>
-                                <li>Age and gender</li>
-                            </ul>
-                        </div>
-                        <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
-                            <h3 className="font-semibold text-[#8c8c4f] mb-3">Health & Lifestyle Information</h3>
-                            <ul className="list-disc list-inside space-y-2 text-gray-600">
-                                <li>Height and weight</li>
-                                <li>Dietary preferences</li>
-                                <li>Health conditions (voluntarily provided)</li>
-                                <li>Daily routine and activity level</li>
-                            </ul>
+                            <div className="mt-8 p-6 bg-[#21492f] rounded-[24px] text-white overflow-hidden relative group">
+                                <div className="relative z-10">
+                                    <Shield size={32} className="text-[#22aa4f] mb-4" />
+                                    <p className="font-bold mb-2">Need help with your data?</p>
+                                    <p className="text-white/70 text-xs mb-4">Contact our DPO for any privacy related queries.</p>
+                                    <button className="text-[10px] font-black uppercase tracking-wider bg-white text-[#21492f] px-4 py-2 rounded-full hover:bg-[#22aa4f] hover:text-white transition-colors">
+                                        Email Support
+                                    </button>
+                                </div>
+                                <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-2xl group-hover:bg-[#22aa4f]/20 transition-all duration-500" />
+                            </div>
                         </div>
                     </div>
 
-                    <div className="mt-6 bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
-                        <h3 className="font-semibold text-[#8c8c4f] mb-3">Technical Information</h3>
-                        <ul className="list-disc list-inside space-y-2 text-gray-600">
-                            <li>IP address</li>
-                            <li>Browser type</li>
-                            <li>Device information</li>
-                            <li>Usage data (pages visited, interactions)</li>
-                        </ul>
+                    {/* Right Content */}
+                    <div className="lg:col-span-8 space-y-16">
+                        <div className="mb-12">
+                            <h1 className="text-4xl md:text-5xl font-black text-[#21492f] mb-6 tracking-tight">Our Commitment to <span className="text-[#22aa4f]">Privacy</span></h1>
+                            <p className="text-gray-600 text-lg leading-relaxed font-medium">
+                                At IlajbilGhiza, your privacy is extremely important to us. This Privacy Policy explains how we collect, use, protect, and share your personal information when you use our website, mobile application, AI diet planner, and related services.
+                            </p>
+                            <div className="mt-8 relative h-[300px] rounded-[32px] overflow-hidden shadow-[0_20px_50px_rgba(33,73,47,0.1)]">
+                                <Image
+                                    src="https://images.unsplash.com/photo-1639322537228-f710d846310a?q=80&w=2064&auto=format&fit=crop"
+                                    alt="Privacy Concept"
+                                    fill
+                                    className="object-cover"
+                                />
+                            </div>
+                        </div>
+
+                        {/* Section 1 */}
+                        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} id="info" className="scroll-mt-32">
+                            <div className="flex items-center gap-4 mb-8">
+                                <div className="size-12 rounded-2xl bg-[#22aa4f]/10 flex items-center justify-center text-[#22aa4f]">
+                                    <Database size={24} />
+                                </div>
+                                <h2 className="text-3xl font-black text-[#21492f]">Information We Collect</h2>
+                            </div>
+
+                            <div className="grid md:grid-cols-2 gap-6">
+                                <div className="bg-white p-8 rounded-[32px] shadow-sm border border-stone-100 hover:shadow-xl hover:border-[#22aa4f]/30 transition-all">
+                                    <h3 className="text-xl font-black text-[#21492f] mb-4">Personal Data</h3>
+                                    <ul className="space-y-3">
+                                        {['Full name & Email', 'Phone number', 'Age and gender'].map((item, i) => (
+                                            <li key={i} className="flex gap-3 items-center text-gray-600 font-medium">
+                                                <div className="w-1.5 h-1.5 rounded-full bg-[#22aa4f]" /> {item}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                                <div className="bg-white p-8 rounded-[32px] shadow-sm border border-stone-100 hover:shadow-xl hover:border-[#22aa4f]/30 transition-all">
+                                    <h3 className="text-xl font-black text-[#21492f] mb-4">Health & Lifestyle</h3>
+                                    <ul className="space-y-3">
+                                        {['Height and weight', 'Dietary preferences', 'Health conditions'].map((item, i) => (
+                                            <li key={i} className="flex gap-3 items-center text-gray-600 font-medium">
+                                                <div className="w-1.5 h-1.5 rounded-full bg-[#22aa4f]" /> {item}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </div>
+                        </motion.div>
+
+                        {/* Section 2 */}
+                        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} id="usage" className="scroll-mt-32">
+                            <div className="flex items-center gap-4 mb-8">
+                                <div className="size-12 rounded-2xl bg-[#22aa4f]/10 flex items-center justify-center text-[#22aa4f]">
+                                    <Eye size={24} />
+                                </div>
+                                <h2 className="text-3xl font-black text-[#21492f]">How We Use Your Info</h2>
+                            </div>
+
+                            <div className="bg-white p-8 rounded-[32px] shadow-sm border border-stone-100">
+                                <ul className="space-y-4">
+                                    {[
+                                        "To generate personalized AI diet plans",
+                                        "To recommend suitable organic foods",
+                                        "To connect you with doctors or nutritionists",
+                                        "To improve our services and user experience"
+                                    ].map((item, index) => (
+                                        <li key={index} className="flex gap-4 items-start bg-stone-50 p-4 rounded-2xl">
+                                            <div className="mt-1 size-6 rounded-full bg-[#22aa4f] text-white flex items-center justify-center shrink-0 text-xs font-bold">{index + 1}</div>
+                                            <span className="font-bold text-gray-700">{item}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </motion.div>
+
+                        {/* Section 3 */}
+                        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} id="ai" className="scroll-mt-32">
+                            <div className="bg-gradient-to-br from-[#21492f] to-[#163321] rounded-[40px] p-10 md:p-12 text-white shadow-2xl relative overflow-hidden">
+                                <div className="absolute top-0 right-0 w-64 h-64 bg-[#22aa4f]/20 rounded-full blur-[80px]" />
+                                <div className="relative z-10">
+                                    <div className="flex items-center gap-4 mb-6">
+                                        <div className="size-12 rounded-2xl bg-white/10 flex items-center justify-center text-[#22aa4f] backdrop-blur-md">
+                                            <Shield size={24} />
+                                        </div>
+                                        <h2 className="text-3xl font-black text-white">AI Diet Planner Data</h2>
+                                    </div>
+                                    <p className="text-white/80 text-lg mb-8 leading-relaxed">
+                                        Health-related data entered into the AI Diet Planner is processed incredibly securely. We understand the sensitive nature of this information.
+                                    </p>
+                                    <div className="grid sm:grid-cols-3 gap-6">
+                                        <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10">
+                                            <p className="font-bold text-sm">Used only for diet guidance</p>
+                                        </div>
+                                        <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10">
+                                            <p className="font-bold text-sm">Processed confidentially</p>
+                                        </div>
+                                        <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10">
+                                            <p className="font-bold text-sm">Never shared without consent</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </motion.div>
+
+                        {/* Section 4 & 5 */}
+                        <div className="grid md:grid-cols-2 gap-12">
+                            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} id="sharing" className="scroll-mt-32">
+                                <h2 className="text-2xl font-black text-[#21492f] mb-6 flex items-center gap-3">
+                                    <Share2 className="text-[#22aa4f]" /> Data Sharing
+                                </h2>
+                                <p className="text-gray-600 mb-6 font-medium">We only share limited information with trusted service providers or doctors (with your consent). We never sell your data.</p>
+                                <div className="flex items-center gap-4 bg-amber-50 p-4 rounded-xl text-amber-800 font-bold text-sm">
+                                    <AlertTriangle size={20} className="shrink-0" />
+                                    No data is shared with advertisers.
+                                </div>
+                            </motion.div>
+
+                            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} id="security" className="scroll-mt-32">
+                                <h2 className="text-2xl font-black text-[#21492f] mb-6 flex items-center gap-3">
+                                    <Lock className="text-[#22aa4f]" /> Data Security
+                                </h2>
+                                <p className="text-gray-600 mb-6 font-medium">We implement appropriate security measures to protect your data, including secure servers and encrypted transmission.</p>
+                                <div className="grid grid-cols-2 gap-3">
+                                    <div className="bg-[#21492f] text-white p-4 rounded-xl text-center text-xs font-bold tracking-widest uppercase">Secure Servers</div>
+                                    <div className="bg-[#21492f] text-white p-4 rounded-xl text-center text-xs font-bold tracking-widest uppercase">Encryption</div>
+                                </div>
+                            </motion.div>
+                        </div>
+
+                        {/* Section 6 */}
+                        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} id="rights" className="scroll-mt-32">
+                            <div className="bg-stone-100 p-8 md:p-12 rounded-[40px] border border-stone-200">
+                                <h2 className="text-3xl font-black text-[#21492f] mb-8 flex items-center gap-4">
+                                    <UserCheck className="text-[#22aa4f]" size={32} /> Your Rights
+                                </h2>
+                                <div className="grid sm:grid-cols-2 gap-4">
+                                    {['Access your personal data', 'Update or correct information', 'Request account deletion', 'Opt out of communications'].map((right, idx) => (
+                                        <div key={idx} className="bg-white p-6 rounded-2xl shadow-sm flex items-center gap-4">
+                                            <div className="size-8 rounded-full bg-[#22aa4f]/10 flex items-center justify-center text-[#22aa4f] shrink-0">
+                                                <div className="w-2 h-2 rounded-full bg-[#22aa4f]" />
+                                            </div>
+                                            <p className="font-bold text-[#21492f]">{right}</p>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </motion.div>
+
                     </div>
-
-                    <p className="text-gray-600 italic mt-6 text-sm">
-                        This information helps us personalize your experience and improve our platform.
-                    </p>
                 </div>
-
-                {/* 02. How We Use Your Information */}
-                <div className="mb-12">
-                    <h2 className="text-2xl font-bold mb-4 flex items-center gap-3">
-                        <span className="text-[#22aa4f]">02.</span> How We Use Your Information
-                    </h2>
-                    <p className="text-gray-700 leading-relaxed mb-4">
-                        We use your information for the following purposes:
-                    </p>
-                    <ul className="space-y-3">
-                        {[
-                            "To generate personalized AI diet plans",
-                            "To recommend suitable organic foods",
-                            "To connect you with doctors or nutritionists",
-                            "To improve our services and user experience",
-                            "To send important updates, notifications, or support messages"
-                        ].map((item, index) => (
-                            <li key={index} className="flex gap-3 items-start text-gray-700">
-                                <div className="mt-1.5 w-2 h-2 rounded-full bg-[#22aa4f] shrink-0" />
-                                {item}
-                            </li>
-                        ))}
-                    </ul>
-                    <p className="mt-6 font-medium text-[#a6763f]">
-                        We do not sell or misuse your personal data under any circumstances.
-                    </p>
-                </div>
-
-                {/* 03. AI Diet Planner & Health Data */}
-                <div className="mb-12 bg-green-50/50 p-8 rounded-3xl border border-green-100">
-                    <h2 className="text-2xl font-bold mb-4 flex items-center gap-3">
-                        <span className="text-[#22aa4f]">03.</span> AI Diet Planner & Health Data
-                    </h2>
-                    <p className="text-gray-700 leading-relaxed mb-4">
-                        Health-related data entered into the AI Diet Planner is:
-                    </p>
-                    <ul className="list-disc list-inside space-y-2 text-gray-700 mb-6">
-                        <li>Used only for generating diet and nutrition guidance</li>
-                        <li>Processed securely and confidentially</li>
-                        <li>Never shared without your consent</li>
-                    </ul>
-                    <div className="p-4 bg-white/80 rounded-xl text-sm text-gray-600 border border-green-200">
-                        <strong>Disclaimer:</strong> IlajbilGhiza’s AI system follows ethical nutrition guidelines and does not replace medical diagnosis or emergency care.
-                    </div>
-                </div>
-
-                {/* 04. Cookies & Tracking Technologies */}
-                <div className="mb-12">
-                    <h2 className="text-2xl font-bold mb-4 flex items-center gap-3">
-                        <span className="text-[#22aa4f]">04.</span> Cookies & Tracking Technologies
-                    </h2>
-                    <p className="text-gray-700 leading-relaxed mb-4">
-                        We use cookies and similar technologies to:
-                    </p>
-                    <ul className="list-disc list-inside space-y-2 text-gray-700 mb-4">
-                        <li>Improve website functionality</li>
-                        <li>Analyze user behavior</li>
-                        <li>Remember user preferences</li>
-                    </ul>
-                    <p className="text-gray-600 text-sm">
-                        You can disable cookies through your browser settings, but some features may not function properly.
-                    </p>
-                </div>
-
-                {/* 05. Data Sharing & Third Parties */}
-                <div className="mb-12">
-                    <h2 className="text-2xl font-bold mb-4 flex items-center gap-3">
-                        <span className="text-[#22aa4f]">05.</span> Data Sharing & Third Parties
-                    </h2>
-                    <p className="text-gray-700 leading-relaxed mb-4">
-                        We may share limited information with:
-                    </p>
-                    <ul className="list-disc list-inside space-y-2 text-gray-700 mb-6">
-                        <li>Trusted service providers (hosting, analytics)</li>
-                        <li>Doctors or nutritionists (only with user consent)</li>
-                    </ul>
-                    <p className="font-semibold text-[#21492f]">
-                        We never share your data with advertisers or unauthorized third parties.
-                    </p>
-                </div>
-
-                {/* 06. Data Security */}
-                <div className="mb-12 bg-gray-50 p-8 rounded-3xl border border-gray-200">
-                    <h2 className="text-2xl font-bold mb-4 flex items-center gap-3">
-                        <span className="text-[#22aa4f]">06.</span> Data Security
-                    </h2>
-                    <p className="text-gray-700 leading-relaxed mb-4">
-                        We implement appropriate security measures to protect your data, including:
-                    </p>
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6 text-center">
-                        <div className="bg-white p-4 rounded-xl shadow-sm border">Secure Servers</div>
-                        <div className="bg-white p-4 rounded-xl shadow-sm border">Encrypted Transmission</div>
-                        <div className="bg-white p-4 rounded-xl shadow-sm border">Access Controls</div>
-                    </div>
-                    <p className="text-gray-500 text-sm italic">
-                        However, no online system is 100% secure, and users share information at their own risk.
-                    </p>
-                </div>
-
-                {/* 07. User Rights & Choices */}
-                <div className="mb-12">
-                    <h2 className="text-2xl font-bold mb-4 flex items-center gap-3">
-                        <span className="text-[#22aa4f]">07.</span> User Rights & Choices
-                    </h2>
-                    <p className="text-gray-700 leading-relaxed mb-4">
-                        You have the right to:
-                    </p>
-                    <ul className="grid sm:grid-cols-2 gap-3 text-gray-700">
-                        <li className="flex gap-2 items-center"><div className="w-1.5 h-1.5 rounded-full bg-[#22aa4f]" /> Access your personal data</li>
-                        <li className="flex gap-2 items-center"><div className="w-1.5 h-1.5 rounded-full bg-[#22aa4f]" /> Update or correct information</li>
-                        <li className="flex gap-2 items-center"><div className="w-1.5 h-1.5 rounded-full bg-[#22aa4f]" /> Request account deletion</li>
-                        <li className="flex gap-2 items-center"><div className="w-1.5 h-1.5 rounded-full bg-[#22aa4f]" /> Opt out of communications</li>
-                    </ul>
-                    <p className="mt-6 text-gray-600">
-                        Requests can be made through our support team.
-                    </p>
-                </div>
-
-                {/* 08. Children’s Privacy */}
-                <div className="mb-12">
-                    <h2 className="text-2xl font-bold mb-4 flex items-center gap-3">
-                        <span className="text-[#22aa4f]">08.</span> Children’s Privacy
-                    </h2>
-                    <p className="text-gray-700 leading-relaxed">
-                        IlajbilGhiza does not knowingly collect personal data from children under the age of 13 without parental consent. If such data is identified, it will be removed immediately.
-                    </p>
-                </div>
-
-                {/* 09. Changes to This Privacy Policy */}
-                <div className="pt-12 border-t border-gray-100">
-                    <h2 className="text-2xl font-bold mb-4 flex items-center gap-3">
-                        <span className="text-[#22aa4f]">09.</span> Changes to This Privacy Policy
-                    </h2>
-                    <p className="text-gray-700 leading-relaxed mb-4">
-                        IlajbilGhiza may update this Privacy Policy from time to time. Any changes will be posted on this page with a revised effective date.
-                    </p>
-                    <p className="text-gray-500 font-medium italic">
-                        We encourage users to review this policy periodically.
-                    </p>
-                </div>
-
             </section>
         </div>
     );
 }
-
