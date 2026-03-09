@@ -11,7 +11,8 @@ import {
     ArrowUpRight,
     Award,
     Clock,
-    User
+    User,
+    Calendar
 } from "lucide-react";
 
 export default function VerifiedDoctorsPage() {
@@ -40,13 +41,13 @@ export default function VerifiedDoctorsPage() {
 
                 <div className="max-w-4xl mx-auto relative z-10">
                     <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600/20 text-blue-400 rounded-full border border-blue-600/30 text-[10px] font-black uppercase tracking-[0.2em] mb-6">
-                        <Award size={14} /> Global Medical Excellence
+                        <Award size={14} /> Guided by Experts, Powered by Nature
                     </div>
                     <h1 className="text-5xl md:text-7xl font-black mb-8 tracking-tighter uppercase leading-tight font-outfit">
-                        MEET OUR <span className="text-blue-500">EXPERTS</span>
+                        NATURE MEETS <span className="text-blue-500">SCIENCE</span>
                     </h1>
                     <p className="text-xl text-slate-400 font-medium mb-12 max-w-2xl mx-auto leading-relaxed italic">
-                        Highly qualified medical professionals verified by our rigorous background checks to ensure you get only trustworthy health information.
+                        Why organic healing matters: Our experts combine research-based organic nutrition with ancient wisdom to provide treatments that actually work.
                     </p>
 
                     {/* Search Bar */}

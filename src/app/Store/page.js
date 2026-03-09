@@ -4,10 +4,10 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import PageHeader from '../../component/PageHeader';
 import { ShoppingBag, ArrowRight } from 'lucide-react';
-import InfoBoxSection from '../../component/InfoBox';
 import NewsUpdate from '../../component/NewsUpdate';
 import Subscribe from '../../component/Subscribe';
 import { useCart } from '@/context/CartContext';
+import ProductItem from '../../component/ProductItem';
 
 export default function Store() {
     const { addToCart } = useCart();
@@ -169,14 +169,6 @@ export default function Store() {
                 </div>
             </section>
 
-            {/* Info Icons Section */}
-            <InfoBoxSection
-                icon1="/headphones.png" title1="Free Shipping" desc1="Free Shipping On All Orders"
-                icon2="/credit-card.png" title2="Money Guarantee" desc2="30 Days Money Back"
-                icon3="/Free delivery.png" title3="Online Support 24/7" desc3="Technical Support"
-                icon4="/filter icon.png" title4="Secure Payment" desc4="All Cards Accepted"
-            />
-
             {/* Banner Section */}
             <section className="bg-gradient-to-r from-yellow-400 to-yellow-400 rounded-3xl mx-4 md:mx-12 p-8 md:p-12 flex flex-col md:flex-row justify-evenly items-center my-12 relative overflow-hidden max-w-7xl md:mx-auto">
 
@@ -230,26 +222,18 @@ export default function Store() {
                             { id: 107, name: "BODY OIL", price: 40.12, img: "/P-7.png" },
                             { id: 108, name: "EX PRINIS", price: 22.00, img: "/P-8.png" },
                         ].map((product, index) => (
-                            <div key={index} className="group relative bg-white rounded-xl shadow-sm hover:shadow-md p-4 transition-all duration-300">
-                                <div className="overflow-hidden rounded-lg relative">
-                                    <Image src={product.img} alt={product.name} width={300} height={300} className="aspect-square w-full rounded-lg object-cover group-hover:scale-105 transition duration-500" />
-                                    <div className="absolute inset-0 flex items-center justify-center rounded-lg bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300">
-                                        <button
-                                            onClick={() => addToCart({ ...product, image: product.img })}
-                                            className="bg-white text-gray-800 p-3 rounded-full shadow-md hover:bg-gray-100 transition transform hover:scale-110"
-                                        >
-                                            <ShoppingBag size={20} />
-                                        </button>
-                                    </div>
-                                </div>
-
-                                <div className="content flex justify-between mt-4">
-                                    <div className="text-left flex flex-col">
-                                        <h3 className="text-sm font-semibold text-gray-800 uppercase">{product.name}</h3>
-                                        <p className="mt-2 text-[#f44336] font-bold text-sm">${product.price.toFixed(2)}</p>
-                                    </div>
-                                </div>
-                            </div>
+                            <ProductItem
+                                key={index}
+                                product={{
+                                    _id: product.id,
+                                    name: product.name,
+                                    price: product.price,
+                                    image: product.img,
+                                    rating: 5,
+                                    reviews: 128
+                                }}
+                                index={index}
+                            />
                         ))}
                     </div>
                 </div>

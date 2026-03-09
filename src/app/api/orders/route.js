@@ -6,7 +6,7 @@ export const dynamic = 'force-dynamic';
 export async function GET(request) {
     try {
         const orders = ServerStorage.getOrders();
-        return NextResponse.json({ success: true, data: orders }, { status: 200 });
+        return NextResponse.json({ success: true, orders: orders }, { status: 200 });
     } catch (error) {
         console.error('Error fetching orders:', error);
         return NextResponse.json({ success: false, error: error.message }, { status: 500 });

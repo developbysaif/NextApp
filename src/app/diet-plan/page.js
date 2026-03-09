@@ -107,8 +107,8 @@ export default function DietPlanPage() {
                         transition={{ delay: 0.1 }}
                         className="text-4xl md:text-6xl font-black tracking-tight mb-6"
                     >
-                        Your Personal <br />
-                        <span className="text-[#22aa4f]">Health & Diet Plan</span>
+                        “Your Body Is Unique — <br />
+                        <span className="text-[#22aa4f]">Your Diet Should Be Too”</span>
                     </motion.h1>
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
@@ -116,9 +116,34 @@ export default function DietPlanPage() {
                         transition={{ delay: 0.2 }}
                         className="text-stone-500 text-lg max-w-2xl mx-auto font-medium"
                     >
-                        Get a scientifically backed, personalized nutrition and wellness guide
-                        perfectly tailored to your body and lifestyle goals.
+                        Organic healing meets AI precision. Get a diet plan rooted in Sunnah and backed by science.
                     </motion.p>
+                </div>
+            </section>
+
+            {/* How AI Analyzes Section */}
+            <section className="py-12 bg-white">
+                <div className="max-w-5xl mx-auto px-6">
+                    <div className="text-center mb-12">
+                        <h2 className="text-3xl font-black text-[#21492f]">How It Works</h2>
+                        <p className="text-gray-500">Our AI analyzes your unique profile to create the perfect healing plan.</p>
+                    </div>
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+                        {[
+                            { title: "Age & Gender", icon: User, desc: "Personalized biological requirements" },
+                            { title: "Symptoms", icon: Activity, desc: "Addressing the root cause" },
+                            { title: "Lifestyle", icon: Target, desc: "Fitting into your daily routine" },
+                            { title: "Natural Foods", icon: Utensils, desc: "Sunnah-based ingredients" }
+                        ].map((item, i) => (
+                            <div key={i} className="p-6 rounded-2xl bg-[#f8faf9] border border-green-50/50 text-center group hover:border-[#22aa4f]/30 transition-all">
+                                <div className="size-12 rounded-xl bg-white shadow-sm flex items-center justify-center mx-auto mb-4 text-[#22aa4f]">
+                                    <item.icon size={24} />
+                                </div>
+                                <h3 className="font-bold text-[#21492f] mb-1">{item.title}</h3>
+                                <p className="text-[10px] text-gray-400 font-bold uppercase">{item.desc}</p>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </section>
 
@@ -476,6 +501,36 @@ export default function DietPlanPage() {
                         </motion.div>
                     )}
                 </AnimatePresence>
+                {/* Testimonials & Before/After Section */}
+                <section className="mt-24 py-16 px-6 bg-[#21492f] rounded-[48px] text-white overflow-hidden relative">
+                    <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10" />
+                    <div className="relative z-10">
+                        <div className="text-center mb-12">
+                            <h2 className="text-3xl md:text-5xl font-black mb-4">Healing Stories</h2>
+                            <p className="text-white/60">Real results from our natural AI-powered plans.</p>
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            {[
+                                { name: "Amna", text: "My hair fall stopped in just 3 weeks with the Sunnah-based diet plan!", result: "Reduced Hair Fall" },
+                                { name: "Sara", text: "Finally lost weight without feeling weak. The natural ingredients really worked.", result: "Weight Loss" }
+                            ].map((story, i) => (
+                                <div key={i} className="bg-white/5 backdrop-blur-md border border-white/10 p-8 rounded-[32px]">
+                                    <div className="flex gap-1 text-amber-400 mb-4">
+                                        {[1, 2, 3, 4, 5].map(s => <Sparkles key={s} size={14} fill="currentColor" />)}
+                                    </div>
+                                    <p className="text-lg italic mb-6">"{story.text}"</p>
+                                    <div className="flex justify-between items-center border-t border-white/10 pt-4">
+                                        <span className="font-bold">{story.name}</span>
+                                        <span className="bg-[#22aa4f] text-[10px] font-black uppercase tracking-tighter px-2 py-1 rounded-full">{story.result}</span>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                        <p className="text-center mt-12 text-[10px] text-white/40 uppercase tracking-[0.2em]">
+                            *Results may vary based on individual metabolism and adherence. Consult a doctor for medical conditions.
+                        </p>
+                    </div>
+                </section>
             </section>
         </div>
     );

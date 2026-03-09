@@ -18,15 +18,15 @@ const categories = [
 
 const slides = [
   {
-    title: "Healing Nature's Way, Delivered To You",
-    subtitle: "True Healing Starts With What You Eat",
+    title: "Your Body Is Crying for Help — Are You Listening?",
+    subtitle: "Healing Nature's Way",
     description:
-      "IlajbilGhiza is your personal guide to natural health. We combine ancient wisdom with modern AI to find the perfect organic diet that heals your body and soul.",
-    image: "/header.jpg",
-    cta1: "Start My Healing Plan",
-    cta1Href: "/diet-plan",
-    cta2: "Explore Pure Harvest",
-    cta2Href: "/products",
+      "Natural healing. AI-powered diet plans. Sunnah-based remedies. Start fixing your health before it’s too late.",
+    image: "/images/header.png",
+    cta1: "Check Symptoms",
+    cta1Href: "/health-ai",
+    cta2: "Get Diet Plan",
+    cta2Href: "/diet-plan",
   },
 ];
 

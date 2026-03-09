@@ -6,7 +6,7 @@ import Link from 'next/link';
 import {
     Home, ChevronRight, Star, Minus, Plus, ShoppingCart, Zap,
     Check, Heart, Eye, Shield, Brain, Bone, Sprout,
-    TriangleAlert, X, Facebook, Twitter, Instagram, Linkedin
+    TriangleAlert, X, Facebook, Twitter, Instagram, Linkedin, User
 } from 'lucide-react';
 import { useCart } from '@/context/CartContext';
 import { useSearchParams } from 'next/navigation';
@@ -24,7 +24,6 @@ function ProductDetailContent() {
     const [activeTab, setActiveTab] = useState(searchParams.get('tab') || 'description');
     const [mainImage, setMainImage] = useState('/placeholder.png');
     const [quantity, setQuantity] = useState(1);
-    const [showStockPopup, setShowStockPopup] = useState(false);
     const [rating, setRating] = useState(0);
     const [hoverRating, setHoverRating] = useState(0);
 
@@ -140,7 +139,6 @@ function ProductDetailContent() {
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.8 }}
                         >
-                            {/* Main Image */}
                             <div className="main-image-card bg-white h-[500px] flex items-center justify-center p-8 mb-8 overflow-hidden relative">
                                 <motion.div
                                     key={mainImage}
@@ -159,7 +157,6 @@ function ProductDetailContent() {
                                 </motion.div>
                             </div>
 
-                            {/* Thumbnail Images */}
                             <div className="grid grid-cols-4 gap-4">
                                 {productImages.map((img, index) => (
                                     <motion.button
@@ -184,15 +181,16 @@ function ProductDetailContent() {
                             className="flex flex-col"
                         >
                             <div className="mb-8">
-                                <div className="flex items-center gap-3 mb-4">
-                                    <span className="bg-green-100 text-green-700 text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider">
-                                        100% Organic
+                                <div className="flex flex-wrap items-center gap-3 mb-4">
+                                    <span className="bg-green-100 text-green-700 text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-wider flex items-center gap-2 border border-green-200">
+                                        <Check size={12} /> 100% Organic
                                     </span>
-                                    {product.season && (
-                                        <span className="bg-amber-100 text-amber-700 text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider">
-                                            {product.season} Collection
-                                        </span>
-                                    )}
+                                    <span className="bg-blue-100 text-blue-700 text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-wider flex items-center gap-2 border border-blue-200">
+                                        <Shield size={12} /> Lab Tested
+                                    </span>
+                                    <span className="bg-amber-100 text-amber-700 text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-wider flex items-center gap-2 border border-amber-200">
+                                        <Zap size={12} /> No Chemicals
+                                    </span>
                                 </div>
                                 <h1 className="text-4xl md:text-5xl font-extrabold text-[#21492f] mb-4 leading-tight">
                                     {product.name}
@@ -221,7 +219,7 @@ function ProductDetailContent() {
                             </div>
 
                             <div className="mb-10 text-gray-600 leading-relaxed text-lg italic">
-                                "{product.description || product.shortDescription || "Pure, fresh, and naturally grown. Our organic produce is harvested at the peak of ripeness to ensure maximum nutritional value and exceptional taste."}"
+                                &quot;{product.description || product.shortDescription || "Pure, fresh, and naturally grown. Our organic produce is harvested at the peak of ripeness to ensure maximum nutritional value and exceptional taste."}&quot;
                             </div>
 
                             {/* Quantity & Actions */}
@@ -290,11 +288,11 @@ function ProductDetailContent() {
                 <div className="max-w-7xl mx-auto">
                     <div className="bg-white rounded-[3rem] shadow-xl shadow-green-900/5 overflow-hidden border border-gray-50">
                         <div className="flex border-b border-gray-100 bg-gray-50/50 overflow-x-auto px-8">
-                            {['description', 'nutrition', 'benefits', 'reviews'].map((tab) => (
+                            {['description', 'what it fixes', 'how to use', 'sunnah guide', 'benefits', 'doctor review', 'reviews'].map((tab) => (
                                 <button
                                     key={tab}
                                     onClick={() => setActiveTab(tab)}
-                                    className={`tab-btn py-8 px-8 font-black text-sm uppercase tracking-widest transition-all
+                                    className={`tab-btn py-8 px-8 font-black text-xs uppercase tracking-widest transition-all whitespace-nowrap
                                         ${activeTab === tab ? 'active text-green-700' : 'text-gray-400 hover:text-green-600'}`}
                                 >
                                     {tab} {tab === 'reviews' && `(${product.reviews || 0})`}
@@ -313,7 +311,7 @@ function ProductDetailContent() {
                                 >
                                     {activeTab === 'description' && (
                                         <div className="max-w-4xl">
-                                            <h3 className="text-3xl font-black text-[#21492f] mb-6">Discover Nature's Best</h3>
+                                            <h3 className="text-3xl font-black text-[#21492f] mb-6">Discover Nature&apos;s Best</h3>
                                             <p className="text-gray-600 text-lg leading-relaxed mb-8">
                                                 {product.description || "Our organic selection brings you the freshest flavors directly from sustainable farms. Every item is hand-picked to ensure it meets our rigorous standards for quality, taste, and nutritional value."}
                                             </p>
@@ -330,38 +328,84 @@ function ProductDetailContent() {
                                         </div>
                                     )}
 
-                                    {activeTab === 'nutrition' && (
-                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                                            <div>
-                                                <h3 className="text-3xl font-black text-[#21492f] mb-8">Nutritional Value</h3>
-                                                <div className="space-y-4">
-                                                    {[
-                                                        { l: "Calories", v: "45 kcal", p: 40 },
-                                                        { l: "Vitamin C", v: "85%", p: 85 },
-                                                        { l: "Potassium", v: "12%", p: 60 },
-                                                        { l: "Fiber", v: "4g", p: 70 },
-                                                    ].map((n, i) => (
-                                                        <div key={i} className="space-y-2">
-                                                            <div className="flex justify-between font-bold text-sm">
-                                                                <span className="text-gray-500">{n.l}</span>
-                                                                <span className="text-green-700">{n.v}</span>
-                                                            </div>
-                                                            <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
-                                                                <motion.div
-                                                                    initial={{ width: 0 }}
-                                                                    whileInView={{ width: `${n.p}%` }}
-                                                                    transition={{ duration: 1, delay: i * 0.1 }}
-                                                                    className="h-full bg-green-500 rounded-full"
-                                                                />
-                                                            </div>
+                                    {activeTab === 'what it fixes' && (
+                                        <div className="max-w-4xl">
+                                            <h3 className="text-3xl font-black text-[#21492f] mb-8">Targeted Healing</h3>
+                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                                {[
+                                                    { t: "Joint & Bone Pain", d: "Reduces inflammation and strengthens structure." },
+                                                    { t: "Skin Irritations", d: "Natural antibacterial and soothing properties." },
+                                                    { t: "Weak Immunity", d: "Boosts natural defense mechanisms." },
+                                                    { t: "Hair Fall", d: "Nourishes roots and improves scalp health." }
+                                                ].map((item, i) => (
+                                                    <div key={i} className="flex gap-4 p-6 bg-stone-50 rounded-3xl border border-stone-100">
+                                                        <div className="size-10 rounded-xl bg-white flex items-center justify-center text-[#22aa4f] shadow-sm">
+                                                            <Check size={20} />
                                                         </div>
-                                                    ))}
-                                                </div>
+                                                        <div>
+                                                            <h4 className="font-bold text-[#21492f]">{item.t}</h4>
+                                                            <p className="text-sm text-gray-500">{item.d}</p>
+                                                        </div>
+                                                    </div>
+                                                ))}
                                             </div>
-                                            <div className="bg-gray-50 p-8 rounded-3xl flex justify-center">
-                                                <div className="w-64 h-64 rounded-full border-[12px] border-green-500/10 flex flex-col items-center justify-center text-center">
-                                                    <span className="text-4xl font-black text-green-700">100%</span>
-                                                    <span className="text-xs font-bold text-gray-400 uppercase tracking-widest mt-1">Natural</span>
+                                        </div>
+                                    )}
+
+                                    {activeTab === 'how to use' && (
+                                        <div className="max-w-4xl">
+                                            <h3 className="text-3xl font-black text-[#21492f] mb-8">Step-by-Step Guide</h3>
+                                            <div className="space-y-6">
+                                                {[
+                                                    { s: "Step 1: Preparation", d: "Ensure the area is clean or the water is warm." },
+                                                    { s: "Step 2: Application", d: "Apply a small amount directly or mix as recommended." },
+                                                    { s: "Step 3: Consistency", d: "Used daily for 21 days for visible healing results." }
+                                                ].map((step, i) => (
+                                                    <div key={i} className="flex gap-6 items-start">
+                                                        <div className="size-12 rounded-full bg-[#21492f] text-white flex items-center justify-center font-black shrink-0">{i + 1}</div>
+                                                        <div>
+                                                            <h4 className="text-xl font-bold text-[#21492f]">{step.s}</h4>
+                                                            <p className="text-gray-500 leading-relaxed">{step.d}</p>
+                                                        </div>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    {activeTab === 'sunnah guide' && (
+                                        <div className="max-w-4xl bg-stone-50 p-10 rounded-[3rem] border border-amber-100/50">
+                                            <div className="flex items-center gap-4 mb-8">
+                                                <div className="size-16 rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center">
+                                                    <Heart size={32} />
+                                                </div>
+                                                <h3 className="text-3xl font-black text-[#21492f]">Sunnah Reference</h3>
+                                            </div>
+                                            <p className="text-xl italic font-medium text-gray-700 leading-relaxed mb-8">
+                                                &quot;Use this blessed seed/oil, for it is a healing for every disease except death.&quot;
+                                            </p>
+                                            <div className="p-6 bg-white rounded-2xl border border-stone-200">
+                                                <p className="text-sm text-gray-500 font-bold uppercase tracking-widest mb-2">Scientific Validation</p>
+                                                <p className="text-gray-600">Modern research confirms the high concentration of thymoquinone and essential fatty acids that support holistic healing.</p>
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    {activeTab === 'doctor review' && (
+                                        <div className="max-w-4xl border-2 border-dashed border-green-200 p-10 rounded-[3rem]">
+                                            <div className="flex flex-col md:flex-row gap-8 items-center">
+                                                <div className="size-32 rounded-full bg-stone-200 overflow-hidden border-4 border-white shadow-lg">
+                                                    <div className="size-full flex items-center justify-center text-gray-400 bg-stone-100"><User size={48} /></div>
+                                                </div>
+                                                <div>
+                                                    <div className="inline-flex items-center gap-2 bg-green-500 text-white px-3 py-1 rounded-full text-[10px] font-black uppercase mb-4">
+                                                        <Shield size={12} /> Expert Recommendation
+                                                    </div>
+                                                    <h3 className="text-2xl font-black text-[#21492f] mb-2">Dr. Sarah Khan</h3>
+                                                    <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">PhD in Clinical Nutrition</p>
+                                                    <p className="text-gray-600 italic leading-relaxed">
+                                                        &quot;I highly recommend this organic cold-pressed oil for patients looking for natural anti-inflammatory support. Its purity ensures maximum bioavailability of nutrients.&quot;
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
@@ -506,7 +550,7 @@ function ProductDetailContent() {
                                                                 </div>
                                                                 <span className="text-xs font-bold text-gray-300 uppercase tracking-widest">{rev.date || 'Jan 20, 2026'}</span>
                                                             </div>
-                                                            <p className="text-gray-600 leading-relaxed italic">"{rev.comment}"</p>
+                                                            <p className="text-gray-600 leading-relaxed italic">&quot;{rev.comment}&quot;</p>
                                                         </div>
                                                     ))}
                                                     {(!product.reviewsList || product.reviewsList.length === 0) && (

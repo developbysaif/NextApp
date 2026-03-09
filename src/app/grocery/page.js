@@ -12,7 +12,7 @@ import {
 import Image from 'next/image';
 import { products as allProducts } from '@/data/products';
 import { useCart } from '@/context/CartContext';
-import ProductCard from '@/components/ProductCard';
+import ProductItem from '@/component/ProductItem';
 
 // --- Theme Colors ---
 const COLORS = {
@@ -214,12 +214,11 @@ export default function GroceryPage() {
 
                     {filteredProducts.length > 0 ? (
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-                            {filteredProducts.map((product) => (
-                                <ProductCard
-                                    key={product.id}
+                            {filteredProducts.map((product, idx) => (
+                                <ProductItem
+                                    key={product.id || idx}
                                     product={product}
-                                    onAdd={handleAddToCart}
-                                    onReview={() => setReviewProduct(product)}
+                                    index={idx}
                                 />
                             ))}
                         </div>

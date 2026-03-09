@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useState, useEffect, use } from 'react';
-import PageHeader from '@/component/PageHeader';
-import { BookOpen, User, Clock, ArrowLeft, ShieldCheck, Heart } from 'lucide-react';
+import { Facebook, Twitter, Linkedin, Mail, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function BlogPostDetail({ params }) {
     const { slug } = use(params);
@@ -21,16 +21,15 @@ export default function BlogPostDetail({ params }) {
     }, [slug]);
 
     if (loading) {
-        return <div className="min-h-screen bg-[#fcfdfa] flex items-center justify-center font-black text-blue-600 uppercase tracking-widest text-sm italic">Loading Insight...</div>;
+        return <div className="min-h-screen bg-[#21492f] flex items-center justify-center font-bold text-white uppercase tracking-widest text-sm italic">Loading Insight...</div>;
     }
 
     if (!blog) {
         return (
-            <div className="min-h-screen bg-[#fcfdfa] flex items-center justify-center p-6 text-center">
+            <div className="min-h-screen bg-[#21492f] flex items-center justify-center p-6 text-center text-white">
                 <div>
-                    <BookOpen size={64} className="mx-auto text-slate-200 mb-6" />
-                    <h1 className="text-4xl font-black text-slate-900 uppercase italic mb-4">Blog Not Found</h1>
-                    <Link href="/blogs" className="inline-flex items-center gap-2 text-blue-600 font-black uppercase tracking-widest text-xs hover:underline">
+                    <h1 className="text-4xl font-outfit font-black mb-4">Article Not Found</h1>
+                    <Link href="/blogs" className="inline-flex items-center gap-2 text-[#22aa4f] font-bold uppercase tracking-widest text-xs hover:underline">
                         <ArrowLeft size={16} /> Back to Insights
                     </Link>
                 </div>
@@ -38,80 +37,100 @@ export default function BlogPostDetail({ params }) {
         );
     }
 
+    const recommendedProducts = [
+        {
+            id: 1,
+            name: "Premium Honey & Ginger Blend",
+            price: "$19.00",
+            image: "/P1.png"
+        },
+        {
+            id: 2,
+            name: "Organic Herbal Roots",
+            price: "$33.00",
+            image: "/P2.png"
+        }
+    ];
+
     return (
-        <div className="min-h-screen bg-[#fcfdfa] pb-24 font-sans">
-            <PageHeader
-                title={blog.title}
-                description={`Written by ${blog.authorName} • ${blog.category}`}
-                backgroundImage={blog.featuredImage || "/header.jpg"}
-            />
+        <div className="min-h-screen bg-gradient-to-br from-[#2f5c40] via-[#21492f] to-[#1a3824] pt-32 pb-24 font-sans text-white">
+            <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
 
-            <article className="max-w-4xl mx-auto px-6 -mt-10 relative z-20">
-                <div className="bg-white rounded-[3rem] shadow-2xl shadow-blue-900/5 border border-slate-100 p-10 md:p-16">
-                    {/* Meta Info */}
-                    <div className="flex flex-wrap items-center gap-6 mb-12 py-6 border-b border-slate-50">
-                        <div className="flex items-center gap-3">
-                            <div className="size-12 bg-blue-600 rounded-2xl flex items-center justify-center text-white font-black shrink-0 relative">
-                                {blog.authorPhoto ? (
-                                    <img src={blog.authorPhoto} alt="" className="size-full object-cover rounded-2xl" />
-                                ) : (
-                                    blog.authorName?.charAt(0)
-                                )}
-                                <div className="absolute -top-1 -right-1 bg-green-500 text-white rounded-full p-0.5 border-2 border-white shadow-sm">
-                                    <ShieldCheck size={12} />
+                    {/* Main Content Column */}
+                    <div className="lg:col-span-8 flex flex-col pt-4">
+                        {/* Title - Using a serif/elegant style similar to image */}
+                        <h1 className="text-[2.5rem] md:text-[3.5rem] lg:text-[4rem] font-serif font-medium text-[#f3f5f4] leading-[1.1] mb-10 tracking-tight">
+                            {blog.title || "7 surprising health benefits of medicinal mushrooms"}
+                        </h1>
+
+                        {/* Share Row */}
+                        <div className="flex items-center gap-6 mb-16">
+                            <span className="text-[#d1dbd4] font-medium text-lg tracking-wide">Share</span>
+                            <div className="flex items-center gap-2.5">
+                                {[Facebook, Twitter, Linkedin, Mail].map((Icon, i) => (
+                                    <button
+                                        key={i}
+                                        className="flex items-center justify-center w-10 h-10 bg-[#113521] hover:bg-[#0c2617] text-[#e8eee9] rounded-[4px] transition-colors shadow-sm"
+                                        aria-label="Share"
+                                    >
+                                        <Icon size={18} strokeWidth={2} className={i !== 3 ? "fill-current" : ""} />
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* Featured Image */}
+                        <div className="relative w-full aspect-[4/3] rounded-sm overflow-hidden mb-16 shadow-2xl bg-[#1a3824]">
+                            <img
+                                src={blog.featuredImage || "/header.jpg"}
+                                alt={blog.title || "Blog cover"}
+                                className="object-cover w-full h-full"
+                            />
+                        </div>
+
+                        {/* Content */}
+                        <div className="prose prose-lg prose-invert max-w-none prose-p:text-[#c4d1c9] prose-p:leading-relaxed prose-headings:text-white prose-a:text-[#22aa4f] prose-strong:text-white">
+                            <div className="whitespace-pre-line text-lg md:text-xl font-medium">
+                                {blog.content || "Medicinal mushrooms have been used for thousands of years in traditional medicine. Modern science is finally catching up with ancient wisdom..."}
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Sidebar / Products Column */}
+                    <div className="lg:col-span-4 lg:pt-6 flex flex-col gap-6 items-center lg:items-end">
+                        <div className="w-full max-w-[340px] flex flex-col gap-6">
+                            {recommendedProducts.map((product) => (
+                                <div key={product.id} className="bg-white p-6 shadow-2xl group border border-transparent hover:border-[#22aa4f]/20 transition-all rounded-[2px] w-full">
+                                    <div className="bg-[#e8ebec] aspect-square w-full mb-6 relative overflow-hidden flex items-center justify-center p-8 rounded-[2px]">
+                                        {/* Using span for fallback to prevent next/image issues if path is broken, though Image works best if P1.png exists */}
+                                        <div className="relative w-full h-full group-hover:scale-105 transition-transform duration-700">
+                                            <Image
+                                                src={product.image}
+                                                alt={product.name}
+                                                fill
+                                                className="object-contain drop-shadow-md"
+                                            />
+                                        </div>
+                                    </div>
+
+                                    <h3 className="text-[1.35rem] font-bold text-[#1a1c1a] mb-3 leading-snug tracking-tight">
+                                        {product.name}
+                                    </h3>
+
+                                    <p className="text-[#3c3e3c] font-medium text-base mb-6">
+                                        {product.price}
+                                    </p>
+
+                                    <button className="w-full bg-[#113521] text-white py-3.5 font-bold hover:bg-[#0c2617] transition-colors flex items-center justify-center rounded-[2px] shadow-sm tracking-wide">
+                                        Add to cart
+                                    </button>
                                 </div>
-                            </div>
-                            <div>
-                                <p className="text-sm font-black text-slate-900 uppercase tracking-tight">{blog.authorName}</p>
-                                <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Medical Specialist</p>
-                            </div>
-                        </div>
-
-                        <div className="h-10 w-px bg-slate-100 hidden md:block"></div>
-
-                        <div className="flex items-center gap-3 text-slate-400">
-                            <Clock size={18} />
-                            <span className="text-xs font-bold uppercase tracking-widest leading-none">5 Min Read</span>
-                        </div>
-
-                        <div className="ml-auto">
-                            <span className="bg-blue-50 text-blue-600 px-6 py-2 rounded-full text-[10px] font-black uppercase tracking-widest border border-blue-100/50">
-                                {blog.category}
-                            </span>
+                            ))}
                         </div>
                     </div>
 
-                    {/* Content */}
-                    <div className="prose prose-slate prose-lg max-w-none">
-                        <div className="text-slate-600 font-bold leading-loose whitespace-pre-line text-lg">
-                            {blog.content}
-                        </div>
-                    </div>
-
-                    {/* Engagement */}
-                    <div className="mt-16 pt-12 border-t border-slate-50 flex items-center justify-between">
-                        <div className="flex items-center gap-2">
-                            <button className="flex items-center gap-2 bg-slate-50 hover:bg-red-50 hover:text-red-500 px-6 py-3 rounded-2xl transition-all font-black text-xs uppercase tracking-widest text-slate-500">
-                                <Heart size={16} /> 24 Helpful
-                            </button>
-                        </div>
-                        <Link href="/blogs" className="text-xs font-black uppercase tracking-widest text-blue-600 hover:underline">
-                            Share Insight
-                        </Link>
-                    </div>
                 </div>
-            </article>
-
-            {/* Related Blog or Call to action */}
-            <div className="max-w-4xl mx-auto px-6 mt-12 bg-blue-600 rounded-[3rem] p-12 text-center text-white relative overflow-hidden group">
-                <div className="absolute top-0 left-0 size-64 bg-white/5 rounded-full -ml-32 -mt-32 group-hover:scale-110 transition-transform duration-1000"></div>
-                <h2 className="text-3xl font-black mb-6 uppercase tracking-tight relative z-10 italic">Consult Our Experts</h2>
-                <p className="text-blue-100 font-medium mb-10 max-w-xl mx-auto leading-relaxed relative z-10">
-                    Need professional medical advice? Book an appointment with one of our specialized doctors today.
-                </p>
-                <Link href="/doctors" className="inline-block bg-white text-blue-600 px-12 py-5 rounded-[2rem] font-black uppercase tracking-widest text-xs shadow-2xl hover:scale-105 transition-all relative z-10">
-                    Find a Doctor
-                </Link>
             </div>
         </div>
     );

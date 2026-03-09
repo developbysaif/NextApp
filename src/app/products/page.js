@@ -173,13 +173,13 @@ function ProductsContent({ initialCategory = "All", initialSeason = "All" }) {
             {/* Products Grid */}
             <div className="max-w-5xl mx-auto px-4 pb-20">
                 {loading ? (
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                         {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
                             <div key={i} className="bg-stone-50 rounded-2xl h-80 animate-pulse border border-stone-100" />
                         ))}
                     </div>
                 ) : filteredProducts.length > 0 ? (
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                         {filteredProducts.map((product, idx) => (
                             <ProductItem key={product.id || product._id || idx} product={product} index={idx} />
                         ))}

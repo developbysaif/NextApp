@@ -70,14 +70,7 @@ export default function Navbar() {
         { label: "Pediatrician", href: "/blogs/specialty/Pediatrician", description: "Children's health and wellness." },
     ]
 
-    const diseaseItems = [
-        { label: "Diabetes (Sugar)", href: "/diseases/diabetes", description: "Natural sugar management through specific organic foods." },
-        { label: "Blood Pressure", href: "/diseases/blood-pressure", description: "Maintain healthy BP levels with potassium-rich diets." },
-        { label: "Obesity (Weight)", href: "/diseases/obesity", description: "Sustainable weight loss using metabolism-boosting ghiza." },
-        { label: "Digestive Issues", href: "/diseases/digestion", description: "Heal your gut with fiber and natural probiotics." },
-        { label: "Joint Pain", href: "/diseases/joint-pain", description: "Anti-inflammatory foods for bone and joint health." },
-        { label: "Weak Immunity", href: "/diseases/immunity", description: "Boost defense system with Vitamin C and natural herbs." },
-    ]
+
 
     const pageItems = [
         { label: "About IlajbilGhiza", href: "/about", description: "Learn about our philosophy and mission." },
@@ -168,24 +161,11 @@ export default function Navbar() {
                                 </NavigationMenuLink>
                             </NavigationMenuItem>
                             <NavigationMenuItem>
-                                <NavigationMenuTrigger className="bg-transparent font-bold text-stone-600 text-xs hover:text-[#22aa4f] data-[state=open]:text-[#22aa4f]">
-                                    Diseases & treatment
-                                </NavigationMenuTrigger>
-                                <NavigationMenuContent>
-                                    <ul className="grid w-[400px] gap-2 p-3 bg-white">
-                                        {diseaseItems.map((item) => (
-                                            <li key={item.href}>
-                                                <NavigationMenuLink asChild>
-                                                    <Link href={item.href} className="block select-none space-y-1 rounded-lg p-2 leading-none transition-colors hover:bg-stone-50 hover:text-[#22aa4f]">
-                                                        <div className="text-xs font-bold text-[#21492f]">{item.label}</div>
-                                                        <p className="line-clamp-1 text-[10px] text-stone-400 font-medium">{item.description}</p>
-                                                    </Link>
-                                                </NavigationMenuLink>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </NavigationMenuContent>
+                                <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), "bg-transparent font-bold text-stone-600 text-xs hover:text-[#22aa4f] hover:bg-stone-50")}>
+                                    <Link href="/diseases">Diseases &amp; Treatment</Link>
+                                </NavigationMenuLink>
                             </NavigationMenuItem>
+
                             <NavigationMenuItem>
                                 <NavigationMenuTrigger className="bg-transparent font-bold text-stone-600 text-xs hover:text-[#22aa4f] data-[state=open]:text-[#22aa4f]">
                                     AI & diet
@@ -263,12 +243,8 @@ export default function Navbar() {
                     <nav className="flex-1 space-y-4">
                         <Link href="/" className="block font-bold text-stone-600" onClick={() => setOpen(false)}>Home</Link>
                         <Link href="/products" className="block font-bold text-stone-600" onClick={() => setOpen(false)}>Organic foods</Link>
-                        <div className="pt-2 border-t border-stone-100">
-                            <p className="text-[10px] font-bold text-stone-300 uppercase mb-3">Diseases</p>
-                            {diseaseItems.slice(0, 4).map(item => (
-                                <Link key={item.href} href={item.href} className="block text-sm font-bold text-stone-500 mb-3" onClick={() => setOpen(false)}>{item.label}</Link>
-                            ))}
-                        </div>
+                        <Link href="/diseases" className="block font-bold text-stone-600" onClick={() => setOpen(false)}>Diseases &amp; Treatment</Link>
+
                         <div className="pt-2 border-t border-stone-100">
                             <p className="text-[10px] font-bold text-stone-300 uppercase mb-3">Our Doctors</p>
                             {specialtyItems.map(item => (

@@ -5,9 +5,37 @@ import { useWishlist } from '@/context/WishlistContext';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { Heart } from 'lucide-react';
+import { Heart, ShoppingCart } from 'lucide-react';
 import { motion } from 'framer-motion';
 import './productcard.css';
+
+const LeafDecoration = () => (
+    <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden rounded-[1.5rem]">
+        {/* Blurry Shadow Overlay to match photo aesthetic */}
+        <svg viewBox="0 0 200 300" className="absolute -top-16 -right-16 w-56 h-72 sm:w-64 sm:h-80 text-[#21492f] opacity-[0.06] blur-[12px] transform rotate-[110deg]" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 120 300 C 120 250 140 150 150 50" stroke="currentColor" strokeWidth="8" fill="none" strokeLinecap="round" />
+            <path d="M 128 250 C 60 230 30 200 40 150 C 80 150 110 190 135 220" />
+            <path d="M 140 180 C 70 160 20 120 30 70 C 70 70 110 120 145 150" />
+            <path d="M 146 110 C 80 90 40 50 60 10 C 100 20 130 60 150 85" />
+            <path d="M 132 230 C 180 220 200 190 190 140 C 160 140 140 170 138 200" />
+            <path d="M 142 160 C 190 140 210 100 210 50 C 180 50 150 90 146 130" />
+            <path d="M 148 90 C 180 70 190 30 170 -10 C 150 10 140 40 149 70" />
+            <path d="M 150 50 C 140 10 150 -30 170 -40 C 175 0 165 20 150 50" />
+        </svg>
+
+        {/* Foreground Minimalist Leaf */}
+        <svg viewBox="0 0 200 300" className="absolute -bottom-10 -right-6 w-44 h-60 sm:w-48 sm:h-64 text-[#8baa95] opacity-30 transform rotate-[-20deg] scale-x-[-1]" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 120 300 C 120 250 140 150 150 50" stroke="currentColor" strokeWidth="8" fill="none" strokeLinecap="round" />
+            <path d="M 128 250 C 60 230 30 200 40 150 C 80 150 110 190 135 220" />
+            <path d="M 140 180 C 70 160 20 120 30 70 C 70 70 110 120 145 150" />
+            <path d="M 146 110 C 80 90 40 50 60 10 C 100 20 130 60 150 85" />
+            <path d="M 132 230 C 180 220 200 190 190 140 C 160 140 140 170 138 200" />
+            <path d="M 142 160 C 190 140 210 100 210 50 C 180 50 150 90 146 130" />
+            <path d="M 148 90 C 180 70 190 30 170 -10 C 150 10 140 40 149 70" />
+            <path d="M 150 50 C 140 10 150 -30 170 -40 C 175 0 165 20 150 50" />
+        </svg>
+    </div>
+);
 
 const ProductItem = ({ product, index = 0 }) => {
     const { addToCart } = useCart();
@@ -61,10 +89,12 @@ const ProductItem = ({ product, index = 0 }) => {
                 delay: index * 0.1,
                 ease: [0.34, 1.56, 0.64, 1]
             }}
-            className="product-card group"
+            className="product-card group relative"
         >
-            <div className="product-image-wrapper">
-                <Link href={`/productdetail?id=${product._id || product.id}`} className="w-full h-full">
+            <LeafDecoration />
+
+            <div className="product-image-wrapper relative z-10">
+                <Link href={`/productdetail?id=${product._id || product.id}`} className="w-full h-full block">
                     <Image
                         src={product.image || '/placeholder.png'}
                         alt={product.name}
@@ -87,16 +117,7 @@ const ProductItem = ({ product, index = 0 }) => {
                     />
                 </button>
 
-                {/* Hover overlay with larger shopping bag icon */}
-                <div className="cart-overlay">
-                    <button
-                        onClick={handleAddToCart}
-                        className="cart-btn"
-                        aria-label="Add to cart"
-                    >
-                        <Image src="/Bag.png" alt="Cart" width={27} height={27} className="bag-icon" />
-                    </button>
-                </div>
+                {/* Hover overlay mapped out, Add to cart is now a pill button below */}
 
                 {/* Badges */}
                 {product.discount && (
@@ -107,45 +128,44 @@ const ProductItem = ({ product, index = 0 }) => {
                 )}
             </div>
 
-            <div className="product-info">
+            <div className="product-info flex flex-col flex-grow relative z-10">
                 <Link href={`/productdetail?id=${product._id || product.id}`}>
                     <h3 className="product-name">{product.name}</h3>
                 </Link>
 
-                {/* New Section: Best For & Recommended Quantity */}
-                <div className="mt-1 mb-4 flex flex-col gap-2">
+                {/* Maintained content: Best For & Recommended Quantity */}
+                <div className="mb-3 flex flex-col gap-1 flex-grow">
                     {product.bestFor && (
-                        <div className="flex items-center gap-2">
-                            <span className="text-[10px] font-black uppercase text-amber-600 bg-amber-50 px-2 py-0.5 rounded-md">Best For:</span>
-                            <span className="text-xs font-bold text-gray-600 italic line-clamp-1">{product.bestFor}</span>
-                        </div>
+                        <p className="text-xs text-[#4a5d53] leading-tight line-clamp-1">
+                            {product.bestFor}
+                        </p>
                     )}
                     {product.recommendedQty && (
-                        <div className="flex items-center gap-2">
-                            <span className="text-[10px] font-black uppercase text-blue-600 bg-blue-50 px-2 py-0.5 rounded-md">Usage:</span>
-                            <span className="text-xs font-bold text-gray-500">{product.recommendedQty}</span>
-                        </div>
+                        <p className="text-xs text-[#4a5d53] leading-tight line-clamp-1">
+                            {product.recommendedQty}
+                        </p>
                     )}
                 </div>
 
-                <div className="price-wrapper">
-                    <p className="current-price">${product.price}</p>
-                    {product.originalPrice && (
-                        <p className="original-price">${product.originalPrice}</p>
-                    )}
-                </div>
-
-                <div className="rating-wrapper">
-                    <div className="stars">
+                <div className="rating-wrapper mb-2">
+                    <div className="stars flex text-[#1b442b]">
                         {renderStars(product.rating)}
                     </div>
-                    <span className="reviews-count">({product.reviews || 0})</span>
-                    <Link
-                        href={`/productdetail?id=${product._id || product.id}`}
-                        className="view-details-pill"
-                    >
-                        View Details
-                    </Link>
+                    <span className="reviews-count font-bold text-[#1b442b] ml-1 text-xs">{product.rating || 5}.0</span>
+                    <span className="reviews-count text-[#4a5d53] ml-1 text-xs">({product.reviews || 0} Reviews)</span>
+                </div>
+
+                <div className="price-cart-wrapper mt-auto">
+                    <div className="price-wrapper mb-0">
+                        <p className="current-price">${product.price}</p>
+                        {product.originalPrice && (
+                            <p className="original-price">${product.originalPrice}</p>
+                        )}
+                    </div>
+                    <button onClick={handleAddToCart} className="add-to-cart-pill">
+                        <ShoppingCart size={16} />
+                        ADD TO CART
+                    </button>
                 </div>
             </div>
         </motion.div>

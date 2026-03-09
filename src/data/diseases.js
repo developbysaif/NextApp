@@ -1,141 +1,154 @@
 export const diseases = [
     {
-        slug: 'diabetes',
-        title: 'Diabetes (Sugar) Management',
-        description: 'Natural ways to balance insulin levels with an organic diet.',
+        slug: 'hair-fall',
+        title: '“Why Is Your Hair Falling So Fast?”',
+        description: 'Understand the root cause of hair loss and fix it with Sunnah-based organic remedies.',
         icon: 'Activity',
-        color: 'text-blue-600',
+        color: 'text-amber-600',
+        bg: 'bg-amber-50',
+        image: '/images/hair_fall_awareness.png',
+        content: `
+It’s heart-breaking to see your hair in the brush every morning. But the truth is, your hair is falling for a reason. Modern lifestyle and chemicals are stripping away your natural beauty.
+
+### Root Causes of Hair Fall:
+1. **Chemical Shampoos:** Harsh sulfates and parabens damage the scalp.
+2. **Stress:** Mental pressure literally pushes hair out of its growth phase.
+3. **Iron Deficiency:** Low hemoglobin means your hair follicles are starving for oxygen.
+4. **Hormonal Imbalance:** For many girls, internal shifts manifest as thinning hair.
+
+### The Organic Solution (Based on Sunnah):
+* **Black Seed Oil (Kalonji):** As mentioned in Sunnah, it is a cure for everything except death. Massaging it helps nourish roots.
+* **Olive Oil:** A blessed tree oil that deeply moisturizes the scalp.
+* **Honey & Egg Mask:** Natural protein and enzymes to strengthen hair strands.
+* **Protein-Rich Diet:** Eat eggs, pulses, and nuts to build hair from the inside.
+
+### A Gentle Reminder:
+Your hair is a gift. Treat it with the purity of nature, just as it was meant to be.
+`
+    },
+    {
+        slug: 'teeth-whitening',
+        title: '“Your Smile Is Fading — Here’s Why”',
+        description: 'Naturally white healthy teeth without harmful chemicals or sensitivity.',
+        icon: 'Activity',
+        color: 'text-blue-500',
         bg: 'bg-blue-50',
-        image: '/P1.png',
+        image: '/images/teeth_whitening_comparison.png',
         content: `
-Diabetes management is about maintaining a balance in your life. While medical supervision is essential, diet plays a crucial role in controlling blood sugar levels. 
+Is your confidence fading along with your smile? Yellowing teeth aren't just an aging sign; they are often a result of what we do daily.
 
-### Best Organic Foods for Diabetes:
-1. **Bitter Gourd (Karela):** Known for its insulin-like properties, it helps in lowering blood glucose.
-2. **Cinnamon (Darchini):** Just a small amount can improve insulin sensitivity.
-3. **Fiber-rich Vegetables:** Leafy greens, broccoli, and spinach help slow down sugar absorption.
-4. **Whole Grains:** Brown rice, oats, and barley provide steady energy without spikes.
+### Why Your Teeth Are Yellow:
+1. **Sugary Drinks:** Soda and energy drinks erode the enamel.
+2. **Caffeine Addiction:** Constant tea and coffee staining.
+3. **Chemical Whiteners:** Commercial kits can cause permanent sensitivity.
 
-### Tips for Daily Life:
-* Avoid processed sugars and white flour.
-* Eat small, frequent meals instead of large portions.
-* Stay hydrated with water and herbal teas.
-* Regular physical activity is key.
+### The Organic Remedy:
+* **Miswak (Salvadora Persica):** The most organic, Sunnah-recommended tool for dental hygiene and whitening.
+* **Oil Pulling:** Swishing organic coconut oil daily to pull out toxins and brighten teeth.
+* **Baking Soda (Limited Use):** A natural abrasive to remove surface stains occasionally.
+* **Apple & Strawberries:** Nature's "detergent" foods that naturally clean teeth.
+
+### Smile Naturally:
+Healthy teeth don't need bleach. They need the right care and natural ingredients.
 `
     },
     {
-        slug: 'blood-pressure',
-        title: 'Blood Pressure Control',
-        description: 'Maintain healthy BP with potassium-rich foods.',
+        slug: 'pcos-organic-healing',
+        title: 'PCOS Organic Healing',
+        description: 'Balance your hormones and reclaim your health with a specialized diet.',
         icon: 'Heart',
-        color: 'text-red-600',
-        bg: 'bg-red-50',
-        image: '/P7.png',
+        color: 'text-purple-600',
+        bg: 'bg-purple-50',
         content: `
-High blood pressure (hypertension) is often called a silent killer. Managing it with natural, organic foods can significantly improve your cardiovascular health.
+PCOS is not just a disease; it's a metabolic signal from your body. You can manage it by changing the fuel you give yourself.
 
-### Top Foods for BP Management:
-1. **Garlic (Lehsan):** Helps in relaxing blood vessels and improving circulation.
-2. **Banana and Watermelon:** Rich in potassium, which helps the kidneys flush out excess sodium.
-3. **Beetroot:** High in nitrates that help lower blood pressure.
-4. **Hibiscus Tea:** A natural way to support heart health and reduce pressure.
+### The Root Cause:
+Most PCOS cases are driven by insulin resistance and chronic inflammation caused by processed foods.
 
-### Lifestyle Advice:
-* Limit salt intake.
-* Focus on a diet rich in fruits, vegetables, and low-fat dairy (DASH diet).
-* Manage stress through breathing exercises and meditation.
+### Sunnah-Based Healing:
+* **Moringa (Suhanjna):** A miracle plant for hormonal balance.
+* **Dates (Khajoor):** Natural energy and iron without the insulin spike of processed sugar.
+* **Flaxseeds (Alsi):** Rich in lignans that help balance estrogen levels.
+* **Spearmint Tea:** Known to help reduce excess male hormones in girls.
+
+### Mission:
+Stop treating symptoms. Let's fix the root cause with organic food.
 `
     },
     {
-        slug: 'obesity',
-        title: 'Obesity & Weight Loss',
-        description: 'Sustainable weight loss with metabolism-boosting foods.',
+        slug: 'skin-glow',
+        title: 'Skin Glow for Girls',
+        description: 'Beauty that starts from within. Get that natural, healthy radiance.',
+        icon: 'Activity',
+        color: 'text-rose-500',
+        bg: 'bg-rose-50',
+        content: `
+Stop hiding behind makeup. A true glow comes when your blood is pure and your gut is happy.
+
+### Why Your Skin Is Dull:
+1. **Junk Food Metabolism:** Fried foods lead to acne and oily skin.
+2. **Dehydration:** Your skin cells need water to look plump and fresh.
+3. **Lack of Antioxidants:** Your body is fighting environmental toxins without help.
+
+### The Glow Routine:
+* **Honey & Olive Oil:** Use as a natural moisturizer.
+* **Pomegranate (Anar):** High in antioxidants for blood purification.
+* **Barley (Talbina):** A Sunnah-based meal that calms the stomach and reflects on the face.
+* **Cucumber & Lemon Water:** Daily detox for a clear complexion.
+
+### Trust Nature:
+Chemicals give a temporary glow. Nature gives a permanent radiance.
+`
+    },
+    {
+        slug: 'weight-loss',
+        title: 'Weight Loss Naturally',
+        description: '“Stop Treating Symptoms. Heal the Root.” Lose weight for a better life.',
         icon: 'Scale',
         color: 'text-green-600',
         bg: 'bg-green-50',
-        image: '/P6.png',
         content: `
-Weight loss is not about starvation; it's about choosing the right nutrition. Organic and natural foods provide the nutrients your body needs to burn fat efficiently.
+“You Are Not Sick — Your Lifestyle Is.” Weight gain is often a sign of a body that is out of balance.
 
-### Metabolism-Boosting Foods:
-1. **Green Tea:** High in antioxidants that help burn calories.
-2. **Apple Cider Vinegar:** Helps in digestion and appetite control.
-3. **Chia Seeds:** High in fiber and protein to keep you full longer.
-4. **Lemon Water:** A great way to detoxify and kickstart your day.
+### Why You Can't Lose Weight:
+1. **Sugar Addiction:** It's more addictive than anything else.
+2. **Late Night Eating:** Killing your metabolism while you sleep.
+3. **Inflammatory Oils:** Common vegetable oils cause internal swelling.
 
-### Practical Tips:
-* Chew your food slowly and mindfully.
-* Prioritize sleep; lack of sleep can lead to weight gain.
-* Eat protein-rich breakfasts to avoid energy crashes.
-`
-    },
-    {
-        slug: 'digestion',
-        title: 'Digestive Health',
-        description: 'Heal your gut with fiber and natural probiotics.',
-        icon: 'Activity',
-        color: 'text-orange-600',
-        bg: 'bg-orange-50',
-        image: '/P3.png',
-        content: `
-A healthy gut is the foundation of overall wellness. Digestive issues like bloating and acidity can often be resolved with simple dietary changes.
+### The Natural Fix:
+* **Honey & Warm Water:** Kickstart your morning the Sunnah way.
+* **Apple Cider Vinegar:** Natural appetite suppressant before meals.
+* **High-Fiber Veggies:** Fill your stomach with life, not empty calories.
+* **Intermittent Fasting:** Aligning your eating patterns with natural cycles.
 
-### Gut-Healing Foods:
-1. **Ginger (Adrak):** Eases digestion and reduces nausea.
-2. **Yogurt (Dahi):** Provides natural probiotics for a healthy microbiome.
-3. **Papaya:** Contains enzymes that help break down proteins.
-4. **Peppermint Tea:** Soothes the stomach and reduces bloating.
-
-### Tips for Better Digestion:
-* Drink warm water in the morning.
-* Chew your food properly.
-* Avoid heavy meals late at night.
-`
-    },
-    {
-        slug: 'joint-pain',
-        title: 'Joint & Bone Health',
-        description: 'Anti-inflammatory foods for bone and joint health.',
-        icon: 'Heart',
-        color: 'text-yellow-600',
-        bg: 'bg-yellow-50',
-        image: '/P4.png',
-        content: `
-Joint pain and stiffness can be managed by reducing inflammation through a targeted diet.
-
-### Anti-Inflammatory Foods:
-1. **Turmeric (Haldi):** Contains curcumin, a powerful natural anti-inflammatory.
-2. **Walnuts (Akhrot):** Rich in Omega-3 fatty acids which support joint lubrication.
-3. **Moringa (Suhanjna):** Packed with calcium and anti-inflammatory compounds.
-4. **Bone Broth:** High in collagen for joint repair.
-
-### Daily Habits:
-* Gentle stretching and yoga.
-* Regular sun exposure for Vitamin D.
-* Staying hydrated.
+### Fix It Before It Becomes Permanent:
+Your body is your only home. Start cleaning it today.
 `
     },
     {
         slug: 'immunity',
-        title: 'Immunity Boost',
-        description: 'Boost defense system with Vitamin C and natural herbs.',
+        title: 'Weak Immunity',
+        description: 'Strengthen your body’s defense naturally with Sunnah superfoods.',
         icon: 'Activity',
         color: 'text-purple-600',
         bg: 'bg-purple-50',
-        image: '/P5.png',
         content: `
-Your immune system is your body's defense shield. Strengthening it naturally helps you fight off seasonal illnesses and infections.
+“Top 7 Sunnah Foods for Strong Immunity”
 
-### Immune-Boosting Superfoods:
-1. **Honey (Shehed):** Natural antibacterial and antiviral properties.
-2. **Citrus Fruits:** Lemons, oranges, and grapefruit are high in Vitamin C.
-3. **Garlic and Ginger:** Natural antibiotics that support white blood cell production.
-4. **Black Seed (Kalonji):** Known for its healing properties for almost all ailments.
+### Why Your Immunity Is Weak:
+In today's world of processed snacks and chemical preservatives, our bodies are losing their natural shield.
 
-### Tips for a Stronger System:
-* Get 7-8 hours of quality sleep.
-* Manage daily stress.
-* Include plenty of fresh, raw vegetables in your diet.
+### Sunnah Superfoods:
+1. **Honey (Shehed):** A healer for mankind.
+2. **Black Seed (Kalonji):** The medicine for all but death.
+3. **Olive Oil:** Packed with heart-healthy monounsaturated fats.
+4. **Dates:** Instant energy and rich in essential minerals.
+5. **Barley (Talbina):** Deeply soothing for the body and mind.
+6. **Fig (Injeer):** Pure fiber and mineral source.
+7. **Pomegranate (Anar):** The fruit of paradise.
+
+### Advice:
+Don't wait for disease. Build your shield naturally every single day.
 `
     }
 ];

@@ -6,9 +6,10 @@ export const dynamic = 'force-dynamic';
 export async function GET(request) {
     try {
         const blogs = ServerStorage.read('blogs.json');
-        return NextResponse.json({ success: true, data: blogs }, { status: 200 });
+        // Return published blogs sorted by newest
+        const sorted = [...blogs].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+        return NextResponse.json({ success: true, data: sorted }, { status: 200 });
     } catch (error) {
-        console.error('Error fetching blogs:', error);
         return NextResponse.json({ success: false, error: error.message }, { status: 500 });
     }
 }
@@ -18,10 +19,17 @@ export async function POST(request) {
         const body = await request.json();
         const blogs = ServerStorage.read('blogs.json');
 
+        // Auto-generate slug from title if not provided
+        const slug = body.slug
+            ? body.slug.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')
+            : body.title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+
         const newBlog = {
             ...body,
+            slug,
             _id: Date.now().toString(),
-            createdAt: new Date().toISOString()
+            createdAt: new Date().toISOString(),
+            published: body.published ?? true,
         };
 
         blogs.push(newBlog);
@@ -29,7 +37,19 @@ export async function POST(request) {
 
         return NextResponse.json({ success: true, message: 'Blog created successfully', data: newBlog }, { status: 201 });
     } catch (error) {
-        console.error('Error creating blog:', error);
+        return NextResponse.json({ success: false, error: error.message }, { status: 500 });
+    }
+}
+
+export async function DELETE(request) {
+    try {
+        const { searchParams } = new URL(request.url);
+        const id = searchParams.get('id');
+        let blogs = ServerStorage.read('blogs.json');
+        blogs = blogs.filter(b => b._id !== id);
+        ServerStorage.write('blogs.json', blogs);
+        return NextResponse.json({ success: true, message: 'Blog deleted' }, { status: 200 });
+    } catch (error) {
         return NextResponse.json({ success: false, error: error.message }, { status: 500 });
     }
 }

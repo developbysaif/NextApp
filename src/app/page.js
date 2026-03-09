@@ -4,11 +4,11 @@ import React from 'react';
 import Image from 'next/image';
 import { ShoppingBag, ArrowRight, Leaf, Heart, Shield, Truck, Zap, Activity, Brain, Bone, Star, Quote } from 'lucide-react';
 import Header from '../component/Header';
-import InfoBoxSection from '../component/InfoBox';
 import CategoryCard from '../component/CategoryCard';
-import NewsUpdate from '../component/NewsUpdate';
 import Subscribe from '../component/Subscribe';
 import ProductItem from '../component/ProductItem';
+import BlogSlider from '../component/BlogSlider';
+import NewsUpdate from '../component/NewsUpdate';
 import { useAuth } from '@/context/AuthContext';
 import { useCart } from '@/context/CartContext';
 import { useRouter } from 'next/navigation';
@@ -139,21 +139,13 @@ export default function HomePage() {
     { title: "Healthy Snacks", subtitle: "New", bg: "#ffffff", image: "/Poradge.png", href: "/products" },
     { title: "Dry Fruits", subtitle: "Popular", bg: "#a6763f", image: "/Dry Fruit.png", href: "/grocery/category/dry-nuts" },
     { title: "Fresh Herbs", subtitle: "Fresh", bg: "#22aa4f", image: "/Herbs.png", href: "/products" },
-    { title: "Moringa Powder", subtitle: "Superfood", bg: "#8c8c4f", image: "/Moringa.png", href: "/products?search=moringa" },
+    { title: "Moringa Powder", subtitle: "Superfood", bg: "#8c8c4f", image: "/mor.png", href: "/products?search=moringa" },
   ];
 
   return (
     <div className="bg-white overflow-x-hidden font-sans">
 
       <Header />
-
-      {/* Feature Icons Section */}
-      <InfoBoxSection
-        icon1="/headphones.png" title1="Nature's Purest Love" desc1="Handcrafted chemical-free foods for your family"
-        icon2="/Free delivery.png" title2="Healing Every Heart" desc2="Targeted nutrition for a pain-free life"
-        icon3="/warranty.png" title3="Trusted By Doctors" desc3="Expert guidance you can rely on blindly"
-        icon4="/filter icon.png" title4="The Smart Path To You" desc4="Your unique journey to health starts here"
-      />
 
       {/* Categories Grid Section */}
       <section className="px-4 py-6 mx-auto scroll-mt-20">
@@ -181,9 +173,10 @@ export default function HomePage() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             {products.map((product, index) => (
               <ProductItem key={index} product={product} index={index} />
+
             ))}
           </div>
 
@@ -262,6 +255,11 @@ export default function HomePage() {
             </Link>
           </div>
         </div>
+      </section>
+
+      {/* Blog Slider Section */}
+      <section className="py-4">
+        <BlogSlider />
       </section>
 
       <NewsUpdate />
