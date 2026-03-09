@@ -16,6 +16,7 @@ import {
     Loader2
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Testimonials from '../../component/Testimonials';
 
 export default function DietPlanPage() {
     const [loading, setLoading] = useState(false);
@@ -532,36 +533,10 @@ export default function DietPlanPage() {
                         </motion.div>
                     )}
                 </AnimatePresence>
-                {/* Testimonials & Before/After Section */}
-                <section className="mt-24 py-16 px-6 bg-[#21492f] rounded-[48px] text-white overflow-hidden relative">
-                    <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10" />
-                    <div className="relative z-10">
-                        <div className="text-center mb-12">
-                            <h2 className="text-3xl md:text-5xl font-black mb-4">Healing Stories</h2>
-                            <p className="text-white/60">Real results from our natural AI-powered plans.</p>
-                        </div>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            {[
-                                { name: "Amna", text: "My hair fall stopped in just 3 weeks with the Sunnah-based diet plan!", result: "Reduced Hair Fall" },
-                                { name: "Sara", text: "Finally lost weight without feeling weak. The natural ingredients really worked.", result: "Weight Loss" }
-                            ].map((story, i) => (
-                                <div key={i} className="bg-white/5 backdrop-blur-md border border-white/10 p-8 rounded-[32px]">
-                                    <div className="flex gap-1 text-amber-400 mb-4">
-                                        {[1, 2, 3, 4, 5].map(s => <Sparkles key={s} size={14} fill="currentColor" />)}
-                                    </div>
-                                    <p className="text-lg italic mb-6">"{story.text}"</p>
-                                    <div className="flex justify-between items-center border-t border-white/10 pt-4">
-                                        <span className="font-bold">{story.name}</span>
-                                        <span className="bg-[#22aa4f] text-[10px] font-black uppercase tracking-tighter px-2 py-1 rounded-full">{story.result}</span>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                        <p className="text-center mt-12 text-[10px] text-white/40 uppercase tracking-[0.2em]">
-                            *Results may vary based on individual metabolism and adherence. Consult a doctor for medical conditions.
-                        </p>
-                    </div>
-                </section>
+                {/* Testimonials */}
+                <div className="mt-24">
+                    <Testimonials />
+                </div>
             </section>
         </div>
     );

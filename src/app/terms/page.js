@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import PageHeader from '../../component/PageHeader';
 import { motion } from 'framer-motion';
-import { FileText, ShieldAlert, UserPlus, ShoppingCart, MessageSquare, AlertTriangle, PhoneCall } from 'lucide-react';
+import { FileText, ShieldAlert, UserPlus, ShoppingCart, MessageSquare, AlertTriangle, PhoneCall, Mail } from 'lucide-react';
 import Image from 'next/image';
 
 export default function TermsAndConditions() {

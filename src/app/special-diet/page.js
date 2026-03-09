@@ -80,7 +80,7 @@ export default function SpecialDietPage() {
 
                         <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6, delay: 0.2 }} className="relative h-[500px] rounded-[40px] overflow-hidden shadow-2xl">
                             <Image
-                                src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=2053&auto=format&fit=crop"
+                                src="/header.jpg"
                                 alt="Healthy Organic Food"
                                 fill
                                 className="object-cover"
