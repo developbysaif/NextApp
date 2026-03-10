@@ -16,9 +16,6 @@ import {
     Activity,
     Stethoscope
 } from 'lucide-react';
-import Navbar from '@/component/Navbar';
-import Footer from '@/component/Footer';
-
 export default function CardiologistInsightsPage() {
     const articles = [
         {
@@ -76,8 +73,6 @@ export default function CardiologistInsightsPage() {
 
     return (
         <div className="min-h-screen bg-[#FDFCF8] text-[#2A231C] font-sans">
-            <Navbar />
-
             {/* Hero Section */}
             <section className="relative w-full pt-12 md:pt-20 pb-20 md:pb-32 overflow-hidden bg-[#F4F4EB]">
                 {/* Decorative Elements (Floating Icons/Images) */}
@@ -248,8 +243,6 @@ export default function CardiologistInsightsPage() {
                     </div>
                 </div>
             </section>
-
-            <Footer />
         </div>
     );
 }

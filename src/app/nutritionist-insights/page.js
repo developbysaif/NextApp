@@ -13,8 +13,6 @@ import {
     Clock,
     Sprout
 } from 'lucide-react';
-import Navbar from '@/component/Navbar';
-import Footer from '@/component/Footer';
 
 export default function NutritionistInsightsPage() {
     const articles = [
@@ -102,8 +100,6 @@ export default function NutritionistInsightsPage() {
 
     return (
         <div className="min-h-screen bg-[#FDFCF8] text-[#2A231C] font-sans">
-            <Navbar />
-
             {/* Hero Section */}
             <section className="relative w-full h-[400px] md:h-[500px] overflow-hidden">
                 <Image
@@ -232,8 +228,6 @@ export default function NutritionistInsightsPage() {
                     </div>
                 </div>
             </section>
-
-            <Footer />
         </div>
     );
 }
