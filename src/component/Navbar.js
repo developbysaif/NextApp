@@ -25,6 +25,8 @@ import {
     Leaf,
     Mail,
     MapPin,
+    Plus,
+    ChevronRight,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -193,6 +195,19 @@ export default function Navbar() {
                                                 </NavigationMenuLink>
                                             </li>
                                         ))}
+                                        <li className="mt-2 pt-2 border-t border-stone-100">
+                                            <NavigationMenuLink asChild>
+                                                <Link href="/doctors/register" className="flex items-center justify-between p-3 rounded-xl bg-[#E4EFE3] group hover:bg-[#1A5A3B] transition-all">
+                                                    <div className="flex items-center gap-3">
+                                                        <div className="w-8 h-8 rounded-full bg-[#1A5A3B] flex items-center justify-center text-white group-hover:bg-white group-hover:text-[#1A5A3B] transition-colors">
+                                                            <Plus size={14} />
+                                                        </div>
+                                                        <span className="text-[10px] font-black uppercase tracking-widest text-[#1A5A3B] group-hover:text-white transition-colors">Become a Practitioner</span>
+                                                    </div>
+                                                    <ChevronRight size={14} className="text-[#1A5A3B] group-hover:text-white group-hover:translate-x-1 transition-all" />
+                                                </Link>
+                                            </NavigationMenuLink>
+                                        </li>
                                     </ul>
                                 </NavigationMenuContent>
                             </NavigationMenuItem>

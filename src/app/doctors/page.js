@@ -20,14 +20,24 @@ export default function VerifiedDoctorsPage() {
     const [searchTerm, setSearchTerm] = useState("");
 
     useEffect(() => {
-        const users = JSON.parse(localStorage.getItem("users") || "[]");
-        // Only show verified doctors
-        setDoctors(users.filter(u => u.role === "doctor" && u.isVerified));
+        const fetchDoctors = async () => {
+            try {
+                const response = await fetch('/api/doctors');
+                const result = await response.json();
+                if (result.success) {
+                    // Only show verified doctors on public site
+                    setDoctors(result.data.filter(d => d.isVerified));
+                }
+            } catch (error) {
+                console.error('Error fetching doctors:', error);
+            }
+        };
+        fetchDoctors();
     }, []);
 
     const filteredDoctors = doctors.filter(doc =>
-        doc.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        doc.specialization?.toLowerCase().includes(searchTerm.toLowerCase())
+        doc.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        doc.specialty?.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
     return (
@@ -64,7 +74,7 @@ export default function VerifiedDoctorsPage() {
 
                     {/* Doctor Registration CTA */}
                     <div className="text-center">
-                        <Link href="/signup?role=doctor" className="inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-green-500 text-white px-10 py-5 rounded-[2rem] font-black uppercase tracking-widest text-sm hover:shadow-2xl hover:shadow-blue-500/50 hover:scale-105 transition-all group">
+                        <Link href="/doctors/register" className="inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-green-500 text-white px-10 py-5 rounded-[2rem] font-black uppercase tracking-widest text-sm hover:shadow-2xl hover:shadow-blue-500/50 hover:scale-105 transition-all group">
                             <ShieldCheck size={24} className="group-hover:rotate-12 transition-transform" />
                             Become a Verified Doctor
                             <ArrowUpRight size={24} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
@@ -110,11 +120,11 @@ function DoctorCard({ doc }) {
                 <div className="flex flex-col items-center text-center">
                     {/* Profile Photo */}
                     <div className="size-32 md:size-40 rounded-[2.5rem] bg-blue-50 border-8 border-white shadow-xl mb-6 relative overflow-hidden group-hover:scale-105 transition-transform duration-700">
-                        {doc.profilePhoto ? (
-                            <img src={doc.profilePhoto} alt={doc.name} className="size-full object-cover" />
+                        {doc.image ? (
+                            <img src={doc.image} alt={doc.name} className="size-full object-cover" />
                         ) : (
                             <div className="size-full flex items-center justify-center text-4xl text-blue-600 font-black tracking-tighter bg-blue-100">
-                                {doc.name.charAt(0)}
+                                {doc.name?.charAt(0)}
                             </div>
                         )}
                         <div className="absolute inset-0 bg-gradient-to-t from-blue-600/20 to-transparent" />
@@ -128,7 +138,7 @@ function DoctorCard({ doc }) {
                     </h2>
 
                     <p className="text-xs font-black text-blue-600 uppercase tracking-widest mb-6 px-4 py-1.5 bg-blue-50 rounded-full border border-blue-100">
-                        {doc.specialization || "General Expert"}
+                        {doc.specialty || "General Expert"}
                     </p>
 
                     <div className="w-full grid grid-cols-2 gap-4 mb-8">
