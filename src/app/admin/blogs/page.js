@@ -8,7 +8,7 @@ import {
     FileText, Link as LinkIcon, Image as ImageIcon, Globe, Clock, BookOpen
 } from 'lucide-react';
 
-const CATEGORIES = ['Disease', 'Superfood', 'Health', 'Herbal', 'Nutrition', 'Sunnah', 'Lifestyle'];
+const CATEGORIES = ['Disease', 'Superfood', 'Health', 'Herbal', 'Nutrition', 'Sunnah', 'Lifestyle', 'Medical Portal'];
 
 const emptyForm = {
     title: '',

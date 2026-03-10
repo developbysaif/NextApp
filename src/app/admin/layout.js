@@ -21,7 +21,8 @@ import {
     TicketPercent,
     BarChart3,
     UserCircle,
-    BookOpen
+    BookOpen,
+    Stethoscope
 } from 'lucide-react';
 import Image from 'next/image';
 
@@ -64,6 +65,7 @@ export default function AdminLayout({ children }) {
         { name: 'Products', icon: Package, path: '/admin/products' },
         { name: 'Blog Posts', icon: BookOpen, path: '/admin/blogs' },
         { name: 'Doctors', icon: ShieldCheck, path: '/admin/doctors' },
+        { name: 'Medical Portal', icon: Stethoscope, path: '/medical-portal' },
         { name: 'Customers', icon: Users, path: '/admin/users' },
         { name: 'Reports', icon: BarChart3, path: '/admin/reports' },
         { name: 'Discounts', icon: TicketPercent, path: '/admin/discounts' },
