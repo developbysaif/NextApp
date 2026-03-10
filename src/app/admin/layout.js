@@ -23,6 +23,7 @@ import {
     UserCircle,
     BookOpen
 } from 'lucide-react';
+import Image from 'next/image';
 
 export default function AdminLayout({ children }) {
     const pathname = usePathname();
@@ -80,136 +81,136 @@ export default function AdminLayout({ children }) {
     };
 
     if (!isAdmin && pathname !== '/admin/login' && pathname !== '/admin/signup') {
-        return <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-green-600"></div>
+        return <div className="min-h-screen bg-[#F4F2EB] flex items-center justify-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#122A1A]"></div>
         </div>;
     }
 
     if (pathname === '/admin/login' || pathname === '/admin/signup') return children;
 
     return (
-        <div className="min-h-screen bg-[#F8F7F4] flex overflow-hidden font-inter">
+        <div className="min-h-screen bg-[#F4F2EB] flex overflow-hidden font-sans">
             {/* Sidebar */}
             <aside
                 className={`
-                    fixed inset-y-0 left-0 z-50 bg-white border-r border-gray-100 transition-all duration-300 ease-in-out
-                    ${isSidebarOpen ? 'w-64 translate-x-0' : 'w-20 translate-x-0'}
-                    lg:relative
+                    fixed inset-y-0 left-0 z-50 bg-[#122A1A] border-r border-[#122A1A] transition-all duration-300 ease-in-out
+                    ${isSidebarOpen ? 'w-[260px] translate-x-0' : 'w-20 translate-x-0'}
+                    lg:relative flex flex-col
                 `}
             >
-                <div className="flex flex-col h-full bg-white">
-                    {/* Logo Area */}
-                    <div className="p-6 flex items-center gap-3">
-                        <div className="w-10 h-10 bg-green-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg shadow-green-200">
-                            <ShieldCheck size={24} className="text-white" />
-                        </div>
-                        {isSidebarOpen && (
-                            <span className="font-black text-xl tracking-tight text-[#21492f] uppercase font-outfit">
-                                IlajBilGhiza
-                            </span>
-                        )}
+                {/* Logo Area */}
+                <div className="p-6 md:p-8 flex items-center gap-3">
+                    <div className="w-8 h-8 bg-black/20 rounded-lg flex items-center justify-center flex-shrink-0 text-[#9DAA9D]">
+                        <LogOut size={16} /> {/* Placeholder for logo mark */}
                     </div>
+                    {isSidebarOpen && (
+                        <span className="font-bold text-[13px] tracking-[0.15em] text-[#A5C3A5] uppercase font-sans">
+                            ILAJBILGHIZA
+                        </span>
+                    )}
+                </div>
 
-                    {/* Navigation Menu */}
-                    <nav className="flex-1 px-4 space-y-1 mt-4 overflow-y-auto">
-                        <div className="space-y-1">
-                            {menuItems.map((item) => {
-                                const isActive = pathname === item.path;
-                                return (
-                                    <Link
-                                        key={item.path}
-                                        href={item.path}
-                                        className={`
-                                            flex items-center gap-4 px-4 py-3 rounded-xl transition-all group
-                                            ${isActive
-                                                ? 'bg-green-600 text-white shadow-xl shadow-green-100 scale-105'
-                                                : 'text-gray-400 hover:text-green-600 hover:bg-green-50'}
-                                            ${!isSidebarOpen ? 'justify-center' : ''}
-                                        `}
-                                    >
-                                        <item.icon size={22} className={`${isActive ? 'text-white' : 'group-hover:text-green-600'} shrink-0`} />
-                                        {isSidebarOpen && <span className="font-semibold text-sm tracking-tight">{item.name}</span>}
-                                    </Link>
-                                );
-                            })}
-                        </div>
-
-                        <div className="pt-8 space-y-1 border-t border-gray-50 mt-8">
-                            {bottomItems.map((item) => (
+                {/* Navigation Menu */}
+                <nav className="flex-1 px-4 space-y-1 mt-2 overflow-y-auto w-full no-scrollbar">
+                    <div className="space-y-[2px]">
+                        {menuItems.map((item) => {
+                            const isActive = pathname === item.path;
+                            return (
                                 <Link
                                     key={item.path}
                                     href={item.path}
                                     className={`
-                                        flex items-center gap-4 px-4 py-3 rounded-xl transition-all group text-gray-400 hover:text-green-600 hover:bg-green-50
+                                        flex items-center gap-4 px-4 py-3.5 rounded-2xl transition-all group w-full
+                                        ${isActive
+                                            ? 'bg-black/20 text-[#A5C3A5] shadow-inner border border-white/5'
+                                            : 'text-[#6C8472] hover:text-[#A5C3A5] hover:bg-black/10'}
                                         ${!isSidebarOpen ? 'justify-center' : ''}
                                     `}
                                 >
-                                    <item.icon size={22} className="group-hover:text-green-600 shrink-0" />
-                                    {isSidebarOpen && <span className="font-semibold text-sm tracking-tight">{item.name}</span>}
+                                    <item.icon size={18} className={`${isActive ? 'text-[#A5C3A5]' : 'group-hover:text-[#A5C3A5]'} shrink-0`} strokeWidth={1.5} />
+                                    {isSidebarOpen && <span className="font-medium text-[13px] tracking-wide">{item.name}</span>}
                                 </Link>
-                            ))}
-                        </div>
-                    </nav>
-
-                    {/* Logout Button */}
-                    <div className="p-4 border-t border-gray-50">
-                        <button
-                            onClick={handleLogout}
-                            className={`
-                                w-full flex items-center gap-4 px-4 py-3 rounded-xl text-red-500 hover:bg-red-50 transition-all group
-                                ${!isSidebarOpen ? 'justify-center' : ''}
-                            `}
-                        >
-                            <LogOut size={22} className="shrink-0" />
-                            {isSidebarOpen && <span className="font-semibold text-sm tracking-tight">Logout</span>}
-                        </button>
+                            );
+                        })}
                     </div>
+
+                    <div className="pt-8 space-y-[2px] mt-8 w-full">
+                        {bottomItems.map((item) => (
+                            <Link
+                                key={item.path}
+                                href={item.path}
+                                className={`
+                                    flex items-center gap-4 px-4 py-3.5 rounded-2xl transition-all group text-[#6C8472] hover:text-[#A5C3A5] hover:bg-black/10 w-full
+                                    ${!isSidebarOpen ? 'justify-center' : ''}
+                                `}
+                            >
+                                <item.icon size={18} className="group-hover:text-[#A5C3A5] shrink-0" strokeWidth={1.5} />
+                                {isSidebarOpen && <span className="font-medium text-[13px] tracking-wide">{item.name}</span>}
+                            </Link>
+                        ))}
+                    </div>
+                </nav>
+
+                {/* Logout Button */}
+                <div className="p-4 w-full">
+                    <button
+                        onClick={handleLogout}
+                        className={`
+                            w-full flex items-center gap-4 px-4 py-3 rounded-2xl text-[#EADBB8]/70 hover:bg-black/20 hover:text-[#EADBB8] transition-all group
+                            ${!isSidebarOpen ? 'justify-center' : ''}
+                        `}
+                    >
+                        <LogOut size={16} className="shrink-0" strokeWidth={1.5} />
+                        {isSidebarOpen && <span className="font-medium text-[13px] tracking-wide text-left flex-1">Logout</span>}
+                    </button>
                 </div>
             </aside>
 
             {/* Main Content Area */}
-            <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
+            <div className="flex-1 flex flex-col min-w-0 overflow-hidden bg-[#F4F2EB]">
                 {/* Top Header */}
-                <header className="h-20 bg-white/80 backdrop-blur-md border-b border-gray-100 flex items-center justify-between px-8 sticky top-0 z-40">
-                    <div className="flex items-center gap-6 flex-1 max-w-2xl">
+                <header className="h-[72px] bg-transparent flex items-center justify-between px-6 lg:px-10 sticky top-0 z-40">
+                    <div className="flex items-center gap-4 flex-1">
                         <button
                             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-                            className="p-2 border border-gray-100 rounded-lg text-gray-400 hover:bg-gray-50"
+                            className="p-1.5 text-gray-400 hover:text-black transition-colors"
                         >
                             <Menu size={20} />
                         </button>
 
-                        <div className="relative group flex-1 hidden md:block">
-                            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-300 group-focus-within:text-green-600 transition-colors" size={18} />
+                        <div className="relative group w-full max-w-md hidden md:block">
+                            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 transition-colors" size={16} />
                             <input
                                 type="text"
                                 placeholder="Search stock, order, etc"
-                                className="w-full bg-[#F8F7F4] border-transparent rounded-xl pl-12 pr-4 py-2.5 text-sm font-medium focus:bg-white focus:ring-4 focus:ring-green-50 transition-all outline-none"
+                                className="w-[300px] bg-[#E9E4DB] border border-transparent rounded-full pl-10 pr-4 py-2 text-[13px] font-medium text-[#203626] focus:bg-white focus:border-[#D1D9CA] transition-all outline-none placeholder:text-gray-400 shadow-inner"
                             />
                         </div>
                     </div>
 
-                    <div className="flex items-center gap-4">
-                        <button className="p-2.5 relative text-gray-400 hover:bg-gray-50 rounded-xl transition-colors">
-                            <MessageSquare size={20} />
-                        </button>
-                        <button className="p-2.5 relative text-gray-400 hover:bg-gray-50 rounded-xl transition-colors">
-                            <Bell size={20} />
-                            <span className="absolute top-2.5 right-2.5 w-2 h-2 bg-red-500 border-2 border-white rounded-full"></span>
-                        </button>
+                    <div className="flex items-center gap-6">
+                        <div className="flex gap-4 items-center">
+                            <button className="relative text-gray-500 hover:text-black transition-colors">
+                                <MessageSquare size={18} strokeWidth={1.5} />
+                            </button>
+                            <button className="relative text-gray-500 hover:text-black transition-colors">
+                                <Bell size={18} strokeWidth={1.5} />
+                                <span className="absolute top-[2px] right-[2px] w-[5px] h-[5px] bg-[#E15B3A] rounded-full"></span>
+                            </button>
+                        </div>
 
-                        <div className="h-10 w-px bg-gray-100 mx-2"></div>
+                        <div className="h-6 w-[1px] bg-[#D1D9CA] mx-1"></div>
 
-                        <div className="flex items-center gap-3 pl-2">
+                        <div className="flex items-center gap-3">
                             <div className="text-right hidden sm:block">
-                                <p className="text-sm font-bold text-[#21492f] leading-none">{currentUser?.name || 'Admin User'}</p>
-                                <p className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider mt-1">Administrator</p>
+                                <p className="text-[13px] font-bold text-[#142A1D] leading-none mb-0.5">{currentUser?.name || 'Saif Kaleem'}</p>
+                                <p className="text-[9px] font-bold text-[#8D9F91] uppercase tracking-[0.1em]">Administrator</p>
                             </div>
-                            <div className="w-10 h-10 bg-green-50 rounded-xl overflow-hidden flex items-center justify-center border border-green-100">
+                            <div className="w-8 h-8 rounded-full overflow-hidden bg-[#D1D9CA] border border-white/50 shadow-sm flex items-center justify-center">
                                 {currentUser?.image ? (
                                     <img src={currentUser.image} alt="Profile" className="w-full h-full object-cover" />
                                 ) : (
-                                    <UserCircle size={28} className="text-green-600" />
+                                    <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Admin" className="w-full h-full object-cover" />
                                 )}
                             </div>
                         </div>
@@ -217,8 +218,8 @@ export default function AdminLayout({ children }) {
                 </header>
 
                 {/* Page Content */}
-                <main className="flex-1 overflow-y-auto p-8 lg:p-10 no-scrollbar">
-                    <div className="max-w-[1600px] mx-auto">
+                <main className="flex-1 overflow-y-auto px-6 lg:px-10 pb-10 no-scrollbar">
+                    <div className="w-full max-w-[1400px] mx-auto">
                         {children}
                     </div>
                 </main>
