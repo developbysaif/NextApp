@@ -82,81 +82,161 @@ export default function Navbar() {
     ]
 
     return (
-        <header className="w-full z-[100] transition-all duration-300 sticky top-0 bg-white">
-            {/* ───────── MIDDLE BAR (Logo, Search, Icons) ───────── */}
+        <header className="w-full z-[100] transition-all duration-300 sticky top-0">
+            {/* ───────── TOP BAR ───────── */}
+            <div className="bg-[#21492f] text-white py-2 hidden md:block border-b border-white/10">
+                <div className="max-w-5xl mx-auto flex justify-between px-4 text-[11px] font-bold">
+                    <div className="flex gap-6">
+                        <span className="flex items-center gap-2 hover:text-[#22aa4f] transition-colors cursor-pointer">
+                            <Mail className="w-3.5 h-3.5" /> Ilajbilghiza@gmail.com
+                        </span>
+                        <span className="flex items-center gap-2 hover:text-[#22aa4f] transition-colors cursor-pointer">
+                            <MapPin className="w-3.5 h-3.5" /> Organic health center lahore near dawley
+                        </span>
+                    </div>
+                    <div className="flex gap-4 items-center">
+                        <span className="flex items-center gap-1.5 text-[#22aa4f]">
+                            <Phone className="w-3.5 h-3.5" /> +92 3238418438
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            {/* ───────── MIDDLE BAR ───────── */}
             <div className={cn(
-                "w-full transition-all duration-500 border-b border-stone-50",
-                isScrolled ? "py-2 shadow-sm" : "py-4"
+                "w-full bg-white transition-all duration-500 border-b border-stone-100",
+                isScrolled ? "py-2 shadow-sm" : "py-3"
             )}>
-                <div className="max-w-7xl mx-auto px-6 h-12 flex items-center justify-between gap-12">
+                <div className="max-w-5xl mx-auto px-4 flex items-center justify-between gap-6">
                     {/* Logo */}
                     <Link href="/" className="flex items-center group shrink-0">
-                        <div className="relative h-14 w-44 hover:scale-105 transition-all duration-300">
+                        <div className="relative h-16 w-40 hover:scale-105 transition-all duration-300">
                             <Image src="/desk-top.png" alt="Logo" fill className="object-contain" priority />
                         </div>
                     </Link>
 
-                    {/* Centered Search */}
-                    <div className="hidden md:flex flex-1 max-w-2xl relative">
+                    {/* Search */}
+                    <div className="hidden md:flex flex-1 max-w-lg relative">
                         <input
-                            placeholder="Search..."
+                            placeholder="Find organic treatment..."
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
                             onKeyDown={handleSearch}
-                            className="w-full bg-stone-50 rounded-lg border border-stone-200 px-5 py-2.5 pr-12 focus:outline-none focus:border-[#22aa4f] transition-all text-sm font-medium"
+                            className="w-full bg-stone-50 rounded-xl border border-stone-200 px-5 py-2.5 pr-12 focus:outline-none focus:border-[#22aa4f] transition-all text-xs font-bold"
                         />
-                        <button onClick={handleSearch} className="absolute right-4 top-1/2 -translate-y-1/2 text-stone-400">
-                            <Search className="w-5 h-5" />
+                        <button onClick={handleSearch} className="absolute right-3 top-1/2 -translate-y-1/2 text-stone-400">
+                            <Search className="w-4 h-4" />
                         </button>
                     </div>
 
                     {/* Icons */}
-                    <div className="flex items-center gap-6">
-                        <Link href={user ? (user.role === 'admin' ? "/admin" : "/dashboard") : "/login"} className="text-gray-600 hover:text-[#22aa4f] transition-colors">
-                            <User className="w-6 h-6" />
+                    <div className="flex items-center gap-2">
+                        <Link href={user ? (user.role === 'admin' ? "/admin" : "/dashboard") : "/login"} className="size-10 flex items-center justify-center rounded-xl bg-stone-50 text-stone-600 border border-stone-100 group">
+                            {user ? <span className="text-xs font-black">{user.name?.charAt(0)}</span> : <User className="w-4 h-4" />}
                         </Link>
-                        <Link href="/cart" className="text-gray-600 hover:text-[#22aa4f] transition-colors relative">
-                            <ShoppingCart className="w-6 h-6" />
-                            <span className="absolute -top-2 -right-2 bg-[#22aa4f] text-white text-[10px] font-black rounded-full w-5 h-5 flex items-center justify-center">
+                        <Link href="/cart" className="size-10 flex items-center justify-center rounded-xl bg-stone-50 text-stone-600 border border-stone-100 relative group">
+                            <ShoppingCart className="w-4 h-4" />
+                            <span className="absolute -top-1 -right-1 bg-[#21492f] text-white text-[9px] font-black rounded-full min-w-4 h-4 flex items-center justify-center border-2 border-white">
                                 {getCartCount()}
                             </span>
                         </Link>
-                        <button onClick={() => setOpen(!open)} className="md:hidden text-gray-600">
-                            <Menu className="w-6 h-6" />
+                        <button onClick={() => setOpen(!open)} className="md:hidden size-10 flex items-center justify-center rounded-xl bg-stone-50 text-stone-600 border border-stone-100 transition-all">
+                            {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
                         </button>
                     </div>
                 </div>
             </div>
 
-            {/* ───────── DESKTOP NAV (Bottom Row) ───────── */}
+            {/* ───────── DESKTOP NAV ───────── */}
             <div className="bg-white hidden md:block border-b border-stone-100">
-                <div className="max-w-7xl mx-auto px-6">
-                    <nav className="flex items-center gap-10 py-3">
-                        <Link href="/products" className="text-xs font-bold text-gray-700 hover:text-[#22aa4f] transition-colors uppercase tracking-tight">Shop All</Link>
+                <div className="max-w-5xl mx-auto">
+                    <NavigationMenu className="w-full max-w-none justify-start">
+                        <NavigationMenuList className="flex gap-1 py-1">
+                            <NavigationMenuItem>
+                                <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), "bg-transparent font-bold text-stone-600 text-xs hover:text-[#22aa4f] hover:bg-stone-50")}>
+                                    <Link href="/">Home</Link>
+                                </NavigationMenuLink>
+                            </NavigationMenuItem>
+                            <NavigationMenuItem>
+                                <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), "bg-transparent font-bold text-stone-600 text-xs hover:text-[#22aa4f] hover:bg-stone-50")}>
+                                    <Link href="/products">Organic foods</Link>
+                                </NavigationMenuLink>
+                            </NavigationMenuItem>
+                            <NavigationMenuItem>
+                                <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), "bg-transparent font-bold text-stone-600 text-xs hover:text-[#22aa4f] hover:bg-stone-50")}>
+                                    <Link href="/diseases">Diseases &amp; Treatment</Link>
+                                </NavigationMenuLink>
+                            </NavigationMenuItem>
 
-                        <div className="group relative">
-                            <button className="text-xs font-bold text-gray-700 hover:text-[#22aa4f] transition-colors uppercase tracking-tight flex items-center gap-1">
-                                Categories <ChevronRight className="w-3 h-3 rotate-90" />
-                            </button>
-                            <div className="absolute top-full left-0 hidden group-hover:block bg-white shadow-xl rounded-lg border border-stone-100 p-4 w-48 z-50">
-                                {specialtyItems.map(item => (
-                                    <Link key={item.href} href={item.href} className="block py-2 text-xs font-bold text-gray-600 hover:text-[#22aa4f]">{item.label}</Link>
-                                ))}
-                            </div>
-                        </div>
-
-                        <Link href="/offers" className="text-xs font-bold text-gray-700 hover:text-[#22aa4f] transition-colors uppercase tracking-tight">Offers</Link>
-
-                        <div className="group relative">
-                            <button className="text-xs font-bold text-gray-700 hover:text-[#22aa4f] transition-colors uppercase tracking-tight flex items-center gap-1">
-                                Blog <ChevronRight className="w-3 h-3 rotate-90" />
-                            </button>
-                        </div>
-
-                        <Link href="/about" className="text-xs font-bold text-gray-700 hover:text-[#22aa4f] transition-colors uppercase tracking-tight">About Us</Link>
-                        <Link href="/contact" className="text-xs font-bold text-gray-700 hover:text-[#22aa4f] transition-colors uppercase tracking-tight">Support</Link>
-                        <Link href="/more" className="text-xs font-bold text-gray-700 hover:text-[#22aa4f] transition-colors uppercase tracking-tight">More</Link>
-                    </nav>
+                            <NavigationMenuItem>
+                                <NavigationMenuTrigger className="bg-transparent font-bold text-stone-600 text-xs hover:text-[#22aa4f] data-[state=open]:text-[#22aa4f]">
+                                    AI & diet
+                                </NavigationMenuTrigger>
+                                <NavigationMenuContent>
+                                    <ul className="grid w-[200px] gap-1 p-2 bg-white">
+                                        <li><Link href="/diet-plan" className="block p-2 text-xs font-bold text-stone-600 hover:text-[#22aa4f]">AI diet planner</Link></li>
+                                        <li><Link href="/special-diet" className="block p-2 text-xs font-bold text-stone-600 hover:text-[#22aa4f]">Special diet plans</Link></li>
+                                    </ul>
+                                </NavigationMenuContent>
+                            </NavigationMenuItem>
+                            <NavigationMenuItem>
+                                <NavigationMenuTrigger className="bg-transparent font-bold text-stone-600 text-xs hover:text-[#22aa4f] data-[state=open]:text-[#22aa4f]">
+                                    Our Doctors
+                                </NavigationMenuTrigger>
+                                <NavigationMenuContent>
+                                    <ul className="grid w-[400px] gap-2 p-3 bg-white">
+                                        {specialtyItems.map((item) => (
+                                            <li key={item.href}>
+                                                <NavigationMenuLink asChild>
+                                                    <Link href={item.href} className="block select-none space-y-1 rounded-lg p-2 leading-none transition-colors hover:bg-stone-50 hover:text-[#22aa4f]">
+                                                        <div className="text-xs font-bold text-[#21492f]">{item.label}</div>
+                                                        <p className="line-clamp-1 text-[10px] text-stone-400 font-medium">{item.description}</p>
+                                                    </Link>
+                                                </NavigationMenuLink>
+                                            </li>
+                                        ))}
+                                        <li className="mt-2 pt-2 border-t border-stone-100">
+                                            <NavigationMenuLink asChild>
+                                                <Link href="/doctors/register" className="flex items-center justify-between p-3 rounded-xl bg-[#E4EFE3] group hover:bg-[#1A5A3B] transition-all">
+                                                    <div className="flex items-center gap-3">
+                                                        <div className="w-8 h-8 rounded-full bg-[#1A5A3B] flex items-center justify-center text-white group-hover:bg-white group-hover:text-[#1A5A3B] transition-colors">
+                                                            <Plus size={14} />
+                                                        </div>
+                                                        <span className="text-[10px] font-black uppercase tracking-widest text-[#1A5A3B] group-hover:text-white transition-colors">Become a Practitioner</span>
+                                                    </div>
+                                                    <ChevronRight size={14} className="text-[#1A5A3B] group-hover:text-white group-hover:translate-x-1 transition-all" />
+                                                </Link>
+                                            </NavigationMenuLink>
+                                        </li>
+                                    </ul>
+                                </NavigationMenuContent>
+                            </NavigationMenuItem>
+                            <NavigationMenuItem>
+                                <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), "bg-transparent font-bold text-stone-600 text-xs hover:text-[#22aa4f] hover:bg-stone-50")}>
+                                    <Link href="/book-appointment">Book appointment</Link>
+                                </NavigationMenuLink>
+                            </NavigationMenuItem>
+                            <NavigationMenuItem>
+                                <NavigationMenuTrigger className="bg-transparent font-bold text-stone-600 text-xs hover:text-[#22aa4f] data-[state=open]:text-[#22aa4f]">
+                                    About Us
+                                </NavigationMenuTrigger>
+                                <NavigationMenuContent>
+                                    <ul className="flex items-center gap-3 p-3 bg-white w-max">
+                                        {pageItems.map((item) => (
+                                            <li key={item.href} className="whitespace-nowrap">
+                                                <Link href={item.href} className="px-3 py-2 text-xs font-bold text-stone-600 hover:text-[#22aa4f] hover:bg-stone-50 rounded-lg transition-colors">{item.label}</Link>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </NavigationMenuContent>
+                            </NavigationMenuItem>
+                            <NavigationMenuItem>
+                                <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), "bg-transparent font-bold text-stone-600 text-xs hover:text-[#22aa4f] hover:bg-stone-50")}>
+                                    <Link href="/Contact">Contact Us</Link>
+                                </NavigationMenuLink>
+                            </NavigationMenuItem>
+                        </NavigationMenuList>
+                    </NavigationMenu>
                 </div>
             </div>
 
