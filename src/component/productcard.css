@@ -103,11 +103,11 @@
 
 /* PRODUCT CARD COMPONENT */
 .product-card {
-    background: #edf7ef;
-    border-radius: 1.5rem;
+    background: #ffffff;
+    border-radius: 1rem;
     padding: 0.75rem;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
-    border: none;
+    border: 1px solid #f0f0f0;
     transition: var(--transition-smooth);
     display: flex;
     flex-direction: column;
@@ -246,13 +246,13 @@
 }
 
 .product-name {
-    font-size: 1.15rem;
+    font-size: 0.95rem;
     font-weight: 800;
     color: #1b442b;
     text-transform: uppercase;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
     line-height: 1.2;
-    letter-spacing: -0.01em;
+    letter-spacing: 0.02em;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     line-clamp: 2;
@@ -282,7 +282,7 @@
 }
 
 .current-price {
-    font-size: 1.6rem;
+    font-size: 1.2rem;
     font-weight: 900;
     color: #1b1716;
 }
@@ -295,27 +295,26 @@
 }
 
 .add-to-cart-pill {
-    background: #9fcba3;
+    background: #2ea354;
     color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 100px;
+    padding: 0.4rem 0.8rem;
+    border-radius: 5px;
     font-weight: 700;
-    font-size: 0.75rem;
+    font-size: 10px;
     display: flex;
     align-items: center;
     gap: 0.4rem;
     transition: all 0.3s ease;
     border: none;
     cursor: pointer;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+    text-transform: capitalize;
+    letter-spacing: 0.02em;
     white-space: nowrap;
 }
 
 .add-to-cart-pill:hover {
-    background: #8ab88e;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(138, 184, 142, 0.4);
+    background: #258a46;
+    transform: translateY(-1px);
 }
 
 .rating-wrapper {

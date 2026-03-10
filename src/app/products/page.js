@@ -83,45 +83,43 @@ function ProductsContent({ initialCategory = "All", initialSeason = "All" }) {
         setFilteredProducts(temp);
     }, [category, season, search, products, loading]);
 
-    const categories = ["All", "Fruit", "Vegetable", "Meat", "Seafood", "Dairy", "Bakery", "Drinks", "Dry Nuts", "Oil and Vinegar", "Breads", "Apple Juice", "Moringa Powder"];
+    const categories = ["Shop All", "All", "Doctors", "Offers", "Other", "Blog", "Videos", "Pro", "Doctors", "Offers", "Other"];
     const seasons = ["All", "Summer", "Winter"];
 
     return (
-        <div className="min-h-screen bg-[#FBFBF9] font-sans scroll-mt-20">
+        <div className="min-h-screen bg-[#fffffd] font-sans scroll-mt-20">
             {/* Hero Header */}
-            <div className="relative py-12 overflow-hidden">
+            <div className="relative py-12 overflow-hidden bg-[#f3f9f3]">
                 <div className="absolute top-0 right-0 w-1/3 h-full bg-green-50/50 rounded-bl-[10rem] -z-10"></div>
                 <div className="absolute bottom-0 left-0 w-64 h-64 bg-yellow-50/50 rounded-full blur-3xl -z-10"></div>
 
                 <div className="max-w-5xl mx-auto px-4">
                     <div className="max-w-2xl">
-                        <div className="inline-flex items-center gap-2 bg-green-100 text-green-700 px-3 py-1.5 rounded-full text-[10px] font-bold mb-4">
-                            <Leaf size={12} />
-                            Redefining pure food
+                        <div className="text-green-600 px-3 py-1.5 rounded-full text-[10px] font-bold mb-2">
+                            Ilaj Bil Ghiza
                         </div>
                         <h1 className="text-3xl md:text-5xl font-black text-gray-900 mb-4 leading-tight">
-                            Organic freshness <span className="text-green-600">every season</span>
+                            Organic freshness <span className="text-green-600">every season.</span>
                         </h1>
-                        <p className="text-base text-gray-500 font-medium leading-relaxed mb-8">
-                            Discover our curated collection of natural, farm-picked fruits and vegetables
-                            delivered straight to your doorstep.
+                        <p className="text-sm text-gray-500 font-bold leading-relaxed mb-8">
+                            A curation of nature's best. Brewed with care. Delivered for your health.
                         </p>
 
-                        {/* Search & Simple Stats */}
-                        <div className="flex flex-col md:flex-row gap-4 items-center">
-                            <div className="relative w-full max-w-md">
+                        {/* Search & Apply Item */}
+                        <div className="flex flex-col md:flex-row gap-0 items-center bg-white rounded-xl shadow-sm border border-stone-100 p-1 w-full max-w-xl">
+                            <div className="relative flex-1">
                                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={16} />
                                 <input
                                     type="text"
                                     placeholder="Search organic items..."
                                     value={search}
                                     onChange={(e) => setSearch(e.target.value)}
-                                    className="w-full pl-10 pr-4 py-3 bg-white rounded-xl shadow-sm border-transparent focus:border-green-500 focus:ring-0 transition-all font-bold text-sm outline-none"
+                                    className="w-full pl-10 pr-4 py-3 bg-transparent rounded-xl border-none focus:ring-0 transition-all font-bold text-xs outline-none"
                                 />
                             </div>
-                            <div className="hidden md:flex items-baseline gap-1.5">
-                                <span className="text-2xl font-black text-gray-900">{filteredProducts.length}</span>
-                                <span className="text-gray-400 font-bold text-[10px] uppercase tracking-wider">Products found</span>
+                            <div className="flex items-center gap-2 px-4 border-l border-stone-200">
+                                <Image src="/leaf-icon.png" alt="leaf" width={16} height={16} className="opacity-50" />
+                                <button className="text-xs font-bold text-gray-900 whitespace-nowrap">Apply Item</button>
                             </div>
                         </div>
                     </div>
@@ -129,42 +127,25 @@ function ProductsContent({ initialCategory = "All", initialSeason = "All" }) {
             </div>
 
             {/* Sticky Filters Bar */}
-            <div className="sticky top-20 z-30 bg-white/80 backdrop-blur-md border-y border-stone-100 py-3 mb-8">
+            <div className="sticky top-20 z-30 bg-white border-b border-stone-100 py-4 mb-8">
                 <div className="max-w-5xl mx-auto px-4">
                     <div className="flex flex-wrap items-center justify-between gap-4">
                         <div className="relative flex-1 overflow-hidden">
-                            <motion.div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
-                                {categories.map(cat => (
+                            <motion.div className="flex gap-4 overflow-x-auto pb-2 scrollbar-hide">
+                                {categories.map((cat, idx) => (
                                     <button
-                                        key={cat}
+                                        key={idx}
                                         onClick={() => setCategory(cat)}
-                                        className={`px-5 py-2 rounded-lg font-bold transition-all duration-300 text-[11px] whitespace-nowrap border ${category === cat
+                                        className={`px-4 py-2 rounded-full font-bold transition-all duration-300 text-[11px] whitespace-nowrap border ${idx === 0
                                             ? 'bg-[#22aa4f] text-white border-[#22aa4f]'
-                                            : 'bg-white text-gray-500 border-stone-100 hover:border-[#22aa4f]/30 hover:text-[#22aa4f]'
+                                            : cat === "App" ? 'bg-orange-50 text-orange-600 border-orange-100'
+                                                : 'bg-white text-gray-500 border-stone-100 hover:border-[#22aa4f]/30 hover:text-[#22aa4f]'
                                             }`}
                                     >
-                                        {cat === "All" ? "Everything" : cat.toLowerCase() + "s"}
+                                        {cat}
                                     </button>
                                 ))}
                             </motion.div>
-                        </div>
-
-                        {/* Season Filter */}
-                        <div className="hidden lg:flex gap-1 bg-stone-50 p-1 rounded-lg border border-stone-100">
-                            {seasons.map(s => (
-                                <button
-                                    key={s}
-                                    onClick={() => setSeason(s)}
-                                    className={`px-4 py-1.5 rounded-md font-bold transition-all duration-300 text-xs flex items-center gap-1.5 ${season === s
-                                        ? 'bg-amber-100 text-amber-700'
-                                        : 'text-gray-500 hover:bg-white'
-                                        }`}
-                                >
-                                    {s === "Summer" && <Sun size={12} />}
-                                    {s === "Winter" && <Wind size={12} />}
-                                    {s}
-                                </button>
-                            ))}
                         </div>
                     </div>
                 </div>
@@ -199,6 +180,19 @@ function ProductsContent({ initialCategory = "All", initialSeason = "All" }) {
                         </button>
                     </div>
                 )}
+
+                {/* Pagination */}
+                <div className="flex items-center justify-center gap-2 mt-12 pb-10">
+                    <button className="p-2 text-gray-400 hover:text-green-600 transition-colors">
+                        <ChevronDown size={20} className="rotate-90" />
+                    </button>
+                    <button className="w-8 h-8 rounded-md bg-[#22aa4f] text-white text-xs font-bold">1</button>
+                    <button className="w-8 h-8 rounded-md bg-white border border-stone-100 text-gray-500 text-xs font-bold hover:bg-stone-50">2</button>
+                    <button className="w-8 h-8 rounded-md bg-white border border-stone-100 text-gray-500 text-xs font-bold hover:bg-stone-50">3</button>
+                    <button className="p-2 text-gray-400 hover:text-green-600 transition-colors">
+                        <ChevronDown size={20} className="-rotate-90" />
+                    </button>
+                </div>
             </div>
         </div>
     );

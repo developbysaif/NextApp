@@ -105,19 +105,17 @@ const ProductItem = ({ product, index = 0 }) => {
                     />
                 </Link>
 
-                {/* Wishlist Heart Icon (Glassmorphism) */}
+                {/* Wishlist Heart Icon */}
                 <button
                     onClick={handleWishlist}
                     className="wishlist-btn"
                     aria-label={isWishlisted ? "Remove from wishlist" : "Add to wishlist"}
                 >
                     <Heart
-                        size={20}
-                        className={`heart-icon ${isWishlisted ? 'heart-filled' : 'text-gray-400'}`}
+                        size={18}
+                        className={`heart-icon ${isWishlisted ? 'heart-filled' : 'text-gray-300'}`}
                     />
                 </button>
-
-                {/* Hover overlay mapped out, Add to cart is now a pill button below */}
 
                 {/* Badges */}
                 {product.discount && (
@@ -133,37 +131,25 @@ const ProductItem = ({ product, index = 0 }) => {
                     <h3 className="product-name">{product.name}</h3>
                 </Link>
 
-                {/* Maintained content: Best For & Recommended Quantity */}
-                <div className="mb-3 flex flex-col gap-1 flex-grow">
-                    {product.bestFor && (
-                        <p className="text-xs text-[#4a5d53] leading-tight line-clamp-1">
-                            {product.bestFor}
-                        </p>
-                    )}
-                    {product.recommendedQty && (
-                        <p className="text-xs text-[#4a5d53] leading-tight line-clamp-1">
-                            {product.recommendedQty}
-                        </p>
-                    )}
-                </div>
-
                 <div className="rating-wrapper mb-2">
                     <div className="stars flex text-[#1b442b]">
                         {renderStars(product.rating)}
                     </div>
-                    <span className="reviews-count font-bold text-[#1b442b] ml-1 text-xs">{product.rating || 5}.0</span>
-                    <span className="reviews-count text-[#4a5d53] ml-1 text-xs">({product.reviews || 0} Reviews)</span>
+                    {/* <span className="reviews-count font-bold text-[#1b442b] ml-1 text-xs">{product.rating || 5}.0</span> */}
+                    <span className="reviews-count text-[#4a5d53] ml-1 text-[10px] font-bold">120+</span>
+                </div>
+
+                <div className="mb-2">
+                    <p className="text-[11px] font-bold text-gray-400">
+                        {product.weight || "1 Kg"}
+                    </p>
                 </div>
 
                 <div className="price-cart-wrapper mt-auto">
                     <div className="price-wrapper mb-0">
-                        <p className="current-price">${product.price}</p>
-                        {product.originalPrice && (
-                            <p className="original-price">${product.originalPrice}</p>
-                        )}
+                        <p className="current-price">₹{product.price}</p>
                     </div>
                     <button onClick={handleAddToCart} className="add-to-cart-pill">
-                        <ShoppingCart size={16} />
                         ADD TO CART
                     </button>
                 </div>

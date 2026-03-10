@@ -4,106 +4,73 @@ import { Facebook, Twitter, Instagram, Linkedin, Mail, MapPin, Phone, Leaf } fro
 
 export default function Footer() {
     return (
-        <footer className="bg-[#21492f] text-white overflow-hidden font-[Poppins]">
-            {/* Footer Content */}
-            <div className="max-w-7xl mx-auto px-6 pt-24 pb-20 grid grid-cols-1 md:grid-cols-12 gap-16">
-
-                {/* Column 1: Brand */}
-                <div className="md:col-span-5">
-                    <Link href="/" className="inline-flex items-center gap-2.5 mb-8 group">
-                        <div className="size-12 bg-[#22aa4f] rounded-2xl flex items-center justify-center transition-transform group-hover:rotate-12">
-                            <Leaf className="text-white" size={24} fill="currentColor" />
-                        </div>
-                        <h2 className="text-4xl font-black tracking-tighter text-white">IlajbilGhiza</h2>
+        <footer className="bg-[#1b4329] text-white pt-16 pb-10">
+            <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12">
+                {/* Brand & Description */}
+                <div className="md:col-span-1">
+                    <Link href="/" className="inline-flex items-center gap-2 mb-6">
+                        <span className="text-2xl font-black tracking-tighter">Ilaj Bil <span className="text-[#2ea354]">Ghiza</span></span>
                     </Link>
-
-                    <p className="text-[#f8faf9]/60 text-xl font-bold mb-4 leading-tight italic">
-                        Ghiza Se Ilaj, Zindagi Behtar
+                    <p className="text-[#f8faf9]/60 text-xs font-medium mb-8 leading-relaxed">
+                        Pakistan's first organic store. <br />
+                        A curation of nature's best. Brewed with care. <br />
+                        Delivered for your health.
                     </p>
-
-                    <p className="text-[#f8faf9]/40 text-sm mb-10 leading-relaxed max-w-md">
-                        Pakistan ka pehla AI-powered organic nutrition platform jo qudrati foods ke zariye bimariyon ke ilaj aur sehatmand Pakistani lifestyle ko farogh deta hai.
-                    </p>
-
-                    <div className="flex space-x-4">
-                        {[
-                            { i: Facebook, h: "#" },
-                            { i: Twitter, h: "#" },
-                            { i: Instagram, h: "#" },
-                            { i: Linkedin, h: "#" }
-                        ].map((social, i) => (
-                            <Link key={i} href={social.h} className="size-12 rounded-2xl bg-white/5 flex items-center justify-center hover:bg-[#22aa4f] hover:text-white transition-all border border-white/5">
-                                <social.i size={20} />
-                            </Link>
-                        ))}
+                    <div className="flex gap-4">
+                        <Link href="#" className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#2ea354] transition-all">
+                            <Facebook size={14} />
+                        </Link>
+                        <Link href="#" className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#2ea354] transition-all">
+                            <Instagram size={14} />
+                        </Link>
+                        <Link href="#" className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#2ea354] transition-all">
+                            <Twitter size={14} />
+                        </Link>
+                        <Link href="#" className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#2ea354] transition-all">
+                            <Linkedin size={14} />
+                        </Link>
                     </div>
                 </div>
 
-                {/* Column 2: Navigation */}
-                <div className="md:col-span-3">
-                    <h3 className="text-[#22aa4f] font-black uppercase tracking-[0.2em] text-[10px] mb-10">Quick Navigation</h3>
-                    <ul className="space-y-4">
-                        {[
-                            { l: "Organic Foods", h: "/products" },
-                            { l: "AI Diet Plans", h: "/diet-plan" },
-                            { l: "Docter Portol", h: "/doctors" },
-                            { l: "Cardiologist Insights", h: "/cardiologist-insights" },
-                            { l: "Health Blogs", h: "/blogs" },
-                            { l: "Contact Us", h: "/Contact" }
-                        ].map((link, i) => (
-                            <li key={i}>
-                                <Link href={link.h} className="text-[#f8faf9]/60 hover:text-white font-bold transition-all flex items-center gap-2 group">
-                                    <span className="w-0 h-0.5 bg-[#22aa4f] transition-all group-hover:w-4" />
-                                    {link.l}
-                                </Link>
-                            </li>
-                        ))}
+                {/* Helpful Links */}
+                <div>
+                    <h3 className="text-sm font-bold mb-6">Helpful Links</h3>
+                    <ul className="space-y-3">
+                        <li><Link href="/about" className="text-xs text-[#f8faf9]/60 hover:text-white transition-all">About Us</Link></li>
+                        <li><Link href="/contact" className="text-xs text-[#f8faf9]/60 hover:text-white transition-all">Help Center</Link></li>
+                        <li><Link href="/faqs" className="text-xs text-[#f8faf9]/60 hover:text-white transition-all">Career</Link></li>
+                        <li><Link href="/privacy" className="text-xs text-[#f8faf9]/60 hover:text-white transition-all">Investor</Link></li>
+                        <li><Link href="/terms" className="text-xs text-[#f8faf9]/60 hover:text-white transition-all">Terms</Link></li>
                     </ul>
                 </div>
 
-                {/* Column 3: Contact */}
-                <div className="md:col-span-4">
-                    <h3 className="text-[#22aa4f] font-black uppercase tracking-[0.2em] text-[10px] mb-10">Contact Support</h3>
-                    <ul className="space-y-6">
-                        <li className="flex items-start gap-4">
-                            <div className="size-10 rounded-xl bg-white/5 flex items-center justify-center shrink-0 border border-white/5">
-                                <MapPin size={18} className="text-[#22aa4f]" />
-                            </div>
-                            <div>
-                                <p className="text-[#f8faf9]/40 text-[10px] uppercase font-black tracking-widest mb-1">Office Location</p>
-                                <p className="text-[#f8faf9]/80 font-bold text-sm">Main Boulevard, Gulberg, Lahore, Pakistan</p>
-                            </div>
-                        </li>
-                        <li className="flex items-start gap-4">
-                            <div className="size-10 rounded-xl bg-white/5 flex items-center justify-center shrink-0 border border-white/5">
-                                <Phone size={18} className="text-[#22aa4f]" />
-                            </div>
-                            <div>
-                                <p className="text-[#f8faf9]/40 text-[10px] uppercase font-black tracking-widest mb-1">Direct Line</p>
-                                <p className="text-[#f8faf9]/80 font-bold text-sm">+92 Support 24/7</p>
-                            </div>
-                        </li>
-                        <li className="flex items-start gap-4">
-                            <div className="size-10 rounded-xl bg-white/5 flex items-center justify-center shrink-0 border border-white/5">
-                                <Mail size={18} className="text-[#22aa4f]" />
-                            </div>
-                            <div>
-                                <p className="text-[#f8faf9]/40 text-[10px] uppercase font-black tracking-widest mb-1">Email Support</p>
-                                <p className="text-[#f8faf9]/80 font-bold text-sm">info@ilajbilghiza.com</p>
-                            </div>
-                        </li>
-                    </ul>
+                {/* Categories - Placeholder to match 4 columns if needed, or more links */}
+                <div className="hidden md:block">
+                </div>
+
+                {/* Newsletter Signup */}
+                <div className="md:col-span-1">
+                    <h3 className="text-sm font-bold mb-6">Newsletter Signup</h3>
+                    <p className="text-xs text-white opacity-40 mb-2">Private Policy</p>
+                    <p className="text-xs text-white opacity-40 mb-4">Terms & Services</p>
+                    <div className="relative">
+                        <input
+                            type="email"
+                            placeholder="Newsletter Signup"
+                            className="w-full bg-[#2ea354]/20 border border-white/10 rounded-full py-3 px-6 text-xs text-white placeholder:text-white/30 focus:outline-none"
+                        />
+                        <button className="absolute right-2 top-1/2 -translate-y-1/2 bg-[#2ea354] text-white text-[10px] font-bold px-4 py-2 rounded-full">
+                            Submit
+                        </button>
+                    </div>
                 </div>
             </div>
 
-            {/* Bottom Copyright */}
-            <div className="max-w-7xl mx-auto px-6 py-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-[#f8faf9]/30 text-xs font-black uppercase tracking-widest">
-                <div>
-                    COPYRIGHTS © {new Date().getFullYear()} <span className="text-[#f8faf9]/50">ILAJBILGHIZA</span> | ALL RIGHTS RESERVED.
-                </div>
-                <div className="flex gap-8">
-                    <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
-                    <Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link>
+            <div className="max-w-7xl mx-auto px-6 mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] text-white/30 font-bold">
+                <p>Copyright © 2024 | Ilaj Bil Ghiza | Term & Services</p>
+                <div className="flex gap-6">
+                    <Link href="/privacy">Privacy Policy</Link>
+                    <Link href="/terms">Terms of Services</Link>
                 </div>
             </div>
         </footer>
