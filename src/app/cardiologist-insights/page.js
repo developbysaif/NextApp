@@ -1,0 +1,263 @@
+"use client";
+
+import React from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
+import {
+    ChevronRight,
+    Home,
+    Search,
+    Calendar,
+    User,
+    Clock,
+    ArrowRight,
+    Heart,
+    Activity,
+    Stethoscope
+} from 'lucide-react';
+import Navbar from '@/component/Navbar';
+import Footer from '@/component/Footer';
+
+export default function CardiologistInsightsPage() {
+    const articles = [
+        {
+            id: 1,
+            title: "The Heart-Healthy Benefits of Pomegranates",
+            excerpt: "The heart-healthy benefits of pomegranates in combination with health with beauties and energy...",
+            author: "Remien Corumer",
+            date: "Apr 13, 2024",
+            image: "https://images.unsplash.com/photo-1615485290382-441e4d049cb5?q=80&w=800&auto=format&fit=crop",
+            authorImg: "https://images.unsplash.com/photo-1599566150163-29194dcaad36?q=80&w=100&auto=format&fit=crop"
+        },
+        {
+            id: 2,
+            title: "Managing Hypertension with Ayurvedic Herbs",
+            excerpt: "Managing hypertension with Ayurvedic herbs and treats easing your calcium insisting risk...",
+            author: "Artim Mirna",
+            date: "Apr 16, 2024",
+            image: "https://images.unsplash.com/photo-1512103143424-3406e1cc815d?q=80&w=800&auto=format&fit=crop",
+            authorImg: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=100&auto=format&fit=crop"
+        },
+        {
+            id: 3,
+            title: "Managing Hypertension in Organic Diet",
+            excerpt: "Managing hypertension with cardiologists doc cena insights and property for your elongation...",
+            author: "Astim Mirua",
+            date: "Apr 13, 2024",
+            image: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=800&auto=format&fit=crop",
+            authorImg: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=100&auto=format&fit=crop"
+        },
+        {
+            id: 4,
+            title: "Processily Benefits of Organic Diet",
+            excerpt: "Explore the profound benefits of a strictly organic diet on your daily cardiovascular health...",
+            author: "Atitha Mirna",
+            date: "Apr 15, 2024",
+            image: "https://images.unsplash.com/photo-1540420773420-3366772f4999?q=80&w=800&auto=format&fit=crop",
+            authorImg: "https://images.unsplash.com/photo-1607746822051-cb551bd4cfde?q=80&w=100&auto=format&fit=crop"
+        },
+        {
+            id: 5,
+            title: "Improving Hypertension: Healthy with Heneffied Cardiomncsles",
+            excerpt: "Managing cardiovascular pomegranates, mixtures skin easily with healthy diet herbs...",
+            author: "Artice Marmor",
+            date: "Apr 15, 2024",
+            image: "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?q=80&w=800&auto=format&fit=crop",
+            authorImg: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=100&auto=format&fit=crop"
+        }
+    ];
+
+    const cardiologists = [
+        { name: "Dr. Smith", img: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?q=80&w=100&auto=format&fit=crop" },
+        { name: "Dr. Jane", img: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?q=80&w=100&auto=format&fit=crop" },
+        { name: "Dr. Allen", img: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=100&auto=format&fit=crop" }
+    ];
+
+    return (
+        <div className="min-h-screen bg-[#FDFCF8] text-[#2A231C] font-sans">
+            <Navbar />
+
+            {/* Hero Section */}
+            <section className="relative w-full pt-12 md:pt-20 pb-20 md:pb-32 overflow-hidden bg-[#F4F4EB]">
+                {/* Decorative Elements (Floating Icons/Images) */}
+                <div className="absolute top-10 left-10 opacity-20 hidden lg:block animate-pulse">
+                    <Heart size={48} className="text-[#A13124]" strokeWidth={1.5} />
+                </div>
+                <div className="absolute bottom-10 right-20 opacity-20 hidden lg:block animate-bounce">
+                    <Stethoscope size={56} className="text-[#21492F]" strokeWidth={1} />
+                </div>
+                <div className="absolute top-20 right-10 opacity-15 hidden lg:block">
+                    <div className="w-40 h-40 bg-[url('https://images.unsplash.com/photo-1615485290382-441e4d049cb5?q=80&w=200&auto=format&fit=crop')] bg-cover rounded-full shadow-2xl border-4 border-white"></div>
+                </div>
+                <div className="absolute bottom-20 left-10 opacity-15 hidden lg:block">
+                    <div className="w-32 h-32 bg-[url('https://images.unsplash.com/photo-1512103143424-3406e1cc815d?q=80&w=200&auto=format&fit=crop')] bg-cover rounded-full shadow-2xl border-4 border-white"></div>
+                </div>
+
+                <div className="container mx-auto px-6 relative z-10 text-center">
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.8 }}
+                        className="max-w-4xl mx-auto bg-white/60 backdrop-blur-md p-10 md:p-16 rounded-[60px] border border-white shadow-2xl relative"
+                    >
+                        {/* More Floating Mini Icons */}
+                        <div className="absolute -top-6 -left-6 bg-white p-4 rounded-3xl shadow-lg border border-[#F4F4EB]">
+                            <Activity className="text-[#E15B3A]" size={24} />
+                        </div>
+                        <div className="absolute -bottom-6 -right-6 bg-white p-4 rounded-3xl shadow-lg border border-[#F4F4EB]">
+                            <Heart className="text-[#22AA4F]" size={24} />
+                        </div>
+
+                        <h1 className="text-4xl md:text-6xl font-serif font-black text-[#142A1D] mb-4 tracking-tight">
+                            Cardiologist Insights
+                        </h1>
+                        <p className="text-[#4F5E4B] text-lg font-medium max-w-lg mx-auto leading-relaxed mb-8">
+                            Medical advice from certified cardiologists rooted in natural wisdom.
+                        </p>
+
+                        <div className="inline-flex items-center gap-2 bg-white/80 px-6 py-2 rounded-full text-xs font-bold text-[#142A1D] border border-white shadow-sm">
+                            <Link href="/" className="hover:text-[#22AA4F] transition-colors flex items-center gap-1.5">
+                                <Home size={14} /> Home
+                            </Link>
+                            <ChevronRight size={14} className="text-[#D1D9CA]" />
+                            <span className="text-[#8D9F91]">Cardiologist Insights</span>
+                        </div>
+                    </motion.div>
+                </div>
+
+                {/* Bottom Wave/Gradient transition */}
+                <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-[#FDFCF8] to-transparent"></div>
+            </section>
+
+            {/* Main Content */}
+            <section className="container mx-auto px-6 py-12 md:py-24">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+
+                    {/* Articles Section */}
+                    <div className="lg:col-span-8">
+                        <div className="flex items-center justify-between mb-12">
+                            <h2 className="text-3xl md:text-4xl font-serif font-black text-[#142A1D]">Articles</h2>
+                            <div className="h-0.5 flex-1 mx-8 bg-gradient-to-r from-[#D1D9CA] to-transparent hidden md:block"></div>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+                            {articles.map((article, index) => (
+                                <motion.div
+                                    key={article.id}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: index * 0.1 }}
+                                    className="group bg-white rounded-[32px] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-[#F4F4EB] flex flex-col h-full"
+                                >
+                                    <div className="relative h-60 overflow-hidden">
+                                        <Image
+                                            src={article.image}
+                                            alt={article.title}
+                                            fill
+                                            className="object-cover group-hover:scale-110 transition-transform duration-700"
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                                    </div>
+
+                                    <div className="p-8 flex flex-col flex-1">
+                                        <h3 className="text-xl font-serif font-bold text-[#142A1D] mb-4 leading-snug group-hover:text-[#22AA4F] transition-colors">{article.title}</h3>
+                                        <p className="text-[#4F5E4B] text-sm leading-relaxed mb-6 flex-1">{article.excerpt}</p>
+
+                                        <div className="flex items-center justify-between pt-6 border-t border-[#F8F6EF]">
+                                            <div className="flex items-center gap-3">
+                                                <div className="w-8 h-8 rounded-full overflow-hidden border border-[#D1D9CA]">
+                                                    <Image src={article.authorImg} alt={article.author} width={32} height={32} className="object-cover" />
+                                                </div>
+                                                <div className="flex flex-col">
+                                                    <span className="text-[11px] font-bold text-[#142A1D] uppercase tracking-wide">{article.author}</span>
+                                                    <span className="text-[10px] text-[#8D9F91] font-medium">{article.date}</span>
+                                                </div>
+                                            </div>
+                                            <button className="w-8 h-8 rounded-full bg-[#F4F4EB] flex items-center justify-center text-[#142A1D] group-hover:bg-[#22AA4F] group-hover:text-white transition-all shadow-sm">
+                                                <ArrowRight size={14} />
+                                            </button>
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Sidebar */}
+                    <div className="lg:col-span-4 space-y-12">
+
+                        {/* Meet Doctors */}
+                        <div className="bg-white p-10 rounded-[40px] shadow-sm border border-[#F4F4EB]">
+                            <h3 className="text-xl font-serif font-bold text-[#142A1D] mb-8">Meet Our Cardiologists</h3>
+                            <div className="flex items-center gap-4">
+                                <div className="flex -space-x-4">
+                                    {cardiologists.map((doc, i) => (
+                                        <div key={i} className="w-14 h-14 rounded-full border-4 border-white overflow-hidden shadow-lg relative group">
+                                            <Image src={doc.img} alt={doc.name} fill className="object-cover group-hover:scale-110 transition-transform" />
+                                        </div>
+                                    ))}
+                                    <div className="w-14 h-14 rounded-full border-4 border-white bg-[#F4F4EB] flex items-center justify-center text-[#142A1D] shadow-lg cursor-pointer hover:bg-[#22AA4F] hover:text-white transition-all">
+                                        <ChevronRight size={20} />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="flex gap-1.5 mt-8 justify-center">
+                                <div className="w-2 h-2 rounded-full bg-[#142A1D]"></div>
+                                <div className="w-2 h-2 rounded-full bg-[#D1D9CA]"></div>
+                                <div className="w-2 h-2 rounded-full bg-[#D1D9CA]"></div>
+                            </div>
+                        </div>
+
+                        {/* Popular Topics */}
+                        <div className="bg-white p-10 rounded-[40px] shadow-sm border border-[#F4F4EB]">
+                            <h3 className="text-xl font-serif font-bold text-[#142A1D] mb-8">Most Popular Topics</h3>
+                            <ul className="space-y-5">
+                                {[
+                                    "Managing Hypertension with Ayurvedic Herbs",
+                                    "AI Diet Plans",
+                                    "Book appointment",
+                                    "Doctor Portal",
+                                    "Health Blogs",
+                                    "Contact Us"
+                                ].map((topic, i) => (
+                                    <li key={i}>
+                                        <Link href="#" className="group flex items-center justify-between text-sm font-bold text-[#4F5E4B] hover:text-[#22AA4F] transition-colors">
+                                            <span className="leading-tight">{topic}</span>
+                                            <ArrowRight size={14} className="opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all text-[#22AA4F]" />
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+
+                        {/* Filter Section */}
+                        <div className="bg-white p-10 rounded-[40px] shadow-sm border border-[#F4F4EB]">
+                            <h3 className="text-xl font-serif font-bold text-[#142A1D] mb-8">Filter by Topic</h3>
+                            <div className="relative">
+                                <select className="w-full bg-[#F4F4EB] border-2 border-transparent rounded-2xl px-6 py-4 text-sm font-bold text-[#142A1D] appearance-none focus:bg-white focus:border-[#22AA4F] outline-none transition-all shadow-inner">
+                                    <option>All Topic</option>
+                                    <option>Hypertension</option>
+                                    <option>Diet</option>
+                                    <option>Herbal Medicine</option>
+                                </select>
+                                <ChevronDown className="absolute right-6 top-1/2 -translate-y-1/2 text-[#8D9F91] pointer-events-none" size={18} />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <Footer />
+        </div>
+    );
+}
+
+function ChevronDown({ className, size }) {
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className={className}>
+            <path d="M6 9l6 6 6-6" />
+        </svg>
+    );
+}

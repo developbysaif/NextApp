@@ -64,8 +64,8 @@ export default function Navbar() {
     }, [open])
 
     const specialtyItems = [
-        { label: "Cardiologist", href: "/blogs/specialty/Cardiologist", description: "Heart health and cardiovascular advice." },
-        { label: "Nutritionist", href: "/blogs/specialty/Nutritionist", description: "Dietary guidance and healthy eating." },
+        { label: "Cardiologist", href: "/cardiologist-insights", description: "Heart health and cardiovascular advice." },
+        { label: "Nutritionist", href: "/nutritionist-insights", description: "Dietary guidance and healthy eating." },
         { label: "Dermatologist", href: "/blogs/specialty/Dermatologist", description: "Skin care and dermatological treatments." },
         { label: "Pediatrician", href: "/blogs/specialty/Pediatrician", description: "Children's health and wellness." },
     ]

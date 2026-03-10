@@ -46,7 +46,8 @@ export default function Footer() {
                         {[
                             { l: "Organic Foods", h: "/products" },
                             { l: "AI Diet Plans", h: "/diet-plan" },
-                            { l: "Doctor Portal", h: "/doctors" },
+                            { l: "Docter Portol", h: "/doctors" },
+                            { l: "Cardiologist Insights", h: "/cardiologist-insights" },
                             { l: "Health Blogs", h: "/blogs" },
                             { l: "Contact Us", h: "/Contact" }
                         ].map((link, i) => (
