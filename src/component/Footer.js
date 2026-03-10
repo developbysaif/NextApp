@@ -46,7 +46,7 @@ export default function Footer() {
                         {[
                             { l: "Organic Foods", h: "/products" },
                             { l: "AI Diet Plans", h: "/diet-plan" },
-                            { l: "Docter Portol", h: "/doctors" },
+                            { l: "Medical Portal", h: "/medical-portal" },
                             { l: "Cardiologist Insights", h: "/cardiologist-insights" },
                             { l: "Health Blogs", h: "/blogs" },
                             { l: "Contact Us", h: "/Contact" }
