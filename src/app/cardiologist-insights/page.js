@@ -84,10 +84,14 @@ export default function CardiologistInsightsPage() {
                     <Stethoscope size={56} className="text-[#21492F]" strokeWidth={1} />
                 </div>
                 <div className="absolute top-20 right-10 opacity-15 hidden lg:block">
-                    <div className="w-40 h-40 bg-[url('https://images.unsplash.com/photo-1615485290382-441e4d049cb5?q=80&w=200&auto=format&fit=crop')] bg-cover rounded-full shadow-2xl border-4 border-white"></div>
+                    <div className="w-40 h-40 rounded-full shadow-2xl border-4 border-white overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1615485290382-441e4d049cb5?q=80&w=200&auto=format&fit=crop" className="w-full h-full object-cover" alt="Pulse" />
+                    </div>
                 </div>
                 <div className="absolute bottom-20 left-10 opacity-15 hidden lg:block">
-                    <div className="w-32 h-32 bg-[url('https://images.unsplash.com/photo-1512103143424-3406e1cc815d?q=80&w=200&auto=format&fit=crop')] bg-cover rounded-full shadow-2xl border-4 border-white"></div>
+                    <div className="w-32 h-32 rounded-full shadow-2xl border-4 border-white overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1512103143424-3406e1cc815d?q=80&w=200&auto=format&fit=crop" className="w-full h-full object-cover" alt="Herbs" />
+                    </div>
                 </div>
 
                 <div className="container mx-auto px-6 relative z-10 text-center">
@@ -147,12 +151,12 @@ export default function CardiologistInsightsPage() {
                                     transition={{ delay: index * 0.1 }}
                                     className="group bg-white rounded-[32px] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-[#F4F4EB] flex flex-col h-full"
                                 >
-                                    <div className="relative h-60 overflow-hidden">
-                                        <Image
+                                    <div className="relative h-60 overflow-hidden bg-gray-100">
+                                        <img
                                             src={article.image}
                                             alt={article.title}
-                                            fill
-                                            className="object-cover group-hover:scale-110 transition-transform duration-700"
+                                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                                            onError={(e) => { e.target.src = '/placeholder.png'; }}
                                         />
                                         <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                                     </div>

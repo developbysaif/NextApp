@@ -6,6 +6,10 @@ import Image from 'next/image';
 import { ArrowRight, ArrowLeft, Clock, ChevronRight } from 'lucide-react';
 
 const CAT_COLORS = {
+    'Cardiologist Insights': '#21492f',
+    'Nutritionist Insights': '#22aa4f',
+    'Dermatologist Insights': '#a6763f',
+    'Pediatrician Insights': '#8c8c4f',
     Disease: '#22aa4f', Superfood: '#e67e22', Health: '#2980b9',
     Herbal: '#8e44ad', Nutrition: '#c0392b', Sunnah: '#d4a017', Lifestyle: '#16a085',
 };
@@ -138,12 +142,12 @@ export default function BlogSlider() {
                                     >
                                         <div className="rounded-[20px] overflow-hidden bg-white/10 backdrop-blur-md border border-white/10 shadow-xl hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-500">
                                             {/* Image */}
-                                            <div className="relative w-full aspect-[16/10] overflow-hidden">
-                                                <Image
+                                            <div className="relative w-full aspect-[16/10] overflow-hidden bg-[#21492f]/20">
+                                                <img
                                                     src={post.image || '/header.jpg'}
                                                     alt={post.title}
-                                                    fill
-                                                    className="object-cover group-hover/card:scale-105 transition-transform duration-700"
+                                                    className="w-full h-full object-cover group-hover/card:scale-105 transition-transform duration-700"
+                                                    onError={(e) => { e.target.src = '/placeholder.png'; }}
                                                 />
                                                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
                                                 <span

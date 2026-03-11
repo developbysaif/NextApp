@@ -102,15 +102,14 @@ export default function NutritionistInsightsPage() {
     return (
         <div className="min-h-screen bg-[#FDFCF8] text-[#2A231C] font-sans">
             {/* Hero Section */}
-            <section className="relative w-full h-[400px] md:h-[500px] overflow-hidden">
-                <Image
+            <section className="relative w-full h-[400px] md:h-[500px] overflow-hidden bg-[#142A1D]">
+                <img
                     src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=2000&auto=format&fit=crop"
-                    alt="Nutritionist Insights Hero"
-                    fill
-                    className="object-cover"
-                    priority
+                    alt="Nutritionist Hero"
+                    className="w-full h-full object-cover opacity-60"
+                    onError={(e) => { e.target.src = '/header.jpg'; e.target.style.opacity = '0.4'; }}
                 />
-                <div className="absolute inset-0 bg-black/30 backdrop-blur-[1px]"></div>
+                <div className="absolute inset-0 bg-black/20 backdrop-blur-[1px]"></div>
 
                 <div className="container mx-auto px-6 h-full flex flex-col items-center justify-center relative z-10 text-center text-white">
                     <motion.div
@@ -152,12 +151,12 @@ export default function NutritionistInsightsPage() {
                                     transition={{ delay: index * 0.05 }}
                                     className="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 border border-[#F4F4EB] flex flex-col h-full"
                                 >
-                                    <div className="relative h-48 overflow-hidden">
-                                        <Image
+                                    <div className="relative h-48 overflow-hidden bg-gray-100">
+                                        <img
                                             src={article.image}
                                             alt={article.title}
-                                            fill
-                                            className="object-cover group-hover:scale-110 transition-transform duration-700"
+                                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                                            onError={(e) => { e.target.src = '/placeholder.png'; }}
                                         />
                                     </div>
 

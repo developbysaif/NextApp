@@ -59,15 +59,14 @@ export default function PediatricianInsightsPage() {
             {/* Hero Section */}
             <section className="relative h-[400px] flex items-center justify-center overflow-hidden">
                 {/* Background Image with Overlay */}
-                <div className="absolute inset-0 z-0">
-                    <Image
+                <div className="absolute inset-0 z-0 bg-[#21492F]">
+                    <img
                         src="https://images.unsplash.com/photo-1589927986089-35812388d1f4?q=80&w=2000&auto=format&fit=crop"
-                        alt="Honeycomb background"
-                        fill
-                        className="object-cover"
-                        priority
+                        alt="Background"
+                        className="w-full h-full object-cover opacity-50"
+                        onError={(e) => { e.target.src = '/header.jpg'; e.target.style.opacity = '0.3'; }}
                     />
-                    <div className="absolute inset-0 bg-black/40"></div>
+                    <div className="absolute inset-0 bg-black/30"></div>
                 </div>
 
                 <div className="relative z-10 text-center text-white px-4">
@@ -159,12 +158,12 @@ export default function PediatricianInsightsPage() {
                                 className="bg-white rounded-[40px] overflow-hidden border border-[#D1D9CA] shadow-sm group hover:shadow-xl transition-all duration-500"
                             >
                                 <div className="grid grid-cols-1 md:grid-cols-2">
-                                    <div className="relative h-[300px] md:h-full">
-                                        <Image
+                                    <div className="relative h-[300px] md:h-full bg-gray-100">
+                                        <img
                                             src="https://images.unsplash.com/photo-1544126592-807daa215a75?q=80&w=800&auto=format&fit=crop"
-                                            alt="Child Nutrition"
-                                            fill
-                                            className="object-cover group-hover:scale-105 transition-transform duration-700"
+                                            alt="Featured"
+                                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                            onError={(e) => { e.target.src = '/placeholder.png'; }}
                                         />
                                     </div>
                                     <div className="p-8 md:p-10 flex flex-col justify-center">

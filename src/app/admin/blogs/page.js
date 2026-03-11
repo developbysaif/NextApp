@@ -8,7 +8,12 @@ import {
     FileText, Link as LinkIcon, Image as ImageIcon, Globe, Clock, BookOpen
 } from 'lucide-react';
 
-const CATEGORIES = ['Disease', 'Superfood', 'Health', 'Herbal', 'Nutrition', 'Sunnah', 'Lifestyle', 'Medical Portal'];
+const CATEGORIES = [
+    'Cardiologist Insights',
+    'Nutritionist Insights',
+    'Dermatologist Insights',
+    'Pediatrician Insights'
+];
 
 const emptyForm = {
     title: '',
@@ -373,11 +378,11 @@ export default function AdminBlogsPage() {
 
                                                 {/* Short Description */}
                                                 <div className="space-y-1.5">
-                                                    <label className="text-[10px] font-black uppercase tracking-widest text-gray-400">Short Description (Urdu/English) *</label>
+                                                    <label className="text-[10px] font-black uppercase tracking-widest text-gray-400">Article Description (Urdu/English) *</label>
                                                     <textarea
                                                         required
                                                         rows={2}
-                                                        placeholder="Short Urdu curiosity line shown on blog cards..."
+                                                        placeholder="Write a catchy one-line description..."
                                                         className={inputCls + ' resize-none'}
                                                         value={formData.description}
                                                         onChange={e => setFormData(p => ({ ...p, description: e.target.value }))}
@@ -386,11 +391,11 @@ export default function AdminBlogsPage() {
 
                                                 {/* Full Content */}
                                                 <div className="space-y-1.5">
-                                                    <label className="text-[10px] font-black uppercase tracking-widest text-gray-400">Full Blog Content *</label>
+                                                    <label className="text-[10px] font-black uppercase tracking-widest text-gray-400">Full Article Content *</label>
                                                     <textarea
                                                         required
                                                         rows={10}
-                                                        placeholder="Write your detailed blog content here..."
+                                                        placeholder="Write the complete article here..."
                                                         className={inputCls + ' resize-none'}
                                                         value={formData.content}
                                                         onChange={e => setFormData(p => ({ ...p, content: e.target.value }))}
