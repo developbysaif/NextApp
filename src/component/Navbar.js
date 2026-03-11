@@ -159,10 +159,10 @@ export default function Navbar() {
                     {/* Logo (Visible when scrolled) */}
                     <div className={cn(
                         "transition-all duration-300 overflow-hidden flex items-center",
-                        isScrolled ? "w-32 md:w-48 mr-2 md:mr-6 opacity-100" : "w-0 opacity-0"
+                        isScrolled ? "w-36 md:w-56 mr-2 md:mr-6 opacity-100" : "w-0 opacity-0"
                     )}>
                         <Link href="/" className="flex items-center group shrink-0">
-                            <div className="relative h-10 md:h-12 w-32 md:w-48 hover:scale-105 transition-all duration-300">
+                            <div className="relative h-11 md:h-14 w-36 md:w-56 hover:scale-105 transition-all duration-300">
                                 <Image src="/desk-top.png" alt="Logo" fill className="object-contain" priority />
                             </div>
                         </Link>
