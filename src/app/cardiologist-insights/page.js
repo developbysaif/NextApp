@@ -18,53 +18,22 @@ import {
 } from 'lucide-react';
 import BlogSlider from '@/component/BlogSlider';
 export default function CardiologistInsightsPage() {
-    const articles = [
-        {
-            id: 1,
-            title: "The Heart-Healthy Benefits of Pomegranates",
-            excerpt: "The heart-healthy benefits of pomegranates in combination with health with beauties and energy...",
-            author: "Remien Corumer",
-            date: "Apr 13, 2024",
-            image: "https://images.unsplash.com/photo-1615485290382-441e4d049cb5?q=80&w=800&auto=format&fit=crop",
-            authorImg: "https://images.unsplash.com/photo-1599566150163-29194dcaad36?q=80&w=100&auto=format&fit=crop"
-        },
-        {
-            id: 2,
-            title: "Managing Hypertension with Ayurvedic Herbs",
-            excerpt: "Managing hypertension with Ayurvedic herbs and treats easing your calcium insisting risk...",
-            author: "Artim Mirna",
-            date: "Apr 16, 2024",
-            image: "https://images.unsplash.com/photo-1512103143424-3406e1cc815d?q=80&w=800&auto=format&fit=crop",
-            authorImg: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=100&auto=format&fit=crop"
-        },
-        {
-            id: 3,
-            title: "Managing Hypertension in Organic Diet",
-            excerpt: "Managing hypertension with cardiologists doc cena insights and property for your elongation...",
-            author: "Astim Mirua",
-            date: "Apr 13, 2024",
-            image: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=800&auto=format&fit=crop",
-            authorImg: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=100&auto=format&fit=crop"
-        },
-        {
-            id: 4,
-            title: "Processily Benefits of Organic Diet",
-            excerpt: "Explore the profound benefits of a strictly organic diet on your daily cardiovascular health...",
-            author: "Atitha Mirna",
-            date: "Apr 15, 2024",
-            image: "https://images.unsplash.com/photo-1540420773420-3366772f4999?q=80&w=800&auto=format&fit=crop",
-            authorImg: "https://images.unsplash.com/photo-1607746822051-cb551bd4cfde?q=80&w=100&auto=format&fit=crop"
-        },
-        {
-            id: 5,
-            title: "Improving Hypertension: Healthy with Heneffied Cardiomncsles",
-            excerpt: "Managing cardiovascular pomegranates, mixtures skin easily with healthy diet herbs...",
-            author: "Artice Marmor",
-            date: "Apr 15, 2024",
-            image: "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?q=80&w=800&auto=format&fit=crop",
-            authorImg: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=100&auto=format&fit=crop"
-        }
-    ];
+    const [blogs, setBlogs] = React.useState([]);
+    const [loading, setLoading] = React.useState(true);
+
+    React.useEffect(() => {
+        const fetchBlogs = async () => {
+            try {
+                const res = await fetch('/api/blogs');
+                const result = await res.json();
+                if (result.success) {
+                    setBlogs(result.data.filter(b => b.category === 'Cardiologist Insights'));
+                }
+            } catch (err) { console.error(err); }
+            finally { setLoading(false); }
+        };
+        fetchBlogs();
+    }, []);
 
     const cardiologists = [
         { name: "Dr. Smith", img: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?q=80&w=100&auto=format&fit=crop" },
@@ -142,46 +111,60 @@ export default function CardiologistInsightsPage() {
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
-                            {articles.map((article, index) => (
-                                <motion.div
-                                    key={article.id}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: index * 0.1 }}
-                                    className="group bg-white rounded-[32px] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-[#F4F4EB] flex flex-col h-full"
-                                >
-                                    <div className="relative h-60 overflow-hidden bg-gray-100">
-                                        <img
-                                            src={article.image}
-                                            alt={article.title}
-                                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                                            onError={(e) => { e.target.src = '/placeholder.png'; }}
-                                        />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                                    </div>
-
-                                    <div className="p-8 flex flex-col flex-1">
-                                        <h3 className="text-xl font-serif font-bold text-[#142A1D] mb-4 leading-snug group-hover:text-[#22AA4F] transition-colors">{article.title}</h3>
-                                        <p className="text-[#4F5E4B] text-sm leading-relaxed mb-6 flex-1">{article.excerpt}</p>
-
-                                        <div className="flex items-center justify-between pt-6 border-t border-[#F8F6EF]">
-                                            <div className="flex items-center gap-3">
-                                                <div className="w-8 h-8 rounded-full overflow-hidden border border-[#D1D9CA]">
-                                                    <Image src={article.authorImg} alt={article.author} width={32} height={32} className="object-cover" />
-                                                </div>
-                                                <div className="flex flex-col">
-                                                    <span className="text-[11px] font-bold text-[#142A1D] uppercase tracking-wide">{article.author}</span>
-                                                    <span className="text-[10px] text-[#8D9F91] font-medium">{article.date}</span>
-                                                </div>
-                                            </div>
-                                            <button className="w-8 h-8 rounded-full bg-[#F4F4EB] flex items-center justify-center text-[#142A1D] group-hover:bg-[#22AA4F] group-hover:text-white transition-all shadow-sm">
-                                                <ArrowRight size={14} />
-                                            </button>
+                            {loading ? (
+                                <div className="col-span-full py-20 flex justify-center">
+                                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#142A1D]"></div>
+                                </div>
+                            ) : blogs.length > 0 ? (
+                                blogs.map((article, index) => (
+                                    <motion.div
+                                        key={article._id || index}
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ delay: index * 0.1 }}
+                                        className="group bg-white rounded-[32px] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-[#F4F4EB] flex flex-col h-full"
+                                    >
+                                        <div className="relative h-60 overflow-hidden bg-gray-50">
+                                            <img
+                                                src={article.image || "https://images.unsplash.com/photo-1615485290382-441e4d049cb5?q=80&w=800&auto=format&fit=crop"}
+                                                alt={article.title}
+                                                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                                                onError={(e) => { e.target.src = '/placeholder.png'; }}
+                                            />
+                                            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                                         </div>
-                                    </div>
-                                </motion.div>
-                            ))}
+
+                                        <div className="p-8 flex flex-col flex-1">
+                                            <h3 className="text-xl font-serif font-bold text-[#142A1D] mb-4 leading-snug group-hover:text-[#22AA4F] transition-colors line-clamp-2 uppercase tracking-tight">
+                                                {article.title}
+                                            </h3>
+                                            <p className="text-[#4F5E4B] text-sm leading-relaxed mb-6 flex-1 line-clamp-3 font-medium">
+                                                {article.description}
+                                            </p>
+
+                                            <div className="flex items-center justify-between pt-6 border-t border-[#F8F6EF]">
+                                                <div className="flex items-center gap-3">
+                                                    <div className="w-8 h-8 rounded-full overflow-hidden border border-[#D1D9CA] bg-gray-50 flex items-center justify-center">
+                                                        <User size={16} className="text-gray-300" />
+                                                    </div>
+                                                    <div className="flex flex-col">
+                                                        <span className="text-[11px] font-bold text-[#142A1D] uppercase tracking-wide">Expert Insight</span>
+                                                    </div>
+                                                </div>
+                                                <Link href={`/blogs/${article.slug}`} className="w-8 h-8 rounded-full bg-[#F4F4EB] flex items-center justify-center text-[#142A1D] hover:bg-[#22AA4F] hover:text-white transition-all shadow-sm">
+                                                    <ArrowRight size={14} />
+                                                </Link>
+                                            </div>
+                                        </div>
+                                    </motion.div>
+                                ))
+                            ) : (
+                                <div className="col-span-full p-20 text-center bg-gray-50 rounded-[40px] border-2 border-dashed border-gray-200">
+                                    <h3 className="text-xl font-bold text-[#142A1D] opacity-40 uppercase tracking-widest">No Insights Available Yet</h3>
+                                    <p className="text-sm font-bold text-gray-400 mt-2 italic">New articles will appear here once published from the admin panel.</p>
+                                </div>
+                            )}
                         </div>
                     </div>
 

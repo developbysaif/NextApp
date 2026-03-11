@@ -16,80 +16,22 @@ import {
 import BlogSlider from '@/component/BlogSlider';
 
 export default function NutritionistInsightsPage() {
-    const articles = [
-        {
-            id: 1,
-            title: "The Power of Pomegranates for Heart Health",
-            excerpt: "The power of powdered engine for pomegranates for heart health, hired health.",
-            author: "Dr. Ayesha Khan",
-            date: "Oct 24, 2024",
-            image: "https://images.unsplash.com/photo-1615485290382-441e4d049cb5?q=80&w=800&auto=format&fit=crop",
-        },
-        {
-            id: 2,
-            title: "Understanding AI Diet Plans: A Beginner's Guide",
-            excerpt: "Understating AI Diet Plans views a understating of how weights meat distributed.",
-            author: "Dr. Ayesha Khan",
-            date: "Oct 24, 2024",
-            image: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=800&auto=format&fit=crop",
-        },
-        {
-            id: 3,
-            title: "Top 5 Organic Superfoods",
-            excerpt: "Top 5 organic superfoods in an informative organic fresh and organic center modern arts.",
-            author: "Dr. Ayesha Khan",
-            date: "Oct 24, 2024",
-            image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=800&auto=format&fit=crop",
-        },
-        {
-            id: 4,
-            title: "Unlocking Energy with Complex Carbs",
-            excerpt: "Unlocking energy with complex carbs in the medical north with nutritious consciousness.",
-            author: "Dr. Ayesha Khan",
-            date: "Oct 24, 2024",
-            image: "https://images.unsplash.com/photo-1510629954389-c1e0da47d414?q=80&w=800&auto=format&fit=crop",
-        },
-        {
-            id: 5,
-            title: "Mindful Eating for Better Digestion",
-            excerpt: "Mindful Eating for Better Digestion, enabling emerge health nutrition minds and of sour team.",
-            author: "Dr. Ayesha Khan",
-            date: "Oct 24, 2024",
-            image: "https://images.unsplash.com/photo-1494390248081-4e521a5940db?q=80&w=800&auto=format&fit=crop",
-        },
-        {
-            id: 6,
-            title: "Navigating Food Allergies",
-            excerpt: "Navigating food allergies, navigating food allergies, an aspects food allergen awareness.",
-            author: "Dr. Ayesha Khan",
-            date: "Oct 24, 2024",
-            image: "https://images.unsplash.com/photo-1511688858344-1854ef248231?q=80&w=800&auto=format&fit=crop",
-        },
-        {
-            id: 7,
-            title: "Hydration: The Foundation of Vitality",
-            excerpt: "Hydration: the foundation of vitality to understand and vitality hydration.",
-            author: "Dr. Ayesha Khan",
-            date: "Oct 24, 2024",
-            image: "https://images.unsplash.com/photo-1548839140-29a749e1cf4d?q=80&w=800&auto=format&fit=crop",
-        },
-        {
-            id: 8,
-            title: "The Gut-Brain Connection",
-            excerpt: "The Gut-Brain connection an interaction nutrition coach or practitioners existing the Gut.",
-            author: "Dr. Ayesha Khan",
-            date: "Oct 24, 2024",
-            image: "https://images.unsplash.com/photo-1515023115689-589c33041d3c?q=80&w=800&auto=format&fit=crop",
-        },
-        {
-            id: 9,
-            title: "Optimal Pre-Workout Nutrition",
-            excerpt: "Optimal Pre-Workout nutrition to meet the convenience of explaining workout nutrition.",
-            author: "Dr. Ayesha Khan",
-            date: "Oct 24, 2024",
-            image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=800&auto=format&fit=crop",
-        }
-    ];
+    const [blogs, setBlogs] = React.useState([]);
+    const [loading, setLoading] = React.useState(true);
+
+    React.useEffect(() => {
+        const fetchBlogs = async () => {
+            try {
+                const res = await fetch('/api/blogs');
+                const result = await res.json();
+                if (result.success) {
+                    setBlogs(result.data.filter(b => b.category === 'Nutritionist Insights'));
+                }
+            } catch (err) { console.error(err); }
+            finally { setLoading(false); }
+        };
+        fetchBlogs();
+    }, []);
 
     const experts = Array(4).fill({
         name: "Dr. Ayesha Khan",
@@ -141,48 +83,56 @@ export default function NutritionistInsightsPage() {
 
                     {/* Articles Grid */}
                     <div className="lg:col-span-8">
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                            {articles.map((article, index) => (
-                                <motion.div
-                                    key={article.id}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: index * 0.05 }}
-                                    className="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 border border-[#F4F4EB] flex flex-col h-full"
-                                >
-                                    <div className="relative h-48 overflow-hidden bg-gray-100">
-                                        <img
-                                            src={article.image}
-                                            alt={article.title}
-                                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                                            onError={(e) => { e.target.src = '/placeholder.png'; }}
-                                        />
-                                    </div>
+                        {loading ? (
+                            <div className="flex items-center justify-center py-20">
+                                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#142A1D]"></div>
+                            </div>
+                        ) : blogs.length > 0 ? (
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                {blogs.map((article, index) => (
+                                    <Link
+                                        key={article._id || index}
+                                        href={`/blogs/${article.slug}`}
+                                        className="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 border border-[#F4F4EB] flex flex-col h-full"
+                                    >
+                                        <div className="relative h-48 overflow-hidden bg-gray-50">
+                                            <img
+                                                src={article.image || "https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=800&auto=format&fit=crop"}
+                                                alt={article.title}
+                                                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                                                onError={(e) => { e.target.src = '/placeholder.png'; }}
+                                            />
+                                        </div>
 
-                                    <div className="p-6 flex flex-col flex-1">
-                                        <h3 className="text-sm font-bold text-[#142A1D] mb-3 leading-snug group-hover:text-[#22AA4F] transition-colors line-clamp-2">
-                                            {article.title}
-                                        </h3>
-                                        <p className="text-[#4F5E4B] text-[11px] leading-relaxed mb-6 flex-1 line-clamp-2">
-                                            {article.excerpt}
-                                        </p>
+                                        <div className="p-6 flex flex-col flex-1">
+                                            <h3 className="text-sm font-bold text-[#142A1D] mb-3 leading-snug group-hover:text-[#22AA4F] transition-colors line-clamp-2 uppercase tracking-tight">
+                                                {article.title}
+                                            </h3>
+                                            <p className="text-[#4F5E4B] text-[11px] leading-relaxed mb-6 flex-1 line-clamp-3 font-medium">
+                                                {article.description}
+                                            </p>
 
-                                        <div className="flex items-center justify-between pt-4 border-t border-[#F8F6EF]">
-                                            <div className="flex items-center gap-2">
-                                                <div className="w-6 h-6 rounded-full overflow-hidden border border-[#D1D9CA]">
-                                                    <Image src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?q=80&w=32&h=32&auto=format&fit=crop" alt={article.author} width={24} height={24} className="object-cover" />
+                                            <div className="flex items-center justify-between pt-4 border-t border-[#F8F6EF]">
+                                                <div className="flex items-center gap-2">
+                                                    <div className="w-6 h-6 rounded-full overflow-hidden border border-[#D1D9CA] bg-gray-50 flex items-center justify-center">
+                                                        <User size={12} className="text-gray-300" />
+                                                    </div>
+                                                    <div className="flex flex-col">
+                                                        <span className="text-[9px] font-black text-[#142A1D] uppercase tracking-wide leading-none">Expert Insight</span>
+                                                    </div>
                                                 </div>
-                                                <div className="flex flex-col">
-                                                    <span className="text-[9px] font-bold text-[#142A1D] uppercase tracking-wide leading-none">{article.author}</span>
-                                                    <span className="text-[8px] text-[#8D9F91] font-medium leading-none mt-1">{article.date}</span>
-                                                </div>
+                                                <ArrowRight size={14} className="text-[#22AA4F] group-hover:translate-x-1 transition-transform" />
                                             </div>
                                         </div>
-                                    </div>
-                                </motion.div>
-                            ))}
-                        </div>
+                                    </Link>
+                                ))}
+                            </div>
+                        ) : (
+                            <div className="p-20 text-center bg-gray-50 rounded-[40px] border-2 border-dashed border-gray-200">
+                                <h3 className="text-xl font-bold text-[#142A1D] opacity-40 uppercase tracking-widest">No Insights Available Yet</h3>
+                                <p className="text-sm font-bold text-gray-400 mt-2 italic">New articles will appear here once published from the admin panel.</p>
+                            </div>
+                        )}
                     </div>
 
                     {/* Sidebar */}

@@ -16,8 +16,26 @@ import {
     ArrowUpRight
 } from 'lucide-react';
 import BlogSlider from '@/component/BlogSlider';
-
 export default function PediatricianInsightsPage() {
+    const [blogs, setBlogs] = React.useState([]);
+    const [loading, setLoading] = React.useState(true);
+
+    React.useEffect(() => {
+        const fetchBlogs = async () => {
+            try {
+                const res = await fetch('/api/blogs');
+                const result = await res.json();
+                if (result.success) {
+                    setBlogs(result.data.filter(b => b.category === 'Pediatrician Insights'));
+                }
+            } catch (err) { console.error(err); }
+            finally { setLoading(false); }
+        };
+        fetchBlogs();
+    }, []);
+
+    const featuredBlog = blogs[0];
+    const secondaryBlogs = blogs.slice(1, 3);
     const specializations = [
         {
             title: "Child Nutrition & Growth",
@@ -150,81 +168,88 @@ export default function PediatricianInsightsPage() {
 
                         {/* Blog Posts Column */}
                         <div className="lg:col-span-8 space-y-8">
-                            {/* Main Featured Post */}
-                            <motion.div
-                                initial={{ opacity: 0, x: -20 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
-                                className="bg-white rounded-[40px] overflow-hidden border border-[#D1D9CA] shadow-sm group hover:shadow-xl transition-all duration-500"
-                            >
-                                <div className="grid grid-cols-1 md:grid-cols-2">
-                                    <div className="relative h-[300px] md:h-full bg-gray-100">
-                                        <img
-                                            src="https://images.unsplash.com/photo-1544126592-807daa215a75?q=80&w=800&auto=format&fit=crop"
-                                            alt="Featured"
-                                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                                            onError={(e) => { e.target.src = '/placeholder.png'; }}
-                                        />
-                                    </div>
-                                    <div className="p-8 md:p-10 flex flex-col justify-center">
-                                        <h2 className="text-2xl md:text-3xl font-black text-[#21492F] mb-4 leading-tight uppercase">
-                                            The Organic Approach to Pediatric Nutrition
-                                        </h2>
-                                        <p className="text-[#4F5E4B] text-sm leading-relaxed mb-6 font-medium">
-                                            Discover how natural foods and holistic practices can build a stronger immune system and support your child's growth...
-                                        </p>
-                                        <div className="flex items-center gap-3 mb-8">
-                                            <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-[#EFF4E8]">
-                                                <Image src="https://images.unsplash.com/photo-1559839734-2b71f1536701?q=80&w=100&auto=format&fit=crop" alt="Dr Fatima" width={40} height={40} className="object-cover" />
-                                            </div>
-                                            <span className="text-[11px] font-black uppercase tracking-tight text-[#21492F]">by Dr. Fatima - Pediatric Nutritionist</span>
-                                        </div>
-                                        <button className="w-fit bg-[#21492F] text-white font-black text-xs uppercase tracking-widest px-8 py-3 rounded-full hover:bg-[#22aa4f] transition-all duration-300">
-                                            Read More
-                                        </button>
-                                    </div>
+                            {loading ? (
+                                <div className="flex items-center justify-center py-20">
+                                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#21492F]"></div>
                                 </div>
-                            </motion.div>
-
-                            {/* Secondary Posts Row */}
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                {[
-                                    {
-                                        title: "The Organic Approach to Pediatric Nutrition",
-                                        author: "by Dr. Sarah Khan - Expert Der...",
-                                        img: "https://images.unsplash.com/photo-1516627145497-ae6968895b74?q=80&w=400&auto=format&fit=crop"
-                                    },
-                                    {
-                                        title: "Discovering the Power of Aloe in Modern Dermatology",
-                                        author: "by Dr. Sarah Khan - Expert Dermato...",
-                                        img: "https://images.unsplash.com/photo-1512290923902-8a9f81dc2069?q=80&w=400&auto=format&fit=crop"
-                                    }
-                                ].map((post, idx) => (
+                            ) : blogs.length > 0 ? (
+                                <>
+                                    {/* Main Featured Post */}
                                     <motion.div
-                                        key={idx}
-                                        initial={{ opacity: 0, y: 20 }}
-                                        whileInView={{ opacity: 1, y: 0 }}
+                                        initial={{ opacity: 0, x: -20 }}
+                                        whileInView={{ opacity: 1, x: 0 }}
                                         viewport={{ once: true }}
-                                        transition={{ delay: idx * 0.1 }}
-                                        className="bg-white rounded-[32px] overflow-hidden border border-[#D1D9CA] group hover:shadow-lg transition-all"
+                                        className="bg-white rounded-[40px] overflow-hidden border border-[#D1D9CA] shadow-sm group hover:shadow-xl transition-all duration-500"
                                     >
-                                        <div className="flex gap-4 p-4">
-                                            <div className="w-1/3 relative aspect-square rounded-2xl overflow-hidden shrink-0">
-                                                <Image src={post.img} alt={post.title} fill className="object-cover group-hover:scale-110 transition-transform duration-500" />
+                                        <div className="grid grid-cols-1 md:grid-cols-2">
+                                            <div className="relative h-[300px] md:h-full bg-gray-100">
+                                                <img
+                                                    src={blogs[0].image || "https://images.unsplash.com/photo-1544126592-807daa215a75?q=80&w=800&auto=format&fit=crop"}
+                                                    alt="Featured"
+                                                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                                    onError={(e) => { e.target.src = '/placeholder.png'; }}
+                                                />
                                             </div>
-                                            <div className="flex flex-col justify-center py-2">
-                                                <h3 className="text-sm font-black text-[#21492F] mb-1 line-clamp-2 leading-snug uppercase tracking-tight">
-                                                    {post.title}
-                                                </h3>
-                                                <p className="text-[10px] text-[#8D9F91] font-black mb-3">{post.author}</p>
-                                                <button className="text-[#21492F] text-[10px] font-black uppercase tracking-widest border border-[#21492F]/20 px-3 py-1 rounded-lg w-fit group-hover:bg-[#21492F] group-hover:text-white transition-all">
+                                            <div className="p-8 md:p-10 flex flex-col justify-center">
+                                                <h2 className="text-2xl md:text-3xl font-black text-[#21492F] mb-4 leading-tight uppercase">
+                                                    {blogs[0].title}
+                                                </h2>
+                                                <p className="text-[#4F5E4B] text-sm leading-relaxed mb-6 font-medium line-clamp-3">
+                                                    {blogs[0].description}
+                                                </p>
+                                                <div className="flex items-center gap-3 mb-8">
+                                                    <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-[#EFF4E8] bg-gray-50">
+                                                        <User size={20} className="m-auto mt-2 text-gray-300" />
+                                                    </div>
+                                                    <span className="text-[11px] font-black uppercase tracking-tight text-[#21492F]">Expert Insight</span>
+                                                </div>
+                                                <Link href={`/blogs/${blogs[0].slug}`} className="w-fit bg-[#21492F] text-white font-black text-xs uppercase tracking-widest px-8 py-3 rounded-full hover:bg-[#22aa4f] transition-all duration-300">
                                                     Read More
-                                                </button>
+                                                </Link>
                                             </div>
                                         </div>
                                     </motion.div>
-                                ))}
-                            </div>
+
+                                    {/* Secondary Posts Row */}
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                        {blogs.slice(1, 3).map((post, idx) => (
+                                            <motion.div
+                                                key={post._id || idx}
+                                                initial={{ opacity: 0, y: 20 }}
+                                                whileInView={{ opacity: 1, y: 0 }}
+                                                viewport={{ once: true }}
+                                                transition={{ delay: idx * 0.1 }}
+                                                className="bg-white rounded-[32px] overflow-hidden border border-[#D1D9CA] group hover:shadow-lg transition-all"
+                                            >
+                                                <div className="flex gap-4 p-4">
+                                                    <div className="w-1/3 relative aspect-square rounded-2xl overflow-hidden shrink-0 bg-gray-50">
+                                                        <img
+                                                            src={post.image || "https://images.unsplash.com/photo-1516627145497-ae6968895b74?q=80&w=400&auto=format&fit=crop"}
+                                                            alt={post.title}
+                                                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                                            onError={(e) => { e.target.src = '/placeholder.png'; }}
+                                                        />
+                                                    </div>
+                                                    <div className="flex flex-col justify-center py-2 overflow-hidden">
+                                                        <h3 className="text-sm font-black text-[#21492F] mb-1 line-clamp-2 leading-snug uppercase tracking-tight">
+                                                            {post.title}
+                                                        </h3>
+                                                        <p className="text-[10px] text-[#8D9F91] font-black mb-3">Expert Insight</p>
+                                                        <Link href={`/blogs/${post.slug}`} className="text-[#21492F] text-[10px] font-black uppercase tracking-widest border border-[#21492F]/20 px-3 py-1 rounded-lg w-fit group-hover:bg-[#21492F] group-hover:text-white transition-all">
+                                                            Read More
+                                                        </Link>
+                                                    </div>
+                                                </div>
+                                            </motion.div>
+                                        ))}
+                                    </div>
+                                </>
+                            ) : (
+                                <div className="p-20 text-center bg-gray-50 rounded-[40px] border-2 border-dashed border-gray-200">
+                                    <h3 className="text-xl font-black text-[#21492F] opacity-40 uppercase tracking-widest">No Insights Available Yet</h3>
+                                    <p className="text-sm font-bold text-gray-400 mt-2 italic">New blogs will appear here once published from the admin panel.</p>
+                                </div>
+                            )}
                         </div>
 
                         {/* Sidebar Column */}

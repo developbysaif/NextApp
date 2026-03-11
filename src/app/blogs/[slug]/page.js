@@ -6,16 +6,24 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 export default function BlogPostDetail({ params }) {
-    const { slug } = use(params);
+    const { slug } = React.use(params);
     const [blog, setBlog] = useState(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const fetchBlog = () => {
-            const allBlogs = JSON.parse(localStorage.getItem("blogs") || "[]");
-            const foundBlog = allBlogs.find(b => b.slug === slug);
-            setBlog(foundBlog);
-            setLoading(false);
+        const fetchBlog = async () => {
+            try {
+                const res = await fetch('/api/blogs');
+                const result = await res.json();
+                if (result.success) {
+                    const foundBlog = result.data.find(b => b.slug === slug);
+                    setBlog(foundBlog);
+                }
+            } catch (error) {
+                console.error("Error fetching blog:", error);
+            } finally {
+                setLoading(false);
+            }
         };
         fetchBlog();
     }, [slug]);
