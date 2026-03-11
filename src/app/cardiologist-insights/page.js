@@ -16,6 +16,7 @@ import {
     Activity,
     Stethoscope
 } from 'lucide-react';
+import BlogSlider from '@/component/BlogSlider';
 export default function CardiologistInsightsPage() {
     const articles = [
         {
@@ -241,6 +242,13 @@ export default function CardiologistInsightsPage() {
                             </div>
                         </div>
                     </div>
+                </div>
+            </section>
+
+            {/* Blog Section (Slider) */}
+            <section className="py-20 bg-white">
+                <div className="container mx-auto px-6">
+                    <BlogSlider />
                 </div>
             </section>
         </div>

@@ -13,6 +13,7 @@ import {
     Clock,
     Sprout
 } from 'lucide-react';
+import BlogSlider from '@/component/BlogSlider';
 
 export default function NutritionistInsightsPage() {
     const articles = [
@@ -226,6 +227,13 @@ export default function NutritionistInsightsPage() {
                         </div>
 
                     </div>
+                </div>
+            </section>
+
+            {/* Blog Section (Slider) */}
+            <section className="py-20 bg-white">
+                <div className="container mx-auto px-6">
+                    <BlogSlider />
                 </div>
             </section>
         </div>
