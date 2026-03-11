@@ -82,7 +82,7 @@ export default function Navbar() {
     ]
 
     return (
-        <header className="w-full z-[100] transition-all duration-300 sticky top-0">
+        <header className="w-full z-[100] transition-all duration-300 fix top-0">
             {/* ───────── TOP BAR ───────── */}
             <div className="bg-[#21492f] text-white py-2 hidden md:block border-b border-white/10">
                 <div className="max-w-5xl mx-auto flex justify-between px-4 text-[11px] font-bold">
@@ -148,7 +148,7 @@ export default function Navbar() {
             </div>
 
             {/* ───────── DESKTOP NAV ───────── */}
-            <div className="bg-white hidden md:block border-b border-stone-100">
+            <div className="bg-white hidden md:block border-b sticky border-stone-100">
                 <div className="max-w-5xl mx-auto">
                     <NavigationMenu className="w-full max-w-none justify-start">
                         <NavigationMenuList className="flex gap-1 py-1">
