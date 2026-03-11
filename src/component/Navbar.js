@@ -82,9 +82,12 @@ export default function Navbar() {
     ]
 
     return (
-        <header className="w-full z-[100] transition-all duration-300 fix top-0">
+        <header className="w-full z-[100] sticky top-0 bg-white">
             {/* ───────── TOP BAR ───────── */}
-            <div className="bg-[#21492f] text-white py-2 hidden md:block border-b border-white/10">
+            <div className={cn(
+                "bg-[#21492f] text-white overflow-hidden transition-all duration-500 hidden md:block border-b border-white/10",
+                isScrolled ? "max-h-0 opacity-0" : "max-h-20 opacity-100 py-2"
+            )}>
                 <div className="max-w-5xl mx-auto flex justify-between px-4 text-[11px] font-bold">
                     <div className="flex gap-6">
                         <span className="flex items-center gap-2 hover:text-[#22aa4f] transition-colors cursor-pointer">
@@ -104,8 +107,8 @@ export default function Navbar() {
 
             {/* ───────── MIDDLE BAR ───────── */}
             <div className={cn(
-                "w-full bg-white transition-all duration-500 border-b border-stone-100",
-                isScrolled ? "py-2 shadow-sm" : "py-3"
+                "w-full bg-white transition-all duration-500 border-b border-stone-100 overflow-hidden",
+                isScrolled ? "max-h-0 md:max-h-0 opacity-0 pointer-events-none" : "max-h-40 opacity-100 py-3"
             )}>
                 <div className="max-w-5xl mx-auto px-4 flex items-center justify-between gap-6">
                     {/* Logo */}
@@ -147,10 +150,27 @@ export default function Navbar() {
                 </div>
             </div>
 
-            {/* ───────── DESKTOP NAV ───────── */}
-            <div className="bg-white hidden md:block border-b sticky border-stone-100">
-                <div className="max-w-5xl mx-auto">
-                    <NavigationMenu className="w-full max-w-none justify-start">
+            {/* ───────── DESKTOP & SCROLLED NAV ───────── */}
+            <div className={cn(
+                "bg-white border-b border-stone-100 transition-all duration-500",
+                isScrolled ? "py-2 shadow-md" : ""
+            )}>
+                <div className="max-w-5xl mx-auto px-4 flex items-center justify-between md:justify-start">
+                    {/* Logo (Visible when scrolled or on mobile always if middle bar is hidden) */}
+                    <div className={cn(
+                        "transition-all duration-500 overflow-hidden flex items-center",
+                        isScrolled ? "w-28 md:w-32 mr-4 md:mr-8 opacity-100" : "w-0 opacity-0"
+                    )}>
+                        <Link href="/" className="flex items-center group shrink-0">
+                            <div className="relative h-8 md:h-10 w-24 md:w-32 hover:scale-105 transition-all duration-300">
+                                <Image src="/desk-top.png" alt="Logo" fill className="object-contain" priority />
+                            </div>
+                        </Link>
+                    </div>
+
+                    {/* Desktop Navigation Links */}
+                    <div className="hidden md:block flex-1">
+                        <NavigationMenu className="w-full max-w-none justify-start">
                         <NavigationMenuList className="flex gap-1 py-1">
                             <NavigationMenuItem>
                                 <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), "bg-transparent font-bold text-stone-600 text-xs hover:text-[#22aa4f] hover:bg-stone-50")}>
@@ -238,7 +258,24 @@ export default function Navbar() {
                         </NavigationMenuList>
                     </NavigationMenu>
                 </div>
+
+                {/* Mobile Scrolled Controls (Cart/Menu) */}
+                <div className={cn(
+                    "flex md:hidden items-center gap-2",
+                    isScrolled ? "opacity-100" : "hidden"
+                )}>
+                    <Link href="/cart" className="size-8 flex items-center justify-center rounded-lg bg-stone-50 text-stone-600 border border-stone-100 relative">
+                        <ShoppingCart className="w-3.5 h-3.5" />
+                        <span className="absolute -top-1 -right-1 bg-[#21492f] text-white text-[8px] font-black rounded-full min-w-3.5 h-3.5 flex items-center justify-center border-2 border-white">
+                            {getCartCount()}
+                        </span>
+                    </Link>
+                    <button onClick={() => setOpen(!open)} className="size-8 flex items-center justify-center rounded-lg bg-stone-50 text-stone-600 border border-stone-100">
+                        {open ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
+                    </button>
+                </div>
             </div>
+        </div>
 
             {/* ───────── MOBILE SIDEBAR ───────── */}
             <div className={cn(
