@@ -156,13 +156,13 @@ export default function Navbar() {
                 isScrolled ? "py-2 shadow-md" : ""
             )}>
                 <div className="max-w-5xl mx-auto px-4 flex items-center justify-between md:justify-start">
-                    {/* Logo (Visible when scrolled or on mobile always if middle bar is hidden) */}
+                    {/* Logo (Visible when scrolled) */}
                     <div className={cn(
-                        "transition-all duration-500 overflow-hidden flex items-center",
-                        isScrolled ? "w-28 md:w-32 mr-4 md:mr-8 opacity-100" : "w-0 opacity-0"
+                        "transition-all duration-300 overflow-hidden flex items-center",
+                        isScrolled ? "w-28 md:w-36 mr-2 md:mr-6 opacity-100" : "w-0 opacity-0"
                     )}>
                         <Link href="/" className="flex items-center group shrink-0">
-                            <div className="relative h-8 md:h-10 w-24 md:w-32 hover:scale-105 transition-all duration-300">
+                            <div className="relative h-9 md:h-11 w-28 md:w-36 hover:scale-105 transition-all duration-300">
                                 <Image src="/desk-top.png" alt="Logo" fill className="object-contain" priority />
                             </div>
                         </Link>
@@ -257,22 +257,21 @@ export default function Navbar() {
                             </NavigationMenuItem>
                         </NavigationMenuList>
                     </NavigationMenu>
-                </div>
-
-                {/* Mobile Scrolled Controls (Cart/Menu) */}
-                <div className={cn(
-                    "flex md:hidden items-center gap-2",
-                    isScrolled ? "opacity-100" : "hidden"
-                )}>
-                    <Link href="/cart" className="size-8 flex items-center justify-center rounded-lg bg-stone-50 text-stone-600 border border-stone-100 relative">
-                        <ShoppingCart className="w-3.5 h-3.5" />
-                        <span className="absolute -top-1 -right-1 bg-[#21492f] text-white text-[8px] font-black rounded-full min-w-3.5 h-3.5 flex items-center justify-center border-2 border-white">
-                            {getCartCount()}
-                        </span>
-                    </Link>
-                    <button onClick={() => setOpen(!open)} className="size-8 flex items-center justify-center rounded-lg bg-stone-50 text-stone-600 border border-stone-100">
-                        {open ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
-                    </button>
+                    {/* Mobile Scrolled Controls (Cart/Menu) - Only visible when scrolled */}
+                    <div className={cn(
+                        "flex md:hidden items-center gap-2 transition-opacity duration-300",
+                        isScrolled ? "opacity-100" : "hidden"
+                    )}>
+                        <Link href="/cart" className="size-8 flex items-center justify-center rounded-lg bg-stone-50 text-stone-600 border border-stone-100 relative">
+                            <ShoppingCart className="w-4 h-4" />
+                            <span className="absolute -top-1 -right-1 bg-[#21492f] text-white text-[8px] font-black rounded-full min-w-3.5 h-3.5 flex items-center justify-center border-2 border-white">
+                                {getCartCount()}
+                            </span>
+                        </Link>
+                        <button onClick={() => setOpen(!open)} className="size-8 flex items-center justify-center rounded-lg bg-stone-50 text-stone-600 border border-stone-100">
+                            {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
