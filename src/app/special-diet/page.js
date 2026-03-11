@@ -1,231 +1,366 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import {
-    Stethoscope,
     Star,
-    Calendar,
-    ArrowRight,
-    Clock,
-    Award,
-    ShieldCheck,
     Search,
     ChevronRight,
-    HeartPulse
+    Home,
+    Facebook,
+    Twitter,
+    Instagram,
+    Linkedin,
+    Phone,
+    Mail,
+    MapPin,
+    ArrowRight
 } from 'lucide-react';
-import PageHeader from '@/component/PageHeader';
+
+const doctorsData = [
+    {
+        name: "Dr. Zain Khan",
+        role: "Medical Nutritionist",
+        rating: "4.5 (0)",
+        image: "https://images.unsplash.com/photo-1537368910025-700350fe46c7?q=80&w=400&auto=format&fit=crop",
+        tags: ["PCOS", "Type 2 Diabetes", "Gut Health"]
+    },
+    {
+        name: "Dr. Ayesha Siddiqui",
+        role: "Senior Dietitian",
+        rating: "4.7 (8)",
+        image: "https://images.unsplash.com/photo-1559839734-2b71f1536701?q=80&w=400&auto=format&fit=crop",
+        tags: ["Thyroid", "Weight Management", "IBS"]
+    },
+    {
+        name: "Dr. Hamza Raza",
+        role: "Clinical Nutritionist",
+        rating: "5.5 (0)",
+        image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?q=80&w=400&auto=format&fit=crop",
+        tags: ["Fertility", "Hormonal Balance", "Pediatrics"]
+    },
+    {
+        name: "Dr. Sara Ali",
+        role: "Wellness Coach & Dietitian",
+        rating: "4.5 (8)",
+        image: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?q=80&w=400&auto=format&fit=crop",
+        tags: ["Autoimmune", "Celiac", "Natural Healing"]
+    },
+    {
+        name: "Dr. Osman Farooq",
+        role: "Integrative Nutritionist",
+        rating: "4.8 (5)",
+        image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=400&auto=format&fit=crop",
+        tags: ["Stress Eating", "Cardio-Metabolic", "Functional Medicine"]
+    },
+    {
+        name: "Dr. Maria Noor",
+        role: "Certified Dietitian",
+        rating: "4.5 (4)",
+        image: "https://images.unsplash.com/photo-1651008376811-b90baee60c1f?q=80&w=400&auto=format&fit=crop",
+        tags: ["PCOS Management", "Pregnancy Nutrition", "Geriatrics"]
+    },
+    {
+        name: "Dr. Khalid Mehmood",
+        role: "Nutritional Therapist",
+        rating: "4.5 (0)",
+        image: "https://images.unsplash.com/photo-1582750433449-64c6fe57f927?q=80&w=400&auto=format&fit=crop",
+        tags: ["Allergies", "Skin Conditions", "Energy Levels"]
+    },
+    {
+        name: "Dr. Noreen Javed",
+        role: "Specialized Nutritionist",
+        rating: "4.5 (8)",
+        image: "https://images.unsplash.com/photo-1638202993928-7267aad84c3e?q=80&w=400&auto=format&fit=crop",
+        tags: ["Hashimoto's", "Gut Detox", "Diabetes Support"]
+    },
+    {
+        name: "Dr. Bilal Ahmed",
+        role: "Medical Dietitian",
+        rating: "4.5 (8)",
+        image: "https://images.unsplash.com/photo-1584467541268-b040f83be3fd?q=80&w=400&auto=format&fit=crop",
+        tags: ["Digestive Disorders", "Thyroid Health", "Holistic Care"]
+    }
+];
 
 export default function SpecialDietPage() {
+    const [searchTerm, setSearchTerm] = useState("");
     const [doctors, setDoctors] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [searchTerm, setSearchTerm] = useState("");
 
-    useEffect(() => {
-        // Fetch users from local storage and filter for verified doctors
-        const fetchVerifiedDoctors = () => {
-            const users = JSON.parse(localStorage.getItem("users") || "[]");
-            const verifiedDoctors = users.filter(u => u.role === "doctor" && u.isVerified);
-            setDoctors(verifiedDoctors);
-            setLoading(false);
+    React.useEffect(() => {
+        const fetchDoctors = async () => {
+            try {
+                const res = await fetch('/api/doctors');
+                const result = await res.json();
+                if (result.success) {
+                    // Only show approved doctors if such field exists, or all for now
+                    setDoctors(result.data || []);
+                }
+            } catch (err) {
+                console.error("Failed to fetch doctors:", err);
+            } finally {
+                setLoading(false);
+            }
         };
-        fetchVerifiedDoctors();
+        fetchDoctors();
     }, []);
 
-    const filteredDoctors = doctors.filter(doc =>
-        doc.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        doc.specialization?.toLowerCase().includes(searchTerm.toLowerCase())
+    const filteredDoctors = (doctors.length > 0 ? doctors : doctorsData).filter(d =>
+        d.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        (d.role || d.specialization || "").toLowerCase().includes(searchTerm.toLowerCase()) ||
+        (d.tags && d.tags.some(t => t.toLowerCase().includes(searchTerm.toLowerCase())))
     );
 
     return (
-        <div className="min-h-screen bg-[#FDFCF8] font-sans selection:bg-[#22aa4f]/20">
-            <PageHeader
-                title="Specialized Diet Plans"
-                description="Verified experts se personalized nutrition aur health guidance hasil karein."
-                backgroundImage="/header.jpg"
-            />
-
-            {/* Hero Section */}
-            <section className="relative px-6 py-20 overflow-hidden">
-                <div className="absolute top-1/2 left-0 w-full h-[500px] bg-[radial-gradient(ellipse_at_center,#22aa4f10,transparent_70%)] -translate-y-1/2 pointer-events-none" />
-                <div className="max-w-7xl mx-auto">
-                    <div className="grid lg:grid-cols-2 gap-16 items-center">
-                        <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }}>
-                            <div className="inline-flex items-center gap-2 bg-[#22aa4f]/10 px-4 py-2 rounded-full text-[#22aa4f] font-bold text-xs uppercase tracking-widest mb-6 border border-[#22aa4f]/20">
-                                <HeartPulse size={16} /> Premium Nutrition
-                            </div>
-                            <h1 className="text-4xl md:text-6xl font-black text-[#21492f] leading-[1.1] mb-6">
-                                Expert dietary guidance for <span className="text-[#22aa4f]">special conditions.</span>
-                            </h1>
-                            <p className="text-gray-600 text-lg md:text-xl font-medium mb-10 leading-relaxed">
-                                Connect with verified medical nutritionists who understand your unique health requirements and can create targeted, organic meal plans to support your healing journey.
-                            </p>
-
-                            <div className="bg-white p-4 rounded-[24px] shadow-[0_20px_50px_rgba(33,73,47,0.08)] border border-stone-100 flex items-center w-full max-w-md relative z-20">
-                                <Search className="text-gray-400 ml-4 shrink-0" size={24} />
-                                <input
-                                    type="text"
-                                    placeholder="Search by doctor name or specialty..."
-                                    value={searchTerm}
-                                    onChange={(e) => setSearchTerm(e.target.value)}
-                                    className="w-full bg-transparent border-none px-4 py-3 focus:outline-none focus:ring-0 font-bold text-gray-700 placeholder:text-gray-400"
-                                />
-                                <button className="bg-[#21492f] text-white h-12 px-6 rounded-xl font-bold flex items-center justify-center hover:bg-[#22aa4f] transition-colors shrink-0">
-                                    Search
-                                </button>
-                            </div>
-                        </motion.div>
-
-                        <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6, delay: 0.2 }} className="relative h-[500px] rounded-[40px] overflow-hidden shadow-2xl">
-                            <Image
-                                src="/header.jpg"
-                                alt="Healthy Organic Food"
-                                fill
-                                className="object-cover"
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-[#21492f]/80 to-transparent" />
-                            <div className="absolute bottom-10 left-10 right-10 flex gap-4">
-                                <div className="bg-white/20 backdrop-blur-md p-4 rounded-2xl border border-white/20 text-white flex-1">
-                                    <h4 className="font-bold text-lg">PCOS Management</h4>
-                                    <p className="text-white/70 text-xs">Hormonal balance diet</p>
-                                </div>
-                                <div className="bg-white/20 backdrop-blur-md p-4 rounded-2xl border border-white/20 text-white flex-1 hidden sm:block">
-                                    <h4 className="font-bold text-lg">Thyroid Support</h4>
-                                    <p className="text-white/70 text-xs">Metabolism boosting</p>
-                                </div>
-                            </div>
-                        </motion.div>
-                    </div>
-                </div>
-            </section>
-
-            {/* Network Section */}
-            <section className="max-w-7xl mx-auto px-6 py-20">
-                <div className="flex justify-between items-end mb-12">
-                    <div>
-                        <h2 className="text-3xl md:text-4xl font-black text-[#21492f] mb-4">Our Verified Specialists</h2>
-                        <p className="text-gray-500 font-medium">Aap ki sehat hamari awaleen tarjih hai.</p>
-                    </div>
+        <div className="min-h-screen bg-[#FDFCF8] font-sans">
+            {/* Header / Hero Section */}
+            <section className="relative h-[450px] flex items-center justify-center overflow-hidden">
+                <div className="absolute inset-0 z-0 bg-[#21492F]">
+                    <img
+                        src="https://images.unsplash.com/photo-1587049352846-4a222e784d38?q=80&w=2000&auto=format&fit=crop"
+                        alt="Honeycomb background"
+                        className="w-full h-full object-cover opacity-60"
+                        onError={(e) => { e.target.src = '/header.jpg'; }}
+                    />
+                    <div className="absolute inset-0 bg-black/30"></div>
                 </div>
 
-                {loading ? (
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {[1, 2, 3].map(i => (
-                            <div key={i} className="h-[400px] bg-white rounded-[32px] animate-pulse border border-stone-100 shadow-sm"></div>
-                        ))}
-                    </div>
-                ) : filteredDoctors.length > 0 ? (
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {filteredDoctors.map((doc, idx) => (
-                            <motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: idx * 0.1 }}
-                                key={idx}
-                                className="bg-white rounded-[32px] p-8 border border-stone-100 shadow-[0_10px_40px_rgba(33,73,47,0.04)] hover:shadow-2xl hover:-translate-y-2 hover:border-[#22aa4f]/30 transition-all duration-300 group flex flex-col"
-                            >
-                                <div className="flex justify-between items-start mb-8">
-                                    <div className="relative size-20 rounded-2xl overflow-hidden bg-stone-50 border border-stone-100 shadow-inner">
-                                        {doc.profilePhoto ? (
-                                            <Image src={doc.profilePhoto} alt={doc.name} fill className="object-cover" />
-                                        ) : (
-                                            <div className="size-full flex items-center justify-center bg-gradient-to-br from-[#21492f] to-[#22aa4f] text-white text-3xl font-black">
-                                                {doc.name?.charAt(0)}
-                                            </div>
-                                        )}
-                                        <div className="absolute -bottom-1 -right-1 bg-white rounded-full p-1 z-10">
-                                            <div className="bg-[#22aa4f] text-white p-1 rounded-full shadow-sm">
-                                                <ShieldCheck size={12} />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="bg-amber-50 text-amber-600 px-3 py-1.5 rounded-full flex items-center gap-1 font-bold text-xs border border-amber-100">
-                                        <Star size={12} fill="currentColor" /> 4.9
-                                    </div>
-                                </div>
+                <div className="relative z-10 text-center text-white px-4 max-w-4xl">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8 }}
+                    >
+                        <h1 className="text-[2.5rem] md:text-5xl lg:text-6xl font-serif font-black mb-6 tracking-tight">
+                            Specialized Diet Plans
+                        </h1>
+                        <p className="text-white/90 text-lg md:text-xl font-medium max-w-2xl mx-auto leading-relaxed mb-10">
+                            Verified experts to personalized nutrition our health guidance hasil karein.
+                        </p>
 
-                                <div className="mb-6 flex-grow">
-                                    <h3 className="text-2xl font-black text-[#21492f] mb-1 group-hover:text-[#22aa4f] transition-colors">Dr. {doc.name}</h3>
-                                    <p className="text-[#a6763f] text-sm font-bold uppercase tracking-wider mb-4">{doc.specialization || 'Clinical Nutritionist'}</p>
-
-                                    <div className="space-y-3">
-                                        <div className="flex items-center gap-3 text-stone-500 font-medium text-sm">
-                                            <div className="size-8 rounded-full bg-stone-50 flex items-center justify-center text-stone-400">
-                                                <Award size={16} />
-                                            </div>
-                                            Verified Expert
-                                        </div>
-                                        <div className="flex items-center gap-3 text-stone-500 font-medium text-sm">
-                                            <div className="size-8 rounded-full bg-stone-50 flex items-center justify-center text-stone-400">
-                                                <Clock size={16} />
-                                            </div>
-                                            Available Mon-Sat
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <Link
-                                    href={`/book-appointment?doctor=${encodeURIComponent(doc.name)}`}
-                                    className="w-full bg-[#f8faf9] text-[#21492f] hover:bg-[#21492f] hover:text-white py-4 rounded-2xl font-black text-sm flex items-center justify-center gap-2 transition-all border border-[#21492f]/10 group-hover:border-transparent mt-auto"
-                                >
-                                    Book Consultation
-                                    <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                                </Link>
-                            </motion.div>
-                        ))}
-                    </div>
-                ) : (
-                    <div className="text-center py-20 bg-white rounded-[40px] border border-stone-100 shadow-sm">
-                        <div className="size-24 bg-stone-50 rounded-full flex items-center justify-center mx-auto mb-6">
-                            <Stethoscope size={48} className="text-stone-300" />
+                        <div className="inline-flex items-center gap-2 bg-white px-6 py-2.5 rounded-full text-[11px] font-black text-[#142A1D] shadow-xl uppercase tracking-widest">
+                            <Link href="/" className="hover:text-[#22AA4F] transition-colors flex items-center gap-1.5 focus:outline-none">
+                                <Home size={14} className="mb-0.5" /> Home
+                            </Link>
+                            <ChevronRight size={14} className="text-gray-300" />
+                            <span className="text-gray-400">Specialized Diet Plans</span>
                         </div>
-                        <h3 className="text-2xl font-black text-[#21492f] mb-3">No verified doctors found</h3>
-                        <p className="text-gray-500 font-medium mb-8 max-w-md mx-auto">Try adjusting your search terms or verify doctors from the admin panel.</p>
-                        <button
-                            onClick={() => setSearchTerm("")}
-                            className="bg-[#22aa4f] text-white font-bold px-8 py-3 rounded-xl shadow-lg hover:bg-[#21492f] transition-all"
-                        >
-                            Reset Search
-                        </button>
-                    </div>
-                )}
+                    </motion.div>
+                </div>
             </section>
 
-            {/* How It Works Section */}
-            <section className="bg-gradient-to-br from-[#21492f] to-[#16301e] py-24 px-6 text-white relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#22aa4f] rounded-full blur-[120px] opacity-20" />
-                <div className="max-w-7xl mx-auto relative z-10">
-                    <div className="text-center mb-16 max-w-2xl mx-auto">
-                        <h2 className="text-4xl md:text-5xl font-black mb-6">The Journey to Healing</h2>
-                        <p className="text-white/70 text-lg font-medium leading-relaxed">
-                            A seamless process to consult with experts and get a diet plan tailored exactly to your body's needs.
+            {/* Verified Specialists Header Section */}
+            <section className="max-w-[1400px] mx-auto px-6 pt-24 pb-12">
+                <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
+                    <div>
+                        <h2 className="text-[2.5rem] font-serif font-black text-[#21492F] mb-4">
+                            Our Verified Specialists
+                        </h2>
+                        <p className="text-gray-500 font-bold text-lg">
+                            Browse our network of certified nutritionists and select the right fit.
                         </p>
                     </div>
 
-                    <div className="grid md:grid-cols-3 gap-8 relative">
-                        {/* Connecting Line */}
-                        <div className="hidden md:block absolute top-[110px] left-[15%] right-[15%] h-[2px] bg-white/10" />
-
-                        {[
-                            { step: "01", icon: Search, title: "Choose Specialist", desc: "Browse our network of verified nutritionists and select the right fit." },
-                            { step: "02", icon: Calendar, title: "Book a Session", desc: "Schedule a flexible online consultation at your convenience." },
-                            { step: "03", icon: HeartPulse, title: "Get Your Plan", desc: "Receive your customized, organic diet plan and begin healing." }
-                        ].map((s, i) => (
-                            <div key={i} className="relative z-10 flex flex-col items-center text-center group">
-                                <div className="size-24 rounded-[32px] bg-white/10 backdrop-blur-xl border border-white/20 flex flex-col items-center justify-center mb-8 shadow-2xl group-hover:-translate-y-2 group-hover:bg-[#22aa4f]/20 transition-all duration-300">
-                                    <s.icon size={32} className="text-[#22aa4f] mb-1" />
-                                    <span className="text-xs font-black text-white/50">{s.step}</span>
-                                </div>
-                                <h4 className="text-2xl font-black mb-4">{s.title}</h4>
-                                <p className="text-white/60 font-medium leading-relaxed">{s.desc}</p>
-                            </div>
-                        ))}
+                    <div className="relative flex-1 max-w-md w-full">
+                        <div className="flex items-center bg-white rounded-full shadow-[0_10px_40px_rgba(33,73,47,0.06)] border border-[#E8EEE9] p-1.5">
+                            <Search className="text-gray-400 ml-4" size={20} />
+                            <input
+                                type="text"
+                                placeholder="Search by doctor name or spec..."
+                                className="w-full bg-transparent border-none px-4 py-2 focus:outline-none focus:ring-0 text-gray-700 font-bold text-sm placeholder:text-gray-300"
+                                value={searchTerm}
+                                onChange={(e) => setSearchTerm(e.target.value)}
+                            />
+                            <button className="bg-[#21492F] text-white px-8 py-2.5 rounded-full font-black text-xs uppercase tracking-widest hover:bg-[#22AA4F] transition-all">
+                                Search
+                            </button>
+                        </div>
                     </div>
                 </div>
+
+                {/* Grid of Doctors */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+                    {loading ? (
+                        <div className="col-span-full py-20 flex justify-center">
+                            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#21492F]"></div>
+                        </div>
+                    ) : filteredDoctors.length > 0 ? (
+                        filteredDoctors.map((doc, idx) => (
+                            <motion.div
+                                key={doc._id || idx}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: (idx % 3) * 0.1 }}
+                                className="bg-white rounded-[32px] overflow-hidden border border-[#E8EEE9] shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 group"
+                            >
+                                <div className="relative aspect-[4/3] bg-gray-100 overflow-hidden">
+                                    <img
+                                        src={doc.profilePhoto || doc.image || "https://images.unsplash.com/photo-1537368910025-700350fe46c7?q=80&w=400&auto=format&fit=crop"}
+                                        alt={doc.name}
+                                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                        onError={(e) => { e.target.src = '/placeholder.png'; }}
+                                    />
+                                    <div className="absolute top-4 right-4 bg-white/95 backdrop-blur-md px-3 py-1.5 rounded-full flex items-center gap-1 shadow-sm border border-black/5">
+                                        <Star size={12} className="text-[#FBC02D] fill-[#FBC02D]" />
+                                        <span className="text-[10px] font-black text-[#21492F]">{doc.rating || "4.5 (0)"}</span>
+                                    </div>
+                                </div>
+
+                                <div className="p-8 text-center">
+                                    <h3 className="text-2xl font-serif font-black text-[#21492F] mb-1 leading-tight group-hover:text-[#22AA4F] transition-colors">Dr. {doc.name}</h3>
+                                    <p className="text-gray-500 font-bold text-[13px] mb-6">{doc.role || doc.specialization || "Clinical Nutritionist"}</p>
+
+                                    <div className="flex flex-wrap justify-center gap-2 mb-8 h-12 overflow-hidden">
+                                        {(doc.tags || ["Verified", "Specialist"]).map((tag, tIdx) => (
+                                            <span
+                                                key={tIdx}
+                                                className="bg-[#21492F] text-white text-[9px] font-black px-3 py-1.5 rounded-full uppercase tracking-tighter"
+                                            >
+                                                {tag}
+                                            </span>
+                                        ))}
+                                    </div>
+
+                                    <Link
+                                        href={`/book-appointment?doctor=${encodeURIComponent(doc.name)}`}
+                                        className="block w-full bg-[#21492F] text-white py-4 rounded-xl font-black text-xs uppercase tracking-widest shadow-lg shadow-[#21492F]/20 hover:bg-[#22AA4F] hover:shadow-[#22AA4F]/30 transition-all active:scale-[0.98]"
+                                    >
+                                        Book Appointment
+                                    </Link>
+                                </div>
+                            </motion.div>
+                        ))
+                    ) : (
+                        <div className="col-span-full py-20 text-center bg-gray-50 rounded-[32px] border-2 border-dashed border-gray-200">
+                            <h3 className="text-xl font-black text-[#21492F] opacity-40 uppercase tracking-widest">No Specialists Found</h3>
+                            <p className="text-sm font-bold text-gray-400 mt-2 italic">New registered specialists will appear here after approval.</p>
+                        </div>
+                    )}
+                </div>
             </section>
+
+            {/* The Journey to Healing Section */}
+            <section className="bg-[#142A1D] py-24 mt-20 text-center relative overflow-hidden">
+                {/* Decorative bg element */}
+                <div className="absolute bottom-0 right-0 opacity-10 translate-y-1/2 translate-x-1/4">
+                    <div className="w-[600px] h-[600px] bg-[#22AA4F] rounded-full blur-[120px]"></div>
+                </div>
+
+                <div className="container mx-auto px-6 relative z-10">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                    >
+                        <h2 className="text-4xl md:text-5xl font-serif font-black text-white mb-6">
+                            The Journey to <span className="text-[#CFD9C8]">Healing</span>
+                        </h2>
+                        <p className="text-white/70 text-lg font-medium max-w-2xl mx-auto leading-relaxed mb-12">
+                            A seamless process to consult with experts and get a diet plan tailored exactly to your body's needs.
+                        </p>
+                    </motion.div>
+                </div>
+            </section>
+
+            {/* Footer Section (Matching the image) */}
+            <footer className="bg-[#F8FAF8] pt-24 pb-12 border-t border-gray-100">
+                <div className="max-w-[1400px] mx-auto px-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 mb-20">
+                        {/* Logo & About */}
+                        <div className="lg:col-span-4">
+                            <div className="flex items-center gap-2 mb-8 group cursor-pointer">
+                                <div className="bg-[#21492F] p-2.5 rounded-2xl group-hover:rotate-12 transition-transform">
+                                    <div className="bg-white/20 w-8 h-8 rounded-lg flex items-center justify-center">
+                                        <div className="w-4 h-4 rounded-full bg-white animate-pulse"></div>
+                                    </div>
+                                </div>
+                                <span className="text-2xl font-serif font-black text-[#142A1D] tracking-tight">IlajbilGhiza</span>
+                            </div>
+                            <p className="text-gray-500 font-bold text-sm leading-relaxed mb-10 max-w-sm">
+                                Chics Go Bijl, Zipilogi Richter. Determinene analogouesed our the phrasoe plenives are overfitlate to higiedocomya the digneded metonul hotover Plaugila ao Giugle this doe.
+                            </p>
+                            <div className="flex gap-4">
+                                {[Facebook, Twitter, Instagram, Linkedin].map((Icon, i) => (
+                                    <Link key={i} href="#" className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:bg-[#21492F] hover:text-white hover:border-[#21492F] transition-all">
+                                        <Icon size={18} />
+                                    </Link>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* Quick Links Group 1 */}
+                        <div className="lg:col-span-2">
+                            <h4 className="text-[11px] font-black uppercase tracking-[0.2em] text-[#21492F] mb-10">Medical Center</h4>
+                            <ul className="space-y-4">
+                                {["Organic Foods", "All Diet Plans", "Medical Portal", "Cardiologist Insights", "Health Blogs", "Contact Us"].map((link, i) => (
+                                    <li key={i}>
+                                        <Link href="#" className="text-gray-500 font-bold text-sm hover:text-[#21492F] transition-colors">{link}</Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+
+                        {/* Contact Support */}
+                        <div className="lg:col-span-4">
+                            <h4 className="text-[11px] font-black uppercase tracking-[0.2em] text-[#21492F] mb-10">Contact Support</h4>
+                            <div className="space-y-8">
+                                <div className="flex gap-4">
+                                    <div className="bg-[#21492F]/5 w-10 h-10 rounded-full flex items-center justify-center text-[#21492F] shrink-0">
+                                        <MapPin size={18} />
+                                    </div>
+                                    <div>
+                                        <p className="text-[10px] font-black uppercase text-gray-400 mb-1">Medical Address</p>
+                                        <p className="text-gray-500 font-bold text-sm leading-tight">Maki Besiooed, Gathorg, Calenn, Patrion</p>
+                                    </div>
+                                </div>
+                                <div className="flex gap-4">
+                                    <div className="bg-[#21492F]/5 w-10 h-10 rounded-full flex items-center justify-center text-[#21492F] shrink-0">
+                                        <Phone size={18} />
+                                    </div>
+                                    <div>
+                                        <p className="text-[10px] font-black uppercase text-gray-400 mb-1">Phone Number</p>
+                                        <p className="text-[#21492F] font-black text-sm tracking-widest">+12 Support 1177</p>
+                                    </div>
+                                </div>
+                                <div className="flex gap-4">
+                                    <div className="bg-[#21492F]/5 w-10 h-10 rounded-full flex items-center justify-center text-[#21492F] shrink-0">
+                                        <Mail size={18} />
+                                    </div>
+                                    <div>
+                                        <p className="text-[10px] font-black uppercase text-gray-400 mb-1">Email Support</p>
+                                        <p className="text-gray-500 font-bold text-sm">info@ilajbilghiza.com</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Decorative Star */}
+                        <div className="lg:col-span-2 flex items-end justify-end opacity-20">
+                            <svg width="80" height="80" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2L14.4 9.6H22L15.8 14.1L18.2 21.7L12 17.2L5.8 21.7L8.2 14.1L2 9.6H9.6L12 2Z" fill="#142A1D" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    {/* Bottom Bar */}
+                    <div className="pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-4">
+                        <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest">
+                            © 2024 IlajbilGhiza. All Rights Reserved.
+                        </p>
+                        <div className="flex gap-8">
+                            {["Privacy Policy", "Terms of Service"].map((text, i) => (
+                                <Link key={i} href="#" className="text-[10px] font-black text-[#21492F] uppercase tracking-widest hover:underline">
+                                    {text}
+                                </Link>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </footer>
         </div>
     );
 }
