@@ -71,10 +71,10 @@ export default function Header() {
           </aside>
 
           {/* HERO SECTION */}
-          <section className="flex-1 relative bg-[#f8faf9] rounded-[3rem] overflow-hidden min-h-[450px] md:min-h-[550px] shadow-sm border border-gray-100">
+          <section className="flex-1 relative bg-[#f8faf9] rounded-[2rem] md:rounded-[3rem] overflow-hidden min-h-[400px] md:min-h-[550px] shadow-sm border border-gray-100">
 
             {/* INNER CONTENT (EXTRA COMPACT) */}
-            <div className="relative z-10 px-3 md:px-5 py-4 md:py-6 max-w-xl h-full flex flex-col justify-center">
+            <div className="relative z-10 px-4 md:px-10 py-8 md:py-12 max-w-xl h-full flex flex-col justify-center">
 
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
@@ -83,39 +83,39 @@ export default function Header() {
               >
 
                 {/* Badge */}
-                <div className="inline-flex items-center gap-2 bg-[#22aa4f]/10 px-3 py-1 rounded-full mb-2">
+                <div className="inline-flex items-center gap-2 bg-[#22aa4f]/10 px-3 py-1 rounded-full mb-3">
 
                   <span className="w-2 h-2 rounded-full bg-[#22aa4f] animate-pulse"></span>
 
-                  <p className="text-[#22aa4f] font-black text-[9px] uppercase tracking-wider">
+                  <p className="text-[#22aa4f] font-black text-[10px] uppercase tracking-wider">
                     {slides[slide].subtitle}
                   </p>
 
                 </div>
 
                 {/* Title */}
-                <h1 className="text-3xl md:text-5xl font-black text-[#21492f] leading-tight mb-2">
+                <h1 className="text-2xl sm:text-3xl md:text-5xl font-black text-[#21492f] leading-[1.2] md:leading-tight mb-4">
                   {slides[slide].title}
                 </h1>
 
                 {/* Description */}
-                <p className="text-gray-500 text-base md:text-lg font-medium mb-3 leading-relaxed">
+                <p className="text-gray-500 text-sm md:text-lg font-medium mb-6 leading-relaxed max-w-md">
                   {slides[slide].description}
                 </p>
 
                 {/* Buttons */}
-                <div className="flex flex-col sm:flex-row gap-2">
+                <div className="flex flex-col sm:flex-row gap-3">
 
                   <Link
                     href={slides[slide].cta1Href}
-                    className="bg-[#22aa4f] text-white px-5 py-2 rounded-xl font-black text-[11px] uppercase tracking-widest hover:bg-[#21492f] transition-all text-center"
+                    className="bg-[#22aa4f] text-white px-6 py-3 rounded-xl font-black text-[11px] uppercase tracking-widest hover:bg-[#21492f] hover:shadow-lg hover:shadow-green-500/20 transition-all text-center"
                   >
                     {slides[slide].cta1}
                   </Link>
 
                   <Link
                     href={slides[slide].cta2Href}
-                    className="bg-white text-[#21492f] border border-[#21492f]/10 px-5 py-2 rounded-xl font-black text-[11px] uppercase tracking-widest hover:border-[#22aa4f] hover:text-[#22aa4f] transition-all text-center"
+                    className="bg-white text-[#21492f] border border-[#21492f]/10 px-6 py-3 rounded-xl font-black text-[11px] uppercase tracking-widest hover:border-[#22aa4f] hover:text-[#22aa4f] hover:shadow-lg transition-all text-center"
                   >
                     {slides[slide].cta2}
                   </Link>

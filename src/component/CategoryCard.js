@@ -9,7 +9,7 @@ export default function CategoryCard({ title, subtitle, bg, image, href }) {
 
     return (
         <div
-            className={`rounded-[2rem] flex items-center justify-between p-8 hover:-translate-y-2 transition-all duration-500 shadow-xl shadow-gray-200/50 hover:shadow-2xl hover:shadow-green-900/10 border border-gray-100/50 overflow-hidden relative group`}
+            className={`rounded-[1.5rem] md:rounded-[2rem] flex items-center justify-between p-4 sm:p-6 md:p-8 hover:-translate-y-2 transition-all duration-500 shadow-xl shadow-gray-200/50 hover:shadow-2xl hover:shadow-green-900/10 border border-gray-100/50 overflow-hidden relative group`}
             style={{ backgroundColor: bg }}
         >
             <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-1000"></div>

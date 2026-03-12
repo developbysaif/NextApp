@@ -148,8 +148,8 @@ export default function HomePage() {
       <Header />
 
       {/* Categories Grid Section */}
-      <section className="px-4 py-6 mx-auto scroll-mt-20">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+      <section className="px-4 py-8 mx-auto scroll-mt-20 max-w-7xl">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-6">
           {categoriesData.map((cat, idx) => (
             <CategoryCard key={idx} {...cat} />
           ))}
@@ -157,26 +157,25 @@ export default function HomePage() {
       </section>
 
       {/* Featured Products */}
-      <section className="bg-[#f8faf9] py-4 px-4 best-seller-section">
-        <div className="max-w-5xl mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-center mb-4">
+      <section className="bg-[#f8faf9] py-12 px-4 best-seller-section">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
             <div className="text-center md:text-left">
-              <h2 className="text-2xl md:text-3xl font-black text-[#21492f]">
+              <h2 className="text-3xl md:text-5xl font-black text-[#21492f] leading-tight">
                 Nature's Finest Harvest
               </h2>
-              <p className="text-gray-500 mt-1">
+              <p className="text-gray-500 mt-2 text-base md:text-lg">
                 Handpicked organic goodness for your family.
               </p>
             </div>
-            <Link href="/products" className="hidden md:flex items-center gap-2 text-[#22aa4f] font-bold text-sm">
+            <Link href="/products" className="hidden md:flex items-center gap-2 text-[#22aa4f] font-extrabold text-sm uppercase tracking-widest hover:translate-x-1 transition-transform">
               Explore all harvest <ArrowRight size={16} />
             </Link>
           </div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-8">
             {products.map((product, index) => (
               <ProductItem key={index} product={product} index={index} />
-
             ))}
           </div>
 

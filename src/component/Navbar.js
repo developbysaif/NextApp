@@ -108,12 +108,12 @@ export default function Navbar() {
             {/* ───────── MIDDLE BAR ───────── */}
             <div className={cn(
                 "w-full bg-white transition-all duration-500 border-b border-stone-100 overflow-hidden",
-                isScrolled ? "max-h-0 md:max-h-0 opacity-0 pointer-events-none" : "max-h-40 opacity-100 py-3"
+                isScrolled ? "max-h-0 md:max-h-0 opacity-0 pointer-events-none" : "max-h-40 opacity-100 py-2 md:py-3"
             )}>
-                <div className="max-w-5xl mx-auto px-4 flex items-center justify-between gap-6">
+                <div className="max-w-5xl mx-auto px-4 flex items-center justify-between gap-4 md:gap-6">
                     {/* Logo */}
                     <Link href="/" className="flex items-center group shrink-0">
-                        <div className="relative h-16 w-40 hover:scale-105 transition-all duration-300">
+                        <div className="relative h-10 w-32 md:h-16 md:w-40 hover:scale-105 transition-all duration-300">
                             <Image src="/desk-top.png" alt="Logo" fill className="object-contain" priority />
                         </div>
                     </Link>
@@ -133,18 +133,18 @@ export default function Navbar() {
                     </div>
 
                     {/* Icons */}
-                    <div className="flex items-center gap-2">
-                        <Link href={user ? (user.role === 'admin' ? "/admin" : "/dashboard") : "/login"} className="size-10 flex items-center justify-center rounded-xl bg-stone-50 text-stone-600 border border-stone-100 group">
-                            {user ? <span className="text-xs font-black">{user.name?.charAt(0)}</span> : <User className="w-4 h-4" />}
+                    <div className="flex items-center gap-1.5 md:gap-2">
+                        <Link href={user ? (user.role === 'admin' ? "/admin" : "/dashboard") : "/login"} className="size-8 md:size-10 flex items-center justify-center rounded-lg md:rounded-xl bg-stone-50 text-stone-600 border border-stone-100 group">
+                            {user ? <span className="text-[10px] md:text-xs font-black">{user.name?.charAt(0)}</span> : <User className="w-3.5 h-3.5 md:w-4 md:h-4" />}
                         </Link>
-                        <Link href="/cart" className="size-10 flex items-center justify-center rounded-xl bg-stone-50 text-stone-600 border border-stone-100 relative group">
-                            <ShoppingCart className="w-4 h-4" />
-                            <span className="absolute -top-1 -right-1 bg-[#21492f] text-white text-[9px] font-black rounded-full min-w-4 h-4 flex items-center justify-center border-2 border-white">
+                        <Link href="/cart" className="size-8 md:size-10 flex items-center justify-center rounded-lg md:rounded-xl bg-stone-50 text-stone-600 border border-stone-100 relative group">
+                            <ShoppingCart className="w-3.5 h-3.5 md:w-4 md:h-4" />
+                            <span className="absolute -top-1 -right-1 bg-[#21492f] text-white text-[8px] md:text-[9px] font-black rounded-full min-w-3.5 md:min-w-4 h-3.5 md:h-4 flex items-center justify-center border-2 border-white">
                                 {getCartCount()}
                             </span>
                         </Link>
-                        <button onClick={() => setOpen(!open)} className="md:hidden size-10 flex items-center justify-center rounded-xl bg-stone-50 text-stone-600 border border-stone-100 transition-all">
-                            {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+                        <button onClick={() => setOpen(!open)} className="md:hidden size-8 md:size-10 flex items-center justify-center rounded-lg md:rounded-xl bg-stone-50 text-stone-600 border border-stone-100 transition-all">
+                            {open ? <X className="w-4 h-4 md:w-5 md:h-5" /> : <Menu className="w-4 h-4 md:w-5 md:h-5" />}
                         </button>
                     </div>
                 </div>
