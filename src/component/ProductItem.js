@@ -7,6 +7,10 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Heart, ShoppingCart } from 'lucide-react';
 import { motion } from 'framer-motion';
+<<<<<<< HEAD
+=======
+import { useAuth } from '@/context/AuthContext';
+>>>>>>> 87b965e (initial commit)
 import './productcard.css';
 
 const LeafDecoration = () => (
@@ -39,6 +43,10 @@ const LeafDecoration = () => (
 
 const ProductItem = ({ product, index = 0 }) => {
     const { addToCart } = useCart();
+<<<<<<< HEAD
+=======
+    const { user } = useAuth();
+>>>>>>> 87b965e (initial commit)
     const router = useRouter();
     const { isInWishlist, addToWishlist, removeFromWishlist } = useWishlist();
     const isWishlisted = isInWishlist(product._id || product.id);
@@ -46,6 +54,16 @@ const ProductItem = ({ product, index = 0 }) => {
     const handleAddToCart = (e) => {
         e.preventDefault();
         e.stopPropagation();
+<<<<<<< HEAD
+=======
+
+        if (!user) {
+            alert("Please sign up before buying any thing");
+            router.push('/signup');
+            return;
+        }
+
+>>>>>>> 87b965e (initial commit)
         addToCart(product);
         router.push('/cart');
     };
@@ -53,6 +71,16 @@ const ProductItem = ({ product, index = 0 }) => {
     const handleWishlist = (e) => {
         e.preventDefault();
         e.stopPropagation();
+<<<<<<< HEAD
+=======
+
+        if (!user) {
+            alert("Please sign up before adding to wishlist");
+            router.push('/signup');
+            return;
+        }
+
+>>>>>>> 87b965e (initial commit)
         if (isWishlisted) {
             removeFromWishlist(product._id || product.id);
         } else {

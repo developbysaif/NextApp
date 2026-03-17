@@ -122,13 +122,29 @@ export default function CartPage() {
                                 </div>
                             </div>
 
+<<<<<<< HEAD
                             <Link
                                 href="/checkout"
+=======
+                            <button
+                                onClick={(e) => {
+                                    if (!localStorage.getItem("currentUser")) {
+                                        alert("Please sign up before buying any thing");
+                                        window.location.href = "/signup";
+                                    } else {
+                                        window.location.href = "/checkout";
+                                    }
+                                }}
+>>>>>>> 87b965e (initial commit)
                                 className="w-full bg-green-600 text-white py-5 rounded-2xl hover:bg-gray-900 transition-all font-black uppercase tracking-widest shadow-xl shadow-green-900/10 flex items-center justify-center gap-3 group"
                             >
                                 Proceed to Checkout
                                 <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+<<<<<<< HEAD
                             </Link>
+=======
+                            </button>
+>>>>>>> 87b965e (initial commit)
 
                             <div className="mt-8">
                                 <p className="text-center text-[10px] text-gray-400 font-black uppercase tracking-widest mb-4">Supported Payments</p>

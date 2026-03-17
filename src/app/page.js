@@ -119,9 +119,13 @@ export default function HomePage() {
   const [products, setProducts] = useState(initialProducts);
 
   useEffect(() => {
+<<<<<<< HEAD
     if (!loading && !user) {
       router.push('/signup');
     }
+=======
+    // No longer forcing redirect to signup on home page
+>>>>>>> 87b965e (initial commit)
   }, [user, loading, router]);
 
   if (loading) {
@@ -132,7 +136,13 @@ export default function HomePage() {
     );
   }
 
+<<<<<<< HEAD
   if (!user) return null;
+=======
+  // Allow rendering home page even if user is not logged in
+  // if (!user) return null;
+
+>>>>>>> 87b965e (initial commit)
 
   const categoriesData = [
     { title: "Organic Fruits", subtitle: "Enjoy", bg: "#a6763f", image: "/Fruits.png", href: "/grocery/category/vegetables-fruits" },
