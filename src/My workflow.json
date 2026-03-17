@@ -1,0 +1,311 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "health-assistant",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "587e208a-78e8-4648-8649-3cba2594ce84",
+      "name": "Receive Website Message",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        496,
+        -96
+      ],
+      "webhookId": "b2a5e160-c48e-4bca-a429-f76156a3d52c"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "id-1",
+              "name": "action_type",
+              "value": "={{ $json.body.action_type }}",
+              "type": "string"
+            },
+            {
+              "id": "id-2",
+              "name": "user_message",
+              "value": "={{ $json.body.message }}",
+              "type": "string"
+            },
+            {
+              "id": "id-3",
+              "name": "user_data",
+              "value": "={{ $json.body.user_data || {} }}",
+              "type": "object"
+            },
+            {
+              "id": "id-4",
+              "name": "session_id",
+              "value": "={{ $json.body.session_id || $json.headers['x-session-id'] || 'default' }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ea59bff9-607b-4503-888b-7240c3e80a05",
+      "name": "Workflow Configuration",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        768,
+        -96
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.action_type }}",
+                    "rightValue": "disease_food",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "disease_food"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.action_type }}",
+                    "rightValue": "diet_plan",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "diet_plan"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a95116c5-5094-4514-8543-ce5daf19c293",
+      "name": "Route by Action Type",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        992,
+        -96
+      ]
+    },
+    {
+      "parameters": {
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"response\": {\n      \"type\": \"string\",\n      \"description\": \"The main response to the user\"\n    },\n    \"needs_more_info\": {\n      \"type\": \"boolean\",\n      \"description\": \"Whether more information is needed\"\n    },\n    \"follow_up_questions\": {\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"string\"\n      },\n      \"description\": \"Questions to ask if more info needed\"\n    },\n    \"foods_to_avoid\": {\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"string\"\n      },\n      \"description\": \"Foods to avoid for disease_food requests\"\n    },\n    \"foods_to_include\": {\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"string\"\n      },\n      \"description\": \"Foods to include for disease_food requests\"\n    },\n    \"diet_plan\": {\n      \"type\": \"object\",\n      \"description\": \"Structured diet plan for diet_plan requests\"\n    },\n    \"disclaimer\": {\n      \"type\": \"string\",\n      \"description\": \"Mandatory health disclaimer\"\n    }\n  },\n  \"required\": [\"response\", \"needs_more_info\", \"disclaimer\"]\n}"
+      },
+      "id": "49100dc3-8419-460f-b729-81ade0e22b54",
+      "name": "JSON Response Parser",
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        1472,
+        128
+      ]
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "id",
+          "value": "gpt-4o"
+        },
+        "builtInTools": {},
+        "options": {
+          "temperature": 0.3
+        }
+      },
+      "id": "4342513b-d563-4807-9e73-b2bf8447c0a3",
+      "name": "OpenAI Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        1216,
+        128
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "ZARPS66iJl99Tm4J",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sessionKey": "={{ $('Workflow Configuration').item.json.session_id }}",
+        "contextWindowLength": 10
+      },
+      "id": "2772fccd-8700-4b90-b154-2cf41309a546",
+      "name": "Conversation Memory",
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        1344,
+        128
+      ]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Action Type: {{ $('Workflow Configuration').item.json.action_type }}\nUser Message: {{ $('Workflow Configuration').item.json.user_message }}\nUser Data: {{ JSON.stringify($('Workflow Configuration').item.json.user_data) }}",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "You are a professional health and nutrition assistant. Follow these STRICT RULES:\n\n**MANDATORY REQUIREMENTS:**\n1. ALWAYS include this disclaimer in the 'disclaimer' field: \"This information is for educational purposes only and is not a substitute for professional medical advice. Always consult with a qualified healthcare provider before making dietary changes, especially if you have existing health conditions.\"\n\n2. For action_type 'disease_food':\n   - Provide evidence-based foods to avoid and include for the specified disease\n   - Be specific and cite general nutritional principles\n   - If disease is unclear or you need more info (age, severity, medications, allergies), set needs_more_info=true and provide follow_up_questions\n   - Return foods_to_avoid and foods_to_include arrays\n\n3. For action_type 'diet_plan':\n   - Create a structured, personalized diet plan\n   - If missing critical info (age, weight, height, activity level, goals, dietary restrictions), set needs_more_info=true and ask follow_up_questions\n   - Return a diet_plan object with meal structure\n\n4. NEVER make assumptions about medical conditions\n5. NEVER provide specific medical diagnoses or treatment\n6. ALWAYS be conservative and evidence-based\n7. If information is insufficient, ALWAYS ask follow-up questions rather than guessing\n\nProvide your response in the structured JSON format specified."
+        }
+      },
+      "id": "725c4613-f96e-4144-a3e5-d38cec3936fb",
+      "name": "AI Agent - Process Request",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        1272,
+        -96
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json.output }}",
+        "options": {}
+      },
+      "id": "86d4dc9e-de06-4275-92a7-9fb0b58bd4e1",
+      "name": "Return JSON Response",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        1680,
+        -96
+      ]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Receive Website Message": {
+      "main": [
+        [
+          {
+            "node": "Workflow Configuration",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Workflow Configuration": {
+      "main": [
+        [
+          {
+            "node": "Route by Action Type",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Route by Action Type": {
+      "main": [
+        [
+          {
+            "node": "AI Agent - Process Request",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "AI Agent - Process Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "JSON Response Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "AI Agent - Process Request",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent - Process Request",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Conversation Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent - Process Request",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent - Process Request": {
+      "main": [
+        [
+          {
+            "node": "Return JSON Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "1764b443-34f8-4112-a5bc-e708850279bf",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "371bacd17e7a676f51eb278127ca573e7342a3c1cbe40db26f8e18b2363c1201"
+  },
+  "id": "gjZXEzxoc0YFpcRKPs1-8",
+  "tags": []
+}

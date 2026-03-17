@@ -1,0 +1,10 @@
+[
+    {
+        "id": "admin-123",
+        "name": "Admin",
+        "email": "admin@organic.com",
+        "password": "admin",
+        "role": "admin",
+        "createdAt": "2026-01-01T00:00:00.000Z"
+    }
+]

@@ -1,0 +1,1208 @@
+[
+  {
+    "id": 1,
+    "name": "Mango",
+    "description": "Aam ko “King of Fruits” kaha jata hai. Yeh aik meetha, juicy aur zyada pasand kiya janay wala fruit hai jo khas taur par garmiyon ke mausam mein milta hai. Aam na sirf zaiqay mein lazeez hota hai balkay sehat ke liye bhi bohat faidemand hai.\n\nAam Nutrition Value\n\nAam mein kai zaroori vitamins aur minerals maujood hotay hain:\n\nVitamin A – aankhon aur skin ke liye mufeed\n\nVitamin C – immune system ko strong karta hai\n\nVitamin B6 – dimagh aur nerves ke liye acha\n\nFiber – digestion ko behtar banata hai\n\nPotassium – heart health aur blood pressure ke liye acha\n\nNatural Sugar – body ko instant energy deta hai\n\nDiet Mein Aam Ka Istemaal\n\nAam ko balanced diet ka hissa banaya ja sakta hai:\n\nSubah breakfast mein aam ya mango shake\n\nWorkout ke baad energy ke liye\n\nWeight gain karne walon ke liye faidemand\n\nBachon aur kamzor logon ke liye nutritious fruit\n\nNote: Diabetes ke mareez aam limited quantity mein use karein.\n\nAam Khane Ke Faiday\n\nDigestion system ko strong karta hai\n\nImmunity ko boost karta hai\n\nEyesight ko behtar banata hai\n\nSkin ko healthy aur glowing banata hai\n\nBody ko energy provide karta hai\n\nWeight gain mein madad karta hai",
+    "shortDescription": "Aam ko “King of Fruits” kaha jata hai. Yeh aik meetha, juicy aur zyada pasand kiya janay wala fruit hai jo khas taur par garmiyon ke mausam mein milta hai. Aam na sirf zaiqay mein lazeez hota hai balkay sehat ke liye bhi bohat faidemand hai.\n\nAam Nutrition Value\n\nAam mein kai zaroori vitamins aur minerals maujood hotay hain:\n\nVitamin A – aankhon aur skin ke liye mufeed\n\nVitamin C – immune system ko strong karta hai\n\nVitamin B6 – dimagh aur nerves ke liye acha\n\nFiber – digestion ko behtar banata hai\n\nPotassium – heart health aur blood pressure ke liye acha\n\nNatural Sugar – body ko instant energy deta hai\n\nDiet Mein Aam Ka Istemaal\n\nAam ko balanced diet ka hissa banaya ja sakta hai:\n\nSubah breakfast mein aam ya mango shake\n\nWorkout ke baad energy ke liye\n\nWeight gain karne walon ke liye faidemand\n\nBachon aur kamzor logon ke liye nutritious fruit\n\nNote: Diabetes ke mareez aam limited quantity mein use karein.\n\nAam Khane Ke Faiday\n\nDigestion system ko strong karta hai\n\nImmunity ko boost karta hai\n\nEyesight ko behtar banata hai\n\nSkin ko healthy aur glowing banata hai\n\nBody ko energy provide karta hai\n\nWeight gain mein madad karta hai",
+    "price": 1.5,
+    "image": "/uploads/1768397711333-mqngo.jpg",
+    "category": "Fruit",
+    "season": "Summer",
+    "stock": 10,
+    "rating": 5,
+    "reviews": 0,
+    "tags": [
+      "Aam benefits",
+      "Mango nutrition",
+      "Aam khane ke faiday",
+      "Mango diet",
+      "Mango health benefit"
+    ],
+    "slug": "mango",
+    "createdAt": "2026-01-14T13:37:44.081Z",
+    "quality": {
+      "organic": true,
+      "freshness": "Farm Fresh",
+      "farmingMethod": "100% Organic"
+    },
+    "nutrition": {},
+    "nutritionalInfo": {}
+  },
+  {
+    "id": 2,
+    "name": "Peach (Aaroo / Aaru)",
+    "description": "Introduction to Peach\n\nPeach is a delicious, juicy, and nutrient-rich fruit, commonly available during the summer season. It has a sweet and slightly tangy taste and is widely known for its health benefits.\n\nPeach Nutrition Value\n\nPeach contains several essential nutrients, including:\n\nVitamin A – good for eye and skin health\n\nVitamin C – boosts the immune system\n\nDietary Fiber – improves digestion\n\nPotassium – supports heart health\n\nAntioxidants – help protect the body from diseases\n\nPeach in Diet\n\nPeach can be easily included in a balanced diet:\n\nFresh peach at breakfast\n\nIn smoothies or juices\n\nIdeal for weight loss diets\n\nSuitable for children and elderly people\n\nBenefits of Eating Peach\n\nImproves digestion\n\nStrengthens immunity\n\nPromotes healthy and glowing skin\n\nSupports heart health\n\nHelps in weight management",
+    "shortDescription": "Introduction to Peach\n\nPeach is a delicious, juicy, and nutrient-rich fruit, commonly available during the summer season. It has a sweet and slightly tangy taste and is widely known for its health benefits.\n\nPeach Nutrition Value\n\nPeach contains several essential nutrients, including:\n\nVitamin A – good for eye and skin health\n\nVitamin C – boosts the immune system\n\nDietary Fiber – improves digestion\n\nPotassium – supports heart health\n\nAntioxidants – help protect the body from diseases\n\nPeach in Diet\n\nPeach can be easily included in a balanced diet:\n\nFresh peach at breakfast\n\nIn smoothies or juices\n\nIdeal for weight loss diets\n\nSuitable for children and elderly people\n\nBenefits of Eating Peach\n\nImproves digestion\n\nStrengthens immunity\n\nPromotes healthy and glowing skin\n\nSupports heart health\n\nHelps in weight management",
+    "price": 0.75,
+    "image": "/uploads/1768398100351-Peach.jpg",
+    "category": "Fruit",
+    "season": "Summer",
+    "stock": 10,
+    "rating": 5,
+    "reviews": 0,
+    "tags": [
+      "#“Peach – Sweet Taste",
+      "Natural Health”#“Peach: Freshness in Every Bite”#“Naturally Sweet",
+      "Perfectly Healthy”"
+    ],
+    "slug": "peach-aaroo--aaru",
+    "createdAt": "2026-01-14T13:52:23.719Z",
+    "quality": {
+      "organic": true,
+      "freshness": "Farm Fresh",
+      "farmingMethod": "100% Organic"
+    },
+    "nutrition": {},
+    "nutritionalInfo": {}
+  },
+  {
+    "id": 3,
+    "name": "Orange (Narangi)",
+    "description": "Introduction to Orange\n\nOrange is a popular and nutritious citrus fruit known for its sweet and tangy taste. It is especially consumed in winter and is one of the richest sources of Vitamin C.\n\nOrange Nutrition Value\n\nOrange contains several essential nutrients, including:\n\nVitamin C – boosts immunity\n\nDietary Fiber – improves digestion\n\nVitamin A – supports eye health\n\nPotassium – helps regulate blood pressure\n\nAntioxidants – protect the body from diseases\n\nOrange in Diet\n\nOrange can be easily included in a healthy diet:\n\nFresh orange at breakfast\n\nAs juice\n\nIdeal for weight loss diets\n\nSuitable for all age groups\n\nBenefits of Eating Orange\n\nStrengthens immune system\n\nImproves digestion\n\nHelps prevent colds and flu\n\nKeeps skin healthy and glowing\n\nSupports heart health",
+    "shortDescription": "Introduction to Orange\n\nOrange is a popular and nutritious citrus fruit known for its sweet and tangy taste. It is especially consumed in winter and is one of the richest sources of Vitamin C.\n\nOrange Nutrition Value\n\nOrange contains several essential nutrients, including:\n\nVitamin C – boosts immunity\n\nDietary Fiber – improves digestion\n\nVitamin A – supports eye health\n\nPotassium – helps regulate blood pressure\n\nAntioxidants – protect the body from diseases\n\nOrange in Diet\n\nOrange can be easily included in a healthy diet:\n\nFresh orange at breakfast\n\nAs juice\n\nIdeal for weight loss diets\n\nSuitable for all age groups\n\nBenefits of Eating Orange\n\nStrengthens immune system\n\nImproves digestion\n\nHelps prevent colds and flu\n\nKeeps skin healthy and glowing\n\nSupports heart health",
+    "price": 0.5,
+    "image": "/uploads/1768398864439-orange.jpg",
+    "category": "Fruit",
+    "season": "Winter",
+    "stock": 10,
+    "rating": 5,
+    "reviews": 0,
+    "tags": [
+      "#“Orange – A Natural Boost of Vitamin C”#“Fresh",
+      "Juicy",
+      "and Full of Health”#“Orange: Pure Citrus Goodness”"
+    ],
+    "slug": "orange-narangi",
+    "createdAt": "2026-01-14T13:56:57.155Z",
+    "quality": {
+      "organic": true,
+      "freshness": "Farm Fresh",
+      "farmingMethod": "100% Organic"
+    },
+    "nutrition": {},
+    "nutritionalInfo": {}
+  },
+  {
+    "id": 4,
+    "name": "Banana (Kela)",
+    "description": "Banana is a popular, affordable, and energy-rich fruit that is available throughout the year. It has a sweet taste, soft texture, and is easy to digest. Banana is especially beneficial for children, athletes, and people who feel weak or tired.\n\nBanana Nutrition Value\n\nBanana contains many important nutrients, including:\n\nPotassium – good for heart and muscle health\n\nVitamin B6 – supports brain and nerve function\n\nFiber – improves digestion\n\nNatural sugars – provide instant energy\n\nMagnesium – helps increase body strength\n\nBanana in Diet\n\nBanana can be easily included in daily diet:\n\nWith milk at breakfast\n\nIn smoothies or shakes\n\nAfter workout for quick energy\n\nHelpful for people who want to gain weight\n\nBenefits of Eating Banana\n\nProvides instant energy\n\nImproves digestion\n\nSupports heart health and blood pressure\n\nReduces weakness and fatigue\n\nHelps in healthy weight gain",
+    "shortDescription": "Banana is a popular, affordable, and energy-rich fruit that is available throughout the year. It has a sweet taste, soft texture, and is easy to digest. Banana is especially beneficial for children, athletes, and people who feel weak or tired.\n\nBanana Nutrition Value\n\nBanana contains many important nutrients, including:\n\nPotassium – good for heart and muscle health\n\nVitamin B6 – supports brain and nerve function\n\nFiber – improves digestion\n\nNatural sugars – provide instant energy\n\nMagnesium – helps increase body strength\n\nBanana in Diet\n\nBanana can be easily included in daily diet:\n\nWith milk at breakfast\n\nIn smoothies or shakes\n\nAfter workout for quick energy\n\nHelpful for people who want to gain weight\n\nBenefits of Eating Banana\n\nProvides instant energy\n\nImproves digestion\n\nSupports heart health and blood pressure\n\nReduces weakness and fatigue\n\nHelps in healthy weight gain",
+    "price": 0.5,
+    "image": "/uploads/1768399217518-banana.jpg",
+    "category": "Fruit",
+    "season": "All Season",
+    "stock": 10,
+    "rating": 5,
+    "reviews": 0,
+    "tags": [
+      "#“Banana – Natural Energy for Every Day”#“Healthy",
+      "Sweet",
+      "and Full of Power”#“Banana: Instant Energy",
+      "Natural Taste”"
+    ],
+    "slug": "banana-kela",
+    "createdAt": "2026-01-14T14:04:31.906Z",
+    "quality": {
+      "organic": true,
+      "freshness": "Farm Fresh",
+      "farmingMethod": "100% Organic"
+    },
+    "nutrition": {},
+    "nutritionalInfo": {}
+  },
+  {
+    "id": 5,
+    "name": "Watermelon",
+    "description": "Watermelon Description – Roman English\n\nWatermelon ek refreshing aur pani se bharpoor fruit hai jo garmiyon ke mausam mein zyada khaya jata hai. Is ka taste meetha hota hai aur yeh body ko thandak aur hydration provide karta hai. Watermelon sehat ke liye bohat faidemand mana jata hai.\n\nWatermelon Nutrition Value\n\nWatermelon mein kai zaroori nutrients hotay hain:\n\nWater (90% se zyada) – body ko hydrated rakhta hai\n\nVitamin C – immunity ko strong karta hai\n\nVitamin A – eyes aur skin ke liye acha\n\nFiber – digestion ko behtar banata hai\n\nAntioxidants (Lycopene) – heart health ke liye mufeed\n\nWatermelon in Diet\n\nWatermelon ko daily diet mein is tarah shamil kiya ja sakta hai:\n\nFresh slices ke taur par\n\nJuice ya smoothie mein\n\nSummer diet ke liye best fruit\n\nWeight loss ke liye suitable\n\nBenefits of Eating Watermelon\n\nBody ko hydrate rakhta hai\n\nGarmiyon mein thandak deta hai\n\nDigestion improve karta hai\n\nSkin ko fresh aur healthy banata hai\n\nWeight loss mein madad karta hai",
+    "shortDescription": "Watermelon Description – Roman English\n\nWatermelon ek refreshing aur pani se bharpoor fruit hai jo garmiyon ke mausam mein zyada khaya jata hai. Is ka taste meetha hota hai aur yeh body ko thandak aur hydration provide karta hai. Watermelon sehat ke liye bohat faidemand mana jata hai.\n\nWatermelon Nutrition Value\n\nWatermelon mein kai zaroori nutrients hotay hain:\n\nWater (90% se zyada) – body ko hydrated rakhta hai\n\nVitamin C – immunity ko strong karta hai\n\nVitamin A – eyes aur skin ke liye acha\n\nFiber – digestion ko behtar banata hai\n\nAntioxidants (Lycopene) – heart health ke liye mufeed\n\nWatermelon in Diet\n\nWatermelon ko daily diet mein is tarah shamil kiya ja sakta hai:\n\nFresh slices ke taur par\n\nJuice ya smoothie mein\n\nSummer diet ke liye best fruit\n\nWeight loss ke liye suitable\n\nBenefits of Eating Watermelon\n\nBody ko hydrate rakhta hai\n\nGarmiyon mein thandak deta hai\n\nDigestion improve karta hai\n\nSkin ko fresh aur healthy banata hai\n\nWeight loss mein madad karta hai",
+    "price": 0.25,
+    "image": "/uploads/1768399658032-watermelan.jpg",
+    "category": "Fruit",
+    "season": "Summer",
+    "stock": 10,
+    "rating": 5,
+    "reviews": 0,
+    "tags": [
+      "#Watermelon – Stay Cool",
+      "Stay Hydrated”#“Freshness You Can Taste”#“Pure Summer Refreshment”"
+    ],
+    "slug": "watermelon",
+    "createdAt": "2026-01-14T14:07:41.183Z",
+    "quality": {
+      "organic": true,
+      "freshness": "Farm Fresh",
+      "farmingMethod": "100% Organic"
+    },
+    "nutrition": {},
+    "nutritionalInfo": {}
+  },
+  {
+    "id": 6,
+    "name": " Papaya(Papita)",
+    "description": "Papaya ek healthy aur nutritious fruit hai jo digestion, immunity aur skin health ke liye bohot faida mand hota hai. Is mein natural enzymes (papain) hotay hain jo khana hazam karne mein madad karte hain.\n\nNutritional Benefits:\n\nVitamin C (immunity strong karta hai)\n\nVitamin A (eyes aur skin ke liye acha)\n\nFiber (constipation aur digestion ke liye)\n\nLow calories (weight loss ke liye best)\n\nAntioxidants (body detox aur anti-aging)\n\n3. Diet Plan – Papaya kaise khayein?\n\nSubah (Empty Stomach):\n\n1 bowl fresh papaya\n\nDigestion improve karta hai aur bloating kam hoti hai\n\nBreakfast ke baad:\n\nPapaya + thora sa lemon juice\n\nMetabolism fast hota hai\n\nLunch ke baad:\n\nChoti quantity papaya (sweet craving ke liye)\n\nEvening Snack:\n\nPapaya smoothie (without sugar)\n\nRaat ko:\n\nZyada avoid karein (cold nature ki wajah se digestion slow ho sakta hai)\n\n4. Weight Loss ke liye Papaya\n\nRozana 1–2 bowls kaafi hain\n\nSugar add na karein\n\nBalanced diet ke sath use karein",
+    "shortDescription": "Papaya ek healthy aur nutritious fruit hai jo digestion, immunity aur skin health ke liye bohot faida mand hota hai. Is mein natural enzymes (papain) hotay hain jo khana hazam karne mein madad karte hain.\n\nNutritional Benefits:\n\nVitamin C (immunity strong karta hai)\n\nVitamin A (eyes aur skin ke liye acha)\n\nFiber (constipation aur digestion ke liye)\n\nLow calories (weight loss ke liye best)\n\nAntioxidants (body detox aur anti-aging)\n\n3. Diet Plan – Papaya kaise khayein?\n\nSubah (Empty Stomach):\n\n1 bowl fresh papaya\n\nDigestion improve karta hai aur bloating kam hoti hai\n\nBreakfast ke baad:\n\nPapaya + thora sa lemon juice\n\nMetabolism fast hota hai\n\nLunch ke baad:\n\nChoti quantity papaya (sweet craving ke liye)\n\nEvening Snack:\n\nPapaya smoothie (without sugar)\n\nRaat ko:\n\nZyada avoid karein (cold nature ki wajah se digestion slow ho sakta hai)\n\n4. Weight Loss ke liye Papaya\n\nRozana 1–2 bowls kaafi hain\n\nSugar add na karein\n\nBalanced diet ke sath use karein",
+    "price": 0.85,
+    "image": "/uploads/1768399918786-papya.jpg",
+    "category": "Fruit",
+    "season": "Summer",
+    "stock": 10,
+    "rating": 5,
+    "reviews": 0,
+    "tags": [
+      "#“Papaya – Natural Health",
+      "Natural Beauty.”#“Papaya: Light on Calories",
+      "Heavy on Health.”"
+    ],
+    "slug": "-papayapapita",
+    "createdAt": "2026-01-14T14:12:28.704Z",
+    "quality": {
+      "organic": true,
+      "freshness": "Farm Fresh",
+      "farmingMethod": "100% Organic"
+    },
+    "nutrition": {},
+    "nutritionalInfo": {}
+  },
+  {
+    "id": 7,
+    "name": "Melon (Muskmelon / Kharbooja)",
+    "description": "Melon, also known as muskmelon or kharbooja, is a sweet, juicy, and refreshing fruit mostly eaten during the summer season. It is rich in water content and helps keep the body cool and hydrated. Melon is light, tasty, and very healthy.\n\nMelon Nutrition Value\n\nMelon contains many important nutrients, such as:\n\nVitamin C – boosts immunity\n\nVitamin A – good for eyes and skin\n\nFiber – improves digestion\n\nPotassium – supports heart health\n\nHigh water content – prevents dehydration\n\nMelon in Diet\n\nMelon can be added to daily diet in different ways:\n\nFresh slices as a snack\n\nIn fruit salads\n\nAs juice or smoothie\n\nIdeal for weight loss diet\n\nBenefits of Eating Melon\n\nKeeps the body cool and hydrated\n\nImproves digestion\n\nSupports healthy skin\n\nBoosts immune system\n\nHelps in weight management",
+    "shortDescription": "Melon, also known as muskmelon or kharbooja, is a sweet, juicy, and refreshing fruit mostly eaten during the summer season. It is rich in water content and helps keep the body cool and hydrated. Melon is light, tasty, and very healthy.\n\nMelon Nutrition Value\n\nMelon contains many important nutrients, such as:\n\nVitamin C – boosts immunity\n\nVitamin A – good for eyes and skin\n\nFiber – improves digestion\n\nPotassium – supports heart health\n\nHigh water content – prevents dehydration\n\nMelon in Diet\n\nMelon can be added to daily diet in different ways:\n\nFresh slices as a snack\n\nIn fruit salads\n\nAs juice or smoothie\n\nIdeal for weight loss diet\n\nBenefits of Eating Melon\n\nKeeps the body cool and hydrated\n\nImproves digestion\n\nSupports healthy skin\n\nBoosts immune system\n\nHelps in weight management",
+    "price": 1,
+    "image": "/uploads/1768400133766-melan.jpg",
+    "category": "Fruit",
+    "season": "Summer",
+    "stock": 10,
+    "rating": 5,
+    "reviews": 0,
+    "tags": [
+      "#“Melon – Naturally Sweet & Refreshing”#“Fresh Taste",
+      "Healthy Choice”"
+    ],
+    "slug": "melon-muskmelon--kharbooja",
+    "createdAt": "2026-01-14T14:15:38.979Z",
+    "quality": {
+      "organic": true,
+      "freshness": "Farm Fresh",
+      "farmingMethod": "100% Organic"
+    },
+    "nutrition": {},
+    "nutritionalInfo": {}
+  },
+  {
+    "id": 8,
+    "name": "Strawbery(Toot Farangi)",
+    "description": "Strawberry ek tasty aur healthy fruit hai jo heart health, skin glow aur weight loss ke liye bohot faida mand hai. Is mein antioxidants zyada hotay hain jo body ko free radicals se protect karte hain.\n\nNutritional Benefits:\n\nVitamin C (immunity strong karta hai)\n\nAntioxidants (anti-aging aur skin glow)\n\nFiber (digestion better karta hai)\n\nLow calories (diet friendly fruit)\n\nHeart-healthy nutrients (cholesterol control)\n\n3. Diet Plan – Strawberry kaise khayein?\n\nSubah (Breakfast ke sath):\n\n6–8 fresh strawberries\n\nOats ya yogurt ke sath best option\n\nMid-Morning Snack:\n\nStrawberry bowl ya smoothie (without sugar)\n\nLunch ke baad:\n\n4–5 strawberries sweet craving ke liye\n\nEvening Snack:\n\nStrawberry + nuts (healthy snack)\n\nRaat ko:\n\nThori quantity le sakte hain (zyada na khayein)\n\n4. Weight Loss ke liye Strawberry\n\nRozana 1 cup kaafi hota hai\n\nSugar ya cream add na karein\n\nFresh form mein khana zyada faida deta hai",
+    "shortDescription": "Strawberry ek tasty aur healthy fruit hai jo heart health, skin glow aur weight loss ke liye bohot faida mand hai. Is mein antioxidants zyada hotay hain jo body ko free radicals se protect karte hain.\n\nNutritional Benefits:\n\nVitamin C (immunity strong karta hai)\n\nAntioxidants (anti-aging aur skin glow)\n\nFiber (digestion better karta hai)\n\nLow calories (diet friendly fruit)\n\nHeart-healthy nutrients (cholesterol control)\n\n3. Diet Plan – Strawberry kaise khayein?\n\nSubah (Breakfast ke sath):\n\n6–8 fresh strawberries\n\nOats ya yogurt ke sath best option\n\nMid-Morning Snack:\n\nStrawberry bowl ya smoothie (without sugar)\n\nLunch ke baad:\n\n4–5 strawberries sweet craving ke liye\n\nEvening Snack:\n\nStrawberry + nuts (healthy snack)\n\nRaat ko:\n\nThori quantity le sakte hain (zyada na khayein)\n\n4. Weight Loss ke liye Strawberry\n\nRozana 1 cup kaafi hota hai\n\nSugar ya cream add na karein\n\nFresh form mein khana zyada faida deta hai",
+    "price": 2.5,
+    "image": "/uploads/1768400603044-stobary.jpg",
+    "category": "Fruit",
+    "season": "Summer",
+    "stock": 10,
+    "rating": 5,
+    "reviews": 0,
+    "tags": [
+      "#“Strawberry – Sweet Taste",
+      "Fit Life.”#“Strawberry: Beauty",
+      "Health & Happiness in One Bite.”"
+    ],
+    "slug": "strawberytoot-farangi",
+    "createdAt": "2026-01-14T14:24:20.296Z",
+    "quality": {
+      "organic": true,
+      "freshness": "Farm Fresh",
+      "farmingMethod": "100% Organic"
+    },
+    "nutrition": {},
+    "nutritionalInfo": {}
+  },
+  {
+    "id": 9,
+    "name": "Pineapple(Ananas)",
+    "description": "Pineapple ek juicy aur refreshing fruit hai jo digestion, immunity aur inflammation kam karne mein madad karta hai. Is mein bromelain enzyme hota hai jo protein digestion aur gut health ke liye bohot acha mana jata hai.\n\nNutritional Benefits:\n\nVitamin C (immunity strong karta hai)\n\nBromelain enzyme (digestion improve karta hai)\n\nFiber (pet ke masail kam karta hai)\n\nAntioxidants (body detox)\n\nLow fat & moderate calories\n\n3. Diet Plan – Pineapple kaise khayein?\n\nSubah (Breakfast ke sath):\n\n1 cup fresh pineapple slices\n\nMetabolism boost hota hai\n\nMid-Morning:\n\nPineapple + black salt (light snack)\n\nLunch ke baad:\n\nThori quantity sweet craving ke liye\n\nEvening Snack:\n\nPineapple smoothie (without sugar)\n\nRaat ko:\n\nAvoid ya bohot kam (acidic nature ki wajah se)\n\n4. Weight Loss ke liye Pineapple\n\nRozana 1 cup kaafi hota hai\n\nFresh pineapple behtar hai (canned avoid karein)\n\nEmpty stomach zyada mat khayein agar acidity ho",
+    "shortDescription": "Pineapple ek juicy aur refreshing fruit hai jo digestion, immunity aur inflammation kam karne mein madad karta hai. Is mein bromelain enzyme hota hai jo protein digestion aur gut health ke liye bohot acha mana jata hai.\n\nNutritional Benefits:\n\nVitamin C (immunity strong karta hai)\n\nBromelain enzyme (digestion improve karta hai)\n\nFiber (pet ke masail kam karta hai)\n\nAntioxidants (body detox)\n\nLow fat & moderate calories\n\n3. Diet Plan – Pineapple kaise khayein?\n\nSubah (Breakfast ke sath):\n\n1 cup fresh pineapple slices\n\nMetabolism boost hota hai\n\nMid-Morning:\n\nPineapple + black salt (light snack)\n\nLunch ke baad:\n\nThori quantity sweet craving ke liye\n\nEvening Snack:\n\nPineapple smoothie (without sugar)\n\nRaat ko:\n\nAvoid ya bohot kam (acidic nature ki wajah se)\n\n4. Weight Loss ke liye Pineapple\n\nRozana 1 cup kaafi hota hai\n\nFresh pineapple behtar hai (canned avoid karein)\n\nEmpty stomach zyada mat khayein agar acidity ho",
+    "price": 3,
+    "image": "/uploads/1768403810134-pinapple.jpg",
+    "category": "Fruit",
+    "season": "Summer",
+    "stock": 10,
+    "rating": 5,
+    "reviews": 0,
+    "tags": [
+      "#Pineapple – Fresh",
+      "Juicy",
+      "Healthy.”#“Pineapple: A Tropical Boost for Your Body.”"
+    ],
+    "slug": "pineappleananas",
+    "createdAt": "2026-01-14T15:17:59.162Z",
+    "quality": {
+      "organic": true,
+      "freshness": "Farm Fresh",
+      "farmingMethod": "100% Organic"
+    },
+    "nutrition": {},
+    "nutritionalInfo": {}
+  },
+  {
+    "id": 10,
+    "name": "Apple (Seb)",
+    "description": "Apple ek popular, nutritious aur crisp fruit hai jo har season mein available hota hai. Yeh meetha aur halka khatta taste ka hota hai aur sehat ke liye bohat faidemand mana jata hai. Apple ko “healthy fruit” ke tor par har diet mein shamil kiya jata hai.\n\nApple Nutrition Value\n\nApple mein kai important nutrients paye jate hain:\n\nVitamin C – immune system strong karta hai\n\nFiber – digestion aur gut health improve karta hai\n\nAntioxidants – body ko diseases se protect karte hain\n\nVitamin A – skin aur eyes ke liye acha\n\nLow calories – weight management ke liye perfect\n\nApple in Diet\n\nApple ko daily diet mein shamil karne ke tareeqay:\n\nFresh slices as snack\n\nApple juice ya smoothie mein\n\nSalads aur desserts mein\n\nWeight loss aur healthy diet ke liye ideal\n\nBenefits of Eating Apple\n\nDigestive system ko improve karta hai\n\nImmunity boost karta hai\n\nHeart health ke liye faidemand\n\nSkin ko healthy aur glowing banata hai",
+    "shortDescription": "Apple ek popular, nutritious aur crisp fruit hai jo har season mein available hota hai. Yeh meetha aur halka khatta taste ka hota hai aur sehat ke liye bohat faidemand mana jata hai. Apple ko “healthy fruit” ke tor par har diet mein shamil kiya jata hai.\n\nApple Nutrition Value\n\nApple mein kai important nutrients paye jate hain:\n\nVitamin C – immune system strong karta hai\n\nFiber – digestion aur gut health improve karta hai\n\nAntioxidants – body ko diseases se protect karte hain\n\nVitamin A – skin aur eyes ke liye acha\n\nLow calories – weight management ke liye perfect\n\nApple in Diet\n\nApple ko daily diet mein shamil karne ke tareeqay:\n\nFresh slices as snack\n\nApple juice ya smoothie mein\n\nSalads aur desserts mein\n\nWeight loss aur healthy diet ke liye ideal\n\nBenefits of Eating Apple\n\nDigestive system ko improve karta hai\n\nImmunity boost karta hai\n\nHeart health ke liye faidemand\n\nSkin ko healthy aur glowing banata hai",
+    "price": 1.5,
+    "image": "/uploads/1768404019532-apple.jpg",
+    "category": "Fruit",
+    "season": "Summer",
+    "stock": 10,
+    "rating": 5,
+    "reviews": 0,
+    "tags": [
+      "#“Seb – Sehat aur Energy ka Perfect Fruit”#Har Bite Mein Freshness aur Tazgi”#“Qudrati Meetha aur Healthy Choice”"
+    ],
+    "slug": "apple-seb",
+    "createdAt": "2026-01-14T15:21:22.509Z",
+    "quality": {
+      "organic": true,
+      "freshness": "Farm Fresh",
+      "farmingMethod": "100% Organic"
+    },
+    "nutrition": {},
+    "nutritionalInfo": {}
+  },
+  {
+    "id": 11,
+    "name": "Pomegranate (Anar)",
+    "description": "Pomegranate, yaani Anar, ek nutritious aur antioxidant-rich fruit hai jo health ke liye bohat faidemand mana jata hai. Iske andar chhote laal seeds hote hain jo meethay aur thode khatte taste ke sath juicy hote hain. Anar puri duniya mein immunity aur heart health ke liye famous hai.\n\nPomegranate Nutrition Value\n\nAnar mein kai zaroori nutrients paye jate hain:\n\nVitamin C – immune system strong karta hai\n\nVitamin K – blood clotting aur bone health ke liye acha\n\nFiber – digestion improve karta hai\n\nAntioxidants – body ko diseases se bachate hain\n\nPotassium – heart aur blood pressure ke liye faidemand\n\nPomegranate in Diet\n\nAnar ko diet mein shamil karne ke tareeqay:\n\nFresh seeds (arils) ke tor par\n\nJuice ya smoothie mein\n\nSalads aur desserts mein\n\nHeart-friendly aur weight management diet ke liye\n\nBenefits of Eating Pomegranate\n\nImmunity boost karta hai\n\nHeart health improve karta hai\n\nBlood pressure control mein madad karta hai\n\nDigestion aur gut health ko improve karta hai\n\nSkin ko glowing aur healthy banata hai",
+    "shortDescription": "Pomegranate, yaani Anar, ek nutritious aur antioxidant-rich fruit hai jo health ke liye bohat faidemand mana jata hai. Iske andar chhote laal seeds hote hain jo meethay aur thode khatte taste ke sath juicy hote hain. Anar puri duniya mein immunity aur heart health ke liye famous hai.\n\nPomegranate Nutrition Value\n\nAnar mein kai zaroori nutrients paye jate hain:\n\nVitamin C – immune system strong karta hai\n\nVitamin K – blood clotting aur bone health ke liye acha\n\nFiber – digestion improve karta hai\n\nAntioxidants – body ko diseases se bachate hain\n\nPotassium – heart aur blood pressure ke liye faidemand\n\nPomegranate in Diet\n\nAnar ko diet mein shamil karne ke tareeqay:\n\nFresh seeds (arils) ke tor par\n\nJuice ya smoothie mein\n\nSalads aur desserts mein\n\nHeart-friendly aur weight management diet ke liye\n\nBenefits of Eating Pomegranate\n\nImmunity boost karta hai\n\nHeart health improve karta hai\n\nBlood pressure control mein madad karta hai\n\nDigestion aur gut health ko improve karta hai\n\nSkin ko glowing aur healthy banata hai",
+    "price": 1.5,
+    "image": "/uploads/1768404192060-download-(3).jpg",
+    "category": "Fruit",
+    "season": "Summer",
+    "stock": 10,
+    "rating": 5,
+    "reviews": 0,
+    "tags": [
+      "#“Anar – Qudrati Health Booster”#Har Bite Mein Energy aur Sehat”#“Anar: Heart aur Immunity ka Fruit”"
+    ],
+    "slug": "pomegranate-anar",
+    "createdAt": "2026-01-14T15:23:44.225Z",
+    "quality": {
+      "organic": true,
+      "freshness": "Farm Fresh",
+      "farmingMethod": "100% Organic"
+    },
+    "nutrition": {},
+    "nutritionalInfo": {}
+  },
+  {
+    "id": 12,
+    "name": "Guava (Amrud)",
+    "description": "Guava, yaani Amrud, ek delicious aur nutritious fruit hai jo health ke liye bohat faidemand mana jata hai. Yeh fruit meetha ya halka khatta taste ka hota hai aur iska texture soft aur juicy hota hai. Amrud ko vitamins aur minerals ka powerhouse mana jata hai, aur yeh immune system ke liye bohat acha hai.\n\nGuava Nutrition Value\n\nAmrud mein kai zaroori nutrients paye jate hain:\n\nVitamin C – immune system strong karta hai\n\nVitamin A – eyes aur skin ke liye acha\n\nFiber – digestion aur gut health improve karta hai\n\nPotassium – heart aur blood pressure ke liye faidemand\n\nAntioxidants – body ko diseases se protect karte hain\n\nGuava in Diet\n\nAmrud ko diet mein shamil karne ke tareeqay:\n\nFresh fruit ke tor par\n\nJuice ya smoothie mein\n\nSalads aur desserts mein\n\nWeight management aur immunity diet ke liye\n\nBenefits of Eating Guava\n\nImmunity boost karta hai\n\nDigestion improve karta hai\n\nSkin ko healthy aur glowing banata hai\n\nBlood pressure control mein madad karta hai\n\nHeart health ke liye faidemand",
+    "shortDescription": "Guava, yaani Amrud, ek delicious aur nutritious fruit hai jo health ke liye bohat faidemand mana jata hai. Yeh fruit meetha ya halka khatta taste ka hota hai aur iska texture soft aur juicy hota hai. Amrud ko vitamins aur minerals ka powerhouse mana jata hai, aur yeh immune system ke liye bohat acha hai.\n\nGuava Nutrition Value\n\nAmrud mein kai zaroori nutrients paye jate hain:\n\nVitamin C – immune system strong karta hai\n\nVitamin A – eyes aur skin ke liye acha\n\nFiber – digestion aur gut health improve karta hai\n\nPotassium – heart aur blood pressure ke liye faidemand\n\nAntioxidants – body ko diseases se protect karte hain\n\nGuava in Diet\n\nAmrud ko diet mein shamil karne ke tareeqay:\n\nFresh fruit ke tor par\n\nJuice ya smoothie mein\n\nSalads aur desserts mein\n\nWeight management aur immunity diet ke liye\n\nBenefits of Eating Guava\n\nImmunity boost karta hai\n\nDigestion improve karta hai\n\nSkin ko healthy aur glowing banata hai\n\nBlood pressure control mein madad karta hai\n\nHeart health ke liye faidemand",
+    "price": 1,
+    "image": "/uploads/1768404324748-amrud.jpg",
+    "category": "Fruit",
+    "season": "Summer",
+    "stock": 10,
+    "rating": 5,
+    "reviews": 0,
+    "tags": [
+      "#Guava – Naturally Sweet",
+      "Fully Healthy”#“Fresh Taste",
+      "Boosts Immunity”#“Every Bite is Full of Health”"
+    ],
+    "slug": "guava-amrud",
+    "createdAt": "2026-01-14T15:27:09.430Z",
+    "quality": {
+      "organic": true,
+      "freshness": "Farm Fresh",
+      "farmingMethod": "100% Organic"
+    },
+    "nutrition": {},
+    "nutritionalInfo": {}
+  },
+  {
+    "id": 13,
+    "name": "Grapes (Angoor)",
+    "description": "Grapes, yaani Angoor, ek juicy aur delicious fruit hai jo chhote round berries ki form mein aata hai. Yeh fruit meetha ya halka khatta taste ka hota hai aur fresh ya dry (raisins) dono form mein use hota hai. Angoor body ke liye bohat healthy mana jata hai aur immunity aur heart health ke liye faidemand hai.\n\nGrapes Nutrition Value\n\nAngoor mein kai important nutrients paye jate hain:\n\nVitamin C – immunity strong karta hai\n\nVitamin K – bone health ke liye acha\n\nFiber – digestion improve karta hai\n\nAntioxidants (Resveratrol) – heart health ke liye mufeed\n\nNatural sugar – instant energy provide karta hai\n\nGrapes in Diet\n\nAngoor ko diet mein shamil karne ke tareeqay:\n\nFresh grapes as snack\n\nJuice ya smoothie mein\n\nSalads aur desserts mein\n\nWeight management aur heart-friendly diet ke liye\n\nBenefits of Eating Grapes\n\nImmune system ko boost karta hai\n\nHeart health improve karta hai\n\nDigestion aur gut health ke liye acha\n\nSkin ko healthy aur glowing banata hai\n\nBody ko instant energy provide karta hai",
+    "shortDescription": "Grapes, yaani Angoor, ek juicy aur delicious fruit hai jo chhote round berries ki form mein aata hai. Yeh fruit meetha ya halka khatta taste ka hota hai aur fresh ya dry (raisins) dono form mein use hota hai. Angoor body ke liye bohat healthy mana jata hai aur immunity aur heart health ke liye faidemand hai.\n\nGrapes Nutrition Value\n\nAngoor mein kai important nutrients paye jate hain:\n\nVitamin C – immunity strong karta hai\n\nVitamin K – bone health ke liye acha\n\nFiber – digestion improve karta hai\n\nAntioxidants (Resveratrol) – heart health ke liye mufeed\n\nNatural sugar – instant energy provide karta hai\n\nGrapes in Diet\n\nAngoor ko diet mein shamil karne ke tareeqay:\n\nFresh grapes as snack\n\nJuice ya smoothie mein\n\nSalads aur desserts mein\n\nWeight management aur heart-friendly diet ke liye\n\nBenefits of Eating Grapes\n\nImmune system ko boost karta hai\n\nHeart health improve karta hai\n\nDigestion aur gut health ke liye acha\n\nSkin ko healthy aur glowing banata hai\n\nBody ko instant energy provide karta hai",
+    "price": 2,
+    "image": "/uploads/1768404578844-grapes.jpg",
+    "category": "Fruit",
+    "season": "Summer",
+    "stock": 10,
+    "rating": 5,
+    "reviews": 0,
+    "tags": [
+      "#“Angoor – Har Bite Mein Sweetness aur Health”#“Qudrati Fruit for Energy aur Immunity”#Angoor: Fresh",
+      "Juicy",
+      "Healthy”"
+    ],
+    "slug": "grapes-angoor",
+    "createdAt": "2026-01-14T15:30:49.129Z",
+    "quality": {
+      "organic": true,
+      "freshness": "Farm Fresh",
+      "farmingMethod": "100% Organic"
+    },
+    "nutrition": {},
+    "nutritionalInfo": {}
+  },
+  {
+    "id": 14,
+    "name": "Potato (Aloo)",
+    "description": "Potato, yaani Aloo, ek popular aur versatile vegetable hai jo har season mein available hoti hai. Yeh starchy aur nutritious hoti hai aur har cuisine mein extensively use hoti hai. Potato ka taste mild aur slightly earthy hota hai aur yeh energy aur carbohydrates ka best source mana jata hai.\n\nPotato Nutrition Value\n\nAloo mein kai important nutrients paye jate hain:\n\nCarbohydrates – body ko instant energy provide karte hain\n\nVitamin C – immunity ko boost karta hai\n\nVitamin B6 – brain aur nerves ke liye acha\n\nPotassium – heart aur blood pressure ke liye faidemand\n\nFiber – digestion improve karta hai\n\nPotato in Diet\n\nAloo ko diet mein shamil karne ke tareeqay:\n\nBoiled, baked, roasted ya mashed\n\nCurries aur soups mein\n\nSnacks aur fries ke taur par\n\nWeight management aur energy diet ke liye\n\nBenefits of Eating Potato\n\nBody ko instant energy deta hai\n\nDigestion ko improve karta hai\n\nHeart aur blood pressure ke liye faidemand\n\nBrain aur nerves ke liye acha\n\nVersatile aur easily digestible vegetable",
+    "shortDescription": "Potato, yaani Aloo, ek popular aur versatile vegetable hai jo har season mein available hoti hai. Yeh starchy aur nutritious hoti hai aur har cuisine mein extensively use hoti hai. Potato ka taste mild aur slightly earthy hota hai aur yeh energy aur carbohydrates ka best source mana jata hai.\n\nPotato Nutrition Value\n\nAloo mein kai important nutrients paye jate hain:\n\nCarbohydrates – body ko instant energy provide karte hain\n\nVitamin C – immunity ko boost karta hai\n\nVitamin B6 – brain aur nerves ke liye acha\n\nPotassium – heart aur blood pressure ke liye faidemand\n\nFiber – digestion improve karta hai\n\nPotato in Diet\n\nAloo ko diet mein shamil karne ke tareeqay:\n\nBoiled, baked, roasted ya mashed\n\nCurries aur soups mein\n\nSnacks aur fries ke taur par\n\nWeight management aur energy diet ke liye\n\nBenefits of Eating Potato\n\nBody ko instant energy deta hai\n\nDigestion ko improve karta hai\n\nHeart aur blood pressure ke liye faidemand\n\nBrain aur nerves ke liye acha\n\nVersatile aur easily digestible vegetable",
+    "price": 0.25,
+    "image": "/uploads/1768404729187-patato.jpg",
+    "category": "Vegetable",
+    "season": "All Season",
+    "stock": 10,
+    "rating": 5,
+    "reviews": 0,
+    "tags": [
+      "#“Aloo – Har Dish Ka Hero”#“Energy aur Sehat ka Natural Source”#“Qudrati",
+      "Healthy aur Tasty”"
+    ],
+    "slug": "potato-aloo",
+    "createdAt": "2026-01-14T15:33:31.401Z",
+    "quality": {
+      "organic": true,
+      "freshness": "Farm Fresh",
+      "farmingMethod": "100% Organic"
+    },
+    "nutrition": {},
+    "nutritionalInfo": {}
+  },
+  {
+    "id": 15,
+    "name": "Onion (Pyaaz)",
+    "description": "Onion, yaani Pyaaz, ek popular aur flavorful vegetable hai jo har cuisine mein extensively use hoti hai. Yeh mild se le kar spicy taste ka hota hai aur fresh, cooked, ya fried form mein consume kiya jata hai. Pyaaz nutrition se bharpoor aur health ke liye faidemand mana jata hai.\n\nOnion Nutrition Value\n\nPyaaz mein kai zaroori nutrients paye jate hain:\n\nVitamin C – immunity ko boost karta hai\n\nVitamin B6 – brain aur metabolism ke liye acha\n\nFiber – digestion improve karta hai\n\nAntioxidants – body ko diseases se protect karte hain\n\nMinerals (Potassium, Manganese) – heart aur bone health ke liye faidemand\n\nOnion in Diet\n\nPyaaz ko diet mein shamil karne ke tareeqay:\n\nFresh salads mein\n\nCurries, soups aur stir-fries mein\n\nPickles aur sauces mein\n\nWeight management aur heart-friendly diet ke liye\n\nBenefits of Eating Onion\n\nImmunity boost karta hai\n\nHeart aur blood pressure ke liye faidemand\n\nDigestion aur gut health improve karta hai\n\nAnti-inflammatory aur antioxidant properties rakhta hai\n\nSkin aur overall health ke liye beneficial",
+    "shortDescription": "Onion, yaani Pyaaz, ek popular aur flavorful vegetable hai jo har cuisine mein extensively use hoti hai. Yeh mild se le kar spicy taste ka hota hai aur fresh, cooked, ya fried form mein consume kiya jata hai. Pyaaz nutrition se bharpoor aur health ke liye faidemand mana jata hai.\n\nOnion Nutrition Value\n\nPyaaz mein kai zaroori nutrients paye jate hain:\n\nVitamin C – immunity ko boost karta hai\n\nVitamin B6 – brain aur metabolism ke liye acha\n\nFiber – digestion improve karta hai\n\nAntioxidants – body ko diseases se protect karte hain\n\nMinerals (Potassium, Manganese) – heart aur bone health ke liye faidemand\n\nOnion in Diet\n\nPyaaz ko diet mein shamil karne ke tareeqay:\n\nFresh salads mein\n\nCurries, soups aur stir-fries mein\n\nPickles aur sauces mein\n\nWeight management aur heart-friendly diet ke liye\n\nBenefits of Eating Onion\n\nImmunity boost karta hai\n\nHeart aur blood pressure ke liye faidemand\n\nDigestion aur gut health improve karta hai\n\nAnti-inflammatory aur antioxidant properties rakhta hai\n\nSkin aur overall health ke liye beneficial",
+    "price": 0.3,
+    "image": "/uploads/1768404963102-onion.jpg",
+    "category": "Vegetable",
+    "season": "All Season",
+    "stock": 10,
+    "rating": 5,
+    "reviews": 0,
+    "tags": [
+      "#“Onion – Adds Flavor",
+      "Boosts Health”#“Fresh",
+      "Healthy",
+      "and Essential”#Nature’s Natural Flavor & Nutrition”"
+    ],
+    "slug": "onion-pyaaz",
+    "createdAt": "2026-01-14T15:37:01.775Z",
+    "quality": {
+      "organic": true,
+      "freshness": "Farm Fresh",
+      "farmingMethod": "100% Organic"
+    },
+    "nutrition": {},
+    "nutritionalInfo": {}
+  },
+  {
+    "id": 16,
+    "name": "Tomato (Tamatar)",
+    "description": "Tomato, yaani Tamatar, ek widely used aur nutritious vegetable/fruit hai jo har cuisine mein flavor aur color add karta hai. Yeh slightly tangy aur juicy taste ka hota hai aur raw, cooked, ya sauce form mein consume kiya jata hai. Tamatar health ke liye faidemand aur antioxidant-rich mana jata hai.\n\nTomato Nutrition Value\n\nTamatar mein kai important nutrients paye jate hain:\n\nVitamin C – immunity boost karta hai\n\nVitamin A – eyes aur skin ke liye acha\n\nFiber – digestion aur gut health improve karta hai\n\nLycopene (Antioxidant) – heart health aur cancer prevention mein faidemand\n\nPotassium – blood pressure aur heart ke liye acha\n\nTomato in Diet\n\nTamatar ko diet mein shamil karne ke tareeqay:\n\nFresh salads aur sandwiches mein\n\nCurries, soups aur sauces mein\n\nJuice aur smoothies ke taur par\n\nHeart-friendly aur weight management diet ke liye\n\nBenefits of Eating Tomato\n\nImmune system ko strong karta hai\n\nHeart health improve karta hai\n\nDigestion aur gut health ke liye acha\n\nSkin ko healthy aur glowing banata hai\n\nCancer prevention aur antioxidant support provide karta hai",
+    "shortDescription": "Tomato, yaani Tamatar, ek widely used aur nutritious vegetable/fruit hai jo har cuisine mein flavor aur color add karta hai. Yeh slightly tangy aur juicy taste ka hota hai aur raw, cooked, ya sauce form mein consume kiya jata hai. Tamatar health ke liye faidemand aur antioxidant-rich mana jata hai.\n\nTomato Nutrition Value\n\nTamatar mein kai important nutrients paye jate hain:\n\nVitamin C – immunity boost karta hai\n\nVitamin A – eyes aur skin ke liye acha\n\nFiber – digestion aur gut health improve karta hai\n\nLycopene (Antioxidant) – heart health aur cancer prevention mein faidemand\n\nPotassium – blood pressure aur heart ke liye acha\n\nTomato in Diet\n\nTamatar ko diet mein shamil karne ke tareeqay:\n\nFresh salads aur sandwiches mein\n\nCurries, soups aur sauces mein\n\nJuice aur smoothies ke taur par\n\nHeart-friendly aur weight management diet ke liye\n\nBenefits of Eating Tomato\n\nImmune system ko strong karta hai\n\nHeart health improve karta hai\n\nDigestion aur gut health ke liye acha\n\nSkin ko healthy aur glowing banata hai\n\nCancer prevention aur antioxidant support provide karta hai",
+    "price": 1,
+    "image": "/uploads/1768405104015-tamato.jpg",
+    "category": "Vegetable",
+    "season": "All Season",
+    "stock": 10,
+    "rating": 5,
+    "reviews": 0,
+    "tags": [
+      "#“Tomato – Naturally Healthy & Juicy”#“Tomato – Naturally Healthy & Juicy”#“Every Bite is a Boost of Health”"
+    ],
+    "slug": "tomato-tamatar",
+    "createdAt": "2026-01-14T15:39:29.721Z",
+    "quality": {
+      "organic": true,
+      "freshness": "Farm Fresh",
+      "farmingMethod": "100% Organic"
+    },
+    "nutrition": {},
+    "nutritionalInfo": {}
+  },
+  {
+    "id": 17,
+    "name": "Carrot (Gajar)",
+    "description": "Carrot, yaani Gajar, ek popular aur crunchy vegetable hai jo orange color ke saath naturally sweet taste rakhta hai. Yeh raw ya cooked dono form mein khaya jata hai aur health ke liye bohat faidemand mana jata hai. Carrot vitamins aur antioxidants ka rich source hai, jo skin, eyes aur immunity ke liye acha hai.\n\nCarrot Nutrition Value\n\nGajar mein kai important nutrients paye jate hain:\n\nVitamin A – aankhon ki roshni aur skin ke liye acha\n\nVitamin C – immunity boost karta hai\n\nFiber – digestion aur gut health improve karta hai\n\nPotassium – heart aur blood pressure ke liye faidemand\n\nAntioxidants – body ko diseases se protect karte hain\n\nCarrot in Diet\n\nGajar ko diet mein shamil karne ke tareeqay:\n\nFresh salads mein\n\nJuices aur smoothies ke taur par\n\nSoups aur cooked dishes mein\n\nHealthy snacks aur weight management diet ke liye\n\nBenefits of Eating Carrot\n\nEyesight improve karta hai\n\nImmune system strong karta hai\n\nDigestion aur gut health ke liye acha\n\nSkin ko healthy aur glowing banata hai\n\nHeart health aur overall wellness ke liye faidemand",
+    "shortDescription": "Carrot, yaani Gajar, ek popular aur crunchy vegetable hai jo orange color ke saath naturally sweet taste rakhta hai. Yeh raw ya cooked dono form mein khaya jata hai aur health ke liye bohat faidemand mana jata hai. Carrot vitamins aur antioxidants ka rich source hai, jo skin, eyes aur immunity ke liye acha hai.\n\nCarrot Nutrition Value\n\nGajar mein kai important nutrients paye jate hain:\n\nVitamin A – aankhon ki roshni aur skin ke liye acha\n\nVitamin C – immunity boost karta hai\n\nFiber – digestion aur gut health improve karta hai\n\nPotassium – heart aur blood pressure ke liye faidemand\n\nAntioxidants – body ko diseases se protect karte hain\n\nCarrot in Diet\n\nGajar ko diet mein shamil karne ke tareeqay:\n\nFresh salads mein\n\nJuices aur smoothies ke taur par\n\nSoups aur cooked dishes mein\n\nHealthy snacks aur weight management diet ke liye\n\nBenefits of Eating Carrot\n\nEyesight improve karta hai\n\nImmune system strong karta hai\n\nDigestion aur gut health ke liye acha\n\nSkin ko healthy aur glowing banata hai\n\nHeart health aur overall wellness ke liye faidemand",
+    "price": 0.3,
+    "image": "/uploads/1768405242864-carrot.jpg",
+    "category": "Vegetable",
+    "season": "Summer",
+    "stock": 10,
+    "rating": 5,
+    "reviews": 0,
+    "tags": [],
+    "slug": "carrot-gajar",
+    "createdAt": "2026-01-14T15:40:57.518Z",
+    "quality": {
+      "organic": true,
+      "freshness": "Farm Fresh",
+      "farmingMethod": "100% Organic"
+    },
+    "nutrition": {},
+    "nutritionalInfo": {}
+  },
+  {
+    "id": 18,
+    "name": "Spinach (Palak)",
+    "description": "Spinach, yaani Palak, ek green leafy vegetable hai jo health ke liye bohat zyada faidemand mana jata hai. Yeh nutrients aur iron se bharpoor hoti hai aur daily diet ka important hissa hai. Palak ka taste halka sa earthy hota hai aur yeh cooked ya raw dono form mein use hoti hai.\n\nSpinach Nutrition Value\n\nPalak mein kai zaroori nutrients paye jate hain:\n\nIron – blood health aur hemoglobin ke liye acha\n\nVitamin A – eyes aur skin ke liye mufeed\n\nVitamin C – immunity boost karta hai\n\nFiber – digestion aur gut health improve karta hai\n\nCalcium – bones aur teeth ke liye acha\n\nSpinach in Diet\n\nPalak ko diet mein is tarah shamil kiya ja sakta hai:\n\nSabzi aur curries mein\n\nSoups aur dal ke sath\n\nSmoothies aur juices mein\n\nWeight loss aur healthy diet ke liye best\n\nBenefits of Eating Spinach\n\nBlood ko strong karta hai\n\nImmunity boost karta hai\n\nDigestion ko behtar banata hai\n\nBones aur muscles ke liye acha\n\nOverall health aur energy improve karta hai",
+    "shortDescription": "Spinach, yaani Palak, ek green leafy vegetable hai jo health ke liye bohat zyada faidemand mana jata hai. Yeh nutrients aur iron se bharpoor hoti hai aur daily diet ka important hissa hai. Palak ka taste halka sa earthy hota hai aur yeh cooked ya raw dono form mein use hoti hai.\n\nSpinach Nutrition Value\n\nPalak mein kai zaroori nutrients paye jate hain:\n\nIron – blood health aur hemoglobin ke liye acha\n\nVitamin A – eyes aur skin ke liye mufeed\n\nVitamin C – immunity boost karta hai\n\nFiber – digestion aur gut health improve karta hai\n\nCalcium – bones aur teeth ke liye acha\n\nSpinach in Diet\n\nPalak ko diet mein is tarah shamil kiya ja sakta hai:\n\nSabzi aur curries mein\n\nSoups aur dal ke sath\n\nSmoothies aur juices mein\n\nWeight loss aur healthy diet ke liye best\n\nBenefits of Eating Spinach\n\nBlood ko strong karta hai\n\nImmunity boost karta hai\n\nDigestion ko behtar banata hai\n\nBones aur muscles ke liye acha\n\nOverall health aur energy improve karta hai",
+    "price": 0.25,
+    "image": "/uploads/1768455838603-palak.jpg",
+    "category": "Vegetable",
+    "season": "All Season",
+    "stock": 10,
+    "rating": 5,
+    "reviews": 0,
+    "tags": [
+      "#“Spinach – Green Power for Good Health”#“Fresh Greens",
+      "Strong Body”#“Naturally Healthy",
+      "Naturally Green”"
+    ],
+    "slug": "spinach-palak",
+    "createdAt": "2026-01-15T05:46:45.423Z",
+    "quality": {
+      "organic": true,
+      "freshness": "Farm Fresh",
+      "farmingMethod": "100% Organic"
+    },
+    "nutrition": {},
+    "nutritionalInfo": {}
+  },
+  {
+    "id": 19,
+    "name": "Bottle Gourd (Lauki)",
+    "description": "Bottle Gourd, yaani Lauki (Ghiya), ek halka green rang ki vegetable hai jo zyada tar South Asian kitchens mein use hoti hai. Iska taste mild hota hai aur texture soft aur juicy hota hai. Lauki ko healthy aur digestion-friendly food mana jata hai.\n\nNutrition Value\n\nLauki mein important nutrients paye jate hain:\n\nWater content – bohat zyada, body ko hydrated rakhta hai\n\nFiber – digestion ko improve karta hai\n\nVitamin C – immunity boost karta hai\n\nLow calories – weight loss diet ke liye perfect\n\nIn Diet\n\nLauki ko aise use kia ja sakta hai:\n\nSabzi/curry bana kar\n\nLauki ka juice\n\nSoups aur light diet meals mein\n\nWeight loss aur summer diet mein\n\nBenefits\n\nBody ko hydrated rakhta hai\n\nDigestion aur gut health improve karta hai\n\nWeight management mein madad\n\nHeart health ke liye beneficial\n\nLow in calories aur easy to digest",
+    "shortDescription": "Bottle Gourd, yaani Lauki (Ghiya), ek halka green rang ki vegetable hai jo zyada tar South Asian kitchens mein use hoti hai. Iska taste mild hota hai aur texture soft aur juicy hota hai. Lauki ko healthy aur digestion-friendly food mana jata hai.\n\nNutrition Value\n\nLauki mein important nutrients paye jate hain:\n\nWater content – bohat zyada, body ko hydrated rakhta hai\n\nFiber – digestion ko improve karta hai\n\nVitamin C – immunity boost karta hai\n\nLow calories – weight loss diet ke liye perfect\n\nIn Diet\n\nLauki ko aise use kia ja sakta hai:\n\nSabzi/curry bana kar\n\nLauki ka juice\n\nSoups aur light diet meals mein\n\nWeight loss aur summer diet mein\n\nBenefits\n\nBody ko hydrated rakhta hai\n\nDigestion aur gut health improve karta hai\n\nWeight management mein madad\n\nHeart health ke liye beneficial\n\nLow in calories aur easy to digest",
+    "price": 1,
+    "image": "/uploads/1768456384203-luki.jpg",
+    "category": "Vegetable",
+    "season": "Summer",
+    "stock": 10,
+    "rating": 5,
+    "reviews": 0,
+    "tags": [
+      "#“Lauki – Sehat aur Hydration ka Healthy Choice”#  “Har Bite Mein Freshness aur Health” # “Naturally Cool",
+      "Naturally Light!”"
+    ],
+    "slug": "bottle-gourd-lauki",
+    "createdAt": "2026-01-15T05:53:09.294Z",
+    "quality": {
+      "organic": true,
+      "freshness": "Farm Fresh",
+      "farmingMethod": "100% Organic"
+    },
+    "nutrition": {},
+    "nutritionalInfo": {}
+  },
+  {
+    "id": 20,
+    "name": "Bhindi (Okra / Lady Finger)",
+    "description": "Bhindi, jise Okra ya Lady Finger bhi kaha jata hai, ek popular green vegetable hai jo daily cooking mein bohat zyada use hoti hai. Iska taste halka sa sweet hota hai aur yeh soft aur slimy texture rakhti hai jab pakai jaye. Bhindi sehat ke liye faidemand aur nutrients se bharpoor hoti hai.\n\nBhindi Nutrition Value\n\nBhindi mein kai zaroori nutrients hotay hain:\n\nFiber – digestion aur gut health ke liye acha\n\nVitamin C – immunity boost karta hai\n\nVitamin A – eyes aur skin ke liye mufeed\n\nFolate – blood health ke liye acha\n\nLow calories – weight control ke liye best\n\nBhindi in Diet\n\nBhindi ko diet mein is tarah shamil kiya ja sakta hai:\n\nBhindi ki sabzi (dry ya curry)\n\nStir-fried ya light fry\n\nWeight loss aur diabetic diet ke liye suitable\n\nDaily healthy meals ke liye\n\nBenefits of Eating Bhindi\n\nDigestion ko behtar banati hai\n\nBlood sugar control mein madad karti hai\n\nImmunity ko strong karti hai\n\nHeart health ke liye faidemand\n\nWeight management mein madad deti hai",
+    "shortDescription": "Bhindi, jise Okra ya Lady Finger bhi kaha jata hai, ek popular green vegetable hai jo daily cooking mein bohat zyada use hoti hai. Iska taste halka sa sweet hota hai aur yeh soft aur slimy texture rakhti hai jab pakai jaye. Bhindi sehat ke liye faidemand aur nutrients se bharpoor hoti hai.\n\nBhindi Nutrition Value\n\nBhindi mein kai zaroori nutrients hotay hain:\n\nFiber – digestion aur gut health ke liye acha\n\nVitamin C – immunity boost karta hai\n\nVitamin A – eyes aur skin ke liye mufeed\n\nFolate – blood health ke liye acha\n\nLow calories – weight control ke liye best\n\nBhindi in Diet\n\nBhindi ko diet mein is tarah shamil kiya ja sakta hai:\n\nBhindi ki sabzi (dry ya curry)\n\nStir-fried ya light fry\n\nWeight loss aur diabetic diet ke liye suitable\n\nDaily healthy meals ke liye\n\nBenefits of Eating Bhindi\n\nDigestion ko behtar banati hai\n\nBlood sugar control mein madad karti hai\n\nImmunity ko strong karti hai\n\nHeart health ke liye faidemand\n\nWeight management mein madad deti hai",
+    "price": 1.5,
+    "image": "/uploads/1768456477903-bhindi.jpg",
+    "category": "Vegetable",
+    "season": "Summer",
+    "stock": 10,
+    "rating": 5,
+    "reviews": 0,
+    "tags": [],
+    "slug": "bhindi-okra--lady-finger",
+    "createdAt": "2026-01-15T05:54:49.382Z",
+    "quality": {
+      "organic": true,
+      "freshness": "Farm Fresh",
+      "farmingMethod": "100% Organic"
+    },
+    "nutrition": {},
+    "nutritionalInfo": {}
+  },
+  {
+    "id": 21,
+    "name": "Torai (Ridge Gourd)",
+    "description": "Turi, jise Torai ya Ridge Gourd bhi kaha jata hai, ek green aur light vegetable hai jo sehat ke liye bohat faidemand hoti hai. Iska taste mild hota hai aur yeh asani se digest ho jati hai. Turi zyada tar simple sabzi, curry aur daal ke sath pakai jati hai aur daily diet ke liye bohat achi mani jati hai.\n\nTuri Nutrition Value\n\nTuri mein kai zaroori nutrients hotay hain:\n\nHigh water content – body ko hydrated rakhta hai\n\nFiber – digestion improve karta hai\n\nVitamin C – immunity boost karta hai\n\nVitamin B complex – energy aur metabolism ke liye acha\n\nLow calories – weight loss diet ke liye best\n\nTuri in Diet\n\nTuri ko diet mein is tarah shamil kiya ja sakta hai:\n\nSimple sabzi ya curry\n\nDaal ke sath\n\nLight aur healthy meals ke liye\n\nWeight loss aur summer diet mein\n\nBenefits of Eating Turi\n\nDigestion ko behtar banati hai\n\nBody ko thandak aur hydration deti hai\n\nWeight management mein madad karti hai\n\nImmunity ko strong karti hai\n\nLight aur easy-to-digest vegetable\n\n🥒 Turi Taglines",
+    "shortDescription": "Turi, jise Torai ya Ridge Gourd bhi kaha jata hai, ek green aur light vegetable hai jo sehat ke liye bohat faidemand hoti hai. Iska taste mild hota hai aur yeh asani se digest ho jati hai. Turi zyada tar simple sabzi, curry aur daal ke sath pakai jati hai aur daily diet ke liye bohat achi mani jati hai.\n\nTuri Nutrition Value\n\nTuri mein kai zaroori nutrients hotay hain:\n\nHigh water content – body ko hydrated rakhta hai\n\nFiber – digestion improve karta hai\n\nVitamin C – immunity boost karta hai\n\nVitamin B complex – energy aur metabolism ke liye acha\n\nLow calories – weight loss diet ke liye best\n\nTuri in Diet\n\nTuri ko diet mein is tarah shamil kiya ja sakta hai:\n\nSimple sabzi ya curry\n\nDaal ke sath\n\nLight aur healthy meals ke liye\n\nWeight loss aur summer diet mein\n\nBenefits of Eating Turi\n\nDigestion ko behtar banati hai\n\nBody ko thandak aur hydration deti hai\n\nWeight management mein madad karti hai\n\nImmunity ko strong karti hai\n\nLight aur easy-to-digest vegetable\n\n🥒 Turi Taglines",
+    "price": 0.5,
+    "image": "/uploads/1768456599583-turi.jpg",
+    "category": "Vegetable",
+    "season": "Summer",
+    "stock": 10,
+    "rating": 5,
+    "reviews": 0,
+    "tags": [
+      "#“Ridge Gourd – Light",
+      "Fresh & Healthy” # “Simple Vegetable",
+      "Strong Health”  #“Naturally Light",
+      "Naturally Good”"
+    ],
+    "slug": "torai-ridge-gourd",
+    "createdAt": "2026-01-15T05:57:38.904Z",
+    "quality": {
+      "organic": true,
+      "freshness": "Farm Fresh",
+      "farmingMethod": "100% Organic"
+    },
+    "nutrition": {},
+    "nutritionalInfo": {}
+  },
+  {
+    "id": 22,
+    "name": "Ghobi (Cauliflower)",
+    "description": "Ghobi, yaani Cauliflower, ek popular aur nutritious vegetable hai jo zyada tar winter season mein use hoti hai. Iska rang safed hota hai aur taste mild hota hai. Ghobi ko sabzi, curry, soup aur fried dishes mein use kiya jata hai. Yeh sehat ke liye bohat faidemand aur easily digestible hoti hai.\n\nGhobi Nutrition Value\n\nGhobi mein kai zaroori nutrients paye jate hain:\n\nVitamin C – immunity boost karta hai\n\nFiber – digestion aur gut health ke liye acha\n\nVitamin K – bones ke liye mufeed\n\nAntioxidants – body ko diseases se protect karte hain\n\nLow calories – weight management ke liye best\n\nGhobi in Diet\n\nGhobi ko diet mein is tarah shamil kiya ja sakta hai:\n\nGhobi ki sabzi ya curry\n\nSoups aur stir-fry dishes mein\n\nWeight loss aur healthy diet ke liye\n\nWinter meals ka important hissa\n\nBenefits of Eating Ghobi\n\nImmune system ko strong karti hai\n\nDigestion ko behtar banati hai\n\nHeart health ke liye faidemand\n\nWeight control mein madad karti hai\n\nOverall health aur energy improve karti hai",
+    "shortDescription": "Ghobi, yaani Cauliflower, ek popular aur nutritious vegetable hai jo zyada tar winter season mein use hoti hai. Iska rang safed hota hai aur taste mild hota hai. Ghobi ko sabzi, curry, soup aur fried dishes mein use kiya jata hai. Yeh sehat ke liye bohat faidemand aur easily digestible hoti hai.\n\nGhobi Nutrition Value\n\nGhobi mein kai zaroori nutrients paye jate hain:\n\nVitamin C – immunity boost karta hai\n\nFiber – digestion aur gut health ke liye acha\n\nVitamin K – bones ke liye mufeed\n\nAntioxidants – body ko diseases se protect karte hain\n\nLow calories – weight management ke liye best\n\nGhobi in Diet\n\nGhobi ko diet mein is tarah shamil kiya ja sakta hai:\n\nGhobi ki sabzi ya curry\n\nSoups aur stir-fry dishes mein\n\nWeight loss aur healthy diet ke liye\n\nWinter meals ka important hissa\n\nBenefits of Eating Ghobi\n\nImmune system ko strong karti hai\n\nDigestion ko behtar banati hai\n\nHeart health ke liye faidemand\n\nWeight control mein madad karti hai\n\nOverall health aur energy improve karti hai",
+    "price": 0.2,
+    "image": "/uploads/1768456735379-gobhi.jpg",
+    "category": "Vegetable",
+    "season": "All Season",
+    "stock": 10,
+    "rating": 5,
+    "reviews": 0,
+    "tags": [
+      "“Cauliflower – Light",
+      "Healthy & Nutritious”  “Winter Freshness on Your Plate”  “Simple Vegetable",
+      "Strong Health”"
+    ],
+    "slug": "ghobi-cauliflower",
+    "createdAt": "2026-01-15T05:59:22.532Z",
+    "quality": {
+      "organic": true,
+      "freshness": "Farm Fresh",
+      "farmingMethod": "100% Organic"
+    },
+    "nutrition": {},
+    "nutritionalInfo": {}
+  },
+  {
+    "id": 23,
+    "name": "Matar (Green Peas)",
+    "description": "Matar, yaani Green Peas, ek nutritious aur tasty vegetable hai jo zyada tar winter season mein fresh milti hai. Yeh chhote, hary rang ke daane hote hain jo meethay taste ke sath soft aur juicy hotay hain. Matar ko sabzi, pulao, rice aur snacks mein bohat use kiya jata hai.\n\nMatar Nutrition Value\n\nMatar mein kai zaroori nutrients hotay hain:\n\nProtein – body strength aur muscles ke liye acha\n\nFiber – digestion aur gut health improve karta hai\n\nVitamin C – immunity boost karta hai\n\nVitamin K – bones ke liye mufeed\n\nIron – blood health ke liye acha\n\nMatar in Diet\n\nMatar ko diet mein is tarah shamil kiya ja sakta hai:\n\nMatar ki sabzi ya curry\n\nPulao, fried rice aur biryani mein\n\nSoups aur salads mein\n\nHealthy aur balanced winter diet ke liye\n\nBenefits of Eating Matar\n\nEnergy aur strength provide karti hai\n\nDigestion ko behtar banati hai\n\nImmunity ko strong karti hai\n\nBones aur blood health ke liye faidemand\n\nWinter mein fresh aur nutritious option",
+    "shortDescription": "Matar, yaani Green Peas, ek nutritious aur tasty vegetable hai jo zyada tar winter season mein fresh milti hai. Yeh chhote, hary rang ke daane hote hain jo meethay taste ke sath soft aur juicy hotay hain. Matar ko sabzi, pulao, rice aur snacks mein bohat use kiya jata hai.\n\nMatar Nutrition Value\n\nMatar mein kai zaroori nutrients hotay hain:\n\nProtein – body strength aur muscles ke liye acha\n\nFiber – digestion aur gut health improve karta hai\n\nVitamin C – immunity boost karta hai\n\nVitamin K – bones ke liye mufeed\n\nIron – blood health ke liye acha\n\nMatar in Diet\n\nMatar ko diet mein is tarah shamil kiya ja sakta hai:\n\nMatar ki sabzi ya curry\n\nPulao, fried rice aur biryani mein\n\nSoups aur salads mein\n\nHealthy aur balanced winter diet ke liye\n\nBenefits of Eating Matar\n\nEnergy aur strength provide karti hai\n\nDigestion ko behtar banati hai\n\nImmunity ko strong karti hai\n\nBones aur blood health ke liye faidemand\n\nWinter mein fresh aur nutritious option",
+    "price": 1,
+    "image": "/uploads/1768456836296-mattar.jpg",
+    "category": "Vegetable",
+    "season": "Summer",
+    "stock": 10,
+    "rating": 5,
+    "reviews": 0,
+    "tags": [
+      "“Green Peas – Small Size",
+      "Big Nutrition”  “Fresh Winter Goodness”  “Naturally Sweet",
+      "Naturally Healthy”"
+    ],
+    "slug": "matar-green-peas",
+    "createdAt": "2026-01-15T06:00:53.996Z",
+    "quality": {
+      "organic": true,
+      "freshness": "Farm Fresh",
+      "farmingMethod": "100% Organic"
+    },
+    "nutrition": {},
+    "nutritionalInfo": {}
+  },
+  {
+    "id": 24,
+    "name": "Baingan (Brinjal / Eggplant)",
+    "description": "Baingan, jise Brinjal ya Eggplant bhi kaha jata hai, ek popular aur versatile vegetable hai jo har season mein mil jati hai. Iska rang zyada tar purple hota hai, lekin green aur white varieties bhi hoti hain. Baingan ka taste mild hota hai aur yeh curry, bharta, fry aur baked dishes mein bohat use hota hai.\n\nBaingan Nutrition Value\n\nBaingan mein kai zaroori nutrients paye jate hain:\n\nFiber – digestion aur gut health ke liye acha\n\nAntioxidants – body ko free radicals se protect karte hain\n\nVitamin C – immunity boost karta hai\n\nVitamin B6 – metabolism aur brain ke liye acha\n\nLow calories – weight management ke liye suitable\n\nBaingan in Diet\n\nBaingan ko diet mein is tarah shamil kiya ja sakta hai:\n\nBaingan ki sabzi ya curry\n\nBaingan bharta\n\nFry, roast ya bake form mein\n\nHealthy aur balanced meals ke liye\n\nBenefits of Eating Baingan\n\nDigestion ko behtar banata hai\n\nHeart health ke liye faidemand\n\nWeight control mein madad karta hai\n\nAntioxidant support provide karta hai\n\nDaily diet ke liye light aur nutritious option",
+    "shortDescription": "Baingan, jise Brinjal ya Eggplant bhi kaha jata hai, ek popular aur versatile vegetable hai jo har season mein mil jati hai. Iska rang zyada tar purple hota hai, lekin green aur white varieties bhi hoti hain. Baingan ka taste mild hota hai aur yeh curry, bharta, fry aur baked dishes mein bohat use hota hai.\n\nBaingan Nutrition Value\n\nBaingan mein kai zaroori nutrients paye jate hain:\n\nFiber – digestion aur gut health ke liye acha\n\nAntioxidants – body ko free radicals se protect karte hain\n\nVitamin C – immunity boost karta hai\n\nVitamin B6 – metabolism aur brain ke liye acha\n\nLow calories – weight management ke liye suitable\n\nBaingan in Diet\n\nBaingan ko diet mein is tarah shamil kiya ja sakta hai:\n\nBaingan ki sabzi ya curry\n\nBaingan bharta\n\nFry, roast ya bake form mein\n\nHealthy aur balanced meals ke liye\n\nBenefits of Eating Baingan\n\nDigestion ko behtar banata hai\n\nHeart health ke liye faidemand\n\nWeight control mein madad karta hai\n\nAntioxidant support provide karta hai\n\nDaily diet ke liye light aur nutritious option",
+    "price": 0.75,
+    "image": "/uploads/1768456956729-baqngan.jpg",
+    "category": "Vegetable",
+    "season": "All Season",
+    "stock": 10,
+    "rating": 5,
+    "reviews": 0,
+    "tags": [
+      "“Brinjal – Light",
+      "Tasty & Nutritious”  “Versatile Taste",
+      "Healthy Choice”  “Naturally Good",
+      "Everyday Vegetable”"
+    ],
+    "slug": "baingan-brinjal--eggplant",
+    "createdAt": "2026-01-15T06:02:44.083Z",
+    "quality": {
+      "organic": true,
+      "freshness": "Farm Fresh",
+      "farmingMethod": "100% Organic"
+    },
+    "nutrition": {},
+    "nutritionalInfo": {}
+  },
+  {
+    "id": 25,
+    "name": "Baingan (Brinjal / Eggplant)",
+    "description": "Baingan, jise Brinjal ya Eggplant bhi kaha jata hai, ek popular aur versatile vegetable hai jo har season mein mil jati hai. Iska rang zyada tar purple hota hai, lekin green aur white varieties bhi hoti hain. Baingan ka taste mild hota hai aur yeh curry, bharta, fry aur baked dishes mein bohat use hota hai.\n\nBaingan Nutrition Value\n\nBaingan mein kai zaroori nutrients paye jate hain:\n\nFiber – digestion aur gut health ke liye acha\n\nAntioxidants – body ko free radicals se protect karte hain\n\nVitamin C – immunity boost karta hai\n\nVitamin B6 – metabolism aur brain ke liye acha\n\nLow calories – weight management ke liye suitable\n\nBaingan in Diet\n\nBaingan ko diet mein is tarah shamil kiya ja sakta hai:\n\nBaingan ki sabzi ya curry\n\nBaingan bharta\n\nFry, roast ya bake form mein\n\nHealthy aur balanced meals ke liye\n\nBenefits of Eating Baingan\n\nDigestion ko behtar banata hai\n\nHeart health ke liye faidemand\n\nWeight control mein madad karta hai\n\nAntioxidant support provide karta hai\n\nDaily diet ke liye light aur nutritious option",
+    "shortDescription": "Baingan, jise Brinjal ya Eggplant bhi kaha jata hai, ek popular aur versatile vegetable hai jo har season mein mil jati hai. Iska rang zyada tar purple hota hai, lekin green aur white varieties bhi hoti hain. Baingan ka taste mild hota hai aur yeh curry, bharta, fry aur baked dishes mein bohat use hota hai.\n\nBaingan Nutrition Value\n\nBaingan mein kai zaroori nutrients paye jate hain:\n\nFiber – digestion aur gut health ke liye acha\n\nAntioxidants – body ko free radicals se protect karte hain\n\nVitamin C – immunity boost karta hai\n\nVitamin B6 – metabolism aur brain ke liye acha\n\nLow calories – weight management ke liye suitable\n\nBaingan in Diet\n\nBaingan ko diet mein is tarah shamil kiya ja sakta hai:\n\nBaingan ki sabzi ya curry\n\nBaingan bharta\n\nFry, roast ya bake form mein\n\nHealthy aur balanced meals ke liye\n\nBenefits of Eating Baingan\n\nDigestion ko behtar banata hai\n\nHeart health ke liye faidemand\n\nWeight control mein madad karta hai\n\nAntioxidant support provide karta hai\n\nDaily diet ke liye light aur nutritious option",
+    "price": 0.5,
+    "image": "/uploads/1768457001176-bangan-circl.jpg",
+    "category": "Vegetable",
+    "season": "All Season",
+    "stock": 10,
+    "rating": 5,
+    "reviews": 0,
+    "tags": [
+      "“Brinjal – Light",
+      "Tasty & Nutritious”  “Versatile Taste",
+      "Healthy Choice”  “Naturally Good",
+      "Everyday Vegetable”"
+    ],
+    "slug": "baingan-brinjal--eggplant",
+    "createdAt": "2026-01-15T06:04:18.250Z",
+    "quality": {
+      "organic": true,
+      "freshness": "Farm Fresh",
+      "farmingMethod": "100% Organic"
+    },
+    "nutrition": {},
+    "nutritionalInfo": {}
+  },
+  {
+    "id": 26,
+    "name": "Karela (Bitter Gourd)",
+    "description": "Karela, jise Bitter Gourd bhi kaha jata hai, ek green aur healthy vegetable hai jo apne kadway taste ke liye mashhoor hai. Yeh zyada tar health benefits ki wajah se khaya jata hai, khas taur par diabetes aur digestion ke liye. Karela daily diet ka hissa banaya ja sakta hai jab ise sahi tareeqay se pakaya jaye.\n\nKarela Nutrition Value\n\nKarela mein kai zaroori nutrients hotay hain:\n\nFiber – digestion aur gut health ke liye acha\n\nVitamin C – immunity boost karta hai\n\nVitamin A – eyes aur skin ke liye mufeed\n\nIron – blood health ke liye acha\n\nLow calories – weight management ke liye best\n\nKarela in Diet\n\nKarela ko diet mein is tarah shamil kiya ja sakta hai:\n\nKarela ki sabzi (dry ya curry)\n\nStuffed karela\n\nKarela juice (health purpose ke liye)\n\nDiabetic aur weight-loss diet ke liye\n\nBenefits of Eating Karela\n\nBlood sugar control mein madad karta hai\n\nDigestion ko behtar banata hai\n\nImmunity ko strong karta hai\n\nWeight loss mein madad karta hai\n\nBody detox karne mein faidemand",
+    "shortDescription": "Karela, jise Bitter Gourd bhi kaha jata hai, ek green aur healthy vegetable hai jo apne kadway taste ke liye mashhoor hai. Yeh zyada tar health benefits ki wajah se khaya jata hai, khas taur par diabetes aur digestion ke liye. Karela daily diet ka hissa banaya ja sakta hai jab ise sahi tareeqay se pakaya jaye.\n\nKarela Nutrition Value\n\nKarela mein kai zaroori nutrients hotay hain:\n\nFiber – digestion aur gut health ke liye acha\n\nVitamin C – immunity boost karta hai\n\nVitamin A – eyes aur skin ke liye mufeed\n\nIron – blood health ke liye acha\n\nLow calories – weight management ke liye best\n\nKarela in Diet\n\nKarela ko diet mein is tarah shamil kiya ja sakta hai:\n\nKarela ki sabzi (dry ya curry)\n\nStuffed karela\n\nKarela juice (health purpose ke liye)\n\nDiabetic aur weight-loss diet ke liye\n\nBenefits of Eating Karela\n\nBlood sugar control mein madad karta hai\n\nDigestion ko behtar banata hai\n\nImmunity ko strong karta hai\n\nWeight loss mein madad karta hai\n\nBody detox karne mein faidemand",
+    "price": 1.5,
+    "image": "/uploads/1768457166495-karla.jpg",
+    "category": "Vegetable",
+    "season": "All Season",
+    "stock": 10,
+    "rating": 5,
+    "reviews": 0,
+    "tags": [
+      "“Bitter Gourd – Bitter Taste",
+      "Powerful Health”  “Natural Choice for Healthy Living”  “Small Bite",
+      "Big Health Benefits”"
+    ],
+    "slug": "karela-bitter-gourd",
+    "createdAt": "2026-01-15T06:06:20.126Z",
+    "quality": {
+      "organic": true,
+      "freshness": "Farm Fresh",
+      "farmingMethod": "100% Organic"
+    },
+    "nutrition": {},
+    "nutritionalInfo": {}
+  },
+  {
+    "id": 27,
+    "name": "Shalgam (Turnip)",
+    "description": "Shalgam, jise Turnip bhi kaha jata hai, ek healthy aur nutritious root vegetable hai jo zyada tar winter season mein milti hai. Iska rang safed aur halka purple hota hai aur taste mild hota hai. Shalgam ko sabzi, curry, soup aur achaar mein use kiya jata hai.\n\nShalgam Nutrition Value\n\nShalgam mein kai zaroori nutrients paye jate hain:\n\nFiber – digestion aur gut health ke liye acha\n\nVitamin C – immunity boost karta hai\n\nCalcium – bones aur teeth ke liye mufeed\n\nPotassium – heart aur blood pressure ke liye acha\n\nLow calories – weight management ke liye suitable\n\nShalgam in Diet\n\nShalgam ko diet mein is tarah shamil kiya ja sakta hai:\n\nShalgam ki sabzi ya curry\n\nSoups aur stews mein\n\nAchaar ke taur par\n\nHealthy winter meals ke liye\n\nBenefits of Eating Shalgam\n\nDigestion ko behtar banata hai\n\nImmunity ko strong karta hai\n\nBones ko mazboot karta hai\n\nHeart health ke liye faidemand\n\nWinter diet ke liye best vegetable",
+    "shortDescription": "Shalgam, jise Turnip bhi kaha jata hai, ek healthy aur nutritious root vegetable hai jo zyada tar winter season mein milti hai. Iska rang safed aur halka purple hota hai aur taste mild hota hai. Shalgam ko sabzi, curry, soup aur achaar mein use kiya jata hai.\n\nShalgam Nutrition Value\n\nShalgam mein kai zaroori nutrients paye jate hain:\n\nFiber – digestion aur gut health ke liye acha\n\nVitamin C – immunity boost karta hai\n\nCalcium – bones aur teeth ke liye mufeed\n\nPotassium – heart aur blood pressure ke liye acha\n\nLow calories – weight management ke liye suitable\n\nShalgam in Diet\n\nShalgam ko diet mein is tarah shamil kiya ja sakta hai:\n\nShalgam ki sabzi ya curry\n\nSoups aur stews mein\n\nAchaar ke taur par\n\nHealthy winter meals ke liye\n\nBenefits of Eating Shalgam\n\nDigestion ko behtar banata hai\n\nImmunity ko strong karta hai\n\nBones ko mazboot karta hai\n\nHeart health ke liye faidemand\n\nWinter diet ke liye best vegetable",
+    "price": 1,
+    "image": "/uploads/1768457247693-shajam.jpg",
+    "category": "Vegetable",
+    "season": "Summer",
+    "stock": 10,
+    "rating": 5,
+    "reviews": 0,
+    "tags": [
+      "“Turnip – Fresh Winter Nutrition”  “Rooted in Health”  “Simple Vegetable",
+      "Strong Benefits”"
+    ],
+    "slug": "shalgam-turnip",
+    "createdAt": "2026-01-15T06:07:35.672Z",
+    "quality": {
+      "organic": true,
+      "freshness": "Farm Fresh",
+      "farmingMethod": "100% Organic"
+    },
+    "nutrition": {},
+    "nutritionalInfo": {}
+  },
+  {
+    "id": 28,
+    "name": "Radish(Mooli / Mulli)",
+    "description": "Mulli ek healthy root vegetable hai jo digestion, liver health aur detox ke liye bohot faida mand hoti hai. Is mein pani aur fiber zyada hota hai jo pet ko saaf rakhta hai.\n\nNutritional Benefits:\n\nFiber (constipation door karta hai)\n\nVitamin C (immunity boost)\n\nPotassium (blood pressure control)\n\nDetox properties (liver & kidney ke liye achi)\n\nLow calories (weight loss ke liye best)\n\n3. Diet Plan – Mulli kaise khayein?\n\nSubah (Empty Stomach):\n\n1 choti mulli salad (lemon + namak)\n\nDigestion improve hota hai\n\nBreakfast ke sath:\n\nMulli ka paratha (moderate oil)\n\nLunch:\n\nMulli ki sabzi ya raita\n\nEvening:\n\nRaw mulli salad (choti quantity)\n\nRaat ko:\n\nAvoid raw mulli (gas aur bloating ho sakti hai)\n\n4. Weight Loss ke liye Mulli\n\nBoiled ya raw salad best hai\n\nZyada masalay aur tel se parhez karein\n\nDin mein 1–2 baar kaafi hai",
+    "shortDescription": "Mulli ek healthy root vegetable hai jo digestion, liver health aur detox ke liye bohot faida mand hoti hai. Is mein pani aur fiber zyada hota hai jo pet ko saaf rakhta hai.\n\nNutritional Benefits:\n\nFiber (constipation door karta hai)\n\nVitamin C (immunity boost)\n\nPotassium (blood pressure control)\n\nDetox properties (liver & kidney ke liye achi)\n\nLow calories (weight loss ke liye best)\n\n3. Diet Plan – Mulli kaise khayein?\n\nSubah (Empty Stomach):\n\n1 choti mulli salad (lemon + namak)\n\nDigestion improve hota hai\n\nBreakfast ke sath:\n\nMulli ka paratha (moderate oil)\n\nLunch:\n\nMulli ki sabzi ya raita\n\nEvening:\n\nRaw mulli salad (choti quantity)\n\nRaat ko:\n\nAvoid raw mulli (gas aur bloating ho sakti hai)\n\n4. Weight Loss ke liye Mulli\n\nBoiled ya raw salad best hai\n\nZyada masalay aur tel se parhez karein\n\nDin mein 1–2 baar kaafi hai",
+    "price": 0.3,
+    "image": "/uploads/1768457467073-mulli.jpg",
+    "category": "Vegetable",
+    "season": "Winter",
+    "stock": 10,
+    "rating": 5,
+    "reviews": 0,
+    "tags": [
+      "“Mulli – Natural Detox",
+      "Natural Health.”  Ya 🌱 “Mulli: Light Food",
+      "Strong Body.”"
+    ],
+    "slug": "radishmooli--mulli",
+    "createdAt": "2026-01-15T06:11:20.475Z",
+    "quality": {
+      "organic": true,
+      "freshness": "Farm Fresh",
+      "farmingMethod": "100% Organic"
+    },
+    "nutrition": {},
+    "nutritionalInfo": {}
+  },
+  {
+    "id": 29,
+    "name": "Chilli Pepper(Green Chilli)",
+    "description": "Hari mirch ek spicy lekin bohot healthy vegetable hai. Is mein capsaicin hota hai jo metabolism fast karta hai, fat burn mein madad deta hai aur immunity strong banata hai.\n\nNutritional Benefits:\n\nVitamin C (immunity boost)\n\nVitamin A (eyes & skin ke liye)\n\nCapsaicin (weight loss & pain relief)\n\nAntioxidants (body protection)\n\nLow calories (diet friendly)\n\n3. Diet Plan – Hari Mirch kaise khayein?\n\nSubah / Breakfast ke sath:\n\n1–2 hari mirch (salad ya omelette ke sath)\n\nLunch:\n\nSabzi, daal ya salad mein shamil karein\n\nEvening:\n\nBhuni hui hari mirch (light snack)\n\nRaat ko:\n\nZyada avoid karein agar acidity ya gas ka masla ho\n\n⚠️ Note: Zyada mirch pet aur acidity ke liye nuksan deh ho sakti hai.\n\n4. Weight Loss ke liye Hari Mirch\n\nMetabolism tez karti hai\n\nFat burning mein madad deti hai\n\nRozana 1–2 kaafi hoti hain",
+    "shortDescription": "Hari mirch ek spicy lekin bohot healthy vegetable hai. Is mein capsaicin hota hai jo metabolism fast karta hai, fat burn mein madad deta hai aur immunity strong banata hai.\n\nNutritional Benefits:\n\nVitamin C (immunity boost)\n\nVitamin A (eyes & skin ke liye)\n\nCapsaicin (weight loss & pain relief)\n\nAntioxidants (body protection)\n\nLow calories (diet friendly)\n\n3. Diet Plan – Hari Mirch kaise khayein?\n\nSubah / Breakfast ke sath:\n\n1–2 hari mirch (salad ya omelette ke sath)\n\nLunch:\n\nSabzi, daal ya salad mein shamil karein\n\nEvening:\n\nBhuni hui hari mirch (light snack)\n\nRaat ko:\n\nZyada avoid karein agar acidity ya gas ka masla ho\n\n⚠️ Note: Zyada mirch pet aur acidity ke liye nuksan deh ho sakti hai.\n\n4. Weight Loss ke liye Hari Mirch\n\nMetabolism tez karti hai\n\nFat burning mein madad deti hai\n\nRozana 1–2 kaafi hoti hain",
+    "price": 1.4,
+    "image": "/uploads/1768457573746-chmilla-mirch.jpg",
+    "category": "Vegetable",
+    "season": "All Season",
+    "stock": 10,
+    "rating": 5,
+    "reviews": 0,
+    "tags": [
+      "“Hari Mirch – Choti si",
+      "Taqat Badi.”  Ya 🔥 “Green Chilli: Spice Your Food",
+      "Boost Your Health.”"
+    ],
+    "slug": "chilli-peppergreen-chilli",
+    "createdAt": "2026-01-15T06:13:03.538Z",
+    "quality": {
+      "organic": true,
+      "freshness": "Farm Fresh",
+      "farmingMethod": "100% Organic"
+    },
+    "nutrition": {},
+    "nutritionalInfo": {}
+  },
+  {
+    "id": 30,
+    "name": "Chicken",
+    "description": "Chicken ek high-protein aur healthy meat hai jo muscles banane, weight loss aur body strength ke liye bohot faida mand hota hai—khaaskar skinless chicken breast. Is mein protein zyada aur fat kam hota hai.\n\nNutritional Benefits:\n\nHigh protein (muscle building)\n\nLow fat (especially breast part)\n\nVitamin B6 & B12 (energy & brain health)\n\nIron & Zinc (immunity boost)\n\nMetabolism support\n\n3. Diet Plan – Chicken kaise khayein?\n\nBreakfast (Gym / Active log):\n\nBoiled ya grilled chicken (100–150g)\n\nLunch:\n\nGrilled / steamed / lightly cooked chicken\n\nSalad aur brown rice ke sath\n\nEvening Snack:\n\nChicken soup (low salt & oil)\n\nDinner:\n\nLight chicken dish (avoid fried & spicy)\n\n❌ Avoid: Deep fried, extra oil, heavy gravy\n\n4. Weight Loss ke liye Chicken\n\nSkinless chicken breast best hai\n\nPortion control zaroori hai\n\nWeek mein 3–5 din kaafi hota hai",
+    "shortDescription": "Chicken ek high-protein aur healthy meat hai jo muscles banane, weight loss aur body strength ke liye bohot faida mand hota hai—khaaskar skinless chicken breast. Is mein protein zyada aur fat kam hota hai.\n\nNutritional Benefits:\n\nHigh protein (muscle building)\n\nLow fat (especially breast part)\n\nVitamin B6 & B12 (energy & brain health)\n\nIron & Zinc (immunity boost)\n\nMetabolism support\n\n3. Diet Plan – Chicken kaise khayein?\n\nBreakfast (Gym / Active log):\n\nBoiled ya grilled chicken (100–150g)\n\nLunch:\n\nGrilled / steamed / lightly cooked chicken\n\nSalad aur brown rice ke sath\n\nEvening Snack:\n\nChicken soup (low salt & oil)\n\nDinner:\n\nLight chicken dish (avoid fried & spicy)\n\n❌ Avoid: Deep fried, extra oil, heavy gravy\n\n4. Weight Loss ke liye Chicken\n\nSkinless chicken breast best hai\n\nPortion control zaroori hai\n\nWeek mein 3–5 din kaafi hota hai",
+    "price": 2,
+    "image": "/uploads/1768458060553-chicken.jpg",
+    "category": "Meat",
+    "season": "All Season",
+    "stock": 10,
+    "rating": 5,
+    "reviews": 0,
+    "tags": [
+      "Chicken – Power Protein for a Strong Body.” “Eat Clean",
+      "Eat Chicken.”"
+    ],
+    "slug": "chicken",
+    "createdAt": "2026-01-15T06:21:12.419Z",
+    "quality": {
+      "organic": true,
+      "freshness": "Farm Fresh",
+      "farmingMethod": "100% Organic"
+    },
+    "nutrition": {},
+    "nutritionalInfo": {}
+  },
+  {
+    "id": 31,
+    "name": "Mutton (Goat Meat)",
+    "description": "Mutton ek rich aur energy-giving meat hai jo body strength, blood formation aur immunity ke liye faida mand hota hai. Is mein iron aur vitamin B12 zyada hota hai, is liye kamzori aur anemia ke liye acha mana jata hai—lekin moderation bohot zaroori hai.\n\nNutritional Benefits:\n\nHigh-quality protein (muscle & strength)\n\nIron (blood banane mein madad)\n\nVitamin B12 (energy & nerves health)\n\nZinc (immunity boost)\n\nHealthy fats (energy source)\n\n3. Diet Plan – Mutton kaise khayein?\n\nLunch (Best Time):\n\n100–150g mutton (boiled, steamed ya light curry)\n\nSalad ke sath\n\nDinner:\n\nChoti quantity (avoid late night)\n\nSoup Form:\n\nMutton yakhni (low fat, low salt)\n\n❌ Avoid: Zyada tel, heavy masalay, rozana istemal\n\n4. Health & Weight Tips\n\nWeek mein 1–2 baar kaafi hota hai\n\nHigh BP ya cholesterol walay log quantity kam rakhein\n\nDigestion slow hota hai, is liye raat ko zyada na khayein",
+    "shortDescription": "Mutton ek rich aur energy-giving meat hai jo body strength, blood formation aur immunity ke liye faida mand hota hai. Is mein iron aur vitamin B12 zyada hota hai, is liye kamzori aur anemia ke liye acha mana jata hai—lekin moderation bohot zaroori hai.\n\nNutritional Benefits:\n\nHigh-quality protein (muscle & strength)\n\nIron (blood banane mein madad)\n\nVitamin B12 (energy & nerves health)\n\nZinc (immunity boost)\n\nHealthy fats (energy source)\n\n3. Diet Plan – Mutton kaise khayein?\n\nLunch (Best Time):\n\n100–150g mutton (boiled, steamed ya light curry)\n\nSalad ke sath\n\nDinner:\n\nChoti quantity (avoid late night)\n\nSoup Form:\n\nMutton yakhni (low fat, low salt)\n\n❌ Avoid: Zyada tel, heavy masalay, rozana istemal\n\n4. Health & Weight Tips\n\nWeek mein 1–2 baar kaafi hota hai\n\nHigh BP ya cholesterol walay log quantity kam rakhein\n\nDigestion slow hota hai, is liye raat ko zyada na khayein",
+    "price": 10,
+    "image": "/uploads/1768460307997-goat.jpg",
+    "category": "Meat",
+    "season": "All Season",
+    "stock": 10,
+    "rating": 5,
+    "reviews": 0,
+    "tags": [
+      "Mutton – Strength in Every Bite.” #“Mutton: Rich Taste",
+      "Rich Nutrition.”"
+    ],
+    "slug": "mutton-goat-meat",
+    "createdAt": "2026-01-15T06:58:35.230Z",
+    "images": [
+      "/uploads/1768460307997-goat.jpg",
+      "/uploads/1768460308484-download-29-.jpg"
+    ],
+    "reviewsList": [],
+    "quality": {
+      "organic": true,
+      "freshness": "Farm Fresh",
+      "farmingMethod": "100% Organic"
+    },
+    "nutrition": {},
+    "nutritionalInfo": {}
+  },
+  {
+    "id": 32,
+    "name": "Lamb(Dumba)",
+    "description": "Lamb young sheep ka gosht hota hai jo mutton ke muqable mein zyada soft, juicy aur slightly kam strong taste rakhta hai. Is mein protein, iron aur vitamin B12 hotay hain jo body strength aur energy ke liye bohot faida mand hain.\n\nNutritional Benefits:\n\nHigh-quality protein (muscle building)\n\nIron (blood health)\n\nVitamin B12 (energy & nerves)\n\nZinc (immunity boost)\n\nHealthy fats (energy source)\n\n3. Diet Plan – Lamb kaise khayein?\n\nLunch (Best Time):\n\n100–150g lamb (grilled, boiled ya light curry)\n\nSabzi ya salad ke sath\n\nDinner:\n\nChoti quantity (early dinner better)\n\nSoup / Stew:\n\nLamb soup (low oil & masalay)\n\n❌ Avoid: Deep fried, heavy gravy, rozana khana\n\n4. Health Tips\n\nWeek mein 1 baar kaafi hota hai\n\nHigh cholesterol walay log kam quantity lein\n\nDigestion heavy hota hai, is liye balance zaroori hai",
+    "shortDescription": "Lamb young sheep ka gosht hota hai jo mutton ke muqable mein zyada soft, juicy aur slightly kam strong taste rakhta hai. Is mein protein, iron aur vitamin B12 hotay hain jo body strength aur energy ke liye bohot faida mand hain.\n\nNutritional Benefits:\n\nHigh-quality protein (muscle building)\n\nIron (blood health)\n\nVitamin B12 (energy & nerves)\n\nZinc (immunity boost)\n\nHealthy fats (energy source)\n\n3. Diet Plan – Lamb kaise khayein?\n\nLunch (Best Time):\n\n100–150g lamb (grilled, boiled ya light curry)\n\nSabzi ya salad ke sath\n\nDinner:\n\nChoti quantity (early dinner better)\n\nSoup / Stew:\n\nLamb soup (low oil & masalay)\n\n❌ Avoid: Deep fried, heavy gravy, rozana khana\n\n4. Health Tips\n\nWeek mein 1 baar kaafi hota hai\n\nHigh cholesterol walay log kam quantity lein\n\nDigestion heavy hota hai, is liye balance zaroori hai",
+    "price": 15,
+    "image": "/uploads/1768460423263-Lamb-and-Goat-Meat.jpg",
+    "category": "Meat",
+    "season": "All Season",
+    "stock": 10,
+    "rating": 5,
+    "reviews": 0,
+    "tags": [
+      "“Lamb – Soft Taste",
+      "Strong Nutrition.”  “Lamb: Premium Protein for Powerful Health.”"
+    ],
+    "slug": "lambdumba",
+    "createdAt": "2026-01-15T07:00:56.160Z",
+    "images": [
+      "/uploads/1768460423263-Lamb-and-Goat-Meat.jpg",
+      "/uploads/1768460423831-download-31-.jpg",
+      "/uploads/1768460424070-download-30-.jpg"
+    ],
+    "reviewsList": [],
+    "quality": {
+      "organic": true,
+      "freshness": "Farm Fresh",
+      "farmingMethod": "100% Organic"
+    },
+    "nutrition": {},
+    "nutritionalInfo": {}
+  },
+  {
+    "id": 33,
+    "name": "Beef(Cow Meat)",
+    "description": "Beef ek high-protein aur iron-rich meat hai jo body strength, muscles aur blood health ke liye faida mand hota hai. Is mein zinc aur vitamin B12 hotay hain jo immunity aur energy level ko improve karte hain. Lekin kyun ke yeh heavy meat hai, is liye moderation bohot zaroori hai.\n\nNutritional Benefits:\n\nHigh-quality protein (muscle building)\n\nIron (blood & anemia ke liye acha)\n\nVitamin B12 (energy & brain health)\n\nZinc (immunity boost)\n\nHealthy fats (long-lasting energy)\n\n3. Diet Plan – Beef kaise khayein?\n\nLunch (Best Time):\n\n100–150g beef (boiled, grilled ya light curry)\n\nSalad aur sabzi ke sath\n\nDinner:\n\nChoti quantity, early dinner behtar hota hai\n\nSoup / Stew:\n\nBeef soup (low oil & kam masalay)\n\n❌ Avoid: Deep fried beef, zyada tel, heavy gravies, late night consumption\n\n4. Health & Weight Tips\n\nWeek mein 1–2 baar kaafi hota hai\n\nHigh BP, cholesterol ya heart patients quantity kam rakhein\n\nDigestion slow hota hai, is liye zyada mat khayein",
+    "shortDescription": "Beef ek high-protein aur iron-rich meat hai jo body strength, muscles aur blood health ke liye faida mand hota hai. Is mein zinc aur vitamin B12 hotay hain jo immunity aur energy level ko improve karte hain. Lekin kyun ke yeh heavy meat hai, is liye moderation bohot zaroori hai.\n\nNutritional Benefits:\n\nHigh-quality protein (muscle building)\n\nIron (blood & anemia ke liye acha)\n\nVitamin B12 (energy & brain health)\n\nZinc (immunity boost)\n\nHealthy fats (long-lasting energy)\n\n3. Diet Plan – Beef kaise khayein?\n\nLunch (Best Time):\n\n100–150g beef (boiled, grilled ya light curry)\n\nSalad aur sabzi ke sath\n\nDinner:\n\nChoti quantity, early dinner behtar hota hai\n\nSoup / Stew:\n\nBeef soup (low oil & kam masalay)\n\n❌ Avoid: Deep fried beef, zyada tel, heavy gravies, late night consumption\n\n4. Health & Weight Tips\n\nWeek mein 1–2 baar kaafi hota hai\n\nHigh BP, cholesterol ya heart patients quantity kam rakhein\n\nDigestion slow hota hai, is liye zyada mat khayein",
+    "price": 6,
+    "image": "/uploads/1768460853503-beef.jpg",
+    "category": "Meat",
+    "season": "All Season",
+    "stock": 10,
+    "rating": 5,
+    "reviews": 0,
+    "tags": [
+      "“Beef – Power",
+      "Protein",
+      "Performance.”  Y “Beef: Strong Food for Strong Bodies.”"
+    ],
+    "slug": "beefcow-meat",
+    "createdAt": "2026-01-15T07:07:41.169Z",
+    "images": [
+      "/uploads/1768460853503-beef.jpg",
+      "/uploads/1768460854050-cow-m.jpg",
+      "/uploads/1768460854244-cow.jpg"
+    ],
+    "reviewsList": [],
+    "quality": {
+      "organic": true,
+      "freshness": "Farm Fresh",
+      "farmingMethod": "100% Organic"
+    },
+    "nutrition": {},
+    "nutritionalInfo": {}
+  },
+  {
+    "id": 34,
+    "name": "Camel Meat(Oont ka gosht)",
+    "description": "Camel meat ek lean (kam charbi wala) aur nutritious red meat hai jo gaye aur bakray ke gosht ke muqable mein cholesterol kam rakhta hai. Yeh desert regions mein zyada istemal hota hai aur strength, stamina aur blood health ke liye faida mand mana jata hai.\n\nNutritional Benefits:\n\nHigh-quality protein (muscle & strength)\n\nLow fat & low cholesterol (compared to beef)\n\nIron (blood formation)\n\nVitamin B12 (energy & nerves)\n\nZinc (immunity boost)\n\n3. Diet Plan – Camel Meat kaise khayein?\n\nLunch (Best Time):\n\n100–150g camel meat (boiled, grilled ya light curry)\n\nSabzi aur salad ke sath\n\nSoup / Stew:\n\nCamel meat soup (yakhni style, low oil)\n\nDinner:\n\nChoti quantity, early dinner behtar\n\n❌ Avoid: Zyada tel, deep fried, heavy masalay\n\n4. Health Tips\n\nWeek mein 1 baar kaafi hota hai\n\nNew try karne walay log pehle choti quantity lein\n\nSlow digestion ki wajah se raat ko zyada na khayein",
+    "shortDescription": "Camel meat ek lean (kam charbi wala) aur nutritious red meat hai jo gaye aur bakray ke gosht ke muqable mein cholesterol kam rakhta hai. Yeh desert regions mein zyada istemal hota hai aur strength, stamina aur blood health ke liye faida mand mana jata hai.\n\nNutritional Benefits:\n\nHigh-quality protein (muscle & strength)\n\nLow fat & low cholesterol (compared to beef)\n\nIron (blood formation)\n\nVitamin B12 (energy & nerves)\n\nZinc (immunity boost)\n\n3. Diet Plan – Camel Meat kaise khayein?\n\nLunch (Best Time):\n\n100–150g camel meat (boiled, grilled ya light curry)\n\nSabzi aur salad ke sath\n\nSoup / Stew:\n\nCamel meat soup (yakhni style, low oil)\n\nDinner:\n\nChoti quantity, early dinner behtar\n\n❌ Avoid: Zyada tel, deep fried, heavy masalay\n\n4. Health Tips\n\nWeek mein 1 baar kaafi hota hai\n\nNew try karne walay log pehle choti quantity lein\n\nSlow digestion ki wajah se raat ko zyada na khayein",
+    "price": 7,
+    "image": "/uploads/1768461028191-cam-meat.jpg",
+    "category": "Meat",
+    "season": "All Season",
+    "stock": 10,
+    "rating": 5,
+    "reviews": 0,
+    "tags": [
+      "Camel Meat – Lean Power from the Desert.”  # “Camel Meat: Strong Nutrition",
+      "Less Fat.”"
+    ],
+    "slug": "camel-meatoont-ka-gosht",
+    "createdAt": "2026-01-15T07:11:52.187Z",
+    "images": [
+      "/uploads/1768461028191-cam-meat.jpg",
+      "/uploads/1768461029171-camelme.jpg",
+      "/uploads/1768461029455-camel.jpg"
+    ],
+    "reviewsList": [],
+    "quality": {
+      "organic": true,
+      "freshness": "Farm Fresh",
+      "farmingMethod": "100% Organic"
+    },
+    "nutrition": {},
+    "nutritionalInfo": {}
+  },
+  {
+    "id": 35,
+    "name": "Olive Oil",
+    "description": "Nutrition: High in monounsaturated fats, antioxidants\n\nVitamins: Vitamin E, Vitamin K\n\nFeatures: Heart-healthy, lowers bad cholesterol, boosts immunity, good for skin",
+    "shortDescription": "Nutrition: High in monounsaturated fats, antioxidants\n\nVitamins: Vitamin E, Vitamin K\n\nFeatures: Heart-healthy, lowers bad cholesterol, boosts immunity, good for skin",
+    "price": 15,
+    "image": "/uploads/1768465022653-oliv-2.jpg",
+    "category": "Oil and Vinegar",
+    "season": "All Season",
+    "stock": 10,
+    "rating": 5,
+    "reviews": 0,
+    "tags": [
+      "Olive Oil – Heart’s Best Friend.”"
+    ],
+    "slug": "olive-oil",
+    "createdAt": "2026-01-15T08:19:16.192Z",
+    "images": [
+      "/uploads/1768465022653-oliv-2.jpg",
+      "/uploads/1768465022869-oliv-1.jpg",
+      "/uploads/1768465023224-oliv.jpg"
+    ],
+    "reviewsList": [],
+    "quality": {
+      "organic": true,
+      "freshness": "Farm Fresh",
+      "farmingMethod": "100% Organic"
+    },
+    "nutrition": {},
+    "nutritionalInfo": {}
+  },
+  {
+    "id": 36,
+    "name": "Extra Virgin Olive Oil (EVOO)",
+    "description": "Nutrition: Cold-pressed, unrefined, high in polyphenols\n\nVitamins: Vitamin E, Vitamin K, antioxidants\n\nFeatures: Pure, anti-inflammatory, perfect for salads & light cooking",
+    "shortDescription": "Nutrition: Cold-pressed, unrefined, high in polyphenols\n\nVitamins: Vitamin E, Vitamin K, antioxidants\n\nFeatures: Pure, anti-inflammatory, perfect for salads & light cooking",
+    "price": 15,
+    "image": "/uploads/1768465243729-vingu.jpg",
+    "category": "Oil and Vinegar",
+    "season": "All Season",
+    "stock": 10,
+    "rating": 5,
+    "reviews": 0,
+    "tags": [
+      "“EVOO – Pure Taste",
+      "Pure Health.”"
+    ],
+    "slug": "extra-virgin-olive-oil-evoo",
+    "createdAt": "2026-01-15T08:20:56.137Z",
+    "images": [
+      "/uploads/1768465243729-vingu.jpg",
+      "/uploads/1768465243846-vign.jpg",
+      "/uploads/1768465243920-extra.jpg"
+    ],
+    "reviewsList": [],
+    "quality": {
+      "organic": true,
+      "freshness": "Farm Fresh",
+      "farmingMethod": "100% Organic"
+    },
+    "nutrition": {},
+    "nutritionalInfo": {}
+  },
+  {
+    "id": 37,
+    "name": "Mustard Oil (Sarson ka Tail)",
+    "description": "Nutrition: Rich in omega-3 fatty acids, monounsaturated fats\n\nVitamins: Vitamin E, Vitamin A\n\nFeatures: Traditional oil, boosts metabolism, aids digestion, warming effect",
+    "shortDescription": "Nutrition: Rich in omega-3 fatty acids, monounsaturated fats\n\nVitamins: Vitamin E, Vitamin A\n\nFeatures: Traditional oil, boosts metabolism, aids digestion, warming effect",
+    "price": 15,
+    "image": "/uploads/1768465346496-musterdoil.jpg",
+    "category": "Oil and Vinegar",
+    "season": "All Season",
+    "stock": 10,
+    "rating": 5,
+    "reviews": 0,
+    "tags": [
+      "“Sarson Oil – Desi Strength in Every Drop.”"
+    ],
+    "slug": "mustard-oil-sarson-ka-tail",
+    "createdAt": "2026-01-15T08:22:36.183Z",
+    "images": [
+      "/uploads/1768465346496-musterdoil.jpg",
+      "/uploads/1768465346612-musterdo.jpg",
+      "/uploads/1768465346700-musterd.jpg"
+    ],
+    "reviewsList": [],
+    "quality": {
+      "organic": true,
+      "freshness": "Farm Fresh",
+      "farmingMethod": "100% Organic"
+    },
+    "nutrition": {},
+    "nutritionalInfo": {}
+  },
+  {
+    "id": 38,
+    "name": "Coconut Oil",
+    "description": "Nutrition: High in medium-chain triglycerides (MCTs)\n\nVitamins: Vitamin E, Vitamin K\n\nFeatures: Supports digestion, immunity, skin & hair health; good for cooking & beauty",
+    "shortDescription": "Nutrition: High in medium-chain triglycerides (MCTs)\n\nVitamins: Vitamin E, Vitamin K\n\nFeatures: Supports digestion, immunity, skin & hair health; good for cooking & beauty",
+    "price": 15,
+    "image": "/uploads/1768465442866-oil-coco.jpg",
+    "category": "Oil and Vinegar",
+    "season": "All Season",
+    "stock": 10,
+    "rating": 5,
+    "reviews": 0,
+    "tags": [
+      "“Coconut Oil – Nature’s Gift for Body & Beauty.”"
+    ],
+    "slug": "coconut-oil",
+    "createdAt": "2026-01-15T08:24:12.683Z",
+    "images": [
+      "/uploads/1768465442866-oil-coco.jpg",
+      "/uploads/1768465443076-coconut-.jpg",
+      "/uploads/1768465443179-coco.jpg"
+    ],
+    "reviewsList": [],
+    "quality": {
+      "organic": true,
+      "freshness": "Farm Fresh",
+      "farmingMethod": "100% Organic"
+    },
+    "nutrition": {},
+    "nutritionalInfo": {}
+  },
+  {
+    "id": 39,
+    "name": "Sesame Oil (Til ka Tail)",
+    "description": "Nutrition: Rich in polyunsaturated & monounsaturated fats, antioxidants\n\nVitamins: Vitamin E, Calcium\n\nFeatures: Heart-friendly, improves skin & hair, anti-inflammatory, aromatic flavor",
+    "shortDescription": "Nutrition: Rich in polyunsaturated & monounsaturated fats, antioxidants\n\nVitamins: Vitamin E, Calcium\n\nFeatures: Heart-friendly, improves skin & hair, anti-inflammatory, aromatic flavor",
+    "price": 20,
+    "image": "/uploads/1768465560230-blacktiloil.jpg",
+    "category": "Oil and Vinegar",
+    "season": "All Season",
+    "stock": 10,
+    "rating": 5,
+    "reviews": 0,
+    "tags": [
+      "Sesame Oil – Tiny Seeds",
+      "Big Benefits.”  6. Sunflower Oil (Cold-Pressed)  Nutrition: High in polyunsaturated fats",
+      "low saturated fats  Vitamins: Vitamin E",
+      "Vitamin B1  Features: Lightweight cooking oil",
+      "heart-friendly",
+      "promotes skin & overall health  Tagline: 🌻 “Sunflower Oil – Sunshine in Your Meals.”  7. Canola Oil (Organic)  Nutrition: Low in saturated fats",
+      "high in omega-3 fatty acids  Vitamins: Vitamin E",
+      "Vitamin K  Features: Heart-healthy",
+      "neutral flavor",
+      "ideal for frying",
+      "baking",
+      "and cooking  Tagline: 💛 “Canola Oil – Healthy Cooking",
+      "Happy Heart.”  8. Flaxseed Oil (Alsi ka Tail)  Nutrition: Rich in omega-3 fatty acids (ALA)",
+      "antioxidants  Vitamins: Vitamin E  Features: Supports heart",
+      "brain",
+      "digestion; best used in salads or supplements (not for high-heat cooking)  Tagline: 🌱 “Flaxseed Oil – Tiny Seed",
+      "Mighty Benefits.”  9. Black Seed Oil (Kalonji Oil)  Nutrition: Rich in thymoquinone (antioxidant)",
+      "essential fatty acids  Vitamins: Vitamin A",
+      "Vitamin C  Features: Boosts immunity",
+      "anti-inflammatory",
+      "traditional remedy for overall wellness  Tagline: ⚫ “Black Seed Oil – Remedy from Nature.”  10. Groundnut / Peanut Oil  Nutrition: Rich in monounsaturated and polyunsaturated fats  Vitamins: Vitamin E",
+      "Vitamin K  Features: High smoke point",
+      "perfect for frying",
+      "heart-friendly",
+      "mild nutty flavor  Tagline: 🥜 “Peanut Oil – Crispy",
+      "Healthy",
+      "Tasty.”  Agar aap chahen",
+      "main in oils ka ek visually appealing table / infographic bhi bana sakta hoon jisme nutrition",
+      "vitamins",
+      "features aur tagline ek hi glance mein ho — perfect for poster",
+      "social media",
+      "or diet chart.  Kya main wo bana doon?"
+    ],
+    "slug": "sesame-oil-til-ka-tail",
+    "createdAt": "2026-01-15T08:26:03.923Z",
+    "images": [
+      "/uploads/1768465560230-blacktiloil.jpg",
+      "/uploads/1768465560956-til-oil.jpg",
+      "/uploads/1768465561305-til.jpg"
+    ],
+    "reviewsList": [],
+    "quality": {
+      "organic": true,
+      "freshness": "Farm Fresh",
+      "farmingMethod": "100% Organic"
+    },
+    "nutrition": {},
+    "nutritionalInfo": {}
+  },
+  {
+    "id": 40,
+    "name": "Canola Oil (Organic)",
+    "description": "Nutrition: Low in saturated fats, high in omega-3 fatty acids\n\nVitamins: Vitamin E, Vitamin K\n\nFeatures: Heart-healthy, neutral flavor, ideal for frying, baking, and cooking",
+    "shortDescription": "Nutrition: Low in saturated fats, high in omega-3 fatty acids\n\nVitamins: Vitamin E, Vitamin K\n\nFeatures: Heart-healthy, neutral flavor, ideal for frying, baking, and cooking",
+    "price": 1.5,
+    "image": "/uploads/1768465666514-oil.jpg",
+    "category": "Oil and Vinegar",
+    "season": "All Season",
+    "stock": 10,
+    "rating": 5,
+    "reviews": 0,
+    "tags": [
+      "“Canola Oil – Healthy Cooking",
+      "Happy Heart.”"
+    ],
+    "slug": "canola-oil-organic",
+    "createdAt": "2026-01-15T08:28:00.241Z",
+    "images": [
+      "/uploads/1768465666514-oil.jpg",
+      "/uploads/1768465666687-canolaoil.jpg",
+      "/uploads/1768465666942-canola.jpg"
+    ],
+    "reviewsList": [],
+    "quality": {
+      "organic": true,
+      "freshness": "Farm Fresh",
+      "farmingMethod": "100% Organic"
+    },
+    "nutrition": {},
+    "nutritionalInfo": {}
+  },
+  {
+    "id": 41,
+    "name": "Sunflower oil",
+    "description": "Nutrition: High in polyunsaturated fats, low in saturated fats, contains essential fatty acids\n\nVitamins: Vitamin E (antioxidant), Vitamin B1\n\nFeatures:\n\nHeart-friendly, helps maintain healthy cholesterol levels\n\nLightweight and neutral-flavored, ideal for cooking and frying\n\nSupports skin health and overall wellness\n\nCold-pressed form retains maximum nutrients",
+    "shortDescription": "Nutrition: High in polyunsaturated fats, low in saturated fats, contains essential fatty acids\n\nVitamins: Vitamin E (antioxidant), Vitamin B1\n\nFeatures:\n\nHeart-friendly, helps maintain healthy cholesterol levels\n\nLightweight and neutral-flavored, ideal for cooking and frying\n\nSupports skin health and overall wellness\n\nCold-pressed form retains maximum nutrients",
+    "price": 12,
+    "image": "/uploads/1768465770812-oilsun.jpg",
+    "category": "Oil and Vinegar",
+    "season": "All Season",
+    "stock": 10,
+    "rating": 5,
+    "reviews": 0,
+    "tags": [
+      "Sunflower Oil – Sunshine in Your Meals.”"
+    ],
+    "slug": "sunflower-oil",
+    "createdAt": "2026-01-15T08:30:39.282Z",
+    "images": [
+      "/uploads/1768465770812-oilsun.jpg",
+      "/uploads/1768465770951-sunoil-.jpg",
+      "/uploads/1768465771362-sun.jpg"
+    ],
+    "reviewsList": [],
+    "quality": {
+      "organic": true,
+      "freshness": "Farm Fresh",
+      "farmingMethod": "100% Organic"
+    },
+    "nutrition": {},
+    "nutritionalInfo": {}
+  },
+  {
+    "id": 42,
+    "name": "Black Seed Oil (Kalonji Oil)",
+    "description": "Nutrition: Rich in thymoquinone (antioxidant), essential fatty acids\n\nVitamins: Vitamin A, Vitamin C\n\nFeatures: Boosts immunity, anti-inflammatory, traditional remedy for overall wellness",
+    "shortDescription": "Nutrition: Rich in thymoquinone (antioxidant), essential fatty acids\n\nVitamins: Vitamin A, Vitamin C\n\nFeatures: Boosts immunity, anti-inflammatory, traditional remedy for overall wellness",
+    "price": 15,
+    "image": "/uploads/1768468918101-oil-seed.jpg",
+    "category": "Oil and Vinegar",
+    "season": "All Season",
+    "stock": 10,
+    "rating": 5,
+    "reviews": 0,
+    "tags": [
+      "Black Seed Oil – Remedy from Nature.”"
+    ],
+    "slug": "black-seed-oil-kalonji-oil",
+    "createdAt": "2026-01-15T09:24:06.439Z",
+    "images": [
+      "/uploads/1768468918101-oil-seed.jpg",
+      "/uploads/1768468918425-black.jpg",
+      "/uploads/1768468918726-seed.jpg"
+    ],
+    "reviewsList": [],
+    "quality": {
+      "organic": true,
+      "freshness": "Farm Fresh",
+      "farmingMethod": "100% Organic"
+    },
+    "nutrition": {},
+    "nutritionalInfo": {}
+  }
+]
