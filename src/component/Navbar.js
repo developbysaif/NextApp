@@ -23,36 +23,26 @@ import {
     Menu,
     X,
     Leaf,
-<<<<<<< HEAD
-=======
     Heart,
     Facebook,
     Instagram,
     Youtube,
     Linkedin,
     Twitter,
->>>>>>> 87b965e (initial commit)
     Mail,
     MapPin,
     Plus,
     ChevronRight,
 } from "lucide-react";
-<<<<<<< HEAD
-=======
 import { useWishlist } from "@/context/WishlistContext";
->>>>>>> 87b965e (initial commit)
 import { cn } from "@/lib/utils";
 
 export default function Navbar() {
     const [open, setOpen] = useState(false)
     const [isScrolled, setIsScrolled] = useState(false)
     const { getCartCount } = useCart()
-<<<<<<< HEAD
-    const { user } = useAuth()
-=======
     const { wishlist } = useWishlist()
     const { user, logout } = useAuth()
->>>>>>> 87b965e (initial commit)
     const router = useRouter()
     const [searchQuery, setSearchQuery] = useState("")
 
@@ -65,8 +55,6 @@ export default function Navbar() {
         }
     }
 
-<<<<<<< HEAD
-=======
     const handleCartClick = (e) => {
         if (!user) {
             e.preventDefault();
@@ -88,8 +76,6 @@ export default function Navbar() {
         router.push('/');
         setOpen(false);
     }
-
->>>>>>> 87b965e (initial commit)
     // Handle scroll for sticky effect
     useEffect(() => {
         const handleScroll = () => {
@@ -141,9 +127,6 @@ export default function Navbar() {
                         </span>
                     </div>
                     <div className="flex gap-4 items-center">
-<<<<<<< HEAD
-                        <span className="flex items-center gap-1.5 text-[#22aa4f]">
-=======
                         <div className="flex gap-3 mr-4 border-r border-white/10 pr-4">
                             <Link href="#" className="hover:text-[#22aa4f] transition-colors"><Facebook size={14} /></Link>
                             <Link href="#" className="hover:text-[#22aa4f] transition-colors"><Instagram size={14} /></Link>
@@ -160,7 +143,6 @@ export default function Navbar() {
                             </Link>
                         </div>
                         <span className="flex items-center gap-1.5 text-white">
->>>>>>> 87b965e (initial commit)
                             <Phone className="w-3.5 h-3.5" /> +92 3238418438
                         </span>
                     </div>
@@ -199,9 +181,6 @@ export default function Navbar() {
                         <Link href={user ? (user.role === 'admin' ? "/admin" : "/dashboard") : "/login"} className="size-8 md:size-10 flex items-center justify-center rounded-lg md:rounded-xl bg-stone-50 text-stone-600 border border-stone-100 group">
                             {user ? <span className="text-[10px] md:text-xs font-black">{user.name?.charAt(0)}</span> : <User className="w-3.5 h-3.5 md:w-4 md:h-4" />}
                         </Link>
-<<<<<<< HEAD
-                        <Link href="/cart" className="size-8 md:size-10 flex items-center justify-center rounded-lg md:rounded-xl bg-stone-50 text-stone-600 border border-stone-100 relative group">
-=======
                         <Link href="/wishlist" onClick={handleWishlistClick} className="size-8 md:size-10 flex items-center justify-center rounded-lg md:rounded-xl bg-stone-50 text-stone-600 border border-stone-100 relative group">
                             <Heart className="w-3.5 h-3.5 md:w-4 md:h-4" />
                             <span className="absolute -top-1 -right-1 bg-[#22aa4f] text-white text-[8px] md:text-[9px] font-black rounded-full min-w-3.5 md:min-w-4 h-3.5 md:h-4 flex items-center justify-center border-2 border-white">
@@ -209,7 +188,6 @@ export default function Navbar() {
                             </span>
                         </Link>
                         <Link href="/cart" onClick={handleCartClick} className="size-8 md:size-10 flex items-center justify-center rounded-lg md:rounded-xl bg-stone-50 text-stone-600 border border-stone-100 relative group">
->>>>>>> 87b965e (initial commit)
                             <ShoppingCart className="w-3.5 h-3.5 md:w-4 md:h-4" />
                             <span className="absolute -top-1 -right-1 bg-[#21492f] text-white text-[8px] md:text-[9px] font-black rounded-full min-w-3.5 md:min-w-4 h-3.5 md:h-4 flex items-center justify-center border-2 border-white">
                                 {getCartCount()}
@@ -334,11 +312,7 @@ export default function Navbar() {
                             "flex md:hidden items-center gap-2 transition-opacity duration-300",
                             isScrolled ? "opacity-100" : "hidden"
                         )}>
-<<<<<<< HEAD
-                            <Link href="/cart" className="size-8 flex items-center justify-center rounded-lg bg-stone-50 text-stone-600 border border-stone-100 relative">
-=======
                             <Link href="/cart" onClick={handleCartClick} className="size-8 flex items-center justify-center rounded-lg bg-stone-50 text-stone-600 border border-stone-100 relative">
->>>>>>> 87b965e (initial commit)
                                 <ShoppingCart className="w-4 h-4" />
                                 <span className="absolute -top-1 -right-1 bg-[#21492f] text-white text-[8px] font-black rounded-full min-w-3.5 h-3.5 flex items-center justify-center border-2 border-white">
                                     {getCartCount()}
@@ -385,10 +359,6 @@ export default function Navbar() {
                             <Link href="/faqs" className="block text-sm font-bold text-stone-500 mb-3" onClick={() => setOpen(false)}>FAQs</Link>
                         </div>
                     </nav>
-<<<<<<< HEAD
-                    <div className="pt-6 border-t border-stone-100">
-                        <Link href="/login" className="block w-full py-3 bg-[#21492f] text-white text-center rounded-xl font-bold text-sm">Sign in</Link>
-=======
                     <div className="pt-6 border-t border-stone-100 space-y-3">
                         {user ? (
                             <>
@@ -401,7 +371,6 @@ export default function Navbar() {
                         ) : (
                             <Link href="/login" className="block w-full py-3 bg-[#21492f] text-white text-center rounded-xl font-bold text-sm" onClick={() => setOpen(false)}>Sign in</Link>
                         )}
->>>>>>> 87b965e (initial commit)
                     </div>
                 </div>
             </aside>
