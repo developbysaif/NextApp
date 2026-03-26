@@ -22,7 +22,11 @@ const slides = [
     subtitle: "Healing Nature's Way",
     description:
       "Natural healing. AI-powered diet plans. Sunnah-based remedies. Start fixing your health before it’s too late.",
+<<<<<<< HEAD
     image: "/header.jpg",
+=======
+    image: "/images/header.png",
+>>>>>>> 87b965eab6c8962ce384d89a50367aa455a6b7ac
     cta1: "Check Symptoms",
     cta1Href: "/health-ai",
     cta2: "Get Diet Plan",
@@ -36,7 +40,11 @@ export default function Header() {
 
   return (
     <div className="w-full bg-white font-sans">
+<<<<<<< HEAD
       <div className="max-w-7xl mx-auto px-4 md:px-6 py-4 md:py-6">
+=======
+      <div className="max-w-7xl mx-auto px-4 py-4">
+>>>>>>> 87b965eab6c8962ce384d89a50367aa455a6b7ac
 
         <div className="flex gap-6 relative">
 
