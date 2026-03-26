@@ -22,7 +22,7 @@ const slides = [
     subtitle: "Healing Nature's Way",
     description:
       "Natural healing. AI-powered diet plans. Sunnah-based remedies. Start fixing your health before it’s too late.",
-    image: "/images/header.png",
+    image: "/header.jpg",
     cta1: "Check Symptoms",
     cta1Href: "/health-ai",
     cta2: "Get Diet Plan",
