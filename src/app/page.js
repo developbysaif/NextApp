@@ -160,7 +160,7 @@ export default function HomePage() {
       </section>
 
       {/* Featured Products */}
-      <section className="bg-[#f8faf9] py-14 md:py-20 px-6 md:px-10 best-seller-section">
+      <section className="bg-[#f8faf9] py-14 md:py-20 px-8 md:px-14 best-seller-section">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
             <div className="text-center md:text-left">
@@ -176,7 +176,7 @@ export default function HomePage() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
             {products.map((product, index) => (
               <ProductItem key={index} product={product} index={index} />
             ))}
