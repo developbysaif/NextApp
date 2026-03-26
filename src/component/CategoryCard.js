@@ -14,16 +14,16 @@ export default function CategoryCard({ title, subtitle, bg, image, href }) {
         >
             <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-1000"></div>
 
-            <div className={`relative z-10 ${textColor}`}>
-                <p className="text-[10px] uppercase tracking-[0.3em] font-black opacity-60 mb-2">{subtitle}</p>
-                <h2 className="text-2xl font-black leading-[1.1] mb-6 tracking-tight">
+            <div className={`relative z-10 flex flex-col items-start ${textColor}`}>
+                <p className="text-[9px] sm:text-[10px] uppercase tracking-[0.25em] font-black opacity-60 mb-2">{subtitle}</p>
+                <h2 className="text-xl sm:text-2xl font-black leading-[1.1] mb-4 tracking-tight">
                     {title.split(' ').map((word, i) => (
-                        <span key={i} className="block">{word}</span>
+                        <span key={i} className="inline-block mr-1 sm:block">{word}</span>
                     ))}
                 </h2>
                 <Link
                     href={href}
-                    className={`inline-block text-[10px] font-black uppercase tracking-widest border-b-2 ${borderColor} pb-1 hover:border-[#22aa4f] hover:text-[#22aa4f] transition-all`}
+                    className={`inline-block text-[10px] font-black uppercase tracking-widest border-b-2 ${borderColor} pb-1 hover:border-[#22aa4f] hover:text-[#22aa4f] transition-all mt-auto`}
                 >
                     Browse Now
                 </Link>

@@ -72,7 +72,7 @@ function ProductsContent({ initialCategory = "All", initialSeason = "All" }) {
         <div className="min-h-screen bg-white font-sans">
             {/* Hero Section */}
             <section className="bg-[#f3f9f3] py-16 px-4">
-                <div className="max-w-5xl mx-auto">
+        <div className="max-w-7xl mx-auto px-6">
                     <span className="text-green-600 font-bold text-xs uppercase tracking-widest mb-4 block">Ilaj Bil Ghiza</span>
                     <h1 className="text-4xl md:text-6xl font-black text-gray-900 mb-6 tracking-tight">
                         Organic freshness <br />
@@ -103,7 +103,7 @@ function ProductsContent({ initialCategory = "All", initialSeason = "All" }) {
 
             {/* Filters Bar */}
             <div className="sticky top-[70px] z-40 bg-white/90 backdrop-blur-lg border-b border-stone-100 py-6">
-                <div className="max-w-5xl mx-auto px-4">
+                <div className="max-w-7xl mx-auto px-6 uppercase tracking-widest text-[10px]">
                     <div className="flex gap-4 overflow-x-auto pb-2 scrollbar-hide">
                         {categories.map((cat) => (
                             <button
@@ -122,7 +122,7 @@ function ProductsContent({ initialCategory = "All", initialSeason = "All" }) {
             </div>
 
             {/* Grid */}
-            <div className="max-w-5xl mx-auto px-4 py-16">
+            <div className="max-w-7xl mx-auto px-6 py-16">
                 {loading ? (
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                         {[1, 2, 3, 4, 5, 6].map(i => (

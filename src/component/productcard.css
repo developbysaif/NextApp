@@ -77,12 +77,13 @@
     gap: 1.5rem;
     max-width: 1400px;
     margin: 0 auto;
-    padding: 0 1rem;
+    padding: 0 1.5rem;
 }
 
 @media (min-width: 480px) {
     .products-grid {
         grid-template-columns: repeat(2, 1fr);
+        padding: 0 2rem;
     }
 }
 
@@ -90,6 +91,7 @@
     .products-grid {
         grid-template-columns: repeat(3, 1fr);
         gap: 2rem;
+        padding: 0 2rem;
     }
 }
 
@@ -97,7 +99,7 @@
     .products-grid {
         grid-template-columns: repeat(4, 1fr);
         gap: 2rem;
-        padding: 0 2rem;
+        padding: 0 4rem;
     }
 }
 

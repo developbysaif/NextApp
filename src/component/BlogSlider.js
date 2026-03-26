@@ -30,8 +30,26 @@ export default function BlogSlider() {
     }, []);
 
 
-    const visibleCards = 3;
-    const maxIndex = Math.max(0, blogs.length - visibleCards);
+    const [visibleCards, setVisibleCards] = useState(3);
+    const [maxIndex, setMaxIndex] = useState(0);
+
+    const updateSliderParams = useCallback(() => {
+        const width = window.innerWidth;
+        let visible = 3;
+        if (width < 640) visible = 1;
+        else if (width < 1024) visible = 2;
+        
+        setVisibleCards(visible);
+        if (blogs.length > 0) {
+            setMaxIndex(Math.max(0, blogs.length - visible));
+        }
+    }, [blogs.length]);
+
+    useEffect(() => {
+        updateSliderParams();
+        window.addEventListener('resize', updateSliderParams);
+        return () => window.removeEventListener('resize', updateSliderParams);
+    }, [updateSliderParams]);
 
     const goNext = useCallback(() => {
         setCurrent(prev => (prev >= maxIndex ? 0 : prev + 1));
