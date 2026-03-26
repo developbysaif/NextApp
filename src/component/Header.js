@@ -36,7 +36,7 @@ export default function Header() {
 
   return (
     <div className="w-full bg-white font-sans">
-      <div className="max-w-7xl mx-auto px-4 py-4">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 py-4 md:py-6">
 
         <div className="flex gap-6 relative">
 

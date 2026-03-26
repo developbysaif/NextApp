@@ -5,8 +5,8 @@ import { Mail, Send, Leaf } from "lucide-react";
 
 export default function Subscribe() {
     return (
-        <section className="relative overflow-visible my-10">
-            <div className="max-w-7xl mx-auto px-4">
+        <section className="relative overflow-visible py-10 md:py-16">
+            <div className="max-w-7xl mx-auto px-4 md:px-6">
                 <div className="relative bg-[#f8faf9] rounded-[3rem] 
           p-8 md:p-16 overflow-hidden shadow-sm border border-gray-100 
           flex flex-col items-center text-center group">

@@ -12,11 +12,7 @@ export default function Footer() {
                 <div className="md:col-span-12 lg:col-span-5">
                     <Link href="/" className="inline-flex items-center gap-2.5 mb-6 md:mb-8 group">
                         <div className="size-10 md:size-12 bg-[#22aa4f] rounded-2xl flex items-center justify-center transition-transform group-hover:rotate-12">
-<<<<<<< HEAD
-                            <Leaf className="text-white" size={20} md:size={24} fill="currentColor" />
-=======
                             <Leaf className="text-white w-5 h-5 md:w-6 md:h-6" fill="currentColor" />
->>>>>>> 87b965e (initial commit)
                         </div>
                         <h2 className="text-2xl md:text-4xl font-black tracking-tighter text-white">IlajbilGhiza</h2>
                     </Link>
@@ -37,11 +33,7 @@ export default function Footer() {
                             { i: Linkedin, h: "#" }
                         ].map((social, i) => (
                             <Link key={i} href={social.h} className="size-10 md:size-12 rounded-xl md:rounded-2xl bg-white/5 flex items-center justify-center hover:bg-[#22aa4f] hover:text-white transition-all border border-white/5">
-<<<<<<< HEAD
-                                <social.i size={18} md:size={20} />
-=======
                                 <social.i className="w-[18px] h-[18px] md:w-5 md:h-5" />
->>>>>>> 87b965e (initial commit)
                             </Link>
                         ))}
                     </div>
