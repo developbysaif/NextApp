@@ -247,12 +247,6 @@ function ProductDetailContent() {
 
                                 <div className="flex flex-col sm:flex-row gap-4">
                                     <button
-<<<<<<< HEAD
-<<<<<<< HEAD
-                                        onClick={() => addToCart({ ...product, image: mainImage }, quantity)}
-=======
-=======
->>>>>>> 87b965eab6c8962ce384d89a50367aa455a6b7ac
                                         onClick={() => {
                                             if (!localStorage.getItem("currentUser")) {
                                                 alert("Please sign up before buying any thing");
@@ -261,10 +255,6 @@ function ProductDetailContent() {
                                             }
                                             addToCart({ ...product, image: mainImage }, quantity);
                                         }}
-<<<<<<< HEAD
->>>>>>> 87b965e (initial commit)
-=======
->>>>>>> 87b965eab6c8962ce384d89a50367aa455a6b7ac
                                         disabled={!product.stock || product.stock < 1}
                                         className="premium-btn-primary flex-1 py-5 px-8 rounded-2xl text-white font-bold text-lg flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
                                     >
@@ -272,11 +262,6 @@ function ProductDetailContent() {
                                         {(!product.stock || product.stock < 1) ? 'Out of Stock' : 'Add to Cart'}
                                     </button>
                                     <button
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 87b965eab6c8962ce384d89a50367aa455a6b7ac
                                         onClick={() => {
                                             if (!localStorage.getItem("currentUser")) {
                                                 alert("Please sign up before adding to wishlist");
@@ -286,10 +271,6 @@ function ProductDetailContent() {
                                             // Wishlist logic here if available in this component's context
                                             alert("Added to wishlist!");
                                         }}
-<<<<<<< HEAD
->>>>>>> 87b965e (initial commit)
-=======
->>>>>>> 87b965eab6c8962ce384d89a50367aa455a6b7ac
                                         className="bg-white border-2 border-gray-100 p-5 rounded-2xl text-gray-400 hover:text-red-500 hover:border-red-100 hover:bg-red-50 transition-all duration-300"
                                     >
                                         <Heart size={24} />
@@ -527,11 +508,6 @@ function ProductDetailContent() {
                                                         <button
                                                             className="premium-btn-secondary px-12 py-5 rounded-2xl text-white font-black uppercase tracking-widest text-xs"
                                                             onClick={async () => {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 87b965eab6c8962ce384d89a50367aa455a6b7ac
                                                                 const storedUser = localStorage.getItem("currentUser");
                                                                 if (!storedUser) {
                                                                     alert("Please sign up before writing a review");
@@ -539,24 +515,12 @@ function ProductDetailContent() {
                                                                     return;
                                                                 }
                                                                 const user = JSON.parse(storedUser);
-<<<<<<< HEAD
->>>>>>> 87b965e (initial commit)
-=======
->>>>>>> 87b965eab6c8962ce384d89a50367aa455a6b7ac
                                                                 const comment = document.getElementById('review-comment').value;
                                                                 if (!rating) return alert('Please select a rating');
                                                                 if (!comment) return alert('Please enter a comment');
 
                                                                 const newReview = {
-<<<<<<< HEAD
-<<<<<<< HEAD
-                                                                    name: "Guest User",
-=======
                                                                     name: user.name || "Guest User",
->>>>>>> 87b965e (initial commit)
-=======
-                                                                    name: user.name || "Guest User",
->>>>>>> 87b965eab6c8962ce384d89a50367aa455a6b7ac
                                                                     rating,
                                                                     comment,
                                                                     date: new Date().toLocaleDateString()

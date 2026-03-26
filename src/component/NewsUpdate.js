@@ -49,17 +49,10 @@ export default function NewsUpdate() {
         setActiveIndex((p) => (p - 1 + TESTIMONIALS.length) % TESTIMONIALS.length);
 
     return (
-<<<<<<< HEAD
         <div className="bg-white py-10 md:py-16 font-sans">
 
             {/* TESTIMONIALS */}
             <section className="max-w-7xl mx-auto px-4 md:px-6 mb-4">
-=======
-        <div className="bg-white py-2 font-sans">
-
-            {/* TESTIMONIALS */}
-            <section className="max-w-7xl mx-auto px-4 mb-4">
->>>>>>> 87b965eab6c8962ce384d89a50367aa455a6b7ac
 
                 {/* Header */}
                 <div className="text-center mb-4">

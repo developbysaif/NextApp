@@ -133,10 +133,7 @@ export default function HomePage() {
   // Allow rendering home page even if user is not logged in
   // if (!user) return null;
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 87b965eab6c8962ce384d89a50367aa455a6b7ac
   const categoriesData = [
     { title: "Organic Fruits", subtitle: "Enjoy", bg: "#a6763f", image: "/Fruits.png", href: "/grocery/category/vegetables-fruits" },
     { title: "Healthy Snacks", subtitle: "New", bg: "#ffffff", image: "/Poradge.png", href: "/products" },
@@ -150,18 +147,12 @@ export default function HomePage() {
 
       <Header />
 
-<<<<<<< HEAD
       {/* Spacer after header */}
       <div className="h-6 md:h-10"></div>
 
       {/* Categories Grid Section */}
       <section className="px-4 md:px-6 py-10 md:py-14 mx-auto scroll-mt-20 max-w-7xl">
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
-=======
-      {/* Categories Grid Section */}
-      <section className="px-4 py-8 mx-auto scroll-mt-20 max-w-7xl">
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-6">
->>>>>>> 87b965eab6c8962ce384d89a50367aa455a6b7ac
           {categoriesData.map((cat, idx) => (
             <CategoryCard key={idx} {...cat} />
           ))}
@@ -169,11 +160,7 @@ export default function HomePage() {
       </section>
 
       {/* Featured Products */}
-<<<<<<< HEAD
       <section className="bg-[#f8faf9] py-14 md:py-20 px-4 md:px-6 best-seller-section">
-=======
-      <section className="bg-[#f8faf9] py-12 px-4 best-seller-section">
->>>>>>> 87b965eab6c8962ce384d89a50367aa455a6b7ac
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
             <div className="text-center md:text-left">
@@ -204,13 +191,8 @@ export default function HomePage() {
       </section>
 
       {/* First Order Deal Section */}
-<<<<<<< HEAD
       <section className="py-10 md:py-16 px-4 md:px-6 max-w-7xl mx-auto">
         <div className="bg-gradient-to-r from-amber-400 to-amber-300 rounded-3xl p-8 md:p-12 flex flex-col md:flex-row justify-between items-center relative overflow-hidden shadow-xl shadow-amber-200/50 group">
-=======
-      <section className="py-4">
-        <div className="bg-gradient-to-r from-amber-400 to-amber-300 rounded-3xl mx-auto p-8 md:p-12 flex flex-col md:flex-row justify-between items-center relative overflow-hidden shadow-xl shadow-amber-200/50 group">
->>>>>>> 87b965eab6c8962ce384d89a50367aa455a6b7ac
           <div className="text-white max-w-xl relative z-10 text-center md:text-left mb-8 md:mb-0">
             <h3 className="text-green-900 font-bold text-xs mb-3">A Gift For You</h3>
             <h2 className="text-3xl md:text-5xl font-black mb-4 leading-tight">
@@ -231,13 +213,8 @@ export default function HomePage() {
       </section>
 
       {/* AI Diet Plan Promo Section */}
-<<<<<<< HEAD
       <section className="py-10 md:py-16 px-4 md:px-6 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
-=======
-      <section className="py-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
->>>>>>> 87b965eab6c8962ce384d89a50367aa455a6b7ac
           <div className="relative">
             <div className="relative bg-[#21492f] rounded-3xl p-8 md:p-10 overflow-hidden group">
               <div className="absolute top-0 right-0 p-8 text-white/5">
@@ -283,11 +260,7 @@ export default function HomePage() {
       </section>
 
       {/* Blog Slider Section */}
-<<<<<<< HEAD
       <section className="py-10 md:py-16 px-4 md:px-6 max-w-7xl mx-auto">
-=======
-      <section className="py-4">
->>>>>>> 87b965eab6c8962ce384d89a50367aa455a6b7ac
         <BlogSlider />
       </section>
 

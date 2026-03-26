@@ -141,15 +141,7 @@ function DoctorCard({ doc }) {
                         {doc.specialty || "General Expert"}
                     </p>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
                     <div className="w-full grid grid-cols-2 gap-4 mb-8">
-=======
-                    <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
->>>>>>> 87b965e (initial commit)
-=======
-                    <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
->>>>>>> 87b965eab6c8962ce384d89a50367aa455a6b7ac
                         <div className="bg-slate-50 p-4 rounded-2xl">
                             <Clock size={16} className="text-slate-400 mx-auto mb-2" />
                             <p className="text-[10px] font-black uppercase text-slate-400">Experience</p>

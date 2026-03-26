@@ -76,10 +76,7 @@ export default function Navbar() {
         router.push('/');
         setOpen(false);
     }
-<<<<<<< HEAD
-=======
 
->>>>>>> 87b965eab6c8962ce384d89a50367aa455a6b7ac
     // Handle scroll for sticky effect
     useEffect(() => {
         const handleScroll = () => {

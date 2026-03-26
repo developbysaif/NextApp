@@ -48,19 +48,13 @@ const ProductItem = ({ product, index = 0 }) => {
     const handleAddToCart = (e) => {
         e.preventDefault();
         e.stopPropagation();
-<<<<<<< HEAD
-=======
 
->>>>>>> 87b965eab6c8962ce384d89a50367aa455a6b7ac
         if (!user) {
             alert("Please sign up before buying any thing");
             router.push('/signup');
             return;
         }
-<<<<<<< HEAD
-=======
 
->>>>>>> 87b965eab6c8962ce384d89a50367aa455a6b7ac
         addToCart(product);
         router.push('/cart');
     };
@@ -68,19 +62,13 @@ const ProductItem = ({ product, index = 0 }) => {
     const handleWishlist = (e) => {
         e.preventDefault();
         e.stopPropagation();
-<<<<<<< HEAD
-=======
 
->>>>>>> 87b965eab6c8962ce384d89a50367aa455a6b7ac
         if (!user) {
             alert("Please sign up before adding to wishlist");
             router.push('/signup');
             return;
         }
-<<<<<<< HEAD
-=======
 
->>>>>>> 87b965eab6c8962ce384d89a50367aa455a6b7ac
         if (isWishlisted) {
             removeFromWishlist(product._id || product.id);
         } else {

@@ -122,13 +122,6 @@ export default function CartPage() {
                                 </div>
                             </div>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-                            <Link
-                                href="/checkout"
-=======
-=======
->>>>>>> 87b965eab6c8962ce384d89a50367aa455a6b7ac
                             <button
                                 onClick={(e) => {
                                     if (!localStorage.getItem("currentUser")) {
@@ -138,23 +131,11 @@ export default function CartPage() {
                                         window.location.href = "/checkout";
                                     }
                                 }}
-<<<<<<< HEAD
->>>>>>> 87b965e (initial commit)
-=======
->>>>>>> 87b965eab6c8962ce384d89a50367aa455a6b7ac
                                 className="w-full bg-green-600 text-white py-5 rounded-2xl hover:bg-gray-900 transition-all font-black uppercase tracking-widest shadow-xl shadow-green-900/10 flex items-center justify-center gap-3 group"
                             >
                                 Proceed to Checkout
                                 <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-<<<<<<< HEAD
-<<<<<<< HEAD
-                            </Link>
-=======
                             </button>
->>>>>>> 87b965e (initial commit)
-=======
-                            </button>
->>>>>>> 87b965eab6c8962ce384d89a50367aa455a6b7ac
 
                             <div className="mt-8">
                                 <p className="text-center text-[10px] text-gray-400 font-black uppercase tracking-widest mb-4">Supported Payments</p>
