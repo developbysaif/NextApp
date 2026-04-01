@@ -9,10 +9,25 @@ import { motion } from "framer-motion";
 
 const slides = [
   {
-    title: "YOUR BODY'S NATURAL DEFENSE IN A MODERN ERA (2026+)",
-    subtitle: "Healing Nature's Way",
-    description:
-      "Discover Personalized Diet & Simple Exercise Plans to Manage Modern Conditions. Combat Diabetes, Fight Infections, Manage Mental Health, & Strengthen Your System Naturally.",
+    title: (
+      <>
+        YOUR BODY'S{" "}
+        <span className="text-green-600">NATURAL DEFENSE</span>{" "}
+        IN A MODERN ERA{" "}
+        <span className="text-green-700">(2026+)</span>
+      </>
+    ),
+    description: (
+      <>
+        Discover{" "}
+        <span className="font-bold">Personalized Diet</span> &{" "}
+        <span className="font-bold">Simple Exercise Plans</span>{" "}
+        to Manage Modern Conditions. Combat{" "}
+        <span className="font-bold">Diabetes</span>, Fight{" "}
+        <span className="font-bold">Infections</span>, Manage{" "}
+        <span className="font-bold">Mental Health</span>, & Strengthen Your System Naturally.
+      </>
+    ),
     image: "/ilajbillghiza-banner.png",
     cta1: "EXPLORE NATURAL SOLUTIONS",
     cta1Href: "/health-ai",
@@ -55,13 +70,18 @@ export default function Header() {
                   />
                 </div>
 
+                {/* Subtitle */}
+                <p className="text-sm md:text-base uppercase tracking-[0.28em] text-[#2e6f3d] font-semibold mb-3">
+                  {slides[slide].subtitle}
+                </p>
+
                 {/* Title */}
-                <h1 className="text-2xl sm:text-3xl md:text-5xl font-black text-[#21492f] leading-[1.2] md:leading-tight mb-4">
+                <h1 className="text-3xl sm:text-4xl md:text-6xl font-black text-[#124126] leading-[1.05] md:leading-[1.05] mb-4 uppercase">
                   {slides[slide].title}
                 </h1>
 
                 {/* Description */}
-                <p className="text-[#21492f] text-sm md:text-lg font-medium mb-6 leading-relaxed max-w-md">
+                <p className="text-[#1f4c2e] text-base md:text-xl font-medium mb-6 leading-[1.85] max-w-xl">
                   {slides[slide].description}
                 </p>
 
