@@ -11,10 +11,9 @@ const slides = [
   {
     title: (
       <>
-        YOUR BODY'S{" "}
-        <span className="text-green-600">NATURAL DEFENSE</span>{" "}
-        IN A MODERN ERA{" "}
-        <span className="text-green-700">(2026+)</span>
+        YOUR {" "}
+        <span className="text-green-600">BODY'S NATURAL DEFENSE</span>{" "}
+        IN A MODERN ERA (2026+){" "}
       </>
     ),
     description: (
