@@ -121,13 +121,17 @@ export default function Navbar() {
                 <div className="max-w-5xl mx-auto flex justify-between px-4 text-[11px] font-bold">
                     <div className="flex gap-6">
                         <span className="flex items-center gap-2 hover:text-[#22aa4f] transition-colors cursor-pointer">
-                            <Mail className="w-3.5 h-3.5" /> Ilajbilghiza@gmail.com
+                            <Mail className="w-3.5 h-3.5" />info@ilajbilghiza@gmail.com
                         </span>
                         <span className="flex items-center gap-2 hover:text-[#22aa4f] transition-colors cursor-pointer">
                             <MapPin className="w-3.5 h-3.5" /> Organic health center lahore near dawley
                         </span>
+                        <span className="flex items-center gap-1.5 text-white">
+                            <Phone className="w-3.5 h-3.5" /> +92 3238418438
+                        </span>
                     </div>
-                    <div className="flex gap-4 items-center">
+
+                    <div className="flex gap-4 items-center justify-start">
                         <div className="flex gap-3 mr-4 border-r border-white/10 pr-4">
                             <Link href="#" className="hover:text-[#22aa4f] transition-colors"><Facebook size={14} /></Link>
                             <Link href="#" className="hover:text-[#22aa4f] transition-colors"><Instagram size={14} /></Link>
@@ -143,9 +147,6 @@ export default function Navbar() {
                                 <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.46 19.38c-.1-1-.19-2.22.04-3.18l1.45-6.14s-.37-.73-.37-1.8c0-1.7 1-2.97 2.2-2.97 1.05 0 1.55.78 1.55 1.72 0 1.05-.67 2.62-1 4.07-.3 1.24.62 2.25 1.84 2.25 2.2 0 3.9-2.33 3.9-5.7 0-2.98-2.14-5.06-5.2-5.06-3.54 0-5.63 2.65-5.63 5.41 0 1.07.41 2.21.93 2.84.1.13.12.24.09.37l-.35 1.43c-.06.24-.19.29-.44.17-1.63-.76-2.65-3.14-2.65-5.05 0-4.11 3-7.89 8.6-7.89 4.52 0 8.03 3.22 8.03 7.53 0 4.49-2.83 8.11-6.76 8.11-1.32 0-2.56-.69-2.98-1.5l-.81 3.1c-.29 1.13-1.08 2.54-1.61 3.4A10 10 0 1 0 12 2z"/></svg>
                             </Link>
                         </div>
-                        <span className="flex items-center gap-1.5 text-white">
-                            <Phone className="w-3.5 h-3.5" /> +92 3238418438
-                        </span>
                     </div>
                 </div>
             </div>
@@ -155,7 +156,7 @@ export default function Navbar() {
                 "w-full bg-white transition-all duration-500 border-b border-stone-100 overflow-hidden",
                 isScrolled ? "max-h-0 md:max-h-0 opacity-0 pointer-events-none" : "max-h-40 opacity-100 py-2 md:py-3"
             )}>
-                <div className="max-w-5xl mx-auto px-4 flex items-center justify-between gap-4 md:gap-6">
+                <div className="max-w-5xl mx-auto px-4 flex items-center justify-between gap-3 md:gap-6">
                     {/* Logo */}
                     <Link href="/" className="flex items-center group shrink-0">
                         <div className="relative h-10 w-32 md:h-16 md:w-40 hover:scale-105 transition-all duration-300">
@@ -179,8 +180,8 @@ export default function Navbar() {
 
                     {/* Icons */}
                     <div className="flex items-center gap-1.5 md:gap-2">
-                        <Link href={user ? (user.role === 'admin' ? "/admin" : "/dashboard") : "/login"} className="size-8 md:size-10 flex items-center justify-center rounded-lg md:rounded-xl bg-stone-50 text-stone-600 border border-stone-100 group">
-                            {user ? <span className="text-[10px] md:text-xs font-black">{user.name?.charAt(0)}</span> : <User className="w-3.5 h-3.5 md:w-4 md:h-4" />}
+                        <Link href={user ? (user.role === 'admin' ? "/admin" : "/dashboard") : "/login"} className="size-8 md:size-10 flex items-center justify-center rounded-lg md:rounded-xl bg-gradient-to-r from-[#22aa4f] via-[#1a7a36] to-[#21492f] text-white border border-transparent shadow-sm group">
+                            {user ? <span className=" text-[10px] md:text-xs font-black">{user.name?.charAt(0)}</span> : <User className="w-3.5 h-3.5 md:w-4 md:h-4 " />}
                         </Link>
                         <Link href="/wishlist" onClick={handleWishlistClick} className="size-8 md:size-10 flex items-center justify-center rounded-lg md:rounded-xl bg-stone-50 text-stone-600 border border-stone-100 relative group">
                             <Heart className="w-3.5 h-3.5 md:w-4 md:h-4" />
@@ -221,7 +222,7 @@ export default function Navbar() {
 
                     {/* Desktop Navigation Links */}
                     <div className="hidden md:block flex-1">
-                        <NavigationMenu className="w-full max-w-none justify-start">
+                        <NavigationMenu className="w-full max-w-none justify-center">
                             <NavigationMenuList className="flex gap-0 py-1">
                                 <NavigationMenuItem>
                                     <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), "bg-transparent font-bold text-stone-600 text-xs hover:text-[#22aa4f] hover:bg-stone-50 px-2")}>
@@ -230,7 +231,7 @@ export default function Navbar() {
                                 </NavigationMenuItem>
                                 <NavigationMenuItem>
                                     <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), "bg-transparent font-bold text-stone-600 text-xs hover:text-[#22aa4f] hover:bg-stone-50 px-2")}>
-                                        <Link href="/products">Organic foods</Link>
+                                        <Link href="/products">Shop</Link>
                                     </NavigationMenuLink>
                                 </NavigationMenuItem>
                                 <NavigationMenuItem>
@@ -241,65 +242,23 @@ export default function Navbar() {
 
                                 <NavigationMenuItem>
                                     <NavigationMenuTrigger className="bg-transparent font-bold text-stone-600 text-xs hover:text-[#22aa4f] data-[state=open]:text-[#22aa4f] px-2">
-                                        AI & diet
+                                        Diet Plans
                                     </NavigationMenuTrigger>
-                                    <NavigationMenuContent>
-                                        <ul className="grid w-[200px] gap-1 p-2 bg-white">
-                                            <li><Link href="/diet-plan" className="block p-2 text-xs font-bold text-stone-600 hover:text-[#22aa4f]">AI diet planner</Link></li>
-                                            <li><Link href="/special-diet" className="block p-2 text-xs font-bold text-stone-600 hover:text-[#22aa4f]">Special diet plans</Link></li>
-                                        </ul>
-                                    </NavigationMenuContent>
                                 </NavigationMenuItem>
                                 <NavigationMenuItem>
                                     <NavigationMenuTrigger className="bg-transparent font-bold text-stone-600 text-xs hover:text-[#22aa4f] data-[state=open]:text-[#22aa4f] px-2">
                                         Our Doctors
                                     </NavigationMenuTrigger>
-                                    <NavigationMenuContent>
-                                        <ul className="grid w-[400px] gap-2 p-3 bg-white">
-                                            {specialtyItems.map((item) => (
-                                                <li key={item.href}>
-                                                    <NavigationMenuLink asChild>
-                                                        <Link href={item.href} className="block select-none space-y-1 rounded-lg p-2 leading-none transition-colors hover:bg-stone-50 hover:text-[#22aa4f]">
-                                                            <div className="text-xs font-bold text-[#21492f]">{item.label}</div>
-                                                            <p className="line-clamp-1 text-[10px] text-stone-400 font-medium">{item.description}</p>
-                                                        </Link>
-                                                    </NavigationMenuLink>
-                                                </li>
-                                            ))}
-                                            <li className="mt-2 pt-2 border-t border-stone-100">
-                                                <NavigationMenuLink asChild>
-                                                    <Link href="/doctors/register" className="flex items-center justify-between p-3 rounded-xl bg-[#E4EFE3] group hover:bg-[#1A5A3B] transition-all">
-                                                        <div className="flex items-center gap-3">
-                                                            <div className="w-8 h-8 rounded-full bg-[#1A5A3B] flex items-center justify-center text-white group-hover:bg-white group-hover:text-[#1A5A3B] transition-colors">
-                                                                <Plus size={14} />
-                                                            </div>
-                                                            <span className="text-[10px] font-black uppercase tracking-widest text-[#1A5A3B] group-hover:text-white transition-colors">Become a Practitioner</span>
-                                                        </div>
-                                                        <ChevronRight size={14} className="text-[#1A5A3B] group-hover:text-white group-hover:translate-x-1 transition-all" />
-                                                    </Link>
-                                                </NavigationMenuLink>
-                                            </li>
-                                        </ul>
-                                    </NavigationMenuContent>
                                 </NavigationMenuItem>
                                 <NavigationMenuItem>
                                     <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), "bg-transparent font-bold text-stone-600 text-xs hover:text-[#22aa4f] hover:bg-stone-50 px-2")}>
-                                        <Link href="/book-appointment">Book appointment</Link>
+                                        <Link href="/book-appointment">Exercise</Link>
                                     </NavigationMenuLink>
                                 </NavigationMenuItem>
                                 <NavigationMenuItem>
                                     <NavigationMenuTrigger className="bg-transparent font-bold text-stone-600 text-xs hover:text-[#22aa4f] data-[state=open]:text-[#22aa4f] px-2">
-                                        About Us
+                                        Daily Organic Foods
                                     </NavigationMenuTrigger>
-                                    <NavigationMenuContent>
-                                        <ul className="flex items-center gap-3 p-3 bg-white w-max">
-                                            {pageItems.map((item) => (
-                                                <li key={item.href} className="whitespace-nowrap">
-                                                    <Link href={item.href} className="px-3 py-2 text-xs font-bold text-stone-600 hover:text-[#22aa4f] hover:bg-stone-50 rounded-lg transition-colors">{item.label}</Link>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </NavigationMenuContent>
                                 </NavigationMenuItem>
                                 <NavigationMenuItem>
                                     <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), "bg-transparent font-bold text-stone-600 text-xs hover:text-[#22aa4f] hover:bg-stone-50 px-2")}>
@@ -348,7 +307,7 @@ export default function Navbar() {
                         <Link href="/diseases" className="block font-bold text-stone-600" onClick={() => setOpen(false)}>Diseases &amp; Treatment</Link>
 
                         <div className="pt-2 border-t border-stone-100">
-                            <p className="text-[10px] font-bold text-stone-300 uppercase mb-3">Our Doctors</p>
+                            <p className="text-[10px] font-bold text-stone-300 uppercase mb-3">About Us</p>
                             {specialtyItems.map(item => (
                                 <Link key={item.href} href={item.href} className="block text-sm font-bold text-stone-500 mb-3" onClick={() => setOpen(false)}>{item.label}</Link>
                             ))}

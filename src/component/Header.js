@@ -5,25 +5,16 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-const categories = [
-  { name: "Vegetables and Fruits", slug: "vegetables-fruits" },
-  { name: "Fresh Meat", slug: "fresh-meat" },
-  { name: "Fish and Seafood", slug: "fish-seafood" },
-  { name: "Butter and Cream", slug: "butter-cream" },
-  { name: "Oil and Vinegar", slug: "oil-vinegar" },
-  { name: "Breads", slug: "breads" },
-  { name: "Apple Juice", slug: "apple-juice" },
-  { name: "Dry Nuts", slug: "dry-nuts" },
-];
+
 
 const slides = [
   {
-    title: "Your Body Is Crying for Help — Are You Listening?",
+    title: "YOUR BODY'S NATURAL DEFENSE IN A MODERN ERA (2026+)",
     subtitle: "Healing Nature's Way",
     description:
-      "Natural healing. AI-powered diet plans. Sunnah-based remedies. Start fixing your health before it’s too late.",
-    image: "/header.jpg",
-    cta1: "Check Symptoms",
+      "Discover Personalized Diet & Simple Exercise Plans to Manage Modern Conditions. Combat Diabetes, Fight Infections, Manage Mental Health, & Strengthen Your System Naturally.",
+    image: "/ilajbillghiza-banner.png",
+    cta1: "EXPLORE NATURAL SOLUTIONS",
     cta1Href: "/health-ai",
     cta2: "Get Diet Plan",
     cta2Href: "/diet-plan",
@@ -36,42 +27,13 @@ export default function Header() {
 
   return (
     <div className="w-full bg-white font-sans">
-      <div className="max-w-7xl mx-auto px-4 md:px-6 py-4 md:py-6">
+      <div className="w-full">
 
         <div className="flex gap-6 relative">
 
-          {/* SIDEBAR */}
-          <aside className="w-64 border border-[#21492f] bg-white z-40 rounded-3xl overflow-hidden hidden md:block">
-
-            <div className="px-6 py-4 bg-[#21492f] font-black text-white text-xs uppercase tracking-widest">
-              ☰ CATEGORIES
-            </div>
-
-            <ul className="py-2">
-              {categories.map((cat) => (
-                <li
-                  key={cat.slug}
-                  onMouseEnter={() => setActive(cat.name)}
-                  onMouseLeave={() => setActive(null)}
-                  className={`flex justify-between items-center px-6 py-3 transition-all
-                    ${active === cat.name
-                      ? "bg-[#22aa4f]/10 text-[#21492f]"
-                      : "text-[#21492f]/60 hover:text-[#21492f]"
-                    }`}
-                >
-                  <Link
-                    href={`/grocery/category/${cat.slug}`}
-                    className="flex-1 font-bold text-xs"
-                  >
-                    {cat.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </aside>
-
+          
           {/* HERO SECTION */}
-          <section className="flex-1 relative bg-[#f8faf9] rounded-[2rem] md:rounded-[3rem] overflow-hidden min-h-[400px] md:min-h-[550px] shadow-sm border border-gray-100">
+          <section className="flex-1 relative bg-[#f8faf9] w-full overflow-hidden min-h-[400px] md:min-h-[550px] shadow-sm ">
 
             {/* INNER CONTENT (EXTRA COMPACT) */}
             <div className="relative z-10 px-4 md:px-10 py-8 md:py-12 max-w-xl h-full flex flex-col justify-center">
@@ -83,14 +45,14 @@ export default function Header() {
               >
 
                 {/* Badge */}
-                <div className="inline-flex items-center gap-2 bg-[#22aa4f]/10 px-3 py-1 rounded-full mb-3">
-
-                  <span className="w-2 h-2 rounded-full bg-[#22aa4f] animate-pulse"></span>
-
-                  <p className="text-[#22aa4f] font-black text-[10px] uppercase tracking-wider">
-                    {slides[slide].subtitle}
-                  </p>
-
+                <div className="inline-flex items-center gap-2 px-2 py-1 mb-3">
+                  <Image
+                    src="/desk-top.png"
+                    alt="IlajbilGhiza"
+                    width={160}
+                    height={100}
+                    className="rounded-full object-contain"
+                  />
                 </div>
 
                 {/* Title */}
@@ -99,7 +61,7 @@ export default function Header() {
                 </h1>
 
                 {/* Description */}
-                <p className="text-gray-500 text-sm md:text-lg font-medium mb-6 leading-relaxed max-w-md">
+                <p className="text-[#21492f] text-sm md:text-lg font-medium mb-6 leading-relaxed max-w-md">
                   {slides[slide].description}
                 </p>
 
@@ -112,14 +74,6 @@ export default function Header() {
                   >
                     {slides[slide].cta1}
                   </Link>
-
-                  <Link
-                    href={slides[slide].cta2Href}
-                    className="bg-white text-[#21492f] border border-[#21492f]/10 px-6 py-3 rounded-xl font-black text-[11px] uppercase tracking-widest hover:border-[#22aa4f] hover:text-[#22aa4f] hover:shadow-lg transition-all text-center"
-                  >
-                    {slides[slide].cta2}
-                  </Link>
-
                 </div>
 
               </motion.div>
