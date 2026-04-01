@@ -4,7 +4,8 @@ import { useState } from "react";
 import { useAuth } from "@/context/AuthContext";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { Leaf, Mail, Lock, ArrowRight } from "lucide-react";
+import Image from "next/image";
+import { Leaf, Mail, Lock, Apple, Globe, Stethoscope, User } from "lucide-react";
 
 export default function LoginPage() {
     const [formData, setFormData] = useState({ email: "", password: "" });
@@ -20,7 +21,7 @@ export default function LoginPage() {
             if (user.role === 'admin') {
                 router.push("/admin");
             } else {
-                router.push("/");
+                router.push("/dashboard");
             }
         } catch (err) {
             setError(err.message);
@@ -28,81 +29,157 @@ export default function LoginPage() {
     };
 
     return (
-        <div className="min-h-screen bg-white flex items-center justify-center p-6 pb-20 pt-10">
-            <div className="max-w-md w-full">
-                {/* Logo & Header */}
-                <div className="text-center mb-10">
-                    <div className="inline-flex items-center justify-center w-16 h-16 bg-[#22aa4f] rounded-2xl text-white shadow-xl shadow-[#21492f]/20 mb-6 animate-float">
-                        <Leaf size={32} fill="currentColor" />
-                    </div>
-                    <h1 className="text-3xl font-black text-[#21492f] uppercase tracking-tight mb-2">
-                        Welcome Back<span className="text-[#22aa4f]">!</span>
-                    </h1>
-                    <p className="text-[#21492f] font-medium italic underline underline-offset-4 decoration-[#22aa4f]/30">
-                        Sign in to access your organic profile
-                    </p>
-                </div>
+        <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4 sm:p-6 lg:p-8">
+            <div className="w-full max-w-6xl bg-white rounded-[2rem] shadow-2xl flex overflow-hidden min-h-[750px] border border-gray-200">
 
-                {/* Form Card */}
-                <div className="bg-white rounded-[2.5rem] p-8 shadow-[0_20px_50px_rgba(0,0,0,0.05)] border border-[#21492f]/10 soft-glass">
+                {/* Left Side - Form */}
+                <div className="w-full lg:w-1/2 p-8 sm:p-12 lg:p-16 flex flex-col justify-center">
+                    {/* Logo */}
+                    <Link href="/" className="flex items-center mb-10 w-fit">
+                        <Image src="/desk-top.png" alt="ilagbilghiza" width={200} height={60} className="w-auto h-10 object-contain drop-shadow-sm" priority />
+                    </Link>
+
+                    <h1 className="text-3xl font-medium text-gray-900 mb-2">Welcome Back!</h1>
+                    <p className="text-gray-500 text-sm mb-8">
+                        Sign in to access your dashboard and continue optimizing your care process.
+                    </p>
+
                     <form onSubmit={handleSubmit} className="space-y-5">
                         {error && (
-                            <div className="bg-[#a6763f] text-[#21492f] p-4 rounded-2xl text-sm font-bold border border-[#a6763f]">
+                            <div className="bg-red-50 text-red-600 p-3 rounded-lg text-sm font-medium border border-red-100">
                                 {error}
                             </div>
                         )}
 
                         <div className="space-y-2">
-                            <label className="text-xs font-black uppercase tracking-widest text-[#21492f]/60 ml-2">Email Address</label>
-                            <div className="relative group">
-                                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-[#21492f]/40 group-focus-within:text-[#22aa4f] transition-colors" size={20} />
+                            <label className="text-xs font-semibold text-gray-700">Email</label>
+                            <div className="relative">
+                                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
                                 <input
                                     type="email"
                                     required
-                                    placeholder="hello@organic.com"
-                                    className="w-full bg-[#21492f]/5 border-transparent rounded-2xl pl-12 pr-4 py-4 text-sm font-bold focus:bg-white focus:ring-4 focus:ring-[#22aa4f]/20 focus:border-[#22aa4f] transition-all outline-none"
+                                    placeholder="Enter your email"
+                                    className="w-full pl-11 pr-4 py-3 border border-gray-300 rounded-xl text-sm focus:ring-2 focus:ring-[#21492f] focus:border-[#21492f] outline-none transition-all text-gray-800 placeholder:text-gray-400"
                                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                                 />
                             </div>
                         </div>
 
                         <div className="space-y-2">
-                            <label className="text-xs font-black uppercase tracking-widest text-[#21492f]/60 ml-2">Password</label>
-                            <div className="relative group">
-                                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-[#21492f]/40 group-focus-within:text-[#22aa4f] transition-colors" size={20} />
+                            <label className="text-xs font-semibold text-gray-700">Password</label>
+                            <div className="relative">
+                                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
                                 <input
                                     type="password"
                                     required
-                                    placeholder="••••••••"
-                                    className="w-full bg-[#21492f]/5 border-transparent rounded-2xl pl-12 pr-4 py-4 text-sm font-bold focus:bg-white focus:ring-4 focus:ring-[#22aa4f]/20 focus:border-[#22aa4f] transition-all outline-none"
+                                    placeholder="Enter your password"
+                                    className="w-full pl-11 pr-4 py-3 border border-gray-300 rounded-xl text-sm focus:ring-2 focus:ring-[#21492f] focus:border-[#21492f] outline-none transition-all text-gray-800 placeholder:text-gray-400"
                                     onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                                 />
+                            </div>
+                            <div className="flex justify-end pt-1">
+                                <Link href="#" className="text-xs text-[#21492f] font-semibold hover:underline">
+                                    Forgot Password?
+                                </Link>
                             </div>
                         </div>
 
                         <button
                             type="submit"
-                            className="w-full bg-[#22aa4f] text-white rounded-2xl py-4 font-black uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-[#21492f] transition-all hover:scale-[1.02] active:scale-[0.98] shadow-xl shadow-[#21492f]/10 mt-4 group"
+                            className="w-full bg-[#21492f] text-white rounded-xl py-3 text-sm font-semibold hover:bg-[#183522] transition-colors mt-2"
                         >
                             Sign In
-                            <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                         </button>
                     </form>
 
-                    <div className="mt-8 text-center">
-                        <p className="text-[#21492f] font-bold text-sm">
-                            Don't have an account?{" "}
-                            <Link href="/signup" className="text-[#22aa4f] hover:text-[#21492f] underline underline-offset-4">
-                                Create Account
-                            </Link>
+                    <div className="mt-8 flex items-center before:flex-1 before:border-t before:border-gray-200 after:flex-1 after:border-t after:border-gray-200">
+                        <span className="mx-4 text-xs font-medium text-gray-400 uppercase tracking-widest">OR</span>
+                    </div>
+
+                    <div className="mt-6 flex flex-col gap-3">
+                        <button type="button" className="flex items-center justify-center gap-3 w-full py-3 border border-gray-300 rounded-xl text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors">
+                            <svg className="w-5 h-5" viewBox="0 0 24 24">
+                                <path fill="currentColor" fillRule="evenodd" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" clipRule="evenodd" color="#4285F4" />
+                                <path fill="currentColor" fillRule="evenodd" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" clipRule="evenodd" color="#34A853" />
+                                <path fill="currentColor" fillRule="evenodd" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" clipRule="evenodd" color="#FBBC05" />
+                                <path fill="currentColor" fillRule="evenodd" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" clipRule="evenodd" color="#EA4335" />
+                            </svg>
+                            Continue with Google
+                        </button>
+                        <button type="button" className="flex items-center justify-center gap-3 w-full py-3 border border-gray-300 rounded-xl text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors">
+                            <Apple size={20} className="text-black" />
+                            Continue with Apple
+                        </button>
+                    </div>
+
+                    <p className="mt-8 text-center text-sm text-gray-600">
+                        Don't have an Account?{" "}
+                        <Link href="/signup" className="text-[#21492f] font-semibold hover:underline">
+                            Sign Up
+                        </Link>
+                    </p>
+                </div>
+
+                {/* Right Side - Content */}
+                <div className="hidden lg:flex lg:w-1/2 bg-[#21492f] p-16 flex-col justify-center relative bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] bg-blend-soft-light">
+                    {/* Gradient Overlay for subtle texturing */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#183522]/40 to-[#21492f]/40 pointer-events-none"></div>
+
+                    {/* Top Right Logo */}
+                    <div className="absolute top-12 right-12 z-20 flex items-center bg-white/10 backdrop-blur-md px-5 py-2.5 rounded-2xl border border-white/20 shadow-xl">
+                        <Image src="/desk-top.png" alt="ilagbilghiza" width={200} height={60} className="w-auto h-12 object-contain drop-shadow-md" priority />
+                    </div>
+
+                    <div className="relative z-10 w-full max-w-lg mx-auto">
+                        <h2 className="text-[2.75rem] font-medium text-white leading-[1.15] mb-8 tracking-tight">
+                            Revolutionize Health with Smarter Care
+                        </h2>
+
+                        <div className="mt-8 mb-20 relative text-white">
+                            <div className="text-6xl font-serif text-[#4caf50] absolute -top-8 -left-3 opacity-60">"</div>
+                            <p className="text-white/90 text-[1.1rem] leading-relaxed relative z-10 font-normal">
+                                ilagbilghiza has completely transformed our care delivery. It's reliable, efficient, and ensures our patients' wellness is always top-notch.
+                            </p>
+
+                            <div className="mt-8 flex items-center gap-4">
+                                <div className="w-12 h-12 bg-gray-200 rounded-full overflow-hidden border-2 border-[#4caf50]">
+                                    <img src="https://i.pravatar.cc/150?img=11" alt="Sana Ali" className="w-full h-full object-cover" />
+                                </div>
+                                <div className="flex flex-col">
+                                    <span className="text-white font-semibold text-sm">Dr. Sana Ali</span>
+                                    <span className="text-white/60 text-xs">Medical Expert at HealthCore</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Logos section - as requested: right side per logo add karu ilagbilghiza ka */}
+                    <div className="absolute bottom-12 left-16 right-16 pt-6 border-t border-white/10 z-10">
+                        <p className="text-[10px] font-bold text-white/50 tracking-[0.15em] uppercase mb-4">
+                            Trusted By TEAMS
                         </p>
+                        <div className="flex items-center justify-between gap-4 text-white/80 w-full">
+                            <div className="flex items-center gap-1.5 focus:outline-none">
+                                <Leaf size={20} className="text-[#4caf50]" />
+                                <span className="font-bold text-sm tracking-tight text-white">NatureCare</span>
+                            </div>
+                            <div className="flex items-center gap-1.5 focus:outline-none">
+                                <Globe size={18} className="text-blue-300" />
+                                <span className="font-bold text-sm tracking-tight text-white">BioHealth</span>
+                            </div>
+                            <div className="flex items-center gap-1.5 focus:outline-none">
+                                <Stethoscope size={20} className="text-rose-300" />
+                                <span className="font-bold text-sm tracking-tight text-white">MedAssist</span>
+                            </div>
+                            <div className="flex items-center justify-center px-4 py-2 rounded-lg bg-white/10 border border-white/20 h-10">
+                                <Image src="/desk-top.png" alt="ilagbilghiza" width={120} height={30} className="w-auto h-full object-contain filter brightness-0 invert opacity-90" />
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <p className="text-center text-[10px] text-[#21492f]/60 font-black uppercase tracking-widest mt-12">
-                    Secure & Private • Local Storage Only
-                </p>
             </div>
         </div>
     );
 }
+

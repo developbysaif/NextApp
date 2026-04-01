@@ -47,7 +47,7 @@ export default function Header() {
 
           
           {/* HERO SECTION */}
-          <section className="flex-1 relative bg-[#f8faf9] w-full overflow-hidden min-h-[400px] md:min-h-[550px] shadow-sm ">
+          <section className="flex-1 relative bg-[#f8faf9] w-full overflow-hidden min-h-[320px] md:min-h-[420px] shadow-sm ">
 
             {/* INNER CONTENT (EXTRA COMPACT) */}
             <div className="relative z-10 px-4 md:px-10 py-8 md:py-12 max-w-xl h-full flex flex-col justify-center">
@@ -58,15 +58,11 @@ export default function Header() {
                 transition={{ duration: 0.6 }}
               >
 
-                {/* Badge */}
+                {/* Brand Text */}
                 <div className="inline-flex items-center gap-2 px-2 py-1 mb-3">
-                  <Image
-                    src="/desk-top.png"
-                    alt="IlajbilGhiza"
-                    width={160}
-                    height={100}
-                    className="rounded-full object-contain"
-                  />
+                  <span className="text-lg font-bold uppercase tracking-[0.28em] text-[#2e6f3d]">
+                    ilagbilghiza
+                  </span>
                 </div>
 
                 {/* Subtitle */}
@@ -109,8 +105,6 @@ export default function Header() {
                 className="object-cover object-right"
                 priority
               />
-
-              <div className="absolute inset-0 bg-gradient-to-r from-[#f8faf9] via-[#f8faf9]/90 to-transparent"></div>
 
             </div>
 
