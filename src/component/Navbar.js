@@ -236,14 +236,19 @@ export default function Navbar() {
                                 </NavigationMenuItem>
                                 <NavigationMenuItem>
                                     <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), "bg-transparent font-bold text-stone-600 text-xs hover:text-[#22aa4f] hover:bg-stone-50 px-2")}>
+                                        <Link href="/about">About Us</Link>
+                                    </NavigationMenuLink>
+                                </NavigationMenuItem>
+                                <NavigationMenuItem>
+                                    <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), "bg-transparent font-bold text-stone-600 text-xs hover:text-[#22aa4f] hover:bg-stone-50 px-2")}>
                                         <Link href="/diseases">Diseases &amp; Treatment</Link>
                                     </NavigationMenuLink>
                                 </NavigationMenuItem>
 
                                 <NavigationMenuItem>
-                                    <NavigationMenuTrigger className="bg-transparent font-bold text-stone-600 text-xs hover:text-[#22aa4f] data-[state=open]:text-[#22aa4f] px-2">
-                                        Diet Plans
-                                    </NavigationMenuTrigger>
+                                    <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), "bg-transparent font-bold text-stone-600 text-xs hover:text-[#22aa4f] hover:bg-stone-50 px-2")}>
+                                        <Link href="/diet-plan">Diet Plans</Link>
+                                    </NavigationMenuLink>
                                 </NavigationMenuItem>
                                 <NavigationMenuItem>
                                     <NavigationMenuTrigger className="bg-transparent font-bold text-stone-600 text-xs hover:text-[#22aa4f] data-[state=open]:text-[#22aa4f] px-2">
@@ -315,7 +320,7 @@ export default function Navbar() {
                         <div className="pt-2 border-t border-stone-100">
                             <p className="text-[10px] font-bold text-stone-300 uppercase mb-3">Company</p>
                             <Link href="/about" className="block text-sm font-bold text-stone-500 mb-3" onClick={() => setOpen(false)}>About Us</Link>
-                            <Link href="/contact" className="block text-sm font-bold text-[#22aa4f] mb-3" onClick={() => setOpen(false)}>Contact Us</Link>
+                            <Link href="/Contact" className="block text-sm font-bold text-[#22aa4f] mb-3" onClick={() => setOpen(false)}>Contact Us</Link>
                             <Link href="/faqs" className="block text-sm font-bold text-stone-500 mb-3" onClick={() => setOpen(false)}>FAQs</Link>
                         </div>
                     </nav>
