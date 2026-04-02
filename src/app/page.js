@@ -4,7 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import { ShoppingBag, ArrowRight, Leaf, Heart, Shield, Truck, Zap, Activity, Brain, Bone, Star, Quote } from 'lucide-react';
 import Header from '../component/Header';
-import DiseaseSection from '../component/diseases-semtum';
+import Disease from '../component/diseases-semtum';
 import CategoryCard from '../component/CategoryCard';
 import Subscribe from '../component/Subscribe';
 import ProductItem from '../component/ProductItem';
@@ -147,7 +147,7 @@ export default function HomePage() {
     <div className="bg-white overflow-x-hidden font-sans">
 
       <Header />
-       <DiseaseSection />
+       <Disease />
        
 
       {/* Spacer after header */}
