@@ -75,7 +75,7 @@ export default function DiseaseDetailPage({ params }) {
             <PageHeader
                 title={disease.title}
                 description={disease.description}
-                backgroundImage="/header.jpg"
+                backgroundImage={disease.image || "/header.jpg"}
                 breadcrumbClassName="text-white bg-[#22aa4f] shadow-lg"
             />
 

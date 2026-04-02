@@ -3,10 +3,10 @@ export const diseases = [
         slug: 'hair-fall',
         title: '“Why Is Your Hair Falling So Fast?”',
         description: 'Understand the root cause of hair loss and fix it with Sunnah-based organic remedies.',
-        icon: 'Activity',
+        icon: 'Leaf',
         color: 'text-amber-600',
         bg: 'bg-amber-50',
-        image: '/images/hair_fall_awareness.png',
+        image: '/Herbs.png',
         content: `
 It’s heart-breaking to see your hair in the brush every morning. But the truth is, your hair is falling for a reason. Modern lifestyle and chemicals are stripping away your natural beauty.
 
@@ -30,10 +30,10 @@ Your hair is a gift. Treat it with the purity of nature, just as it was meant to
         slug: 'teeth-whitening',
         title: '“Your Smile Is Fading — Here’s Why”',
         description: 'Naturally white healthy teeth without harmful chemicals or sensitivity.',
-        icon: 'Activity',
+        icon: 'Droplets',
         color: 'text-blue-500',
         bg: 'bg-blue-50',
-        image: '/images/teeth_whitening_comparison.png',
+        image: '/Mint.png',
         content: `
 Is your confidence fading along with your smile? Yellowing teeth aren't just an aging sign; they are often a result of what we do daily.
 
@@ -59,6 +59,7 @@ Healthy teeth don't need bleach. They need the right care and natural ingredient
         icon: 'Heart',
         color: 'text-purple-600',
         bg: 'bg-purple-50',
+        image: '/Lime.png',
         content: `
 PCOS is not just a disease; it's a metabolic signal from your body. You can manage it by changing the fuel you give yourself.
 
@@ -79,9 +80,10 @@ Stop treating symptoms. Let's fix the root cause with organic food.
         slug: 'skin-glow',
         title: 'Skin Glow for Girls',
         description: 'Beauty that starts from within. Get that natural, healthy radiance.',
-        icon: 'Activity',
+        icon: 'Droplets',
         color: 'text-rose-500',
         bg: 'bg-rose-50',
+        image: '/Limes.png',
         content: `
 Stop hiding behind makeup. A true glow comes when your blood is pure and your gut is happy.
 
@@ -107,6 +109,7 @@ Chemicals give a temporary glow. Nature gives a permanent radiance.
         icon: 'Scale',
         color: 'text-green-600',
         bg: 'bg-green-50',
+        image: '/Lime.png',
         content: `
 “You Are Not Sick — Your Lifestyle Is.” Weight gain is often a sign of a body that is out of balance.
 
@@ -129,9 +132,10 @@ Your body is your only home. Start cleaning it today.
         slug: 'immunity',
         title: 'Weak Immunity',
         description: 'Strengthen your body’s defense naturally with Sunnah superfoods.',
-        icon: 'Activity',
+        icon: 'Heart',
         color: 'text-purple-600',
         bg: 'bg-purple-50',
+        image: '/Anar.png',
         content: `
 “Top 7 Sunnah Foods for Strong Immunity”
 
@@ -160,21 +164,22 @@ Don't wait for disease. Build your shield naturally every single day.
         bg: 'bg-teal-50',
         image: '/Fruits.png',
         content: `
-Chronic diseases are conditions that last 1 year or more and require ongoing medical attention or limit activities of daily living.
+Chronic diseases are long-term conditions that often progress slowly. Here are the most common ones and their natural management:
 
-### Common Chronic Conditions:
-1. **Diabetes:** High blood sugar levels that can lead to serious health issues.
-   * *Symptoms:* Frequent urination, excessive thirst, fatigue.
-   * *Natural Fix:* Reduce refined sugars, use Bitter Gourd, and maintain a consistent walk schedule.
-2. **Heart Disease:** Conditions that affect your heart's structure and function.
-   * *Symptoms:* Chest pain, shortness of breath, irregular heartbeat.
-   * *Natural Fix:* Incorporate healthy fats like Olive Oil and Figs into your diet.
-3. **Hypertension:** High blood pressure that can lead to heart attack or stroke.
-   * *Symptoms:* Headache, dizziness, blurred vision.
-   * *Natural Fix:* Reduce salt intake and drink Hibiscus tea.
+### 1. Diabetes (Sugar)
+Early signs include frequent urination, excessive thirst, and unexplained fatigue.
+* **Sunnah Fix:** Bitter Gourd (Karela) and Black Seed (Kalonji).
+* **Diet:** High fiber vegetables and zero refined sugar.
 
-### The Organic Approach:
-Managing chronic diseases starts with pure food and a stress-free lifestyle. Aligning your habits with nature can significantly improve your quality of life.
+### 2. Heart Disease
+Symptoms can manifest as chest pain, shortness of breath, and irregular heartbeat.
+* **Sunnah Fix:** Talbina (Barley porridge) and high-quality Olive Oil.
+* **Diet:** Pomegranate (Anar) and healthy fats to clear arteries.
+
+### 3. Hypertension (BP)
+Often called the silent killer. Watch for headaches, dizziness, and blurred vision.
+* **Sunnah Fix:** Hibiscus Tea and reducing salt.
+* **Diet:** Potassium-rich foods like Bananas and Dates.
 `
     },
     {
@@ -186,21 +191,22 @@ Managing chronic diseases starts with pure food and a stress-free lifestyle. Ali
         bg: 'bg-blue-50',
         image: '/Anar.png',
         content: `
-Infectious diseases are caused by organisms — such as bacteria, viruses, fungi or parasites.
+Infectious diseases spread easily. Strengthening your internal defense is the best way to stay protected.
 
-### Common Infectious Conditions:
-1. **Influenza (Flu):** A viral infection that attacks your respiratory system.
-   * *Symptoms:* Body aches, fever, chills, sore throat.
-   * *Natural Fix:* Drink warm Honey water and use Black Seed (Kalonji) for immune support.
-2. **COVID-19 / Viral Infections:** Respiratory illnesses that can spread from person to person.
-   * *Symptoms:* Fever, cough, breathing issues.
-   * *Natural Fix:* Steam inhalation with Mint and high Vitamin C intake.
-3. **Tuberculosis (TB):** A serious bacterial infection that mainly affects the lungs.
-   * *Symptoms:* Persistent cough, weight loss, night sweats.
-   * *Natural Fix:* Nutrient-dense diet and fresh air, alongside medical treatment.
+### 1. Influenza (Seasonal Flu)
+Characterized by body aches, high fever, and chills.
+* **Sunnah Fix:** Warm Honey water and Ginger tea.
+* **Diet:** Vitamin C rich fruits like Oranges and Lemons.
 
-### Strengthening Your Shield:
-Islam teaches us that "Cleanliness is half of faith." Hygiene and Sunnah-based superfoods are your best defense against infections.
+### 2. COVID-19 / Viral Infections
+Modern viral threats cause fever, cough, and severe breathing issues.
+* **Sunnah Fix:** Steam with Mint and Black Seed oil drops.
+* **Diet:** Increase Zinc and Mushroom-based soups.
+
+### 3. Tuberculosis (TB)
+A serious bacterial infection. Symptoms include persistent cough and night sweats.
+* **Remedy:** Nutrient-dense diet and pure Ghee for lung strength.
+* **Advice:** Fresh morning air and sunlight are crucial.
 `
     },
     {
@@ -212,21 +218,22 @@ Islam teaches us that "Cleanliness is half of faith." Hygiene and Sunnah-based s
         bg: 'bg-purple-50',
         image: '/Borkely.png',
         content: `
-Mental health includes our emotional, psychological, and social well-being. It affects how we think, feel, and act.
+Mental well-being is deeply connected to your nutrition and spiritual state.
 
-### Common Mental Health Challenges:
-1. **Depression:** A mood disorder that causes a persistent feeling of sadness and loss of interest.
-   * *Symptoms:* Sadness, low energy, loss of interest in regular activities.
-   * *Natural Fix:* Talbina (Barley porridge) as recommended by the Prophet (PBUH) to soothe the heart.
-2. **Anxiety:** Intense, excessive, and persistent worry and fear about everyday situations.
-   * *Symptoms:* Restlessness, rapid heartbeat, overthinking.
-   * *Natural Fix:* Meditation, Dhikr, and herbal teas like Chamomile.
-3. **Stress-related Disorders:** Physical and mental strain caused by modern life pressures.
-   * *Symptoms:* Headache, sleep problems, irritability.
-   * *Natural Fix:* Sufficient sleep and Magnesium-rich foods like Spinach and Almonds.
+### 1. Depression
+Clouded by sadness and low energy.
+* **Sunnah Fix:** Talbina (Barley). The Prophet (PBUH) said it "relieves the heart of the sorrowful."
+* **Support:** Daily Dhikr and early morning sunlight.
 
-### Nourish Your Soul:
-"Verily, in the remembrance of Allah do hearts find rest." (Ar-Ra'd 13:28). Balance your mind with faith and wholesome food.
+### 2. Anxiety & Overthinking
+Manifests as restlessness and a racing heartbeat.
+* **Natural Fix:** Magnesium-rich Pumpkin seeds and Almonds.
+* **Relaxation:** Chamomile tea before bed.
+
+### 3. Stress Disorders
+Modern lifestyle causes headaches and irritability.
+* **Natural Fix:** Deep breathing and Olive oil massage on the scalp.
+* **Diet:** Omega-3 rich Walnuts and Flaxseeds.
 `
     },
     {
@@ -238,18 +245,17 @@ Mental health includes our emotional, psychological, and social well-being. It a
         bg: 'bg-green-50',
         image: '/Mint.png',
         content: `
-Respiratory diseases affect the lungs and other parts of the respiratory system.
+Lungs are your life-line. Keep them clear with anti-inflammatory remedies.
 
-### Common Respiratory Issues:
-1. **Asthma:** A condition in which your airways narrow and swell and may produce extra mucus.
-   * *Symptoms:* Wheezing, shortness of breath, chest tightness.
-   * *Natural Fix:* Pure Honey mixed with Ginger juice and avoid cold drinks.
-2. **Chronic Bronchitis:** Inflammation of the lining of your bronchial tubes.
-   * *Symptoms:* Persistent cough with mucus, fatigue.
-   * *Natural Fix:* Turmeric milk (Golden milk) to reduce internal inflammation.
+### 1. Asthma
+Wheezing and shortness of breath due to airway sensitivity.
+* **Natural Fix:** Pure Honey and black pepper.
+* **Warning:** Avoid cold milk and artificial colors.
 
-### Fresh Air & Purity:
-Lungs need clean air and anti-inflammatory foods. Avoid chemical sprays and artificial fragrances in your home.
+### 2. Chronic Bronchitis
+Persistent cough with mucus and heavy fatigue.
+* **Natural Fix:** Turmeric water (Haldi) and steam.
+* **Advice:** Warm herbal soups and avoiding environmental dust.
 `
     },
     {
@@ -261,21 +267,22 @@ Lungs need clean air and anti-inflammatory foods. Avoid chemical sprays and arti
         bg: 'bg-emerald-50',
         image: '/Lime.png',
         content: `
-Lifestyle diseases are linked to the way people live their lives. They are often called "diseases of longevity" or "diseases of civilization."
+Lifestyle diseases are reversible with discipline and the right fuel.
 
-### Common Lifestyle Conditions:
-1. **Obesity:** Excessive body fat that increases the risk of other health problems.
-   * *Symptoms:* Weight gain, low energy, joint pain.
-   * *Natural Fix:* Intermittent fasting and replacing sugar with Honey or Stevia.
-2. **Fatty Liver Disease:** Build-up of extra fat in liver cells.
-   * *Symptoms:* Abdominal discomfort, fatigue.
-   * *Natural Fix:* Lemon water in the morning and avoiding processed seed oils.
-3. **PCOS (Women):** A hormonal disorder common among women of reproductive age.
-   * *Symptoms:* Irregular periods, weight gain, acne.
-   * *Natural Fix:* Moringa and Spearmint tea for hormonal balance.
+### 1. Obesity
+Excess weight and low energy cycles.
+* **Natural Fix:** Intermittent Fasting and Honey water in the morning.
+* **Move:** Daily 30-minute walk after Isha.
 
-### Your Body is a Trust:
-"Your body has a right over you." Treat it with respect by eating what is Tayyib (pure and wholesome).
+### 2. Fatty Liver
+Abdominal discomfort and constant fatigue.
+* **Natural Fix:** Lemon juice and avoiding processed vegetable oils.
+* **Choice:** Switch to cold-pressed Mustard or Olive oil.
+
+### 3. PCOS (Women)
+Hormonal imbalance causing irregular periods and acne.
+* **Sunnah Fix:** Moringa (Suhanjna) and Spearmint tea.
+* **Diet:** High protein, seeds (Alsi, Til).
 `
     },
     {
@@ -287,21 +294,22 @@ Lifestyle diseases are linked to the way people live their lives. They are often
         bg: 'bg-orange-50',
         image: '/Dry Fruit.png',
         content: `
-The gut is often called the "second brain." A healthy digestive system is the foundation of overall health.
+A healthy gut is the key to a healthy long life.
 
-### Common Digestive Issues:
-1. **Acidity / GERD:** Burning sensation in the chest (heartburn).
-   * *Symptoms:* Heartburn, chest discomfort, sour taste.
-   * *Natural Fix:* Fennel seeds (Saunf) and cold milk or yogurt.
-2. **Constipation:** Difficulty in emptying the bowels.
-   * *Symptoms:* Hard stool, bloating, straining.
-   * *Natural Fix:* High fiber intake via Figs and Isabgol (Psyllium husk).
-3. **Ulcer:** Sores that develop on the lining of the stomach or small intestine.
-   * *Symptoms:* Stomach pain, burning sensation.
-   * *Natural Fix:* Cabbage juice and Honey.
+### 1. Acidity / GERD
+Heartburn and chest discomfort after meals.
+* **Natural Fix:** Fennel seeds (Saunf) and coconut water.
+* **Advice:** Avoid sleeping immediately after eating.
 
-### Eat Mindfully:
-Prophet Muhammad (PBUH) advised to keep one-third of the stomach for food, one-third for water, and one-third for air.
+### 2. Constipation
+Bloating and difficulty in digestion.
+* **Sunnah Fix:** Figs (Injeer) soaked in water and Prunes.
+* **Hydration:** Essential water intake between meals.
+
+### 3. Ulcer
+Stomach pain and burning sensations.
+* **Natural Fix:** Cabbage juice and raw Honey.
+* **Soothe:** Barley water (Talbina).
 `
     },
     {
@@ -313,18 +321,17 @@ Prophet Muhammad (PBUH) advised to keep one-third of the stomach for food, one-t
         bg: 'bg-amber-50',
         image: '/Herbs.png',
         content: `
-Bone and joint disorders can cause pain and limit your mobility.
+Strengthen your frame with minerals and anti-inflammatory foods.
 
-### Common Bone Issues:
-1. **Arthritis:** Inflammation of one or more joints, causing pain and stiffness.
-   * *Symptoms:* Joint pain, stiffness, swelling.
-   * *Natural Fix:* Ginger and Turmeric for their powerful anti-inflammatory properties.
-2. **Osteoporosis:** A condition in which bones become weak and brittle.
-   * *Symptoms:* Weak bones, frequent fractures, loss of height.
-   * *Natural Fix:* Sesame seeds (Til) and dairy or plant-based calcium sources.
+### 1. Arthritis
+Pain and stiffness in the moving joints.
+* **Natural Fix:** Ginger, Turmeric, and Cherry juice.
+* **Sunnah:** Massaging joints with warm Black Seed oil.
 
-### Movement is Life:
-Keep your joints lubricated with healthy fats like Olive Oil and maintain moderate physical activity.
+### 2. Osteoporosis
+Weakening of bones as we age.
+* **Natural Fix:** Sesame seeds (Til) and whole milk.
+* **Strength:** Vitamin D from sunlight and weight-bearing exercise.
 `
     }
 ];
