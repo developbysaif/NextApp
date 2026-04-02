@@ -80,9 +80,11 @@ export default function Navbar() {
     // Handle scroll for sticky effect
     useEffect(() => {
         const handleScroll = () => {
-            setIsScrolled(window.scrollY > 50)
+            const scrollPosition = window.scrollY || window.pageYOffset
+            setIsScrolled(scrollPosition > 90)
         }
-        window.addEventListener("scroll", handleScroll)
+        handleScroll()
+        window.addEventListener("scroll", handleScroll, { passive: true })
         return () => window.removeEventListener("scroll", handleScroll)
     }, [])
 
@@ -115,7 +117,7 @@ export default function Navbar() {
         <header className="w-full z-[100] sticky top-0 bg-white">
             {/* ───────── TOP BAR ───────── */}
             <div className={cn(
-                "bg-[#21492f] text-white overflow-hidden transition-all duration-500 hidden md:block border-b border-white/10",
+                "bg-[#21492f] text-white overflow-hidden transition-[max-height,opacity] duration-300 ease-out hidden md:block border-b border-white/10",
                 isScrolled ? "max-h-0 opacity-0" : "max-h-20 opacity-100 py-2"
             )}>
                 <div className="max-w-5xl mx-auto flex justify-between px-4 text-[11px] font-bold">
@@ -153,7 +155,7 @@ export default function Navbar() {
 
             {/* ───────── MIDDLE BAR ───────── */}
             <div className={cn(
-                "w-full bg-white transition-all duration-500 border-b border-stone-100 overflow-hidden",
+                "w-full bg-white transition-[max-height,opacity] duration-300 ease-out border-b border-stone-100 overflow-hidden",
                 isScrolled ? "max-h-0 md:max-h-0 opacity-0 pointer-events-none" : "max-h-40 opacity-100 py-2 md:py-3"
             )}>
                 <div className="max-w-5xl mx-auto px-4 flex items-center justify-between gap-3 md:gap-6">
@@ -204,8 +206,8 @@ export default function Navbar() {
 
             {/* ───────── DESKTOP & SCROLLED NAV ───────── */}
             <div className={cn(
-                "bg-white border-b border-stone-100 transition-all duration-500",
-                isScrolled ? "py-2 shadow-md" : ""
+                "bg-white border-b border-stone-100 transition-[box-shadow] duration-300 ease-out py-2",
+                isScrolled ? "shadow-md" : ""
             )}>
                 <div className="max-w-5xl mx-auto px-4 flex items-center justify-between md:justify-start">
                     {/* Logo (Visible when scrolled) */}

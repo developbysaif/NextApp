@@ -47,10 +47,10 @@ export default function Header() {
 
           
           {/* HERO SECTION */}
-          <section className="flex-1 relative bg-[#f8faf9] w-full overflow-hidden min-h-[320px] md:min-h-[420px] shadow-sm ">
+          <section className="flex-1 relative bg-[#f8faf9] w-full overflow-hidden min-h-[260px] md:min-h-[360px] shadow-sm ">
 
             {/* INNER CONTENT (EXTRA COMPACT) */}
-            <div className="relative z-10 px-4 md:px-10 py-8 md:py-12 max-w-xl h-full flex flex-col justify-center">
+            <div className="relative z-10 px-4 md:px-10 pt-8 md:pt-10 max-w-xl h-full flex flex-col items-center justify-start">
 
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
@@ -59,14 +59,14 @@ export default function Header() {
               >
 
                 {/* Brand Text */}
-                <div className="inline-flex items-center gap-2 px-2 py-1 mb-3">
+                <div className="inline-flex items-center gap-2 px-2 py-1 mb-1">
                   <span className="text-4xl md:text-6xl lg:text-5xl font-black uppercase tracking-[0.05em] md:tracking-[0.08em] text-[#2e6f3d]">
                     ilajbilghiza:
                   </span>
                 </div>
 
                 {/* Subtitle */}
-                <p className="text-sm md:text-base uppercase tracking-[0.28em] text-[#2e6f3d] font-semibold mb-3">
+                <p className="text-sm md:text-base uppercase tracking-[0.28em] text-[#2e6f3d] font-semibold mb-1">
                   {slides[slide].subtitle}
                 </p>
 
