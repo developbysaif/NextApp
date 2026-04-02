@@ -13,7 +13,7 @@ const slides = [
       <>
         YOUR {" "}
         <span className="text-green-600">BODY'S NATURAL DEFENSE</span>{" "}
-        IN A MODERN ERA (2026+){" "}
+        IN A MODERN<br></br> ERA (2026+){" "}
       </>
     ),
     description: (
@@ -60,7 +60,7 @@ export default function Header() {
 
                 {/* Brand Text */}
                 <div className="inline-flex items-center gap-2 px-2 py-1 mb-1">
-                  <span className="text-4xl md:text-6xl lg:text-5xl font-black uppercase tracking-[0.05em] md:tracking-[0.08em] text-[#2e6f3d]">
+                  <span className="text-2xl md:text-2xl lg:text-3xl font-black uppercase tracking-[0.05em] md:tracking-[0.08em] text-[#2e6f3d]">
                     ilajbilghiza:
                   </span>
                 </div>
@@ -71,12 +71,12 @@ export default function Header() {
                 </p>
 
                 {/* Title */}
-                <h1 className="text-3xl sm:text-4xl md:text-6xl font-black text-[#124126] leading-[1.05] md:leading-[1.05] mb-4 uppercase">
+                <h1 className="text-2xl sm:text-3xl md:text-4xl font-black text-[#124126] leading-[1.1] md:leading-[1.1] mb-4 uppercase">
                   {slides[slide].title}
                 </h1>
 
                 {/* Description */}
-                <p className="text-[#1f4c2e] text-base md:text-xl font-medium mb-6 leading-[1.85] max-w-xl">
+                <p className="text-[#1f4c2e] text-sm md:text-base font-medium mb-6 leading-[1.85] max-w-xl">
                   {slides[slide].description}
                 </p>
 
