@@ -150,5 +150,181 @@ In today's world of processed snacks and chemical preservatives, our bodies are 
 ### Advice:
 Don't wait for disease. Build your shield naturally every single day.
 `
+    },
+    {
+        slug: 'chronic-diseases',
+        title: 'Understanding Chronic Diseases',
+        description: 'Long-term health conditions that require consistent management and natural lifestyle adjustments.',
+        icon: 'Heart',
+        color: 'text-teal-600',
+        bg: 'bg-teal-50',
+        image: '/Fruits.png',
+        content: `
+Chronic diseases are conditions that last 1 year or more and require ongoing medical attention or limit activities of daily living.
+
+### Common Chronic Conditions:
+1. **Diabetes:** High blood sugar levels that can lead to serious health issues.
+   * *Symptoms:* Frequent urination, excessive thirst, fatigue.
+   * *Natural Fix:* Reduce refined sugars, use Bitter Gourd, and maintain a consistent walk schedule.
+2. **Heart Disease:** Conditions that affect your heart's structure and function.
+   * *Symptoms:* Chest pain, shortness of breath, irregular heartbeat.
+   * *Natural Fix:* Incorporate healthy fats like Olive Oil and Figs into your diet.
+3. **Hypertension:** High blood pressure that can lead to heart attack or stroke.
+   * *Symptoms:* Headache, dizziness, blurred vision.
+   * *Natural Fix:* Reduce salt intake and drink Hibiscus tea.
+
+### The Organic Approach:
+Managing chronic diseases starts with pure food and a stress-free lifestyle. Aligning your habits with nature can significantly improve your quality of life.
+`
+    },
+    {
+        slug: 'infectious-diseases',
+        title: 'Fighting Infectious Diseases',
+        description: 'Protect yourself from viruses and bacteria using nature’s strongest immunity boosters.',
+        icon: 'Activity',
+        color: 'text-blue-600',
+        bg: 'bg-blue-50',
+        image: '/Anar.png',
+        content: `
+Infectious diseases are caused by organisms — such as bacteria, viruses, fungi or parasites.
+
+### Common Infectious Conditions:
+1. **Influenza (Flu):** A viral infection that attacks your respiratory system.
+   * *Symptoms:* Body aches, fever, chills, sore throat.
+   * *Natural Fix:* Drink warm Honey water and use Black Seed (Kalonji) for immune support.
+2. **COVID-19 / Viral Infections:** Respiratory illnesses that can spread from person to person.
+   * *Symptoms:* Fever, cough, breathing issues.
+   * *Natural Fix:* Steam inhalation with Mint and high Vitamin C intake.
+3. **Tuberculosis (TB):** A serious bacterial infection that mainly affects the lungs.
+   * *Symptoms:* Persistent cough, weight loss, night sweats.
+   * *Natural Fix:* Nutrient-dense diet and fresh air, alongside medical treatment.
+
+### Strengthening Your Shield:
+Islam teaches us that "Cleanliness is half of faith." Hygiene and Sunnah-based superfoods are your best defense against infections.
+`
+    },
+    {
+        slug: 'mental-health-disorders',
+        title: 'Mental Health & Well-being',
+        description: 'Find peace and balance through spiritual connection and organic nutrition for the brain.',
+        icon: 'Activity',
+        color: 'text-purple-600',
+        bg: 'bg-purple-50',
+        image: '/Borkely.png',
+        content: `
+Mental health includes our emotional, psychological, and social well-being. It affects how we think, feel, and act.
+
+### Common Mental Health Challenges:
+1. **Depression:** A mood disorder that causes a persistent feeling of sadness and loss of interest.
+   * *Symptoms:* Sadness, low energy, loss of interest in regular activities.
+   * *Natural Fix:* Talbina (Barley porridge) as recommended by the Prophet (PBUH) to soothe the heart.
+2. **Anxiety:** Intense, excessive, and persistent worry and fear about everyday situations.
+   * *Symptoms:* Restlessness, rapid heartbeat, overthinking.
+   * *Natural Fix:* Meditation, Dhikr, and herbal teas like Chamomile.
+3. **Stress-related Disorders:** Physical and mental strain caused by modern life pressures.
+   * *Symptoms:* Headache, sleep problems, irritability.
+   * *Natural Fix:* Sufficient sleep and Magnesium-rich foods like Spinach and Almonds.
+
+### Nourish Your Soul:
+"Verily, in the remembrance of Allah do hearts find rest." (Ar-Ra'd 13:28). Balance your mind with faith and wholesome food.
+`
+    },
+    {
+        slug: 'respiratory-diseases',
+        title: 'Breathing Freely: Respiratory Care',
+        description: 'Natural remedies for asthma, bronchitis, and other lung-related conditions.',
+        icon: 'Activity',
+        color: 'text-green-600',
+        bg: 'bg-green-50',
+        image: '/Mint.png',
+        content: `
+Respiratory diseases affect the lungs and other parts of the respiratory system.
+
+### Common Respiratory Issues:
+1. **Asthma:** A condition in which your airways narrow and swell and may produce extra mucus.
+   * *Symptoms:* Wheezing, shortness of breath, chest tightness.
+   * *Natural Fix:* Pure Honey mixed with Ginger juice and avoid cold drinks.
+2. **Chronic Bronchitis:** Inflammation of the lining of your bronchial tubes.
+   * *Symptoms:* Persistent cough with mucus, fatigue.
+   * *Natural Fix:* Turmeric milk (Golden milk) to reduce internal inflammation.
+
+### Fresh Air & Purity:
+Lungs need clean air and anti-inflammatory foods. Avoid chemical sprays and artificial fragrances in your home.
+`
+    },
+    {
+        slug: 'lifestyle-diseases',
+        title: 'Overcoming Lifestyle Diseases',
+        description: 'Modern problems require organic solutions. Reversing obesity, PCOS, and fatty liver.',
+        icon: 'Scale',
+        color: 'text-emerald-600',
+        bg: 'bg-emerald-50',
+        image: '/Lime.png',
+        content: `
+Lifestyle diseases are linked to the way people live their lives. They are often called "diseases of longevity" or "diseases of civilization."
+
+### Common Lifestyle Conditions:
+1. **Obesity:** Excessive body fat that increases the risk of other health problems.
+   * *Symptoms:* Weight gain, low energy, joint pain.
+   * *Natural Fix:* Intermittent fasting and replacing sugar with Honey or Stevia.
+2. **Fatty Liver Disease:** Build-up of extra fat in liver cells.
+   * *Symptoms:* Abdominal discomfort, fatigue.
+   * *Natural Fix:* Lemon water in the morning and avoiding processed seed oils.
+3. **PCOS (Women):** A hormonal disorder common among women of reproductive age.
+   * *Symptoms:* Irregular periods, weight gain, acne.
+   * *Natural Fix:* Moringa and Spearmint tea for hormonal balance.
+
+### Your Body is a Trust:
+"Your body has a right over you." Treat it with respect by eating what is Tayyib (pure and wholesome).
+`
+    },
+    {
+        slug: 'digestive-disorders',
+        title: 'Gut Health & Digestive Harmony',
+        description: 'Fix common digestive issues like acidity and constipation with natural fibers.',
+        icon: 'Droplets',
+        color: 'text-orange-600',
+        bg: 'bg-orange-50',
+        image: '/Dry Fruit.png',
+        content: `
+The gut is often called the "second brain." A healthy digestive system is the foundation of overall health.
+
+### Common Digestive Issues:
+1. **Acidity / GERD:** Burning sensation in the chest (heartburn).
+   * *Symptoms:* Heartburn, chest discomfort, sour taste.
+   * *Natural Fix:* Fennel seeds (Saunf) and cold milk or yogurt.
+2. **Constipation:** Difficulty in emptying the bowels.
+   * *Symptoms:* Hard stool, bloating, straining.
+   * *Natural Fix:* High fiber intake via Figs and Isabgol (Psyllium husk).
+3. **Ulcer:** Sores that develop on the lining of the stomach or small intestine.
+   * *Symptoms:* Stomach pain, burning sensation.
+   * *Natural Fix:* Cabbage juice and Honey.
+
+### Eat Mindfully:
+Prophet Muhammad (PBUH) advised to keep one-third of the stomach for food, one-third for water, and one-third for air.
+`
+    },
+    {
+        slug: 'bone-joint-disorders',
+        title: 'Strong Bones & Healthy Joints',
+        description: 'Relieving arthritis and osteoporosis through calcium-rich organic foods.',
+        icon: 'Leaf',
+        color: 'text-amber-700',
+        bg: 'bg-amber-50',
+        image: '/Herbs.png',
+        content: `
+Bone and joint disorders can cause pain and limit your mobility.
+
+### Common Bone Issues:
+1. **Arthritis:** Inflammation of one or more joints, causing pain and stiffness.
+   * *Symptoms:* Joint pain, stiffness, swelling.
+   * *Natural Fix:* Ginger and Turmeric for their powerful anti-inflammatory properties.
+2. **Osteoporosis:** A condition in which bones become weak and brittle.
+   * *Symptoms:* Weak bones, frequent fractures, loss of height.
+   * *Natural Fix:* Sesame seeds (Til) and dairy or plant-based calcium sources.
+
+### Movement is Life:
+Keep your joints lubricated with healthy fats like Olive Oil and maintain moderate physical activity.
+`
     }
 ];
