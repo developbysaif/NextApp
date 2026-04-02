@@ -60,7 +60,7 @@ export default function Header() {
 
                 {/* Brand Text */}
                 <div className="inline-flex items-center gap-2 px-2 py-1 mb-3">
-                  <span className="text-lg font-bold uppercase tracking-[0.28em] text-[#2e6f3d]">
+                  <span className="text-2xl md:text-3xl font-black uppercase tracking-[0.28em] md:tracking-[0.35em] text-[#2e6f3d]">
                     ilagbilghiza
                   </span>
                 </div>

@@ -250,11 +250,11 @@ export default function Navbar() {
                                         <Link href="/diet-plan">Diet Plans</Link>
                                     </NavigationMenuLink>
                                 </NavigationMenuItem>
-                                <NavigationMenuItem>
+                                {/* <NavigationMenuItem>
                                     <NavigationMenuTrigger className="bg-transparent font-bold text-stone-600 text-xs hover:text-[#22aa4f] data-[state=open]:text-[#22aa4f] px-2">
                                         Our Doctors
                                     </NavigationMenuTrigger>
-                                </NavigationMenuItem>
+                                </NavigationMenuItem> */}
                                 <NavigationMenuItem>
                                     <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), "bg-transparent font-bold text-stone-600 text-xs hover:text-[#22aa4f] hover:bg-stone-50 px-2")}>
                                         <Link href="/book-appointment">Exercise</Link>
@@ -262,7 +262,7 @@ export default function Navbar() {
                                 </NavigationMenuItem>
                                 <NavigationMenuItem>
                                     <NavigationMenuTrigger className="bg-transparent font-bold text-stone-600 text-xs hover:text-[#22aa4f] data-[state=open]:text-[#22aa4f] px-2">
-                                        Daily Organic Foods
+                                        <Link href="/specialties">Daily Organic Foods</Link>
                                     </NavigationMenuTrigger>
                                 </NavigationMenuItem>
                                 <NavigationMenuItem>
