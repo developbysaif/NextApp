@@ -2,6 +2,7 @@
 import { usePathname } from 'next/navigation';
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import Preloader from "./Preloader";
 
 export default function LayoutWrapper({ children }) {
     const pathname = usePathname();
@@ -11,6 +12,7 @@ export default function LayoutWrapper({ children }) {
 
     return (
         <>
+            <Preloader />
             {/* Show Navbar globally unless it's a panel, BUT user might want Navbar in panel? 
           Usually admin panels have their own headers. 
           The previous layouts had 'pt-[var(--header-height)]' causing a gap if Navbar is missing.
