@@ -83,12 +83,20 @@ export default function LoginPage() {
                             </div>
                         </div>
 
-                        <button
-                            type="submit"
-                            className="w-full bg-[#21492f] text-white rounded-xl py-2.5 text-sm font-semibold hover:bg-[#183522] transition-colors mt-1"
-                        >
-                            Sign In
-                        </button>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4">
+                            <button
+                                type="submit"
+                                className="w-full bg-[#21492f] text-white rounded-xl py-3 text-sm font-bold hover:bg-[#183522] transition-colors shadow-md active:scale-95"
+                            >
+                                Sign In
+                            </button>
+                            <Link 
+                                href="/signup" 
+                                className="w-full border-2 border-[#21492f] text-[#21492f] rounded-xl py-3 text-sm font-bold flex items-center justify-center hover:bg-[#21492f] hover:text-white transition-all shadow-sm active:scale-95"
+                            >
+                                Sign Up
+                            </Link>
+                        </div>
                     </form>
 
                     <div className="mt-6 flex items-center before:flex-1 before:border-t before:border-gray-200 after:flex-1 after:border-t after:border-gray-200">
@@ -111,15 +119,6 @@ export default function LoginPage() {
                         </button>
                     </div>
 
-                    <div className="mt-8 pt-8 border-t border-gray-100 text-center">
-                        <p className="text-xs text-gray-400 mb-3 font-semibold tracking-wider italic">Don't have an Account?</p>
-                        <Link 
-                            href="/signup" 
-                            className="inline-block w-full text-center py-3.5 border-2 border-[#21492f] text-[#21492f] rounded-xl text-sm font-black hover:bg-[#21492f] hover:text-white transition-all shadow-lg transform hover:-translate-y-1 active:scale-95"
-                        >
-                            CREATE NEW ACCOUNT
-                        </Link>
-                    </div>
                 </div>
 
                 {/* Right Side - Content */}
