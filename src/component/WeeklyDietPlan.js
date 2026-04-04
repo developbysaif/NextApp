@@ -6,52 +6,52 @@ import { Coffee, Utensils, Moon, ChevronRight, Check, Leaf, Star, Sparkles, Chef
 const dietPlan = [
   {
     day: "Monday",
-    breakfast: "Oatmeal with Almonds & Berries",
-    lunch: "Grilled Chicken Salad with Quinoa",
-    dinner: "Baked Salmon with Broccoli",
-    glow: "High Protein Day"
+    breakfast: "Oats + Milk/Yogurt + Banana + 5–6 Almonds",
+    lunch: "2 Roti + Chicken/Daal + Sabzi + Salad",
+    dinner: "Soup + Grilled Fish/Chicken + Mixed Vegetables",
+    glow: "Energy Kickstart"
   },
   {
     day: "Tuesday",
-    breakfast: "Greek Yogurt with Honey & Seeds",
-    lunch: "Lentil Soup with Whole Grain Bread",
-    dinner: "Brown Rice with Sautéed Spinach",
-    glow: "Fiber Rich Day"
+    breakfast: "2 Boiled Eggs + Brown Bread + Apple",
+    lunch: "Rice + Daal + Cucumber Salad + Yogurt",
+    dinner: "2 Roti + Paneer/Chicken Curry + Bhindi/Lauki",
+    glow: "Protein Focus"
   },
   {
     day: "Wednesday",
-    breakfast: "Banana & Spinach Smoothie",
-    lunch: "Chickpea & Avocado Wrap",
-    dinner: "Grilled Fish with Asparagus",
-    glow: "Vitality Boost"
+    breakfast: "Yogurt Bowl + Oats + Fresh Fruit",
+    lunch: "Chicken Sandwich/Wrap + Salad + Fruit",
+    dinner: "2 Roti + Daal + Palak/Saag + Raita",
+    glow: "Brain Power"
   },
   {
     day: "Thursday",
-    breakfast: "Boiled Eggs with Avocado Toast",
-    lunch: "Quinoa Bowl with Roasted Veggies",
-    dinner: "Lean Turkey Breast with Kale",
-    glow: "Iron Source"
+    breakfast: "2 Chapati + Omelette + Low-Sugar Chai",
+    lunch: "Rice + Fish/Chicken + Mixed Sabzi",
+    dinner: "Vegetable Soup + 1–2 Roti + Yogurt",
+    glow: "Metabolism Boost"
   },
   {
     day: "Friday",
-    breakfast: "Chia Seed Pudding with Fruits",
-    lunch: "Mixed Bean Salad with Lemon",
-    dinner: "Steamed Tofu with Bok Choy",
-    glow: "Plant-Based Power"
+    breakfast: "Peanut Butter Toast + Banana + Milk",
+    lunch: "2 Roti + Chana/Rajma + Fresh Salad",
+    dinner: "Grilled Chicken + Stir-fry Veggies + Small Rice",
+    glow: "Muscle Recovery"
   },
   {
     day: "Saturday",
-    breakfast: "Buckwheat Pancakes with Berries",
-    lunch: "Vegetable Stir-Fry with Nuts",
-    dinner: "Grilled Shrimp with Zucchini",
-    glow: "Omega-3 Focus"
+    breakfast: "Poha/Upma with Veggies + Herbal Tea",
+    lunch: "2 Roti + Beef/Chicken Keema + Salad",
+    dinner: "Daal Soup + Chapati + Cucumber/Raita",
+    glow: "Detox Day"
   },
   {
     day: "Sunday",
-    breakfast: "Fruit Platter with Walnuts",
-    lunch: "Baked Sweet Potato with Greens",
-    dinner: "Mushroom Risotto with Herbs",
-    glow: "Detox & Restart"
+    breakfast: "Fruit Chaat + Yogurt + Oats",
+    lunch: "Rice + Daal + Sabzi + Salad",
+    dinner: "2 Roti + Grilled Protein + Mixed Vegetables",
+    glow: "Rest & Reset"
   }
 ];
 
