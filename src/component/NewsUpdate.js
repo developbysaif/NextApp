@@ -1,166 +1,127 @@
 "use client";
 
-import React, { useState } from "react";
-import {
-    Quote,
-    ArrowRight,
-    ChevronLeft,
-    ChevronRight,
-    Star,
-} from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState, useEffect } from "react";
+import { ArrowRight, Calendar, User, Bookmark } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
-const TESTIMONIALS = [
+const STATIC_NEWS = [
     {
-        id: 1,
-        name: "Ahmed",
-        role: "Sugar Patient (Recovered)",
-        image: "/Group 52.png",
-        content:
-            "IlajbilGhiza ke AI diet plan se meri sugar control hui aur energy level improve hua.",
-        location: "Lahore",
+        id: "1",
+        slug: "healthy-eating-habits",
+        title: "Healthy Eating Habits for a Better Life",
+        excerpt:
+            "Learn how small, consistent changes in your daily diet can lead to a long-term improvement in your health and vitality...",
+        date: "17 May 2025",
+        author: "Nashid Martines",
+        image: "/images/millet_upma.png",
+        category: "Nutrition"
     },
     {
-        id: 2,
-        name: "Sobia",
-        role: "Weight Management",
-        image: "/Group 53.png",
-        content:
-            "Finally, an Urdu platform that understands our desi diet and lifestyle.",
-        location: "Karachi",
-    },
-    {
-        id: 3,
-        name: "Dr. Rizwan",
-        role: "General Physician",
-        image: "/Group 54.png",
-        content:
-            "Scientifically proven nutrition aur quality organic foods par focused platform.",
-        location: "Islamabad",
-    },
+        id: "2",
+        slug: "balanced-daily-nutrition",
+        title: "Discover the Power of Balanced Daily Nutrition",
+        excerpt:
+            "A balanced plate is the cornerstone of wellness. Here is how you can ensure you are getting all the essential macro and micronutrients...",
+        date: "17 May 2025",
+        author: "Nashid Martines",
+        image: "/images/millet_upma.png",
+        category: "Vitality"
+    }
 ];
-export default function NewsUpdate() {
-    const [activeIndex, setActiveIndex] = useState(0);
 
-    const next = () =>
-        setActiveIndex((p) => (p + 1) % TESTIMONIALS.length);
-    const prev = () =>
-        setActiveIndex((p) => (p - 1 + TESTIMONIALS.length) % TESTIMONIALS.length);
+export default function NewsUpdate() {
+    const [posts, setPosts] = useState(STATIC_NEWS);
+
+    useEffect(() => {
+        // Integrate with localStorage for "Admin" posts
+        const savedPosts = JSON.parse(localStorage.getItem("news_posts") || "[]");
+        if (savedPosts.length > 0) {
+            setPosts([...savedPosts, ...STATIC_NEWS]);
+        }
+    }, []);
 
     return (
-        <div className="bg-white py-10 md:py-16 font-sans">
-
-            {/* TESTIMONIALS */}
-            <section className="max-w-7xl mx-auto px-4 md:px-6 mb-4">
-
-                {/* Header */}
-                <div className="text-center mb-4">
-                    <span className="text-[#22aa4f] font-black uppercase tracking-wider text-[10px]">
-                        Dilo'n Ki Kahani
-                    </span>
-
-                    <h2 className="text-2xl md:text-3xl font-black text-[#21492f] mt-1">
-                        Healing Journeys That <span className="text-[#22aa4f]">Inspire Us</span>
-                    </h2>
+        <div className="bg-[#fcfdfa] pb-32 font-sans overflow-hidden">
+            <section className="max-w-7xl mx-auto px-6 py-20 relative">
+                {/* Decorative background leaf */}
+                <div className="absolute -top-10 -right-20 opacity-5 pointer-events-none">
+                    <Bookmark size={400} className="text-[#22aa4f] rotate-12" strokeWidth={1} />
                 </div>
 
-                {/* Slider */}
-                <div className="relative max-w-5xl mx-auto">
+                <div className="flex flex-col md:flex-row items-end justify-between gap-8 mb-16 relative z-10">
+                    <div className="max-w-2xl">
+                        <p className="text-[#22aa4f] font-black uppercase tracking-[0.4em] text-[10px] mb-4 flex items-center gap-2">
+                             OUR INSIGHTS <span className="w-10 h-[2px] bg-[#22aa4f]"></span>
+                        </p>
+                        <h2 className="text-4xl md:text-6xl font-black text-[#21492f] leading-tight uppercase tracking-tight">
+                            News And <span className="text-[#22aa4f]">Health Update</span>
+                        </h2>
+                    </div>
 
-                    <AnimatePresence mode="wait">
-                        <motion.div
-                            key={activeIndex}
-                            initial={{ opacity: 0, scale: 0.97 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            exit={{ opacity: 0, scale: 0.97 }}
-                            transition={{ duration: 0.3 }}
-                            className="bg-[#f8faf9] rounded-2xl p-4 md:p-6 flex flex-col items-center text-center relative border border-gray-100"
+                    <Link
+                        href="/blogs"
+                        className="inline-flex items-center gap-3 text-xs font-black uppercase tracking-widest text-[#22aa4f] hover:text-[#1f7f3b] bg-white px-8 py-4 rounded-[2rem] shadow-xl hover:shadow-2xl transition-all border border-gray-50 group"
+                    >
+                        View All Articles
+                        <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                    </Link>
+                </div>
+
+                <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3 relative z-10">
+                    {posts.map((post) => (
+                        <article
+                            key={post.id}
+                            className="bg-white rounded-[3.5rem] overflow-hidden border border-gray-50 shadow-[0_32px_80px_rgba(33,73,47,0.06)] group hover:shadow-[0_45px_100px_rgba(33,73,47,0.1)] transition-all duration-500 h-full flex flex-col hover:-translate-y-2"
                         >
-                            {/* Quote Icon */}
-                            <div className="absolute top-2 right-2 text-[#21492f]/5">
-                                <Quote size={80} />
-                            </div>
-
-                            {/* Stars */}
-                            <div className="flex gap-1 mb-2">
-                                {[1, 2, 3, 4, 5].map((s) => (
-                                    <Star
-                                        key={s}
-                                        size={14}
-                                        className="fill-amber-400 text-amber-400"
-                                    />
-                                ))}
-                            </div>
-
-                            {/* Content */}
-                            <p className="text-sm md:text-lg font-semibold text-[#21492f] mb-3 italic leading-snug max-w-2xl">
-                                “{TESTIMONIALS[activeIndex].content}”
-                            </p>
-
-                            {/* Profile */}
-                            <div className="flex flex-col items-center">
-
-                                <div className="w-16 h-16 md:w-20 md:h-20 rounded-xl overflow-hidden mb-2 border border-white shadow">
-                                    <Image
-                                        src={TESTIMONIALS[activeIndex].image}
-                                        alt={TESTIMONIALS[activeIndex].name}
-                                        width={80}
-                                        height={80}
-                                        className="object-cover w-full h-full"
-                                    />
-                                </div>
-
-                                <h4 className="font-black text-sm md:text-base text-[#21492f]">
-                                    {TESTIMONIALS[activeIndex].name},{" "}
-                                    <span className="text-[#22aa4f]">
-                                        {TESTIMONIALS[activeIndex].location}
+                            <Link href={`/news/${post.slug || post.id}`} className="block relative h-72 w-full overflow-hidden">
+                                <Image
+                                    src={post.image}
+                                    alt={post.title}
+                                    fill
+                                    className="object-cover group-hover:scale-110 transition-transform duration-1000"
+                                />
+                                <div className="absolute top-6 left-6">
+                                    <span className="bg-white/90 backdrop-blur-md px-4 py-1.5 rounded-full text-[9px] font-black uppercase tracking-widest text-[#22aa4f] shadow-sm border border-white/50">
+                                        {post.category || "News"}
                                     </span>
-                                </h4>
+                                </div>
+                            </Link>
 
-                                <p className="text-gray-500 font-bold text-[10px] uppercase tracking-wide">
-                                    {TESTIMONIALS[activeIndex].role}
+                            <div className="p-8 md:p-10 flex-1 flex flex-col">
+                                <Link href={`/news/${post.slug || post.id}`}>
+                                    <h3 className="text-xl md:text-2xl font-black text-[#21492f] mb-4 uppercase tracking-tighter leading-tight group-hover:text-[#22aa4f] transition-colors">
+                                        {post.title}
+                                    </h3>
+                                </Link>
+
+                                <p className="text-[15px] text-[#54654a] font-medium leading-relaxed mb-8 line-clamp-3">
+                                    {post.excerpt}
                                 </p>
 
+                                <div className="mt-auto pt-8 border-t border-gray-50 flex items-center justify-between gap-4">
+                                    <div className="flex items-center gap-3 overflow-hidden">
+                                        <div className="size-10 bg-[#22aa4f] rounded-2xl flex items-center justify-center text-white font-black text-sm relative shrink-0">
+                                            {post.author.charAt(0)}
+                                            <div className="absolute -top-1 -right-1 bg-green-500 border-2 border-white rounded-full p-0.5">
+                                                 <div className="size-1.5 rounded-full bg-white"></div>
+                                            </div>
+                                        </div>
+                                        <div className="overflow-hidden">
+                                            <p className="text-[11px] font-black text-[#21492f] uppercase tracking-tight truncate">{post.author}</p>
+                                            <p className="text-[9px] font-bold text-gray-400 uppercase tracking-widest truncate">{post.date}</p>
+                                        </div>
+                                    </div>
+
+                                    <Link href={`/news/${post.slug || post.id}`} className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[#f4f5ee] text-[#22aa4f] transition-all hover:bg-[#22aa4f] hover:text-white hover:rotate-12 group-hover:bg-[#22aa4f] group-hover:text-white">
+                                        <ArrowRight size={22} />
+                                    </Link>
+                                </div>
                             </div>
-                        </motion.div>
-                    </AnimatePresence>
-
-                    {/* Navigation */}
-                    <div className="flex justify-center items-center gap-2 mt-4">
-
-                        <button
-                            onClick={prev}
-                            className="p-2 bg-white rounded-lg shadow hover:bg-[#21492f] hover:text-white"
-                        >
-                            <ChevronLeft size={18} />
-                        </button>
-
-                        <div className="flex gap-1">
-                            {TESTIMONIALS.map((_, i) => (
-                                <button
-                                    key={i}
-                                    onClick={() => setActiveIndex(i)}
-                                    className={`h-2 rounded-full transition-all ${activeIndex === i
-                                        ? "bg-[#22aa4f] w-6"
-                                        : "bg-gray-300 w-2"
-                                        }`}
-                                />
-                            ))}
-                        </div>
-
-                        <button
-                            onClick={next}
-                            className="p-2 bg-white rounded-lg shadow hover:bg-[#21492f] hover:text-white"
-                        >
-                            <ChevronRight size={18} />
-                        </button>
-
-                    </div>
+                        </article>
+                    ))}
                 </div>
             </section>
-
-
         </div>
     );
 }

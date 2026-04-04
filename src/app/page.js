@@ -5,6 +5,8 @@ import Image from 'next/image';
 import { ShoppingBag, ArrowRight, Leaf, Heart, Shield, Truck, Zap, Activity, Brain, Bone, Star, Quote } from 'lucide-react';
 import Header from '../component/Header';
 import Disease from '../component/diseases-semtum';
+import Calcuateindex from '../component/Calculateindex';
+import ServicesCards from '../component/services';
 import CategoryCard from '../component/CategoryCard';
 import Subscribe from '../component/Subscribe';
 import ProductItem from '../component/ProductItem';
@@ -16,6 +18,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import WeeklyDietPlan from '../component/WeeklyDietPlan';
 
 export default function HomePage() {
   const { user, loading } = useAuth();
@@ -148,6 +151,8 @@ export default function HomePage() {
 
       <Header />
        <Disease />
+       <Calcuateindex />
+     
        
 
       {/* Spacer after header */}
@@ -162,7 +167,7 @@ export default function HomePage() {
         </div>
       </section>
      
-
+  <ServicesCards />
       {/* Featured Products */}
       <section className="bg-[#f8faf9] py-14 md:py-20 px-8 md:px-14 best-seller-section">
         <div className="max-w-7xl mx-auto">
@@ -263,10 +268,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Blog Slider Section */}
+      {/* Blog Slider Section */ }
       <section className="py-10 md:py-16 px-4 md:px-6 max-w-7xl mx-auto">
         <BlogSlider />
       </section>
+
+      <WeeklyDietPlan />
 
       <NewsUpdate />
 

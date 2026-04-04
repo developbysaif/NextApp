@@ -6,7 +6,7 @@ export const diseases = [
         icon: 'Leaf',
         color: 'text-amber-600',
         bg: 'bg-amber-50',
-        image: '/Herbs.png',
+        image: '/.png',
         content: `
 It’s heart-breaking to see your hair in the brush every morning. But the truth is, your hair is falling for a reason. Modern lifestyle and chemicals are stripping away your natural beauty.
 

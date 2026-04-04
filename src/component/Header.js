@@ -27,7 +27,7 @@ const slides = [
         <span className="font-bold">Mental Health</span>, & Strengthen Your System Naturally.
       </>
     ),
-    image: "/ilajbillghiza-banner.png",
+    image: "/banner.png",
     cta1: "EXPLORE NATURAL SOLUTIONS",
     cta1Href: "/health-ai",
     cta2: "Get Diet Plan",
@@ -45,7 +45,7 @@ export default function Header() {
 
         <div className="flex gap-6 relative">
 
-          
+
           {/* HERO SECTION */}
           <section className="flex-1 relative bg-[#f8faf9] w-full overflow-hidden min-h-[260px] md:min-h-[360px] shadow-sm ">
 

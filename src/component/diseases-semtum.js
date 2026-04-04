@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { 
   Heart, Activity, Brain, Wind, 
   Scale, Droplets, Bone, ShieldCheck 
@@ -10,6 +11,7 @@ const diseases = [
     slug: "chronic-diseases",
     color: "bg-teal-800",
     icon: Heart,
+    image: "/images/chronic-diseases.jpg",
     items: [
       { name: "Diabetes", desc: "Frequent urination, excessive thirst, fatigue" },
       { name: "Heart Disease", desc: "Chest pain, shortness of breath, irregular heartbeat" },
@@ -21,6 +23,7 @@ const diseases = [
     slug: "infectious-diseases",
     color: "bg-blue-800",
     icon: Activity,
+    image: "/images/infectious-diseases.jpg",
     items: [
       { name: "Influenza", desc: "Body aches, fever, chills" },
       { name: "COVID-19 / Viral Infections", desc: "Fever, cough, breathing issues" },
@@ -32,6 +35,7 @@ const diseases = [
     slug: "mental-health-disorders",
     color: "bg-purple-800",
     icon: Brain,
+    image: "/images/mental-health.jpg",
     items: [
       { name: "Depression", desc: "Sadness, low energy, loss of interest" },
       { name: "Anxiety", desc: "Restlessness, rapid heartbeat, overthinking" },
@@ -43,6 +47,7 @@ const diseases = [
     slug: "respiratory-diseases",
     color: "bg-sky-800",
     icon: Wind,
+    image: "/images/respiratory-diseases.jpg",
     items: [
       { name: "Asthma", desc: "Wheezing, shortness of breath" },
       { name: "Chronic Bronchitis", desc: "Cough with mucus, fatigue" },
@@ -53,6 +58,7 @@ const diseases = [
     slug: "lifestyle-diseases",
     color: "bg-emerald-800",
     icon: Scale,
+    image: "/images/lifestyle-diseases.jpg",
     items: [
       { name: "Obesity", desc: "Weight gain, low energy" },
       { name: "Fatty Liver Disease", desc: "Abdominal discomfort, fatigue" },
@@ -64,6 +70,7 @@ const diseases = [
     slug: "digestive-disorders",
     color: "bg-orange-800",
     icon: Droplets,
+    image: "/images/digestive-disorders.jpg",
     items: [
       { name: "Acidity / GERD", desc: "Heartburn, chest discomfort" },
       { name: "Constipation", desc: "Hard stool, bloating" },
@@ -75,6 +82,7 @@ const diseases = [
     slug: "bone-joint-disorders",
     color: "bg-amber-800",
     icon: Bone,
+    image: "/images/bone-joint-disorders.jpg",
     items: [
       { name: "Arthritis", desc: "Joint pain, stiffness" },
       { name: "Osteoporosis", desc: "Weak bones, fractures" },
@@ -95,42 +103,48 @@ export default function DiseaseSection() {
         </p>
       </div>
 
-      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 lg:max-w-7xl mx-auto">
+      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 w-full mx-auto">
         {diseases.map((disease, idx) => (
-          <div key={idx} className="group flex flex-col bg-white rounded-[2rem] shadow-sm border border-gray-100 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl overflow-hidden relative">
-            {/* Header with Icon */}
-            <div className={`${disease.color} p-6 text-white relative overflow-hidden`}>
-               <div className="absolute top-0 right-0 size-32 bg-white/10 rounded-full -mr-16 -mt-16 group-hover:scale-125 transition-transform duration-700"></div>
-               <div className="flex items-center gap-4 relative z-10 font-black tracking-tight text-lg">
-                  <div className="size-11 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/20">
-                    <disease.icon size={22} strokeWidth={2.5} />
+          <Link 
+            key={idx} 
+            href={`/diseases/${disease.slug}`}
+            className="group flex flex-col bg-white rounded-xl overflow-hidden shadow-md transition-all duration-500 hover:shadow-2xl hover:-translate-y-3 hover:bg-[#22aa4f]"
+          >
+            {/* Image Section */}
+            <div className={`${disease.color} h-48 flex items-center justify-center relative overflow-hidden`}>
+              <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent"></div>
+              {disease.image ? (
+                <Image
+                  src={disease.image}
+                  alt={disease.title}
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+              ) : (
+                <div className="relative z-10 p-8 flex flex-col items-center justify-center h-full">
+                  <div className="size-20 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/30 group-hover:scale-110 transition-transform duration-500">
+                    <disease.icon size={32} strokeWidth={2} className="text-white" />
                   </div>
-                  <h3 className="leading-tight text-base md:text-lg">{disease.title}</h3>
-               </div>
+                </div>
+              )}
             </div>
 
-            {/* List with Dividers */}
+            {/* Content Section */}
             <div className="p-6 flex flex-col flex-1">
-              <ul className="space-y-3 flex-1">
-                {disease.items.map((item, i) => (
-                  <li key={i} className="relative pl-6 before:absolute before:left-0 before:top-2 before:size-2 before:bg-[#22aa4f] before:rounded-full">
-                    <span className="font-black text-[#111827] text-sm block mb-0.5">{item.name}</span>
-                    <span className="text-gray-400 text-xs font-medium leading-relaxed block">{item.desc}</span>
-                  </li>
-                ))}
-              </ul>
+              <h3 className="text-lg font-black text-[#111827] mb-4 group-hover:text-white transition-colors">
+                {disease.title}
+              </h3>
               
-              <div className="mt-6 pt-5 border-t border-gray-50">
-                <Link 
-                  href={`/diseases/${disease.slug}`}
-                  className="w-full flex items-center justify-center gap-2 rounded-2xl bg-[#111827] py-3.5 text-xs font-black uppercase tracking-widest text-white transition-all hover:bg-[#22aa4f] hover:shadow-lg group/btn"
-                >
-                  Learn More
-                  <ShieldCheck size={14} className="group-hover/btn:scale-110 transition-transform" />
-                </Link>
+              <p className="text-gray-500 text-sm font-medium leading-relaxed flex-1 mb-6 group-hover:text-white transition-colors">
+                It is a long established fact that a reader will be distracted.
+              </p>
+              
+              <div className="inline-flex items-center gap-2 text-[#22aa4f] font-bold text-sm group-hover:text-white hover:gap-3 transition-all">
+                View All Details
+                <ShieldCheck size={16} />
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </section>
