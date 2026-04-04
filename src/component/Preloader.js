@@ -44,7 +44,7 @@ export default function Preloader() {
             className="relative z-10"
           >
             <Image
-              src="/Logo.png"
+              src="/preloder.gif"
               alt="IlajbilGhiza"
               width={160}
               height={160}
