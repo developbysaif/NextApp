@@ -83,12 +83,20 @@ export default function LoginPage() {
                             </div>
                         </div>
 
-                        <button
-                            type="submit"
-                            className="w-full bg-[#21492f] text-white rounded-xl py-2.5 text-sm font-semibold hover:bg-[#183522] transition-colors mt-1"
-                        >
-                            Sign In
-                        </button>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
+                            <button
+                                type="submit"
+                                className="w-full bg-[#21492f] text-white rounded-xl py-4 text-sm font-black hover:bg-[#183522] transition-colors shadow-lg active:scale-95"
+                            >
+                                Sign In
+                            </button>
+                            <Link 
+                                href="/signup" 
+                                className="w-full border-2 border-[#21492f] text-[#21492f] rounded-xl py-4 text-sm font-black flex items-center justify-center hover:bg-[#21492f] hover:text-white transition-all shadow-md active:scale-95"
+                            >
+                                Sign Up
+                            </Link>
+                        </div>
                     </form>
 
                     <div className="mt-6 flex items-center before:flex-1 before:border-t before:border-gray-200 after:flex-1 after:border-t after:border-gray-200">
@@ -111,12 +119,7 @@ export default function LoginPage() {
                         </button>
                     </div>
 
-                    <p className="mt-6 text-center text-xs text-gray-600">
-                        Don't have an Account?{" "}
-                        <Link href="/signup" className="text-[#21492f] font-semibold hover:underline">
-                            Sign Up
-                        </Link>
-                    </p>
+
 
                 </div>
 
