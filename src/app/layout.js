@@ -15,13 +15,11 @@ export const metadata = {
   description: "Natural treatment through organic food and nutrition science.",
 };
 
-import Preloader from "@/component/Preloader";
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={inter.className}>
       <body className="antialiased font-sans">
-        <Preloader />
         <AuthProvider>
           <WishlistProvider>
             <CartProvider>

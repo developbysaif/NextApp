@@ -47,7 +47,7 @@ export default function Header() {
 
 
           {/* HERO SECTION */}
-          <section className="flex-1 relative bg-[#f8faf9] w-full overflow-hidden min-h-[260px] md:min-h-[360px] shadow-sm ">
+          <section className="flex-1 relative bg-[#f8faf9] w-full overflow-hidden min-h-[400px] md:min-h-[550px] shadow-sm ">
 
             {/* INNER CONTENT (EXTRA COMPACT) */}
             <div className="relative z-10 px-4 md:px-10 pt-8 md:pt-10 max-w-xl h-full flex flex-col items-center justify-start">
@@ -59,8 +59,8 @@ export default function Header() {
               >
 
                 {/* Brand Text */}
-                <div className="inline-flex items-center gap-2 px-2 py-1 mb-1">
-                  <span className="text-2xl md:text-2xl lg:text-3xl font-black uppercase tracking-[0.05em] md:tracking-[0.08em] text-[#2e6f3d]">
+                <div className="inline-flex items-center gap-2 px-2 py-1 mb-2">
+                  <span className="text-3xl md:text-4xl lg:text-5xl font-black uppercase tracking-[0.05em] md:tracking-[0.1em] text-[#2e6f3d]">
                     ilajbilghiza:
                   </span>
                 </div>
@@ -71,7 +71,7 @@ export default function Header() {
                 </p>
 
                 {/* Title */}
-                <h1 className="text-2xl sm:text-3xl md:text-4xl font-black text-[#124126] leading-[1.1] md:leading-[1.1] mb-4 uppercase">
+                <h1 className="text-3xl sm:text-4xl md:text-6xl font-black text-[#124126] leading-[1] md:leading-[1] mb-6 uppercase">
                   {slides[slide].title}
                 </h1>
 

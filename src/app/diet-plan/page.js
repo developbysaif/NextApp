@@ -18,6 +18,7 @@ import {
     Star
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import WhyChooseUs from '@/component/WhyChooseUs';
 
 export default function DietPlanPage() {
     const [loading, setLoading] = useState(false);
@@ -447,6 +448,9 @@ export default function DietPlanPage() {
                     )}
                 </AnimatePresence>
             </section>
+
+            {/* Why Choose Us Section */}
+            <WhyChooseUs />
 
             {/* Custom Wood Testimonials Section */}
             <section className="relative z-10 max-w-[800px] mx-auto px-4 pb-20">

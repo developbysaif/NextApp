@@ -1,185 +1,176 @@
+
 "use client";
-
-import React, { useState } from 'react';
-import PageHeader from '../../component/PageHeader';
+import React from 'react';
+import { Mail, Phone, MapPin, Clock, ArrowRight, User, PhoneCall, Send } from 'lucide-react';
 import Image from 'next/image';
-import { Leaf, Send } from 'lucide-react';
+import { motion } from 'framer-motion';
 
-export default function Contact() {
-    const [formData, setFormData] = useState({
-        firstName: '',
-        lastName: '',
-        email: '',
-        subject: '',
-        message: ''
-    });
-
-    const handleInputChange = (field, value) => {
-        setFormData(prev => ({ ...prev, [field]: value }));
-    }
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log("Form Data Submitted:", formData);
-        alert('Your message has been sent successfully!');
-        setFormData({ firstName: '', lastName: '', email: '', subject: '', message: '' });
-    };
-
-    return (
-        <div className="font-sans bg-[#F4F4EB] text-[#223B2A] selection:bg-[#22aa4f]/20 min-h-screen">
-            <PageHeader
-                title="Contact Us"
-                titleClassName="font-serif font-medium text-white"
-                breadcrumbClassName="bg-[#2A231C]/60 text-[#EAE5D9] backdrop-blur-md border border-white/10 shadow-none font-medium"
-                description="We'd love to hear from you!"
-                backgroundImage="/header.jpg"
-            />
-
-            <section className="max-w-[1000px] mx-auto px-6 py-20 pb-16">
-                {/* Form Section */}
-                <div className="mb-24">
-                    <p className="font-serif text-[1.3rem] text-[#2A3F31] mb-12">
-                        Please complete the form below:
-                    </p>
-
-                    <form onSubmit={handleSubmit} className="space-y-12">
-                        <div className="grid md:grid-cols-2 gap-x-12 gap-y-12">
-                            {/* First Name */}
-                            <div className="relative">
-                                <input
-                                    type="text"
-                                    value={formData.firstName}
-                                    onChange={(e) => handleInputChange('firstName', e.target.value)}
-                                    placeholder="First Name"
-                                    className="w-full bg-transparent border-b-[1.5px] border-[#2A3F31] px-0 py-2 focus:outline-none focus:border-[#429560] font-serif text-[15px] text-[#2A3F31] placeholder:text-[#2A3F31] transition-colors"
-                                    required
-                                />
-                            </div>
-
-                            {/* Last Name */}
-                            <div className="relative">
-                                <input
-                                    type="text"
-                                    value={formData.lastName}
-                                    onChange={(e) => handleInputChange('lastName', e.target.value)}
-                                    placeholder="Last Name"
-                                    className="w-full bg-transparent border-b-[1.5px] border-[#2A3F31] px-0 py-2 focus:outline-none focus:border-[#429560] font-serif text-[15px] text-[#2A3F31] placeholder:text-[#2A3F31] transition-colors"
-                                    required
-                                />
-                            </div>
-                        </div>
-
-                        {/* Email Address */}
-                        <div className="relative">
-                            <input
-                                type="email"
-                                value={formData.email}
-                                onChange={(e) => handleInputChange('email', e.target.value)}
-                                placeholder="Email Address"
-                                className="w-full bg-transparent border-b-[1.5px] border-[#2A3F31] px-0 py-2 focus:outline-none focus:border-[#429560] font-serif text-[15px] text-[#2A3F31] placeholder:text-[#2A3F31] transition-colors"
-                                required
-                            />
-                        </div>
-
-                        {/* Subject */}
-                        <div className="relative">
-                            <input
-                                type="text"
-                                value={formData.subject}
-                                onChange={(e) => handleInputChange('subject', e.target.value)}
-                                placeholder="Subject"
-                                className="w-full bg-transparent border-b-[1.5px] border-[#2A3F31] px-0 py-2 focus:outline-none focus:border-[#429560] font-serif text-[15px] text-[#2A3F31] placeholder:text-[#2A3F31] transition-colors"
-                                required
-                            />
-                        </div>
-
-                        {/* Message */}
-                        <div className="relative">
-                            <textarea
-                                rows="3"
-                                value={formData.message}
-                                onChange={(e) => handleInputChange('message', e.target.value)}
-                                placeholder="Message"
-                                className="w-full bg-transparent border-b-[1.5px] border-[#2A3F31] px-0 py-2 focus:outline-none focus:border-[#429560] font-serif text-[15px] text-[#2A3F31] placeholder:text-[#2A3F31] resize-none transition-colors"
-                                required
-                            ></textarea>
-                            {/* Little drag indicator hint at bottom right of textarea */}
-                            <div className="absolute bottom-1 right-0 opacity-40 pointer-events-none">
-                                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M9 1L1 9" stroke="#2A3F31" strokeWidth="0.8" />
-                                    <path d="M9 5L5 9" stroke="#2A3F31" strokeWidth="0.8" />
-                                </svg>
-                            </div>
-                        </div>
-
-                        <div className="pt-2">
-                            <button
-                                type="submit"
-                                className="bg-[#121E15] text-[#A5C3A5] px-10 py-3.5 rounded-full font-bold text-[11px] uppercase tracking-widest hover:bg-[#348956] hover:text-white transition-all shadow-lg hover:-translate-y-0.5"
-                            >
-                                SEND MESSAGE
-                            </button>
-                        </div>
-                    </form>
-                </div>
-
-                {/* Custom Newsletter Section for Contact Page */}
-                <div className="relative bg-[#EBEDE3] rounded-[40px] md:rounded-[60px] p-8 md:p-14 lg:p-[4.5rem] overflow-hidden border border-[#2B4031] flex flex-col items-center text-center shadow-[0_10px_30px_rgba(0,0,0,0.03)] group">
-
-                    {/* Floating Mint Image right side exactly like screenshot */}
-                    <div className="absolute top-0 right-0 w-48 h-48 md:w-72 md:h-72 pointer-events-none z-10">
-                        <Image
-                            src="/Mint.png"
-                            alt="Mint Leaves"
-                            fill
-                            className="object-contain object-top-right transform translate-x-12 -translate-y-6 md:translate-x-16 md:-translate-y-8 opacity-90 scale-110 drop-shadow-xl saturate-110 contrast-125"
-                        />
-                    </div>
-
-                    <div className="relative z-20 w-full max-w-2xl mx-auto flex flex-col items-center">
-
-                        {/* Badge */}
-                        <div className="inline-flex items-center gap-2 bg-[#121E15] text-[#A5C3A5] px-5 py-2 rounded-full text-xs font-bold tracking-wider mb-8 shadow-sm">
-                            <Leaf size={14} className="text-[#A5C3A5]" />
-                            <span className="mb-[1px]">IlajBiGhiza Family</span>
-                        </div>
-
-                        {/* Heading */}
-                        <h2 className="text-4xl md:text-5xl lg:text-[56px] font-serif font-bold text-[#121E15] leading-tight mb-5 tracking-tight">
-                            Aapki Sehat, <span className="text-[#3B925D]">Hamara Junoon</span>
-                        </h2>
-
-                        {/* Description */}
-                        <p className="text-[#314336] text-[15px] md:text-[17px] font-medium mb-12 max-w-lg mx-auto leading-relaxed">
-                            Join 10,000+ families who chose life over disease. Get weekly healing tips delivered with love.
-                        </p>
-
-                        {/* Email Input & Button Container */}
-                        <div className="w-full max-w-xl mx-auto bg-[#131A15] p-2 rounded-full flex flex-col sm:flex-row items-stretch shadow-2xl relative mb-6">
-
-                            <input
-                                type="email"
-                                placeholder="Enter your email address"
-                                className="flex-1 bg-transparent px-6 py-4 sm:py-2 text-[#EAE5D9] placeholder:text-[#A7BAA7]/60 focus:outline-none text-[15px] font-medium w-full"
-                            />
-
-                            <button className="bg-[#1C5938] text-white px-8 py-3.5 sm:py-4 rounded-full font-bold text-xs uppercase tracking-widest flex items-center justify-center gap-2 hover:bg-[#2A754B] transition-colors shadow-inner flex-shrink-0 mt-2 sm:mt-0">
-                                Join Family
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="opacity-90 ml-1">
-                                    <circle cx="12" cy="12" r="4"></circle>
-                                    <path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-3.92 7.94"></path>
-                                </svg>
-                            </button>
-                        </div>
-
-                        {/* Footer Subtext */}
-                        <p className="text-[#314336] text-[10px] font-bold uppercase tracking-[0.15em]">
-                            Join 10,000+ health conscious people in pakistan
-                        </p>
-
-                    </div>
-                </div>
-            </section>
+export default function ContactPage() {
+  return (
+    <div className="min-h-screen bg-[#fcfdfa] font-sans">
+      
+      {/* Hero Section with Gemini Nano Banana */}
+      <section className="relative h-[400px] flex items-center justify-center overflow-hidden bg-[#21492f]">
+        <div className="absolute inset-0 opacity-40">
+           {/* The requested high-tech banana image */}
+           <Image 
+             src="/contact_banana.png" 
+             alt="Nano Tech Banana" 
+             fill 
+             className="object-cover"
+             onError={(e) => { e.target.style.display = 'none'; }} 
+           />
         </div>
-    );
+        <div className="relative z-10 text-center px-6">
+           <motion.h1 
+             initial={{ opacity: 0, y: 20 }}
+             animate={{ opacity: 1, y: 0 }}
+             className="text-5xl md:text-7xl font-black text-white uppercase tracking-tighter"
+           >
+             Contact <span className="text-[#6bb300]">Us</span>
+           </motion.h1>
+           <p className="text-[#6bb300] font-black uppercase tracking-[0.4em] text-xs mt-4">Nourishing Your Connection</p>
+        </div>
+      </section>
+
+      {/* Main Content: Form & Info */}
+      <section className="max-w-7xl mx-auto px-6 py-24 -mt-20 relative z-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+          
+          {/* Left Column: Form */}
+          <div className="lg:col-span-8 bg-white p-8 md:p-14 rounded-[3.5rem] shadow-2xl border border-gray-100">
+            <h2 className="text-3xl font-black text-[#21492f] uppercase tracking-tight mb-10">Send us a message</h2>
+            <form className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <input 
+                  type="text" 
+                  placeholder="Your Name" 
+                  className="w-full bg-[#f4f5ee] border-none rounded-2xl px-8 py-5 font-bold text-[#21492f] outline-none placeholder:text-gray-400" 
+                />
+                <input 
+                  type="text" 
+                  placeholder="Phone Number" 
+                  className="w-full bg-[#f4f5ee] border-none rounded-2xl px-8 py-5 font-bold text-[#21492f] outline-none placeholder:text-gray-400" 
+                />
+              </div>
+              <input 
+                type="email" 
+                placeholder="Email Address" 
+                className="w-full bg-[#f4f5ee] border-none rounded-2xl px-8 py-5 font-bold text-[#21492f] outline-none placeholder:text-gray-400" 
+              />
+              <input 
+                type="text" 
+                placeholder="Subject" 
+                className="w-full bg-[#f4f5ee] border-none rounded-2xl px-8 py-5 font-bold text-[#21492f] outline-none placeholder:text-gray-400" 
+              />
+              <textarea 
+                placeholder="Your Message" 
+                rows={6}
+                className="w-full bg-[#f4f5ee] border-none rounded-3xl px-8 py-6 font-bold text-[#21492f] outline-none placeholder:text-gray-400 resize-none" 
+              />
+              <button 
+                className="inline-flex items-center gap-3 bg-[#6bb300] hover:bg-[#5a9600] text-white px-10 py-5 rounded-2xl font-black uppercase tracking-widest text-xs transition-all shadow-xl shadow-green-900/20 group"
+              >
+                Submit Now <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+              </button>
+            </form>
+          </div>
+
+          {/* Right Column: Contact Info Card */}
+          <div className="lg:col-span-4">
+            <div className="bg-white p-10 rounded-[3rem] shadow-xl border border-gray-50 space-y-10">
+              
+              {/* Address */}
+              <div className="flex items-start gap-5 group">
+                <div className="w-14 h-14 bg-[#6bb300] rounded-2xl flex items-center justify-center text-white shrink-0 shadow-lg group-hover:rotate-6 transition-transform">
+                  <MapPin size={24} />
+                </div>
+                <div>
+                  <h3 className="font-black text-[#21492f] uppercase tracking-tight text-lg">Address</h3>
+                  <p className="text-gray-500 font-medium text-sm leading-relaxed mt-2">1247/Plot No. 39, 15th Phase, Colony, Kukatpally, Hyderabad</p>
+                </div>
+              </div>
+
+              {/* Call Us */}
+              <div className="flex items-start gap-5 group">
+                <div className="w-14 h-14 bg-[#6bb300] rounded-2xl flex items-center justify-center text-white shrink-0 shadow-lg group-hover:rotate-6 transition-transform">
+                  <Phone size={24} />
+                </div>
+                <div>
+                  <h3 className="font-black text-[#21492f] uppercase tracking-tight text-lg">Call Us</h3>
+                  <p className="text-gray-500 font-black text-sm mt-2">+1 123 456 7890</p>
+                  <p className="text-gray-500 font-black text-sm">+0 987-654-3210</p>
+                </div>
+              </div>
+
+              {/* Email */}
+              <div className="flex items-start gap-5 group">
+                <div className="w-14 h-14 bg-[#6bb300] rounded-2xl flex items-center justify-center text-white shrink-0 shadow-lg group-hover:rotate-6 transition-transform">
+                  <Mail size={24} />
+                </div>
+                <div>
+                  <h3 className="font-black text-[#21492f] uppercase tracking-tight text-lg">Send a mail</h3>
+                  <p className="text-gray-500 font-black text-sm mt-2">info@example.com</p>
+                  <p className="text-gray-500 font-black text-sm">ClinicMaster@example.com</p>
+                </div>
+              </div>
+
+              {/* Opening Time */}
+              <div className="flex items-start gap-5 group">
+                <div className="w-14 h-14 bg-[#6bb300] rounded-2xl flex items-center justify-center text-white shrink-0 shadow-lg group-hover:rotate-6 transition-transform">
+                  <Clock size={24} />
+                </div>
+                <div>
+                  <h3 className="font-black text-[#21492f] uppercase tracking-tight text-lg">Opening Time</h3>
+                  <p className="text-gray-500 font-medium text-sm leading-relaxed mt-2">Mon-Thu: 8:00am-5:00pm</p>
+                  <p className="text-gray-500 font-medium text-sm leading-relaxed">Fri: 8:00am-1:00pm</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Feature Cards Section */}
+      <section className="bg-[#f4f5ee] py-24 px-6">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
+          
+          {[
+            { id: '01', title: 'Medical Service', desc: 'It is a long established fact that a reader will be distracted by the readable content of a page.' },
+            { id: '02', title: '24/7 Medicines', desc: 'It is a long established fact that a reader will be distracted by the readable content of a page.', active: true },
+            { id: '03', title: 'Best Doctor', desc: 'It is a long established fact that a reader will be distracted by the readable content of a page.' },
+          ].map((card, idx) => (
+            <div 
+              key={idx} 
+              className={`relative overflow-hidden rounded-[3rem] p-12 transition-all duration-500 ${card.active ? 'bg-[#6bb300] text-white shadow-2xl scale-105 z-10' : 'bg-white text-[#21492f] shadow-xl hover:-translate-y-2'}`}
+            >
+              <span className={`absolute top-10 right-10 text-8xl font-black opacity-10 ${card.active ? 'text-white' : 'text-gray-200'}`}>{card.id}</span>
+              <h3 className="text-2xl font-black uppercase tracking-tight mb-6">{card.title}</h3>
+              <p className={`font-medium mb-10 leading-relaxed ${card.active ? 'text-white/80' : 'text-gray-500'}`}>
+                {card.desc}
+              </p>
+              <div className={`w-14 h-14 rounded-2xl flex items-center justify-center shadow-lg ${card.active ? 'bg-white text-[#6bb300]' : 'bg-[#6bb300] text-white'}`}>
+                <ArrowRight size={24} />
+              </div>
+            </div>
+          ))}
+
+        </div>
+      </section>
+
+      {/* Google Maps Section */}
+      <section className="h-[500px] w-full grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-700">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.8272226622837!2d78.3888!3d17.4834!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTfCsDI5JzAwLjAiTiA3OMKwMjMnMTkuNyJF!5e0!3m2!1sen!2sin!4v1625470000000!5m2!1sen!2sin" 
+          width="100%" 
+          height="100%" 
+          style={{ border: 0 }} 
+          allowFullScreen="" 
+          loading="lazy"
+        ></iframe>
+      </section>
+
+    </div>
+  );
 }

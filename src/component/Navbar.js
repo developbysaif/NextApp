@@ -110,7 +110,7 @@ export default function Navbar() {
                 "bg-[#21492f] text-white overflow-hidden transition-[max-height,opacity] duration-300 ease-out hidden md:block border-b border-white/10",
                 isScrolled ? "max-h-0 opacity-0" : "max-h-20 opacity-100 py-2"
             )}>
-                <div className="max-w-5xl mx-auto flex justify-between px-4 text-[11px] font-bold">
+                <div className="max-w-[1400px] mx-auto flex justify-between px-4 text-[11px] font-bold">
                     <div className="flex gap-6">
                         <span className="flex items-center gap-2 hover:text-[#22aa4f] transition-colors cursor-pointer">
                             <Mail className="w-3.5 h-3.5" />info@ilajbilghiza.com
@@ -148,7 +148,7 @@ export default function Navbar() {
                 "w-full bg-white border-b border-stone-100 transition-shadow duration-300 ease-out",
                 isScrolled ? "shadow-md" : ""
             )}>
-                <div className="max-w-5xl mx-auto px-4 flex items-center justify-between gap-3 md:gap-6">
+                <div className="max-w-[1400px] mx-auto px-4 flex items-center justify-between gap-3 md:gap-4">
                     {/* Logo */}
                   <Link href="/" className="flex items-center group shrink-0">
   <div className="relative h-14 w-40 md:h-20 md:w-56 hover:scale-105 transition-all duration-300">
@@ -167,42 +167,42 @@ export default function Navbar() {
                         <NavigationMenu className="w-full max-w-none justify-center">
                             <NavigationMenuList className="flex gap-0 py-1">
                                 <NavigationMenuItem>
-                                    <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), "bg-transparent font-bold text-stone-600 text-xs hover:text-[#22aa4f] hover:bg-stone-50 px-2")}>
+                                    <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), "bg-transparent font-bold text-stone-600 text-sm hover:text-[#22aa4f] hover:bg-stone-50 px-2")}>
                                         <Link href="/">Home</Link>
                                     </NavigationMenuLink>
                                 </NavigationMenuItem>
                                 <NavigationMenuItem>
-                                    <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), "bg-transparent font-bold text-stone-600 text-xs hover:text-[#22aa4f] hover:bg-stone-50 px-2")}>
+                                    <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), "bg-transparent font-bold text-stone-600 text-sm hover:text-[#22aa4f] hover:bg-stone-50 px-2")}>
                                         <Link href="/products">Shop</Link>
                                     </NavigationMenuLink>
                                 </NavigationMenuItem>
                                 <NavigationMenuItem>
-                                    <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), "bg-transparent font-bold text-stone-600 text-xs hover:text-[#22aa4f] hover:bg-stone-50 px-2")}>
+                                    <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), "bg-transparent font-bold text-stone-600 text-sm hover:text-[#22aa4f] hover:bg-stone-50 px-2")}>
                                         <Link href="/about">About Us</Link>
                                     </NavigationMenuLink>
                                 </NavigationMenuItem>
                                 <NavigationMenuItem>
-                                    <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), "bg-transparent font-bold text-stone-600 text-xs hover:text-[#22aa4f] hover:bg-stone-50 px-2")}>
+                                    <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), "bg-transparent font-bold text-stone-600 text-sm hover:text-[#22aa4f] hover:bg-stone-50 px-2")}>
                                         <Link href="/diseases">Diseases &amp; Treatment</Link>
                                     </NavigationMenuLink>
                                 </NavigationMenuItem>
                                 <NavigationMenuItem>
-                                    <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), "bg-transparent font-bold text-stone-600 text-xs hover:text-[#22aa4f] hover:bg-stone-50 px-2")}>
+                                    <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), "bg-transparent font-bold text-stone-600 text-sm hover:text-[#22aa4f] hover:bg-stone-50 px-2")}>
                                         <Link href="/diet-plan">Diet Plans</Link>
                                     </NavigationMenuLink>
                                 </NavigationMenuItem>
                                 <NavigationMenuItem>
-                                    <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), "bg-transparent font-bold text-stone-600 text-xs hover:text-[#22aa4f] hover:bg-stone-50 px-2")}>
+                                    <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), "bg-transparent font-bold text-stone-600 text-sm hover:text-[#22aa4f] hover:bg-stone-50 px-2")}>
                                         <Link href="/book-appointment">Exercise</Link>
                                     </NavigationMenuLink>
                                 </NavigationMenuItem>
                                 <NavigationMenuItem>
-                                    <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), "bg-transparent font-bold text-stone-600 text-xs hover:text-[#22aa4f] hover:bg-stone-50 px-2")}>
+                                    <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), "bg-transparent font-bold text-stone-600 text-sm hover:text-[#22aa4f] hover:bg-stone-50 px-2")}>
                                         <Link href="/specialties">Daily Organic Foods</Link>
                                     </NavigationMenuLink>
                                 </NavigationMenuItem>
                                 <NavigationMenuItem>
-                                    <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), "bg-transparent font-bold text-stone-600 text-xs hover:text-[#22aa4f] hover:bg-stone-50 px-2")}>
+                                    <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), "bg-transparent font-bold text-stone-600 text-sm hover:text-[#22aa4f] hover:bg-stone-50 px-2")}>
                                         <Link href="/Contact">Contact Us</Link>
                                     </NavigationMenuLink>
                                 </NavigationMenuItem>
@@ -211,7 +211,7 @@ export default function Navbar() {
                     </div>
 
                     {/* Icons */}
-                    <div className="flex items-center gap-1.5 md:gap-2">
+                    <div className="flex items-center gap-1 md:gap-1.5">
                         <Link href={user ? (user.role === 'admin' ? "/admin" : "/dashboard") : "/login"} className="size-8 md:size-10 flex items-center justify-center rounded-lg md:rounded-xl bg-gradient-to-r from-[#22aa4f] via-[#1a7a36] to-[#21492f] text-white border border-transparent shadow-sm group">
                             {user ? <span className=" text-[10px] md:text-xs font-black">{user.name?.charAt(0)}</span> : <User className="w-3.5 h-3.5 md:w-4 md:h-4 " />}
                         </Link>

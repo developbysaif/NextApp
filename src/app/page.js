@@ -19,6 +19,8 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import WeeklyDietPlan from '../component/WeeklyDietPlan';
+import StatsCounter from '../component/StatsCounter';
+import AppointmentForm from '../component/AppointmentForm';
 
 export default function HomePage() {
   const { user, loading } = useAuth();
@@ -274,6 +276,8 @@ export default function HomePage() {
       </section>
 
       <WeeklyDietPlan />
+      <StatsCounter />
+      <AppointmentForm />
 
       <NewsUpdate />
 
