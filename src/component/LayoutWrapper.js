@@ -5,9 +5,9 @@ import Footer from "./Footer";
 
 export default function LayoutWrapper({ children }) {
     const pathname = usePathname();
-    // Check if the current path is part of the admin or dashboard panel
-    // We use startsWith to catch all sub-routes
-    const isPanel = pathname?.startsWith('/admin') || pathname?.startsWith('/dashboard');
+    // Check if the current path is part of the admin/dashboard panel or an auth page
+    const isAuthPage = pathname === '/login' || pathname === '/signup';
+    const isPanel = pathname?.startsWith('/admin') || pathname?.startsWith('/dashboard') || isAuthPage;
 
     return (
         <>
