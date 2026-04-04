@@ -15,7 +15,7 @@ const diseases = [
     items: [
       { name: "Diabetes", desc: "Frequent urination, excessive thirst, fatigue" },
       { name: "Heart Disease", desc: "Chest pain, shortness of breath, irregular heartbeat" },
-      { name: "Hypertension", desc: "Headache, dizziness, blurred vision" },
+      { name: "Hypertension (High BP)", desc: "Headache, dizziness, blurred vision" },
     ],
   },
   {
@@ -25,8 +25,8 @@ const diseases = [
     icon: Activity,
     image: "/Infectious Diseases.png",
     items: [
-      { name: "Influenza", desc: "Body aches, fever, chills" },
       { name: "COVID-19 / Viral Infections", desc: "Fever, cough, breathing issues" },
+      { name: "Flu (Influenza)", desc: "Body aches, fever, chills" },
       { name: "Tuberculosis (TB)", desc: "Persistent cough, weight loss, night sweats" },
     ],
   },
@@ -38,7 +38,7 @@ const diseases = [
     image: "/Mental Health Disorders.png",
     items: [
       { name: "Depression", desc: "Sadness, low energy, loss of interest" },
-      { name: "Anxiety", desc: "Restlessness, rapid heartbeat, overthinking" },
+      { name: "Anxiety Disorder", desc: "Restlessness, rapid heartbeat, overthinking" },
       { name: "Stress-related Disorders", desc: "Headache, sleep problems, irritability" },
     ],
   },
@@ -54,7 +54,7 @@ const diseases = [
     ],
   },
   {
-    title: "LIFESTYLE DISEASES",
+    title: "LIFESTYLE DISEASES (2026 TRENDING)",
     slug: "lifestyle-diseases",
     color: "bg-emerald-800",
     icon: Scale,
@@ -135,11 +135,16 @@ export default function DiseaseSection() {
                 {disease.title}
               </h3>
 
-              <p className="text-gray-500 text-sm font-medium leading-relaxed flex-1 mb-4 group-hover:text-white transition-colors">
-                It is a long established fact that a reader will be distracted.
-              </p>
+              <div className="flex-1 space-y-1 my-3">
+                {disease.items.slice(0, 3).map((item, i) => (
+                  <div key={i} className="text-[11px] leading-tight flex flex-col">
+                    <span className="text-[#22aa4f] group-hover:text-white font-bold">{item.name}</span>
+                    <span className="text-gray-500 group-hover:text-white/80 font-medium">{item.desc}</span>
+                  </div>
+                ))}
+              </div>
 
-              <div className="inline-flex items-center gap-2 text-[#22aa4f] font-bold text-sm group-hover:text-white hover:gap-3 transition-all">
+              <div className="inline-flex items-center gap-2 text-[#22aa4f] font-bold text-sm group-hover:text-white hover:gap-3 transition-all pt-2">
                 View All Details
                 <ShieldCheck size={16} />
               </div>
