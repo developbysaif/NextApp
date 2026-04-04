@@ -1,15 +1,14 @@
-
 "use client";
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 
 export default function Preloader() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Hide preloader once page is loaded
     const handleLoad = () => {
-      setTimeout(() => setLoading(false), 2000); // Minimum 2s for visual impact
+      setTimeout(() => setLoading(false), 2500);
     };
 
     if (document.readyState === 'complete') {
@@ -24,51 +23,55 @@ export default function Preloader() {
     <AnimatePresence>
       {loading && (
         <motion.div
-           initial={{ opacity: 1 }}
-           exit={{ opacity: 0, y: -100 }}
-           transition={{ duration: 0.8, ease: "easeInOut" }}
-           className="fixed inset-0 z-[9999] bg-white flex flex-col items-center justify-center"
+          initial={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.6, ease: "easeInOut" }}
+          className="fixed inset-0 z-[9999] bg-white flex flex-col items-center justify-center"
         >
-           <div className="relative">
-              {/* Preloader Image Container */}
-              <motion.div
-                initial={{ scale: 0.8, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 1, repeat: Infinity, repeatType: "mirror" }}
-                className="w-40 h-40 relative flex items-center justify-center"
-              >
-                  {/* The User provided image will go here */}
-                  <img 
-                    src="/preloader.png" // Placeholder for now, user will provide the image
-                    alt="Loading..."
-                    className="w-full h-full object-contain"
-                    onError={(e) => {
-                      // Fallback if image doesn't exist yet
-                      e.target.style.display = 'none';
-                      e.target.parentNode.innerHTML += '<div class="w-16 h-16 border-4 border-[#6bb300] border-t-transparent rounded-full animate-spin"></div>';
-                    }}
-                  />
-              </motion.div>
+          {/* Pulsing glow behind logo */}
+          <motion.div
+            animate={{ scale: [1, 1.3, 1], opacity: [0.15, 0.3, 0.15] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute w-60 h-60 rounded-full bg-[#f5c518]"
+            style={{ filter: "blur(60px)" }}
+          />
 
-              {/* Progress bar */}
-              <div className="mt-8 w-48 h-1 bg-[#f4f5ee] rounded-full overflow-hidden">
-                <motion.div 
-                  initial={{ width: 0 }}
-                  animate={{ width: "100%" }}
-                  transition={{ duration: 2, ease: "easeInOut" }}
-                  className="h-full bg-[#6bb300]"
-                />
-              </div>
-           </div>
-           
-           <motion.p
-             initial={{ opacity: 0 }}
-             animate={{ opacity: 1 }}
-             transition={{ delay: 0.5 }}
-             className="mt-6 text-[#21492f] font-black uppercase tracking-[0.4em] text-[10px]"
-           >
-             Nourishing Your Life
-           </motion.p>
+          {/* Logo */}
+          <motion.div
+            initial={{ scale: 0.5, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.8, ease: "backOut" }}
+            className="relative z-10"
+          >
+            <Image
+              src="/Logo.png"
+              alt="IlajbilGhiza"
+              width={160}
+              height={160}
+              className="object-contain drop-shadow-lg"
+              priority
+            />
+          </motion.div>
+
+          {/* Progress bar */}
+          <div className="relative z-10 mt-10 w-48 h-1 bg-gray-100 rounded-full overflow-hidden">
+            <motion.div
+              initial={{ width: 0 }}
+              animate={{ width: "100%" }}
+              transition={{ duration: 2.2, ease: "easeInOut" }}
+              className="h-full rounded-full bg-gradient-to-r from-[#f5c518] to-[#22aa4f]"
+            />
+          </div>
+
+          {/* Tagline */}
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6 }}
+            className="relative z-10 mt-6 text-[#21492f] font-black uppercase tracking-[0.35em] text-[10px]"
+          >
+            Organic Healing
+          </motion.p>
         </motion.div>
       )}
     </AnimatePresence>
