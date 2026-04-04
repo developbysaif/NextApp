@@ -8,7 +8,7 @@ import Image from 'next/image';
 import { 
     Activity, Heart, Scale, ShieldCheck, 
     CheckCircle2, ArrowLeft, Leaf, Droplets,
-    Stethoscope, Zap, Info
+    Stethoscope, Zap, Info, Brain, Wind, Bone
 } from 'lucide-react';
 
 export default function DiseaseDetailPage({ params }) {
@@ -33,7 +33,7 @@ export default function DiseaseDetailPage({ params }) {
         );
     }
 
-    const icons = { Activity, Heart, Scale, Stethoscope, Leaf, Droplets };
+    const icons = { Activity, Heart, Scale, Stethoscope, Leaf, Droplets, Brain, Wind, Bone };
     const Icon = icons[disease.icon] || Activity;
 
     const renderContent = (content) => {

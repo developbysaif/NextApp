@@ -162,7 +162,7 @@ Don't wait for disease. Build your shield naturally every single day.
         icon: 'Heart',
         color: 'text-teal-600',
         bg: 'bg-teal-50',
-        image: '/Fruits.png',
+        image: '/chronic disease.png',
         content: `
 Chronic diseases are long-term conditions that often progress slowly. Here are the most common ones and their natural management:
 
@@ -189,7 +189,7 @@ Often called the silent killer. Watch for headaches, dizziness, and blurred visi
         icon: 'Activity',
         color: 'text-blue-600',
         bg: 'bg-blue-50',
-        image: '/Anar.png',
+        image: '/Infectious Diseases.png',
         content: `
 Infectious diseases spread easily. Strengthening your internal defense is the best way to stay protected.
 
@@ -213,10 +213,10 @@ A serious bacterial infection. Symptoms include persistent cough and night sweat
         slug: 'mental-health-disorders',
         title: 'Mental Health & Well-being',
         description: 'Find peace and balance through spiritual connection and organic nutrition for the brain.',
-        icon: 'Activity',
+        icon: 'Brain',
         color: 'text-purple-600',
         bg: 'bg-purple-50',
-        image: '/Borkely.png',
+        image: '/Mental Health Disorders.png',
         content: `
 Mental well-being is deeply connected to your nutrition and spiritual state.
 
@@ -240,10 +240,10 @@ Modern lifestyle causes headaches and irritability.
         slug: 'respiratory-diseases',
         title: 'Breathing Freely: Respiratory Care',
         description: 'Natural remedies for asthma, bronchitis, and other lung-related conditions.',
-        icon: 'Activity',
+        icon: 'Wind',
         color: 'text-green-600',
         bg: 'bg-green-50',
-        image: '/Mint.png',
+        image: '/Respiratory Diseases.png',
         content: `
 Lungs are your life-line. Keep them clear with anti-inflammatory remedies.
 
@@ -265,7 +265,7 @@ Persistent cough with mucus and heavy fatigue.
         icon: 'Scale',
         color: 'text-emerald-600',
         bg: 'bg-emerald-50',
-        image: '/Lime.png',
+        image: '/Lifestyle Diseases.png',
         content: `
 Lifestyle diseases are reversible with discipline and the right fuel.
 
@@ -292,7 +292,7 @@ Hormonal imbalance causing irregular periods and acne.
         icon: 'Droplets',
         color: 'text-orange-600',
         bg: 'bg-orange-50',
-        image: '/Dry Fruit.png',
+        image: '/Digestive Disorders.png',
         content: `
 A healthy gut is the key to a healthy long life.
 
@@ -316,10 +316,10 @@ Stomach pain and burning sensations.
         slug: 'bone-joint-disorders',
         title: 'Strong Bones & Healthy Joints',
         description: 'Relieving arthritis and osteoporosis through calcium-rich organic foods.',
-        icon: 'Leaf',
+        icon: 'Bone',
         color: 'text-amber-700',
         bg: 'bg-amber-50',
-        image: '/Herbs.png',
+        image: '/Bone & Joint Disorders.png',
         content: `
 Strengthen your frame with minerals and anti-inflammatory foods.
 
