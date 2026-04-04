@@ -112,12 +112,15 @@ export default function LoginPage() {
                         </button>
                     </div>
 
-                    <p className="mt-6 text-center text-xs text-gray-600">
-                        Don't have an Account?{" "}
-                        <Link href="/signup" className="text-[#21492f] font-semibold hover:underline">
-                            Sign Up
+                    <div className="mt-4 pt-4 border-t border-gray-100 text-center">
+                        <p className="text-[10px] text-gray-400 mb-1 font-bold">Don't have an Account?</p>
+                        <Link 
+                            href="/signup" 
+                            className="mt-2 block w-full text-center py-2.5 border-2 border-[#21492f] text-[#21492f] rounded-xl text-xs font-black hover:bg-[#21492f] hover:text-white transition-all shadow-md group"
+                        >
+                            CREATE NEW ACCOUNT
                         </Link>
-                    </p>
+                    </div>
                 </div>
 
                 {/* Right Side - Content */}
