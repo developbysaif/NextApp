@@ -33,7 +33,7 @@ export default function LoginPage() {
             <div className="w-full max-w-5xl bg-white rounded-[2rem] shadow-2xl flex overflow-hidden min-h-[500px] max-h-[90vh] border border-gray-200">
 
                 {/* Left Side - Form */}
-                <div className="w-full lg:w-1/2 p-6 sm:p-8 lg:p-12 flex flex-col justify-center">
+                <div className="w-full lg:w-1/2 p-6 sm:p-8 lg:p-12 flex flex-col justify-center h-full max-h-full overflow-y-auto relative">
                     {/* Logo */}
                     <Link href="/" className="flex items-center mb-6 w-fit shadow-2xl rounded-xl">
                         <Image src="/desk-top.png" alt="ilagbilghiza" width={160} height={48} className="w-auto h-8 object-contain" priority />
@@ -46,7 +46,7 @@ export default function LoginPage() {
 
                     <form onSubmit={handleSubmit} className="space-y-5">
                         {error && (
-                            <div className="bg-red-50 text-red-600 p-3 rounded-lg text-sm font-medium border border-red-100">
+                            <div className="bg-red-50 text-red-600 p-2 rounded-lg text-[10px] font-medium border border-red-100 mb-2">
                                 {error}
                             </div>
                         )}
@@ -147,7 +147,7 @@ export default function LoginPage() {
                                 </div>
                                 <div className="flex flex-col">
                                     <span className="text-white font-semibold text-sm">Design and Develop by Saif</span>
-                                    <span className="text-white/60 text-xs">Mentor: Sir Talha</span>
+                                    <span className="text-white/60 text-xs text-center lg:text-left">Mentor: Talha Mughal</span>
                                 </div>
                             </div>
                         </div>
@@ -156,24 +156,10 @@ export default function LoginPage() {
                     {/* Logos section - as requested: right side per logo add karu ilagbilghiza ka */}
                     <div className="absolute bottom-12 left-16 right-16 pt-6 border-t border-white/10 z-10">
                         <p className="text-[10px] font-bold text-white/50 tracking-[0.15em] uppercase mb-4">
-                            Trusted By TEAMS
+                            Mentor
                         </p>
-                        <div className="flex items-center justify-between gap-4 text-white/80 w-full">
-                            <div className="flex items-center gap-1.5 focus:outline-none">
-                                <Leaf size={20} className="text-[#4caf50]" />
-                                <span className="font-bold text-sm tracking-tight text-white">NatureCare</span>
-                            </div>
-                            <div className="flex items-center gap-1.5 focus:outline-none">
-                                <Globe size={18} className="text-blue-300" />
-                                <span className="font-bold text-sm tracking-tight text-white">BioHealth</span>
-                            </div>
-                            <div className="flex items-center gap-1.5 focus:outline-none">
-                                <Stethoscope size={20} className="text-rose-300" />
-                                <span className="font-bold text-sm tracking-tight text-white">MedAssist</span>
-                            </div>
-                            <div className="flex items-center justify-center px-4 py-2 rounded-lg bg-white/10 border border-white/20 h-10">
-                                <Image src="/desk-top.png" alt="ilagbilghiza" width={120} height={30} className="w-auto h-full object-contain filter brightness-0 invert opacity-90" />
-                            </div>
+                        <div className="flex items-center justify-center gap-4 text-white/80 w-full bg-white/5 backdrop-blur-sm p-4 rounded-xl border border-white/10 shadow-lg">
+                            <span className="text-white font-black text-2xl tracking-tighter italic drop-shadow-lg">Talha Mughal</span>
                         </div>
                     </div>
                 </div>
