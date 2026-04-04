@@ -29,18 +29,18 @@ export default function LoginPage() {
     };
 
     return (
-        <div className="min-h-screen bg-gray-100 flex items-center justify-center p-2 sm:p-4">
-            <div className="w-full max-w-5xl bg-white rounded-[2rem] shadow-2xl flex overflow-hidden min-h-[500px] max-h-[90vh] border border-gray-200">
+        <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4 sm:p-6 lg:p-8">
+            <div className="w-full max-w-6xl bg-white rounded-[2rem] shadow-2xl flex overflow-hidden min-h-[750px] border border-gray-200">
 
-                <div className="w-full lg:w-1/2 p-6 sm:p-8 lg:p-12 flex flex-col justify-center h-full max-h-full overflow-y-auto relative">
+                <div className="w-full lg:w-1/2 p-8 sm:p-12 lg:p-16 flex flex-col justify-center h-full max-h-full overflow-y-auto relative">
                     {/* Logo */}
-                    <Link href="/" className="flex items-center mb-6 w-fit shadow-2xl rounded-xl">
-                        <Image src="/desk-top.png" alt="ilagbilghiza" width={160} height={48} className="w-auto h-8 object-contain" priority />
+                    <Link href="/" className="flex items-center mb-10 w-fit shadow-2xl rounded-xl">
+                        <Image src="/desk-top.png" alt="ilagbilghiza" width={200} height={60} className="w-auto h-12 object-contain" priority />
                     </Link>
 
-                    <h1 className="text-2xl font-black text-gray-900 mb-1">Welcome Back!</h1>
-                    <p className="text-gray-500 text-xs mb-6">
-                        Signin to access your health dashboard.
+                    <h1 className="text-3xl font-black text-gray-900 mb-2">Welcome Back!</h1>
+                    <p className="text-gray-500 text-sm mb-8">
+                        Signin to access your health dashboard and optimization process.
                     </p>
 
                     <form onSubmit={handleSubmit} className="space-y-5">
