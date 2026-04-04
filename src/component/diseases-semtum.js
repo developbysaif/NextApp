@@ -92,8 +92,8 @@ const diseases = [
 
 export default function DiseaseSection() {
   return (
-    <section className="py-20 px-4 md:px-20 bg-[#f9fafb]" id="diseases-section">
-      <div className="text-center mb-16">
+    <section className="py-12 px-4 md:px-20 bg-[#f9fafb]" id="diseases-section">
+      <div className="text-center mb-10">
         <span className="text-[#22aa4f] font-bold text-xs uppercase tracking-[0.3em] mb-4 block">Medical Intelligence</span>
         <h2 className="text-4xl md:text-5xl font-black text-[#111827] mb-6 leading-tight">
           Early Symptoms. <br className="md:hidden" />Smart Prevention.
@@ -103,7 +103,7 @@ export default function DiseaseSection() {
         </p>
       </div>
 
-      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 w-full mx-auto">
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 w-full mx-auto">
         {diseases.map((disease, idx) => (
           <Link
             key={idx}
@@ -111,7 +111,7 @@ export default function DiseaseSection() {
             className="group flex flex-col bg-white rounded-xl overflow-hidden shadow-md transition-all duration-500 hover:shadow-2xl hover:-translate-y-3 hover:bg-[#22aa4f]"
           >
             {/* Image Section */}
-            <div className={`${disease.color} h-48 flex items-center justify-center relative overflow-hidden`}>
+            <div className={`${disease.color} h-40 flex items-center justify-center relative overflow-hidden`}>
               <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent"></div>
               {disease.image ? (
                 <Image
@@ -135,7 +135,7 @@ export default function DiseaseSection() {
                 {disease.title}
               </h3>
 
-              <p className="text-gray-500 text-sm font-medium leading-relaxed flex-1 mb-6 group-hover:text-white transition-colors">
+              <p className="text-gray-500 text-sm font-medium leading-relaxed flex-1 mb-4 group-hover:text-white transition-colors">
                 It is a long established fact that a reader will be distracted.
               </p>
 

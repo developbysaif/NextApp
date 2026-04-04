@@ -152,30 +152,14 @@ export default function HomePage() {
     <div className="bg-white overflow-x-hidden font-sans">
 
       <Header />
-       <Disease />
-       <Calcuateindex />
-     
-       
+      <Disease />
 
-      {/* Spacer after header */}
-      <div className="h-6 md:h-10"></div>
-
-      {/* Categories Grid Section */}
-      <section className="px-6 md:px-8 py-10 md:py-14 mx-auto scroll-mt-20 max-w-7xl">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 md:gap-6">
-          {categoriesData.map((cat, idx) => (
-            <CategoryCard key={idx} {...cat} />
-          ))}
-        </div>
-      </section>
-     
-  <ServicesCards />
-      {/* Featured Products */}
+      {/* Featured Products - Moved Up */}
       <section className="bg-[#f8faf9] py-14 md:py-20 px-8 md:px-14 best-seller-section">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
+          <div className="flex flex-col md:flex-row justify-between items-center mb-12 gap-4">
             <div className="text-center md:text-left">
-              <h2 className="text-3xl md:text-5xl font-black text-[#21492f] leading-tight">
+              <h2 className="text-3xl md:text-4xl font-black text-[#21492f] leading-tight">
                 Nature's Finest Harvest
               </h2>
               <p className="text-gray-500 mt-2 text-base md:text-lg">
@@ -187,19 +171,21 @@ export default function HomePage() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
-            {products.map((product, index) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+            {products.slice(0, 8).map((product, index) => (
               <ProductItem key={index} product={product} index={index} />
             ))}
           </div>
 
-          <div className="mt-8 flex justify-center md:hidden">
-            <Link href="/products" className="flex items-center gap-2 text-[#22aa4f] font-bold text-sm">
-              Explore all harvest <ArrowRight size={16} />
+          <div className="mt-16 flex justify-center">
+            <Link href="/products" className="flex items-center gap-3 bg-[#22aa4f] text-white px-10 py-4 rounded-xl font-black text-sm uppercase tracking-widest hover:bg-[#21492f] transition-all shadow-xl shadow-green-200">
+              View All Products <ArrowRight size={18} />
             </Link>
           </div>
         </div>
       </section>
+
+      <ServicesCards />
 
       {/* First Order Deal Section */}
       <section className="py-10 md:py-16 px-4 md:px-6 max-w-7xl mx-auto">
@@ -223,64 +209,17 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* AI Diet Plan Promo Section */}
-      <section className="py-10 md:py-16 px-4 md:px-6 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
-          <div className="relative">
-            <div className="relative bg-[#21492f] rounded-3xl p-8 md:p-10 overflow-hidden group">
-              <div className="absolute top-0 right-0 p-8 text-white/5">
-                <Zap size={150} strokeWidth={8} />
-              </div>
-              <div className="relative z-10">
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {['Age', 'Weight', 'Health', 'Routine'].map(tag => (
-                    <span key={tag} className="bg-white/10 text-white text-[10px] font-bold px-3 py-1 rounded-full border border-white/10">{tag}</span>
-                  ))}
-                </div>
-                <h3 className="text-white text-2xl md:text-4xl font-black mb-6 leading-tight">Science That Understands You</h3>
-                <div className="space-y-3">
-                  {[
-                    { t: "Exact food quantity", i: Activity },
-                    { t: "Scientific calories count", i: Zap },
-                    { t: "Balanced micro-nutrients", i: Leaf },
-                    { t: "Weight gain/loss target", i: Activity }
-                  ].map((feat, i) => (
-                    <div key={i} className="flex items-center gap-3 text-white/80 font-medium">
-                      <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center">
-                        <feat.i size={16} />
-                      </div>
-                      <span>{feat.t}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
+      <WeeklyDietPlan />
+      <AppointmentForm />
 
-          <div className="text-center lg:text-left">
-            <span className="text-[#22aa4f] font-bold text-xs mb-3 block">Technology Meets Nature</span>
-            <h2 className="text-3xl md:text-5xl font-black text-[#21492f] mb-6 leading-tight">A Healthier You, <br /> Every Single Day</h2>
-            <p className="text-gray-500 text-base md:text-lg font-medium leading-relaxed mb-8">
-              Personalized nutrition plans powered by AI, designed uniquely for your body's needs and health goals.
-            </p>
-            <Link href="/diet-plan" className="inline-block bg-[#22aa4f] text-white px-8 py-3 rounded-xl font-bold text-sm hover:bg-[#21492f] transition-all shadow-lg shadow-green-500/10">
-              Transform My Life
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Blog Slider Section */ }
       <section className="py-10 md:py-16 px-4 md:px-6 max-w-7xl mx-auto">
         <BlogSlider />
       </section>
 
-      <WeeklyDietPlan />
+      {/* Secondary Sections */}
+      <Calcuateindex />
       <StatsCounter />
-      <AppointmentForm />
-
       <NewsUpdate />
-
       <Subscribe />
 
     </div>
