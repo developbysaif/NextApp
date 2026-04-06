@@ -3,19 +3,14 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { 
-    Search, SlidersHorizontal, Plus, MoreHorizontal, Activity, Heart, Clock, List, LayoutGrid, Filter, Bell, HeartPulse, ChevronDown, Check, Tag, X
+    Search, SlidersHorizontal, Plus, MoreHorizontal, Activity, Heart, Clock, List, LayoutGrid, Filter, Bell, HeartPulse, ChevronDown, Check
 } from 'lucide-react';
-
-const DEFAULT_CATEGORIES = ['Breakfast', 'Lunch', 'Snack', 'Dinner', 'Other'];
 
 export default function HealthyMenuPage() {
     const router = useRouter();
     const [currentUser, setCurrentUser] = useState(null);
     const [menus, setMenus] = useState([]);
     const [activeTab, setActiveTab] = useState('All');
-    const [categories, setCategories] = useState(DEFAULT_CATEGORIES);
-    const [isCatModalOpen, setIsCatModalOpen] = useState(false);
-    const [newCatName, setNewCatName] = useState('');
     
     // Modal states
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -37,13 +32,7 @@ export default function HealthyMenuPage() {
         const user = JSON.parse(localStorage.getItem("currentUser") || "null");
         if (user) setCurrentUser(user);
 
-        // Load custom categories
-        const savedCats = JSON.parse(localStorage.getItem("blogCategories") || "[]");
-        if (savedCats.length > 0) {
-            setCategories([...DEFAULT_CATEGORIES, ...savedCats.filter(c => !DEFAULT_CATEGORIES.includes(c))]);
-        }
-
-        // Fetch from shared localStorage
+        // Fetch from shared localStorage (acting as both healthy menu and blog posts DB)
         const stored = JSON.parse(localStorage.getItem("blogPosts") || "[]");
         if (stored.length === 0) {
             const seed = [
@@ -58,27 +47,6 @@ export default function HealthyMenuPage() {
             setMenus(stored);
         }
     }, []);
-
-    const handleAddCategory = (e) => {
-        e.preventDefault();
-        const trimmed = newCatName.trim();
-        if (!trimmed || categories.some(c => c.toLowerCase() === trimmed.toLowerCase())) return;
-        const updated = [...categories, trimmed];
-        setCategories(updated);
-        // Save only custom ones (exclude defaults)
-        const custom = updated.filter(c => !DEFAULT_CATEGORIES.includes(c));
-        localStorage.setItem("blogCategories", JSON.stringify(custom));
-        setNewCatName('');
-        setIsCatModalOpen(false);
-    };
-
-    const handleDeleteCategory = (cat) => {
-        if (DEFAULT_CATEGORIES.includes(cat)) return; // can't delete defaults
-        const updated = categories.filter(c => c !== cat);
-        setCategories(updated);
-        const custom = updated.filter(c => !DEFAULT_CATEGORIES.includes(c));
-        localStorage.setItem("blogCategories", JSON.stringify(custom));
-    };
 
     const handleAddMenu = (e) => {
         e.preventDefault();
@@ -123,20 +91,6 @@ export default function HealthyMenuPage() {
         setNewMenu({ title: '', category: 'Breakfast', cal: '', carbs: '', prot: '', fat: '', img: '', description: '', seoTitle: '', seoDescription: '', keywords: '' });
     };
 
-    const handleDeleteBlog = (id) => {
-        if (!window.confirm("Are you sure you want to delete this blog post?")) return;
-        
-        // Remove from blogPosts
-        const updatedPosts = menus.filter(m => m.id !== id);
-        setMenus(updatedPosts);
-        localStorage.setItem("blogPosts", JSON.stringify(updatedPosts));
-
-        // Remove from blogs
-        const globalBlogs = JSON.parse(localStorage.getItem("blogs") || "[]");
-        const updatedGlobal = globalBlogs.filter(b => b.id !== id);
-        localStorage.setItem("blogs", JSON.stringify(updatedGlobal));
-    };
-
     const featuredMenu = menus.find(m => m.type === 'featured') || menus[0];
     const normalMenus = menus.filter(m => m.id !== featuredMenu?.id);
     const filteredMenus = activeTab === 'All' ? normalMenus : normalMenus.filter(m => m.category === activeTab);
@@ -162,34 +116,18 @@ export default function HealthyMenuPage() {
                 
                 {/* Header Row */}
                 <div className="flex flex-col md:flex-row md:items-center w-full gap-4 md:gap-0 mt-4 xl:mt-0 relative z-20">
-                    <h1 className="text-[26px] font-bold text-gray-900 tracking-tight leading-none w-1/3">Healthy Menu <span className="text-sm text-gray-400 font-medium">(Blog Posts)</span></h1>
+                    <h1 className="text-[26px] font-bold text-gray-900 tracking-tight leading-none w-1/3">Healthy Menu</h1>
                     
-                    <div className="flex-1 flex items-center gap-3 flex-wrap">
-                        <div className="relative flex-1 min-w-[160px]">
+                    <div className="flex-1 flex max-w-lg items-center gap-4">
+                        <div className="relative flex-1">
                             <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={16} />
-                            <input type="text" placeholder="Search posts..." className="w-full bg-white border border-gray-100 rounded-xl py-3 pl-11 pr-4 text-xs font-bold text-gray-600 focus:outline-none focus:ring-1 focus:ring-[#B4E567] shadow-sm" />
+                            <input type="text" placeholder="Search menu" className="w-full bg-white border border-gray-100 rounded-xl py-3 pl-11 pr-4 text-xs font-bold text-gray-600 focus:outline-none focus:ring-1 focus:ring-[#B4E567] shadow-sm" />
                         </div>
-                        <button onClick={() => setIsCatModalOpen(true)} className="bg-white border border-[#B4E567] text-[#496b16] px-4 py-3 rounded-xl text-xs font-bold shrink-0 shadow-sm hover:bg-[#B4E567]/10 transition-all flex items-center gap-2">
-                            <Tag size={14}/> Add Category
-                        </button>
-                        <button onClick={() => setIsModalOpen(true)} className="bg-[#B4E567] text-gray-900 px-5 py-3 rounded-xl text-xs font-bold shrink-0 shadow-sm hover:bg-[#a6d85a] transition-all flex items-center gap-2">
-                            <Plus size={14}/> Add Post
+                        <button className="w-11 h-11 bg-white rounded-xl flex items-center justify-center text-gray-500 hover:text-gray-900 shadow-sm border border-gray-100 shrink-0"><SlidersHorizontal size={18} /></button>
+                        <button onClick={() => setIsModalOpen(true)} className="bg-[#B4E567] text-gray-900 px-5 py-3 rounded-xl text-xs font-bold shrink-0 shadow-sm hover:bg-[#a6d85a] transition-all">
+                            Add Menu
                         </button>
                     </div>
-                </div>
-
-                {/* Category Pills Management Bar */}
-                <div className="flex flex-wrap gap-2 items-center">
-                    {categories.map(cat => (
-                        <div key={cat} className="flex items-center gap-1 bg-white border border-gray-100 rounded-full px-3 py-1.5 text-[10px] font-bold text-gray-600 shadow-sm group">
-                            <span>{cat}</span>
-                            {!DEFAULT_CATEGORIES.includes(cat) && (
-                                <button onClick={() => handleDeleteCategory(cat)} className="ml-1 text-gray-300 hover:text-red-500 leading-none opacity-0 group-hover:opacity-100 transition-all">
-                                    <X size={10}/>
-                                </button>
-                            )}
-                        </div>
-                    ))}
                 </div>
 
                 {/* Featured Menu */}
@@ -199,7 +137,7 @@ export default function HealthyMenuPage() {
                         <MoreHorizontal size={20} className="text-gray-400 cursor-pointer hover:text-gray-800" />
                     </div>
 
-                    <div onClick={() => router.push(`/admin/blogs/${featuredMenu.id}`)} className="bg-[#FAF7ED] rounded-[2.5rem] p-4 flex flex-col lg:flex-row gap-6 shadow-sm relative pr-24 lg:pr-32 border border-[#f0ecd3] cursor-pointer hover:border-[#FFD166] transition-colors">
+                    <div onClick={() => router.push(`/dashboard/menu/${featuredMenu.id}`)} className="bg-[#FAF7ED] rounded-[2.5rem] p-4 flex flex-col lg:flex-row gap-6 shadow-sm relative pr-24 lg:pr-32 border border-[#f0ecd3] cursor-pointer hover:border-[#FFD166] transition-colors">
                         {/* Image */}
                         <img src={featuredMenu.img} alt={featuredMenu.title} className="w-full lg:w-[340px] h-[280px] object-cover rounded-[2rem] shadow-sm" />
                         
@@ -260,26 +198,18 @@ export default function HealthyMenuPage() {
                              </div>
                         </div>
 
-                        {/* Delete Button for Featured */}
-                        <button 
-                            onClick={(e) => { e.stopPropagation(); handleDeleteBlog(featuredMenu.id); }}
-                            className="absolute top-4 left-4 w-8 h-8 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center text-gray-400 hover:text-red-500 shadow-sm transition-colors z-20"
-                        >
-                            <X size={16} />
-                        </button>
-
                     </div>
                 </div>
 
                 {/* All Menu Toggles & List */}
                 <div className="mt-8">
-                    <div className="flex justify-between items-center mb-6 flex-wrap gap-3">
-                        <div className="flex gap-1.5 bg-white rounded-xl p-1 shadow-sm border border-gray-50 flex-wrap">
-                            {['All', ...categories].map(tab => (
+                    <div className="flex justify-between items-center mb-6">
+                        <div className="flex gap-2 bg-white rounded-xl p-1 shadow-sm border border-gray-50">
+                            {['All', 'Breakfast', 'Lunch', 'Snack', 'Dinner'].map(tab => (
                                 <button 
                                     key={tab}
                                     onClick={() => setActiveTab(tab)}
-                                    className={`px-4 py-2 text-[11px] font-bold rounded-lg transition-all whitespace-nowrap ${activeTab === tab ? 'bg-[#B4E567] text-gray-900' : 'text-gray-400 hover:text-gray-900'}`}
+                                    className={`px-5 py-2 text-[11px] font-bold rounded-lg transition-all ${activeTab === tab ? 'bg-[#B4E567] text-gray-900' : 'text-gray-400 hover:text-gray-900'}`}
                                 >
                                     {tab}
                                 </button>
@@ -296,7 +226,7 @@ export default function HealthyMenuPage() {
 
                     <div className="space-y-4">
                         {filteredMenus.map(m => (
-                            <div key={m.id} onClick={() => router.push(`/admin/blogs/${m.id}`)} className="bg-[#FAF7ED]/80 rounded-[2rem] p-3 pl-4 flex items-center gap-6 shadow-sm border border-[#f0ecd3] relative group hover:bg-[#FAF7ED] hover:border-[#FFD166] transition-colors cursor-pointer">
+                            <div key={m.id} onClick={() => router.push(`/dashboard/menu/${m.id}`)} className="bg-[#FAF7ED]/80 rounded-[2rem] p-3 pl-4 flex items-center gap-6 shadow-sm border border-[#f0ecd3] relative group hover:bg-[#FAF7ED] hover:border-[#FFD166] transition-colors cursor-pointer">
                                  <img src={m.img} alt={m.title} className="w-[140px] h-[90px] rounded-2xl object-cover" />
                                  <div className="flex-1 py-1">
                                      <div className="flex items-center gap-3 mb-2">
@@ -317,13 +247,7 @@ export default function HealthyMenuPage() {
                                  </div>
                                  <div className="flex flex-col items-end gap-6 self-start mt-2 mr-4">
                                      <div className="flex items-center gap-2">
-                                         <button 
-                                            onClick={(e) => { e.stopPropagation(); handleDeleteBlog(m.id); }}
-                                            className="w-8 h-8 bg-white rounded-lg flex items-center justify-center text-gray-300 hover:text-red-500 shadow-sm transition-colors border border-gray-100"
-                                         >
-                                            <X size={14} />
-                                         </button>
-                                         <span className="text-[10px] font-bold text-gray-400 ml-2">Health Score: <span className="text-gray-900">{m.score/10}/10</span></span>
+                                         <span className="text-[10px] font-bold text-gray-400">Health Score: <span className="text-gray-900">{m.score/10}/10</span></span>
                                          {renderHealthBars(m.score)}
                                      </div>
                                      <button className="bg-[#B4E567] text-gray-900 px-6 py-2.5 rounded-xl text-[11px] font-bold shadow-sm hover:bg-[#a6d85a] transition-all">
@@ -441,9 +365,10 @@ export default function HealthyMenuPage() {
                                 <div>
                                     <label className="text-xs font-bold text-gray-500 mb-1.5 block">Category *</label>
                                     <select value={newMenu.category} onChange={e => setNewMenu({...newMenu, category: e.target.value})} className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm font-medium focus:border-[#B4E567] outline-none cursor-pointer">
-                                        {categories.map(cat => (
-                                            <option key={cat} value={cat}>{cat}</option>
-                                        ))}
+                                        <option value="Breakfast">Breakfast</option>
+                                        <option value="Lunch">Lunch</option>
+                                        <option value="Snack">Snack</option>
+                                        <option value="Dinner">Dinner</option>
                                     </select>
                                 </div>
                                 <div>
@@ -508,54 +433,6 @@ export default function HealthyMenuPage() {
 
                             <button type="submit" className="w-full bg-[#B4E567] text-gray-900 font-bold py-4 rounded-xl hover:bg-[#a6d85a] transition-colors shadow-sm text-sm tracking-wide">
                                 🚀 Publish Blog Post
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            )}
-
-            {/* Add Category Modal */}
-            {isCatModalOpen && (
-                <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm flex items-center justify-center p-4">
-                    <div className="bg-white rounded-[2rem] p-8 w-full max-w-sm shadow-2xl relative">
-                        <button onClick={() => setIsCatModalOpen(false)} className="absolute top-5 right-5 text-gray-400 hover:text-gray-900 text-xl leading-none">×</button>
-                        <div className="flex items-center gap-3 mb-6">
-                            <div className="w-10 h-10 bg-[#B4E567]/20 rounded-xl flex items-center justify-center text-[#496b16]"><Tag size={18}/></div>
-                            <div>
-                                <h2 className="text-lg font-bold text-gray-900">Add New Category</h2>
-                                <p className="text-[10px] text-gray-400 font-medium">Will appear in Blog Post form & filter tabs</p>
-                            </div>
-                        </div>
-                        <form onSubmit={handleAddCategory} className="space-y-4">
-                            <div>
-                                <label className="text-xs font-bold text-gray-500 mb-1.5 block">Category Name *</label>
-                                <input 
-                                    required 
-                                    type="text" 
-                                    value={newCatName}
-                                    onChange={e => setNewCatName(e.target.value)}
-                                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm font-medium focus:border-[#B4E567] outline-none" 
-                                    placeholder="e.g. Weight Loss, Vegan, Detox..."
-                                />
-                            </div>
-                            {/* Existing Custom Categories */}
-                            <div>
-                                <p className="text-[10px] font-bold text-gray-400 mb-2">Current Custom Categories:</p>
-                                <div className="flex flex-wrap gap-2">
-                                    {categories.filter(c => !DEFAULT_CATEGORIES.includes(c)).length === 0 ? (
-                                        <span className="text-[10px] text-gray-400">None added yet</span>
-                                    ) : (
-                                        categories.filter(c => !DEFAULT_CATEGORIES.includes(c)).map(c => (
-                                            <div key={c} className="flex items-center gap-1 bg-[#B4E567]/10 border border-[#B4E567]/30 rounded-full px-3 py-1 text-[10px] font-bold text-[#496b16] group">
-                                                {c}
-                                                <button type="button" onClick={() => handleDeleteCategory(c)} className="text-red-400 hover:text-red-600 ml-0.5"><X size={10}/></button>
-                                            </div>
-                                        ))
-                                    )}
-                                </div>
-                            </div>
-                            <button type="submit" className="w-full bg-[#B4E567] text-gray-900 font-bold py-3 rounded-xl hover:bg-[#a6d85a] transition-colors shadow-sm text-sm">
-                                ✅ Create Category
                             </button>
                         </form>
                     </div>

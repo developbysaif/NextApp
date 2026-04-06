@@ -106,3 +106,17 @@ export async function POST(request) {
         );
     }
 }
+
+export async function DELETE(request) {
+    try {
+        const { searchParams } = new URL(request.url);
+        const id = searchParams.get('id');
+        let products = ServerStorage.getProducts();
+        products = products.filter(p => String(p._id) !== String(id) && String(p.id) !== String(id));
+        ServerStorage.saveProducts(products);
+        
+        return NextResponse.json({ success: true, message: 'Product deleted' }, { status: 200 });
+    } catch (error) {
+        return NextResponse.json({ success: false, error: error.message }, { status: 500 });
+    }
+}

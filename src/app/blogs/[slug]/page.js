@@ -13,12 +13,44 @@ export default function BlogPostDetail({ params }) {
     useEffect(() => {
         const fetchBlog = async () => {
             try {
-                const res = await fetch('/api/blogs');
-                const result = await res.json();
-                if (result.success) {
-                    const foundBlog = result.data.find(b => b.slug === slug);
-                    setBlog(foundBlog);
+                let foundBlog = null;
+
+                // 1. Try to fetch from API
+                try {
+                    const res = await fetch('/api/blogs');
+                    const result = await res.json();
+                    if (result.success) {
+                        foundBlog = result.data.find(b => b.slug === slug);
+                    }
+                } catch (apiError) {
+                    console.error("API error, failing over to local storage", apiError);
                 }
+
+                // 2. If not found in API, check regular 'blogs' in localStorage
+                if (!foundBlog) {
+                    const localBlogs = JSON.parse(localStorage.getItem("blogs") || "[]");
+                    foundBlog = localBlogs.find(b => b.slug === slug);
+                }
+                
+                // 3. Optional: check 'blogPosts' in localStorage (for menus also shown as blogs)
+                if (!foundBlog) {
+                     const menuPosts = JSON.parse(localStorage.getItem("blogPosts") || "[]");
+                     const foundMenu = menuPosts.find(b => b.slug === slug || b.id.toString() === slug);
+                     if (foundMenu) {
+                         foundBlog = {
+                            id: foundMenu.id,
+                            slug: foundMenu.slug || foundMenu.id.toString(),
+                            title: foundMenu.title,
+                            content: foundMenu.description || '',
+                            category: (foundMenu.category || 'other').toLowerCase(),
+                            featuredImage: foundMenu.img,
+                            authorName: 'Admin',
+                            status: 'PUBLISHED',
+                        };
+                     }
+                }
+
+                setBlog(foundBlog);
             } catch (error) {
                 console.error("Error fetching blog:", error);
             } finally {

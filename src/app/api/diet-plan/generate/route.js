@@ -1,0 +1,42 @@
+import { NextResponse } from 'next/server';
+import { generateDietPlan } from '@/lib/anthropic';
+import prisma from '@/lib/prisma';
+
+export async function POST(req) {
+  try {
+    const body = await req.json();
+    const { userId, name, age, gender, weight, height, activityLevel, goal, diseases, preferences, symptoms } = body;
+
+    if (!userId) {
+      return NextResponse.json({ success: false, message: 'User ID is required' }, { status: 400 });
+    }
+
+    const planData = await generateDietPlan({ name, age, gender, weight, height, activityLevel, goal, diseases, preferences, symptoms });
+
+    // Save to DB
+    const savedPlan = await prisma.dietPlan.create({
+      data: {
+        userId: userId,
+        name: `Plan for ${name} - ${new Date().toLocaleDateString()}`,
+        dailyCalories: planData.dailyCalories,
+        protein: planData.macros.protein,
+        carbs: planData.macros.carbs,
+        fat: planData.macros.fat,
+        fiber: planData.macros.fiber,
+        bmi: planData.bmi,
+        bmiCategory: planData.bmiCategory,
+        weekPlan: planData.mealPlan,
+        organicFoods: planData.organicFoods,
+        sunnahFoods: planData.sunnahFoods,
+        herbalDrinks: planData.herbalDrinks,
+        healthNotes: planData.healthNotes,
+        isActive: true,
+      },
+    });
+
+    return NextResponse.json({ success: true, plan: savedPlan });
+  } catch (error) {
+    console.error('Diet Plan API Error:', error);
+    return NextResponse.json({ success: false, message: error.message }, { status: 500 });
+  }
+}

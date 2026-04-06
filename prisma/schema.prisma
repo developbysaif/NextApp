@@ -1,12 +1,12 @@
-// Doctor Blog & Medical Information Platform
-// Database Schema
+// IlajBilGhiza - Complete Health & Wellness Platform
+// Database Schema for PostgreSQL
 
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
@@ -15,7 +15,29 @@ datasource db {
 enum UserRole {
   ADMIN
   DOCTOR
-  PATIENT
+  USER
+}
+
+enum Gender {
+  MALE
+  FEMALE
+  OTHER
+}
+
+enum ActivityLevel {
+  SEDENTARY
+  LIGHTLY_ACTIVE
+  MODERATELY_ACTIVE
+  VERY_ACTIVE
+  EXTRA_ACTIVE
+}
+
+enum Goal {
+  WEIGHT_LOSS
+  SLIGHT_LOSS
+  MAINTENANCE
+  MUSCLE_GAIN
+  HEAVY_GAIN
 }
 
 enum ApprovalStatus {
@@ -26,310 +48,470 @@ enum ApprovalStatus {
 
 enum BlogStatus {
   DRAFT
-  PENDING
   PUBLISHED
-  REJECTED
-}
-
-enum FoodType {
-  VEGETABLE
-  FRUIT
-  FOOD
+  ARCHIVED
 }
 
 enum OrderStatus {
   PENDING
-  PROCESSING
+  CONFIRMED
   SHIPPED
   DELIVERED
   CANCELLED
 }
 
+enum AppointmentStatus {
+  PENDING
+  CONFIRMED
+  COMPLETED
+  CANCELLED
+  RESCHEDULED
+}
+
+enum MealCategory {
+  BREAKFAST
+  LUNCH
+  SNACK
+  DINNER
+  SEHRI
+  IFTAR
+}
+
+enum LogStatus {
+  COMPLETED
+  IN_PROGRESS
+  SKIPPED
+  NOT_STARTED
+}
+
+enum PaymentStatus {
+  PENDING
+  PAID
+  FAILED
+  REFUNDED
+}
+
 // ==================== MODELS ====================
 
 model User {
-  id            String    @id @default(uuid())
+  id            String    @id @default(cuid())
   email         String    @unique
-  passwordHash  String    @map("password_hash")
-  role          UserRole  @default(PATIENT)
-  fullName      String    @map("full_name") @db.VarChar(255)
-  phone         String?   @db.VarChar(20)
-  isVerified    Boolean   @default(false) @map("is_verified")
-  isActive      Boolean   @default(true) @map("is_active")
-  createdAt     DateTime  @default(now()) @map("created_at")
-  updatedAt     DateTime  @updatedAt @map("updated_at")
-  lastLogin     DateTime? @map("last_login")
+  name          String?
+  password      String
+  role          UserRole  @default(USER)
+  image         String?
+  emailVerified DateTime?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
 
+  // Profile & Health Data
+  profile       Profile?
+  
   // Relations
-  doctor              Doctor?
-  sessions            Session[]
-  createdCategories   Category[]        @relation("CategoryCreator")
-  approvedDoctors     Doctor[]          @relation("DoctorApprover")
-  approvedBlogs       Blog[]            @relation("BlogApprover")
-  approvedReviews     Review[]          @relation("ReviewApprover")
-  ratings             Rating[]
-  reviews             Review[]          @relation("UserReviews")
-  blogComments        BlogComment[]
-  createdFoodItems    FoodItem[]        @relation("FoodItemCreator")
-  orders              Order[]           @relation("UserOrders")
+  doctorProfile Doctor?
+  dietPlans     DietPlan[]
+  foodLogs      FoodLog[]
+  exerciseLogs  ExerciseLog[]
+  measurements  BodyMeasurement[]
+  progressPhotos ProgressPhoto[]
+  weightLogs    WeightLog[]
+  groceryLists  GroceryList[]
+  appointments  Appointment[] @relation("UserAppointments")
+  orders        Order[]
+  reviews       Review[]
+  comments      Comment[]
+  
+  // Messaging
+  sentMessages     Message[] @relation("SentMessages")
+  receivedMessages Message[] @relation("ReceivedMessages")
+  conversations    ConversationParticipant[]
 
   @@map("users")
 }
 
+model Profile {
+  id            String        @id @default(cuid())
+  userId        String        @unique
+  user          User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  age           Int?
+  gender        Gender?
+  weight        Float?        // in kg
+  height        Float?        // in cm
+  activityLevel ActivityLevel?
+  goal          Goal?
+  
+  // Medical
+  diseases      String[]      // Array of disease names/IDs
+  symptoms      String[]
+  preferences   String[]      // e.g. ["halal", "dairy_free"]
+  
+  // Goals
+  targetWeight  Float?
+  dailyCalorieGoal Int?
+  waterGoal     Float?        @default(2.0) // in Liters
+  stepGoal      Int?          @default(8000)
+  sleepGoal     Float?        @default(8.0) // in hours
+  
+  @@map("profiles")
+}
+
 model Doctor {
-  id                  String          @id @default(uuid())
-  userId              String          @unique @map("user_id")
-  qualification       String          @db.VarChar(500)
-  specialization      String          @db.VarChar(255)
-  registrationNumber  String          @unique @map("registration_number") @db.VarChar(100)
-  experienceYears     Int             @map("experience_years")
-  profilePicture      String?         @map("profile_picture") @db.VarChar(500)
-  clinicLogo          String?         @map("clinic_logo") @db.VarChar(500)
-  clinicName          String?         @map("clinic_name") @db.VarChar(255)
-  clinicAddress       String?         @map("clinic_address") @db.Text
-  bio                 String?         @db.Text
-  consultationFee     Decimal?        @map("consultation_fee") @db.Decimal(10, 2)
-  approvalStatus      ApprovalStatus  @default(PENDING) @map("approval_status")
-  approvedById        String?         @map("approved_by")
-  approvedAt          DateTime?       @map("approved_at")
-  rejectionReason     String?         @map("rejection_reason") @db.Text
-  createdAt           DateTime        @default(now()) @map("created_at")
-  updatedAt           DateTime        @updatedAt @map("updated_at")
-
+  id                String          @id @default(cuid())
+  userId            String          @unique
+  user              User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  specialization    String
+  qualification     String
+  experienceYears   Int
+  pmdcNumber        String          @unique
+  availableSlots    Json?           // Storing availability
+  consultationFee   Float
+  rating            Float           @default(0.0)
+  reviewCount       Int             @default(0)
+  verificationStatus ApprovalStatus @default(PENDING)
+  
+  bio               String?         @db.Text
+  clinicName        String?
+  clinicAddress     String?
+  
   // Relations
-  user                User            @relation(fields: [userId], references: [id], onDelete: Cascade)
-  approvedBy          User?           @relation("DoctorApprover", fields: [approvedById], references: [id])
-  blogs               Blog[]
-  ratings             Rating[]
-  reviews             Review[]
-  verifiedFoodItems   FoodItem[]      @relation("FoodItemVerifier")
-
-  digitalSignature    String?         @map("digital_signature") @db.VarChar(500)
-  medicalLicense      String?         @map("medical_license") @db.VarChar(500)
-
-  @@index([userId])
-  @@index([approvalStatus])
-  @@index([specialization])
+  appointments      Appointment[]
+  articles          Article[]
+  
   @@map("doctors")
 }
 
-model Category {
-  id          String    @id @default(uuid())
-  name        String    @unique @db.VarChar(100)
-  slug        String    @unique @db.VarChar(100)
-  description String?   @db.Text
-  icon        String?   @db.VarChar(255)
-  isActive    Boolean   @default(true) @map("is_active")
-  createdById String    @map("created_by")
-  createdAt   DateTime  @default(now()) @map("created_at")
-  updatedAt   DateTime  @updatedAt @map("updated_at")
-
-  // Relations
-  createdBy     User          @relation("CategoryCreator", fields: [createdById], references: [id])
-  blogs         Blog[]
-  foodBenefits  FoodBenefit[]
-
-  @@index([slug])
-  @@index([isActive])
-  @@map("categories")
+model DietPlan {
+  id              String    @id @default(cuid())
+  userId          String
+  user            User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  name            String
+  dailyCalories   Int
+  protein         Int       // in grams
+  carbs           Int
+  fat             Int
+  fiber           Int?
+  
+  bmi             Float?
+  bmiCategory     String?
+  
+  // Structured Menu
+  weekPlan        Json      // Detailed 7-day plan
+  
+  organicFoods    String[]
+  sunnahFoods     String[]
+  herbalDrinks    Json?
+  healthNotes     String?   @db.Text
+  
+  isActive        Boolean   @default(true)
+  createdAt       DateTime  @default(now())
+  
+  @@map("diet_plans")
 }
 
-model Blog {
-  id              String          @id @default(uuid())
-  doctorId        String          @map("doctor_id")
-  title           String          @db.VarChar(500)
-  slug            String          @unique @db.VarChar(500)
-  content         String          @db.LongText
-  excerpt         String?         @db.Text
-  featuredImage   String?         @map("featured_image") @db.VarChar(500)
-  categoryId      String          @map("category_id")
-  tags            Json?
-  status          BlogStatus      @default(DRAFT)
-  approvalStatus  ApprovalStatus  @default(PENDING) @map("approval_status")
-  approvedById    String?         @map("approved_by")
-  approvedAt      DateTime?       @map("approved_at")
-  rejectionReason String?         @map("rejection_reason") @db.Text
-  viewsCount      Int             @default(0) @map("views_count")
-  isFeatured      Boolean         @default(false) @map("is_featured")
-  publishedAt     DateTime?       @map("published_at")
-  metaTitle       String?         @map("meta_title") @db.VarChar(255)
-  metaDescription String?         @map("meta_description") @db.VarChar(500)
-  hasDisclaimer   Boolean         @default(true) @map("has_disclaimer")
-  createdAt       DateTime        @default(now()) @map("created_at")
-  updatedAt       DateTime        @updatedAt @map("updated_at")
-
-  // Relations
-  doctor        Doctor        @relation(fields: [doctorId], references: [id], onDelete: Cascade)
-  category      Category      @relation(fields: [categoryId], references: [id])
-  approvedBy    User?         @relation("BlogApprover", fields: [approvedById], references: [id])
-  comments      BlogComment[]
-
-  @@index([doctorId])
-  @@index([categoryId])
-  @@index([slug])
-  @@index([status])
-  @@index([approvalStatus])
-  @@index([publishedAt])
-  @@map("blogs")
-}
-
-model Rating {
-  id        String   @id @default(uuid())
-  doctorId  String   @map("doctor_id")
-  userId    String   @map("user_id")
-  rating    Int      @db.TinyInt // 1-5
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
-
-  // Relations
-  doctor Doctor @relation(fields: [doctorId], references: [id], onDelete: Cascade)
-  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@unique([doctorId, userId])
-  @@index([doctorId])
-  @@index([userId])
-  @@map("ratings")
-}
-
-model Review {
-  id           String    @id @default(uuid())
-  doctorId     String    @map("doctor_id")
-  userId       String    @map("user_id")
-  reviewText   String    @map("review_text") @db.Text
-  isApproved   Boolean   @default(false) @map("is_approved")
-  approvedById String?   @map("approved_by")
-  approvedAt   DateTime? @map("approved_at")
-  createdAt    DateTime  @default(now()) @map("created_at")
-  updatedAt    DateTime  @updatedAt @map("updated_at")
-
-  // Relations
-  doctor     Doctor @relation(fields: [doctorId], references: [id], onDelete: Cascade)
-  user       User   @relation("UserReviews", fields: [userId], references: [id], onDelete: Cascade)
-  approvedBy User?  @relation("ReviewApprover", fields: [approvedById], references: [id])
-
-  @@index([doctorId])
-  @@index([userId])
-  @@index([isApproved])
-  @@map("reviews")
-}
-
-model FoodItem {
-  id                String    @id @default(uuid())
-  name              String    @db.VarChar(255)
-  slug              String    @unique @db.VarChar(255)
-  type              FoodType
-  image             String?   @db.VarChar(500)
-  description       String?   @db.Text
-  nutritionalInfo   Json?     @map("nutritional_info")
-  createdById       String    @map("created_by")
-  verifiedByDoctorId String?  @map("verified_by_doctor")
-  isVerified        Boolean   @default(false) @map("is_verified")
-  createdAt         DateTime  @default(now()) @map("created_at")
-  updatedAt         DateTime  @updatedAt @map("updated_at")
-
-  // Relations
-  createdBy        User          @relation("FoodItemCreator", fields: [createdById], references: [id])
-  verifiedByDoctor Doctor?       @relation("FoodItemVerifier", fields: [verifiedByDoctorId], references: [id])
-  benefits         FoodBenefit[]
-
-  @@index([slug])
-  @@index([type])
-  @@index([isVerified])
-  @@map("food_items")
-}
-
-model FoodBenefit {
-  id                  String   @id @default(uuid())
-  foodItemId          String   @map("food_item_id")
-  diseaseCategoryId   String   @map("disease_category_id")
-  benefits            String   @db.Text
-  recommendedQuantity String?  @map("recommended_quantity") @db.VarChar(255)
-  warnings            String?  @db.Text
-  preparationTips     String?  @map("preparation_tips") @db.Text
-  createdAt           DateTime @default(now()) @map("created_at")
-  updatedAt           DateTime @updatedAt @map("updated_at")
-
-  // Relations
-  foodItem        FoodItem @relation(fields: [foodItemId], references: [id], onDelete: Cascade)
-  diseaseCategory Category @relation(fields: [diseaseCategoryId], references: [id])
-
-  @@index([foodItemId])
-  @@index([diseaseCategoryId])
-  @@map("food_benefits")
-}
-
-model BlogComment {
-  id              String    @id @default(uuid())
-  blogId          String    @map("blog_id")
-  userId          String    @map("user_id")
-  parentCommentId String?   @map("parent_comment_id")
-  commentText     String    @map("comment_text") @db.Text
-  isApproved      Boolean   @default(false) @map("is_approved")
-  createdAt       DateTime  @default(now()) @map("created_at")
-  updatedAt       DateTime  @updatedAt @map("updated_at")
-
-  // Relations
-  blog          Blog          @relation(fields: [blogId], references: [id], onDelete: Cascade)
+model FoodLog {
+  id            String        @id @default(cuid())
+  userId        String
   user          User          @relation(fields: [userId], references: [id], onDelete: Cascade)
-  parentComment BlogComment?  @relation("CommentReplies", fields: [parentCommentId], references: [id])
-  replies       BlogComment[] @relation("CommentReplies")
+  
+  date          DateTime      @default(now())
+  time          String?       // "07:30 AM"
+  category      MealCategory
+  foodName      String
+  amount        String?       // "1 cup", "100g"
+  calories      Int
+  protein       Int?
+  carbs         Int?
+  fat           Int?
+  
+  @@map("food_logs")
+}
 
-  @@index([blogId])
-  @@index([userId])
-  @@index([parentCommentId])
-  @@index([isApproved])
-  @@map("blog_comments")
+model Exercise {
+  id            String    @id @default(cuid())
+  name          String
+  description   String?   @db.Text
+  category      String?   // "strength", "cardio", "yoga"
+  metValue      Float?    // Metabolic Equivalent of Task for calorie calc
+  
+  @@map("exercises")
+}
+
+model ExerciseLog {
+  id            String        @id @default(cuid())
+  userId        String
+  user          User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  exerciseName  String
+  date          DateTime      @default(now())
+  sets          Int?
+  reps          String?       // Can be "12 reps" or "60 sec"
+  rest          String?       // "60 sec"
+  weight        String?       // "45 kg" or "Bodyweight"
+  caloriesBurned Int?
+  status        LogStatus     @default(NOT_STARTED)
+  
+  @@map("exercise_logs")
+}
+
+model BodyMeasurement {
+  id            String    @id @default(cuid())
+  userId        String
+  user          User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  date          DateTime  @default(now())
+  chest         Float?
+  waist         Float?
+  arm           Float?
+  hips          Float?
+  thigh         Float?
+  neck          Float?
+  
+  @@map("body_measurements")
+}
+
+model WeightLog {
+  id            String    @id @default(cuid())
+  userId        String
+  user          User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  weight        Float
+  date          DateTime  @default(now())
+  
+  @@map("weight_logs")
+}
+
+model ProgressPhoto {
+  id            String    @id @default(cuid())
+  userId        String
+  user          User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  imageUrl      String
+  date          DateTime  @default(now())
+  label         String?   // e.g. "Front View", "Side View"
+  
+  @@map("progress_photos")
+}
+
+model GroceryList {
+  id            String    @id @default(cuid())
+  userId        String
+  user          User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  name          String    @default("My Grocery List")
+  totalCost     Float     @default(0.0)
+  totalCalories Int       @default(0)
+  createdAt     DateTime  @default(now())
+  
+  items         GroceryItem[]
+  
+  @@map("grocery_lists")
+}
+
+model GroceryItem {
+  id            String        @id @default(cuid())
+  listId        String
+  list          GroceryList   @relation(fields: [listId], references: [id], onDelete: Cascade)
+  
+  name          String
+  category      String
+  quantity      String
+  calories      Int?
+  cost          Float?
+  isPurchased   Boolean       @default(false)
+  
+  @@map("grocery_items")
+}
+
+model Product {
+  id            String    @id @default(cuid())
+  nameEn        String
+  nameUr        String?
+  description   String    @db.Text
+  price         Float
+  category      String
+  stock         Int       @default(0)
+  imageUrl      String?
+  isSunnah      Boolean   @default(false)
+  benefits      String?   @db.Text
+  rating        Float     @default(0.0)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  @@map("products")
 }
 
 model Order {
-  id          String      @id @default(uuid())
-  userId      String      @map("user_id")
-  totalAmount Decimal     @map("total_amount") @db.Decimal(10, 2)
-  status      OrderStatus @default(PENDING)
-  address     String?     @db.Text
-  phone       String?     @db.VarChar(20)
-  createdAt   DateTime    @default(now()) @map("created_at")
-  updatedAt   DateTime    @updatedAt @map("updated_at")
-
-  // Relations
-  user        User        @relation("UserOrders", fields: [userId], references: [id], onDelete: Cascade)
-  items       OrderItem[]
-
-  @@index([userId])
-  @@index([status])
+  id            String        @id @default(cuid())
+  userId        String
+  user          User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  totalAmount   Float
+  status        OrderStatus   @default(PENDING)
+  paymentStatus PaymentStatus @default(PENDING)
+  paymentMethod String?       // "Stripe", "JazzCash", "EasyPaisa"
+  
+  shippingAddress String?
+  contactNumber   String?
+  
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+  
+  items         OrderItem[]
+  
   @@map("orders")
 }
 
 model OrderItem {
-  id        String   @id @default(uuid())
-  orderId   String   @map("order_id")
-  productId String   @map("product_id")
-  name      String   @db.VarChar(255)
-  image     String?  @db.VarChar(500)
-  quantity  Int
-  price     Decimal  @db.Decimal(10, 2)
-  createdAt DateTime @default(now()) @map("created_at")
-
-  // Relations
-  order Order @relation(fields: [orderId], references: [id], onDelete: Cascade)
-
-  @@index([orderId])
-  @@index([productId])
+  id            String    @id @default(cuid())
+  orderId       String
+  order         Order     @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  
+  productId     String
+  name          String
+  quantity      Int
+  price         Float
+  image         String?
+  
   @@map("order_items")
 }
 
-model Session {
-  id        String   @id @default(uuid())
-  userId    String   @map("user_id")
-  token     String   @unique @db.VarChar(500)
-  expiresAt DateTime @map("expires_at")
-  createdAt DateTime @default(now()) @map("created_at")
+model Appointment {
+  id            String            @id @default(cuid())
+  userId        String
+  user          User              @relation("UserAppointments", fields: [userId], references: [id], onDelete: Cascade)
+  
+  doctorId      String
+  doctor        Doctor            @relation(fields: [doctorId], references: [id], onDelete: Cascade)
+  
+  dateTime      DateTime
+  status        AppointmentStatus @default(PENDING)
+  notes         String?           @db.Text
+  consultationLink String?
+  
+  createdAt     DateTime          @default(now())
+  updatedAt     DateTime          @updatedAt
+  
+  @@map("appointments")
+}
 
-  // Relations
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+model Article {
+  id            String      @id @default(cuid())
+  title         String
+  slug          String      @unique
+  content       String      @db.Text
+  excerpt       String?     @db.Text
+  image         String?
+  
+  doctorId      String
+  doctor        Doctor      @relation(fields: [doctorId], references: [id], onDelete: Cascade)
+  
+  category      String
+  tags          String[]
+  status        BlogStatus  @default(DRAFT)
+  views         Int         @default(0)
+  isFeatured    Boolean     @default(false)
+  
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  
+  comments      Comment[]
+  
+  @@map("articles")
+}
 
-  @@index([userId])
-  @@index([token])
-  @@index([expiresAt])
-  @@map("sessions")
+model Disease {
+  id            String    @id @default(cuid())
+  nameEn        String
+  nameUr        String?
+  description   String?   @db.Text
+  symptoms      String[]
+  causes        String[]
+  foodsToEat    String[]
+  foodsToAvoid  String[]
+  remedies      String?   @db.Text
+  specialist    String?
+  sunnahRefs    String[]
+  
+  createdAt     DateTime  @default(now())
+  
+  @@map("diseases")
+}
+
+model Comment {
+  id            String    @id @default(cuid())
+  content       String    @db.Text
+  userId        String
+  user          User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  articleId     String?
+  article       Article?  @relation(fields: [articleId], references: [id], onDelete: Cascade)
+  
+  createdAt     DateTime  @default(now())
+  
+  @@map("comments")
+}
+
+model Review {
+  id            String    @id @default(cuid())
+  rating        Int
+  comment       String?   @db.Text
+  userId        String
+  user          User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  productId     String?
+  // Could link to Doctor or Product
+  
+  createdAt     DateTime  @default(now())
+  
+  @@map("reviews")
+}
+
+// Messaging Models
+
+model Conversation {
+  id            String    @id @default(cuid())
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  
+  participants  ConversationParticipant[]
+  messages      Message[]
+  
+  @@map("conversations")
+}
+
+model ConversationParticipant {
+  id              String        @id @default(cuid())
+  conversationId  String
+  conversation    Conversation  @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  
+  userId          String
+  user            User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@unique([conversationId, userId])
+  @@map("conversation_participants")
+}
+
+model Message {
+  id              String        @id @default(cuid())
+  conversationId  String
+  conversation    Conversation  @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  
+  senderId        String
+  sender          User          @relation("SentMessages", fields: [senderId], references: [id], onDelete: Cascade)
+  
+  receiverId      String?
+  receiver        User?          @relation("ReceivedMessages", fields: [receiverId], references: [id], onDelete: Cascade)
+  
+  content         String        @db.Text
+  type            String        @default("TEXT") // TEXT, IMAGE, FILE
+  fileUrl         String?
+  fileName        String?
+  readAt          DateTime?
+  
+  createdAt       DateTime      @default(now())
+  
+  @@map("messages")
 }

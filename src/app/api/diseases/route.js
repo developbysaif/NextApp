@@ -5,10 +5,10 @@ export const dynamic = 'force-dynamic';
 
 export async function GET(request) {
     try {
-        const doctors = ServerStorage.read('doctors.json');
-        return NextResponse.json({ success: true, data: doctors }, { status: 200 });
+        const diseases = ServerStorage.getDiseases();
+        return NextResponse.json({ success: true, data: diseases }, { status: 200 });
     } catch (error) {
-        console.error('Error fetching doctors:', error);
+        console.error('Error fetching diseases:', error);
         return NextResponse.json({ success: false, error: error.message }, { status: 500 });
     }
 }
@@ -16,20 +16,20 @@ export async function GET(request) {
 export async function POST(request) {
     try {
         const body = await request.json();
-        const doctors = ServerStorage.read('doctors.json');
+        const diseases = ServerStorage.getDiseases();
 
-        const newDoctor = {
+        const newDisease = {
             ...body,
             _id: Date.now().toString(),
             createdAt: new Date().toISOString()
         };
 
-        doctors.push(newDoctor);
-        ServerStorage.saveDoctors(doctors);
+        diseases.push(newDisease);
+        ServerStorage.saveDiseases(diseases);
 
-        return NextResponse.json({ success: true, message: 'Doctor added successfully', data: newDoctor }, { status: 201 });
+        return NextResponse.json({ success: true, message: 'Disease added successfully', data: newDisease }, { status: 201 });
     } catch (error) {
-        console.error('Error adding doctor:', error);
+        console.error('Error adding disease:', error);
         return NextResponse.json({ success: false, error: error.message }, { status: 500 });
     }
 }
@@ -38,10 +38,10 @@ export async function DELETE(request) {
     try {
         const { searchParams } = new URL(request.url);
         const id = searchParams.get('id');
-        let doctors = ServerStorage.getDoctors();
-        doctors = doctors.filter(d => d._id !== id && d.id != id);
-        ServerStorage.saveDoctors(doctors);
-        return NextResponse.json({ success: true, message: 'Doctor deleted' }, { status: 200 });
+        let diseases = ServerStorage.getDiseases();
+        diseases = diseases.filter(d => d._id !== id && d.id != id);
+        ServerStorage.saveDiseases(diseases);
+        return NextResponse.json({ success: true, message: 'Disease deleted' }, { status: 200 });
     } catch (error) {
         return NextResponse.json({ success: false, error: error.message }, { status: 500 });
     }

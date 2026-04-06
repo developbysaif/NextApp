@@ -24,7 +24,42 @@ export default function BlogSlider() {
     useEffect(() => {
         fetch('/api/blogs')
             .then(r => r.json())
-            .then(d => { if (d.success) setBlogs(d.data.filter(b => b.published !== false)); })
+            .then(d => { 
+                let fetchedBlogs = d.success ? d.data.filter(b => b.published !== false) : [];
+                
+                // Merge localStorage blogs
+                try {
+                    const localBlogs = JSON.parse(localStorage.getItem("blogs") || "[]");
+                    const validLocal = localBlogs.filter(b => b.status === "PUBLISHED" || !b.status);
+                    
+                    const menuPosts = JSON.parse(localStorage.getItem("blogPosts") || "[]");
+                    const validMenu = menuPosts.map(b => ({
+                        _id: b.id.toString(),
+                        slug: b.slug || b.id.toString(),
+                        title: b.title,
+                        description: b.description || '',
+                        category: b.category || 'Other',
+                        image: b.img,
+                        published: true
+                    }));
+
+                    // Combine and deduplicate by slug
+                    const allBlogs = [...validLocal, ...validMenu, ...fetchedBlogs];
+                    const uniqueBlogs = [];
+                    const slugs = new Set();
+                    for (const b of allBlogs) {
+                        if (!slugs.has(b.slug)) {
+                            slugs.add(b.slug);
+                            uniqueBlogs.push(b);
+                        }
+                    }
+
+                    setBlogs(uniqueBlogs);
+                } catch (e) {
+                    console.error("Error merging locally stored blogs:", e);
+                    setBlogs(fetchedBlogs);
+                }
+            })
             .catch(console.error)
             .finally(() => setLoading(false));
     }, []);

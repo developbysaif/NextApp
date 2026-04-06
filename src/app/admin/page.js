@@ -1,421 +1,487 @@
 "use client"
 
 import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
-import {
-    ShoppingBag,
-    Users,
-    DollarSign,
-    TrendingUp,
-    TrendingDown,
-    ArrowUpRight,
-    Package,
-    Calendar,
-    MoreHorizontal,
-    Globe,
-    MousePointer2,
-    ChevronDown
+import { 
+    Search, Bell, Plus, ChevronLeft, ChevronRight, Activity, TrendingUp, Users, DollarSign, ChevronUp, BellRing
 } from 'lucide-react';
-import {
-    AreaChart,
-    Area,
-    XAxis,
-    YAxis,
-    CartesianGrid,
-    Tooltip,
-    ResponsiveContainer,
-    PieChart,
-    Pie,
-    Cell
-} from 'recharts';
+import { AreaChart, Area, XAxis, YAxis, CartesianGrid, ResponsiveContainer } from 'recharts';
 
 export default function AdminDashboardPage() {
-    const [stats, setStats] = useState({
-        totalRevenue: 52,
-        totalOrders: 4,
-        totalVisitors: 237782,
-        recentActivity: [
-            { id: '1', orderId: 'ORD-7HF', user: { name: 'GUEST USER' }, totalAmount: 21.00, status: 'PENDING' },
-            { id: '2', orderId: 'ORD-2KH', user: { name: 'GUEST USER' }, totalAmount: 18.00, status: 'PENDING' },
-            { id: '3', orderId: 'ORD-9XY', user: { name: 'GUEST USER' }, totalAmount: 5.00, status: 'PENDING' },
-            { id: '4', orderId: 'ORD-3PO', user: { name: 'GUEST USER' }, totalAmount: 7.00, status: 'PENDING' },
-        ]
-    });
-    const [loading, setLoading] = useState(false);
+    const [currentUser, setCurrentUser] = useState(null);
+    const [activeStats, setActiveStats] = useState({ users: 8452, consults: 156, revenue: "5.2k" });
 
-    // Hardcoded stats based on the exact image to ensure pixel-perfect reproduction
-    const revenueData = [
-        { name: '12 Aug', revenue: 4500, orders: 3200 },
-        { name: '13 Aug', revenue: 5200, orders: 3800 },
-        { name: '14 Aug', revenue: 4800, orders: 4100 },
-        { name: '16 Aug', revenue: 6100, orders: 4800 },
-        { name: '17 Aug', revenue: 13500, orders: 8500 },
-        { name: '18 Aug', revenue: 8200, orders: 5200 },
-        { name: '19 Aug', revenue: 9400, orders: 6100 },
-        { name: '19 Aug', revenue: 8300, orders: 5800 },
-    ];
+    useEffect(() => {
+        const user = JSON.parse(localStorage.getItem("currentUser") || "null");
+        if (user) setCurrentUser(user);
 
-    const categoryData = [
-        { name: 'Organic Seeds', value: 40, color: '#1A5A3B', amount: 20.8 },
-        { name: 'Herbal Oils', value: 25, color: '#6A7147', amount: 13 },
-        { name: 'Health Supplements', value: 20, color: '#975E38', amount: 10.4 },
-        { name: 'Beauty Care', value: 15, color: '#323E37', amount: 7.5 },
-    ];
+        // Load dynamic system interactions
+        const users = JSON.parse(localStorage.getItem("users") || "[]");
+        const events = JSON.parse(localStorage.getItem("myCalendarEvents") || "[]");
+        
+        let appointmentsAmt = events.filter(e => e.type === 'appointment').length;
+        
+        setActiveStats({
+            users: users.length > 5 ? users.length : 8452,
+            consults: appointmentsAmt > 0 ? appointmentsAmt : 156,
+            revenue: ((Math.random() * 5) + 3).toFixed(1) + 'k'
+        });
+    }, []);
 
-    const activeUsersByCountry = [
-        { country: 'United States', percentage: 36, color: 'bg-[#183220]' },
-        { country: 'United Kingdom', percentage: 24, color: 'bg-[#183220]' },
-        { country: 'Indonesia', percentage: 17.5, color: 'bg-[#183220]' },
-        { country: 'Russia', percentage: 15, color: 'bg-[#183220]' },
-    ];
-
+    // Simulated simple data for the activity charts/lines to mimic the image
+    const barHeights = [20, 60, 40, 80, 50, 90, 70, 30];
+    
     return (
-        <div className="relative font-sans text-[#203626] pb-20">
-            {/* Dark Green Background Header Block */}
-            <div className="absolute top-0 left-[-40px] right-[-40px] h-[260px] bg-[#122A1A] z-0 px-10"></div>
-
-            <div className="relative z-10 pt-4 space-y-8">
-                {/* Header */}
-                <div className="flex items-center justify-between mb-8">
-                    <h1 className="text-[28px] font-bold tracking-tight text-white">Dashboard</h1>
-                    <button className="flex items-center gap-2 px-4 py-2 bg-[#E1E1DA] rounded-lg text-xs font-bold text-[#455A4B] transition-all shadow-sm">
-                        <Calendar size={14} />
-                        Filter Date
-                    </button>
-                </div>
-
-                {/* Summary Cards */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    {/* Card 1 */}
-                    <div className="bg-[#EAE5D9] p-3 rounded-[32px] shadow-lg border border-[#A5C3A5]/20">
-                        <div className="bg-white rounded-[24px] p-6 h-full flex flex-col justify-between border-b-2 border-r-2 border-[#D1D9CA]/50 shadow-inner">
-                            <div className="flex justify-between items-start">
-                                <div>
-                                    <p className="text-[13px] font-semibold text-[#546458] mb-1">Total Sales</p>
-                                    <h3 className="text-[34px] font-bold text-[#142A1D] tracking-tight leading-none">${stats.totalRevenue}</h3>
-                                </div>
-                                <div className="p-3 bg-[#E9E4DB] rounded-2xl border border-white shadow-sm flex items-center justify-center">
-                                    <DollarSign size={20} className="text-[#6C8472]" />
-                                </div>
-                            </div>
-                            <div className="flex items-center gap-2 mt-6">
-                                <span className="flex items-center gap-1 text-[11px] font-bold text-[#3B925D]">
-                                    <TrendingUp size={14} strokeWidth={2.5} />
-                                    +3.34%
-                                </span>
-                                <span className="text-[9px] font-bold text-[#8D9F91] uppercase tracking-widest">vs last week</span>
-                                <div className="flex-1"></div>
-                                {/* Mini sparkline approx svg */}
-                                <svg width="40" height="20" viewBox="0 0 40 20" fill="none" className="ml-auto">
-                                    <path d="M0 15C5 15 8 10 15 12C20 14 25 5 30 5C35 5 38 0 40 0" stroke="#3B925D" strokeWidth="2" strokeLinecap="round" />
-                                </svg>
-                            </div>
-                        </div>
+        <div className="font-sans text-gray-800 bg-[#FDFBF7] min-h-screen flex flex-col lg:flex-row pb-10">
+            
+            {/* Center Content (Takes up majority width) */}
+            <div className="flex-1 px-8 pt-8 flex flex-col gap-6 w-full lg:w-3/4">
+                
+                {/* Header Row */}
+                <div className="flex items-center justify-between">
+                    <div>
+                        <h1 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
+                            Hello, {currentUser?.name?.split(' ')[0] || 'Adam'}! <span className="text-xl">👋</span>
+                        </h1>
+                        <p className="text-sm text-gray-500 font-medium">Let's begin our journey to better health today</p>
                     </div>
-
-                    {/* Card 2 */}
-                    <div className="bg-[#EAE5D9] p-3 rounded-[32px] shadow-lg border border-[#A5C3A5]/20">
-                        <div className="bg-white rounded-[24px] p-6 h-full flex flex-col justify-between border-b-2 border-r-2 border-[#D1D9CA]/50 shadow-inner">
-                            <div className="flex justify-between items-start">
-                                <div>
-                                    <p className="text-[13px] font-semibold text-[#546458] mb-1">Total Orders</p>
-                                    <h3 className="text-[34px] font-bold text-[#142A1D] tracking-tight leading-none">{stats.totalOrders}</h3>
-                                </div>
-                                <div className="p-3 bg-[#E9E4DB] rounded-2xl border border-white shadow-sm flex items-center justify-center">
-                                    <ShoppingBag size={20} className="text-[#6C8472]" />
-                                </div>
-                            </div>
-                            <div className="flex items-center gap-2 mt-6">
-                                <span className="flex items-center gap-1 text-[11px] font-bold text-[#C16A54]">
-                                    <TrendingDown size={14} strokeWidth={2.5} />
-                                    -2.88%
-                                </span>
-                                <span className="text-[9px] font-bold text-[#8D9F91] uppercase tracking-widest">vs last week</span>
-                                <div className="flex-1"></div>
-                                <svg width="40" height="20" viewBox="0 0 40 20" fill="none" className="ml-auto">
-                                    <path d="M0 5C5 5 8 10 15 8C20 6 25 15 30 15C35 15 38 20 40 20" stroke="#C16A54" strokeWidth="2" strokeLinecap="round" />
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Card 3 */}
-                    <div className="bg-[#EAE5D9] p-3 rounded-[32px] shadow-lg border border-[#A5C3A5]/20">
-                        <div className="bg-white rounded-[24px] p-6 h-full flex flex-col justify-between border-b-2 border-r-2 border-[#D1D9CA]/50 shadow-inner">
-                            <div className="flex justify-between items-start">
-                                <div>
-                                    <p className="text-[13px] font-semibold text-[#546458] mb-1">Total Visitors</p>
-                                    <h3 className="text-[34px] font-bold text-[#142A1D] tracking-tight leading-none">{stats.totalVisitors.toLocaleString()}</h3>
-                                </div>
-                                <div className="p-3 bg-[#E9E4DB] rounded-2xl border border-white shadow-sm flex items-center justify-center">
-                                    <Users size={20} className="text-[#6C8472]" />
-                                </div>
-                            </div>
-                            <div className="flex items-center gap-2 mt-6">
-                                <span className="flex items-center gap-1 text-[11px] font-bold text-[#3B925D]">
-                                    <TrendingUp size={14} strokeWidth={2.5} />
-                                    +8.02%
-                                </span>
-                                <span className="text-[9px] font-bold text-[#8D9F91] uppercase tracking-widest">vs last week</span>
-                                <div className="flex-1"></div>
-                                <svg width="40" height="20" viewBox="0 0 40 20" fill="none" className="ml-auto">
-                                    <path d="M0 18C5 18 8 15 15 17C20 19 25 10 30 10C35 10 38 2 40 0" stroke="#3B925D" strokeWidth="2" strokeLinecap="round" />
-                                </svg>
-                            </div>
-                        </div>
+                    
+                    <div className="relative w-[300px] hidden md:block">
+                        <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+                        <input 
+                            type="text" 
+                            placeholder="Search anything" 
+                            className="w-full bg-white rounded-[1rem] py-3 pl-11 pr-4 text-sm font-medium focus:outline-none focus:ring-1 border border-transparent shadow-sm text-gray-700"
+                        />
                     </div>
                 </div>
 
-                {/* Main Content Grid Below Header */}
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-10">
-
-                    {/* Left Column (8 units) */}
-                    <div className="lg:col-span-8 space-y-6">
-
-                        {/* Revenue Analytics Chart */}
-                        <div className="bg-[#EFECE0] p-8 rounded-[40px] shadow-sm flex flex-col border border-white">
-                            <div className="flex items-center justify-between mb-8">
-                                <div>
-                                    <h3 className="text-[17px] font-bold font-sans text-[#1F3325]">Revenue Analytics</h3>
-                                    <div className="flex items-center gap-3 mt-3">
-                                        <div className="flex items-center gap-2 text-[9px] font-bold uppercase tracking-widest text-[#1A5A3B]">
-                                            <span className="w-8 h-1 bg-[#1A5A3B] rounded-full"></span> REVENUE
-                                        </div>
-                                        <div className="flex items-center gap-2 text-[9px] font-bold uppercase tracking-widest text-[#8D9F91]">
-                                            <span className="w-8 h-1 border-t-2 border-dashed border-[#8D9F91]"></span> ORDERS
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="bg-[#B7CCA6]/50 flex items-center gap-2 px-4 py-2 rounded-full cursor-pointer shadow-inner">
-                                    <span className="text-[10px] font-bold uppercase tracking-widest text-[#1F3325]">Last 5 Days</span>
-                                    <ChevronDown size={14} className="text-[#1F3325]" />
-                                </div>
-                            </div>
-
-                            <div className="h-[240px] w-full">
-                                <ResponsiveContainer width="100%" height="100%">
-                                    <AreaChart data={revenueData} margin={{ top: 10, right: 0, left: -20, bottom: 0 }}>
-                                        <defs>
-                                            <linearGradient id="colorRevenue" x1="0" y1="0" x2="0" y2="1">
-                                                <stop offset="5%" stopColor="#1A5A3B" stopOpacity={0.2} />
-                                                <stop offset="95%" stopColor="#1A5A3B" stopOpacity={0} />
-                                            </linearGradient>
-                                        </defs>
-                                        <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#D1D9CA" />
-                                        <XAxis
-                                            dataKey="name"
-                                            axisLine={false}
-                                            tickLine={false}
-                                            tick={{ fontSize: 9, fontWeight: 700, fill: '#8D9F91' }}
-                                            dy={10}
-                                        />
-                                        <YAxis
-                                            axisLine={false}
-                                            tickLine={false}
-                                            tick={{ fontSize: 9, fontWeight: 700, fill: '#8D9F91' }}
-                                            tickFormatter={(value) => `$${value / 1000}k`}
-                                            dx={-10}
-                                        />
-                                        <Tooltip />
-                                        <Area type="monotone" dataKey="revenue" stroke="#1A5A3B" strokeWidth={3} fillOpacity={1} fill="url(#colorRevenue)" />
-                                        <Area type="monotone" dataKey="orders" stroke="#546458" strokeWidth={2} strokeDasharray="5 5" fill="none" />
-                                    </AreaChart>
-                                </ResponsiveContainer>
+                {/* 4 Top Cards */}
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-2">
+                    {/* Card 1: Revenue (Like Weight) */}
+                    <div className="bg-white p-5 rounded-[1.5rem] flex flex-col justify-between relative shadow-sm border border-gray-50">
+                        <div className="flex justify-between items-start mb-4">
+                            <span className="text-sm font-bold text-gray-900">Revenue</span>
+                            <div className="w-6 h-6 border bg-[#B4E567]/20 border-gray-100/50 rounded-md flex items-center justify-center text-[#B4E567]">
+                                <DollarSign size={14} strokeWidth={2.5} />
                             </div>
                         </div>
-
-                        {/* Conversion Rate Bottom Area */}
-                        <div className="bg-[#EFECE0] p-8 rounded-[40px] shadow-sm flex flex-col border border-white">
-                            <div className="flex items-center justify-between mb-10">
-                                <h3 className="text-[17px] font-bold font-sans text-[#1F3325]">Conversion Rate</h3>
-                                <div className="bg-[#B7CCA6]/50 flex items-center gap-2 px-4 py-2 rounded-full cursor-pointer shadow-inner shadow-black/5">
-                                    <span className="text-[10px] font-bold uppercase tracking-widest text-[#1F3325]">This Week</span>
-                                    <ChevronDown size={14} className="text-[#1F3325]" />
+                        <div className="flex flex-col items-center">
+                            <span className="text-xl font-bold text-gray-900">${activeStats.revenue}</span>
+                            {/* Visual slider track */}
+                            <div className="w-full relative h-10 mt-3 pt-5">
+                                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full border-[3px] border-[#215b33] bg-white z-10"></div>
+                                <div className="absolute top-2 left-1/2 -translate-x-1/2 w-0.5 h-6 bg-[#215b33]"></div>
+                                <div className="flex justify-between w-full border-t border-gray-100 pt-1 relative">
+                                    {[1,2,3,4,5,6,7].map(i => <div key={i} className={`w-0.5 h-1.5 ${i===4 ? 'bg-[#215b33]' : 'bg-gray-200'}`}></div>)}
                                 </div>
                             </div>
+                        </div>
+                    </div>
 
-                            <div className="h-[180px] flex items-end justify-between px-6 gap-6 relative">
-                                {/* Horizontal grid line approximation */}
-                                <div className="absolute top-[85%] left-0 right-0 h-px bg-[#D1D9CA] z-0"></div>
+                    {/* Card 2: Users (Like Steps) */}
+                    <div className="bg-white p-5 rounded-[1.5rem] flex flex-col justify-between relative shadow-sm border border-gray-50">
+                        <div className="flex justify-between items-start mb-4">
+                            <span className="text-sm font-bold text-gray-900">Users</span>
+                            <div className="w-6 h-6 border bg-[#B4E567]/20 border-gray-100/50 rounded-md flex items-center justify-center text-[#B4E567]">
+                                <Users size={14} strokeWidth={2.5} />
+                            </div>
+                        </div>
+                        <div>
+                            <span className="text-xl font-bold text-gray-900">{activeStats.users} <span className="text-[10px] text-gray-400 font-medium">active</span></span>
+                            <div className="mt-4 flex h-3 gap-1 w-full">
+                                <div className="h-full bg-[#215b33] rounded-l-full w-[76%]"></div>
+                                <div className="h-full bg-[#FFD166] rounded-r-full flex-1 border-r-2 border-dashed border-white"></div>
+                            </div>
+                            <div className="flex justify-between mt-2 text-[10px] font-bold text-gray-400">
+                                <span>76%</span>
+                                <span>Target reached</span>
+                            </div>
+                        </div>
+                    </div>
 
-                                {[
-                                    { val: 70, h: '85%' },
-                                    { val: 49, h: '60%' },
-                                    { val: 30, h: '40%' },
-                                    { val: 20, h: '30%' },
-                                    { val: 10, h: '20%' }
-                                ].map((bar, i) => (
-                                    <div key={i} className="flex flex-col items-center gap-3 relative z-10 w-full">
-                                        <div
-                                            className="w-full rounded-[10px] shadow-[inset_-2px_-5px_10px_rgba(0,0,0,0.3)] bg-gradient-to-t from-[#B05B1E] via-[#DFA170] to-[#E3A877] relative"
-                                            style={{ height: bar.h }}
-                                        >
-                                            <div className="absolute bottom-[-15px] left-1/2 -translate-x-1/2 shadow-[0_10px_15px_rgba(176,91,30,0.5)] w-3/4 h-[5px] rounded-[50%] blur-[4px]"></div>
-                                        </div>
-                                        <span className="text-[11px] font-bold text-[#1F3325] mt-1">{bar.val}%</span>
+                    {/* Card 3: Consults (Like Sleep) */}
+                    <div className="bg-white p-5 rounded-[1.5rem] flex flex-col justify-between relative shadow-sm border border-gray-50">
+                        <div className="flex justify-between items-start mb-4">
+                            <span className="text-sm font-bold text-gray-900">Consults</span>
+                            <div className="w-6 h-6 border bg-[#B4E567]/20 border-gray-100/50 rounded-md flex items-center justify-center text-[#B4E567]">
+                                <Activity size={14} strokeWidth={2.5} />
+                            </div>
+                        </div>
+                        <div>
+                            <span className="text-xl font-bold text-gray-900">{activeStats.consults} <span className="text-[10px] text-gray-400 font-medium">total</span></span>
+                            <div className="flex items-end justify-between h-8 mt-2 w-full gap-1">
+                                {barHeights.map((h, i) => (
+                                    <div key={i} className={`w-1.5 rounded-full ${h > 60 ? 'bg-[#FFD166]' : 'bg-[#FFD166]/40'}`} style={{ height: '100%' }}>
+                                        <div className="w-full rounded-full bg-[#FFD166]" style={{ height: `${h}%` }}></div>
                                     </div>
                                 ))}
                             </div>
                         </div>
-
                     </div>
 
-                    {/* Right Column (4 units) */}
-                    <div className="lg:col-span-4 space-y-6">
-
-                        {/* Top Categories Card */}
-                        <div className="bg-[#EFECE0] p-8 rounded-[40px] shadow-sm flex flex-col border border-white h-auto relative">
-                            <div className="flex justify-between items-center mb-6">
-                                <h3 className="text-[17px] font-bold text-[#1F3325]">Top Categories</h3>
-                                <span className="text-[9px] font-bold uppercase tracking-widest text-[#3B925D] hover:underline cursor-pointer">SEE ALL</span>
-                            </div>
-
-                            <div className="relative w-full h-[220px] flex items-center justify-center -mt-2 mb-4">
-                                <ResponsiveContainer width="100%" height="100%">
-                                    <PieChart>
-                                        <Pie
-                                            data={categoryData}
-                                            cx="50%"
-                                            cy="50%"
-                                            innerRadius={65}
-                                            outerRadius={95}
-                                            paddingAngle={4}
-                                            dataKey="value"
-                                            stroke="none"
-                                        >
-                                            {categoryData.map((entry, index) => (
-                                                <Cell key={`cell-${index}`} fill={entry.color} />
-                                            ))}
-                                        </Pie>
-                                    </PieChart>
-                                </ResponsiveContainer>
-                                <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-                                    {/* The inner shadow effect of pie chart ring */}
-                                    <div className="w-[130px] h-[130px] rounded-full shadow-[inset_0_4px_10px_rgba(0,0,0,0.15)] flex flex-col items-center justify-center">
-                                        <p className="text-[9px] font-bold text-[#546458] uppercase tracking-widest leading-none mb-1">Total Sales</p>
-                                        <h4 className="text-[26px] font-bold font-sans text-[#142A1D] leading-none">${stats.totalRevenue}</h4>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="space-y-4">
-                                {categoryData.map((item) => (
-                                    <div key={item.name} className="flex items-center justify-between">
-                                        <div className="flex items-center gap-3">
-                                            <div className="w-[10px] h-[10px] rounded-full shadow-sm" style={{ backgroundColor: item.color }}></div>
-                                            <span className="text-[12px] font-semibold text-[#546458]">{item.name}</span>
-                                        </div>
-                                        <span className="text-[12px] font-bold text-[#142A1D]">${item.amount.toFixed(1)}</span>
-                                    </div>
-                                ))}
+                    {/* Card 4: Uptime (Like Water) */}
+                    <div className="bg-white p-5 rounded-[1.5rem] flex flex-col justify-between relative shadow-sm border border-gray-50">
+                        <div className="flex justify-between items-start mb-4">
+                            <span className="text-sm font-bold text-gray-900">Uptime</span>
+                            <div className="w-6 h-6 border bg-[#B4E567]/20 border-gray-100/50 rounded-md flex items-center justify-center text-[#B4E567]">
+                                <TrendingUp size={14} strokeWidth={2.5} />
                             </div>
                         </div>
-
-                        {/* Active User / Map Card */}
-                        <div className="bg-[#EFECE0] p-8 rounded-[40px] shadow-sm flex flex-col border border-white">
-                            <div className="flex justify-between items-start mb-6">
-                                <div>
-                                    <h3 className="text-[17px] font-bold text-[#1F3325] leading-tight mb-1">Active User</h3>
-                                    <p className="text-[11px] font-bold text-[#546458]">3,758 Users</p>
-                                </div>
-                                <div className="flex items-center gap-1.5 bg-[#E4EFE3] px-3 py-1.5 rounded-full mt-1 border border-[#3B925D]/20 shadow-inner">
-                                    <div className="w-1.5 h-1.5 bg-[#3B925D] rounded-full animate-pulse"></div>
-                                    <span className="text-[12px] font-bold text-[#1F3325]">Live</span>
-                                </div>
-                            </div>
-
-                            {/* Faded World Map Background */}
-                            <div className="relative pt-6 pb-6">
-                                <div className="absolute inset-0 opacity-10 flex items-center justify-center pointer-events-none grayscale"
-                                    style={{
-                                        backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 500'%3E%3Cpath fill='%23183220' d='M250,150 L260,160 L240,170 Z M700,100 L710,120 L680,110 Z M500,200 L550,210 L520,240 Z M800,300 L850,280 L820,320 Z'/%3E%3C/svg%3E")`,
-                                        backgroundSize: 'contain',
-                                        backgroundRepeat: 'no-repeat',
-                                        backgroundPosition: 'center',
-                                    }}
-                                >
-                                    {/* Placeholder simple mapped dots for the visual to mimic world map */}
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg" className="w-full opacity-60 grayscale filter" alt="" />
-                                </div>
-
-                                <div className="relative z-10 space-y-5">
-                                    {activeUsersByCountry.map((item) => (
-                                        <div key={item.country} className="space-y-1.5">
-                                            <div className="flex justify-between items-center px-1">
-                                                <span className="text-[11px] font-bold text-[#1F3325]">{item.country}</span>
-                                                <span className="text-[11px] font-black text-[#1F3325]">{item.percentage}%</span>
-                                            </div>
-                                            <div className="h-[6px] w-full bg-[#D1D9CA] rounded-full overflow-hidden shadow-inner flex">
-                                                <div className={`h-full ${item.color} rounded-full`} style={{ width: `${item.percentage}%` }}></div>
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-
-                            <div className="flex justify-between items-end mt-4 pt-2">
-                                <div className="flex gap-1.5 items-center">
-                                    <TrendingUp size={12} strokeWidth={3} className="text-[#3B925D]" />
-                                    <span className="text-[10px] font-black tracking-widest text-[#3B925D]">+8.02%</span>
-                                </div>
-                                <span className="text-[8px] font-bold text-[#8D9F91] uppercase tracking-[0.1em]">FROM LAST MONTH</span>
+                        <div>
+                            <span className="text-xl font-bold text-gray-900">99.8%</span>
+                            <div className="w-full h-8 bg-[#FFD166] rounded-md mt-2 relative overflow-hidden flex items-center px-3">
+                                <span className="text-[10px] font-bold text-gray-800 z-10">Optimal</span>
+                                {/* wave effect fake */}
+                                <div className="absolute top-1 right-0 bottom-0 w-8 bg-[#215b33]"></div>
                             </div>
                         </div>
-
                     </div>
                 </div>
 
-                {/* Black Box Area exactly like mockup floating over right edge overlapping? No, it looks like a card on the bottom right. */}
-                <div className="absolute right-0 bottom-0 lg:bottom-10 lg:w-[360px] w-full flex justify-end z-20">
-                    <div className="bg-[#202220] p-6 lg:rounded-l-[40px] lg:rounded-br-[40px] rounded-t-[40px] w-full max-w-[400px] border border-[#2A312C] shadow-2xl relative overflow-hidden">
-                        {/* Top-right subtle glow */}
-                        <div className="absolute top-0 right-0 w-32 h-32 bg-green-900/40 blur-[40px] rounded-full pointer-events-none"></div>
+                {/* Middle Charts */}
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-4 mt-2">
+                    
+                    {/* Gauge Half Donut (Like Weight Data) */}
+                    <div className="bg-white p-6 rounded-[2rem] md:col-span-4 shadow-sm border border-gray-50 flex flex-col relative text-center items-center">
+                         <div className="w-full flex justify-between items-center mb-6">
+                            <span className="text-sm font-bold text-gray-900">Growth Data</span>
+                            <span className="text-gray-400">...</span>
+                        </div>
+                        
+                        {/* Half Donut Native Implementation */}
+                        <div className="w-48 h-24 overflow-hidden relative mb-2">
+                             <div className="w-48 h-48 rounded-full border-[18px] border-gray-100 absolute top-0 left-0"></div>
+                             <div 
+                                className="w-48 h-48 rounded-full border-[18px] border-[#215b33] absolute top-0 left-0 border-b-transparent border-l-transparent -rotate-45"
+                             ></div>
+                             {/* Indicator dot */}
+                             <div className="absolute top-4 right-10 w-4 h-4 bg-white border-[4px] border-[#B4E567] rounded-full shadow-md z-10"></div>
+                             <div className="absolute bottom-1 w-full text-center flex flex-col items-center">
+                                 <h2 className="text-3xl font-black text-gray-900 tracking-tight leading-none">78%</h2>
+                                 <p className="text-[10px] text-gray-400 font-bold uppercase mt-1">Goal Reached</p>
+                             </div>
+                        </div>
+                        <div className="flex justify-between w-full max-w-[190px] px-2 text-[10px] text-gray-400 font-bold mt-1">
+                            <span>0</span>
+                            <span>100</span>
+                        </div>
+                        
+                        <p className="text-[10px] text-gray-400 font-medium mt-6 max-w-[200px] leading-relaxed">
+                            Progress is progress, no matter how slow. Keep building, you're getting closer to your goal every day! 🎯
+                        </p>
+                    </div>
 
-                        <div className="relative z-10">
-                            <div className="flex items-center justify-between mb-8 opacity-80 pl-2">
-                                <h3 className="text-[11px] font-bold text-[#A5C3A5] uppercase tracking-widest flex items-center gap-1">
-                                    RECENT ACTIVITY
-                                </h3>
-                                <ArrowUpRight size={16} className="text-[#A5C3A5]" />
+                    {/* Full Donut (Like Calories Intake) */}
+                    <div className="bg-white p-6 rounded-[2rem] md:col-span-8 shadow-sm border border-gray-50 flex flex-col relative">
+                        <div className="w-full flex justify-between items-center mb-4">
+                            <span className="text-sm font-bold text-gray-900">Ecosystem Traffic</span>
+                            <span className="text-gray-400">...</span>
+                        </div>
+
+                        <div className="flex flex-col md:flex-row items-center justify-around h-full gap-6">
+                            
+                            {/* Circular graphic */}
+                            <div className="relative w-40 h-40 flex items-center justify-center">
+                                <div className="absolute inset-0 rounded-full border-[12px] border-gray-100"></div>
+                                {/* Primary Orange */}
+                                <svg viewBox="0 0 36 36" className="absolute inset-0 w-full h-full -rotate-90">
+                                    <path className="text-[#215b33]" strokeDasharray="65 100" stroke="currentColor" strokeWidth="3" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                    {/* Small Green piece */}
+                                    <path className="text-[#B4E567]" strokeDasharray="15 100" strokeDashoffset="-65" stroke="currentColor" strokeWidth="3" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                </svg>
+                                <div className="flex flex-col items-center justify-center">
+                                    <h3 className="text-2xl font-black text-gray-900 leading-none tracking-tight">1240</h3>
+                                    <span className="text-[10px] text-gray-400 font-medium">Daily visits</span>
+                                </div>
                             </div>
 
-                            <div className="space-y-3">
-                                {stats.recentActivity.map((order, i) => (
-                                    <div key={i} className="bg-[#292D2A] p-4 rounded-[20px] flex items-center justify-between border border-white/5 shadow-md">
-                                        <div className="flex items-center gap-4">
-                                            <div className="w-[38px] h-[38px] bg-[#222523] rounded-2xl flex items-center justify-center border border-white/5 shadow-inner">
-                                                <ShoppingBag size={16} className="text-[#3B925D]" />
-                                            </div>
-                                            <div>
-                                                <p className="text-[11px] font-bold text-[#D1D9CA] uppercase tracking-wider mb-0.5">
-                                                    ORDER {order.orderId}
-                                                </p>
-                                                <p className="text-[9px] font-semibold text-[#8D9F91] uppercase tracking-[0.1em]">
-                                                    {order.user.name}
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div className="text-right flex flex-col items-end">
-                                            <p className="text-[12px] font-bold text-white mb-0.5">${order.totalAmount.toFixed(2)}</p>
-                                            <span className="text-[8px] font-bold text-[#E18D5E] uppercase tracking-widest">{order.status}</span>
-                                        </div>
+                            {/* Stats block */}
+                            <div className="flex-1 w-full max-w-xs space-y-5">
+                                <div className="flex items-center gap-6 pb-4 border-b border-gray-50">
+                                    <div className="flex gap-2 items-center">
+                                         <div className="w-6 h-6 rounded-md bg-[#B4E567]/20 flex items-center justify-center text-[#B4E567] font-bold text-xs">P</div>
+                                         <div className="flex flex-col leading-tight">
+                                            <span className="text-xs font-black text-gray-900 tracking-tight">1750 <span className="text-[9px] text-gray-400 font-medium">users</span></span>
+                                            <span className="text-[9px] text-gray-400 font-medium">Desktop</span>
+                                         </div>
                                     </div>
-                                ))}
-                            </div>
+                                    <div className="flex gap-2 items-center">
+                                         <div className="w-6 h-6 rounded-md bg-gray-100 flex items-center justify-center text-gray-500 font-bold text-xs">M</div>
+                                         <div className="flex flex-col leading-tight">
+                                            <span className="text-xs font-black text-gray-900 tracking-tight">510 <span className="text-[9px] text-gray-400 font-medium">users</span></span>
+                                            <span className="text-[9px] text-gray-400 font-medium">Mobile</span>
+                                         </div>
+                                    </div>
+                                </div>
+                                <div className="space-y-4">
+                                     <div className="flex items-center justify-between text-[11px] font-bold">
+                                         <span className="text-gray-900 w-8">120</span>
+                                         <span className="text-gray-400 flex-1 ml-2">Web App</span>
+                                         <span className="text-gray-900">37%</span>
+                                     </div>
+                                     <div className="h-1.5 w-full bg-gray-100 rounded-full overflow-hidden"><div className="h-full bg-gray-300 w-[37%]"></div></div>
+                                     
+                                     <div className="flex items-center justify-between text-[11px] font-bold">
+                                         <span className="text-gray-900 w-8">70</span>
+                                         <span className="text-gray-400 flex-1 ml-2">Patient App</span>
+                                         <span className="text-gray-900">93%</span>
+                                     </div>
+                                     <div className="h-1.5 w-full bg-gray-100 rounded-full overflow-hidden"><div className="h-full bg-[#B4E567] w-[93%]"></div></div>
 
-                            <div className="mt-6">
-                                <button className="w-full bg-transparent border border-white/10 text-[#8D9F91] hover:text-white py-4 rounded-[20px] text-[9px] font-bold uppercase tracking-[0.15em] transition-colors flex items-center justify-center gap-2">
-                                    VIEW FULL AUDIT LOG
-                                    <div className="w-4 h-4 rounded-full bg-white/20 blur-sm"></div>
-                                </button>
-                                {/* Star overlay graphic on the button */}
-                                <div className="absolute bottom-4 right-10 pointer-events-none rotate-45 transform scale-150">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                        <path d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2Z" fill="#8D9F91" className="opacity-20" />
-                                    </svg>
+                                     <div className="flex items-center justify-between text-[11px] font-bold">
+                                         <span className="text-gray-900 w-8">20</span>
+                                         <span className="text-gray-400 flex-1 ml-2">API</span>
+                                         <span className="text-gray-900">45%</span>
+                                     </div>
+                                     <div className="h-1.5 w-full bg-gray-100 rounded-full overflow-hidden"><div className="h-full bg-[#B4E567] w-[45%]"></div></div>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+
+                {/* Action Progress Bars */}
+                <div className="mt-4">
+                    <div className="flex justify-between items-center mb-4">
+                        <span className="text-sm font-bold text-gray-900">System Tasks</span>
+                        <select className="text-[10px] text-gray-400 bg-transparent border-none font-bold outline-none cursor-pointer">
+                            <option>This Week</option>
+                        </select>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        {/* Green Pill */}
+                        <div className="bg-[#B4E567] text-gray-900 rounded-[1.5rem] p-4 flex items-center justify-between shadow-sm relative overflow-hidden group hover:bg-[#a6d85a] transition-colors cursor-pointer">
+                            <div className="flex items-center gap-3 relative z-10 w-full">
+                                <div className="w-10 h-10 border border-gray-900/10 text-gray-900 rounded-xl flex items-center justify-center">
+                                    <Activity size={18} />
+                                </div>
+                                <div className="flex-1 pr-2">
+                                    <p className="text-[11px] font-bold tracking-wide text-gray-800">Optimization 10x</p>
+                                    <div className="flex justify-between items-end mt-1 w-full text-gray-900">
+                                        <p className="text-xs font-black tracking-widest">75% <span className="text-[9px] font-medium opacity-80">(7/10)</span></p>
+                                        <p className="text-[9px] opacity-70 font-medium">Core</p>
+                                    </div>
+                                    <div className="h-1 w-full bg-white/40 rounded-full mt-1.5"><div className="h-full bg-white rounded-full w-[75%]"></div></div>
+                                </div>
+                            </div>
+                        </div>
+                        {/* Yellow Pill */}
+                        <div className="bg-[#FFD166] text-gray-900 rounded-[1.5rem] p-4 flex items-center justify-between shadow-sm relative overflow-hidden group hover:bg-[#eec054] transition-colors cursor-pointer">
+                            <div className="flex items-center gap-3 relative z-10 w-full">
+                                <div className="w-10 h-10 border border-gray-900/10 text-gray-900 rounded-xl flex items-center justify-center">
+                                    <Activity size={18} />
+                                </div>
+                                <div className="flex-1 pr-2">
+                                    <p className="text-[11px] font-bold tracking-wide text-gray-800">Backup Sync</p>
+                                    <div className="flex justify-between items-end mt-1 w-full text-gray-900">
+                                        <p className="text-xs font-black tracking-widest">60% <span className="text-[9px] font-medium opacity-80">(5/8)</span></p>
+                                        <p className="text-[9px] opacity-70 font-medium">Storage</p>
+                                    </div>
+                                    <div className="h-1 w-full bg-white/40 rounded-full mt-1.5"><div className="h-full bg-white rounded-full w-[60%]"></div></div>
+                                </div>
+                            </div>
+                        </div>
+                        {/* Orange Pill */}
+                        <div className="bg-[#215b33] text-gray-900 rounded-[1.5rem] p-4 flex items-center justify-between shadow-sm relative overflow-hidden group hover:bg-[#1a4a29] transition-colors cursor-pointer">
+                             <div className="flex items-center gap-3 relative z-10 w-full">
+                                <div className="w-10 h-10 border border-gray-900/10 text-gray-900 rounded-xl flex items-center justify-center">
+                                    <Activity size={18} />
+                                </div>
+                                <div className="flex-1 pr-2">
+                                    <p className="text-[11px] font-bold tracking-wide text-gray-800">Security Patch</p>
+                                    <div className="flex justify-between items-end mt-1 w-full text-gray-900">
+                                        <p className="text-xs font-black tracking-widest">50% <span className="text-[9px] font-medium opacity-80">(3/6)</span></p>
+                                        <p className="text-[9px] opacity-70 font-medium">Updates</p>
+                                    </div>
+                                    <div className="h-1 w-full bg-white/40 rounded-full mt-1.5"><div className="h-full bg-white rounded-full w-[50%]"></div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Bottom Lists Row */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-4">
+                    {/* Left List */}
+                    <div className="bg-white p-6 rounded-[2rem] shadow-sm border border-gray-50 text-gray-900 border-l-[6px] border-l-[#B4E567]">
+                        <div className="flex justify-between items-center mb-6">
+                            <span className="text-sm font-bold">High Priority Tasks</span>
+                            <span className="text-gray-400">...</span>
+                        </div>
+                        <div className="grid grid-cols-2 gap-4">
+                            <div className="bg-white rounded-[1.5rem] p-4 flex flex-col cursor-pointer border border-gray-100 shadow-sm">
+                                <div className="flex items-center justify-between mb-4">
+                                     <span className="px-2 py-1 bg-[#B4E567] text-gray-900 rounded-lg text-[9px] font-bold">Urgent</span>
+                                     <span className="text-[10px] font-bold text-gray-500 flex items-center gap-1"><Activity size={10} /> 2h left</span>
+                                </div>
+                                <div className="h-24 bg-gray-100 rounded-[1rem] mb-4 overflow-hidden">
+                                     <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=400&q=80" className="w-full h-full object-cover" />
+                                </div>
+                                <h4 className="font-bold text-xs tracking-tight mb-1">Server Migration X2</h4>
+                                <p className="text-[9px] text-gray-400 font-medium leading-relaxed">Transitioning primary clusters to secondary zone.</p>
+                            </div>
+                            <div className="bg-white rounded-[1.5rem] p-4 flex flex-col cursor-pointer border border-gray-100 shadow-sm">
+                                <div className="flex items-center justify-between mb-4">
+                                     <span className="px-2 py-1 bg-[#FFD166] text-gray-900 rounded-lg text-[9px] font-bold">Planned</span>
+                                     <span className="text-[10px] font-bold text-gray-500 flex items-center gap-1"><Activity size={10} /> Tmrw</span>
+                                </div>
+                                <div className="h-24 bg-gray-100 rounded-[1rem] mb-4 overflow-hidden">
+                                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=400&q=80" className="w-full h-full object-cover" />
+                                </div>
+                                <h4 className="font-bold text-xs tracking-tight mb-1">Data Review Sprints</h4>
+                                <p className="text-[9px] text-gray-400 font-medium leading-relaxed">Quarterly compliance check for all integrations.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Right List */}
+                    <div className="bg-white p-6 rounded-[2rem] shadow-sm border border-gray-50 text-gray-900 border-l-[6px] border-l-[#215b33] flex flex-col">
+                         <div className="flex justify-between items-center mb-6">
+                            <span className="text-sm font-bold">Staff Activity</span>
+                            <span className="text-gray-400">...</span>
+                        </div>
+                        <div className="flex-1 flex flex-col gap-3 justify-center">
+                            {[
+                                { name: 'Support Tickets', count: '12 open', time: '10 min', color: 'bg-[#B4E567] text-gray-900', lvl: 'High' },
+                                { name: 'Onboarding Calls', count: '5 scheduled', time: '1 hr', color: 'bg-[#FFD166] text-gray-900', lvl: 'Routine' },
+                                { name: 'Billing Review', count: '8 pending', time: '30 min', color: 'bg-[#215b33] text-gray-900', lvl: 'Critical' },
+                            ].map((a, i) => (
+                                <div key={i} className="flex gap-4 items-center p-3 rounded-2xl hover:bg-gray-50 cursor-pointer border border-transparent hover:border-gray-100 transition-all">
+                                    <div className="w-12 h-12 bg-[#FDFBF7] rounded-xl flex-shrink-0 border border-gray-100 flex items-center justify-center text-[#215b33]">
+                                        <img src={`https://i.pravatar.cc/150?u=${i}`} className="w-full h-full rounded-xl object-cover" />
+                                    </div>
+                                    <div className="flex-1">
+                                        <h4 className="font-bold text-xs">{a.name}</h4>
+                                        <div className="flex gap-3 text-[10px] font-bold text-gray-400 mt-0.5">
+                                            <span>{a.count}</span>
+                                            <span>{a.time}</span>
+                                        </div>
+                                        <div className={`mt-1.5 px-2 py-0.5 inline-block rounded text-[8px] font-bold ${a.color}`}>{a.lvl}</div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+
+                {/* Footer Docs */}
+                <div className="flex items-center justify-between text-[11px] font-bold text-gray-400 mt-4 px-2">
+                    <p>Copyright © 2024 ILAJBILGHIZA</p>
+                    <div className="flex gap-4">
+                        <a href="#" className="hover:text-gray-600">Privacy Policy</a>
+                        <a href="#" className="hover:text-gray-600">Term and conditions</a>
+                        <a href="#" className="hover:text-gray-600">Contact</a>
+                    </div>
+                </div>
+
+            </div>
+
+            {/* Right Sidebar */}
+            <div className="w-full lg:w-1/4 bg-[#FDFBF7] min-h-screen border-l border-white/50 lg:sticky lg:top-0 p-8 flex flex-col text-gray-800">
+                
+                {/* Profile Top */}
+                <div className="flex items-center justify-between mb-10 w-full cursor-pointer group">
+                    <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 bg-white rounded-xl overflow-hidden flex items-center justify-center shadow-sm">
+                            <span className="text-[#B4E567] font-bold">A</span>
+                        </div>
+                        <div>
+                            <p className="text-sm font-bold text-gray-900 transition-colors">Adam Vasylenko</p>
+                            <p className="text-[10px] font-medium text-gray-400">Member</p>
+                        </div>
+                    </div>
+                    <div className="w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:text-gray-900 shadow-sm relative transition-all bg-white hover:bg-gray-50">
+                        <Bell size={14} />
+                        <span className="w-1.5 h-1.5 bg-[#215b33] rounded-full absolute top-2 right-2.5"></span>
+                    </div>
+                </div>
+
+                {/* Calendar Widget */}
+                <div className="mb-10 w-full">
+                    <div className="flex items-center justify-between mb-4">
+                        <span className="text-sm font-bold text-gray-900">September 2028</span>
+                        <div className="flex gap-1">
+                            <button className="w-6 h-6 flex items-center justify-center bg-white shadow-sm rounded text-gray-400 hover:bg-gray-50"><ChevronLeft size={14} /></button>
+                            <button className="w-6 h-6 flex items-center justify-center bg-white shadow-sm rounded text-gray-400 hover:bg-gray-50"><ChevronRight size={14} /></button>
+                        </div>
+                    </div>
+                    <div className="flex justify-between w-full">
+                        {['Mon','Tue','Wed','Thu','Fri','Sat'].map((d, i) => (
+                            <div key={d} className={`flex flex-col items-center justify-center w-10 h-14 rounded-xl cursor-pointer ${i === 1 ? 'bg-[#B4E567] text-gray-900 shadow-sm' : 'hover:bg-white text-gray-400'}`}>
+                                <span className="text-[9px] font-bold mb-1">{d}</span>
+                                <span className={`text-xs font-black ${i === 1 ? 'text-gray-900' : 'text-gray-600'}`}>{i + 4}</span>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+                {/* Vertical Event Timeline */}
+                <div className="flex-1 overflow-y-auto no-scrollbar w-full relative">
+                    {/* Line behind */}
+                    <div className="absolute left-[29px] top-4 bottom-4 w-px bg-gray-200"></div>
+
+                    <div className="space-y-6 mt-4">
+                        
+                        {/* Box Type Timeline Event 1 */}
+                        <div className="relative pl-12 border-b border-gray-100 pb-6">
+                            <div className="absolute left-6 top-1 w-3 h-3 bg-[#B4E567] border-2 border-white rounded-[4px] z-10 shadow-sm"></div>
+                            <div className="flex items-center gap-3 mb-3">
+                                <span className="px-2 py-0.5 bg-white border border-gray-100 text-gray-900 font-bold text-[10px] rounded flex items-center gap-1"><div className="w-1.5 h-1.5 bg-[#B4E567] rounded-full"></div> Breakfast</span>
+                                <span className="text-[10px] text-gray-400 font-bold flex items-center gap-1"><Activity size={10} /> 300 kcal</span>
+                            </div>
+                            <div className="flex items-start gap-4">
+                                <img src="https://images.unsplash.com/photo-1525385133512-2f3bdd039054?w=50" className="w-10 h-10 rounded-xl object-cover" />
+                                <div>
+                                    <h4 className="text-[11px] font-bold text-gray-900 mb-2 leading-tight">Scrambled Eggs with Spinach & Toast</h4>
+                                    <div className="flex gap-3 text-[9px] font-bold text-gray-400">
+                                        <span>C 25g</span>
+                                        <span>P 20g</span>
+                                        <span>F 12g</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Box Type Timeline Event 2 */}
+                        <div className="relative pl-12 border-b border-gray-100 pb-6">
+                            <div className="absolute left-6 top-1 w-3 h-3 bg-white border-2 border-[#B4E567] outline outline-1 outline-offset-[2px] outline-[#B4E567] rounded-[4px] z-10"></div>
+                            <div className="flex items-center gap-3 mb-3">
+                                <span className="px-2 py-0.5 bg-[#B4E567] text-gray-900 font-bold text-[10px] rounded flex items-center gap-1"> Lunch</span>
+                                <span className="text-[10px] text-gray-400 font-bold flex items-center gap-1"><Activity size={10} /> 450 kcal</span>
+                            </div>
+                            <div className="flex items-start gap-4">
+                                <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=50" className="w-10 h-10 rounded-xl object-cover" />
+                                <div>
+                                    <h4 className="text-[11px] font-bold text-gray-900 mb-2 leading-tight">Grilled Chicken Salad with Quinoa</h4>
+                                    <div className="flex gap-3 text-[9px] font-bold text-gray-400">
+                                        <span>C 40g</span>
+                                        <span>P 35g</span>
+                                        <span>F 20g</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                         {/* Box Type Timeline Event 3 */}
+                         <div className="relative pl-12 border-b border-gray-100 pb-6">
+                            <div className="absolute left-6 top-1 w-3 h-3 bg-white border-2 border-orange-200 rounded-[4px] z-10"></div>
+                            <div className="flex items-center gap-3 mb-3">
+                                <span className="px-2 py-0.5 bg-white border border-gray-100 text-gray-500 font-bold text-[10px] rounded">Snack</span>
+                                <span className="text-[10px] text-gray-400 font-bold flex items-center gap-1"><Activity size={10} /> 200 kcal</span>
+                            </div>
+                            <div className="flex items-start gap-4">
+                                <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?w=50" className="w-10 h-10 rounded-xl object-cover" />
+                                <div>
+                                    <h4 className="text-[11px] font-bold text-gray-900 mb-2 leading-tight">Greek Yogurt with Berries</h4>
+                                    <div className="flex gap-3 text-[9px] font-bold text-gray-400">
+                                        <span>C 18g</span>
+                                        <span>P 12g</span>
+                                        <span>F 10g</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 

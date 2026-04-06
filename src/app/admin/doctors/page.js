@@ -1,236 +1,180 @@
 "use client"
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import {
-    Plus,
-    Search,
+import { 
+    ShieldCheck, 
+    Search, 
+    Plus, 
+    MoreVertical, 
+    Stethoscope, 
+    Star, 
+    Clock, 
+    CheckCircle2, 
+    XCircle, 
+    FileText, 
+    Globe, 
+    TrendingUp,
     Filter,
-    Stethoscope,
-    ShieldCheck,
-    MoreVertical,
-    Star,
-    Mail,
-    Phone,
-    MapPin,
-    Loader2,
-    Check,
-    X,
-    UserCircle,
-    Trash2
+    Calendar,
+    MessageSquare,
+    Zap,
+    Award
 } from 'lucide-react';
 
 export default function AdminDoctorsPage() {
-    const [doctors, setDoctors] = useState([]);
-    const [loading, setLoading] = useState(true);
     const [searchTerm, setSearchTerm] = useState('');
-    const [updatingId, setUpdatingId] = useState(null);
+    const [activeStatus, setActiveStatus] = useState('All');
 
-    useEffect(() => {
-        fetchDoctors();
-    }, []);
+    const doctors = [
+        { id: 'DOC-001', name: 'Dr. Sarah Khan', specialty: 'Senior Nutritionist', experience: '12 Years', rating: 4.9, consultations: 1240, status: 'VERIFIED', image: 'https://i.pravatar.cc/150?u=sarah' },
+        { id: 'DOC-002', name: 'Dr. Amin Jafari', specialty: 'Cardiologist', experience: '8 Years', rating: 4.8, consultations: 850, status: 'VERIFIED', image: 'https://i.pravatar.cc/150?u=amin' },
+        { id: 'DOC-003', name: 'Dr. Emily Lawson', specialty: 'Wellness Coach', experience: '5 Years', rating: 4.7, consultations: 420, status: 'PENDING', image: 'https://i.pravatar.cc/150?u=emily' },
+        { id: 'DOC-004', name: 'Dr. Zaid Malik', specialty: 'Herbal Specialist', experience: '15 Years', rating: 5.0, consultations: 2100, status: 'VERIFIED', image: 'https://i.pravatar.cc/150?u=zaid' },
+        { id: 'DOC-005', name: 'Dr. Fatima Ali', specialty: 'Pediatrician', experience: '6 Years', rating: 4.6, consultations: 310, status: 'PENDING', image: 'https://i.pravatar.cc/150?u=fatima' },
+    ];
 
-    const fetchDoctors = async () => {
-        try {
-            const response = await fetch('/api/doctors');
-            const data = await response.json();
-            if (data.success) {
-                setDoctors(data.data || []);
-            }
-        } catch (error) {
-            console.error('Error fetching doctors:', error);
-        } finally {
-            setLoading(false);
-        }
-    };
-
-    const toggleVerification = async (id, currentStatus) => {
-        setUpdatingId(id);
-        try {
-            const response = await fetch(`/api/doctors/${id}`, {
-                method: 'PATCH',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ isVerified: !currentStatus })
-            });
-            const data = await response.json();
-            if (data.success) {
-                setDoctors(prev => prev.map(d => d._id === id ? { ...d, isVerified: !currentStatus } : d));
-            }
-        } catch (error) {
-            console.error('Update error:', error);
-        } finally {
-            setUpdatingId(null);
-        }
-    };
-
-    const deleteDoctor = async (id) => {
-        if (!confirm('Are you sure you want to remove this doctor from the registry?')) return;
-
-        try {
-            const response = await fetch(`/api/doctors/${id}`, { method: 'DELETE' });
-            const data = await response.json();
-            if (data.success) {
-                setDoctors(prev => prev.filter(d => d._id !== id));
-            }
-        } catch (error) {
-            console.error('Delete error:', error);
-        }
-    };
-
-    const filteredDoctors = doctors.filter(d =>
-        d.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        d.specialty?.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-
-    if (loading) return (
-        <div className="flex flex-col items-center justify-center min-h-[60vh]">
-            <Loader2 className="animate-spin text-[#142A1D] mb-4" size={40} />
-            <p className="text-[10px] font-bold text-[#8D9F91] uppercase tracking-[0.2em]">Verifying Practitioners...</p>
-        </div>
-    );
+    const stats = [
+        { label: 'Total Doctors', val: '156', icon: Stethoscope, color: 'text-[#122A1A]' },
+        { label: 'Active Sessions', val: '42', icon: Clock, color: 'text-indigo-600' },
+        { label: 'Pending Apps', val: '12', icon: ShieldCheck, color: 'text-amber-500' },
+        { label: 'Top Rated', val: '84%', icon: Star, color: 'text-rose-500' },
+    ];
 
     return (
-        <div className="space-y-10 pb-20 relative font-sans text-[#203626]">
-            {/* Header Area */}
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-4">
-                <div>
-                    <h1 className="text-[32px] font-bold tracking-tight text-[#142A1D] font-sans">Professional Registry</h1>
-                    <div className="flex items-center gap-3 mt-2">
-                        <span className="text-[10px] font-bold text-[#8D9F91] uppercase tracking-[0.15em]">
-                            {doctors.length} Registered Experts
-                        </span>
-                        <div className="w-1 h-1 bg-[#D1D9CA] rounded-full"></div>
-                        <span className="text-[10px] font-bold text-[#E18D5E] uppercase tracking-[0.15em]">
-                            {doctors.filter(d => !d.isVerified).length} Pending Approval
-                        </span>
+        <div className="space-y-8 pb-10">
+            {/* Header */}
+            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+                <div className="flex items-center gap-4">
+                    <div className="p-4 bg-[#122A1A] text-white rounded-[2rem] shadow-xl shadow-green-900/10 transition-transform hover:rotate-12">
+                        <ShieldCheck size={28} />
+                    </div>
+                    <div>
+                        <h2 className="text-3xl font-black text-gray-900 font-outfit uppercase tracking-tight">Clinician Registry</h2>
+                        <p className="text-gray-500 font-medium tracking-tight">Verification and management of global medical experts.</p>
                     </div>
                 </div>
-                <button
-                    onClick={() => window.location.href = '/doctors/register'}
-                    className="flex items-center gap-2 px-8 py-4 bg-[#142A1D] text-white rounded-2xl font-bold text-[11px] uppercase tracking-widest hover:bg-[#0A1A10] transition-all shadow-[0_10px_20px_rgba(20,42,29,0.2)]"
-                >
-                    <Plus size={20} strokeWidth={2.5} />
-                    Onboard Practitioner
-                </button>
-            </div>
-
-            {/* Toolbar */}
-            <div className="bg-[#EFECE0] p-6 rounded-[32px] border border-white flex flex-col md:flex-row gap-6 items-center">
-                <div className="relative flex-1 w-full group">
-                    <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-[#8D9F91] group-focus-within:text-[#142A1D] transition-colors" size={18} />
-                    <input
-                        type="text"
-                        placeholder="Search by specialist name, department or city..."
-                        className="w-full bg-white/60 border-transparent rounded-[24px] pl-16 pr-6 py-4 text-[13px] font-medium text-[#142A1D] focus:bg-white focus:shadow-inner transition-all outline-none"
-                        value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                    />
-                </div>
-                <div className="flex gap-3 w-full md:w-auto">
-                    <button className="flex-1 md:flex-none flex items-center justify-center gap-3 px-8 py-4 bg-white/60 rounded-[24px] font-bold text-[10px] uppercase tracking-widest text-[#546458] hover:bg-white transition-all shadow-sm">
-                        <Filter size={16} />
-                        Status: All
+                <div className="flex items-center gap-3">
+                    <button className="p-4 bg-white border border-gray-100 rounded-3xl text-gray-400 hover:text-[#122A1A] transition-all font-black text-[10px] uppercase tracking-widest flex items-center gap-2"><Award size={18} /> Credentials Review</button>
+                    <button className="bg-[#122A1A] text-white px-8 py-4 rounded-[2rem] font-black text-[10px] uppercase tracking-widest flex items-center gap-3 hover:bg-black transition-all shadow-xl shadow-black/10">
+                        <Plus size={18} /> Invite Clinician
                     </button>
                 </div>
             </div>
 
-            {/* Doctors Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {filteredDoctors.map((doctor) => (
-                    <motion.div
-                        key={doctor._id}
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="bg-white p-10 rounded-[48px] border border-[#D1D9CA]/40 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 group relative overflow-hidden"
-                    >
-                        {/* Status Badge Top Right */}
-                        <div className="absolute top-8 right-8">
-                            <div className={`px-4 py-1.5 rounded-full text-[9px] font-black uppercase tracking-widest border ${doctor.isVerified ? 'bg-[#E4EFE3] text-[#1A5A3B] border-[#1A5A3B]/10' : 'bg-[#FEF1E9] text-[#E18D5E] border-[#E18D5E]/10'}`}>
-                                {doctor.isVerified ? 'Verified' : 'Pending'}
-                            </div>
+            {/* Quick Stats Grid */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                {stats.map((stat, i) => (
+                    <div key={i} className="bg-white p-6 rounded-[2.5rem] border border-gray-100 shadow-sm group hover:scale-[1.02] transition-all">
+                        <div className="flex items-center justify-between mb-4">
+                            <div className={`${stat.color} p-3 bg-gray-50 rounded-2xl group-hover:bg-[#122A1A] group-hover:text-white transition-all`}><stat.icon size={20} /></div>
+                            <span className="text-[10px] font-black text-gray-300 uppercase tracking-widest">Global</span>
                         </div>
-
-                        <div className="flex flex-col items-center text-center">
-                            <div className="w-28 h-28 bg-[#F4F4EB] rounded-[40px] overflow-hidden flex items-center justify-center border-4 border-white shadow-xl mb-8 relative group-hover:scale-105 transition-transform duration-700">
-                                {doctor.image ? (
-                                    <img src={doctor.image} alt={doctor.name} className="w-full h-full object-cover" />
-                                ) : (
-                                    <UserCircle size={48} className="text-[#D1D9CA]" />
-                                )}
-                                {doctor.isVerified && (
-                                    <div className="absolute -bottom-1 -right-1 w-10 h-10 bg-[#3B925D] border-4 border-white rounded-full flex items-center justify-center shadow-lg">
-                                        <ShieldCheck size={18} className="text-white" />
-                                    </div>
-                                )}
-                            </div>
-
-                            <h3 className="text-[20px] font-bold text-[#142A1D] tracking-tight mb-1">{doctor.name}</h3>
-                            <p className="text-[11px] font-bold uppercase text-[#3B925D] tracking-[0.1em] mb-4">{doctor.specialty || 'General Practitioner'}</p>
-
-                            <div className="flex items-center gap-1.5 mb-8">
-                                {[1, 2, 3, 4, 5].map((s) => (
-                                    <Star key={s} size={14} className={s <= (doctor.rating || 5) ? 'text-[#E18D5E] fill-[#E18D5E]' : 'text-[#D1D9CA]'} />
-                                ))}
-                                <span className="text-[10px] font-bold text-[#8D9F91] ml-2 tracking-tight">({doctor.reviews || 0} reviews)</span>
-                            </div>
-
-                            <div className="w-full space-y-4 mb-10 pt-8 border-t border-[#F8F6EF]">
-                                <div className="flex items-center gap-4 text-[#546458]">
-                                    <div className="w-8 h-8 rounded-xl bg-[#F4F4EB] flex items-center justify-center shrink-0">
-                                        <Mail size={14} />
-                                    </div>
-                                    <span className="text-[11px] font-bold truncate">{doctor.email || 'N/A'}</span>
-                                </div>
-                                <div className="flex items-center gap-4 text-[#546458]">
-                                    <div className="w-8 h-8 rounded-xl bg-[#F4F4EB] flex items-center justify-center shrink-0">
-                                        <MapPin size={14} />
-                                    </div>
-                                    <span className="text-[11px] font-bold truncate">{doctor.location || 'Pakistan'}</span>
-                                </div>
-                            </div>
-
-                            {/* Approval Controls */}
-                            <div className="grid grid-cols-2 gap-3 w-full">
-                                {doctor.isVerified ? (
-                                    <button
-                                        disabled={updatingId === doctor._id}
-                                        onClick={() => toggleVerification(doctor._id, true)}
-                                        className="w-full py-4 bg-[#FEF1E9] text-[#A13124] rounded-2xl text-[10px] font-bold uppercase tracking-widest flex items-center justify-center gap-2 hover:bg-[#A13124] hover:text-white transition-all disabled:opacity-50"
-                                    >
-                                        {updatingId === doctor._id ? <Loader2 className="animate-spin" size={12} /> : <X size={14} />}
-                                        Revoke
-                                    </button>
-                                ) : (
-                                    <button
-                                        disabled={updatingId === doctor._id}
-                                        onClick={() => toggleVerification(doctor._id, false)}
-                                        className="w-full py-4 bg-[#E4EFE3] text-[#1A5A3B] rounded-2xl text-[10px] font-bold uppercase tracking-widest flex items-center justify-center gap-2 hover:bg-[#1A5A3B] hover:text-white transition-all disabled:opacity-50"
-                                    >
-                                        {updatingId === doctor._id ? <Loader2 className="animate-spin" size={12} /> : <Check size={14} />}
-                                        Approve
-                                    </button>
-                                )}
-                                <button
-                                    onClick={() => deleteDoctor(doctor._id)}
-                                    className="w-full py-4 bg-[#F8F7F4] text-[#8D9F91] rounded-2xl text-[10px] font-bold uppercase tracking-widest flex items-center justify-center gap-2 hover:bg-[#203626] hover:text-white transition-all"
-                                >
-                                    <Trash2 size={14} />
-                                    Delete
-                                </button>
-                            </div>
-                        </div>
-                    </motion.div>
-                ))}
-
-                {filteredDoctors.length === 0 && (
-                    <div className="col-span-full py-32 text-center bg-[#EFECE0] rounded-[60px] border border-white">
-                        <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm">
-                            <Stethoscope size={36} className="text-[#D1D9CA]" />
-                        </div>
-                        <h3 className="text-[18px] font-bold text-[#142A1D]">Registry search yielded zero results.</h3>
-                        <p className="text-[13px] font-medium text-[#8D9F91] mt-2">Try refined keywords or check the pending queue.</p>
+                        <h3 className="text-2xl font-black font-outfit uppercase">{stat.val}</h3>
+                        <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mt-1">{stat.label}</p>
                     </div>
-                )}
+                ))}
+            </div>
+
+            {/* Main Table Section */}
+            <div className="bg-white p-8 md:p-12 rounded-[4rem] border border-gray-100 shadow-sm overflow-hidden">
+                <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mb-10">
+                    <div className="relative group/search flex-1 lg:max-w-md w-full">
+                        <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within/search:text-[#122A1A] transition-colors" size={18} />
+                        <input 
+                            type="text" 
+                            placeholder="Find clinician by specialty or name..." 
+                            className="w-full pl-16 pr-6 py-4 bg-gray-50 border-none rounded-3xl text-[10px] font-black uppercase tracking-widest shadow-inner focus:ring-2 focus:ring-[#122A1A] transition-all placeholder:text-gray-300"
+                        />
+                    </div>
+                    <div className="flex items-center gap-2">
+                        {['All', 'VERIFIED', 'PENDING'].map(status => (
+                            <button
+                                key={status}
+                                onClick={() => setActiveStatus(status)}
+                                className={`px-8 py-3 rounded-[1.5rem] text-[9px] font-black uppercase tracking-widest transition-all ${activeStatus === status ? 'bg-[#122A1A] text-white shadow-lg' : 'bg-gray-50 text-gray-400 hover:bg-gray-100'}`}
+                            >
+                                {status}
+                            </button>
+                        ))}
+                    </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {doctors.map((doc) => (
+                        <div key={doc.id} className="bg-white p-8 rounded-[3.5rem] border border-gray-50 hover:border-gray-200 transition-all group flex flex-col justify-between">
+                            <div className="flex items-start justify-between mb-8">
+                                <div className="relative">
+                                    <div className="size-24 rounded-[2.5rem] overflow-hidden border-4 border-white shadow-xl group-hover:scale-105 transition-transform">
+                                        <img src={doc.image} className="w-full h-full object-cover" />
+                                    </div>
+                                    <div className="absolute -bottom-2 -right-2 p-2 bg-white rounded-xl shadow-lg border border-gray-50 text-emerald-500">
+                                        {doc.status === 'VERIFIED' ? <CheckCircle2 size={18} /> : <Clock size={18} className="text-amber-500" />}
+                                    </div>
+                                </div>
+                                <div className="flex flex-col items-end gap-2">
+                                    <div className="flex items-center gap-1 bg-amber-50 px-3 py-1.5 rounded-xl text-amber-600">
+                                        <Star size={12} fill="currentColor" />
+                                        <span className="text-[10px] font-black">{doc.rating}</span>
+                                    </div>
+                                    <button className="p-3 bg-gray-50 rounded-xl text-gray-300 hover:text-[#122A1A] hover:bg-white shadow-sm transition-all"><MoreVertical size={16} /></button>
+                                </div>
+                            </div>
+
+                            <div className="space-y-4">
+                                <div>
+                                    <h4 className="text-xl font-black font-outfit uppercase tracking-tight text-gray-900 group-hover:text-[#122A1A] transition-colors">{doc.name}</h4>
+                                    <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#122A1A] mt-2 flex items-center gap-2">
+                                        <Award size={14} className="text-gray-300" /> {doc.specialty}
+                                    </p>
+                                </div>
+
+                                <div className="grid grid-cols-2 gap-4 py-6 border-t border-gray-50 border-dashed">
+                                    <div>
+                                        <p className="text-[10px] font-black text-gray-300 uppercase tracking-widest mb-1">Consultations</p>
+                                        <h5 className="text-[11px] font-black text-[#122A1A]">{doc.consultations.toLocaleString()} Sessions</h5>
+                                    </div>
+                                    <div>
+                                        <p className="text-[10px] font-black text-gray-300 uppercase tracking-widest mb-1">Experience</p>
+                                        <h5 className="text-[11px] font-black text-[#122A1A]">{doc.experience}</h5>
+                                    </div>
+                                </div>
+
+                                <div className="flex gap-2">
+                                    {doc.status === 'PENDING' ? (
+                                        <button className="flex-1 bg-emerald-600 text-white py-4 rounded-[1.5rem] font-black text-[10px] uppercase tracking-widest hover:bg-emerald-700 transition-all shadow-xl shadow-emerald-100 flex items-center justify-center gap-2">
+                                            <CheckCircle2 size={16} /> Verify Credentials
+                                        </button>
+                                    ) : (
+                                        <button className="flex-1 bg-gray-50 text-[#122A1A] py-4 rounded-[1.5rem] font-black text-[10px] uppercase tracking-widest hover:bg-gray-100 transition-all flex items-center justify-center gap-2 shadow-sm">
+                                            <FileText size={16} /> View Full Profile
+                                        </button>
+                                    )}
+                                    <button className="p-4 bg-gray-50 rounded-[1.5rem] text-[#122A1A] hover:bg-green-50 transition-all border border-transparent hover:border-green-100"><MessageSquare size={18} /></button>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+
+                    {/* Invite New Doctor Card */}
+                    <div className="border-4 border-dashed border-gray-50 rounded-[3.5rem] flex flex-col items-center justify-center p-12 text-center group hover:bg-gray-50 hover:border-gray-100 transition-all cursor-pointer">
+                        <div className="size-20 bg-gray-50 rounded-[2.5rem] flex items-center justify-center mb-6 text-gray-200 group-hover:rotate-12 transition-transform">
+                            <Plus size={42} strokeWidth={1} />
+                        </div>
+                        <h4 className="text-[11px] font-black text-gray-100 group-hover:text-gray-400 uppercase tracking-[0.2em] transition-colors">Onboard New Medical Expert</h4>
+                    </div>
+                </div>
+
+                <div className="mt-12 flex flex-col md:flex-row items-center justify-between gap-6 border-t border-gray-50 pt-10">
+                    <p className="text-[10px] font-black uppercase text-gray-400 tracking-widest">Showing 5 out of 156 clinicians</p>
+                    <div className="flex items-center gap-1 text-[10px] font-black text-gray-400 uppercase tracking-widest">
+                        <span className="p-4 bg-gray-100 rounded-2xl text-[#122A1A] cursor-pointer">01</span>
+                        <span className="p-4 rounded-2xl hover:bg-gray-50 cursor-pointer">02</span>
+                        <span className="p-4 rounded-2xl hover:bg-gray-50 cursor-pointer">03</span>
+                        <span className="px-4">...</span>
+                        <span className="p-4 rounded-2xl hover:bg-gray-50 cursor-pointer">12</span>
+                    </div>
+                </div>
             </div>
         </div>
     );

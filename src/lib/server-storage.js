@@ -63,6 +63,39 @@ export class ServerStorage {
     }
 
     /**
+     * Specialized methods for Blogs
+     */
+    static getBlogs() {
+        return this.read('blogs.json');
+    }
+
+    static saveBlogs(blogs) {
+        return this.write('blogs.json', blogs);
+    }
+
+    /**
+     * Specialized methods for Doctors
+     */
+    static getDoctors() {
+        return this.read('doctors.json');
+    }
+
+    static saveDoctors(doctors) {
+        return this.write('doctors.json', doctors);
+    }
+
+    /**
+     * Specialized methods for Diseases
+     */
+    static getDiseases() {
+        return this.read('diseases.json');
+    }
+
+    static saveDiseases(diseases) {
+        return this.write('diseases.json', diseases);
+    }
+
+    /**
      * Specialized methods for Users
      */
     static getUsers() {
