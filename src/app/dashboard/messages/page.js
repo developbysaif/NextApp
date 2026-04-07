@@ -3,14 +3,17 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { 
     Search, Bell, SlidersHorizontal, Phone, Video, PanelRight, Send, CheckCircle2,
-    FileText, Globe, Instagram, Youtube, Edit, MoreHorizontal, Check, CheckCheck
+    FileText, Globe, Instagram, Youtube, Edit, MoreHorizontal, Check, CheckCheck,
+    Image as ImageIcon, Link as LinkIcon, ChevronRight
 } from 'lucide-react';
 
 export default function MessagesPage() {
     const [currentUser, setCurrentUser] = useState(null);
     useEffect(() => {
-        const user = JSON.parse(localStorage.getItem("currentUser") || "null");
-        if (user) setCurrentUser(user);
+        if (typeof window !== 'undefined') {
+            const user = JSON.parse(localStorage.getItem("currentUser") || "null");
+            if (user) setCurrentUser(user);
+        }
     }, []);
 
     const initialContacts = [
@@ -40,12 +43,14 @@ export default function MessagesPage() {
     const messagesEndRef = useRef(null);
 
     useEffect(() => {
-        const storedMessages = JSON.parse(localStorage.getItem('chatMessages') || '{}');
-        if (!storedMessages[3]) {
-            storedMessages[3] = initialChat;
-            localStorage.setItem('chatMessages', JSON.stringify(storedMessages));
+        if (typeof window !== 'undefined') {
+            const storedMessages = JSON.parse(localStorage.getItem('chatMessages') || '{}');
+            if (!storedMessages[3]) {
+                storedMessages[3] = initialChat;
+                localStorage.setItem('chatMessages', JSON.stringify(storedMessages));
+            }
+            setMessages(storedMessages);
         }
-        setMessages(storedMessages);
     }, []);
 
     const currentChatMessages = messages[activeContactId] || [];
@@ -75,7 +80,9 @@ export default function MessagesPage() {
         const allMessages = { ...messages, [activeContactId]: updatedChat };
         
         setMessages(allMessages);
-        localStorage.setItem('chatMessages', JSON.stringify(allMessages));
+        if (typeof window !== 'undefined') {
+            localStorage.setItem('chatMessages', JSON.stringify(allMessages));
+        }
         setInputMsg("");
 
         // Simulate auto-reply if talking to Alex (the mocked bot)
@@ -91,7 +98,9 @@ export default function MessagesPage() {
                 const finalChat = [...allMessages[activeContactId], botReply];
                 const finalAllMessages = { ...allMessages, [activeContactId]: finalChat };
                 setMessages(finalAllMessages);
-                localStorage.setItem('chatMessages', JSON.stringify(finalAllMessages));
+                if (typeof window !== 'undefined') {
+                    localStorage.setItem('chatMessages', JSON.stringify(finalAllMessages));
+                }
             }, 1500);
         }
     };
@@ -144,7 +153,7 @@ export default function MessagesPage() {
             {/* Middle Chat Area */}
             <div className="flex-1 flex flex-col h-screen overflow-hidden pt-6 px-10 relative bg-[#FDFBF7]">
                 
-                {/* Right Top global profile cluster - Just visual as per design */}
+                {/* Right Top global profile cluster */}
                 <div className="absolute top-8 right-6 flex items-center gap-4 hidden lg:flex z-50">
                     <div className="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center text-gray-400 cursor-pointer hover:bg-gray-50 border border-gray-100 transition-colors">
                         <Search size={18} />
@@ -209,7 +218,7 @@ export default function MessagesPage() {
                 {/* Message Input Bottom */}
                 <div className="absolute bottom-6 left-10 lg:w-[calc(100%-430px)] right-10 lg:right-auto bg-white rounded-[1.5rem] shadow-sm border border-gray-100 p-2 flex items-center z-40">
                      <div className="pl-4 pr-2 text-gray-400">
-                         <Search size={16} /> {/* Mapped to Search icon but ideally something else in screenshot, it's just a text indicator */}
+                         <Search size={16} />
                      </div>
                      <form onSubmit={handleSend} className="flex-1 flex items-center">
                          <input 
@@ -223,11 +232,11 @@ export default function MessagesPage() {
                              Send <Send size={14} />
                          </button>
                      </form>
-                </div>
+                 </div>
             </div>
 
             {/* Right Sidebar - Profile Viewer */}
-            <div className="hidden xl:flex w-[350px] bg-white h-screen sticky top-0 border-l border-[#f0eee8] flex-col overflow-y-auto no-scrollbar shadow-[-10px_0_30px_rgba(0,0,0,0.01)] absolute right-0 z-0 pt-28">
+            <div className="hidden xl:flex w-[350px] bg-white h-screen sticky top-0 border-l border-[#f0eee8] flex flex-col overflow-y-auto no-scrollbar shadow-[-10px_0_30px_rgba(0,0,0,0.01)] absolute right-0 z-0 pt-28">
                  <div className="flex items-center justify-between px-8 mb-6">
                      <h3 className="text-sm font-bold text-gray-900">Profile</h3>
                      <Edit size={16} className="text-gray-400 cursor-pointer hover:text-gray-900" />

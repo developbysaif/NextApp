@@ -14,7 +14,8 @@ import {
     Zap, 
     CheckCircle2, 
     PlayCircle,
-    ArrowRight
+    ArrowRight,
+    BookOpen
 } from 'lucide-react';
 import Link from 'next/link';
 

@@ -8,8 +8,10 @@ import {
 export default function CalendarPage() {
     const [currentUser, setCurrentUser] = useState(null);
     useEffect(() => {
-        const user = JSON.parse(localStorage.getItem("currentUser") || "null");
-        if (user) setCurrentUser(user);
+        if (typeof window !== 'undefined') {
+            const user = JSON.parse(localStorage.getItem("currentUser") || "null");
+            if (user) setCurrentUser(user);
+        }
     }, []);
 
     const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -47,25 +49,29 @@ export default function CalendarPage() {
     const [isLoaded, setIsLoaded] = useState(false);
 
     useEffect(() => {
-        const stored = localStorage.getItem("myCalendarEvents");
-        if (stored) {
-            setEvents(JSON.parse(stored));
-        } else {
-            // Seed initial events around current date
-            const seed = [
-                { id: 1, title: 'Morning Yoga Session', type: 'physical', date: new Date(currentYear, currentMonth, 5).toISOString(), time: '07:00 AM', location: 'Sunrise Yoga Studio', note: 'Focus on flexibility and breathing.' },
-                { id: 2, title: 'General Health Check-up', type: 'appointment', date: new Date(currentYear, currentMonth, 5).toISOString(), time: '03:00 PM', location: 'Central Clinic', note: 'Annual check-up.' },
-                { id: 3, title: 'Meal Prep: Oatmeal', type: 'meal', date: new Date(currentYear, currentMonth, today.getDate()).toISOString(), time: '07:00 AM', location: 'Home Kitchen', note: 'Prepare for next 3 days.' }
-            ];
-            setEvents(seed);
-            localStorage.setItem("myCalendarEvents", JSON.stringify(seed));
+        if (typeof window !== 'undefined') {
+            const stored = localStorage.getItem("myCalendarEvents");
+            if (stored) {
+                setEvents(JSON.parse(stored));
+            } else {
+                // Seed initial events around current date
+                const seed = [
+                    { id: 1, title: 'Morning Yoga Session', type: 'physical', date: new Date(currentYear, currentMonth, 5).toISOString(), time: '07:00 AM', location: 'Sunrise Yoga Studio', note: 'Focus on flexibility and breathing.' },
+                    { id: 2, title: 'General Health Check-up', type: 'appointment', date: new Date(currentYear, currentMonth, 5).toISOString(), time: '03:00 PM', location: 'Central Clinic', note: 'Annual check-up.' },
+                    { id: 3, title: 'Meal Prep: Oatmeal', type: 'meal', date: new Date(currentYear, currentMonth, today.getDate()).toISOString(), time: '07:00 AM', location: 'Home Kitchen', note: 'Prepare for next 3 days.' }
+                ];
+                setEvents(seed);
+                localStorage.setItem("myCalendarEvents", JSON.stringify(seed));
+            }
+            setIsLoaded(true);
         }
-        setIsLoaded(true);
     }, []);
 
     const saveEvents = (newEvents) => {
         setEvents(newEvents);
-        localStorage.setItem("myCalendarEvents", JSON.stringify(newEvents));
+        if (typeof window !== 'undefined') {
+            localStorage.setItem("myCalendarEvents", JSON.stringify(newEvents));
+        }
     };
 
     const [filters, setFilters] = useState({ meal: true, physical: true, appointment: true });
@@ -104,7 +110,7 @@ export default function CalendarPage() {
         return `${daysOfWeek[d.getDay()]}, ${d.getDate()} ${monthNames[d.getMonth()]} ${d.getFullYear()}`;
     };
 
-    if (!isLoaded) return <div className="p-10">Loading...</div>;
+    if (!isLoaded) return <div className="p-10 font-black text-[#215b33]">LOADING CALENDAR...</div>;
 
     return (
         <div className="font-sans text-gray-800 bg-[#FDFBF7] min-h-screen flex flex-col lg:flex-row pb-10 w-full relative">

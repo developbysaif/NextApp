@@ -19,8 +19,10 @@ export default function BookAppointmentPage() {
     const [doctors, setDoctors] = useState([]);
 
     useEffect(() => {
-        const users = JSON.parse(localStorage.getItem("users") || "[]");
-        setDoctors(users.filter(u => u.role === "doctor" && u.isVerified));
+        if (typeof window !== 'undefined') {
+            const users = JSON.parse(localStorage.getItem("users") || "[]");
+            setDoctors(users.filter(u => u.role === "doctor" && u.isVerified));
+        }
     }, []);
 
     const handleChange = (e) => {

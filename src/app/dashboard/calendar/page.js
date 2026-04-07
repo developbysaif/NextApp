@@ -194,30 +194,31 @@ export default function CalendarPage() {
                         {daysOfWeek.map(d => <div key={d} className="text-center text-xs font-bold text-gray-400 py-3">{d}</div>)}
                     </div>
                     <div className="grid grid-cols-7 border-l border-t border-gray-100">
-                        {calendarCells.map((cell, idx) => {
-                            const cellDateStr = cell.fullDate.toDateString();
-                            const isSelected = cell.isCurrent && cell.d === selectedDate;
-                            const isToday = cellDateStr === today.toDateString();
-                            const cellEvents = filteredEvents.filter(e => new Date(e.date).toDateString() === cellDateStr);
+                                {calendarCells.map((cell, idx) => {
+                                    const cellDateStr = cell.fullDate.toDateString();
+                                    const isSelected = cell.isCurrent && cell.d === selectedDate;
+                                    const today = new Date();
+                                    const isToday = cellDateStr === today.toDateString();
+                                    const cellEvents = filteredEvents.filter(e => new Date(e.date).toDateString() === cellDateStr);
 
-                            return (
-                                <div 
-                                    key={idx} 
-                                    onClick={() => { if(cell.isCurrent) setSelectedDate(cell.d); }}
-                                    className={`min-h-[140px] border-r border-b border-gray-100 p-2 flex flex-col relative cursor-pointer transition-colors ${!cell.isCurrent ? 'bg-gray-50/50 opacity-80 cursor-default' : isSelected ? 'bg-gray-50/80 shadow-inner' : 'hover:bg-gray-50'}`}
-                                >
-                                     <span className={`text-[11px] font-bold z-10 w-6 h-6 flex items-center justify-center rounded-full ${!cell.isCurrent ? 'text-gray-300' : isToday ? 'bg-[#FF9F43] text-white shadow-sm' : isSelected ? 'bg-gray-900 text-white' : 'text-gray-900'} mb-1`}>{cell.d}</span>
-                                     
-                                     <div className="flex-1 overflow-y-auto no-scrollbar space-y-1 mt-1">
-                                         {cellEvents.map(evt => (
-                                             <div key={evt.id} className={`${typeColors[evt.type].bg} ${typeColors[evt.type].text} p-1.5 px-2 rounded-md text-[9px] font-bold leading-tight shadow-sm z-10 w-full truncate border border-black/5`}>
-                                                 <span className="opacity-80 mr-1">{evt.time.split(' ')[0]}</span>{evt.title}
+                                    return (
+                                        <div 
+                                            key={idx} 
+                                            onClick={() => { if(cell.isCurrent) setSelectedDate(cell.d); }}
+                                            className={`min-h-[140px] border-r border-b border-gray-100 p-2 flex flex-col relative cursor-pointer transition-colors ${!cell.isCurrent ? 'bg-gray-50/50 opacity-80 cursor-default' : isSelected ? 'bg-gray-50/80 shadow-inner' : 'hover:bg-gray-50'}`}
+                                        >
+                                             <span className={`text-[11px] font-bold z-10 w-6 h-6 flex items-center justify-center rounded-full ${!cell.isCurrent ? 'text-gray-300' : isToday ? 'bg-[#FF9F43] text-white shadow-sm' : isSelected ? 'bg-gray-900 text-white' : 'text-gray-900'} mb-1`}>{cell.d}</span>
+                                             
+                                             <div className="flex-1 overflow-y-auto no-scrollbar space-y-1 mt-1">
+                                                 {cellEvents.map(evt => (
+                                                     <div key={evt.id} className={`${typeColors[evt.type].bg} ${typeColors[evt.type].text} p-1.5 px-2 rounded-md text-[9px] font-bold leading-tight shadow-sm z-10 w-full truncate border border-black/5`}>
+                                                         <span className="opacity-80 mr-1">{evt.time.split(' ')[0]}</span>{evt.title}
+                                                     </div>
+                                                 ))}
                                              </div>
-                                         ))}
-                                     </div>
-                                </div>
-                            );
-                        })}
+                                        </div>
+                                    );
+                                })}
                     </div>
                 </div>
 

@@ -1,14 +1,11 @@
 export const dynamic = 'force-dynamic';
 import { NextResponse } from 'next/server';
-import { generateDietPlan } from '@/lib/anthropic';
-import prisma from '@/lib/prisma';
-
-export async function GET() {
-  return NextResponse.json({ message: 'Method Not Allowed' }, { status: 405 });
-}
 
 export async function POST(req) {
   try {
+    const { generateDietPlan } = await import('@/lib/anthropic');
+    const prisma = (await import('@/lib/prisma')).default;
+
     const body = await req.json();
     const { userId, name, age, gender, weight, height, activityLevel, goal, diseases, preferences, symptoms } = body;
 

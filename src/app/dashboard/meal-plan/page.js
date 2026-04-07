@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
     Calendar as CalendarIcon, 
@@ -33,7 +33,8 @@ export default function MealPlanPage() {
     ]);
 
     useEffect(() => {
-        const adminPlan = JSON.parse(localStorage.getItem("adminWeeklyMealPlan") || "{}");
+        if (typeof window !== 'undefined') {
+            const adminPlan = JSON.parse(localStorage.getItem("adminWeeklyMealPlan") || "{}");
         if (adminPlan[currentWeek]) {
             const formatted = Object.keys(adminPlan[currentWeek]).map((dayName, idx) => {
                 const dayData = adminPlan[currentWeek][dayName];
@@ -52,7 +53,8 @@ export default function MealPlanPage() {
             });
             setDays(formatted);
         }
-    }, [currentWeek]);
+    }
+}, [currentWeek]);
 
     const mealCategories = [
         { name: 'Breakfast', icon: Clock, color: 'text-amber-500', bg: 'bg-amber-50' },

@@ -28,10 +28,12 @@ export default function DashboardLayout({ children }) {
     const router = useRouter();
     const { user, logout } = useAuth();
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+    const [isLoaded, setIsLoaded] = useState(false);
 
     useEffect(() => {
+        setIsLoaded(true);
         const handleResize = () => {
-            if (window.innerWidth < 1024) {
+            if (typeof window !== 'undefined' && window.innerWidth < 1024) {
                 setIsSidebarOpen(false);
             } else {
                 setIsSidebarOpen(true);
@@ -63,7 +65,7 @@ export default function DashboardLayout({ children }) {
     return (
         <div className="min-h-screen bg-[#FDFBF7] flex font-sans font-medium text-gray-500 overflow-x-hidden">
             {/* Mobile Sidebar Overlay */}
-            {!isSidebarOpen && window.innerWidth < 1024 && (
+            {isLoaded && !isSidebarOpen && typeof window !== 'undefined' && window.innerWidth < 1024 && (
                 <div
                     className="fixed inset-0 bg-black/5 z-[150] backdrop-blur-[2px]"
                     onClick={() => setIsSidebarOpen(false)}
@@ -89,7 +91,7 @@ export default function DashboardLayout({ children }) {
                             <span className="text-xl font-black text-gray-900 tracking-tighter uppercase italic">Nutrigo</span>
                         )}
                     </Link>
-                    {isSidebarOpen && window.innerWidth < 1024 && (
+                    {isLoaded && isSidebarOpen && typeof window !== 'undefined' && window.innerWidth < 1024 && (
                         <button onClick={() => setIsSidebarOpen(false)} className="text-gray-300 hover:text-gray-900">
                             <ChevronLeft size={20} />
                         </button>
@@ -98,73 +100,53 @@ export default function DashboardLayout({ children }) {
 
                 <nav className="flex-1 flex flex-col gap-1.5 px-3">
                     {menuItems.map((item) => {
-                        const isActive = pathname === item.path; 
-
+                        const isActive = pathname === item.path;
                         return (
                             <Link
                                 key={item.path}
                                 href={item.path}
                                 className={`
-                                    flex items-center gap-4 transition-all group py-3 px-4 rounded-2xl
+                                    flex items-center gap-4 px-4 py-3 rounded-2xl transition-all duration-200
                                     ${isActive 
-                                        ? 'bg-[#B4E567] text-[#1a3a25] shadow-lg shadow-[#B4E567]/20' 
-                                        : 'text-gray-400 hover:text-gray-900 hover:bg-gray-50'}
+                                        ? 'bg-[#122A1A] text-white shadow-lg shadow-green-900/10 font-bold' 
+                                        : 'text-gray-400 hover:bg-gray-50 hover:text-gray-900'}
                                 `}
-                                onClick={() => { if (window.innerWidth < 1024) setIsSidebarOpen(false) }}
                             >
-                                <item.icon size={20} strokeWidth={isActive ? 2.5 : 2} className={isActive ? 'text-[#1a3a25]' : 'group-hover:scale-110 transition-transform'} />
-                                {isSidebarOpen && (
-                                    <span className={`text-[13px] font-bold tracking-tight ${isActive ? 'text-[#1a3a25]' : 'text-gray-500'}`}>
-                                        {item.name}
-                                    </span>
-                                )}
-                                {isActive && !isSidebarOpen && (
-                                    <div className="absolute left-0 w-1.5 h-6 bg-[#B4E567] rounded-r-full"></div>
-                                )}
+                                <item.icon size={20} strokeWidth={isActive ? 2.5 : 2} />
+                                {isSidebarOpen && <span className="text-sm tracking-tight">{item.name}</span>}
                             </Link>
                         );
                     })}
                 </nav>
 
-                <div className="mt-auto px-3 pt-6 border-t border-gray-50">
+                <div className="px-3 mt-auto pt-6 border-t border-gray-50">
                     <button
                         onClick={handleLogout}
-                        className="w-full flex items-center gap-4 py-3 px-4 text-gray-400 hover:text-[#FF9F43] transition-all rounded-2xl hover:bg-orange-50 group"
+                        className="flex items-center gap-4 px-4 py-3 w-full rounded-2xl text-gray-400 hover:bg-rose-50 hover:text-rose-600 transition-all duration-200"
                     >
-                        <LogOut size={20} strokeWidth={2} className="group-hover:translate-x-1 transition-transform" />
-                        {isSidebarOpen && <span className="text-[13px] font-bold">Logout</span>}
+                        <LogOut size={20} />
+                        {isSidebarOpen && <span className="text-sm font-bold">Logout</span>}
                     </button>
-                    
-                    {user && isSidebarOpen && (
-                        <div className="mt-6 p-4 bg-gray-50 rounded-[2rem] flex items-center gap-3">
-                            <div className="w-10 h-10 rounded-xl bg-[#B4E567]/20 text-[#21492f] flex items-center justify-center text-sm font-black uppercase">
-                                {user.name?.charAt(0) || 'U'}
-                            </div>
-                            <div className="flex-1 truncate">
-                                <p className="text-[11px] font-black text-gray-900 truncate leading-none mb-1">{user.name}</p>
-                                <p className="text-[9px] font-bold text-gray-400 uppercase tracking-widest leading-none">Pro Member</p>
-                            </div>
-                        </div>
-                    )}
                 </div>
             </aside>
 
-            {/* Main Content Area */}
-            <main className={`flex-1 transition-all duration-300 ${isSidebarOpen ? 'lg:ml-64' : 'lg:ml-20'}`}>
-                {/* Mobile Header (Sticky) */}
-                <div className="lg:hidden p-4 bg-white flex items-center justify-between sticky top-0 z-[100] border-b border-gray-100">
-                    <div className="flex items-center gap-4">
-                        <button
-                            className="p-2 text-gray-600 hover:bg-gray-100 rounded-xl"
-                            onClick={() => setIsSidebarOpen(true)}
-                        >
-                            <Menu size={22} />
-                        </button>
-                        <span className="text-sm font-black text-gray-900 uppercase tracking-widest italic tracking-tighter">Nutrigo</span>
-                    </div>
-                </div>
+            {/* Main Content */}
+            <main
+                className={`
+                    flex-1 transition-all duration-300 min-h-screen
+                    ${isSidebarOpen ? 'lg:ml-64' : 'lg:ml-20'}
+                `}
+            >
+                {/* Mobile Header */}
+                <header className="lg:hidden bg-white border-b border-gray-100 px-6 py-4 flex items-center justify-between sticky top-0 z-[100]">
+                    <button onClick={() => setIsSidebarOpen(true)} className="text-gray-900">
+                        <Menu size={24} />
+                    </button>
+                    <span className="text-lg font-black text-gray-900 tracking-tighter uppercase italic">Nutrigo</span>
+                    <div className="w-8 h-8 rounded-full bg-[#B4E567]" />
+                </header>
 
-                <div className="max-w-[1600px] mx-auto min-h-screen">
+                <div className="p-4 md:p-8 max-w-7xl mx-auto">
                     {children}
                 </div>
             </main>

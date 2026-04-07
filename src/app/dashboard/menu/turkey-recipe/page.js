@@ -15,7 +15,8 @@ import {
     ShoppingBasket,
     CheckCircle2,
     MessageSquare,
-    Zap
+    Zap,
+    Plus
 } from 'lucide-react';
 import Link from 'next/link';
 
