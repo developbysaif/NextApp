@@ -1,6 +1,11 @@
+export const dynamic = 'force-dynamic';
 import { NextResponse } from 'next/server';
 import { generateDietPlan } from '@/lib/anthropic';
 import prisma from '@/lib/prisma';
+
+export async function GET() {
+  return NextResponse.json({ message: 'Method Not Allowed' }, { status: 405 });
+}
 
 export async function POST(req) {
   try {
@@ -18,12 +23,12 @@ export async function POST(req) {
       data: {
         userId: userId,
         name: `Plan for ${name} - ${new Date().toLocaleDateString()}`,
-        dailyCalories: planData.dailyCalories,
-        protein: planData.macros.protein,
-        carbs: planData.macros.carbs,
-        fat: planData.macros.fat,
-        fiber: planData.macros.fiber,
-        bmi: planData.bmi,
+        dailyCalories: Math.round(planData.dailyCalories),
+        protein: Math.round(planData.macros.protein),
+        carbs: Math.round(planData.macros.carbs),
+        fat: Math.round(planData.macros.fat),
+        fiber: Math.round(planData.macros.fiber || 30),
+        bmi: parseFloat(planData.bmi),
         bmiCategory: planData.bmiCategory,
         weekPlan: planData.mealPlan,
         organicFoods: planData.organicFoods,

@@ -1,10 +1,17 @@
-import Anthropic from '@anthropic-ai/sdk';
+let anthropic;
 
-const anthropic = new Anthropic({
-  apiKey: process.env.ANTHROPIC_API_KEY,
-});
+async function getAnthropic() {
+  if (!anthropic) {
+    const Anthropic = (await import('@anthropic-ai/sdk')).default;
+    anthropic = new Anthropic({
+      apiKey: process.env.ANTHROPIC_API_KEY || 'dummy_key_for_build',
+    });
+  }
+  return anthropic;
+}
 
 export async function generateDietPlan(userProfile) {
+  const client = await getAnthropic();
   const { name, age, gender, weight, height, activityLevel, goal, diseases, preferences, symptoms } = userProfile;
 
   // 1. BMI Calculation
@@ -84,7 +91,7 @@ Return the data in the following JSON format:
 }`;
 
   try {
-    const response = await anthropic.messages.create({
+    const response = await client.messages.create({
       model: 'claude-3-5-sonnet-20240620',
       max_tokens: 4000,
       system: "You are an expert nutritionist specialized in Pakistani cuisine and Islamic medicine (Tibb-e-Nabwi). Always return only pure JSON.",

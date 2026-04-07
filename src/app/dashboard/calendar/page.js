@@ -8,18 +8,45 @@ import {
 export default function CalendarPage() {
     const [currentUser, setCurrentUser] = useState(null);
     useEffect(() => {
-        const user = JSON.parse(localStorage.getItem("currentUser") || "null");
-        if (user) setCurrentUser(user);
+        if (typeof window !== 'undefined') {
+            const user = JSON.parse(localStorage.getItem("currentUser") || "null");
+            if (user) setCurrentUser(user);
+        }
     }, []);
 
     const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-    const today = new Date();
-    const [currentMonth, setCurrentMonth] = useState(today.getMonth());
-    const [currentYear, setCurrentYear] = useState(today.getFullYear());
-    const [selectedDate, setSelectedDate] = useState(today.getDate());
+    const [currentMonth, setCurrentMonth] = useState(0); // Static initial
+    const [currentYear, setCurrentYear] = useState(2026);
+    const [selectedDate, setSelectedDate] = useState(1);
     
+    const [events, setEvents] = useState([]);
+    const [isLoaded, setIsLoaded] = useState(false);
+
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            const today = new Date();
+            setCurrentMonth(today.getMonth());
+            setCurrentYear(today.getFullYear());
+            setSelectedDate(today.getDate());
+
+            const stored = localStorage.getItem("myCalendarEvents");
+            if (stored) {
+                setEvents(JSON.parse(stored));
+            } else {
+                const seed = [
+                    { id: 1, title: 'Morning Yoga Session', type: 'physical', date: new Date(today.getFullYear(), today.getMonth(), 5).toISOString(), time: '07:00 AM', location: 'Sunrise Yoga Studio', note: 'Focus on flexibility and breathing.' },
+                    { id: 2, title: 'General Health Check-up', type: 'appointment', date: new Date(today.getFullYear(), today.getMonth(), 5).toISOString(), time: '03:00 PM', location: 'Central Clinic', note: 'Annual check-up.' },
+                    { id: 3, title: 'Meal Prep: Oatmeal', type: 'meal', date: new Date().toISOString(), time: '07:00 AM', location: 'Home Kitchen', note: 'Prepare for next 3 days.' }
+                ];
+                setEvents(seed);
+                localStorage.setItem("myCalendarEvents", JSON.stringify(seed));
+            }
+            setIsLoaded(true);
+        }
+    }, []);
+
     // Switch Month
     const handlePrevMonth = () => {
         if (currentMonth === 0) { setCurrentMonth(11); setCurrentYear(y => y - 1); } 
@@ -42,30 +69,9 @@ export default function CalendarPage() {
     const remaining = 35 - calendarCells.length;
     for (let i = 1; i <= remaining; i++) calendarCells.push({ d: i, isCurrent: false, fullDate: new Date(currentMonth === 11 ? currentYear + 1 : currentYear, currentMonth === 11 ? 0 : currentMonth + 1, i) });
 
-    // Events State - Initial Mock Data
-    const [events, setEvents] = useState([]);
-    const [isLoaded, setIsLoaded] = useState(false);
-
-    useEffect(() => {
-        const stored = localStorage.getItem("myCalendarEvents");
-        if (stored) {
-            setEvents(JSON.parse(stored));
-        } else {
-            // Seed initial events around current date
-            const seed = [
-                { id: 1, title: 'Morning Yoga Session', type: 'physical', date: new Date(currentYear, currentMonth, 5).toISOString(), time: '07:00 AM', location: 'Sunrise Yoga Studio', note: 'Focus on flexibility and breathing.' },
-                { id: 2, title: 'General Health Check-up', type: 'appointment', date: new Date(currentYear, currentMonth, 5).toISOString(), time: '03:00 PM', location: 'Central Clinic', note: 'Annual check-up.' },
-                { id: 3, title: 'Meal Prep: Oatmeal', type: 'meal', date: new Date(currentYear, currentMonth, today.getDate()).toISOString(), time: '07:00 AM', location: 'Home Kitchen', note: 'Prepare for next 3 days.' }
-            ];
-            setEvents(seed);
-            localStorage.setItem("myCalendarEvents", JSON.stringify(seed));
-        }
-        setIsLoaded(true);
-    }, []);
-
     const saveEvents = (newEvents) => {
         setEvents(newEvents);
-        localStorage.setItem("myCalendarEvents", JSON.stringify(newEvents));
+        if (typeof window !== 'undefined') localStorage.setItem("myCalendarEvents", JSON.stringify(newEvents));
     };
 
     const [filters, setFilters] = useState({ meal: true, physical: true, appointment: true });
@@ -73,14 +79,14 @@ export default function CalendarPage() {
 
     // Form Modal State
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [newEvt, setNewEvt] = useState({ title: '', type: 'meal', date: today.toISOString().split('T')[0], time: '12:00 PM', location: '', note: '' });
+    const [newEvt, setNewEvt] = useState({ title: '', type: 'meal', date: new Date().toISOString().split('T')[0], time: '12:00 PM', location: '', note: '' });
 
     const handleAddEvent = (e) => {
         e.preventDefault();
         const created = { ...newEvt, id: Date.now(), date: new Date(newEvt.date).toISOString() };
         saveEvents([...events, created]);
         setIsModalOpen(false);
-        setNewEvt({ title: '', type: 'meal', date: today.toISOString().split('T')[0], time: '12:00 PM', location: '', note: '' });
+        setNewEvt({ title: '', type: 'meal', date: new Date().toISOString().split('T')[0], time: '12:00 PM', location: '', note: '' });
     };
 
     const removeEvent = (id) => {
