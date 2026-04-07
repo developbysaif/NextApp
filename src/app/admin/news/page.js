@@ -1,24 +1,25 @@
-
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Plus, Trash2, Send, Layout, Image as ImageIcon, FileText } from "lucide-react";
-import Link from "next/link";
+import { Plus, Trash2, Send, Image as ImageIcon, FileText, Search } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function AdminNewsPage() {
     const [posts, setPosts] = useState([]);
+    const [loading, setLoading] = useState(true);
     const [newPost, setNewPost] = useState({
         title: "",
         content: "",
         excerpt: "",
         author: "Admin",
         category: "General",
-        image: "/images/millet_upma.png"
+        image: "/images/organic-foods.png"
     });
 
     useEffect(() => {
         const saved = JSON.parse(localStorage.getItem("news_posts") || "[]");
         setPosts(saved);
+        setLoading(false);
     }, []);
 
     const handleSavePost = (e) => {
@@ -32,7 +33,7 @@ export default function AdminNewsPage() {
         
         localStorage.setItem("news_posts", JSON.stringify(updatedPosts));
         setPosts(updatedPosts);
-        setNewPost({ title: "", content: "", excerpt: "", author: "Admin", category: "General", image: "/images/millet_upma.png" });
+        setNewPost({ title: "", content: "", excerpt: "", author: "Admin", category: "General", image: "/images/organic-foods.png" });
         alert("Post Published Successfully!");
     };
 
@@ -43,115 +44,123 @@ export default function AdminNewsPage() {
     };
 
     return (
-        <div className="min-h-screen bg-[#f4f5ee] flex">
-            {/* Sidebar Placeholder */}
-            <aside className="w-64 bg-[#21492f] text-white p-8 hidden md:block">
-                <h2 className="text-2xl font-black uppercase tracking-tight mb-12">Portal Admin</h2>
-                <nav className="space-y-6">
-                    <Link href="/admin" className="flex items-center gap-3 opacity-60 hover:opacity-100 transition-opacity font-bold uppercase tracking-widest text-xs">
-                        <Layout size={18} /> Dashboard
-                    </Link>
-                    <Link href="/admin/news" className="flex items-center gap-3 font-bold uppercase tracking-widest text-xs bg-white/10 p-3 rounded-xl">
-                        <FileText size={18} /> News & Updates
-                    </Link>
-                </nav>
-            </aside>
+        <div className="space-y-8 pb-20 max-w-5xl mx-auto">
+            {/* Header Area (Heading removed) */}
+            <div className="flex flex-col md:flex-row md:items-center justify-end gap-6 pt-4">
+                <div className="flex gap-3">
+                    <button className="flex items-center gap-2 px-8 py-4 bg-[#214a32] text-white rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-black transition-all shadow-xl shadow-green-100">
+                        <Plus size={20} />
+                        Bulk Upload
+                    </button>
+                </div>
+            </div>
 
-            {/* Main Content */}
-            <main className="flex-1 p-8 md:p-14">
-                <div className="max-w-4xl mx-auto">
-                    <div className="flex items-center justify-between mb-12">
-                        <div>
-                            <h1 className="text-3xl font-black text-[#21492f] uppercase tracking-tight">News Manager</h1>
-                            <p className="text-[#22aa4f] font-bold text-xs uppercase tracking-widest mt-1">Publish new updates to the website</p>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                {/* Create Section */}
+                <div className="lg:col-span-12">
+                    <div className="bg-white rounded-[3rem] p-8 md:p-12 shadow-sm border border-gray-100">
+                        <div className="flex items-center gap-4 mb-10">
+                            <div className="p-4 bg-[#214a32] text-white rounded-[1.5rem] shadow-xl shadow-green-900/10 transition-transform hover:rotate-12">
+                                <Plus size={24} />
+                            </div>
+                            <div>
+                                <h2 className="text-xl font-black text-[#214a32] font-outfit uppercase tracking-tight">Create News Article</h2>
+                                <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mt-1">Broadcast latest updates to your users</p>
+                            </div>
                         </div>
-                    </div>
 
-                    {/* New Post Form */}
-                    <div className="bg-white rounded-[2.5rem] p-10 shadow-xl border border-gray-100 mb-12">
-                        <h2 className="text-xl font-black text-[#21492f] uppercase tracking-tight mb-8 flex items-center gap-2">
-                             <Plus size={20} className="text-[#22aa4f]" /> Create New Post
-                        </h2>
-                        <form onSubmit={handleSavePost} className="space-y-6">
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div className="space-y-2">
-                                    <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 pl-4">Post Title</label>
+                        <form onSubmit={handleSavePost} className="space-y-8">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <div className="space-y-3">
+                                    <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 pl-4 italic">Post Title</label>
                                     <input 
                                         required
-                                        className="w-full bg-[#fcfdfa] border border-gray-100 rounded-2xl px-6 py-4 outline-none focus:border-[#22aa4f] transition-all font-bold text-[#21492f]"
+                                        className="w-full bg-[#fcfdfa] border border-gray-100 rounded-2xl px-6 py-5 outline-none focus:border-[#214a32] transition-all font-bold text-[#214a32] shadow-inner"
                                         value={newPost.title}
                                         onChange={e => setNewPost({...newPost, title: e.target.value})}
-                                        placeholder="e.g. Tips for Summer Hydration"
+                                        placeholder="e.g. Health Benefits of Moringa"
                                     />
                                 </div>
-                                <div className="space-y-2">
-                                    <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 pl-4">Category</label>
+                                <div className="space-y-3">
+                                    <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 pl-4 italic">Target Category</label>
                                     <input 
-                                        className="w-full bg-[#fcfdfa] border border-gray-100 rounded-2xl px-6 py-4 outline-none focus:border-[#22aa4f] transition-all font-bold text-[#21492f]"
+                                        className="w-full bg-[#fcfdfa] border border-gray-100 rounded-2xl px-6 py-5 outline-none focus:border-[#214a32] transition-all font-bold text-[#214a32] shadow-inner"
                                         value={newPost.category}
                                         onChange={e => setNewPost({...newPost, category: e.target.value})}
-                                        placeholder="e.g. Health Tips"
+                                        placeholder="e.g. Wellness Tips"
                                     />
                                 </div>
                             </div>
 
-                            <div className="space-y-2">
-                                <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 pl-4">Short Excerpt (Visible on Card)</label>
+                            <div className="space-y-3">
+                                <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 pl-4 italic">Short Teaser Excerpt</label>
                                 <textarea 
-                                    className="w-full bg-[#fcfdfa] border border-gray-100 rounded-2xl px-6 py-4 outline-none focus:border-[#22aa4f] transition-all font-bold text-[#21492f] h-24"
+                                    className="w-full bg-[#fcfdfa] border border-gray-100 rounded-2xl px-6 py-5 outline-none focus:border-[#214a32] transition-all font-bold text-[#214a32] h-24 shadow-inner"
                                     value={newPost.excerpt}
                                     onChange={e => setNewPost({...newPost, excerpt: e.target.value})}
-                                    placeholder="Write a catchy summary..."
+                                    placeholder="Write a catchy 2-line summary..."
                                 />
                             </div>
 
-                            <div className="space-y-2">
-                                <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 pl-4">Full Content (HTML Supported)</label>
+                            <div className="space-y-3">
+                                <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 pl-4 italic">Full Content Canvas</label>
                                 <textarea 
                                     required
-                                    className="w-full bg-[#fcfdfa] border border-gray-100 rounded-2xl px-6 py-4 outline-none focus:border-[#22aa4f] transition-all font-bold text-[#21492f] h-48"
+                                    className="w-full bg-[#fcfdfa] border border-gray-100 rounded-2xl px-6 py-5 outline-none focus:border-[#214a32] transition-all font-bold text-[#214a32] h-64 shadow-inner"
                                     value={newPost.content}
                                     onChange={e => setNewPost({...newPost, content: e.target.value})}
-                                    placeholder="<p>Full article content here...</p>"
+                                    placeholder="Deep dive into the article content here..."
                                 />
                             </div>
 
-                            <div className="flex items-center gap-4 pt-4">
-                                <button className="flex-1 bg-[#22aa4f] hover:bg-[#21492f] text-white py-5 rounded-2xl font-black uppercase tracking-widest text-sm transition-all shadow-lg flex items-center justify-center gap-3">
-                                    <Send size={18} /> Publish Now
+                            <div className="flex items-center gap-4 pt-6 border-t border-gray-50 mt-10">
+                                <button className="flex-1 bg-[#214a32] hover:bg-black text-white py-5 rounded-[2rem] font-black uppercase tracking-widest text-sm transition-all shadow-xl shadow-green-900/10 flex items-center justify-center gap-3">
+                                    <Send size={18} /> Publish to Feed
                                 </button>
-                                <div className="p-5 bg-[#f4f5ee] rounded-2xl text-gray-400">
-                                    <ImageIcon size={20} />
+                                <div className="p-5 bg-white border border-gray-100 rounded-[1.5rem] text-gray-300 hover:text-[#214a32] transition-all cursor-pointer">
+                                    <ImageIcon size={22} />
                                 </div>
                             </div>
                         </form>
                     </div>
+                </div>
 
-                    {/* Manage Posts */}
-                    <div className="space-y-6">
-                        <h2 className="text-xl font-black text-[#21492f] uppercase tracking-tight pl-4">Recent Posts ({posts.length})</h2>
+                {/* Listing Section */}
+                <div className="lg:col-span-12 space-y-6">
+                    <div className="flex items-center justify-between px-6">
+                        <h2 className="text-xl font-black text-[#214a32] font-outfit uppercase tracking-tight">Recent Archives ({posts.length})</h2>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         {posts.map(post => (
-                            <div key={post.id} className="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm flex items-center justify-between group">
+                            <motion.div
+                                layout
+                                key={post.id} 
+                                className="bg-white p-8 rounded-[3.5rem] border border-gray-100 shadow-sm flex items-center justify-between group hover:shadow-xl transition-all duration-500"
+                            >
                                 <div className="flex items-center gap-6">
-                                    <div className="w-16 h-16 bg-[#f4f5ee] rounded-2xl overflow-hidden relative grayscale group-hover:grayscale-0 transition-all">
-                                        <img src={post.image} className="w-full h-full object-cover" alt="" />
+                                    <div className="w-16 h-16 bg-gray-50 rounded-[1.5rem] overflow-hidden relative shadow-inner">
+                                        <img src={post.image} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" alt="" />
                                     </div>
                                     <div>
-                                        <h3 className="font-bold text-[#21492f] uppercase tracking-tight">{post.title}</h3>
-                                        <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mt-1">{post.date} • {post.category}</p>
+                                        <h3 className="font-black text-[13px] text-gray-900 uppercase tracking-tight group-hover:text-[#214a32] transition-colors">{post.title}</h3>
+                                        <p className="text-[9px] font-black text-gray-400 uppercase tracking-widest mt-2 flex items-center gap-2">
+                                            <span className="text-[#214a32]">{post.category}</span>
+                                            <span className="w-1 h-1 bg-gray-200 rounded-full"></span>
+                                            {post.date}
+                                        </p>
                                     </div>
                                 </div>
                                 <button 
                                     onClick={() => handleDeletePost(post.id)}
-                                    className="p-4 bg-red-50 text-red-500 rounded-2xl opacity-0 group-hover:opacity-100 transition-all hover:bg-red-500 hover:text-white"
+                                    className="p-5 bg-red-50 text-red-500 rounded-[1.5rem] opacity-0 group-hover:opacity-100 transition-all hover:bg-red-500 hover:text-white shadow-sm"
                                 >
-                                    <Trash2 size={18} />
+                                    <Trash2 size={20} />
                                 </button>
-                            </div>
+                            </motion.div>
                         ))}
                     </div>
                 </div>
-            </main>
+            </div>
         </div>
     );
 }

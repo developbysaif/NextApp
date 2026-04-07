@@ -62,19 +62,10 @@ export default function AdminRevenuePage() {
 
     return (
         <div className="space-y-8 pb-10">
-            {/* Header */}
-            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-                <div className="flex items-center gap-4">
-                    <div className="p-4 bg-[#122A1A] text-white rounded-[2rem] shadow-xl shadow-green-900/10">
-                        <DollarSign size={28} />
-                    </div>
-                    <div>
-                        <h2 className="text-3xl font-black text-gray-900 font-outfit uppercase tracking-tight">Revenue Wall</h2>
-                        <p className="text-gray-500 font-medium tracking-tight">Real-time financial analytics and transaction tracking.</p>
-                    </div>
-                </div>
+            {/* Header (Heading removed as per request) */}
+            <div className="flex flex-col lg:flex-row lg:items-center justify-end gap-6">
                 <div className="flex items-center gap-3">
-                    <button className="bg-white border border-gray-100 p-4 rounded-2xl text-gray-400 hover:text-green-600 shadow-sm transition-all flex items-center gap-2 text-[10px] font-black uppercase tracking-widest"><Calendar size={18} /> Last 7 Days</button>
+                    <button className="bg-white border border-gray-100 p-4 rounded-2xl text-gray-400 hover:text-[#214a32] shadow-sm transition-all flex items-center gap-2 text-[10px] font-black uppercase tracking-widest"><Calendar size={18} /> Last 7 Days</button>
                     <button onClick={() => {
                         const csvStr = "ID,Customer,Email,Type,Method,Amount,Status,Date\n" + transactions.map(t => `${t.id},${t.customer},${t.email},${t.type},${t.method},${t.amount},${t.status},${t.date}`).join("\n");
                         const blob = new Blob([csvStr], { type: 'text/csv' });
@@ -83,7 +74,7 @@ export default function AdminRevenuePage() {
                         a.href = url;
                         a.download = 'revenue_report.csv';
                         a.click();
-                    }} className="bg-[#122A1A] text-white px-8 py-4 rounded-[2rem] font-black text-[10px] uppercase tracking-widest flex items-center gap-3 hover:bg-black transition-all shadow-xl shadow-black/10">
+                    }} className="bg-[#214a32] text-white px-8 py-4 rounded-[2rem] font-black text-[10px] uppercase tracking-widest flex items-center gap-3 hover:bg-black transition-all shadow-xl shadow-black/10">
                         <Download size={18} strokeWidth={2.5} /> Export Report
                     </button>
                 </div>

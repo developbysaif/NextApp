@@ -115,22 +115,20 @@ export default function CalendarPage() {
     return (
         <div className="font-sans text-gray-800 bg-[#FDFBF7] min-h-screen flex flex-col lg:flex-row pb-10 w-full relative">
             
-            {/* Center Content Component */}
+            {/* Center Content Component (Heading removed) */}
             <div className="flex-1 px-6 md:px-10 pt-10 flex flex-col gap-8 lg:pr-8">
                 
-                {/* Header Row */}
-                <div className="flex items-center justify-between w-full">
-                    <h1 className="text-[26px] font-bold text-gray-900 tracking-tight">Calendar Overview</h1>
-                    
+                {/* Header Row (Breadcrumbs & Profile) */}
+                <div className="flex items-center justify-end w-full">
                     <div className="flex items-center gap-4 hidden md:flex">
-                        <div className="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center text-gray-400 cursor-pointer hover:bg-gray-50 border border-gray-100 transition-colors">
+                        <div className="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center text-gray-400 cursor-pointer hover:bg-gray-200 border border-gray-100 transition-colors">
                             <Search size={18} />
                         </div>
                         <div className="bg-white rounded-full py-1.5 pl-1.5 pr-4 flex items-center gap-3 shadow-sm border border-gray-100 cursor-pointer">
-                            <div className="w-8 h-8 rounded-full flex items-center justify-center bg-[#B4E567] text-gray-900 font-bold">{currentUser?.name?.charAt(0) || 'A'}</div>
+                            <div className="w-8 h-8 rounded-full flex items-center justify-center bg-[#a4d9bc] text-[#214a32] font-bold">{currentUser?.name?.charAt(0) || 'A'}</div>
                             <div className="flex flex-col">
                                 <span className="text-xs font-bold text-gray-900 leading-tight">{currentUser?.name || 'Adam Vasylenko'}</span>
-                                <span className="text-[10px] text-gray-400 font-medium">Platform User</span>
+                                <span className="text-[10px] text-gray-400 font-medium uppercase tracking-widest">Portal Manager</span>
                             </div>
                         </div>
                     </div>

@@ -44,19 +44,10 @@ export default function AdminDoctorsPage() {
     return (
         <div className="space-y-8 pb-10">
             {/* Header */}
-            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-                <div className="flex items-center gap-4">
-                    <div className="p-4 bg-[#122A1A] text-white rounded-[2rem] shadow-xl shadow-green-900/10 transition-transform hover:rotate-12">
-                        <ShieldCheck size={28} />
-                    </div>
-                    <div>
-                        <h2 className="text-3xl font-black text-gray-900 font-outfit uppercase tracking-tight">Clinician Registry</h2>
-                        <p className="text-gray-500 font-medium tracking-tight">Verification and management of global medical experts.</p>
-                    </div>
-                </div>
+            <div className="flex flex-col lg:flex-row lg:items-center justify-end gap-6">
                 <div className="flex items-center gap-3">
-                    <button className="p-4 bg-white border border-gray-100 rounded-3xl text-gray-400 hover:text-[#122A1A] transition-all font-black text-[10px] uppercase tracking-widest flex items-center gap-2"><Award size={18} /> Credentials Review</button>
-                    <button className="bg-[#122A1A] text-white px-8 py-4 rounded-[2rem] font-black text-[10px] uppercase tracking-widest flex items-center gap-3 hover:bg-black transition-all shadow-xl shadow-black/10">
+                    <button className="p-4 bg-white border border-gray-100 rounded-3xl text-gray-400 hover:text-[#214a32] transition-all font-black text-[10px] uppercase tracking-widest flex items-center gap-2"><Award size={18} /> Credentials Review</button>
+                    <button className="bg-[#214a32] text-white px-8 py-4 rounded-[2rem] font-black text-[10px] uppercase tracking-widest flex items-center gap-3 hover:bg-black transition-all shadow-xl shadow-black/10">
                         <Plus size={18} /> Invite Clinician
                     </button>
                 </div>

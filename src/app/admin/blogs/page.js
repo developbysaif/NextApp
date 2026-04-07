@@ -160,19 +160,17 @@ export default function HealthyMenuPage() {
             {/* Center Content Component */}
             <div className="flex-1 px-8 pt-8 flex flex-col gap-6 w-full pb-20">
                 
-                {/* Header Row */}
-                <div className="flex flex-col md:flex-row md:items-center w-full gap-4 md:gap-0 mt-4 xl:mt-0 relative z-20">
-                    <h1 className="text-[26px] font-bold text-gray-900 tracking-tight leading-none w-1/3">Healthy Menu <span className="text-sm text-gray-400 font-medium">(Blog Posts)</span></h1>
-                    
-                    <div className="flex-1 flex items-center gap-3 flex-wrap">
-                        <div className="relative flex-1 min-w-[160px]">
-                            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={16} />
-                            <input type="text" placeholder="Search posts..." className="w-full bg-white border border-gray-100 rounded-xl py-3 pl-11 pr-4 text-xs font-bold text-gray-600 focus:outline-none focus:ring-1 focus:ring-[#B4E567] shadow-sm" />
+                {/* Header Row (Heading removed) */}
+                <div className="flex flex-col md:flex-row md:items-center w-full justify-end gap-4 md:gap-0 mt-4 xl:mt-0 relative z-20">
+                    <div className="flex-1 flex items-center justify-end gap-3 flex-wrap">
+                        <div className="relative flex-1 max-w-[300px]">
+                            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 font-bold" size={16} />
+                            <input type="text" placeholder="Search articles..." className="w-full bg-white border border-gray-100 rounded-xl py-3 pl-11 pr-4 text-[11px] font-bold text-gray-600 focus:outline-none focus:ring-1 focus:ring-[#214a32] shadow-sm" />
                         </div>
-                        <button onClick={() => setIsCatModalOpen(true)} className="bg-white border border-[#B4E567] text-[#496b16] px-4 py-3 rounded-xl text-xs font-bold shrink-0 shadow-sm hover:bg-[#B4E567]/10 transition-all flex items-center gap-2">
+                        <button onClick={() => setIsCatModalOpen(true)} className="bg-white border border-[#214a32] text-[#214a32] px-4 py-3 rounded-xl text-[11px] font-bold shrink-0 shadow-sm hover:bg-[#214a32]/10 transition-all flex items-center gap-2">
                             <Tag size={14}/> Add Category
                         </button>
-                        <button onClick={() => setIsModalOpen(true)} className="bg-[#B4E567] text-gray-900 px-5 py-3 rounded-xl text-xs font-bold shrink-0 shadow-sm hover:bg-[#a6d85a] transition-all flex items-center gap-2">
+                        <button onClick={() => setIsModalOpen(true)} className="bg-[#214a32] text-white px-5 py-3 rounded-xl text-[11px] font-bold shrink-0 shadow-sm hover:bg-black transition-all flex items-center gap-2">
                             <Plus size={14}/> Add Post
                         </button>
                     </div>
@@ -235,14 +233,14 @@ export default function HealthyMenuPage() {
                                 </div>
                             </div>
                             
-                            <button className="bg-[#B4E567] text-gray-900 font-bold text-[13px] tracking-wide py-4 mt-6 rounded-[1.2rem] w-full shadow-sm hover:bg-[#a6d85a] transition-all">
+                            <button className="bg-[#214a32] text-white font-bold text-[13px] tracking-wide py-4 mt-6 rounded-[1.2rem] w-full shadow-sm hover:bg-black transition-all">
                                 Add to Meal Plan
                             </button>
                         </div>
 
                         {/* Hovering Right Side Macros */}
                         <div className="absolute right-4 top-4 bottom-4 w-[110px] flex flex-col gap-3 z-10 hidden lg:flex">
-                             <div className="bg-[#e4fcbd] rounded-[1.5rem] p-4 flex flex-col justify-center gap-2 shadow-sm flex-1">
+                             <div className="bg-[#214a32]/10 rounded-[1.5rem] p-4 flex flex-col justify-center gap-2 shadow-sm flex-1">
                                  <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center text-[#6a8c35]"><Activity size={16} /></div>
                                  <div className="flex flex-col"><span className="text-[#6a8c35] text-[10px] font-bold mb-0.5">Calories</span><span className="text-[#496b16] font-black leading-none">{featuredMenu.cal} kcal</span></div>
                              </div>
@@ -279,7 +277,7 @@ export default function HealthyMenuPage() {
                                 <button 
                                     key={tab}
                                     onClick={() => setActiveTab(tab)}
-                                    className={`px-4 py-2 text-[11px] font-bold rounded-lg transition-all whitespace-nowrap ${activeTab === tab ? 'bg-[#B4E567] text-gray-900' : 'text-gray-400 hover:text-gray-900'}`}
+                                    className={`px-4 py-2 text-[11px] font-bold rounded-lg transition-all whitespace-nowrap ${activeTab === tab ? 'bg-[#214a32] text-white shadow-lg' : 'text-gray-400 hover:text-gray-900'}`}
                                 >
                                     {tab}
                                 </button>
@@ -290,13 +288,13 @@ export default function HealthyMenuPage() {
                                 Sort by: <span className="bg-white border border-gray-100 rounded px-2 py-1 text-gray-900 flex items-center gap-1 cursor-pointer">Calories <ChevronDown size={10} /></span>
                             </div>
                             <div className="w-8 h-8 bg-white border border-gray-100 rounded flex items-center justify-center text-gray-400 cursor-pointer shadow-sm"><Filter size={14} /></div>
-                            <div className="w-8 h-8 bg-[#B4E567] rounded flex items-center justify-center text-gray-900 cursor-pointer shadow-sm"><List size={16} /></div>
+                            <div className="w-8 h-8 bg-[#214a32] rounded flex items-center justify-center text-white cursor-pointer shadow-sm"><List size={16} /></div>
                         </div>
                     </div>
 
                     <div className="space-y-4">
                         {filteredMenus.map(m => (
-                            <div key={m.id} onClick={() => router.push(`/admin/blogs/${m.id}`)} className="bg-[#FAF7ED]/80 rounded-[2rem] p-3 pl-4 flex items-center gap-6 shadow-sm border border-[#f0ecd3] relative group hover:bg-[#FAF7ED] hover:border-[#FFD166] transition-colors cursor-pointer">
+                            <div key={m.id} onClick={() => router.push(`/admin/blogs/${m.id}`)} className="bg-[#FAF7ED]/80 rounded-[2rem] p-3 pl-4 flex items-center gap-6 shadow-sm border border-[#f0ecd3] relative group hover:bg-[#FAF7ED] hover:border-[#214a32] transition-colors cursor-pointer">
                                  <img src={m.img} alt={m.title} className="w-[140px] h-[90px] rounded-2xl object-cover" />
                                  <div className="flex-1 py-1">
                                      <div className="flex items-center gap-3 mb-2">
@@ -326,7 +324,7 @@ export default function HealthyMenuPage() {
                                          <span className="text-[10px] font-bold text-gray-400 ml-2">Health Score: <span className="text-gray-900">{m.score/10}/10</span></span>
                                          {renderHealthBars(m.score)}
                                      </div>
-                                     <button className="bg-[#B4E567] text-gray-900 px-6 py-2.5 rounded-xl text-[11px] font-bold shadow-sm hover:bg-[#a6d85a] transition-all">
+                                     <button className="bg-[#214a32] text-white px-6 py-2.5 rounded-xl text-[11px] font-bold shadow-sm hover:bg-black transition-all">
                                          Add to Meal Plan
                                      </button>
                                  </div>

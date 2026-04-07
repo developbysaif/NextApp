@@ -57,15 +57,9 @@ export default function AdminDiscountsPage() {
 
     return (
         <div className="space-y-8 pb-10">
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
-                <div>
-                    <h1 className="text-3xl font-black font-outfit tracking-tight text-[#21492f]">Promotional Matrix</h1>
-                    <p className="text-sm font-bold text-gray-400 uppercase tracking-widest mt-1">
-                        Managing {products.length} active markdown items
-                    </p>
-                </div>
+            <div className="flex flex-col md:flex-row md:items-center justify-end gap-6 pt-4">
                 <div className="flex gap-3">
-                    <button className="flex items-center gap-2 px-6 py-4 bg-green-600 text-white rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-green-700 transition-all shadow-xl shadow-green-100">
+                    <button className="flex items-center gap-2 px-6 py-4 bg-[#214a32] text-white rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-black transition-all shadow-xl shadow-green-100">
                         <Zap size={20} />
                         Bulk discount adjust
                     </button>
@@ -80,18 +74,18 @@ export default function AdminDiscountsPage() {
                     </div>
                     <div>
                         <p className="text-[10px] font-black uppercase text-gray-400 tracking-widest">Avg Markdown</p>
-                        <h3 className="text-2xl font-black text-[#21492f]">
+                        <h3 className="text-2xl font-black text-[#214a32]">
                             {products.length > 0 ? (products.reduce((acc, curr) => acc + curr.discount, 0) / products.length).toFixed(1) : 0}%
                         </h3>
                     </div>
                 </div>
                 <div className="bg-white p-8 rounded-[3rem] border border-gray-100 flex items-center gap-6">
-                    <div className="w-16 h-16 bg-green-50 rounded-2xl flex items-center justify-center text-green-500">
+                    <div className="w-16 h-16 bg-green-50 rounded-2xl flex items-center justify-center text-[#214a32]">
                         <TrendingUp size={32} />
                     </div>
                     <div>
                         <p className="text-[10px] font-black uppercase text-gray-400 tracking-widest">Promo Value</p>
-                        <h3 className="text-2xl font-black text-[#21492f]">
+                        <h3 className="text-2xl font-black text-[#214a32]">
                             ${products.reduce((acc, curr) => acc + (curr.price * (curr.discount / 100)), 0).toFixed(2)}
                         </h3>
                     </div>
@@ -102,7 +96,7 @@ export default function AdminDiscountsPage() {
                     </div>
                     <div>
                         <p className="text-[10px] font-black uppercase text-gray-400 tracking-widest">Active Items</p>
-                        <h3 className="text-2xl font-black text-[#21492f]">{products.length} Items</h3>
+                        <h3 className="text-2xl font-black text-[#214a32]">{products.length} Items</h3>
                     </div>
                 </div>
             </div>
@@ -134,17 +128,17 @@ export default function AdminDiscountsPage() {
                         <div className="flex-1 p-10 flex flex-col justify-between">
                             <div>
                                 <div className="flex items-center justify-between mb-2">
-                                    <span className="text-[10px] font-black uppercase text-green-600 tracking-widest">{product.category}</span>
+                                    <span className="text-[10px] font-black uppercase text-[#214a32] tracking-widest">{product.category}</span>
                                     <div className="flex items-center gap-1 text-[9px] font-bold text-gray-300">
                                         <Clock size={12} />
                                         <span>EXPIRES SOON</span>
                                     </div>
                                 </div>
-                                <h3 className="text-2xl font-black font-outfit text-[#21492f] tracking-tight">{product.name}</h3>
+                                <h3 className="text-2xl font-black font-outfit text-[#214a32] tracking-tight">{product.name}</h3>
                                 <div className="mt-4 flex items-center gap-4">
                                     <div className="flex flex-col">
                                         <p className="text-[9px] font-black text-gray-400 uppercase tracking-tighter line-through">${product.price.toFixed(2)}</p>
-                                        <p className="text-2xl font-black text-[#21492f] tracking-tighter">${(product.price * (1 - product.discount / 100)).toFixed(2)}</p>
+                                        <p className="text-2xl font-black text-[#214a32] tracking-tighter">${(product.price * (1 - product.discount / 100)).toFixed(2)}</p>
                                     </div>
                                     <div className="h-10 w-[1px] bg-gray-100"></div>
                                     <div className="flex flex-col">
@@ -154,7 +148,7 @@ export default function AdminDiscountsPage() {
                                 </div>
                             </div>
 
-                            <button className="w-full py-4 bg-[#F8F7F4] hover:bg-[#21492f] hover:text-white transition-all rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] text-[#21492f]">
+                            <button className="w-full py-4 bg-[#F8F7F4] hover:bg-[#214a32] hover:text-white transition-all rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] text-[#214a32]">
                                 Manage Campaign
                             </button>
                         </div>

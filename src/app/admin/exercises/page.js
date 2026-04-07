@@ -118,30 +118,22 @@ export default function AdminExercisesPage() {
     if (loading) return null;
 
     return (
-        <div className="p-8 bg-[#FDFBF7] min-h-screen font-sans">
-            <div className="flex flex-col md:flex-row md:items-center justify-between mb-10 gap-6">
-                <div>
-                    <h1 className="text-3xl font-black text-gray-900 tracking-tight flex items-center gap-3">
-                        <Dumbbell className="text-[#B4E567]" size={32}/>
-                        Exercise Management
-                    </h1>
-                    <p className="text-gray-500 text-sm font-medium mt-1">Curate and manage global workout programs</p>
-                </div>
-
+        <div className="p-4 bg-[#FDFBF7] min-h-screen font-sans">
+            <div className="flex flex-col md:flex-row md:items-center justify-end mb-10 gap-6">
                 <div className="flex items-center gap-4">
                     <div className="relative w-64">
-                        <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+                        <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 font-bold" size={18} />
                         <input 
                             type="text" 
                             placeholder="Search exercises..." 
-                            className="w-full bg-white rounded-2xl py-3 pl-11 pr-4 text-sm font-medium border border-gray-100 shadow-sm outline-none focus:ring-2 focus:ring-[#B4E567]/50"
+                            className="w-full bg-white rounded-2xl py-3 pl-11 pr-4 text-[11px] font-bold border border-gray-100 shadow-sm outline-none focus:ring-2 focus:ring-[#214a32]/50"
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
                         />
                     </div>
                     <button 
                         onClick={() => openModal()}
-                        className="bg-[#B4E567] text-gray-900 px-6 py-3 rounded-2xl text-xs font-black uppercase tracking-widest shadow-lg shadow-[#B4E567]/20 hover:scale-105 transition-all flex items-center gap-2"
+                        className="bg-[#214a32] text-white px-6 py-3 rounded-2xl text-[11px] font-black uppercase tracking-widest shadow-lg shadow-green-900/10 hover:bg-black transition-all flex items-center gap-2"
                     >
                         <Plus size={16}/> Add Exercise
                     </button>

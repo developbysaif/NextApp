@@ -35,7 +35,7 @@ export default function AdminAppointmentsPage() {
     ];
 
     const stats = [
-        { label: 'Today Totals', val: '24', sub: 'Appointments', color: 'text-[#122A1A]' },
+        { label: 'Today Totals', val: '24', sub: 'Appointments', color: 'text-[#214a32]' },
         { label: 'Success Rate', val: '92.4%', sub: 'Attendance', color: 'text-emerald-600' },
         { label: 'Avg Feedback', val: '4.8', sub: 'Star rating', color: 'text-amber-500' },
         { label: 'New Requests', val: '12', sub: 'Pending', color: 'text-indigo-600' },
@@ -53,30 +53,21 @@ export default function AdminAppointmentsPage() {
 
     return (
         <div className="space-y-8 pb-10">
-            {/* Header & Controls */}
-            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-                <div className="flex items-center gap-4">
-                    <div className="p-4 bg-[#122A1A] text-white rounded-[2rem] shadow-xl shadow-green-900/10">
-                        <CalendarIcon size={28} />
-                    </div>
-                    <div>
-                        <h2 className="text-3xl font-black text-gray-900 font-outfit uppercase tracking-tight">Admin Consultations</h2>
-                        <p className="text-gray-500 font-medium tracking-tight">Managing global doctor-patient scheduling.</p>
-                    </div>
-                </div>
+            {/* Header & Controls (Heading removed as per request) */}
+            <div className="flex flex-col lg:flex-row lg:items-center justify-end gap-6">
                 <div className="flex flex-wrap items-center gap-3">
                     <div className="flex items-center gap-1 bg-white p-2 rounded-[2rem] border border-gray-100 shadow-sm relative z-10">
                         {['Monthly', 'Weekly', 'Daily'].map(v => (
                             <button
                                 key={v}
                                 onClick={() => setView(v.toLowerCase())}
-                                className={`px-6 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all ${view === v.toLowerCase() ? 'bg-[#122A1A] text-white shadow-lg' : 'bg-transparent text-gray-400 hover:text-gray-600'}`}
+                                className={`px-6 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all ${view === v.toLowerCase() ? 'bg-[#214a32] text-white shadow-lg' : 'bg-transparent text-gray-400 hover:text-gray-600'}`}
                             >
                                 {v}
                             </button>
                         ))}
                     </div>
-                    <a href="/admin/portal" className="bg-[#122A1A] text-white px-8 py-4 rounded-[2rem] font-black text-[10px] uppercase tracking-widest flex items-center gap-3 hover:bg-black transition-all shadow-xl shadow-black/10">
+                    <a href="/admin/portal" className="bg-[#214a32] text-white px-8 py-4 rounded-[2rem] font-black text-[10px] uppercase tracking-widest flex items-center gap-3 hover:bg-black transition-all shadow-xl shadow-black/10">
                         <Plus size={18} /> Book Session
                     </a>
                 </div>
@@ -103,14 +94,14 @@ export default function AdminAppointmentsPage() {
                         <div className="flex items-center justify-between relative z-10">
                             <h3 className="text-xl font-black font-outfit uppercase tracking-tight">September 2028</h3>
                             <div className="flex gap-2">
-                                <button className="p-3 bg-gray-50 border border-gray-100 rounded-2xl hover:bg-[#122A1A] hover:text-white transition-all"><ChevronLeft size={16} /></button>
-                                <button className="p-3 bg-gray-50 border border-gray-100 rounded-2xl hover:bg-[#122A1A] hover:text-white transition-all"><ChevronRight size={16} /></button>
+                                <button className="p-3 bg-gray-50 border border-gray-100 rounded-2xl hover:bg-[#214a32] hover:text-white transition-all"><ChevronLeft size={16} /></button>
+                                <button className="p-3 bg-gray-50 border border-gray-100 rounded-2xl hover:bg-[#214a32] hover:text-white transition-all"><ChevronRight size={16} /></button>
                             </div>
                         </div>
 
                         <div className="grid grid-cols-7 gap-6 relative z-10">
                             {weekDays.map(day => (
-                                <div key={day.date} className={`text-center space-y-2 p-4 rounded-[2rem] transition-all cursor-pointer group/day ${day.date === '20' ? 'bg-[#122A1A] text-white shadow-xl shadow-green-900/10' : 'hover:bg-gray-50'}`}>
+                                <div key={day.date} className={`text-center space-y-2 p-4 rounded-[2rem] transition-all cursor-pointer group/day ${day.date === '20' ? 'bg-[#214a32] text-white shadow-xl shadow-green-900/10' : 'hover:bg-gray-50'}`}>
                                     <p className={`text-[10px] font-black uppercase tracking-widest ${day.date === '20' ? 'text-white/60' : 'text-gray-400'}`}>{day.day}</p>
                                     <h4 className="text-xl font-black font-outfit uppercase tracking-tighter leading-none">{day.date}</h4>
                                     <div className={`size-1.5 rounded-full mx-auto ${day.date === '20' ? 'bg-white' : 'bg-[#122A1A]/10'} group-hover/day:scale-150 transition-transform`} />
@@ -132,7 +123,7 @@ export default function AdminAppointmentsPage() {
                                                 </div>
                                                 <div className="flex items-center gap-2">
                                                     <div className="size-2 rounded-full animate-pulse bg-emerald-500" />
-                                                    <span className="text-[10px] font-black uppercase tracking-widest text-[#122A1A]">{apt.time}</span>
+                                                    <span className="text-[10px] font-black uppercase tracking-widest text-[#214a32]">{apt.time}</span>
                                                 </div>
                                             </div>
                                             <button className="text-gray-300 hover:text-indigo-600"><MoreHorizontal size={18} /></button>
@@ -177,11 +168,11 @@ export default function AdminAppointmentsPage() {
                     <div className="bg-white p-8 md:p-10 rounded-[3.5rem] border border-gray-100 shadow-sm space-y-10 relative overflow-hidden group">
                         <h3 className="text-sm font-black font-outfit uppercase tracking-wider mb-6">Patient Master Search</h3>
                         <div className="relative group/search">
-                            <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within/search:text-[#122A1A] transition-colors" size={18} />
+                            <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within/search:text-[#214a32] transition-colors" size={18} />
                             <input 
                                 type="text" 
                                 placeholder="Patient name or UID..." 
-                                className="w-full pl-16 pr-6 py-5 bg-gray-50 border-none rounded-3xl text-[10px] font-black uppercase tracking-widest shadow-inner focus:ring-2 focus:ring-[#122A1A] transition-all"
+                                className="w-full pl-16 pr-6 py-5 bg-gray-50 border-none rounded-3xl text-[10px] font-black uppercase tracking-widest shadow-inner focus:ring-2 focus:ring-[#214a32] transition-all"
                             />
                         </div>
                         <div className="space-y-4">

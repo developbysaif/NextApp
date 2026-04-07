@@ -88,17 +88,9 @@ export default function AdminGroceryPage() {
     );
 
     return (
-        <div className="p-8 bg-[#FDFBF7] min-h-screen font-sans pb-24">
-            {/* Header */}
-            <div className="flex flex-col xl:flex-row xl:items-center justify-between mb-10 gap-8">
-                <div>
-                    <h1 className="text-3xl font-black text-gray-900 tracking-tight flex items-center gap-3">
-                        <Globe className="text-[#B4E567]" size={32}/>
-                        Live Logistics <span className="text-[10px] font-bold text-green-600 bg-green-50 px-3 py-1 rounded-full border border-green-100 ml-2">Connected to Database</span>
-                    </h1>
-                    <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mt-2 px-1">Tracking {orders.length} current website orders</p>
-                </div>
-
+        <div className="p-4 bg-[#FDFBF7] min-h-screen font-sans pb-24">
+            {/* Header (Heading removed) */}
+            <div className="flex flex-col xl:flex-row xl:items-center justify-end mb-10 gap-8">
                 <div className="flex flex-wrap items-center gap-4">
                     <div className="relative">
                         <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={16} />
@@ -107,10 +99,10 @@ export default function AdminGroceryPage() {
                             onChange={e => setSearchTerm(e.target.value)}
                             type="text" 
                             placeholder="Search by ID, User, or Item..." 
-                            className="bg-white border-none rounded-2xl py-3.5 pl-12 pr-6 text-xs font-bold focus:ring-1 focus:ring-[#B4E567] shadow-sm outline-none w-[300px]" 
+                            className="bg-white border border-gray-100 rounded-2xl py-3.5 pl-12 pr-6 text-xs font-bold focus:ring-1 focus:ring-[#214a32] shadow-sm outline-none w-[300px]" 
                         />
                     </div>
-                    <button className="bg-[#142A1D] text-white px-8 py-3.5 rounded-2xl text-[11px] font-black uppercase tracking-widest shadow-xl shadow-green-900/20 flex items-center gap-2">
+                    <button className="bg-[#214a32] text-white px-8 py-3.5 rounded-2xl text-[11px] font-black uppercase tracking-widest shadow-xl shadow-green-900/20 flex items-center gap-2 hover:bg-black transition-all">
                         <Truck size={18}/> Manage All Shipments
                     </button>
                 </div>

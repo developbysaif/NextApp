@@ -132,35 +132,28 @@ export default function AdminMealPlanPage() {
     if (loading) return null;
 
     return (
-        <div className="p-8 bg-[#FDFBF7] min-h-screen font-sans pb-24">
+        <div className="p-4 bg-[#FDFBF7] min-h-screen font-sans pb-24">
             
-            {/* Header Control Panel */}
-            <div className="flex flex-col xl:flex-row xl:items-center justify-between mb-10 gap-6">
-                <div>
-                    <h1 className="text-3xl font-black text-gray-900 tracking-tight flex items-center gap-3">
-                        <CalendarIcon className="text-[#B4E567]" size={32}/>
-                        Meal Planning <span className="text-sm text-gray-400 font-bold bg-white px-3 py-1 rounded-full border border-gray-100 shadow-sm ml-2">Proprietary Diet CMS</span>
-                    </h1>
-                </div>
-
+            {/* Header Control Panel (Heading removed) */}
+            <div className="flex flex-col xl:flex-row xl:items-center justify-end mb-10 gap-6">
                 <div className="flex flex-wrap items-center gap-3 bg-white/50 p-2 rounded-[2rem] backdrop-blur-sm border border-white/50">
                     {/* View Switcher */}
                     <div className="flex bg-gray-100 p-1 rounded-2xl mr-4 shadow-inner">
                         <button 
                             onClick={() => setViewMode('plan')}
-                            className={`px-6 py-2.5 rounded-xl text-[11px] font-black uppercase tracking-widest transition-all ${viewMode === 'plan' ? 'bg-white text-gray-900 shadow-md' : 'text-gray-400'}`}
+                            className={`px-6 py-2.5 rounded-xl text-[11px] font-black uppercase tracking-widest transition-all ${viewMode === 'plan' ? 'bg-white text-[#214a32] shadow-md' : 'text-gray-400'}`}
                         >
                             <LayoutGrid size={12} className="inline mr-2"/> Weekly Plan
                         </button>
                         <button 
                             onClick={() => setViewMode('library')}
-                            className={`px-6 py-2.5 rounded-xl text-[11px] font-black uppercase tracking-widest transition-all ${viewMode === 'library' ? 'bg-white text-gray-900 shadow-md' : 'text-gray-400'}`}
+                            className={`px-6 py-2.5 rounded-xl text-[11px] font-black uppercase tracking-widest transition-all ${viewMode === 'library' ? 'bg-white text-[#214a32] shadow-md' : 'text-gray-400'}`}
                         >
                             <List size={12} className="inline mr-2"/> Diet Library
                         </button>
                     </div>
 
-                    <button onClick={() => setIsLibraryModalOpen(true)} className="bg-[#B4E567] text-gray-900 px-6 py-3 rounded-2xl text-[11px] font-black shadow-sm hover:bg-[#a6d85a] uppercase tracking-widest flex items-center gap-2">
+                    <button onClick={() => setIsLibraryModalOpen(true)} className="bg-[#214a32] text-white px-6 py-3 rounded-2xl text-[11px] font-black shadow-sm hover:bg-black uppercase tracking-widest flex items-center gap-2 transition-all">
                         <Plus size={14}/> Create New Dish
                     </button>
                 </div>

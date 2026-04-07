@@ -56,19 +56,10 @@ export default function AdminReportsPage() {
 
     return (
         <div className="space-y-8 pb-10">
-            {/* Header */}
-            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-                <div className="flex items-center gap-4">
-                    <div className="p-4 bg-[#122A1A] text-white rounded-[2rem] shadow-xl shadow-green-900/10">
-                        <BarChart3 size={28} />
-                    </div>
-                    <div>
-                        <h2 className="text-3xl font-black text-gray-900 font-outfit uppercase tracking-tight">Ecosystem Reports</h2>
-                        <p className="text-gray-500 font-medium tracking-tight">In-depth behavioral and financial performance metrics.</p>
-                    </div>
-                </div>
+            {/* Header (Heading removed as per request) */}
+            <div className="flex flex-col lg:flex-row lg:items-center justify-end gap-6">
                 <div className="flex items-center gap-3">
-                    <button className="p-4 bg-white border border-gray-100 rounded-3xl text-gray-400 hover:text-[#122A1A] shadow-sm transition-all text-[10px] font-black uppercase tracking-widest flex items-center gap-2"><Calendar size={18} /> Aug 2028 - Sept 2028</button>
+                    <button className="p-4 bg-white border border-gray-100 rounded-3xl text-gray-400 hover:text-[#214a32] shadow-sm transition-all text-[10px] font-black uppercase tracking-widest flex items-center gap-2"><Calendar size={18} /> Aug 2028 - Sept 2028</button>
                     <button onClick={() => {
                         let csvStr = "Health Engagement Report\nName,Volume,Trend\n";
                         csvStr += healthEngagementData.map(d => `${d.name},${d.volume},${d.trend}`).join("\n");
@@ -80,7 +71,7 @@ export default function AdminReportsPage() {
                         a.href = url;
                         a.download = 'analytics_master_report.csv';
                         a.click();
-                    }} className="bg-[#122A1A] text-white px-8 py-4 rounded-[2rem] font-black text-[10px] uppercase tracking-widest flex items-center gap-3 hover:bg-black transition-all shadow-xl shadow-black/10">
+                    }} className="bg-[#214a32] text-white px-8 py-4 rounded-[2rem] font-black text-[10px] uppercase tracking-widest flex items-center gap-3 hover:bg-black transition-all shadow-xl shadow-black/10">
                         <Download size={18} /> Export CSV Master
                     </button>
                 </div>

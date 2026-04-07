@@ -155,18 +155,12 @@ export default function AdminProductsPage() {
 
     return (
         <div className="space-y-8">
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
-                <div>
-                    <h1 className="text-3xl font-black font-outfit tracking-tight text-[#21492f]">Inventory Management</h1>
-                    <p className="text-sm font-bold text-gray-400 uppercase tracking-widest mt-1">
-                        Total {products.length} Products in Stock
-                    </p>
-                </div>
+            <div className="flex flex-col md:flex-row md:items-center justify-end gap-6">
                 <button
                     onClick={() => {
                         setShowModal(true);
                     }}
-                    className="flex items-center gap-2 px-6 py-4 bg-green-600 text-white rounded-2xl font-black uppercase tracking-widest hover:bg-green-700 transition-all shadow-xl shadow-green-100"
+                    className="flex items-center gap-2 px-8 py-4 bg-[#214a32] text-white rounded-2xl font-black uppercase tracking-widest hover:bg-black transition-all shadow-xl shadow-green-100"
                 >
                     <Plus size={20} />
                     Add New Product

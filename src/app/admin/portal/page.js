@@ -149,17 +149,11 @@ export default function ContentPortal() {
                 )}
             </AnimatePresence>
 
-            {/* Header */}
-            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8">
-                <div>
-                    <h1 className="text-[34px] font-black font-outfit tracking-tighter text-[#122A1A] uppercase leading-none mb-3">Universal Content Hub</h1>
-                    <p className="text-[11px] font-black text-gray-400 uppercase tracking-widest flex items-center gap-2">
-                        <Globe size={14} className="text-emerald-500" /> Global Management Portal • {activeTab.toUpperCase()}
-                    </p>
-                </div>
+            {/* Header (Heading removed as per request) */}
+            <div className="flex flex-col lg:flex-row lg:items-center justify-end gap-8">
                 <button
                     onClick={openModal}
-                    className="flex items-center justify-center gap-3 px-10 py-5 bg-[#22aa4f] text-white rounded-[2rem] font-black uppercase text-[11px] tracking-[0.15em] hover:bg-[#122A1A] transition-all shadow-xl shadow-green-900/10 active:scale-95 group"
+                    className="flex items-center justify-center gap-3 px-10 py-5 bg-[#214a32] text-white rounded-[2rem] font-black uppercase text-[11px] tracking-[0.15em] hover:bg-black transition-all shadow-xl shadow-green-900/10 active:scale-95 group"
                 >
                     <Plus size={18} className="transition-transform group-hover:rotate-180" /> Onboard New {activeTab.slice(0, -1)}
                 </button>

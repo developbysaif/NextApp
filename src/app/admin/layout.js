@@ -25,7 +25,11 @@ import {
     Leaf,
     Globe,
     Dumbbell,
-    ChevronDown
+    ChevronDown,
+    Award,
+    Zap,
+    Newspaper,
+    Ticket
 } from 'lucide-react';
 
 export default function AdminLayout({ children }) {
@@ -67,11 +71,10 @@ export default function AdminLayout({ children }) {
 
     const menuItems = [
         { name: 'Dashboard', icon: LayoutDashboard, path: '/admin' },
-        // Universal Portal, Inventory, Clinicians, User Directory, Revenue Wall, Disease Database, Analytics removed as per request
-        // { name: 'Universal Portal', icon: Globe, path: '/admin/portal' },
-        // { name: 'Ecommerce', icon: ShoppingBag, path: '/admin/orders' },
-        // { name: 'Inventory', icon: Package, path: '/admin/products' },
-        { name: 'Healthy Menu (Blogs)', icon: BookOpen, path: '/admin/blogs' },
+        { name: 'Universal Portal', icon: Globe, path: '/admin/portal' },
+        { name: 'Order Fulfillment', icon: ShoppingBag, path: '/admin/orders' },
+        { name: 'Inventory', icon: Package, path: '/admin/products' },
+        { name: 'Health Menu', icon: BookOpen, path: '/admin/blogs' },
         { 
             name: 'Meal & Diet', 
             icon: Calendar, 
@@ -82,12 +85,16 @@ export default function AdminLayout({ children }) {
                 { name: 'Grocery List', path: '/admin/grocery' }
             ]
         },
-        // { name: 'Clinicians', icon: ShieldCheck, path: '/admin/doctors' },
-        // { name: 'User Directory', icon: Users, path: '/admin/users' },
-        // { name: 'Revenue Wall', icon: DollarSign, path: '/admin/revenue' },
-        // { name: 'Disease Database', icon: ShieldCheck, path: '/admin/diseases' },
+        { name: 'Clinician Registry', icon: ShieldCheck, path: '/admin/doctors' },
+        { name: 'User Directory', icon: Users, path: '/admin/users' },
+        { name: 'Revenue Wall', icon: DollarSign, path: '/admin/revenue' },
+        { name: 'Disease Database', icon: ShieldCheck, path: '/admin/diseases' },
         { name: 'Exercises', icon: Dumbbell, path: '/admin/exercises' },
-        // { name: 'Analytics', icon: BarChart3, path: '/admin/reports' },
+        { name: 'Ecosystem Report', icon: BarChart3, path: '/admin/reports' },
+        { name: 'Appointments', icon: Clock, path: '/admin/appointments' },
+        { name: 'System Calendar', icon: Calendar, path: '/admin/calendar' },
+        { name: 'Discount Manager', icon: Ticket, path: '/admin/discounts' },
+        { name: 'News Archive', icon: Newspaper, path: '/admin/news' },
     ];
 
     const [openSubMenus, setOpenSubMenus] = useState(['Meal & Diet']);
@@ -117,13 +124,12 @@ export default function AdminLayout({ children }) {
             <aside
                 className={`
                     fixed inset-y-0 left-0 z-50 bg-[#FDFBF7] transition-all duration-300 ease-in-out
-                    ${isSidebarOpen ? 'w-[240px] translate-x-0' : 'w-20 translate-x-0'}
-                    lg:relative flex flex-col pt-4
+                    ${isSidebarOpen ? 'w-[250px] translate-x-0' : 'w-20 translate-x-0'}
+                    lg:relative flex flex-col pt-4 border-r border-[#D1D9CA]/30
                 `}
             >
                 {/* Logo Area */}
                 <div className={`px-6 pb-6 flex items-center gap-3 ${!isSidebarOpen ? 'justify-center' : ''}`}>
-                    {/* Circle logo removed as per request */}
                     {isSidebarOpen && (
                         <span className="font-black text-xl tracking-tight text-[#214a32] uppercase italic">
                             IlajBilGhiza
@@ -132,7 +138,7 @@ export default function AdminLayout({ children }) {
                 </div>
 
                 {/* Navigation Menu */}
-                <nav className="flex-1 px-4 mt-2 overflow-y-auto w-full no-scrollbar flex flex-col gap-[2px] pb-4">
+                <nav className="flex-1 px-4 mt-2 overflow-y-auto w-full no-scrollbar flex flex-col gap-[2px] pb-10">
                     {menuItems.map((item) => {
                         const isActive = pathname === item.path || (item.children && item.children.some(c => c.path === pathname));
                         const isSubMenuOpen = openSubMenus.includes(item.name);
@@ -151,7 +157,7 @@ export default function AdminLayout({ children }) {
                                         <item.icon size={18} strokeWidth={isActive ? 2.5 : 2} />
                                         {isSidebarOpen && (
                                             <>
-                                                <span className="text-[13px] tracking-wide flex-1 text-left font-bold">{item.name}</span>
+                                                <span className="text-[12px] tracking-wide flex-1 text-left font-bold">{item.name}</span>
                                                 <ChevronDown size={14} className={`transition-transform ${isSubMenuOpen ? 'rotate-180' : ''}`} />
                                             </>
                                         )}
@@ -163,7 +169,7 @@ export default function AdminLayout({ children }) {
                                                 key={child.path}
                                                 href={child.path}
                                                 className={`
-                                                    ml-8 flex items-center gap-3 px-4 py-2.5 rounded-2xl text-[12px] font-bold transition-all
+                                                    ml-8 flex items-center gap-3 px-4 py-2.5 rounded-2xl text-[11px] font-bold transition-all
                                                     ${isChildActive ? 'bg-[#a4d9bc] text-[#214a32] shadow-sm' : 'text-gray-400 hover:text-[#214a32]'}
                                                 `}
                                             >
@@ -177,7 +183,7 @@ export default function AdminLayout({ children }) {
 
                         return (
                             <Link
-                                key={item.path}
+                                key={item.name}
                                 href={item.path}
                                 className={`
                                     flex items-center gap-3 px-3 py-3 rounded-[1.5rem] transition-all group w-full font-medium
@@ -188,20 +194,10 @@ export default function AdminLayout({ children }) {
                                 `}
                             >
                                 <item.icon size={18} className={`${isActive ? 'text-[#214a32]' : 'group-hover:text-[#214a32]'} shrink-0`} strokeWidth={isActive ? 2.5 : 2} />
-                                {isSidebarOpen && <span className="text-[13px] tracking-wide font-bold">{item.name}</span>}
+                                {isSidebarOpen && <span className="text-[12px] font-bold tracking-wide">{item.name}</span>}
                             </Link>
                         );
                     })}
-
-                    {/* Promo Widget (Color Updated) */}
-                    {isSidebarOpen && (
-                        <div className="mt-8 mb-4 bg-[#989a69] rounded-[1.5rem] p-5 text-white shadow-sm mx-2 relative overflow-hidden group">
-                            <div className="relative z-10">
-                                <h4 className="text-xs font-black uppercase tracking-widest mb-1 opacity-80">System Stats</h4>
-                                <p className="text-[11px] font-bold leading-tight">Everything is running optimally today.</p>
-                            </div>
-                        </div>
-                    )}
                 </nav>
 
                 {/* Bottom Profile */}
@@ -212,7 +208,7 @@ export default function AdminLayout({ children }) {
                     {isSidebarOpen && (
                         <div className="flex-1 min-w-0">
                             <h4 className="text-xs font-bold text-gray-900 truncate">{currentUser?.name || 'Administrator'}</h4>
-                            <p className="text-[10px] text-gray-400 font-medium">Main Admin Portal</p>
+                            <p className="text-[10px] text-gray-400 font-medium uppercase tracking-widest">Master Admin</p>
                         </div>
                     )}
                     {isSidebarOpen && (
@@ -237,4 +233,25 @@ export default function AdminLayout({ children }) {
             </main>
         </div>
     );
+}
+
+// Fixed missing Clock icon
+function Clock(props) {
+    return (
+        <svg
+            {...props}
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+        >
+            <circle cx="12" cy="12" r="10" />
+            <polyline points="12 6 12 12 16 14" />
+        </svg>
+    )
 }

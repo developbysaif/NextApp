@@ -94,26 +94,14 @@ export default function AdminOrdersPage() {
 
     return (
         <div className="space-y-10 pb-20 relative font-sans text-[#203626]">
-            {/* Header Area */}
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-4">
-                <div>
-                    <h1 className="text-[32px] font-bold tracking-tight text-[#142A1D] font-sans">Order Fulfillment</h1>
-                    <div className="flex items-center gap-3 mt-2">
-                        <span className="text-[10px] font-bold text-[#8D9F91] uppercase tracking-[0.15em]">
-                            Managing {orders.length} Active Shipments
-                        </span>
-                        <div className="w-1 h-1 bg-[#D1D9CA] rounded-full"></div>
-                        <span className="text-[10px] font-bold text-[#3B925D] uppercase tracking-[0.15em]">
-                            {orders.filter(o => o.status === 'Pending').length} Pending Dispatch
-                        </span>
-                    </div>
-                </div>
+            {/* Header Area (Heading removed as per request) */}
+            <div className="flex flex-col md:flex-row md:items-end justify-end gap-8 mb-4">
                 <div className="flex gap-4">
                     <button className="flex items-center gap-2 px-6 py-3 bg-white border border-[#D1D9CA] rounded-2xl font-bold text-[11px] uppercase tracking-widest text-[#546458] hover:bg-[#F8F7F4] transition-all shadow-sm">
                         <Download size={16} strokeWidth={2} />
                         Export Data
                     </button>
-                    <button className="flex items-center gap-2 px-6 py-3 bg-[#142A1D] text-white rounded-2xl font-bold text-[11px] uppercase tracking-widest hover:bg-[#0A1A10] transition-all shadow-[0_10px_20px_rgba(20,42,29,0.2)]">
+                    <button className="flex items-center gap-2 px-6 py-3 bg-[#214a32] text-white rounded-2xl font-bold text-[11px] uppercase tracking-widest hover:bg-black transition-all shadow-[0_10px_20px_rgba(20,42,29,0.2)]">
                         <Truck size={16} strokeWidth={2} />
                         Create Shipment
                     </button>

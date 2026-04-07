@@ -68,17 +68,8 @@ export default function AdminUsersPage() {
 
     return (
         <div className="space-y-8 pb-10">
-            {/* Header */}
-            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-                <div className="flex items-center gap-4">
-                    <div className="p-4 bg-[#122A1A] text-white rounded-[2rem] shadow-xl shadow-green-900/10">
-                        <Users size={28} />
-                    </div>
-                    <div>
-                        <h2 className="text-3xl font-black text-gray-900 font-outfit uppercase tracking-tight">User Directory</h2>
-                        <p className="text-gray-500 font-medium tracking-tight">Manage and monitor all platform participants.</p>
-                    </div>
-                </div>
+            {/* Header (Heading removed as per request) */}
+            <div className="flex flex-col lg:flex-row lg:items-center justify-end gap-6">
                 <div className="flex items-center gap-3">
                     <button onClick={() => {
                         const csvStr = "UID,Name,Email,Role,Status\n" + users.map(u => `${u.id},${u.name},${u.email},${u.role},${u.status}`).join("\n");
@@ -88,10 +79,10 @@ export default function AdminUsersPage() {
                         a.href = url;
                         a.download = 'user_directory_export.csv';
                         a.click();
-                    }} className="p-4 bg-white border border-gray-100 rounded-3xl text-gray-400 hover:text-green-600 transition-all font-black text-[10px] uppercase tracking-widest flex items-center gap-2">
+                    }} className="p-4 bg-white border border-gray-100 rounded-3xl text-gray-400 hover:text-[#214a32] transition-all font-black text-[10px] uppercase tracking-widest flex items-center gap-2">
                         <Download size={18} /> Export CSV
                     </button>
-                    <a href="/admin/portal" className="bg-[#122A1A] text-white px-8 py-4 rounded-[2rem] font-black text-[10px] uppercase tracking-widest flex items-center gap-3 hover:bg-black transition-all shadow-xl shadow-black/10">
+                    <a href="/admin/portal" className="bg-[#214a32] text-white px-8 py-4 rounded-[2rem] font-black text-[10px] uppercase tracking-widest flex items-center gap-3 hover:bg-black transition-all shadow-xl shadow-black/10">
                         <User size={18} /> Manage Roles
                     </a>
                 </div>
