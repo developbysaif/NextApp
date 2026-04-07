@@ -14,52 +14,53 @@ export default function AboutPage() {
         <div className="text-gray-900 antialiased font-sans">
 
             {/* ═══════════════════════════════════════════
-                1. HERO SECTION — dark green + quote + fruit image
+                1. PREMIUM IMAGE HERO SECTION
             ═══════════════════════════════════════════ */}
-            <section
-                className="relative overflow-hidden py-16 md:py-20"
-                style={{ background: 'linear-gradient(135deg, #1a3a25 0%, #21492f 60%, #1c3d28 100%)' }}
-            >
-                {/* Organic background circles */}
-                <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-white/5 blur-3xl pointer-events-none" />
-                <div className="absolute -bottom-20 -left-20 w-72 h-72 rounded-full bg-white/5 blur-2xl pointer-events-none" />
+            <section className="relative h-[65vh] md:h-[75vh] flex items-center justify-center overflow-hidden">
+                {/* Background Image Header */}
+                <div 
+                    className="absolute inset-0 z-0 scale-105"
+                    style={{
+                        backgroundImage: "url('/organic_foods.png')",
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                    }}
+                >
+                    {/* Dark gradient for text legibility without white blur */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#1a3a25]/80 via-black/40 to-transparent" />
+                </div>
 
-                <div className="max-w-6xl mx-auto px-4 flex flex-col lg:flex-row items-center gap-10 relative z-10">
-                    {/* Left: Text */}
-                    <div className="flex-1 text-center lg:text-left">
-                        {/* Logo */}
-                        <div className="flex justify-center lg:justify-start mb-6">
-                            <div className="flex items-center gap-2">
-                                <span className="text-2xl">🌿</span>
-                                <span className="text-white font-black text-2xl tracking-tight" style={{ fontFamily: 'Outfit, sans-serif' }}>IlajbilGhiza</span>
-                            </div>
-                        </div>
-
-                        <h1 className="text-3xl md:text-5xl font-black text-white leading-tight mb-5">
-                            &ldquo;We Believe <span className="text-[#4ade80]">Food Is Medicine</span>&rdquo;
-                        </h1>
-                        <p className="text-white/60 text-sm md:text-base leading-relaxed font-medium max-w-lg mx-auto lg:mx-0 italic">
-                            The problem with modern food is that it&apos;s designed for shelf-life, not your life.
-                            We started IlajbilGhiza to bridge the gap between Islamic Sunnah and modern
-                            scientific nutrition.
-                        </p>
+                <div className="max-w-7xl mx-auto px-6 relative z-10 w-full flex flex-col items-start lg:items-center lg:text-center text-left pt-10">
+                    <div className="inline-flex items-center gap-3 bg-[#B4E567] px-8 py-2.5 rounded-full border-2 border-white/40 mb-8 font-bold text-[11px] uppercase tracking-[0.3em] text-[#21492f] shadow-2xl">
+                        <Leaf size={14} className="text-[#21492f]" /> Our Heritage
                     </div>
+                    
+                    <h1 className="text-4xl md:text-7xl font-black text-white tracking-tight leading-[0.9] mb-8" style={{ fontFamily: 'var(--font-serif), serif' }}>
+                        &ldquo;We Believe <br className="md:hidden" /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#B4E567] via-[#cbb18a] to-[#cbb18a] drop-shadow-sm">Food Is Medicine</span>&rdquo;
+                    </h1>
 
-                    {/* Right: Fruit Bowl Image (AI-generated) */}
-                    <div className="flex-shrink-0 w-full max-w-sm lg:max-w-md relative">
-                        <div className="relative rounded-3xl overflow-hidden aspect-[4/3] shadow-2xl shadow-black/30">
-                            <Image
-                                src="/hero_exotic_fruit_bowl.png"
-                                alt="Natural healing foods — exotic fruit bowl"
-                                fill
-                                className="object-cover"
-                                priority
-                            />
-                            {/* Subtle green overlay */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-[#21492f]/30 to-transparent" />
-                        </div>
+                    <p className="max-w-2xl text-white/90 font-bold text-base md:text-lg tracking-tight mb-10 drop-shadow-lg leading-relaxed italic">
+                        The problem with modern food is that it's designed for shelf-life, not your life.
+                        We started Ilaj Bil Ghiza to bridge the gap between Islamic Sunnah and modern
+                        scientific nutrition.
+                    </p>
+                    
+                    <div className="flex flex-col sm:flex-row items-center gap-6">
+                         <div className="flex -space-x-4">
+                             <div className="size-12 rounded-full border-2 border-white shadow-xl overflow-hidden"><Image src="/P-1.png" width={48} height={48} className="object-cover" alt="Review 1" /></div>
+                             <div className="size-12 rounded-full border-2 border-white shadow-xl overflow-hidden"><Image src="/P-2.png" width={48} height={48} className="object-cover" alt="Review 2" /></div>
+                             <div className="size-12 rounded-full border-2 border-white shadow-xl overflow-hidden"><Image src="/P-3.png" width={48} height={48} className="object-cover" alt="Review 3" /></div>
+                         </div>
+                         <div className="flex flex-col items-start sm:items-start text-left bg-white/10 backdrop-blur-md px-6 py-3 rounded-2xl border border-white/20">
+                             <div className="flex gap-1 mb-1 text-[#FFD166]">
+                                 {[1,2,3,4,5].map(star => <span key={star}>★</span>)}
+                             </div>
+                             <p className="text-[10px] font-black uppercase tracking-widest text-white">Loved by thousands across Pakistan</p>
+                         </div>
                     </div>
                 </div>
+                
+                {/* Image is fully visible now without white blur transition */}
             </section>
 
             {/* ═══════════════════════════════════════════

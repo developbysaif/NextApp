@@ -84,6 +84,7 @@ export default function AdminLayout({ children }) {
         { name: 'User Directory', icon: Users, path: '/admin/users' },
         { name: 'Revenue Wall', icon: DollarSign, path: '/admin/revenue' },
         { name: 'Disease Database', icon: ShieldCheck, path: '/admin/diseases' },
+        { name: 'Exercises', icon: Dumbbell, path: '/admin/exercises' },
         { name: 'Analytics', icon: BarChart3, path: '/admin/reports' },
     ];
 

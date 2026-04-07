@@ -1,247 +1,393 @@
 "use client"
 
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import { 
-    TrendingUp, 
-    TrendingDown, 
-    Plus, 
-    Activity, 
-    Droplets, 
-    Moon, 
-    Scale, 
-    Camera, 
-    ChevronRight,
-    ArrowUpRight,
-    ArrowDownRight,
-    BarChart3,
-    Clock,
-    Zap,
-    Target
+    Search, Bell, ChevronDown, Award,
+    Camera, Plus, ArrowUpRight, ArrowDownRight,
+    Droplets, Moon, Flame, LayoutDashboard,
+    Calendar, MessageSquare, Utensils, 
+    ShoppingCart, Notebook, TrendingUp,
+    Dumbbell, Heart, LogOut, MoreHorizontal, Sparkles
 } from 'lucide-react';
+import { 
+    BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
+    LineChart, Line, AreaChart, Area, Cell, PieChart, Pie
+} from 'recharts';
+import Link from 'next/link';
 
-export default function ProgressPage() {
-    const [activeTab, setActiveTab] = useState('weight');
+// Mock data to match the screenshot's values
+const weightData = [
+    { name: 'Apr', weight: 85 },
+    { name: 'May', weight: 83 },
+    { name: 'Jun', weight: 80 },
+    { name: 'Jul', weight: 73 },
+    { name: 'Aug', weight: 80 },
+    { name: 'Sep', weight: 78 },
+];
 
-    const measurements = [
-        { name: 'Chest', value: 93.0, unit: 'cm', change: '-1.5' },
-        { name: 'Waist', value: 77.5, unit: 'cm', change: '-3.2' },
-        { name: 'Arm', value: 28.5, unit: 'cm', change: '+1.2' },
-        { name: 'Hips', value: 98.0, unit: 'cm', change: '-2.1' },
-        { name: 'Thigh', value: 58.5, unit: 'cm', change: '-1.8' },
-    ];
+const calorieData = [
+    { day: 'Mon', consumed: 1700, burned: 1200 },
+    { day: 'Tue', consumed: 2100, burned: 1500 },
+    { day: 'Wed', consumed: 1800, burned: 1100 },
+    { day: 'Thu', consumed: 1755, burned: 1400 },
+];
 
-    const sleepStats = [
-        { label: 'Deep Sleep', val: '2h 15m', perc: 35, color: 'bg-indigo-600' },
-        { label: 'Light Sleep', val: '3h 45m', perc: 45, color: 'bg-indigo-400' },
-        { label: 'REM Phase', val: '1h 30m', perc: 20, color: 'bg-indigo-200' },
-    ];
+const sleepData = [
+    { day: 'Sun', deep: 3, light: 4, rem: 2, awake: 1, total: '6h 45m' },
+    { day: 'Mon', deep: 4, light: 3, rem: 1, awake: 0.5, total: '7h 25m' },
+    { day: 'Tue', deep: 2, light: 5, rem: 3, awake: 1, total: '7h 55m' },
+    { day: 'Wed', deep: 3, light: 2, rem: 1, awake: 0.5, total: '6h 0m' },
+    { day: 'Thu', deep: 4, light: 3, rem: 2, awake: 1, total: '6h 50m' },
+];
+
+const hydrationData = [
+    { day: 'Mon', val: 2.0 },
+    { day: 'Tue', val: 1.8 },
+    { day: 'Wed', val: 2.2 },
+    { day: 'Thu', val: 1.6 },
+    { day: 'Fri', val: 2.0 },
+    { day: 'Sat', val: 1.9 },
+    { day: 'Sun', val: 2.1 },
+];
+
+export default function ProgressDashboard() {
+    const [completedExercises, setCompletedExercises] = useState(0);
+
+    useEffect(() => {
+        const updateHealthEval = () => {
+             const storedStr = localStorage.getItem('userExercises');
+             if (storedStr) {
+                 const exers = JSON.parse(storedStr);
+                 const completeCount = exers.filter(e => e.status === 'Completed').length;
+                 setCompletedExercises(completeCount);
+             }
+        };
+        updateHealthEval();
+        
+        const interval = setInterval(updateHealthEval, 2000);
+        return () => clearInterval(interval);
+    }, []);
 
     return (
-        <div className="space-y-8 pb-10">
-            {/* Header */}
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
-                <div>
-                    <h2 className="text-3xl font-black text-gray-900 font-outfit uppercase tracking-tight">Your Progress</h2>
-                    <p className="text-gray-500 font-medium tracking-tight">Visualizing your journey to a healthier you.</p>
+        <div className="p-4 md:p-8 bg-[#F8F9FA] min-h-screen text-gray-800 font-sans">
+            {/* Top Navigation / Header */}
+            <header className="flex items-center justify-between mb-8 px-2">
+                <h1 className="text-2xl font-bold tracking-tight text-gray-900">Progress</h1>
+                
+                <div className="flex items-center gap-6">
+                    <div className="flex items-center gap-3 bg-white p-2 rounded-2xl shadow-sm border border-gray-100">
+                        <button className="p-2 text-gray-400 hover:text-gray-600 transition-colors">
+                            <Search size={20} />
+                        </button>
+                        <button className="p-2 text-gray-400 hover:text-gray-600 relative transition-colors">
+                            <Bell size={20} />
+                            <span className="absolute top-2 right-2 w-2 h-2 bg-orange-400 rounded-full border-2 border-white"></span>
+                        </button>
+                    </div>
+                    
+                    <div className="flex items-center gap-3 bg-white pr-4 pl-2 py-2 rounded-2xl shadow-sm border border-gray-100 cursor-pointer hover:bg-gray-50 transition-all">
+                        <img 
+                            src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=100&h=100&fit=crop" 
+                            alt="User" 
+                            className="w-10 h-10 rounded-xl object-cover border-2 border-[#B4E567]/20"
+                        />
+                        <div className="hidden sm:block text-left">
+                            <p className="text-xs font-bold text-gray-900 leading-tight">Adam Vasylenko</p>
+                            <p className="text-[10px] font-medium text-gray-400">Member</p>
+                        </div>
+                        <ChevronDown size={14} className="text-gray-400" />
+                    </div>
                 </div>
-                <div className="flex items-center gap-3">
-                    <button className="bg-white border border-gray-100 p-4 rounded-2xl text-gray-400 hover:text-green-600 shadow-sm transition-all"><BarChart3 size={18} /></button>
-                    <button className="bg-[#2E7D32] text-white px-8 py-4 rounded-[2rem] font-black text-xs uppercase tracking-widest flex items-center gap-3 hover:bg-green-900 transition-all shadow-xl shadow-green-900/10">
-                        <Plus size={18} /> Log Measurement
-                    </button>
+            </header>
+
+            <div className="grid grid-cols-1 xl:grid-cols-12 gap-8">
+                {/* LEFT & CENTER CONTENT */}
+                <div className="xl:col-span-9 space-y-8">
+                    
+                    {/* AI Health Evaluation Banner */}
+                    <div className="bg-[#1E1B4B] rounded-[3rem] p-8 md:p-10 text-white relative overflow-hidden flex flex-col xl:flex-row items-center justify-between gap-8 shadow-2xl shadow-indigo-900/10 border border-indigo-900/50 group">
+                        <div className="absolute inset-0 bg-gradient-to-br from-indigo-600/30 via-purple-600/20 to-transparent" />
+                        
+                        <div className="absolute -right-20 -top-20 w-64 h-64 bg-indigo-500/20 rounded-full blur-[80px]" />
+                        <div className="absolute -left-20 -bottom-20 w-64 h-64 bg-purple-500/20 rounded-full blur-[80px]" />
+                        
+                        <div className="relative z-10 flex-1 space-y-4">
+                            <div className="flex items-center gap-3">
+                                <div className="p-2 bg-white/10 rounded-xl backdrop-blur-md border border-white/10 text-indigo-300 shadow-inner">
+                                    <Sparkles size={18} />
+                                </div>
+                                <span className="text-[10px] font-black uppercase tracking-widest text-indigo-300">AI Health Evaluation</span>
+                            </div>
+                            <h2 className="text-2xl md:text-3xl font-black font-outfit uppercase tracking-tight leading-tight">
+                                Your diet and exercise are perfectly aligned.
+                            </h2>
+                            <p className="text-white/70 text-xs font-medium leading-relaxed max-w-2xl">
+                                We analyzed your recent meals from the <strong className="text-white">Diet Plan</strong> and your activity in <strong className="text-white">Exercises</strong>. With <strong className="text-[#B4E567]">{completedExercises > 0 ? completedExercises : 4} completed exercises</strong> actively tracked, your high protein intake is optimally supporting your strength training recovery. Great job maintaining the 400 kcal deficit!
+                            </p>
+                        </div>
+                        
+                        <div className="relative z-10 flex flex-col sm:flex-row xl:flex-col gap-3 shrink-0 w-full sm:w-auto">
+                            <Link href="/dashboard/menu" className="w-full xl:w-auto px-6 py-4 bg-white text-indigo-950 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-indigo-50 transition-all flex items-center gap-3 justify-center shadow-xl shadow-black/10 group-hover:scale-105">
+                                <Utensils size={14} /> Sync Diet
+                            </Link>
+                            <Link href="/dashboard/exercises" className="w-full xl:w-auto px-6 py-4 bg-white/10 backdrop-blur-md border border-white/10 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-white/20 transition-all flex items-center gap-3 justify-center group-hover:scale-105 group-hover:delay-75">
+                                <Dumbbell size={14} /> Sync Workout
+                            </Link>
+                        </div>
+                    </div>
+                    
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        {/* Body Anatomy Card */}
+                        <div className="bg-white rounded-[3rem] p-8 shadow-sm border border-gray-100 relative min-h-[500px]">
+                            <div className="flex items-center justify-between mb-2">
+                                <button className="bg-[#B4E567]/20 text-[#21492f] px-4 py-2 rounded-xl text-[10px] font-bold uppercase tracking-widest flex items-center gap-2">
+                                    Today <ChevronDown size={12} />
+                                </button>
+                            </div>
+                            
+                            <div className="relative flex justify-center items-center py-4">
+                                <img 
+                                    src="/human_measurement_model_1775483916386.png" 
+                                    alt="Human Anatomy Model" 
+                                    className="h-[400px] object-contain opacity-95"
+                                />
+                                
+                                <AnatomyLabel label="Chest" value="93.0 cm" position={{ top: '20%', right: '0%' }} side="right" />
+                                <AnatomyLabel label="Waist" value="77.5 cm" position={{ top: '40%', right: '0%' }} side="right" />
+                                <AnatomyLabel label="Thigh" value="58.5 cm" position={{ top: '65%', right: '5%' }} side="right" />
+                                <AnatomyLabel label="Arm" value="28.5 cm" position={{ top: '28%', left: '0%' }} side="left" />
+                                <AnatomyLabel label="Hips" value="98.0 cm" position={{ top: '55%', left: '0%' }} side="left" />
+                                
+                                <div className="absolute top-[26%] left-[48%] w-3 h-3 bg-orange-400 border-2 border-white rounded-full shadow-lg"></div>
+                                <div className="absolute top-[34%] left-[46%] w-3 h-3 bg-orange-400 border-2 border-white rounded-full shadow-lg"></div>
+                                <div className="absolute top-[48%] left-[50%] w-3 h-3 bg-orange-400 border-2 border-white rounded-full shadow-lg"></div>
+                                <div className="absolute top-[68%] left-[44%] w-3 h-3 bg-orange-400 border-2 border-white rounded-full shadow-lg"></div>
+                                <div className="absolute top-[36%] left-[36%] w-3 h-3 bg-orange-400 border-2 border-white rounded-full shadow-lg"></div>
+                            </div>
+                        </div>
+
+                        {/* Weight & Progress Photos */}
+                        <div className="space-y-8 flex flex-col">
+                            <div className="bg-white rounded-[3rem] p-8 shadow-sm border border-gray-100 flex-1">
+                                <div className="flex items-center justify-between mb-6">
+                                    <h3 className="text-lg font-bold text-gray-900">Weight Tracking</h3>
+                                    <button className="text-gray-300 hover:text-gray-600"><MoreHorizontal size={20} /></button>
+                                </div>
+                                <div className="grid grid-cols-3 gap-4 mb-8">
+                                    <div>
+                                        <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Start Weight</p>
+                                        <p className="text-xl font-bold text-gray-900">85 <span className="text-xs text-gray-400 ml-0.5">Kg</span></p>
+                                    </div>
+                                    <div>
+                                        <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Current Weight</p>
+                                        <p className="text-xl font-bold text-[#FF9F43]">78 <span className="text-xs text-gray-400 ml-0.5">Kg</span></p>
+                                    </div>
+                                    <div>
+                                        <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Weight Goal</p>
+                                        <p className="text-xl font-bold text-gray-900">65 <span className="text-xs text-gray-400 ml-0.5">Kg</span></p>
+                                    </div>
+                                </div>
+                                
+                                <div className="h-[180px] w-full">
+                                    <ResponsiveContainer width="100%" height="100%">
+                                        <AreaChart data={weightData}>
+                                            <defs>
+                                                <linearGradient id="colorWt" x1="0" y1="0" x2="0" y2="1">
+                                                    <stop offset="5%" stopColor="#FF9F43" stopOpacity={0.2}/>
+                                                    <stop offset="95%" stopColor="#FF9F43" stopOpacity={0}/>
+                                                </linearGradient>
+                                            </defs>
+                                            <Area type="monotone" dataKey="weight" stroke="#FF9F43" strokeWidth={3} fillOpacity={1} fill="url(#colorWt)" />
+                                            <XAxis dataKey="name" hide />
+                                            <Tooltip content={<CustomTooltip />} />
+                                        </AreaChart>
+                                    </ResponsiveContainer>
+                                    <div className="flex justify-between mt-4 px-2">
+                                        {weightData.map(d => (
+                                            <span key={d.name} className="text-[10px] font-bold text-gray-300 uppercase tracking-widest">{d.name}</span>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="bg-white rounded-[3rem] p-8 shadow-sm border border-gray-100">
+                                <div className="flex items-center justify-between mb-6">
+                                    <h3 className="text-lg font-bold text-gray-900">Progress Photos</h3>
+                                    <button className="bg-[#B4E567] text-[#21492f] px-4 py-1.5 rounded-lg text-[9px] font-bold uppercase tracking-widest hover:bg-[#a3d45c] transition-all">View All</button>
+                                </div>
+                                <div className="flex gap-4">
+                                    <div className="flex-1 rounded-3xl overflow-hidden relative h-[160px] shadow-sm">
+                                        <img src="/progress_before_after_photos_1775483974784.png" className="w-full h-full object-cover" alt="Before" />
+                                        <div className="absolute top-3 left-4 bg-white/90 px-2 py-1 rounded-md text-[8px] font-bold text-gray-800 uppercase tracking-widest shadow-sm">July 2028</div>
+                                        <div className="absolute top-3 right-4 bg-[#B4E567] px-2 py-1 rounded-md text-[8px] font-bold text-[#21492f] uppercase tracking-widest">82 Kg</div>
+                                    </div>
+                                    <div className="flex-1 rounded-3xl overflow-hidden relative h-[160px] shadow-sm">
+                                        <img src="/progress_before_after_photos_1775483974784.png" className="w-full h-full object-cover object-right" alt="After" />
+                                        <div className="absolute top-3 left-4 bg-white/90 px-2 py-1 rounded-md text-[8px] font-bold text-gray-800 uppercase tracking-widest shadow-sm">Sept 2028</div>
+                                        <div className="absolute bottom-3 right-4 bg-white p-2 rounded-full shadow-lg">
+                                            <Award size={14} className="text-[#FF9F43]" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="bg-white rounded-[3rem] p-8 shadow-sm border border-gray-100 overflow-hidden">
+                        <div className="flex items-center justify-between mb-8">
+                            <button className="flex items-center gap-2 text-gray-900 border border-gray-100 rounded-xl px-4 py-2 text-[11px] font-bold bg-[#F8F9FA] hover:bg-gray-100 transition-colors">
+                                September 2028 <ChevronDown size={14} />
+                            </button>
+                            <div className="flex gap-12 text-[10px] font-bold text-gray-300 uppercase tracking-widest hidden lg:flex px-10">
+                                <span>Chest (cm)</span>
+                                <span>Arm (cm)</span>
+                                <span>Waist (cm)</span>
+                                <span>Hips (cm)</span>
+                                <span>Thigh (cm)</span>
+                            </div>
+                        </div>
+
+                        <div className="space-y-1">
+                             {[
+                                { w: 'Week 1', d: [95.0, 30.0, 80.0, 100.0, 60.0] },
+                                { w: 'Week 2', d: [94.0, 29.5, 79.0, 99.0, 59.5], active: true },
+                                { w: 'Week 3', d: [93.5, 29.0, 78.0, 98.5, 59.0] },
+                                { w: 'Week 4', d: [93.0, 28.5, 77.5, 98.0, 58.5] }
+                             ].map((row, i) => (
+                                <div key={i} className={`flex items-center justify-between p-5 rounded-2xl transition-all ${row.active ? 'bg-[#FDF7ED] border border-[#FADCC0]/30 transition-all' : 'hover:bg-gray-50'}`}>
+                                    <span className="text-[11px] font-bold text-gray-900 w-24 tracking-wide">{row.w}</span>
+                                    <div className="flex flex-1 justify-end gap-10 md:gap-16 lg:pr-6">
+                                        {row.d.map((val, idx) => (
+                                            <span key={idx} className="text-[11px] font-black text-gray-900 w-12 text-center tabular-nums">{val.toFixed(1)}</span>
+                                        ))}
+                                    </div>
+                                </div>
+                             ))}
+                        </div>
+                    </div>
+                </div>
+
+                {/* RIGHT ANALYTICS SIDEBAR */}
+                <div className="xl:col-span-3 space-y-8">
+                    <div className="bg-white rounded-[3rem] p-8 shadow-sm border border-gray-100">
+                        <div className="flex items-center justify-between mb-4">
+                            <h3 className="text-sm font-bold text-gray-900">Calories Activities</h3>
+                            <button className="bg-[#B4E567]/20 text-[#21492f] px-3 py-1.5 rounded-lg text-[9px] font-bold uppercase tracking-widest flex items-center gap-2">
+                                Last 4 Days <ChevronDown size={10} />
+                            </button>
+                        </div>
+                        <div className="flex items-end justify-between gap-4 mb-4">
+                            <div>
+                                <p className="text-xl font-black text-gray-900">450 <span className="text-[10px] text-gray-400 font-bold uppercase ml-0.5">kcal left</span></p>
+                                <p className="text-[9px] font-bold text-gray-300 uppercase tracking-widest mt-1">Daily Goal: 2,500 kcal</p>
+                            </div>
+                        </div>
+
+                        <div className="h-[180px] w-full pt-4">
+                             <ResponsiveContainer width="100%" height="100%">
+                                <BarChart data={calorieData} barGap={4}>
+                                    <Bar dataKey="consumed" radius={[4, 4, 0, 0]}>
+                                        {calorieData.map((entry, index) => (
+                                             <Cell key={`cell-${index}`} fill={index === 3 ? '#FFB46E' : '#FFD9B3'} />
+                                        ))}
+                                    </Bar>
+                                    <XAxis dataKey="day" axisLine={false} tickLine={false} tick={{ fontSize: 10, fill: '#D1D5DB', fontWeight: 'bold' }} dy={10} />
+                                    <Tooltip content={<CustomTooltip />} />
+                                </BarChart>
+                             </ResponsiveContainer>
+                        </div>
+                        <div className="mt-4 p-4 bg-[#FDF7ED] rounded-2xl border border-[#FADCC0]/30 shadow-sm relative overflow-hidden">
+                           <p className="text-[9px] font-bold text-gray-400 uppercase tracking-widest mb-1">Consumed</p>
+                           <p className="text-sm font-black text-gray-900 leading-none">1,755 <span className="text-[10px] opacity-40">kcal</span></p>
+                        </div>
+                    </div>
+
+                    <div className="bg-white rounded-[3rem] p-8 shadow-sm border border-gray-100">
+                        <div className="flex items-center justify-between mb-6">
+                            <h3 className="text-sm font-bold text-gray-900">Sleep Statistics</h3>
+                            <button className="bg-[#B4E567]/20 text-[#21492f] px-3 py-1.5 rounded-lg text-[9px] font-bold uppercase tracking-widest flex items-center gap-2">
+                                Last 5 Days <ChevronDown size={10} />
+                            </button>
+                        </div>
+                        
+                        <div className="flex justify-between items-end h-[160px] gap-2">
+                            {sleepData.map((d, i) => (
+                                <div key={i} className="flex-1 flex flex-col items-center gap-3">
+                                    <div className="flex-1 w-4 sm:w-6 flex flex-col-reverse rounded-full overflow-hidden bg-gray-50 border border-gray-100">
+                                        <div style={{ height: `${(d.deep / 10) * 100}%` }} className="bg-[#FF9F43]"></div>
+                                        <div style={{ height: `${(d.light / 10) * 100}%` }} className="bg-[#FFD166]"></div>
+                                        <div style={{ height: `${(d.rem / 10) * 100}%` }} className="bg-[#B4E567]"></div>
+                                    </div>
+                                    <div className="text-center">
+                                        <p className="text-[8px] font-black text-gray-900 uppercase">{d.total}</p>
+                                        <p className="text-[8px] font-bold text-gray-300 uppercase tracking-widest mt-0.5">{d.day}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    <div className="bg-white rounded-[3rem] p-8 shadow-sm border border-gray-100">
+                        <div className="flex items-center justify-between mb-8">
+                            <h3 className="text-sm font-bold text-gray-900">Hydration</h3>
+                            <button className="bg-[#B4E567]/20 text-[#21492f] px-3 py-1.5 rounded-lg text-[9px] font-bold uppercase tracking-widest flex items-center gap-2">
+                                This Week <ChevronDown size={10} />
+                            </button>
+                        </div>
+
+                        <div className="h-[120px] w-full">
+                             <ResponsiveContainer width="100%" height="100%">
+                                <BarChart data={hydrationData}>
+                                    <Bar dataKey="val" radius={[3, 3, 3, 3]}>
+                                        {hydrationData.map((entry, index) => (
+                                             <Cell key={`cell-${index}`} fill={index === 2 || index === 4 || index === 6 ? '#B4E567' : '#EEEEEE'} />
+                                        ))}
+                                    </Bar>
+                                    <XAxis dataKey="day" axisLine={false} tickLine={false} tick={{ fontSize: 9, fill: '#D1D5DB', fontWeight: 'bold' }} dy={10} />
+                                </BarChart>
+                             </ResponsiveContainer>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                {/* Weight Tracking & Chart Column */}
-                <div className="lg:col-span-2 space-y-8">
-                    {/* Weight Status Card */}
-                    <div className="bg-white p-8 md:p-12 rounded-[3.5rem] border border-gray-100 shadow-sm relative overflow-hidden group">
-                        <div className="absolute -right-6 top-0 p-10 text-black/5 rotate-12 transition-transform duration-700 group-hover:rotate-0">
-                            <Scale size={180} strokeWidth={1} />
-                        </div>
-                        <div className="relative z-10 space-y-10">
-                            <h3 className="text-xl font-black font-outfit uppercase tracking-tight">Weight Tracking</h3>
-                            <div className="flex flex-wrap items-end gap-12">
-                                {[
-                                    { label: 'Start Weight', val: 85, unit: 'kg', color: 'text-gray-400' },
-                                    { label: 'Current Weight', val: 78, unit: 'kg', color: 'text-[#2E7D32]' },
-                                    { label: 'Weight Goal', val: 65, unit: 'kg', color: 'text-indigo-600' },
-                                ].map((stat, i) => (
-                                    <div key={i}>
-                                        <h4 className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">{stat.label}</h4>
-                                        <div className="flex items-baseline gap-1">
-                                            <span className={`text-4xl font-black font-outfit ${stat.color}`}>{stat.val}</span>
-                                            <span className="text-sm font-bold text-gray-400 uppercase">{stat.unit}</span>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                            
-                            <div className="space-y-4">
-                                <div className="flex justify-between text-[11px] font-black uppercase tracking-[0.2em] mb-2 px-1">
-                                    <span className="text-emerald-600">Progress to Goal</span>
-                                    <span className="text-gray-400">7kg Lost / 13kg Remaining</span>
-                                </div>
-                                <div className="h-4 w-full bg-gray-50 rounded-full overflow-hidden border border-gray-100">
-                                    <motion.div 
-                                        initial={{ width: 0 }}
-                                        animate={{ width: '53.8%' }} // (85-78)/(85-65) * 100
-                                        transition={{ duration: 1.5 }}
-                                        className="h-full bg-gradient-to-r from-emerald-500 to-emerald-400 rounded-full shadow-lg"
-                                    />
-                                </div>
-                            </div>
-
-                            {/* Weight Chart Placeholder */}
-                            <div className="h-48 w-full bg-gray-50/50 rounded-[2rem] border border-gray-100 flex items-center justify-center relative group/chart">
-                                <TrendingDown size={32} strokeWidth={1} className="text-emerald-500 opacity-20 absolute top-4 right-4" />
-                                <div className="flex items-end gap-6 h-full px-10 pb-6">
-                                    {[70, 75, 45, 85, 30, 40].map((h, i) => (
-                                        <motion.div 
-                                            key={i} 
-                                            initial={{ height: 0 }}
-                                            animate={{ height: `${h}%` }}
-                                            transition={{ delay: i * 0.1, duration: 1 }}
-                                            className="w-8 md:w-16 bg-emerald-100/50 rounded-t-xl group-hover/chart:bg-emerald-500/10 transition-all relative"
-                                        >
-                                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                                                <div className="size-2 bg-emerald-500 rounded-full" />
-                                            </div>
-                                        </motion.div>
-                                    ))}
-                                </div>
-                                <div className="absolute bottom-6 left-10 right-10 flex justify-between text-[10px] font-black text-gray-300 uppercase tracking-widest bg-white/80 p-2 rounded-xl backdrop-blur-md">
-                                    <span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Progress Photos Gallery */}
-                    <div className="bg-white p-8 md:p-12 rounded-[3.5rem] border border-gray-100 shadow-sm space-y-10">
-                        <div className="flex items-center justify-between">
-                            <h3 className="text-xl font-black font-outfit uppercase tracking-tight">Progress Photos</h3>
-                            <button className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-[#2E7D32]">Add New <Camera size={14} /></button>
-                        </div>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                            {[
-                                { date: 'July 2028', weight: '82 kg', img: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=400&h=600&fit=crop', label: 'Before' },
-                                { date: 'Sept 2028', weight: '78 kg', img: 'https://images.unsplash.com/photo-1594381898411-846e7d193883?w=400&h=600&fit=crop', label: 'After' },
-                            ].map((photo, i) => (
-                                <div key={i} className="space-y-4 group">
-                                    <div className="relative rounded-[2.5rem] overflow-hidden aspect-[3/4] shadow-xl group-hover:scale-[1.02] transition-transform duration-700">
-                                        <img src={photo.img} className="w-full h-full object-cover" />
-                                        <div className="absolute top-6 left-6 px-4 py-2 bg-white/90 backdrop-blur-md rounded-2xl text-[9px] font-black uppercase tracking-[0.2em]">{photo.label}</div>
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-8">
-                                            <p className="text-white text-xs font-black uppercase tracking-[0.2em] mb-2">{photo.date}</p>
-                                            <p className="text-emerald-400 text-2xl font-black font-outfit">{photo.weight}</p>
-                                        </div>
-                                    </div>
-                                    <div className="flex items-center justify-between px-2">
-                                        <h4 className="text-[10px] font-black uppercase text-gray-400 tracking-widest">{photo.date}</h4>
-                                        <Plus size={16} className="text-gray-200 cursor-pointer hover:text-green-600 transition-colors" />
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
+            <footer className="mt-12 flex flex-col md:flex-row items-center justify-between gap-6 px-4 py-8 border-t border-gray-100 text-[10px] font-bold text-gray-400 uppercase tracking-[0.2em]">
+                <div>Copyright © 2024 Peterdraw</div>
+                <div className="flex gap-8">
+                    <span className="hover:text-gray-900 cursor-pointer">Privacy Policy</span>
+                    <span className="hover:text-gray-900 cursor-pointer">Term and conditions</span>
+                    <span className="hover:text-gray-900 cursor-pointer">Contact</span>
                 </div>
+            </footer>
+        </div>
+    );
+}
 
-                {/* Body Measurements & Other Stats Column */}
-                <div className="space-y-8">
-                    {/* Measurements List */}
-                    <div className="bg-white p-8 md:p-10 rounded-[3.5rem] border border-gray-100 shadow-sm space-y-8">
-                        <h3 className="text-sm font-black font-outfit uppercase tracking-wider mb-2">Body Measurements</h3>
-                        <div className="space-y-2">
-                            {measurements.map((m, i) => (
-                                <div key={i} className="flex items-center justify-between p-5 rounded-2xl bg-gray-50/50 hover:bg-gray-50 transition-all cursor-pointer border border-transparent hover:border-gray-100 group">
-                                    <h4 className="text-[11px] font-black uppercase text-gray-400">{m.name}</h4>
-                                    <div className="flex items-center gap-6">
-                                        <div className="flex items-baseline gap-1">
-                                            <span className="text-md font-black font-outfit">{m.value}</span>
-                                            <span className="text-[9px] font-bold text-gray-400 uppercase">{m.unit}</span>
-                                        </div>
-                                        <span className={`text-[10px] font-black uppercase flex items-center gap-1 ${m.change.includes('-') ? 'text-emerald-500' : 'text-indigo-500'}`}>
-                                            {m.change.includes('-') ? <ArrowDownRight size={12} /> : <ArrowUpRight size={12} />}
-                                            {m.change.replace('-', '')}
-                                        </span>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                        <button className="w-full py-4 bg-gray-900 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-black transition-all">
-                            Add Measurement
-                        </button>
-                    </div>
-
-                    {/* Sleep Statistics Card */}
-                    <div className="bg-[#1E1B4B] p-8 md:p-10 rounded-[3.5rem] text-white shadow-xl shadow-indigo-900/10 space-y-8 group transition-all hover:bg-[#1e1b4bfa] relative overflow-hidden">
-                        <div className="absolute -right-6 top-0 p-8 text-white/5 rotate-12 group-hover:rotate-0 transition-transform duration-700">
-                            <Moon size={100} strokeWidth={1} />
-                        </div>
-                        <div className="relative z-10">
-                            <div className="flex items-center justify-between mb-8">
-                                <h3 className="text-md font-black font-outfit uppercase tracking-tight">Sleep Statistics</h3>
-                                <div className="p-3 bg-indigo-500/20 rounded-2xl"><Moon size={20} className="text-indigo-200" /></div>
-                            </div>
-                            
-                            <div className="flex flex-col items-center justify-center py-10 relative">
-                                <svg className="size-48 transform -rotate-90">
-                                    <circle cx="96" cy="96" r="80" className="stroke-indigo-900/50" strokeWidth="20" fill="transparent" />
-                                    <circle cx="96" cy="96" r="80" className="stroke-indigo-500" strokeWidth="20" fill="transparent" strokeDasharray={502.4} strokeDashoffset={502.4 * (1 - 0.72)} strokeLinecap="round" />
-                                </svg>
-                                <div className="absolute inset-0 flex flex-col items-center justify-center">
-                                    <span className="text-4xl font-black font-outfit">7h 35m</span>
-                                    <p className="text-[10px] font-black uppercase tracking-widest text-indigo-400 mt-1">Average Sleep</p>
-                                </div>
-                            </div>
-
-                            <div className="space-y-4">
-                                {sleepStats.map((stat, i) => (
-                                    <div key={i} className="space-y-2">
-                                        <div className="flex justify-between text-[9px] font-black uppercase tracking-[0.2em] text-indigo-300">
-                                            <span>{stat.label}</span>
-                                            <span>{stat.val}</span>
-                                        </div>
-                                        <div className="h-1.5 w-full bg-indigo-900/50 rounded-full overflow-hidden">
-                                            <motion.div 
-                                                initial={{ width: 0 }}
-                                                animate={{ width: `${stat.perc}%` }}
-                                                transition={{ duration: 1, delay: i * 0.1 }}
-                                                className={`h-full ${stat.color} rounded-full shadow-lg`} 
-                                            />
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Hydration Card */}
-                    <div className="bg-[#0284c7] p-8 md:p-10 rounded-[3.5rem] text-white shadow-xl shadow-sky-900/10 group relative overflow-hidden">
-                        <div className="absolute -right-6 top-6 p-8 text-white/5 rotate-12 transition-transform duration-700 group-hover:rotate-0">
-                            <Droplets size={120} strokeWidth={1} />
-                        </div>
-                        <div className="relative z-10 flex items-center justify-between gap-6">
-                            <div className="space-y-4">
-                                <h3 className="text-md font-black font-outfit uppercase tracking-tight">Daily Hydration</h3>
-                                <div className="flex items-baseline gap-1">
-                                    <span className="text-4xl font-black font-outfit">2.0</span>
-                                    <span className="text-sm font-bold text-sky-200">Liters</span>
-                                </div>
-                                <div className="px-5 py-2 bg-white/10 backdrop-blur-md rounded-2xl border border-white/10 font-black text-[9px] uppercase tracking-widest w-fit">Normal Level</div>
-                            </div>
-                            <div className="flex flex-col gap-2">
-                                {[1, 2, 3, 4, 5, 6].map((i) => (
-                                    <div key={i} className={`w-1.5 h-6 rounded-full ${i <= 5 ? 'bg-sky-200' : 'bg-sky-900/50'}`} />
-                                ))}
-                            </div>
-                        </div>
-                    </div>
+function AnatomyLabel({ label, value, position, side }) {
+    return (
+        <div 
+            className="absolute z-10 flex flex-col group transition-all"
+            style={{ ...position, alignItems: side === 'right' ? 'flex-end' : 'flex-start' }}
+        >
+            <div className={`flex items-center gap-3 ${side === 'right' ? '' : 'flex-row-reverse'}`}>
+                 <div className={`text-right ${side === 'right' ? 'text-right' : 'text-left'}`}>
+                    <p className="text-[10px] font-bold text-gray-300 uppercase tracking-[0.15em] leading-tight mb-0.5">{label}</p>
+                    <p className="text-sm font-black text-gray-900 leading-tight">{value}</p>
                 </div>
+                <div className="w-12 h-[1px] bg-gray-200 group-hover:bg-orange-400 hidden sm:block"></div>
             </div>
         </div>
     );
+}
+
+function CustomTooltip({ active, payload }) {
+    if (active && payload && payload.length) {
+        return (
+            <div className="bg-white/90 backdrop-blur-md p-3 border border-gray-100 rounded-xl shadow-xl">
+                <p className="text-[10px] font-black text-gray-900 uppercase tracking-widest">{`${payload[0].value} units`}</p>
+            </div>
+        );
+    }
+    return null;
 }

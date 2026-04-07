@@ -27,7 +27,7 @@ export default function BMICalculatorExact() {
       {/* LEFT IMAGE */}
       <div className="relative w-1/2 h-full">
         <Image
-          src="/health-image.jpg" // replace with your image
+          src="https://images.unsplash.com/photo-1571019623124-ce9d52f677c3?w=800" // replace with your image
           alt="health"
           fill
           priority

@@ -36,9 +36,9 @@ export default function AdminGroceryPage() {
 
                 // 3. Combine into a Logistics View
                 // Map orders into individual product lines for logistics tracking
-                const logisticsEntries = currentOrders.flatMap(order => 
-                    (order.items || []).map((item, idx) => ({
-                        id: `${order.orderId}-${idx}`,
+                const logisticsEntries = currentOrders.flatMap((order, oIdx) => 
+                    (order.items || []).map((item, iIdx) => ({
+                        id: `log-${order.orderId || oIdx}-${iIdx}`,
                         name: item.name || 'Unknown Product',
                         cat: item.category || 'Ecommerce',
                         qty: item.quantity || 1,
@@ -124,7 +124,7 @@ export default function AdminGroceryPage() {
                     { label: 'Active Shipments', val: orders.length, icon: Truck, color: 'bg-blue-50 text-blue-600' },
                     { label: 'Pending Dispatch', val: orders.filter(o => o.status === 'Pending').length, icon: Clock, color: 'bg-orange-50 text-orange-600' }
                 ].map((stat, i) => (
-                    <div key={i} className="bg-white p-6 rounded-[2.5rem] shadow-sm border border-gray-50 flex items-center gap-5 group hover:shadow-md transition-all">
+                    <div key={`stat-${i}-${stat.label}`} className="bg-white p-6 rounded-[2.5rem] shadow-sm border border-gray-50 flex items-center gap-5 group hover:shadow-md transition-all">
                         <div className={`w-12 h-12 rounded-2xl flex items-center justify-center ${stat.color} group-hover:scale-110 transition-transform`}>
                             <stat.icon size={20} />
                         </div>

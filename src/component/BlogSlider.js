@@ -188,7 +188,7 @@ export default function BlogSlider() {
                             >
                                 {blogs.map((post) => (
                                     <Link
-                                        key={post._id}
+                                        key={post.slug}
                                         href={`/blogs/${post.slug}`}
                                         className="flex-shrink-0 group/card"
                                         style={{ width: `calc(${100 / visibleCards}% - ${(visibleCards - 1) * 20 / visibleCards}px)` }}

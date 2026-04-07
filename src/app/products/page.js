@@ -70,34 +70,69 @@ function ProductsContent({ initialCategory = "All", initialSeason = "All" }) {
 
     return (
         <div className="min-h-screen bg-white font-sans">
-            {/* Hero Section */}
-            <section className="bg-[#f3f9f3] py-16 px-4">
-        <div className="max-w-7xl mx-auto px-6">
-                    <span className="text-green-600 font-bold text-xs uppercase tracking-widest mb-4 block">Ilaj Bil Ghiza</span>
-                    <h1 className="text-4xl md:text-6xl font-black text-gray-900 mb-6 tracking-tight">
-                        Organic freshness <br />
-                        <span className="text-green-600">every season.</span>
-                    </h1>
-                    <p className="max-w-xl text-gray-500 font-medium mb-10 leading-relaxed">
-                        A curation of nature's best. Brewed with care. Delivered for your health. Natural remedies and seasonal organic foods for a better life.
-                    </p>
+            {/* Premium Dynamic Hero Section */}
+            <section className="relative h-[55vh] md:h-[65vh] flex items-center justify-center overflow-hidden">
+                {/* Background Image Header */}
+                <div 
+                    className="absolute inset-0 z-0 scale-105"
+                    style={{
+                        backgroundImage: `url("/organic_foods.png")`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                    }}
+                >
+                    {/* Dark Gradient Overlay for contrast and depth without white blur */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#122a1a]/80 via-black/40 to-black/20" />
+                </div>
 
-                    <div className="flex flex-col md:flex-row gap-0 items-center bg-white rounded-2xl shadow-sm border border-stone-200 p-1.5 w-full max-w-2xl">
-                        <div className="relative flex-1">
-                            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+                <div className="max-w-7xl mx-auto px-6 relative z-10 w-full flex flex-col items-start pt-[5vh]">
+                    <motion.div 
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        className="inline-flex items-center gap-2 bg-[#B4E567] px-5 py-2 rounded-full border border-white/40 mb-6 font-bold text-[9px] uppercase tracking-[0.25em] text-[#122a1a] shadow-lg"
+                    >
+                        <Leaf size={12} className="text-[#122a1a]" /> Ilaj Bil Ghiza Quality
+                    </motion.div>
+                    
+                    <motion.h1 
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.1 }}
+                        className="text-5xl md:text-7xl font-black text-white tracking-tight leading-[0.95] mb-6 drop-shadow-xl"
+                    >
+                        Organic Freshness <br />
+                        <span className="text-[#B4E567]">Every Season.</span>
+                    </motion.h1>
+
+                    <motion.p 
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.2 }}
+                        className="max-w-xl text-white/90 font-bold text-sm md:text-base leading-relaxed mb-10 drop-shadow-md"
+                    >
+                        A curation of nature's best. Brewed with care. Delivered for your health. Natural remedies and seasonal organic foods for a better life.
+                    </motion.p>
+
+                    <motion.div 
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.3 }}
+                        className="flex flex-col md:flex-row gap-0 items-center bg-white/90 backdrop-blur-md rounded-3xl shadow-2xl border border-white/50 p-2 w-full max-w-2xl"
+                    >
+                        <div className="relative flex-1 w-full">
+                            <Search className="absolute left-5 top-1/2 -translate-y-1/2 text-[#215b33]" size={20} />
                             <input
                                 type="text"
-                                placeholder="Search items..."
+                                placeholder="Search for healing foods..."
                                 value={search}
                                 onChange={(e) => setSearch(e.target.value)}
-                                className="w-full pl-12 pr-4 py-3 bg-transparent border-none focus:ring-0 font-bold text-sm outline-none"
+                                className="w-full pl-14 pr-4 py-4 bg-transparent border-none focus:ring-0 font-bold text-sm outline-none text-gray-900 placeholder:text-gray-400"
                             />
                         </div>
-                        <div className="px-6 py-3 border-l border-stone-100 flex items-center gap-2 cursor-pointer group">
-                            <Leaf size={16} className="text-green-600 transition-transform group-hover:rotate-12" />
-                            <span className="font-bold text-sm text-gray-800">Apply Filter</span>
+                        <div className="px-8 py-4 bg-[#215b33] rounded-[1.5rem] flex items-center gap-2 cursor-pointer group text-white hover:bg-[#1a4a29] transition-colors w-full md:w-auto mt-2 md:mt-0 justify-center">
+                            <span className="font-black text-xs uppercase tracking-widest">Search Filter</span>
                         </div>
-                    </div>
+                    </motion.div>
                 </div>
             </section>
 

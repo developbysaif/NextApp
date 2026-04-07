@@ -6,6 +6,7 @@ import Link from 'next/link';
 import {
     Droplets, Heart, Leaf, Bone, ArrowRight
 } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 export default function DiseasesAndAilmentsPage() {
     return (
@@ -14,28 +15,65 @@ export default function DiseasesAndAilmentsPage() {
             {/* ═══════════════════════════════════════════
                 1. HERO SECTION (Dark Green Wavy)
             ═══════════════════════════════════════════ */}
-            <section
-                className="relative overflow-hidden py-16 md:py-24 text-center"
-                style={{ background: 'linear-gradient(135deg, #1a3a25 0%, #21492f 60%, #1c3d28 100%)' }}
-            >
-                {/* Decorative background waves */}
-                <svg className="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none" viewBox="0 0 1440 400" preserveAspectRatio="none">
-                    <path d="M0,150 C300,50 600,250 900,150 C1200,50 1440,200 1440,200 L1440,400 L0,400 Z" fill="#22aa4f" opacity="0.1" />
-                    <path d="M0,250 C400,350 800,50 1200,200 L1440,150 L1440,400 L0,400 Z" fill="#1c3d28" />
-                </svg>
-
-                <div className="max-w-4xl mx-auto px-4 relative z-10 flex flex-col items-center">
-                    {/* Logo (Optional styling to match the screenshot header) */}
-
-                    <h1 className="text-3xl md:text-5xl font-black text-[#cbb18a] leading-tight mb-6" style={{ fontFamily: 'var(--font-serif), serif' }}>
-                        Organically Healing Diseases &amp; Ailments
-                    </h1>
-                    <p className="text-white/80 text-sm md:text-base leading-relaxed font-medium italic max-w-2xl mx-auto">
-                        The problem with modern food is that it's designed for shelf life, not your life.
-                        We started IlajbilGhiza to bridge the gap between Islamic Sunnah and modern
-                        scientific nutrition.
-                    </p>
+            {/* Premium Multi-Layer Hero Section */}
+            <section className="relative h-[60vh] md:h-[70vh] flex items-center justify-center overflow-hidden">
+                {/* Background Image Header */}
+                <div 
+                    className="absolute inset-0 z-0 scale-105"
+                    style={{
+                        backgroundImage: `url("/disease_based.png")`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                    }}
+                >
+                    {/* Dark gradient for reading visibility and premium depth without white fog */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#1a3a25]/90 via-black/40 to-transparent" />
                 </div>
+
+                <div className="max-w-7xl mx-auto px-6 relative z-10 w-full flex flex-col items-start text-left">
+                    <motion.div 
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        className="inline-flex items-center gap-2 bg-[#B4E567] px-6 py-2 rounded-full border-2 border-white/40 mb-8 font-bold text-[10px] uppercase tracking-[0.25em] text-[#21492f] shadow-2xl"
+                    >
+                         Certified Holistic Healing
+                    </motion.div>
+                    
+                    <motion.h1 
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.1 }}
+                        className="text-5xl md:text-8xl font-black text-white tracking-tight leading-[0.9] mb-8"
+                    >
+                        ORGANIC <br />
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#B4E567] via-[#cbb18a] to-[#cbb18a]">RESTORATION</span>
+                    </motion.h1>
+
+                    <motion.p 
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.2 }}
+                        className="max-w-2xl text-white/80 font-bold text-base md:text-lg tracking-tight mb-8 drop-shadow-lg leading-relaxed italic"
+                    >
+                        "The problem with modern food is that it's designed for shelf life, not your life." <br />
+                        Bridging the gap between Sunnah and modern clinical science.
+                    </motion.p>
+                    
+                    <motion.div 
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: 0.3 }}
+                        className="flex items-center gap-6"
+                    >
+                         <Link href="/book-appointment" className="bg-[#B4E567] text-[#21492f] px-8 py-4 rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-white transition-all shadow-xl">Consult Specialist</Link>
+                         <div className="flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/20 px-6 py-3.5 rounded-2xl">
+                             <div className="size-2 bg-[#B4E567] rounded-full animate-pulse" />
+                             <span className="text-white text-[10px] font-black uppercase tracking-widest">Active Research Lab</span>
+                         </div>
+                    </motion.div>
+                </div>
+                
+                {/* Image is fully visible now without white blur transition */}
             </section>
 
             {/* ═══════════════════════════════════════════
@@ -88,7 +126,7 @@ export default function DiseasesAndAilmentsPage() {
                             <p className="text-[#555] text-xs leading-relaxed mb-6 font-medium">
                                 Custom illustrated with complex carbohydrates and spices sources.
                             </p>
-                            <Link href="/disease/diabetes" className="inline-block bg-[#c0a072] text-white px-5 py-2 rounded-full text-xs font-bold hover:bg-[#b08d5c] transition-colors">
+                            <Link href="/diseases/diabetes" className="inline-block bg-[#c0a072] text-white px-5 py-2 rounded-full text-xs font-bold hover:bg-[#b08d5c] transition-colors">
                                 View Remedy
                             </Link>
                         </div>
@@ -112,7 +150,7 @@ export default function DiseasesAndAilmentsPage() {
                             <p className="text-[#555] text-xs leading-relaxed mb-6 font-medium">
                                 Hibiscus flowers, with hibiscus, powers, gentian, and natural natural fonts.
                             </p>
-                            <Link href="/disease/blood-pressure" className="inline-block bg-[#2f4d36] text-white px-5 py-2 rounded-full text-xs font-bold hover:bg-[#203625] transition-colors">
+                            <Link href="/diseases/blood-pressure" className="inline-block bg-[#2f4d36] text-white px-5 py-2 rounded-full text-xs font-bold hover:bg-[#203625] transition-colors">
                                 View Remedy
                             </Link>
                         </div>
@@ -135,7 +173,7 @@ export default function DiseasesAndAilmentsPage() {
                             <p className="text-[#555] text-xs leading-relaxed mb-6 font-medium">
                                 High-fiber foods and water in measured whole natural health water.
                             </p>
-                            <Link href="/disease/weight" className="inline-block bg-[#2f4d36] text-white px-5 py-2 rounded-full text-xs font-bold hover:bg-[#203625] transition-colors">
+                            <Link href="/diseases/weight" className="inline-block bg-[#2f4d36] text-white px-5 py-2 rounded-full text-xs font-bold hover:bg-[#203625] transition-colors">
                                 Read More
                             </Link>
                         </div>
@@ -158,7 +196,7 @@ export default function DiseasesAndAilmentsPage() {
                             <p className="text-[#555] text-xs leading-relaxed mb-6 font-medium">
                                 Custom-healthy recipe with joint-healthy ginger, turmeric, and walnuts.
                             </p>
-                            <Link href="/disease/joints" className="inline-block bg-[#c0a072] text-white px-5 py-2 rounded-full text-xs font-bold hover:bg-[#b08d5c] transition-colors">
+                            <Link href="/diseases/joints" className="inline-block bg-[#c0a072] text-white px-5 py-2 rounded-full text-xs font-bold hover:bg-[#b08d5c] transition-colors">
                                 Read More
                             </Link>
                         </div>
@@ -218,7 +256,7 @@ export default function DiseasesAndAilmentsPage() {
                                 <p className="text-white/70 text-xs leading-relaxed mb-6 font-medium">
                                     Custom illustrated with bottle of rosemary-infused oil, amla, and moringa.
                                 </p>
-                                <Link href="/disease/hair-fall" className="inline-block bg-[#dbbb8e] text-[#2e4029] px-6 py-2 rounded-full text-xs font-black hover:bg-[#ebd0a8] transition-colors">
+                                <Link href="/diseases/hair-fall" className="inline-block bg-[#dbbb8e] text-[#2e4029] px-6 py-2 rounded-full text-xs font-black hover:bg-[#ebd0a8] transition-colors">
                                     Read More
                                 </Link>
                             </div>
@@ -247,7 +285,7 @@ export default function DiseasesAndAilmentsPage() {
                                 <p className="text-[#443621] text-xs leading-relaxed mb-6 font-medium">
                                     Miswak with a nature-used in miswak, custom-recipe and simple charcoal recipe.
                                 </p>
-                                <Link href="/disease/teeth-whitening" className="inline-block bg-[#2f4d36] text-white px-6 py-2 rounded-full text-xs font-black hover:bg-[#203625] transition-colors">
+                                <Link href="/diseases/teeth-whitening" className="inline-block bg-[#2f4d36] text-white px-6 py-2 rounded-full text-xs font-black hover:bg-[#203625] transition-colors">
                                     Read More
                                 </Link>
                             </div>

@@ -150,17 +150,17 @@ export default function Navbar() {
             )}>
                 <div className="max-w-[1400px] mx-auto px-4 flex items-center justify-between gap-3 md:gap-4">
                     {/* Logo */}
-                  <Link href="/" className="flex items-center group shrink-0">
-  <div className="relative h-14 w-40 md:h-20 md:w-56 hover:scale-105 transition-all duration-300">
-    <Image 
-      src="/desk-top.png" 
-      alt="Logo" 
-      fill 
-      className="object-contain" 
-      priority 
-    />
-  </div>
-</Link>
+                    <Link href="/" className="flex items-center group shrink-0">
+                        <div className="relative h-14 w-40 md:h-20 md:w-56 hover:scale-105 transition-all duration-300">
+                            <Image
+                                src="/desk-top.png"
+                                alt="Logo"
+                                fill
+                                className="object-contain"
+                                priority
+                            />
+                        </div>
+                    </Link>
 
                     {/* Desktop Navigation Links */}
                     <div className="hidden md:flex flex-1 justify-center">
@@ -193,7 +193,7 @@ export default function Navbar() {
                                 </NavigationMenuItem>
                                 <NavigationMenuItem>
                                     <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), "bg-transparent font-bold text-stone-600 text-sm hover:text-[#22aa4f] hover:bg-stone-50 px-2")}>
-                                        <Link href="/book-appointment">Exercise</Link>
+                                        <Link href="/exercises">Exercise</Link>
                                     </NavigationMenuLink>
                                 </NavigationMenuItem>
                                 <NavigationMenuItem>
@@ -252,7 +252,9 @@ export default function Navbar() {
                     <nav className="flex-1 space-y-4">
                         <Link href="/" className="block font-bold text-stone-600" onClick={() => setOpen(false)}>Home</Link>
                         <Link href="/products" className="block font-bold text-stone-600" onClick={() => setOpen(false)}>Organic foods</Link>
+                        <Link href="/specialties" className="block font-bold text-stone-600" onClick={() => setOpen(false)}>Daily Organic Foods</Link>
                         <Link href="/diseases" className="block font-bold text-stone-600" onClick={() => setOpen(false)}>Diseases &amp; Treatment</Link>
+                        <Link href="/exercises" className="block font-bold text-stone-600" onClick={() => setOpen(false)}>Exercise</Link>
 
                         <div className="pt-2 border-t border-stone-100">
                             <p className="text-[10px] font-bold text-stone-300 uppercase mb-3">About Us</p>

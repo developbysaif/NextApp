@@ -33,40 +33,51 @@ export default function AdminMealPlanPage() {
     const [searchTerm, setSearchTerm] = useState('');
 
     useEffect(() => {
-        // Load Plan
-        const savedPlan = JSON.parse(localStorage.getItem("adminWeeklyMealPlan") || "{}");
-        if (Object.keys(savedPlan).length === 0) {
+        let savedPlan = JSON.parse(localStorage.getItem("adminWeeklyMealPlan") || "{}");
+        const hasReset = localStorage.getItem("clearDummyData1");
+        
+        if (!hasReset || Object.keys(savedPlan).length === 0) {
             const seed = {};
             WEEKS.forEach(w => {
                 seed[w] = {};
                 DAYS.forEach(day => {
                     seed[w][day] = {
-                        breakfast: { title: 'Scrambled Eggs', img: 'https://images.unsplash.com/photo-1490645935967-10de6ba88061?w=100' },
-                        lunch: { title: 'Chicken Salad', img: 'https://images.unsplash.com/photo-1525385133512-2f3bdd039054?w=100' },
-                        snack: { title: 'Mixed Berries', img: 'https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?w=100' },
-                        dinner: { title: 'Baked Salmon', img: 'https://images.unsplash.com/photo-1432139555190-58524dae6a5a?w=100' }
+                        breakfast: { title: 'Empty', img: '' },
+                        lunch: { title: 'Empty', img: '' },
+                        snack: { title: 'Empty', img: '' },
+                        dinner: { title: 'Empty', img: '' }
                     };
                 });
             });
             setMealPlan(seed);
             localStorage.setItem("adminWeeklyMealPlan", JSON.stringify(seed));
+            
+            // Sync with frontend legacy key to erase past dummy data there too
+            const frontendFormat = {};
+            DAYS.forEach(d => {
+                frontendFormat[d] = {
+                    breakfast: { name: 'Empty', img: '' },
+                    lunch: { name: 'Empty', img: '' },
+                    snack: { name: 'Empty', img: '' },
+                    dinner: { name: 'Empty', img: '' }
+                }
+            });
+            localStorage.setItem("adminMealPlan", JSON.stringify(frontendFormat));
         } else {
             setMealPlan(savedPlan);
         }
 
         // Load Library
-        const savedLib = JSON.parse(localStorage.getItem("dietLibrary") || "[]");
-        if (savedLib.length === 0) {
-            const seedLib = [
-                { id: 1, title: 'Avocado Toast', description: 'Healthy bread with fresh avocado and egg.', category: 'Breakfast', img: 'https://images.unsplash.com/photo-1525385133512-2f3bdd039054?w=400' },
-                { id: 2, title: 'Grilled Salmon', description: 'Fresh salmon with asparagus.', category: 'Dinner', img: 'https://images.unsplash.com/photo-1432139555190-58524dae6a5a?w=400' },
-                { id: 3, title: 'Quinoa Bowl', description: 'Protein rich quinoa with roasted veggies.', category: 'Lunch', img: 'https://images.unsplash.com/photo-1490645935967-10de6ba88061?w=400' }
-            ];
-            setLibrary(seedLib);
-            localStorage.setItem("dietLibrary", JSON.stringify(seedLib));
+        let savedLib = JSON.parse(localStorage.getItem("dietLibrary") || "[]");
+        if (!hasReset || savedLib.length === 0) {
+            setLibrary([]);
+            localStorage.setItem("dietLibrary", JSON.stringify([]));
         } else {
             setLibrary(savedLib);
         }
+        
+        // Mark as reset so it doesn't clear their future custom entries!
+        localStorage.setItem("clearDummyData1", "true");
         setLoading(false);
     }, []);
 

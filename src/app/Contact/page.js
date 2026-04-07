@@ -9,28 +9,50 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen bg-[#fcfdfa] font-sans">
       
-      {/* Hero Section with Gemini Nano Banana */}
-      <section className="relative h-[400px] flex items-center justify-center overflow-hidden bg-[#21492f]">
-        <div className="absolute inset-0 opacity-40">
-           {/* The requested high-tech banana image */}
-           <Image 
-             src="/contact_banana.png" 
-             alt="Nano Tech Banana" 
-             fill 
-             className="object-cover"
-             onError={(e) => { e.target.style.display = 'none'; }} 
-           />
+      {/* Premium Image Hero Section */}
+      <section className="relative h-[55vh] md:h-[65vh] flex items-start pt-[10vh] justify-center overflow-hidden">
+        {/* Background Image Header */}
+        <div 
+          className="absolute inset-0 z-0 scale-105"
+          style={{
+            backgroundImage: "url('/hero_exotic_fruit_bowl.png')",
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        >
+          {/* Subtle dark gradient for depth and text legibility, removed white blur */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#21492f]/80 via-[#21492f]/40 to-transparent" />
         </div>
-        <div className="relative z-10 text-center px-6">
+
+        <div className="relative z-10 text-center px-6 w-full max-w-7xl mx-auto flex flex-col items-center">
+           <motion.div 
+             initial={{ opacity: 0, scale: 0.9 }}
+             animate={{ opacity: 1, scale: 1 }}
+             className="inline-flex items-center gap-2 bg-[#6bb300] px-6 py-2.5 rounded-full border border-white/40 mb-6 font-bold text-[10px] uppercase tracking-[0.25em] text-white shadow-xl"
+           >
+             <PhoneCall size={14} className="text-white" /> 24/7 Availability
+           </motion.div>
+           
            <motion.h1 
+             initial={{ opacity: 0, y: 30 }}
+             animate={{ opacity: 1, y: 0 }}
+             transition={{ delay: 0.1 }}
+             className="text-5xl md:text-7xl font-black text-white uppercase tracking-tighter mb-4"
+           >
+             Contact <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#6bb300] to-[#b4e567]">Us</span>
+           </motion.h1>
+           
+           <motion.p 
              initial={{ opacity: 0, y: 20 }}
              animate={{ opacity: 1, y: 0 }}
-             className="text-5xl md:text-7xl font-black text-white uppercase tracking-tighter"
+             transition={{ delay: 0.2 }}
+             className="text-white/80 font-black uppercase tracking-[0.4em] text-xs max-w-md mx-auto"
            >
-             Contact <span className="text-[#6bb300]">Us</span>
-           </motion.h1>
-           <p className="text-[#6bb300] font-black uppercase tracking-[0.4em] text-xs mt-4">Nourishing Your Connection</p>
+             Nourishing Your Connection with true holistic support
+           </motion.p>
         </div>
+        
+        {/* Image is fully visible now without white blur transition */}
       </section>
 
       {/* Main Content: Form & Info */}

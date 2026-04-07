@@ -1,362 +1,310 @@
 "use client"
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
-    Bell, Search, Filter, Plus, ChevronDown, MoreHorizontal, Minus, 
-    Facebook, Twitter, Instagram, Youtube, Linkedin, DollarSign, Box, Flame,
-    MoreVertical, ChevronLeft, ChevronRight, BarChart2
+    Search, Bell, ChevronDown, Plus, 
+    MoreHorizontal, Filter, FastForward, Activity,
+    X
 } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
-export default function GroceryDashboard() {
-    const [activeTab, setActiveTab] = useState('All Categories');
+const defaultExercises = [
+    { id: 1, name: 'Squats', sets: 4, reps: '12 repetitions', rest: '60 sec', weight: '45 kg', calories: '180 cal', status: 'Completed', color: 'bg-[#B4E567]', iconColor: 'text-[#215b33]' },
+    { id: 2, name: 'Deadlifts', sets: 3, reps: '10 repetitions', rest: '90 sec', weight: '60 kg', calories: '220 cal', status: 'Completed', color: 'bg-[#FFD166]', iconColor: 'text-[#856312]' },
+    { id: 3, name: 'Bench Press', sets: 3, reps: '8 repetitions', rest: '60 sec', weight: '40 kg', calories: '150 cal', status: 'In Progress', color: 'bg-[#FF9F43]', iconColor: 'text-[#6b3a04]' },
+    { id: 4, name: 'Pull-Ups', sets: 4, reps: '8 repetitions', rest: '90 sec', weight: 'Bodyweight', calories: '120 cal', status: 'Skipped', color: 'bg-[#B4E567]', iconColor: 'text-[#215b33]' },
+    { id: 5, name: 'Plank', sets: 3, reps: '60 repetitions', rest: '30 sec', weight: '-', calories: '90 cal', status: 'Completed', color: 'bg-[#FFD166]', iconColor: 'text-[#856312]' },
+    { id: 6, name: 'Running', sets: 1, reps: '30 minutes', rest: 'N/A', weight: '-', calories: '300 cal', status: 'Completed', color: 'bg-[#FF9F43]', iconColor: 'text-[#6b3a04]' },
+    { id: 7, name: 'Lunges', sets: 3, reps: '15 repetitions', rest: '60 sec', weight: '20 kg', calories: '160 cal', status: 'Not Started', color: 'bg-[#B4E567]', iconColor: 'text-[#215b33]' },
+    { id: 8, name: 'Shoulder Press', sets: 3, reps: '10 repetitions', rest: '60 sec', weight: '25 kg', calories: '140 cal', status: 'Not Started', color: 'bg-[#FFD166]', iconColor: 'text-[#856312]' },
+    { id: 9, name: 'Bicep Curls', sets: 3, reps: '12 repetitions', rest: '45 sec', weight: '15 kg', calories: '110 cal', status: 'Skipped', color: 'bg-[#FF9F43]', iconColor: 'text-[#6b3a04]' },
+    { id: 10, name: 'Cycling', sets: 1, reps: '45 minutes', rest: 'N/A', weight: '-', calories: '350 cal', status: 'Completed', color: 'bg-[#B4E567]', iconColor: 'text-[#215b33]' },
+    { id: 11, name: 'Mountain Climbers', sets: 4, reps: '20 repetitions', rest: '30 sec', weight: '-', calories: '200 cal', status: 'In Progress', color: 'bg-[#FFD166]', iconColor: 'text-[#856312]' },
+    { id: 12, name: 'Yoga (Stretching)', sets: 1, reps: '60 minutes', rest: 'N/A', weight: '-', calories: '150 cal', status: 'Not Started', color: 'bg-[#FF9F43]', iconColor: 'text-[#6b3a04]' },
+];
 
-    const stats = [
-        { label: 'Estimated Cost', value: '$157', change: '+2.08%', isPositive: true, icon: DollarSign, color: 'text-green-700', bg: 'bg-[#B4E567]', iconColor: 'text-[#506e1b]' },
-        { label: 'Total items', value: '40', change: '+10.2%', isPositive: true, icon: Box, color: 'text-orange-700', bg: 'bg-[#FFD166]', iconColor: 'text-[#875c00]' },
-        { label: 'Total Calories', value: '21,615', valSuffix: 'kcal', change: '-3.56%', isPositive: false, icon: Flame, color: 'text-orange-600', bg: 'bg-[#FF9F43]', iconColor: 'text-[#7a3900]' },
-    ];
+export default function ExercisesPage() {
+    const [exercises, setExercises] = useState([]);
+    const [healthSyncMessage, setHealthSyncMessage] = useState('');
+    const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+    const [newExercise, setNewExercise] = useState({ name: '', sets: '', reps: '', rest: '', weight: '', calories: '' });
+    const [searchTerm, setSearchTerm] = useState('');
 
-    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-    const barData = [60, 50, 45, 55, 100, 55, 45, 55, 65, 55, 45, 55]; // Heights visually approximated (Max 100)
+    useEffect(() => {
+        const stored = localStorage.getItem('userExercises');
+        if (stored) {
+            setExercises(JSON.parse(stored));
+        } else {
+            setExercises(defaultExercises);
+            localStorage.setItem('userExercises', JSON.stringify(defaultExercises));
+        }
+    }, []);
 
-    const categories = ['All Categories', 'Grains', 'Fruits', 'Veggies', 'Protein', 'Dairy', 'Others'];
+    const updateExerciseStatus = (id, newStatus) => {
+        const updated = exercises.map(ex => {
+            if (ex.id === id) {
+                return { ...ex, status: newStatus };
+            }
+            return ex;
+        });
+        setExercises(updated);
+        localStorage.setItem('userExercises', JSON.stringify(updated));
 
-    const items = [
-        { id: 1, name: 'Oats', category: 'Grains', catColor: 'bg-orange-100 text-orange-600', qty: 500, unit: 'gr', cals: '1900', cost: '$0.60', img: '🥣' },
-        { id: 2, name: 'Almond Butter', category: 'Others', catColor: 'bg-gray-100 text-gray-600', qty: 1, unit: 'jar', cals: '1600', cost: '$5', img: '🥜' },
-        { id: 3, name: 'Berries', category: 'Fruits', catColor: 'bg-orange-50 text-orange-500', qty: 200, unit: 'gr', cals: '120', cost: '$2', img: '🫐' },
-        { id: 4, name: 'Chicken Breast', category: 'Protein', catColor: 'bg-orange-200 text-orange-700', qty: 1, unit: 'kg', cals: '1650', cost: '$8', img: '🍗' },
-        { id: 5, name: 'Avocado', category: 'Fruits', catColor: 'bg-orange-50 text-orange-500', qty: 3, unit: 'units', cals: '720', cost: '$2', img: '🥑' },
-        { id: 6, name: 'Spinach', category: 'Veggies', catColor: 'bg-[#B4E567]/30 text-[#506e1b]', qty: 300, unit: 'gr', cals: '65', cost: '$1', img: '🥬' },
-        { id: 7, name: 'Sweet Potatoes', category: 'Veggies', catColor: 'bg-[#B4E567]/30 text-[#506e1b]', qty: 3, unit: 'units', cals: '360', cost: '$1', img: '🍠' },
-        { id: 8, name: 'Greek Yogurt', category: 'Dairy', catColor: 'bg-orange-100 text-orange-700', qty: 1, unit: 'tub', cals: '600', cost: '$4', img: '🥛' },
-        { id: 9, name: 'Quinoa', category: 'Grains', catColor: 'bg-orange-100 text-orange-600', qty: 500, unit: 'gr', cals: '1800', cost: '$1', img: '🍚' },
-        { id: 10, name: 'Brown Rice', category: 'Grains', catColor: 'bg-orange-100 text-orange-600', qty: 500, unit: 'g', cals: '1800', cost: '$0.80', img: '🍛' },
-    ];
+        // Evaluate backend health report sync logic
+        if (newStatus === 'Completed') {
+            const completedCount = updated.filter(e => e.status === 'Completed').length;
+            setHealthSyncMessage(`Awesome! ${completedCount} exercises completed. Health report updated.`);
+            // Update the generalized progress health score in local storage
+            localStorage.setItem('healthScoreUpdate', Date.now().toString());
+            setTimeout(() => setHealthSyncMessage(''), 4000);
+        }
+    };
+
+    const handleAddExercise = (e) => {
+        e.preventDefault();
+        const colors = ['bg-[#B4E567]', 'bg-[#FFD166]', 'bg-[#FF9F43]'];
+        const iconColors = ['text-[#215b33]', 'text-[#856312]', 'text-[#6b3a04]'];
+        const randIndex = Math.floor(Math.random() * colors.length);
+
+        const newEx = {
+            id: Date.now(),
+            name: newExercise.name || 'Custom Exercise',
+            sets: newExercise.sets || 1,
+            reps: newExercise.reps || '10 repetitions',
+            rest: newExercise.rest || '60 sec',
+            weight: newExercise.weight || '-',
+            calories: newExercise.calories ? newExercise.calories + ' cal' : '100 cal',
+            status: 'Not Started',
+            color: colors[randIndex],
+            iconColor: iconColors[randIndex]
+        };
+
+        const updated = [newEx, ...exercises];
+        setExercises(updated);
+        localStorage.setItem('userExercises', JSON.stringify(updated));
+        setIsAddModalOpen(false);
+        setNewExercise({ name: '', sets: '', reps: '', rest: '', weight: '', calories: '' });
+    };
+
+    const getStatusStyle = (status) => {
+        switch (status) {
+            case 'Completed': return 'bg-[#B4E567] text-[#215b33]';
+            case 'In Progress': return 'bg-[#FFD166] text-[#856312]';
+            case 'Skipped': return 'bg-[#FF9F43] text-white';
+            case 'Not Started': return 'bg-gray-100 text-gray-500';
+            default: return 'bg-gray-100 text-gray-500';
+        }
+    };
+
+    const filteredExercises = exercises.filter(ex => ex.name.toLowerCase().includes(searchTerm.toLowerCase()));
 
     return (
-        <div className="min-h-screen bg-[#FCFAEF] text-gray-800 p-8 font-sans">
-            {/* Header */}
-            <div className="flex items-center justify-between mb-8">
-                <h1 className="text-2xl font-bold text-gray-900">Grocery List</h1>
+        <div className="bg-[#FCFAEF] min-h-screen text-gray-800 p-8 font-sans relative">
+            
+            {/* Top Header */}
+            <header className="flex items-center justify-between mb-8">
+                <h1 className="text-2xl font-bold text-gray-900 leading-tight">Exercises</h1>
                 <div className="flex items-center gap-4">
-                    <div className="relative bg-white p-2.5 rounded-xl border border-gray-100 shadow-sm cursor-pointer">
-                        <Bell size={20} className="text-gray-600" />
-                        <span className="absolute top-2 right-2.5 w-2 h-2 bg-orange-500 rounded-full border-2 border-white"></span>
+                    <div className="relative bg-white p-2.5 rounded-xl shadow-[0_2px_10px_rgba(0,0,0,0.02)] cursor-pointer">
+                        <Bell size={20} className="text-gray-400" />
+                        <span className="absolute top-2 right-2.5 w-2 h-2 bg-orange-400 rounded-full"></span>
                     </div>
-                    <div className="w-10 h-10 rounded-xl bg-orange-100 overflow-hidden cursor-pointer shadow-sm">
-                        <img src="https://i.pravatar.cc/150?img=11" alt="Profile" className="w-full h-full object-cover" />
+                    <div className="flex items-center gap-3 bg-white pr-4 pl-2 py-1.5 rounded-2xl shadow-[0_2px_10px_rgba(0,0,0,0.02)] cursor-pointer">
+                        <img 
+                            src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=100&h=100&fit=crop" 
+                            alt="User" 
+                            className="w-8 h-8 rounded-xl object-cover"
+                        />
+                        <div className="hidden sm:block text-left">
+                            <p className="text-xs font-bold text-gray-900 leading-tight">Adam Vasylenko</p>
+                            <p className="text-[10px] font-medium text-gray-400">Member</p>
+                        </div>
+                        <ChevronDown size={14} className="text-gray-400 ml-1" />
                     </div>
                 </div>
-            </div>
+            </header>
 
-            {/* Top Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                {stats.map((stat, idx) => (
-                    <div key={idx} className="bg-white rounded-[1.5rem] p-6 flex flex-col justify-between shadow-sm border border-gray-50 h-36">
-                        <div className="flex items-center justify-between mb-2">
-                            <div className={`${stat.bg} w-12 h-12 rounded-2xl flex items-center justify-center`}>
-                                <stat.icon className={stat.iconColor} size={20} />
-                            </div>
-                        </div>
-                        <div>
-                            <h3 className="text-gray-400 text-sm font-medium mb-1">{stat.label}</h3>
-                            <div className="flex items-end justify-between">
-                                <div className="flex items-baseline gap-1">
-                                    <span className="text-2xl font-bold text-gray-900">{stat.value}</span>
-                                    {stat.valSuffix && <span className="text-gray-400 text-sm font-medium">{stat.valSuffix}</span>}
-                                </div>
-                                <span className={`text-xs font-semibold px-2 py-1 rounded-lg ${stat.isPositive ? 'bg-gray-100 text-gray-600' : 'bg-red-50 text-red-500'}`}>
-                                    {stat.change}
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                ))}
-            </div>
+            {/* Sync Feedback Toast */}
+            <AnimatePresence>
+                {healthSyncMessage && (
+                    <motion.div 
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, scale: 0.9 }}
+                        className="fixed top-8 left-1/2 -translate-x-1/2 z-50 bg-[#1E1B4B] text-white px-6 py-3 rounded-2xl shadow-xl flex items-center gap-3 border border-indigo-500/30"
+                    >
+                        <Activity size={18} className="text-[#B4E567]" />
+                        <span className="text-sm font-bold tracking-wide">{healthSyncMessage}</span>
+                    </motion.div>
+                )}
+            </AnimatePresence>
 
-            {/* Main Middle Layout */}
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
-                {/* Expense Overview (Spans 2 columns on lg) */}
-                <div className="lg:col-span-3 xl:col-span-2 bg-white rounded-[1.5rem] p-6 shadow-sm border border-gray-50 flex flex-col">
-                    <div className="flex items-center justify-between mb-6">
-                        <h2 className="text-lg font-bold text-gray-900">Expense Overview</h2>
-                        <button className="flex items-center gap-1 ext-sm text-gray-500 bg-gray-50 px-3 py-1.5 rounded-lg font-medium">
-                            This Year <ChevronDown size={14} />
-                        </button>
+            {/* Action Bar */}
+            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-6">
+                <div className="flex flex-wrap items-center gap-3">
+                    <div className="relative flex-1 min-w-[200px] lg:min-w-[280px]">
+                        <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={16} />
+                        <input 
+                            type="text" 
+                            placeholder="Search for exercise" 
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                            className="w-full pl-11 pr-4 py-3 bg-white border border-transparent rounded-[1.25rem] text-[13px] font-medium shadow-[0_2px_15px_rgba(0,0,0,0.02)] outline-none focus:ring-1 focus:ring-green-500 placeholder-gray-400"
+                        />
                     </div>
                     
-                    <div className="flex-1 flex items-end justify-between gap-2 h-48 mt-4 relative">
-                        {/* Fake Y-Axis */}
-                        <div className="absolute left-0 top-0 bottom-6 flex flex-col justify-between text-[10px] text-gray-400 font-medium">
-                            <span>$600</span>
-                            <span>$450</span>
-                            <span>$300</span>
-                            <span>$150</span>
-                            <span>$0</span>
-                        </div>
-                        {/* Horizontal Grid Lines */}
-                        <div className="absolute left-8 right-0 top-1.5 bottom-6 flex flex-col justify-between z-0">
-                            {[1,2,3,4,5].map(i => <div key={i} className="border-t border-gray-100 w-full"></div>)}
-                        </div>
-                        
-                        {/* Bars Container */}
-                        <div className="flex-1 flex items-end justify-between ml-10 h-full relative z-10 pb-6">
-                            {barData.map((val, idx) => (
-                                <div key={idx} className="flex flex-col items-center group w-full px-1">
-                                    {idx === 4 && (
-                                        <div className="absolute -top-3 bg-white shadow-md rounded-lg py-1 px-3 text-[10px] font-bold text-gray-700 whitespace-nowrap z-20">
-                                            May 2028
-                                            <div className="text-center text-sm font-bold mt-0.5">$530</div>
-                                        </div>
-                                    )}
-                                    <div 
-                                        className={`w-full max-w-[24px] rounded-t-md transition-all duration-300 ${idx === 4 ? 'bg-[#FF9F43]' : 'bg-[#FFD166] hover:bg-[#FF9F43]'}`} 
-                                        style={{ height: `${val}%` }}
-                                    ></div>
-                                    <span className={`text-[10px] font-medium mt-3 absolute bottom-0 ${idx === 4 ? 'text-gray-800 font-bold' : 'text-gray-400'}`}>
-                                        {months[idx]}
-                                    </span>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-
-                {/* Expense Breakdown & Grocery Category */}
-                <div className="lg:col-span-3 xl:col-span-1 grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    {/* Expense Breakdown */}
-                    <div className="bg-white rounded-[1.5rem] p-6 shadow-sm border border-gray-50">
-                        <div className="flex items-center justify-between mb-4">
-                            <h2 className="text-sm font-bold text-gray-900">Expense Breakdown</h2>
-                            <button className="flex items-center gap-1 text-xs text-gray-500 bg-gray-50 px-2 py-1 rounded-md font-medium">
-                                This Week <ChevronDown size={12} />
-                            </button>
-                        </div>
-                        <div className="flex items-center justify-center relative my-4 h-32">
-                            {/* Simple CSS Donut representation */}
-                            <div className="w-28 h-28 rounded-full border-[12px] border-gray-100 relative overflow-hidden flex items-center justify-center">
-                                {/* SVG for real donut portions would go here, mimicking with border colors for now */}
-                                <svg viewBox="0 0 36 36" className="absolute w-32 h-32 -rotate-90">
-                                    <path className="text-[#FF9F43]" strokeDasharray="30 100" stroke="currentColor" strokeWidth="4" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                    <path className="text-[#B4E567]" strokeDasharray="25 100" strokeDashoffset="-30" stroke="currentColor" strokeWidth="4" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                    <path className="text-[#FFD166]" strokeDasharray="18 100" strokeDashoffset="-55" stroke="currentColor" strokeWidth="4" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                    <path className="text-[#ffb774]" strokeDasharray="15 100" strokeDashoffset="-73" stroke="currentColor" strokeWidth="4" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                </svg>
-                                
-                                <div className="text-center absolute inset-0 flex flex-col items-center justify-center">
-                                    <div className="text-lg font-bold text-gray-900 leading-tight">$157</div>
-                                    <div className="text-[8px] text-gray-400 font-medium">Total Expense</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="space-y-2 mt-4 ml-6">
-                            {[
-                                { name: 'Protein', val: '$47.10', pct: '30%', dot: 'bg-[#B4E567]' },
-                                { name: 'Grains', val: '$38.25', pct: '25%', dot: 'bg-[#FFD166]' },
-                                { name: 'Fruits', val: '$28.26', pct: '18%', dot: 'bg-[#FF9F43]' },
-                                { name: 'Veggies', val: '$23.55', pct: '15%', dot: 'bg-[#ffb774]' },
-                                { name: 'Dairy', val: '$10.99', pct: '7%', dot: 'bg-gray-200' },
-                                { name: 'Others', val: '$7.85', pct: '5%', dot: 'bg-gray-300' }
-                            ].map((item, i) => (
-                                <div key={i} className="flex items-center justify-between text-xs">
-                                    <div className="flex items-center gap-2">
-                                        <span className={`w-2 h-2 rounded-full ${item.dot}`}></span>
-                                        <span className="text-gray-500 font-medium">{item.name}</span>
-                                    </div>
-                                    <div className="flex items-center gap-2">
-                                        <span className="text-gray-400 text-[10px]">{item.val}</span>
-                                        <span className="font-bold text-gray-800 w-6 text-right">{item.pct}</span>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-
-                    {/* Grocery Category */}
-                    <div className="bg-white rounded-[1.5rem] p-6 shadow-sm border border-gray-50 flex flex-col">
-                        <div className="flex items-center justify-between mb-4">
-                            <h2 className="text-sm font-bold text-gray-900">Grocery Category</h2>
-                            <button className="text-gray-400 hover:text-gray-600">
-                                <MoreHorizontal size={16} />
-                            </button>
-                        </div>
-                        <div className="flex items-baseline gap-1 mb-3">
-                            <span className="text-xs text-gray-400">Total</span>
-                            <span className="text-xl font-bold text-gray-900">40</span>
-                            <span className="text-xs text-gray-400">items</span>
-                        </div>
-                        
-                        {/* Progress bar composite */}
-                        <div className="flex h-2 mb-6 gap-1">
-                            <div className="h-full bg-[#B4E567] rounded-l-full w-[30%]"></div>
-                            <div className="h-full bg-[#FFD166] w-[25%]"></div>
-                            <div className="h-full bg-[#FF9F43] w-[20%]"></div>
-                            <div className="h-full bg-[#ffb774] w-[15%]"></div>
-                            <div className="h-full bg-gray-200 w-[5%]"></div>
-                            <div className="h-full bg-gray-300 rounded-r-full w-[5%]"></div>
-                        </div>
-
-                        <div className="space-y-3 flex-1 overflow-y-auto pr-2 custom-scrollbar">
-                             {[
-                                { name: 'Grains', count: '12 items', pct: '30%', dot: 'bg-[#B4E567]' },
-                                { name: 'Veggies', count: '10 items', pct: '25%', dot: 'bg-[#FFD166]' },
-                                { name: 'Protein', count: '8 items', pct: '20%', dot: 'bg-[#FF9F43]' },
-                                { name: 'Fruits', count: '6 items', pct: '15%', dot: 'bg-[#ffb774]' },
-                                { name: 'Dairy', count: '2 items', pct: '5%', dot: 'bg-gray-200' },
-                                { name: 'Others', count: '2 items', pct: '5%', dot: 'bg-gray-300' }
-                            ].map((item, i) => (
-                                <div key={i} className="flex items-center justify-between text-xs">
-                                    <div className="flex items-center gap-3">
-                                        <span className={`w-3 h-3 rounded-sm ${item.dot}`}></span>
-                                        <span className="text-gray-700 font-medium">{item.name}</span>
-                                    </div>
-                                    <div className="flex items-center gap-3">
-                                        <span className="text-gray-400 text-[10px]">{item.count}</span>
-                                        <span className="font-bold text-gray-800 w-6 text-right">{item.pct}</span>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            {/* List Section */}
-            <div className="mb-2">
-                <h2 className="text-lg font-bold text-gray-900 mb-4">Grocery List</h2>
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
-                    <div className="flex items-center gap-3 max-w-md w-full">
-                        <div className="relative flex-1">
-                            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400" size={16} />
-                            <input 
-                                type="text" 
-                                placeholder="Search item" 
-                                className="w-full pl-10 pr-4 py-2.5 bg-white border border-gray-100 rounded-xl text-sm outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 placeholder-gray-400"
-                            />
-                        </div>
-                        <button className="flex items-center justify-center gap-1.5 px-4 py-2.5 bg-white border border-gray-100 text-sm font-medium text-gray-600 rounded-xl hover:bg-gray-50 flex-shrink-0">
-                            <Filter size={16} className="text-gray-400" /> Filter <ChevronDown size={14} className="text-gray-400" />
-                        </button>
-                    </div>
-                    <div className="flex items-center gap-3 shrink-0">
-                        <span className="text-sm text-gray-400">Sort by:</span>
-                        <button className="flex items-center gap-1 text-sm font-semibold text-gray-700 bg-white border border-gray-100 px-3 py-2 rounded-lg">
-                            Newest <ChevronDown size={14} />
-                        </button>
-                        <button className="bg-[#B4E567] text-[#506e1b] px-4 py-2.5 rounded-xl font-bold text-sm flex items-center gap-1.5 hover:bg-[#a6d956] transition-colors shadow-sm">
-                            <Plus size={16} strokeWidth={3} /> Add item
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <div className="bg-white rounded-t-3xl pt-2 pb-0 px-2 flex gap-1 overflow-x-auto no-scrollbar border-b border-gray-100">
-                {categories.map(cat => (
-                    <button 
-                        key={cat} 
-                        onClick={() => setActiveTab(cat)}
-                        className={`px-5 py-3 text-sm font-semibold whitespace-nowrap transition-colors rounded-t-2xl ${activeTab === cat ? 'bg-white text-gray-900 shadow-[0_-4px_10px_-4px_rgba(0,0,0,0.05)] relative z-10' : 'text-gray-400 hover:text-gray-600'}`}
-                        style={{ borderBottom: activeTab === cat ? 'none' : '' }}
-                    >
-                        {cat}
+                    <button className="flex items-center gap-2 px-5 py-3 bg-white text-gray-500 text-[13px] font-bold rounded-[1.25rem] shadow-[0_2px_15px_rgba(0,0,0,0.02)]">
+                        Status <ChevronDown size={14} strokeWidth={2.5} />
                     </button>
-                ))}
+                    <button className="flex items-center gap-2 px-5 py-3 bg-white text-gray-500 text-[13px] font-bold rounded-[1.25rem] shadow-[0_2px_15px_rgba(0,0,0,0.02)]">
+                        This Week <ChevronDown size={14} strokeWidth={2.5} />
+                    </button>
+                </div>
+
+                <div className="flex items-center gap-3">
+                    <button className="flex items-center gap-2 text-[13px] font-bold text-gray-500 pr-2">
+                        Popular <ChevronDown size={14} strokeWidth={2.5} className="text-gray-400" />
+                    </button>
+                    <button 
+                        onClick={() => setIsAddModalOpen(true)}
+                        className="bg-[#B4E567] text-[#215b33] px-5 py-3 rounded-[1.25rem] font-bold text-[13px] flex items-center gap-2 hover:bg-[#a5db56] transition-colors shadow-sm"
+                    >
+                        <Plus size={16} strokeWidth={2.5} /> Add Exercise
+                    </button>
+                </div>
             </div>
 
-            <div className="bg-white rounded-b-3xl rounded-tr-3xl shadow-sm border border-gray-50 border-t-0 p-6 overflow-hidden">
+            {/* Table Container */}
+            <div className="bg-white rounded-[2rem] shadow-[0_8px_30px_rgba(0,0,0,0.04)] border border-gray-50 overflow-hidden">
                 <div className="overflow-x-auto">
-                    <table className="w-full min-w-[800px]">
+                    <table className="w-full min-w-[900px]">
                         <thead>
-                            <tr className="text-left text-[11px] font-bold text-gray-400 uppercase tracking-wider border-b border-gray-100">
-                                <th className="pb-4 font-semibold text-gray-400 hover:text-gray-600 cursor-pointer flex items-center gap-1">Item Name <span className="text-[8px]">▼</span></th>
-                                <th className="pb-4 font-semibold text-gray-400">Category <span className="text-[8px]">▼</span></th>
-                                <th className="pb-4 font-semibold text-gray-400">Qty <span className="text-[8px]">▼</span></th>
-                                <th className="pb-4 font-semibold text-gray-400">Calories <span className="text-[8px]">▼</span></th>
-                                <th className="pb-4 font-semibold text-gray-400">Cost <span className="text-[8px]">▼</span></th>
-                                <th className="pb-4 font-semibold text-gray-400 text-right pr-4">Action</th>
+                            <tr className="border-b border-gray-100">
+                                <th className="text-left py-5 px-6 text-[11px] font-bold text-gray-400 uppercase tracking-widest flex items-center gap-1">Exercise Name <ChevronDown size={10} /></th>
+                                <th className="text-left py-5 px-4 text-[11px] font-bold text-gray-400 uppercase tracking-widest">Sets <ChevronDown size={10} className="inline ml-0.5" /></th>
+                                <th className="text-left py-5 px-4 text-[11px] font-bold text-gray-400 uppercase tracking-widest">Reps <ChevronDown size={10} className="inline ml-0.5" /></th>
+                                <th className="text-left py-5 px-4 text-[11px] font-bold text-gray-400 uppercase tracking-widest">Rest <ChevronDown size={10} className="inline ml-0.5" /></th>
+                                <th className="text-left py-5 px-4 text-[11px] font-bold text-gray-400 uppercase tracking-widest">Weight <ChevronDown size={10} className="inline ml-0.5" /></th>
+                                <th className="text-left py-5 px-4 text-[11px] font-bold text-gray-400 uppercase tracking-widest">Calories <ChevronDown size={10} className="inline ml-0.5" /></th>
+                                <th className="text-right py-5 px-8 text-[11px] font-bold text-gray-400 uppercase tracking-widest">Status <ChevronDown size={10} className="inline ml-0.5" /></th>
                             </tr>
                         </thead>
-                        <tbody>
-                            {items.map((item, idx) => (
-                                <tr key={item.id} className="border-b border-gray-50 hover:bg-gray-50/50 transition-colors group">
-                                    <td className="py-4">
-                                        <div className="flex items-center gap-3">
-                                            <div className="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center text-lg shadow-sm border border-orange-100/50">
-                                                {item.img}
+                        <tbody className="divide-y divide-gray-50">
+                            {filteredExercises.map((exercise) => (
+                                <tr key={exercise.id} className="hover:bg-gray-50/30 transition-colors group">
+                                    <td className="py-4 px-6">
+                                        <div className="flex items-center gap-4">
+                                            <div className={`w-10 h-10 ${exercise.color} ${exercise.iconColor} rounded-xl flex items-center justify-center font-black `}>
+                                               {exercise.name.substring(0, 2).toUpperCase()}
                                             </div>
-                                            <span className="font-bold text-sm text-gray-800">{item.name}</span>
+                                            <span className="font-bold text-[13px] text-gray-900">{exercise.name}</span>
                                         </div>
                                     </td>
-                                    <td className="py-4 text-left">
-                                        <span className={`inline-block px-3 py-1 rounded-lg text-[10px] font-bold tracking-wide ${item.catColor}`}>
-                                            {item.category}
-                                        </span>
-                                    </td>
-                                    <td className="py-4">
-                                        <div className="flex items-center gap-1.5">
-                                            <span className="font-bold text-sm text-gray-700 w-8 text-center">{item.qty}</span>
-                                            <div className="flex items-center border border-gray-200 rounded-lg bg-gray-50 p-0.5">
-                                                <button className="w-5 h-5 flex items-center justify-center bg-white rounded shadow-sm text-gray-400 hover:text-gray-600"><Minus size={12} /></button>
-                                                <button className="w-5 h-5 flex items-center justify-center bg-white rounded shadow-sm text-gray-400 hover:text-gray-600 ml-1"><Plus size={12} /></button>
+                                    <td className="py-4 px-4 text-[13px] font-black text-gray-600">{exercise.sets}</td>
+                                    <td className="py-4 px-4 text-[13px] font-medium text-gray-500">{exercise.reps}</td>
+                                    <td className="py-4 px-4 text-[13px] font-black text-gray-500 tracking-tight">{exercise.rest}</td>
+                                    <td className="py-4 px-4 text-[13px] font-black text-gray-700 tracking-tight">{exercise.weight}</td>
+                                    <td className="py-4 px-4 text-[13px] font-medium text-gray-500">{exercise.calories}</td>
+                                    <td className="py-4 px-6 text-right relative">
+                                        <div className="flex justify-end relative group/status">
+                                            <button className={`px-4 py-1.5 rounded-lg text-[11px] font-bold whitespace-nowrap min-w-[90px] text-center border border-transparent shadow-sm ${getStatusStyle(exercise.status)}`}>
+                                                {exercise.status}
+                                            </button>
+                                            
+                                            {/* Status Dropdown on Hover/Click */}
+                                            <div className="absolute top-1/2 -translate-y-1/2 right-full mr-2 bg-white shadow-xl rounded-xl border border-gray-100 p-2 flex flex-col gap-1 opacity-0 pointer-events-none group-hover/status:opacity-100 group-hover/status:pointer-events-auto transition-all scale-95 group-hover/status:scale-100 z-10 w-32">
+                                                <button onClick={() => updateExerciseStatus(exercise.id, 'Completed')} className="text-left px-3 py-1.5 text-xs font-bold text-[#215b33] hover:bg-[#B4E567]/20 rounded-md">Mark Completed</button>
+                                                <button onClick={() => updateExerciseStatus(exercise.id, 'In Progress')} className="text-left px-3 py-1.5 text-xs font-bold text-[#856312] hover:bg-[#FFD166]/20 rounded-md">Set In Progress</button>
+                                                <button onClick={() => updateExerciseStatus(exercise.id, 'Skipped')} className="text-left px-3 py-1.5 text-xs font-bold text-[#6b3a04] hover:bg-[#FF9F43]/20 rounded-md">Mark Skipped</button>
                                             </div>
-                                            <span className="text-xs text-gray-400 font-medium ml-1">{item.unit}</span>
                                         </div>
-                                    </td>
-                                    <td className="py-4 text-sm">
-                                        <span className="font-bold text-gray-800">{item.cals}</span> <span className="text-xs text-gray-400 font-medium">kcal</span>
-                                    </td>
-                                    <td className="py-4 text-sm font-bold text-gray-800">
-                                        {item.cost}
-                                    </td>
-                                    <td className="py-4 text-right pr-4">
-                                        <button className="text-gray-400 hover:text-gray-600 w-8 h-8 rounded-full hover:bg-gray-100 flex items-center justify-center ml-auto">
-                                            <MoreVertical size={16} />
-                                        </button>
                                     </td>
                                 </tr>
                             ))}
                         </tbody>
                     </table>
                 </div>
-            </div>
-
-            {/* Pagination & Footer */}
-            <div className="flex flex-col md:flex-row items-center justify-between mt-8 gap-6 text-sm">
-                <div className="flex items-center gap-2 text-gray-500 font-medium text-xs">
-                    Showing 
-                    <button className="flex items-center gap-1 bg-white border border-gray-100 rounded px-2 py-1 mx-1 font-bold text-gray-700">
-                        10 <ChevronDown size={12} />
-                    </button>
-                    out of 40
-                </div>
                 
-                <div className="flex items-center gap-1.5">
-                    <button className="w-8 h-8 flex items-center justify-center text-gray-400 hover:text-gray-600"><ChevronLeft size={16} /></button>
-                    <button className="w-8 h-8 flex items-center justify-center rounded-lg bg-[#B4E567] text-[#506e1b] font-bold shadow-sm">1</button>
-                    <button className="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-white text-gray-600 font-medium">2</button>
-                    <button className="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-white text-gray-600 font-medium">3</button>
-                    <button className="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-white text-gray-600 font-medium">4</button>
-                    <button className="w-8 h-8 flex items-center justify-center text-gray-400 hover:text-gray-600"><ChevronRight size={16} /></button>
+                {/* Pagination (Static UI from screenshot) */}
+                <div className="border-t border-gray-50 px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div className="flex items-center gap-2 text-[12px] font-medium text-gray-400">
+                        Showing 
+                        <button className="flex items-center gap-1 font-bold text-gray-700 mx-1 border border-gray-100 px-2 py-1 rounded-md">
+                            12 <ChevronDown size={12} />
+                        </button> 
+                        out of {exercises.length}
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                        <button className="w-8 h-8 flex items-center justify-center text-gray-400 hover:text-gray-900">&lt;</button>
+                        <button className="w-8 h-8 rounded-lg bg-[#B4E567] text-[#215b33] font-bold shadow-sm">1</button>
+                        <button className="w-8 h-8 rounded-lg hover:bg-gray-50 text-gray-600 font-bold">2</button>
+                        <button className="w-8 h-8 rounded-lg hover:bg-gray-50 text-gray-600 font-bold">3</button>
+                        <button className="w-8 h-8 flex items-center justify-center text-gray-400 hover:text-gray-900">&gt;</button>
+                    </div>
                 </div>
             </div>
 
-            <div className="mt-12 pt-6 border-t border-gray-200/60 flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-medium text-gray-400">
-                <div>Copyright © 2024 Peterdraw</div>
-                <div className="flex items-center gap-6">
-                    <a href="#" className="hover:text-gray-600 transition-colors">Privacy Policy</a>
-                    <a href="#" className="hover:text-gray-600 transition-colors">Term and conditions</a>
-                    <a href="#" className="hover:text-gray-600 transition-colors">Contact</a>
-                </div>
-                <div className="flex items-center gap-3 text-gray-400">
-                    <a href="#" className="hover:text-gray-600 transition-colors"><Facebook size={16} /></a>
-                    <a href="#" className="hover:text-gray-600 transition-colors"><Twitter size={16} /></a>
-                    <a href="#" className="hover:text-gray-600 transition-colors"><Instagram size={16} /></a>
-                    <a href="#" className="hover:text-gray-600 transition-colors"><Youtube size={16} /></a>
-                    <a href="#" className="hover:text-gray-600 transition-colors"><Linkedin size={16} /></a>
-                </div>
-            </div>
+            {/* Modal for adding exercise */}
+            <AnimatePresence>
+                {isAddModalOpen && (
+                    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+                        <motion.div 
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            className="absolute inset-0 bg-black/20 backdrop-blur-sm"
+                            onClick={() => setIsAddModalOpen(false)}
+                        ></motion.div>
+                        <motion.div 
+                            initial={{ scale: 0.95, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            exit={{ scale: 0.95, opacity: 0 }}
+                            className="bg-white rounded-[2rem] shadow-2xl relative z-10 w-full max-w-lg overflow-hidden border border-gray-100"
+                        >
+                            <div className="p-6 border-b border-gray-50 flex justify-between items-center">
+                                <h3 className="text-xl font-bold text-gray-900">Add New Exercise</h3>
+                                <button onClick={() => setIsAddModalOpen(false)} className="text-gray-400 hover:text-gray-700 bg-gray-50 p-2 rounded-xl"><X size={18} /></button>
+                            </div>
+                            <form onSubmit={handleAddExercise} className="p-6 space-y-4">
+                                <div>
+                                    <label className="block text-xs font-bold text-gray-500 mb-1.5 uppercase tracking-widest">Exercise Name *</label>
+                                    <input required value={newExercise.name} onChange={e => setNewExercise({...newExercise, name: e.target.value})} type="text" className="w-full bg-gray-50 border border-gray-100 rounded-xl px-4 py-3 text-sm font-bold focus:ring-2 focus:border-transparent focus:ring-green-400 outline-none" placeholder="e.g. Weighted Squats" />
+                                </div>
+                                <div className="grid grid-cols-2 gap-4">
+                                     <div>
+                                        <label className="block text-xs font-bold text-gray-500 mb-1.5 uppercase tracking-widest">Sets</label>
+                                        <input value={newExercise.sets} onChange={e => setNewExercise({...newExercise, sets: e.target.value})} type="text" className="w-full bg-gray-50 border border-gray-100 rounded-xl px-4 py-3 text-sm font-bold focus:ring-2 focus:border-transparent focus:ring-green-400 outline-none" placeholder="e.g. 3" />
+                                    </div>
+                                    <div>
+                                        <label className="block text-xs font-bold text-gray-500 mb-1.5 uppercase tracking-widest">Reps</label>
+                                        <input value={newExercise.reps} onChange={e => setNewExercise({...newExercise, reps: e.target.value})} type="text" className="w-full bg-gray-50 border border-gray-100 rounded-xl px-4 py-3 text-sm font-bold focus:ring-2 focus:border-transparent focus:ring-green-400 outline-none" placeholder="e.g. 10 repetitions" />
+                                    </div>
+                                </div>
+                                <div className="grid grid-cols-3 gap-4">
+                                     <div>
+                                        <label className="block text-xs font-bold text-gray-500 mb-1.5 uppercase tracking-widest">Rest</label>
+                                        <input value={newExercise.rest} onChange={e => setNewExercise({...newExercise, rest: e.target.value})} type="text" className="w-full bg-gray-50 border border-gray-100 rounded-xl px-4 py-3 text-sm font-bold focus:ring-2 focus:border-transparent focus:ring-green-400 outline-none" placeholder="60 sec" />
+                                    </div>
+                                    <div>
+                                        <label className="block text-xs font-bold text-gray-500 mb-1.5 uppercase tracking-widest">Weight</label>
+                                        <input value={newExercise.weight} onChange={e => setNewExercise({...newExercise, weight: e.target.value})} type="text" className="w-full bg-gray-50 border border-gray-100 rounded-xl px-4 py-3 text-sm font-bold focus:ring-2 focus:border-transparent focus:ring-green-400 outline-none" placeholder="45 kg" />
+                                    </div>
+                                    <div>
+                                        <label className="block text-xs font-bold text-gray-500 mb-1.5 uppercase tracking-widest">Calories</label>
+                                        <input value={newExercise.calories} onChange={e => setNewExercise({...newExercise, calories: e.target.value})} type="text" className="w-full bg-gray-50 border border-gray-100 rounded-xl px-4 py-3 text-sm font-bold focus:ring-2 focus:border-transparent focus:ring-green-400 outline-none" placeholder="150" />
+                                    </div>
+                                </div>
+                                <div className="pt-4">
+                                    <button type="submit" className="w-full bg-[#B4E567] text-[#215b33] font-black uppercase tracking-widest text-xs py-4 rounded-xl hover:bg-[#a5dc57] transition-all shadow-md">
+                                        Save Exercise
+                                    </button>
+                                </div>
+                            </form>
+                        </motion.div>
+                    </div>
+                )}
+            </AnimatePresence>
+
         </div>
     );
 }
-
