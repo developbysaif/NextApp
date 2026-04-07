@@ -37,8 +37,13 @@ export default function AdminDiseasesPage() {
         { id: 5, name: 'Eczema / Psoriasis', category: 'Autoimmune', users: '600', risk: 'Medium', status: 'Published', icon: Flame, color: 'text-orange-500', bg: 'bg-orange-50' },
     ];
 
-    const categories = ['All', 'Chronic', 'Digestive', 'Autoimmune', 'Skin', 'Other'];
+    const filteredDiseases = diseases.filter(dis => {
+        const matchesSearch = dis.name.toLowerCase().includes(searchTerm.toLowerCase());
+        const matchesCategory = activeCategory === 'All' || dis.category === activeCategory;
+        return matchesSearch && matchesCategory;
+    });
 
+    const categories = ['All', 'Chronic', 'Digestive', 'Autoimmune', 'Skin', 'Other'];
     const stats = [
         { label: 'Total Diseases', val: '42', icon: Database, color: 'text-[#122A1A]' },
         { label: 'Avg Users/Disease', val: '842', icon: Eye, color: 'text-indigo-600' },
@@ -88,6 +93,8 @@ export default function AdminDiseasesPage() {
                             type="text" 
                             placeholder="Find disease code or name..." 
                             className="w-full pl-16 pr-6 py-5 bg-gray-50 border-none rounded-3xl text-[10px] font-black uppercase tracking-widest shadow-inner focus:ring-2 focus:ring-[#122A1A] transition-all placeholder:text-gray-300"
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
                         />
                     </div>
                     <div className="flex items-center gap-2 overflow-x-auto no-scrollbar py-2">
@@ -105,7 +112,7 @@ export default function AdminDiseasesPage() {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {diseases.map((dis) => (
+                    {filteredDiseases.map((dis) => (
                         <motion.div
                             key={dis.id}
                             whileHover={{ y: -8 }}

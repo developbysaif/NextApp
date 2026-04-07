@@ -24,6 +24,7 @@ import {
     Calendar,
     Leaf,
     Globe,
+    Dumbbell,
     ChevronDown
 } from 'lucide-react';
 
