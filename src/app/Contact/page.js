@@ -21,7 +21,7 @@ export default function ContactPage() {
           }}
         >
           {/* Subtle dark gradient for depth and text legibility, removed white blur */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#21492f]/80 via-[#21492f]/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#214a32]/80 via-[#214a32]/40 to-transparent" />
         </div>
 
         <div className="relative z-10 text-center px-6 w-full max-w-7xl mx-auto flex flex-col items-center">
@@ -61,34 +61,34 @@ export default function ContactPage() {
           
           {/* Left Column: Form */}
           <div className="lg:col-span-8 bg-white p-8 md:p-14 rounded-[3.5rem] shadow-2xl border border-gray-100">
-            <h2 className="text-3xl font-black text-[#21492f] uppercase tracking-tight mb-10">Send us a message</h2>
+            <h2 className="text-3xl font-black text-[#214a32] uppercase tracking-tight mb-10">Send us a message</h2>
             <form className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <input 
                   type="text" 
                   placeholder="Your Name" 
-                  className="w-full bg-[#f4f5ee] border-none rounded-2xl px-8 py-5 font-bold text-[#21492f] outline-none placeholder:text-gray-400" 
+                  className="w-full bg-[#f4f5ee] border-none rounded-2xl px-8 py-5 font-bold text-[#214a32] outline-none placeholder:text-gray-400" 
                 />
                 <input 
                   type="text" 
                   placeholder="Phone Number" 
-                  className="w-full bg-[#f4f5ee] border-none rounded-2xl px-8 py-5 font-bold text-[#21492f] outline-none placeholder:text-gray-400" 
+                  className="w-full bg-[#f4f5ee] border-none rounded-2xl px-8 py-5 font-bold text-[#214a32] outline-none placeholder:text-gray-400" 
                 />
               </div>
               <input 
                 type="email" 
                 placeholder="Email Address" 
-                className="w-full bg-[#f4f5ee] border-none rounded-2xl px-8 py-5 font-bold text-[#21492f] outline-none placeholder:text-gray-400" 
+                className="w-full bg-[#f4f5ee] border-none rounded-2xl px-8 py-5 font-bold text-[#214a32] outline-none placeholder:text-gray-400" 
               />
               <input 
                 type="text" 
                 placeholder="Subject" 
-                className="w-full bg-[#f4f5ee] border-none rounded-2xl px-8 py-5 font-bold text-[#21492f] outline-none placeholder:text-gray-400" 
+                className="w-full bg-[#f4f5ee] border-none rounded-2xl px-8 py-5 font-bold text-[#214a32] outline-none placeholder:text-gray-400" 
               />
               <textarea 
                 placeholder="Your Message" 
                 rows={6}
-                className="w-full bg-[#f4f5ee] border-none rounded-3xl px-8 py-6 font-bold text-[#21492f] outline-none placeholder:text-gray-400 resize-none" 
+                className="w-full bg-[#f4f5ee] border-none rounded-3xl px-8 py-6 font-bold text-[#214a32] outline-none placeholder:text-gray-400 resize-none" 
               />
               <button 
                 className="inline-flex items-center gap-3 bg-[#6bb300] hover:bg-[#5a9600] text-white px-10 py-5 rounded-2xl font-black uppercase tracking-widest text-xs transition-all shadow-xl shadow-green-900/20 group"
@@ -108,7 +108,7 @@ export default function ContactPage() {
                   <MapPin size={24} />
                 </div>
                 <div>
-                  <h3 className="font-black text-[#21492f] uppercase tracking-tight text-lg">Address</h3>
+                  <h3 className="font-black text-[#214a32] uppercase tracking-tight text-lg">Address</h3>
                   <p className="text-gray-500 font-medium text-sm leading-relaxed mt-2">1247/Plot No. 39, 15th Phase, Colony, Kukatpally, Hyderabad</p>
                 </div>
               </div>
@@ -119,7 +119,7 @@ export default function ContactPage() {
                   <Phone size={24} />
                 </div>
                 <div>
-                  <h3 className="font-black text-[#21492f] uppercase tracking-tight text-lg">Call Us</h3>
+                  <h3 className="font-black text-[#214a32] uppercase tracking-tight text-lg">Call Us</h3>
                   <p className="text-gray-500 font-black text-sm mt-2">+1 123 456 7890</p>
                   <p className="text-gray-500 font-black text-sm">+0 987-654-3210</p>
                 </div>
@@ -131,7 +131,7 @@ export default function ContactPage() {
                   <Mail size={24} />
                 </div>
                 <div>
-                  <h3 className="font-black text-[#21492f] uppercase tracking-tight text-lg">Send a mail</h3>
+                  <h3 className="font-black text-[#214a32] uppercase tracking-tight text-lg">Send a mail</h3>
                   <p className="text-gray-500 font-black text-sm mt-2">info@example.com</p>
                   <p className="text-gray-500 font-black text-sm">ClinicMaster@example.com</p>
                 </div>
@@ -143,7 +143,7 @@ export default function ContactPage() {
                   <Clock size={24} />
                 </div>
                 <div>
-                  <h3 className="font-black text-[#21492f] uppercase tracking-tight text-lg">Opening Time</h3>
+                  <h3 className="font-black text-[#214a32] uppercase tracking-tight text-lg">Opening Time</h3>
                   <p className="text-gray-500 font-medium text-sm leading-relaxed mt-2">Mon-Thu: 8:00am-5:00pm</p>
                   <p className="text-gray-500 font-medium text-sm leading-relaxed">Fri: 8:00am-1:00pm</p>
                 </div>
@@ -165,7 +165,7 @@ export default function ContactPage() {
           ].map((card, idx) => (
             <div 
               key={idx} 
-              className={`relative overflow-hidden rounded-[3rem] p-12 transition-all duration-500 ${card.active ? 'bg-[#6bb300] text-white shadow-2xl scale-105 z-10' : 'bg-white text-[#21492f] shadow-xl hover:-translate-y-2'}`}
+              className={`relative overflow-hidden rounded-[3rem] p-12 transition-all duration-500 ${card.active ? 'bg-[#6bb300] text-white shadow-2xl scale-105 z-10' : 'bg-white text-[#214a32] shadow-xl hover:-translate-y-2'}`}
             >
               <span className={`absolute top-10 right-10 text-8xl font-black opacity-10 ${card.active ? 'text-white' : 'text-gray-200'}`}>{card.id}</span>
               <h3 className="text-2xl font-black uppercase tracking-tight mb-6">{card.title}</h3>

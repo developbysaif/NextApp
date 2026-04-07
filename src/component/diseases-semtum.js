@@ -94,7 +94,7 @@ export default function DiseaseSection() {
   return (
     <section className="py-12 px-4 md:px-20 bg-[#f9fafb]" id="diseases-section">
       <div className="text-center mb-10">
-        <span className="text-[#22aa4f] font-bold text-xs uppercase tracking-[0.3em] mb-4 block">Medical Intelligence</span>
+        <span className="text-[#214a32] font-bold text-xs uppercase tracking-[0.3em] mb-4 block">Medical Intelligence</span>
         <h2 className="text-4xl md:text-5xl font-black text-[#111827] mb-6 leading-tight">
           Early Symptoms. <br className="md:hidden" />Smart Prevention.
         </h2>
@@ -108,7 +108,7 @@ export default function DiseaseSection() {
           <Link
             key={idx}
             href={`/diseases/${disease.slug}`}
-            className="group flex flex-col bg-white rounded-xl overflow-hidden shadow-md transition-all duration-500 hover:shadow-2xl hover:-translate-y-3 hover:bg-[#22aa4f]"
+            className="group flex flex-col bg-white rounded-xl overflow-hidden shadow-md transition-all duration-500 hover:shadow-2xl hover:-translate-y-3 hover:bg-[#214a32]"
           >
             {/* Image Section */}
             <div className={`${disease.color} h-40 flex items-center justify-center relative overflow-hidden`}>
@@ -138,13 +138,13 @@ export default function DiseaseSection() {
               <div className="flex-1 space-y-1 my-3">
                 {disease.items.slice(0, 3).map((item, i) => (
                   <div key={i} className="text-[11px] leading-tight flex flex-col">
-                    <span className="text-[#22aa4f] group-hover:text-white font-bold">{item.name}</span>
+                    <span className="text-[#214a32] group-hover:text-white font-bold">{item.name}</span>
                     <span className="text-gray-500 group-hover:text-white/80 font-medium">{item.desc}</span>
                   </div>
                 ))}
               </div>
 
-              <div className="inline-flex items-center gap-2 text-[#22aa4f] font-bold text-sm group-hover:text-white hover:gap-3 transition-all pt-2">
+              <div className="inline-flex items-center gap-2 text-[#214a32] font-bold text-sm group-hover:text-white hover:gap-3 transition-all pt-2">
                 View All Details
                 <ShieldCheck size={16} />
               </div>

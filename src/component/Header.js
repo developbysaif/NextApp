@@ -85,7 +85,7 @@ export default function Header() {
 
                   <Link
                     href={slides[slide].cta1Href}
-                    className="bg-[#22aa4f] text-white px-6 py-3 rounded-xl font-black text-[11px] uppercase tracking-widest hover:bg-[#21492f] hover:shadow-lg hover:shadow-green-500/20 transition-all text-center"
+                    className="bg-[#214a32] text-white px-6 py-3 rounded-xl font-black text-[11px] uppercase tracking-widest hover:bg-[#214a32] hover:shadow-lg hover:shadow-green-500/20 transition-all text-center"
                   >
                     {slides[slide].cta1}
                   </Link>

@@ -56,11 +56,11 @@ export default function AdminLoginPage() {
 
                 {/* Logo & Header */}
                 <div className="text-center mb-10">
-                    <div className="inline-flex items-center justify-center w-16 h-16 bg-[#21492f] rounded-2xl text-white shadow-xl shadow-[#21492f]/20 mb-6">
+                    <div className="inline-flex items-center justify-center w-16 h-16 bg-[#214a32] rounded-2xl text-white shadow-xl shadow-[#214a32]/20 mb-6">
                         <ShieldCheck size={32} />
                     </div>
-                    <h1 className="text-3xl font-black text-[#21492f] uppercase tracking-tight mb-2 font-outfit">
-                        Admin Portal<span className="text-[#22aa4f]">.</span>
+                    <h1 className="text-3xl font-black text-[#214a32] uppercase tracking-tight mb-2 font-outfit">
+                        Admin Portal<span className="text-[#214a32]">.</span>
                     </h1>
                     <p className="text-gray-500 font-medium text-sm">
                         Sign in to access the administrator dashboard
@@ -68,7 +68,7 @@ export default function AdminLoginPage() {
                 </div>
 
                 {/* Form Card */}
-                <div className="bg-white rounded-[2.5rem] p-8 shadow-[0_20px_50px_rgba(0,0,0,0.05)] border border-[#21492f]/10">
+                <div className="bg-white rounded-[2.5rem] p-8 shadow-[0_20px_50px_rgba(0,0,0,0.05)] border border-[#214a32]/10">
                     <form onSubmit={handleSubmit} className="space-y-5">
 
                         {/* Error */}
@@ -80,9 +80,9 @@ export default function AdminLoginPage() {
 
                         {/* Email */}
                         <div className="space-y-2">
-                            <label className="text-[10px] font-black uppercase tracking-widest text-[#21492f]/60 ml-2">Admin Email</label>
+                            <label className="text-[10px] font-black uppercase tracking-widest text-[#214a32]/60 ml-2">Admin Email</label>
                             <div className="relative group">
-                                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-[#21492f]/40 group-focus-within:text-[#22aa4f] transition-colors" size={18} />
+                                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-[#214a32]/40 group-focus-within:text-[#214a32] transition-colors" size={18} />
                                 <input
                                     type="email"
                                     name="email"
@@ -90,16 +90,16 @@ export default function AdminLoginPage() {
                                     placeholder="admin@ilajbilghiza.com"
                                     value={formData.email}
                                     onChange={handleChange}
-                                    className="w-full bg-[#21492f]/5 border-transparent rounded-2xl pl-12 pr-4 py-4 text-sm font-bold focus:bg-white focus:ring-4 focus:ring-[#22aa4f]/20 transition-all outline-none placeholder:text-gray-400"
+                                    className="w-full bg-[#214a32]/5 border-transparent rounded-2xl pl-12 pr-4 py-4 text-sm font-bold focus:bg-white focus:ring-4 focus:ring-[#214a32]/20 transition-all outline-none placeholder:text-gray-400"
                                 />
                             </div>
                         </div>
 
                         {/* Password */}
                         <div className="space-y-2">
-                            <label className="text-[10px] font-black uppercase tracking-widest text-[#21492f]/60 ml-2">Password</label>
+                            <label className="text-[10px] font-black uppercase tracking-widest text-[#214a32]/60 ml-2">Password</label>
                             <div className="relative group">
-                                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-[#21492f]/40 group-focus-within:text-[#22aa4f] transition-colors" size={18} />
+                                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-[#214a32]/40 group-focus-within:text-[#214a32] transition-colors" size={18} />
                                 <input
                                     type={showPassword ? "text" : "password"}
                                     name="password"
@@ -107,12 +107,12 @@ export default function AdminLoginPage() {
                                     placeholder="••••••••"
                                     value={formData.password}
                                     onChange={handleChange}
-                                    className="w-full bg-[#21492f]/5 border-transparent rounded-2xl pl-12 pr-12 py-4 text-sm font-bold focus:bg-white focus:ring-4 focus:ring-[#22aa4f]/20 transition-all outline-none placeholder:text-gray-400"
+                                    className="w-full bg-[#214a32]/5 border-transparent rounded-2xl pl-12 pr-12 py-4 text-sm font-bold focus:bg-white focus:ring-4 focus:ring-[#214a32]/20 transition-all outline-none placeholder:text-gray-400"
                                 />
                                 <button
                                     type="button"
                                     onClick={() => setShowPassword(!showPassword)}
-                                    className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-[#22aa4f] transition-colors"
+                                    className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-[#214a32] transition-colors"
                                 >
                                     {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                                 </button>
@@ -123,7 +123,7 @@ export default function AdminLoginPage() {
                         <button
                             type="submit"
                             disabled={loading}
-                            className="w-full bg-[#21492f] text-white rounded-2xl py-4 font-black uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-[#22aa4f] transition-all hover:scale-[1.02] active:scale-[0.98] shadow-xl shadow-[#21492f]/20 mt-4 group disabled:opacity-60"
+                            className="w-full bg-[#214a32] text-white rounded-2xl py-4 font-black uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-[#214a32] transition-all hover:scale-[1.02] active:scale-[0.98] shadow-xl shadow-[#214a32]/20 mt-4 group disabled:opacity-60"
                         >
                             {loading ? (
                                 <span className="flex items-center gap-2">
@@ -145,17 +145,17 @@ export default function AdminLoginPage() {
                     <div className="mt-8 text-center flex flex-col gap-3">
                         <p className="text-sm text-gray-500 font-medium">
                             No account yet?{" "}
-                            <Link href="/admin/signup" className="text-[#22aa4f] font-black hover:text-[#21492f] underline underline-offset-4">
+                            <Link href="/admin/signup" className="text-[#214a32] font-black hover:text-[#214a32] underline underline-offset-4">
                                 Create Admin Account
                             </Link>
                         </p>
-                        <Link href="/" className="text-sm text-gray-400 hover:text-[#21492f] font-bold transition-colors">
+                        <Link href="/" className="text-sm text-gray-400 hover:text-[#214a32] font-bold transition-colors">
                             ← Back to Website
                         </Link>
                     </div>
                 </div>
 
-                <p className="text-center text-[10px] text-[#21492f]/50 font-black uppercase tracking-widest mt-8">
+                <p className="text-center text-[10px] text-[#214a32]/50 font-black uppercase tracking-widest mt-8">
                     Authorized Personnel Only • IlajBilGhiza
                 </p>
             </div>

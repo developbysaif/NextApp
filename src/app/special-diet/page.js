@@ -118,7 +118,7 @@ export default function SpecialDietPage() {
         <div className="min-h-screen bg-[#FDFCF8] font-sans">
             {/* Header / Hero Section */}
             <section className="relative h-[450px] flex items-center justify-center overflow-hidden">
-                <div className="absolute inset-0 z-0 bg-[#21492F]">
+                <div className="absolute inset-0 z-0 bg-[#214a32]">
                     <img
                         src="https://images.unsplash.com/photo-1587049352846-4a222e784d38?q=80&w=2000&auto=format&fit=crop"
                         alt="Honeycomb background"
@@ -142,7 +142,7 @@ export default function SpecialDietPage() {
                         </p>
 
                         <div className="inline-flex items-center gap-2 bg-white px-6 py-2.5 rounded-full text-[11px] font-black text-[#142A1D] shadow-xl uppercase tracking-widest">
-                            <Link href="/" className="hover:text-[#22AA4F] transition-colors flex items-center gap-1.5 focus:outline-none">
+                            <Link href="/" className="hover:text-[#214a32] transition-colors flex items-center gap-1.5 focus:outline-none">
                                 <Home size={14} className="mb-0.5" /> Home
                             </Link>
                             <ChevronRight size={14} className="text-gray-300" />
@@ -156,7 +156,7 @@ export default function SpecialDietPage() {
             <section className="max-w-[1400px] mx-auto px-6 pt-24 pb-12">
                 <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
                     <div>
-                        <h2 className="text-[2.5rem] font-serif font-black text-[#21492F] mb-4">
+                        <h2 className="text-[2.5rem] font-serif font-black text-[#214a32] mb-4">
                             Our Verified Specialists
                         </h2>
                         <p className="text-gray-500 font-bold text-lg">
@@ -174,7 +174,7 @@ export default function SpecialDietPage() {
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
                             />
-                            <button className="bg-[#21492F] text-white px-8 py-2.5 rounded-full font-black text-xs uppercase tracking-widest hover:bg-[#22AA4F] transition-all">
+                            <button className="bg-[#214a32] text-white px-8 py-2.5 rounded-full font-black text-xs uppercase tracking-widest hover:bg-[#214a32] transition-all">
                                 Search
                             </button>
                         </div>
@@ -185,7 +185,7 @@ export default function SpecialDietPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
                     {loading ? (
                         <div className="col-span-full py-20 flex justify-center">
-                            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#21492F]"></div>
+                            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#214a32]"></div>
                         </div>
                     ) : filteredDoctors.length > 0 ? (
                         filteredDoctors.map((doc, idx) => (
@@ -206,19 +206,19 @@ export default function SpecialDietPage() {
                                     />
                                     <div className="absolute top-4 right-4 bg-white/95 backdrop-blur-md px-3 py-1.5 rounded-full flex items-center gap-1 shadow-sm border border-black/5">
                                         <Star size={12} className="text-[#FBC02D] fill-[#FBC02D]" />
-                                        <span className="text-[10px] font-black text-[#21492F]">{doc.rating || "4.5 (0)"}</span>
+                                        <span className="text-[10px] font-black text-[#214a32]">{doc.rating || "4.5 (0)"}</span>
                                     </div>
                                 </div>
 
                                 <div className="p-8 text-center">
-                                    <h3 className="text-2xl font-serif font-black text-[#21492F] mb-1 leading-tight group-hover:text-[#22AA4F] transition-colors">Dr. {doc.name}</h3>
+                                    <h3 className="text-2xl font-serif font-black text-[#214a32] mb-1 leading-tight group-hover:text-[#214a32] transition-colors">Dr. {doc.name}</h3>
                                     <p className="text-gray-500 font-bold text-[13px] mb-6">{doc.role || doc.specialization || "Clinical Nutritionist"}</p>
 
                                     <div className="flex flex-wrap justify-center gap-2 mb-8 h-12 overflow-hidden">
                                         {(doc.tags || ["Verified", "Specialist"]).map((tag, tIdx) => (
                                             <span
                                                 key={tIdx}
-                                                className="bg-[#21492F] text-white text-[9px] font-black px-3 py-1.5 rounded-full uppercase tracking-tighter"
+                                                className="bg-[#214a32] text-white text-[9px] font-black px-3 py-1.5 rounded-full uppercase tracking-tighter"
                                             >
                                                 {tag}
                                             </span>
@@ -227,7 +227,7 @@ export default function SpecialDietPage() {
 
                                     <Link
                                         href={`/book-appointment?doctor=${encodeURIComponent(doc.name)}`}
-                                        className="block w-full bg-[#21492F] text-white py-4 rounded-xl font-black text-xs uppercase tracking-widest shadow-lg shadow-[#21492F]/20 hover:bg-[#22AA4F] hover:shadow-[#22AA4F]/30 transition-all active:scale-[0.98]"
+                                        className="block w-full bg-[#214a32] text-white py-4 rounded-xl font-black text-xs uppercase tracking-widest shadow-lg shadow-[#214a32]/20 hover:bg-[#214a32] hover:shadow-[#214a32]/30 transition-all active:scale-[0.98]"
                                     >
                                         Book Appointment
                                     </Link>
@@ -236,7 +236,7 @@ export default function SpecialDietPage() {
                         ))
                     ) : (
                         <div className="col-span-full py-20 text-center bg-gray-50 rounded-[32px] border-2 border-dashed border-gray-200">
-                            <h3 className="text-xl font-black text-[#21492F] opacity-40 uppercase tracking-widest">No Specialists Found</h3>
+                            <h3 className="text-xl font-black text-[#214a32] opacity-40 uppercase tracking-widest">No Specialists Found</h3>
                             <p className="text-sm font-bold text-gray-400 mt-2 italic">New registered specialists will appear here after approval.</p>
                         </div>
                     )}
@@ -247,7 +247,7 @@ export default function SpecialDietPage() {
             <section className="bg-[#142A1D] py-24 mt-20 text-center relative overflow-hidden">
                 {/* Decorative bg element */}
                 <div className="absolute bottom-0 right-0 opacity-10 translate-y-1/2 translate-x-1/4">
-                    <div className="w-[600px] h-[600px] bg-[#22AA4F] rounded-full blur-[120px]"></div>
+                    <div className="w-[600px] h-[600px] bg-[#214a32] rounded-full blur-[120px]"></div>
                 </div>
 
                 <div className="container mx-auto px-6 relative z-10">
@@ -273,7 +273,7 @@ export default function SpecialDietPage() {
                         {/* Logo & About */}
                         <div className="lg:col-span-4">
                             <div className="flex items-center gap-2 mb-8 group cursor-pointer">
-                                <div className="bg-[#21492F] p-2.5 rounded-2xl group-hover:rotate-12 transition-transform">
+                                <div className="bg-[#214a32] p-2.5 rounded-2xl group-hover:rotate-12 transition-transform">
                                     <div className="bg-white/20 w-8 h-8 rounded-lg flex items-center justify-center">
                                         <div className="w-4 h-4 rounded-full bg-white animate-pulse"></div>
                                     </div>
@@ -285,7 +285,7 @@ export default function SpecialDietPage() {
                             </p>
                             <div className="flex gap-4">
                                 {[Facebook, Twitter, Instagram, Linkedin].map((Icon, i) => (
-                                    <Link key={i} href="#" className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:bg-[#21492F] hover:text-white hover:border-[#21492F] transition-all">
+                                    <Link key={i} href="#" className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:bg-[#214a32] hover:text-white hover:border-[#214a32] transition-all">
                                         <Icon size={18} />
                                     </Link>
                                 ))}
@@ -294,11 +294,11 @@ export default function SpecialDietPage() {
 
                         {/* Quick Links Group 1 */}
                         <div className="lg:col-span-2">
-                            <h4 className="text-[11px] font-black uppercase tracking-[0.2em] text-[#21492F] mb-10">Medical Center</h4>
+                            <h4 className="text-[11px] font-black uppercase tracking-[0.2em] text-[#214a32] mb-10">Medical Center</h4>
                             <ul className="space-y-4">
                                 {["Organic Foods", "All Diet Plans", "Medical Portal", "Cardiologist Insights", "Health Blogs", "Contact Us"].map((link, i) => (
                                     <li key={i}>
-                                        <Link href="#" className="text-gray-500 font-bold text-sm hover:text-[#21492F] transition-colors">{link}</Link>
+                                        <Link href="#" className="text-gray-500 font-bold text-sm hover:text-[#214a32] transition-colors">{link}</Link>
                                     </li>
                                 ))}
                             </ul>
@@ -306,10 +306,10 @@ export default function SpecialDietPage() {
 
                         {/* Contact Support */}
                         <div className="lg:col-span-4">
-                            <h4 className="text-[11px] font-black uppercase tracking-[0.2em] text-[#21492F] mb-10">Contact Support</h4>
+                            <h4 className="text-[11px] font-black uppercase tracking-[0.2em] text-[#214a32] mb-10">Contact Support</h4>
                             <div className="space-y-8">
                                 <div className="flex gap-4">
-                                    <div className="bg-[#21492F]/5 w-10 h-10 rounded-full flex items-center justify-center text-[#21492F] shrink-0">
+                                    <div className="bg-[#214a32]/5 w-10 h-10 rounded-full flex items-center justify-center text-[#214a32] shrink-0">
                                         <MapPin size={18} />
                                     </div>
                                     <div>
@@ -318,16 +318,16 @@ export default function SpecialDietPage() {
                                     </div>
                                 </div>
                                 <div className="flex gap-4">
-                                    <div className="bg-[#21492F]/5 w-10 h-10 rounded-full flex items-center justify-center text-[#21492F] shrink-0">
+                                    <div className="bg-[#214a32]/5 w-10 h-10 rounded-full flex items-center justify-center text-[#214a32] shrink-0">
                                         <Phone size={18} />
                                     </div>
                                     <div>
                                         <p className="text-[10px] font-black uppercase text-gray-400 mb-1">Phone Number</p>
-                                        <p className="text-[#21492F] font-black text-sm tracking-widest">+12 Support 1177</p>
+                                        <p className="text-[#214a32] font-black text-sm tracking-widest">+12 Support 1177</p>
                                     </div>
                                 </div>
                                 <div className="flex gap-4">
-                                    <div className="bg-[#21492F]/5 w-10 h-10 rounded-full flex items-center justify-center text-[#21492F] shrink-0">
+                                    <div className="bg-[#214a32]/5 w-10 h-10 rounded-full flex items-center justify-center text-[#214a32] shrink-0">
                                         <Mail size={18} />
                                     </div>
                                     <div>
@@ -353,7 +353,7 @@ export default function SpecialDietPage() {
                         </p>
                         <div className="flex gap-8">
                             {["Privacy Policy", "Terms of Service"].map((text, i) => (
-                                <Link key={i} href="#" className="text-[10px] font-black text-[#21492F] uppercase tracking-widest hover:underline">
+                                <Link key={i} href="#" className="text-[10px] font-black text-[#214a32] uppercase tracking-widest hover:underline">
                                     {text}
                                 </Link>
                             ))}

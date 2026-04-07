@@ -36,10 +36,10 @@ export default function HealthyMenuPage() {
         const stored = JSON.parse(localStorage.getItem("blogPosts") || "[]");
         if (stored.length === 0) {
             const seed = [
-                { id: 1, slug: 'turkey-breast-asparagus', type: 'featured', title: 'Grilled Turkey Breast with Steamed Asparagus and Brown Rice', category: 'Lunch', rating: 4.8, revs: 125, dif: 'Medium', score: 85, dur: '10 minutes', steps: 4, cal: 450, carbs: 40, prot: 35, fat: 12, img: 'https://images.unsplash.com/photo-1490645935967-10de6ba88061?w=800', description: 'A healthy and protein-packed meal ideal for lunches.', seoTitle: 'Grilled Turkey Breast Recipe - Nutrigo', seoDescription: 'Learn how to cook a delicious grilled turkey breast with asparagus.', keywords: 'turkey, healthy, lunch, protein' },
-                { id: 2, slug: 'avocado-toast-poached-egg', type: 'normal', title: 'Avocado Toast with Poached Egg', category: 'Breakfast', dif: 'Easy', score: 90, cal: 320, carbs: 30, prot: 14, fat: 18, img: 'https://images.unsplash.com/photo-1525385133512-2f3bdd039054?w=400', description: 'The classic breakfast staple made better.', seoTitle: 'Avocado Toast with Poached Egg - Nutrigo', seoDescription: 'Simple and nutrient-dense avocado toast recipe.', keywords: 'breakfast, avocado, eggs' },
-                { id: 3, slug: 'shrimp-tacos-mango-salsa', type: 'normal', title: 'Grilled Shrimp Tacos with Mango Salsa', category: 'Lunch', dif: 'Medium', score: 80, cal: 400, carbs: 45, prot: 28, fat: 12, img: 'https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?w=400', description: 'Zesty and fresh tacos for a light summer lunch.', seoTitle: 'Zesty Shrimp Tacos - Nutrigo', seoDescription: 'Fresh shrimp tacos with sweet mango salsa.', keywords: 'tacos, shrimp, seafood, lunch' },
-                { id: 4, slug: 'baked-chicken-quinoa-kale', type: 'normal', title: 'Baked Chicken Breast with Quinoa and Kale', category: 'Dinner', dif: 'Medium', score: 90, cal: 480, carbs: 50, prot: 40, fat: 15, img: 'https://images.unsplash.com/photo-1432139555190-58524dae6a5a?w=400', description: 'A complete dinner with complex carbs and lean protein.', seoTitle: 'Chicken Quinoa Kale Bowl - Nutrigo', seoDescription: 'Healthy dinner bowl with chicken and superfoods.', keywords: 'chicken, dinner, quinoa, kale' },
+                { id: 1, slug: 'turkey-breast-asparagus', type: 'featured', title: 'Grilled Turkey Breast with Steamed Asparagus and Brown Rice', category: 'Lunch', rating: 4.8, revs: 125, dif: 'Medium', score: 85, dur: '10 minutes', steps: 4, cal: 450, carbs: 40, prot: 35, fat: 12, img: 'https://images.unsplash.com/photo-1490645935967-10de6ba88061?w=800', description: 'A healthy and protein-packed meal ideal for lunches.', seoTitle: 'Grilled Turkey Breast Recipe - IlajBilGhiza', seoDescription: 'Learn how to cook a delicious grilled turkey breast with asparagus.', keywords: 'turkey, healthy, lunch, protein' },
+                { id: 2, slug: 'avocado-toast-poached-egg', type: 'normal', title: 'Avocado Toast with Poached Egg', category: 'Breakfast', dif: 'Easy', score: 90, cal: 320, carbs: 30, prot: 14, fat: 18, img: 'https://images.unsplash.com/photo-1525385133512-2f3bdd039054?w=400', description: 'The classic breakfast staple made better.', seoTitle: 'Avocado Toast with Poached Egg - IlajBilGhiza', seoDescription: 'Simple and nutrient-dense avocado toast recipe.', keywords: 'breakfast, avocado, eggs' },
+                { id: 3, slug: 'shrimp-tacos-mango-salsa', type: 'normal', title: 'Grilled Shrimp Tacos with Mango Salsa', category: 'Lunch', dif: 'Medium', score: 80, cal: 400, carbs: 45, prot: 28, fat: 12, img: 'https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?w=400', description: 'Zesty and fresh tacos for a light summer lunch.', seoTitle: 'Zesty Shrimp Tacos - IlajBilGhiza', seoDescription: 'Fresh shrimp tacos with sweet mango salsa.', keywords: 'tacos, shrimp, seafood, lunch' },
+                { id: 4, slug: 'baked-chicken-quinoa-kale', type: 'normal', title: 'Baked Chicken Breast with Quinoa and Kale', category: 'Dinner', dif: 'Medium', score: 90, cal: 480, carbs: 50, prot: 40, fat: 15, img: 'https://images.unsplash.com/photo-1432139555190-58524dae6a5a?w=400', description: 'A complete dinner with complex carbs and lean protein.', seoTitle: 'Chicken Quinoa Kale Bowl - IlajBilGhiza', seoDescription: 'Healthy dinner bowl with chicken and superfoods.', keywords: 'chicken, dinner, quinoa, kale' },
             ];
             setMenus(seed);
             localStorage.setItem("blogPosts", JSON.stringify(seed));
@@ -102,7 +102,7 @@ export default function HealthyMenuPage() {
         return (
             <div className="flex gap-0.5">
                 {[...Array(10)].map((_, i) => (
-                    <div key={i} className={`w-1.5 h-3.5 rounded-full ${i < fullBars ? 'bg-[#FF9F43]' : 'bg-gray-200'}`} />
+                    <div key={i} className={`w-1.5 h-3.5 rounded-full ${i < fullBars ? 'bg-[#214a32]' : 'bg-gray-200'}`} />
                 ))}
             </div>
         );
@@ -121,10 +121,10 @@ export default function HealthyMenuPage() {
                     <div className="flex-1 flex max-w-lg items-center gap-4">
                         <div className="relative flex-1">
                             <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={16} />
-                            <input type="text" placeholder="Search menu" className="w-full bg-white border border-gray-100 rounded-xl py-3 pl-11 pr-4 text-xs font-bold text-gray-600 focus:outline-none focus:ring-1 focus:ring-[#B4E567] shadow-sm" />
+                            <input type="text" placeholder="Search menu" className="w-full bg-white border border-gray-100 rounded-xl py-3 pl-11 pr-4 text-xs font-bold text-gray-600 focus:outline-none focus:ring-1 focus:ring-[#a4d9bc] shadow-sm" />
                         </div>
                         <button className="w-11 h-11 bg-white rounded-xl flex items-center justify-center text-gray-500 hover:text-gray-900 shadow-sm border border-gray-100 shrink-0"><SlidersHorizontal size={18} /></button>
-                        <button onClick={() => setIsModalOpen(true)} className="bg-[#B4E567] text-gray-900 px-5 py-3 rounded-xl text-xs font-bold shrink-0 shadow-sm hover:bg-[#a6d85a] transition-all">
+                        <button onClick={() => setIsModalOpen(true)} className="bg-[#a4d9bc] text-gray-900 px-5 py-3 rounded-xl text-xs font-bold shrink-0 shadow-sm hover:bg-[#a6d85a] transition-all">
                             Add Menu
                         </button>
                     </div>
@@ -137,7 +137,7 @@ export default function HealthyMenuPage() {
                         <MoreHorizontal size={20} className="text-gray-400 cursor-pointer hover:text-gray-800" />
                     </div>
 
-                    <div onClick={() => router.push(`/dashboard/menu/${featuredMenu.id}`)} className="bg-[#FAF7ED] rounded-[2.5rem] p-4 flex flex-col lg:flex-row gap-6 shadow-sm relative pr-24 lg:pr-32 border border-[#f0ecd3] cursor-pointer hover:border-[#FFD166] transition-colors">
+                    <div onClick={() => router.push(`/dashboard/menu/${featuredMenu.id}`)} className="bg-[#FAF7ED] rounded-[2.5rem] p-4 flex flex-col lg:flex-row gap-6 shadow-sm relative pr-24 lg:pr-32 border border-[#f0ecd3] cursor-pointer hover:border-[#989a69] transition-colors">
                         {/* Image */}
                         <img src={featuredMenu.img} alt={featuredMenu.title} className="w-full lg:w-[340px] h-[280px] object-cover rounded-[2rem] shadow-sm" />
                         
@@ -146,9 +146,9 @@ export default function HealthyMenuPage() {
                             <div>
                                 <h2 className="text-2xl font-black text-gray-900 leading-[1.1] tracking-tight">{featuredMenu.title}</h2>
                                 <div className="flex items-center gap-4 mt-4">
-                                    <span className="bg-[#FFD166] text-gray-900 px-4 py-1.5 rounded-lg text-[11px] font-bold shadow-sm">{featuredMenu.category}</span>
+                                    <span className="bg-[#989a69] text-gray-900 px-4 py-1.5 rounded-lg text-[11px] font-bold shadow-sm">{featuredMenu.category}</span>
                                     <div className="flex items-center gap-1.5 text-xs font-bold text-gray-500">
-                                        <span className="text-[#FF9F43] text-sm">★</span> {featuredMenu.rating}/5 <span className="text-gray-400 font-medium">({featuredMenu.revs} reviews)</span>
+                                        <span className="text-[#214a32] text-sm">★</span> {featuredMenu.rating}/5 <span className="text-gray-400 font-medium">({featuredMenu.revs} reviews)</span>
                                     </div>
                                 </div>
                             </div>
@@ -173,24 +173,24 @@ export default function HealthyMenuPage() {
                                 </div>
                             </div>
                             
-                            <button className="bg-[#B4E567] text-gray-900 font-bold text-[13px] tracking-wide py-4 mt-6 rounded-[1.2rem] w-full shadow-sm hover:bg-[#a6d85a] transition-all">
+                            <button className="bg-[#a4d9bc] text-gray-900 font-bold text-[13px] tracking-wide py-4 mt-6 rounded-[1.2rem] w-full shadow-sm hover:bg-[#a6d85a] transition-all">
                                 Add to Meal Plan
                             </button>
                         </div>
 
                         {/* Hovering Right Side Macros */}
                         <div className="absolute right-4 top-4 bottom-4 w-[110px] flex flex-col gap-3 z-10 hidden lg:flex">
-                             <div className="bg-[#e4fcbd] rounded-[1.5rem] p-4 flex flex-col justify-center gap-2 shadow-sm flex-1">
-                                 <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center text-[#6a8c35]"><Activity size={16} /></div>
-                                 <div className="flex flex-col"><span className="text-[#6a8c35] text-[10px] font-bold mb-0.5">Calories</span><span className="text-[#496b16] font-black leading-none">{featuredMenu.cal} kcal</span></div>
+                             <div className="bg-[#a4d9bc] rounded-[1.5rem] p-4 flex flex-col justify-center gap-2 shadow-sm flex-1">
+                                 <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center text-[#214a32]"><Activity size={16} /></div>
+                                 <div className="flex flex-col"><span className="text-[#214a32] text-[10px] font-bold mb-0.5">Calories</span><span className="text-[#214a32] font-black leading-none">{featuredMenu.cal} kcal</span></div>
                              </div>
-                             <div className="bg-[#FFD166] rounded-[1.5rem] p-4 flex flex-col justify-center gap-2 shadow-sm flex-1 border border-[#f0c35d]">
-                                 <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center text-[#d19c1e]"><Search size={16} /></div>
-                                 <div className="flex flex-col"><span className="text-[#a67a14] text-[10px] font-bold mb-0.5">Carbs</span><span className="text-[#8f680d] font-black leading-none">{featuredMenu.carbs} gr</span></div>
+                             <div className="bg-[#989a69] rounded-[1.5rem] p-4 flex flex-col justify-center gap-2 shadow-sm flex-1 border border-[#989a69]">
+                                 <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center text-[#214a32]"><Search size={16} /></div>
+                                 <div className="flex flex-col"><span className="text-[#214a32] text-[10px] font-bold mb-0.5">Carbs</span><span className="text-[#214a32] font-black leading-none">{featuredMenu.carbs} gr</span></div>
                              </div>
-                             <div className="bg-[#FF9F43] rounded-[1.5rem] p-4 flex flex-col justify-center gap-2 shadow-sm flex-1 border border-[#eb923d]">
-                                 <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center text-[#c26e1d]"><Bell size={16} /></div>
-                                 <div className="flex flex-col"><span className="text-[#a65d14] text-[10px] font-bold mb-0.5">Proteins</span><span className="text-[#8c4d0f] font-black leading-none text-white">{featuredMenu.prot} gr</span></div>
+                             <div className="bg-[#214a32] rounded-[1.5rem] p-4 flex flex-col justify-center gap-2 shadow-sm flex-1 border border-[#214a32]">
+                                 <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center text-[#214a32]"><Bell size={16} /></div>
+                                 <div className="flex flex-col"><span className="text-[#214a32] text-[10px] font-bold mb-0.5">Proteins</span><span className="text-[#214a32] font-black leading-none text-white">{featuredMenu.prot} gr</span></div>
                              </div>
                              <div className="bg-white rounded-[1.5rem] p-4 flex flex-col justify-center gap-2 shadow-sm flex-1 border border-gray-100">
                                  <div className="w-8 h-8 bg-gray-50 rounded-full flex items-center justify-center text-gray-500"><HeartPulse size={16} /></div>
@@ -209,7 +209,7 @@ export default function HealthyMenuPage() {
                                 <button 
                                     key={tab}
                                     onClick={() => setActiveTab(tab)}
-                                    className={`px-5 py-2 text-[11px] font-bold rounded-lg transition-all ${activeTab === tab ? 'bg-[#B4E567] text-gray-900' : 'text-gray-400 hover:text-gray-900'}`}
+                                    className={`px-5 py-2 text-[11px] font-bold rounded-lg transition-all ${activeTab === tab ? 'bg-[#a4d9bc] text-gray-900' : 'text-gray-400 hover:text-gray-900'}`}
                                 >
                                     {tab}
                                 </button>
@@ -220,18 +220,18 @@ export default function HealthyMenuPage() {
                                 Sort by: <span className="bg-white border border-gray-100 rounded px-2 py-1 text-gray-900 flex items-center gap-1 cursor-pointer">Calories <ChevronDown size={10} /></span>
                             </div>
                             <div className="w-8 h-8 bg-white border border-gray-100 rounded flex items-center justify-center text-gray-400 cursor-pointer shadow-sm"><Filter size={14} /></div>
-                            <div className="w-8 h-8 bg-[#B4E567] rounded flex items-center justify-center text-gray-900 cursor-pointer shadow-sm"><List size={16} /></div>
+                            <div className="w-8 h-8 bg-[#a4d9bc] rounded flex items-center justify-center text-gray-900 cursor-pointer shadow-sm"><List size={16} /></div>
                         </div>
                     </div>
 
                     <div className="space-y-4">
                         {filteredMenus.map(m => (
-                            <div key={m.id} onClick={() => router.push(`/dashboard/menu/${m.id}`)} className="bg-[#FAF7ED]/80 rounded-[2rem] p-3 pl-4 flex items-center gap-6 shadow-sm border border-[#f0ecd3] relative group hover:bg-[#FAF7ED] hover:border-[#FFD166] transition-colors cursor-pointer">
+                            <div key={m.id} onClick={() => router.push(`/dashboard/menu/${m.id}`)} className="bg-[#FAF7ED]/80 rounded-[2rem] p-3 pl-4 flex items-center gap-6 shadow-sm border border-[#f0ecd3] relative group hover:bg-[#FAF7ED] hover:border-[#989a69] transition-colors cursor-pointer">
                                  <img src={m.img} alt={m.title} className="w-[140px] h-[90px] rounded-2xl object-cover" />
                                  <div className="flex-1 py-1">
                                      <div className="flex items-center gap-3 mb-2">
                                          <span className={`px-3 py-1 rounded text-[9px] font-bold 
-                                            ${m.category === 'Breakfast' ? 'bg-[#c3e884] text-[#496b16]' : m.category === 'Lunch' ? 'bg-[#FFD166] text-[#8f680d]' : 'bg-[#FF9F43] text-white'}`}>
+                                            ${m.category === 'Breakfast' ? 'bg-[#c3e884] text-[#214a32]' : m.category === 'Lunch' ? 'bg-[#989a69] text-[#214a32]' : 'bg-[#214a32] text-white'}`}>
                                             {m.category}
                                          </span>
                                          <span className="text-gray-400 text-[10px] font-bold flex items-center gap-1"><Activity size={10} /> {m.dif}</span>
@@ -250,7 +250,7 @@ export default function HealthyMenuPage() {
                                          <span className="text-[10px] font-bold text-gray-400">Health Score: <span className="text-gray-900">{m.score/10}/10</span></span>
                                          {renderHealthBars(m.score)}
                                      </div>
-                                     <button className="bg-[#B4E567] text-gray-900 px-6 py-2.5 rounded-xl text-[11px] font-bold shadow-sm hover:bg-[#a6d85a] transition-all">
+                                     <button className="bg-[#a4d9bc] text-gray-900 px-6 py-2.5 rounded-xl text-[11px] font-bold shadow-sm hover:bg-[#a6d85a] transition-all">
                                          Add to Meal Plan
                                      </button>
                                  </div>
@@ -272,7 +272,7 @@ export default function HealthyMenuPage() {
                     </div>
                     <div className="w-10 h-10 bg-white rounded-xl shadow-sm text-gray-400 border border-gray-100 flex items-center justify-center cursor-pointer hover:bg-gray-50 relative">
                         <Bell size={16} />
-                        <span className="w-2 h-2 rounded-full bg-[#FF9F43] absolute top-2.5 right-2 border border-white"></span>
+                        <span className="w-2 h-2 rounded-full bg-[#214a32] absolute top-2.5 right-2 border border-white"></span>
                     </div>
                 </div>
 
@@ -293,11 +293,11 @@ export default function HealthyMenuPage() {
                                 <div className="flex-1 min-w-0 pr-2">
                                     <h4 className="text-[11px] font-bold text-gray-900 mb-2 leading-tight pr-4">{p.name}</h4>
                                     <div className="flex justify-between items-center">
-                                        <div className="text-[9px] font-bold text-gray-400"><span className="text-[#FFD166] text-xs leading-none">★</span> {p.rate}/5</div>
-                                        <span className={`text-[8px] font-bold px-2 py-0.5 rounded ${p.cat==='Lunch'?'bg-[#FFD166]/20 text-[#a67a14]' : p.cat==='Breakfast'?'bg-[#B4E567]/20 text-[#496b16]':'bg-[#FF9F43]/20 text-[#a65d14]'}`}>{p.cat}</span>
+                                        <div className="text-[9px] font-bold text-gray-400"><span className="text-[#989a69] text-xs leading-none">★</span> {p.rate}/5</div>
+                                        <span className={`text-[8px] font-bold px-2 py-0.5 rounded ${p.cat==='Lunch'?'bg-[#989a69]/20 text-[#214a32]' : p.cat==='Breakfast'?'bg-[#a4d9bc]/20 text-[#214a32]':'bg-[#214a32]/20 text-[#214a32]'}`}>{p.cat}</span>
                                     </div>
                                 </div>
-                                <div className="absolute right-6 w-5 h-5 bg-[#e4fcbd] rounded-md flex items-center justify-center text-[#6a8c35] text-xs font-bold leading-none cursor-pointer hover:bg-[#B4E567]"><Plus size={12}/></div>
+                                <div className="absolute right-6 w-5 h-5 bg-[#a4d9bc] rounded-md flex items-center justify-center text-[#214a32] text-xs font-bold leading-none cursor-pointer hover:bg-[#a4d9bc]"><Plus size={12}/></div>
                             </div>
                         ))}
                     </div>
@@ -322,7 +322,7 @@ export default function HealthyMenuPage() {
                                     </div>
                                     <div className="flex-1 pr-6">
                                         <h4 className="text-[11px] font-bold text-gray-900 mb-2 leading-tight">{p.name}</h4>
-                                        <span className={`text-[8px] font-bold px-2 py-0.5 rounded inline-block ${p.cat==='Lunch'?'bg-[#FFD166]/20 text-[#a67a14]' : p.cat==='Breakfast'?'bg-[#B4E567]/20 text-[#496b16]':'bg-[#FF9F43]/20 text-[#a65d14]'}`}>{p.cat}</span>
+                                        <span className={`text-[8px] font-bold px-2 py-0.5 rounded inline-block ${p.cat==='Lunch'?'bg-[#989a69]/20 text-[#214a32]' : p.cat==='Breakfast'?'bg-[#a4d9bc]/20 text-[#214a32]':'bg-[#214a32]/20 text-[#214a32]'}`}>{p.cat}</span>
                                     </div>
                                 </div>
                                 <div className="flex justify-between items-center text-[9px] font-bold text-gray-400 mt-4 px-1">
@@ -331,7 +331,7 @@ export default function HealthyMenuPage() {
                                     <span className="flex items-center gap-1"><Bell size={10}/> {p.prot}g</span>
                                     <span className="flex items-center gap-1"><HeartPulse size={10}/> {p.fat}g</span>
                                 </div>
-                                <div className="absolute right-4 top-8 w-5 h-5 bg-[#e4fcbd] rounded-md flex items-center justify-center text-[#6a8c35] text-xs font-bold leading-none cursor-pointer hover:bg-[#B4E567]"><Plus size={12}/></div>
+                                <div className="absolute right-4 top-8 w-5 h-5 bg-[#a4d9bc] rounded-md flex items-center justify-center text-[#214a32] text-xs font-bold leading-none cursor-pointer hover:bg-[#a4d9bc]"><Plus size={12}/></div>
                             </div>
                         ))}
                     </div>
@@ -351,20 +351,20 @@ export default function HealthyMenuPage() {
                             {/* Title */}
                             <div>
                                 <label className="text-xs font-bold text-gray-500 mb-1.5 block">Recipe / Post Title *</label>
-                                <input required type="text" value={newMenu.title} onChange={e => setNewMenu({...newMenu, title: e.target.value})} className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm font-medium focus:border-[#B4E567] outline-none" placeholder="e.g. Quinoa Salad with Roasted Vegetables" />
+                                <input required type="text" value={newMenu.title} onChange={e => setNewMenu({...newMenu, title: e.target.value})} className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm font-medium focus:border-[#a4d9bc] outline-none" placeholder="e.g. Quinoa Salad with Roasted Vegetables" />
                             </div>
 
                             {/* Description */}
                             <div>
                                 <label className="text-xs font-bold text-gray-500 mb-1.5 block">Description / Blog Content *</label>
-                                <textarea required rows="4" value={newMenu.description} onChange={e => setNewMenu({...newMenu, description: e.target.value})} className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm font-medium focus:border-[#B4E567] outline-none resize-none" placeholder="Describe the recipe, health benefits, and cooking tips..." />
+                                <textarea required rows="4" value={newMenu.description} onChange={e => setNewMenu({...newMenu, description: e.target.value})} className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm font-medium focus:border-[#a4d9bc] outline-none resize-none" placeholder="Describe the recipe, health benefits, and cooking tips..." />
                             </div>
 
                             {/* Category & Image */}
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
                                     <label className="text-xs font-bold text-gray-500 mb-1.5 block">Category *</label>
-                                    <select value={newMenu.category} onChange={e => setNewMenu({...newMenu, category: e.target.value})} className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm font-medium focus:border-[#B4E567] outline-none cursor-pointer">
+                                    <select value={newMenu.category} onChange={e => setNewMenu({...newMenu, category: e.target.value})} className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm font-medium focus:border-[#a4d9bc] outline-none cursor-pointer">
                                         <option value="Breakfast">Breakfast</option>
                                         <option value="Lunch">Lunch</option>
                                         <option value="Snack">Snack</option>
@@ -373,7 +373,7 @@ export default function HealthyMenuPage() {
                                 </div>
                                 <div>
                                     <label className="text-xs font-bold text-gray-500 mb-1.5 block">Featured Image URL *</label>
-                                    <input required type="url" value={newMenu.img} onChange={e => setNewMenu({...newMenu, img: e.target.value})} className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm font-medium focus:border-[#B4E567] outline-none" placeholder="https://images.unsplash.com/..." />
+                                    <input required type="url" value={newMenu.img} onChange={e => setNewMenu({...newMenu, img: e.target.value})} className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm font-medium focus:border-[#a4d9bc] outline-none" placeholder="https://images.unsplash.com/..." />
                                 </div>
                             </div>
 
@@ -389,16 +389,16 @@ export default function HealthyMenuPage() {
                                 <label className="text-xs font-bold text-gray-500 mb-2 block">Nutritional Values (per serving)</label>
                                 <div className="grid grid-cols-4 gap-3">
                                     <div>
-                                        <label className="text-[10px] font-bold text-[#6a8c35] mb-1 block">Calories</label>
-                                        <input required type="number" min="0" value={newMenu.cal} onChange={e => setNewMenu({...newMenu, cal: e.target.value})} className="w-full bg-[#e4fcbd]/50 border border-[#B4E567]/30 rounded-lg p-2.5 text-xs font-bold focus:border-[#B4E567] outline-none" placeholder="450" />
+                                        <label className="text-[10px] font-bold text-[#214a32] mb-1 block">Calories</label>
+                                        <input required type="number" min="0" value={newMenu.cal} onChange={e => setNewMenu({...newMenu, cal: e.target.value})} className="w-full bg-[#a4d9bc]/50 border border-[#a4d9bc]/30 rounded-lg p-2.5 text-xs font-bold focus:border-[#a4d9bc] outline-none" placeholder="450" />
                                     </div>
                                     <div>
-                                        <label className="text-[10px] font-bold text-[#a67a14] mb-1 block">Carbs (g)</label>
-                                        <input required type="number" min="0" value={newMenu.carbs} onChange={e => setNewMenu({...newMenu, carbs: e.target.value})} className="w-full bg-[#FFD166]/10 border border-[#FFD166]/30 rounded-lg p-2.5 text-xs font-bold focus:border-[#FFD166] outline-none" placeholder="40" />
+                                        <label className="text-[10px] font-bold text-[#214a32] mb-1 block">Carbs (g)</label>
+                                        <input required type="number" min="0" value={newMenu.carbs} onChange={e => setNewMenu({...newMenu, carbs: e.target.value})} className="w-full bg-[#989a69]/10 border border-[#989a69]/30 rounded-lg p-2.5 text-xs font-bold focus:border-[#989a69] outline-none" placeholder="40" />
                                     </div>
                                     <div>
-                                        <label className="text-[10px] font-bold text-[#a65d14] mb-1 block">Protein (g)</label>
-                                        <input required type="number" min="0" value={newMenu.prot} onChange={e => setNewMenu({...newMenu, prot: e.target.value})} className="w-full bg-[#FF9F43]/10 border border-[#FF9F43]/30 rounded-lg p-2.5 text-xs font-bold focus:border-[#FF9F43] outline-none" placeholder="35" />
+                                        <label className="text-[10px] font-bold text-[#214a32] mb-1 block">Protein (g)</label>
+                                        <input required type="number" min="0" value={newMenu.prot} onChange={e => setNewMenu({...newMenu, prot: e.target.value})} className="w-full bg-[#214a32]/10 border border-[#214a32]/30 rounded-lg p-2.5 text-xs font-bold focus:border-[#214a32] outline-none" placeholder="35" />
                                     </div>
                                     <div>
                                         <label className="text-[10px] font-bold text-gray-500 mb-1 block">Fats (g)</label>
@@ -410,28 +410,28 @@ export default function HealthyMenuPage() {
                             {/* SEO Section */}
                             <div className="border-t border-gray-100 pt-5">
                                 <p className="text-xs font-bold text-gray-900 mb-4 flex items-center gap-2">
-                                    <span className="w-5 h-5 rounded bg-[#B4E567] flex items-center justify-center text-[10px] font-black">S</span>
+                                    <span className="w-5 h-5 rounded bg-[#a4d9bc] flex items-center justify-center text-[10px] font-black">S</span>
                                     SEO Settings
                                 </p>
                                 <div className="space-y-3">
                                     <div>
                                         <label className="text-xs font-bold text-gray-500 mb-1.5 block">SEO Title (Page Tab Title)</label>
-                                        <input type="text" value={newMenu.seoTitle} onChange={e => setNewMenu({...newMenu, seoTitle: e.target.value})} className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm font-medium focus:border-[#B4E567] outline-none" placeholder="e.g. Quinoa Salad Recipe - Nutrigo Healthy Meals" />
+                                        <input type="text" value={newMenu.seoTitle} onChange={e => setNewMenu({...newMenu, seoTitle: e.target.value})} className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm font-medium focus:border-[#a4d9bc] outline-none" placeholder="e.g. Quinoa Salad Recipe - IlajBilGhiza Healthy Meals" />
                                         <p className="text-[10px] text-gray-400 mt-1">Recommended: 50-60 characters. Current: {newMenu.seoTitle.length}</p>
                                     </div>
                                     <div>
                                         <label className="text-xs font-bold text-gray-500 mb-1.5 block">SEO Meta Description</label>
-                                        <textarea rows="2" value={newMenu.seoDescription} onChange={e => setNewMenu({...newMenu, seoDescription: e.target.value})} className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm font-medium focus:border-[#B4E567] outline-none resize-none" placeholder="A short description for search engines (150-160 chars)..." />
+                                        <textarea rows="2" value={newMenu.seoDescription} onChange={e => setNewMenu({...newMenu, seoDescription: e.target.value})} className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm font-medium focus:border-[#a4d9bc] outline-none resize-none" placeholder="A short description for search engines (150-160 chars)..." />
                                         <p className="text-[10px] text-gray-400 mt-1">Recommended: 150-160 characters. Current: {newMenu.seoDescription.length}</p>
                                     </div>
                                     <div>
                                         <label className="text-xs font-bold text-gray-500 mb-1.5 block">Keywords (comma separated)</label>
-                                        <input type="text" value={newMenu.keywords} onChange={e => setNewMenu({...newMenu, keywords: e.target.value})} className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm font-medium focus:border-[#B4E567] outline-none" placeholder="e.g. healthy, salad, vegan, dinner" />
+                                        <input type="text" value={newMenu.keywords} onChange={e => setNewMenu({...newMenu, keywords: e.target.value})} className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm font-medium focus:border-[#a4d9bc] outline-none" placeholder="e.g. healthy, salad, vegan, dinner" />
                                     </div>
                                 </div>
                             </div>
 
-                            <button type="submit" className="w-full bg-[#B4E567] text-gray-900 font-bold py-4 rounded-xl hover:bg-[#a6d85a] transition-colors shadow-sm text-sm tracking-wide">
+                            <button type="submit" className="w-full bg-[#a4d9bc] text-gray-900 font-bold py-4 rounded-xl hover:bg-[#a6d85a] transition-colors shadow-sm text-sm tracking-wide">
                                 🚀 Publish Blog Post
                             </button>
                         </form>

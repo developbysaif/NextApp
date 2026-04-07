@@ -42,27 +42,27 @@ export default function DermatologistInsightsPage() {
     const specializations = [
         {
             title: "Natural Acne Management",
-            icon: <Leaf className="w-8 h-8 text-[#21492F]" />,
+            icon: <Leaf className="w-8 h-8 text-[#214a32]" />,
             link: "#"
         },
         {
             title: "Natural Sun Protection & Care",
-            icon: <ShieldCheck className="w-8 h-8 text-[#21492F]" />,
+            icon: <ShieldCheck className="w-8 h-8 text-[#214a32]" />,
             link: "#"
         },
         {
             title: "Eczema & Sensitive Skin",
-            icon: <Droplets className="w-8 h-8 text-[#21492F]" />,
+            icon: <Droplets className="w-8 h-8 text-[#214a32]" />,
             link: "#"
         },
         {
             title: "Anti-Aging & Rejuvenation",
-            icon: <Sparkles className="w-8 h-8 text-[#21492F]" />,
+            icon: <Sparkles className="w-8 h-8 text-[#214a32]" />,
             link: "#"
         },
         {
             title: "Scalp & Hair Health",
-            icon: <Wind className="w-8 h-8 text-[#21492F]" />,
+            icon: <Wind className="w-8 h-8 text-[#214a32]" />,
             link: "#"
         }
     ];
@@ -80,7 +80,7 @@ export default function DermatologistInsightsPage() {
             {/* Hero Section */}
             <section className="relative h-[400px] flex items-center justify-center overflow-hidden">
                 {/* Background Image with Overlay */}
-                <div className="absolute inset-0 z-0 bg-[#21492F]">
+                <div className="absolute inset-0 z-0 bg-[#214a32]">
                     <img
                         src="https://images.unsplash.com/photo-1589927986089-35812388d1f4?q=80&w=2000&auto=format&fit=crop"
                         alt="Background"
@@ -127,10 +127,10 @@ export default function DermatologistInsightsPage() {
                 <div className="container mx-auto px-4 md:px-6">
                     <div className="bg-[#EFF4E8] rounded-[40px] p-8 md:p-12 border border-[#DBE4D0]">
                         <div className="flex items-center justify-between mb-10">
-                            <h2 className="text-2xl font-bold text-[#21492F] uppercase tracking-wider">
+                            <h2 className="text-2xl font-bold text-[#214a32] uppercase tracking-wider">
                                 Dermatologist Specialization
                             </h2>
-                            <Link href="#" className="flex items-center gap-1 text-[#21492F] font-semibold hover:underline">
+                            <Link href="#" className="flex items-center gap-1 text-[#214a32] font-semibold hover:underline">
                                 View All Specialities <ArrowRight size={18} />
                             </Link>
                         </div>
@@ -145,10 +145,10 @@ export default function DermatologistInsightsPage() {
                                     <div className="mb-4 bg-[#F8FAF5] p-4 rounded-2xl">
                                         {item.icon}
                                     </div>
-                                    <h3 className="text-[#21492F] font-bold text-sm md:text-base mb-4 min-h-[40px] flex items-center justify-center">
+                                    <h3 className="text-[#214a32] font-bold text-sm md:text-base mb-4 min-h-[40px] flex items-center justify-center">
                                         {item.title}
                                     </h3>
-                                    <button className="text-xs font-bold text-[#21492F] border-b border-[#21492F] pb-1 hover:opacity-70 transition-opacity">
+                                    <button className="text-xs font-bold text-[#214a32] border-b border-[#214a32] pb-1 hover:opacity-70 transition-opacity">
                                         Read Insights
                                     </button>
                                 </motion.div>
@@ -156,7 +156,7 @@ export default function DermatologistInsightsPage() {
                         </div>
 
                         <div className="mt-10 text-center">
-                            <Link href="#" className="text-[#21492F] font-bold border-b-2 border-[#21492F] pb-1 inline-block">
+                            <Link href="#" className="text-[#214a32] font-bold border-b-2 border-[#214a32] pb-1 inline-block">
                                 View all Recent Blogs
                             </Link>
                         </div>
@@ -173,7 +173,7 @@ export default function DermatologistInsightsPage() {
                         <div className="lg:col-span-8 space-y-8">
                             {loading ? (
                                 <div className="flex items-center justify-center py-20">
-                                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#21492F]"></div>
+                                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#214a32]"></div>
                                 </div>
                             ) : blogs.length > 0 ? (
                                 <>
@@ -192,12 +192,12 @@ export default function DermatologistInsightsPage() {
                                                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                                                     onError={(e) => { e.target.src = '/placeholder.png'; }}
                                                 />
-                                                <div className="absolute top-4 left-4 bg-[#21492F] text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">
+                                                <div className="absolute top-4 left-4 bg-[#214a32] text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">
                                                     Latest
                                                 </div>
                                             </div>
                                             <div className="p-8 md:p-10 flex flex-col justify-center">
-                                                <h2 className="text-2xl md:text-3xl font-bold text-[#21492F] mb-4 leading-tight uppercase">
+                                                <h2 className="text-2xl md:text-3xl font-bold text-[#214a32] mb-4 leading-tight uppercase">
                                                     {blogs[0].title}
                                                 </h2>
                                                 <p className="text-[#4F5E4B] text-sm leading-relaxed mb-6 line-clamp-3">
@@ -207,9 +207,9 @@ export default function DermatologistInsightsPage() {
                                                     <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-[#EFF4E8] bg-gray-50 flex items-center justify-center">
                                                         <User size={20} className="text-gray-300" />
                                                     </div>
-                                                    <span className="text-sm font-bold text-[#21492F]">Expert Insight</span>
+                                                    <span className="text-sm font-bold text-[#214a32]">Expert Insight</span>
                                                 </div>
-                                                <Link href={`/blogs/${blogs[0].slug}`} className="w-fit bg-[#EFF4E8] text-[#21492F] font-bold px-6 py-2.5 rounded-full border border-[#D1D9CA] hover:bg-[#21492F] hover:text-white transition-all duration-300 text-center uppercase tracking-widest text-xs">
+                                                <Link href={`/blogs/${blogs[0].slug}`} className="w-fit bg-[#EFF4E8] text-[#214a32] font-bold px-6 py-2.5 rounded-full border border-[#D1D9CA] hover:bg-[#214a32] hover:text-white transition-all duration-300 text-center uppercase tracking-widest text-xs">
                                                     Read More
                                                 </Link>
                                             </div>
@@ -237,11 +237,11 @@ export default function DermatologistInsightsPage() {
                                                         />
                                                     </div>
                                                     <div className="flex flex-col justify-center py-2 overflow-hidden">
-                                                        <h3 className="text-sm font-bold text-[#21492F] mb-1 line-clamp-2 leading-snug uppercase tracking-tight">
+                                                        <h3 className="text-sm font-bold text-[#214a32] mb-1 line-clamp-2 leading-snug uppercase tracking-tight">
                                                             {post.title}
                                                         </h3>
                                                         <p className="text-[10px] text-[#8D9F91] font-bold mb-3">Expert Insight</p>
-                                                        <Link href={`/blogs/${post.slug}`} className="text-[#21492F] text-[10px] font-bold border-b border-[#21492F] w-fit uppercase tracking-widest hover:text-[#22aa4f] transition-colors">
+                                                        <Link href={`/blogs/${post.slug}`} className="text-[#214a32] text-[10px] font-bold border-b border-[#214a32] w-fit uppercase tracking-widest hover:text-[#214a32] transition-colors">
                                                             Read More
                                                         </Link>
                                                     </div>
@@ -252,7 +252,7 @@ export default function DermatologistInsightsPage() {
                                 </>
                             ) : (
                                 <div className="p-20 text-center bg-gray-50 rounded-[40px] border-2 border-dashed border-gray-200">
-                                    <h3 className="text-xl font-bold text-[#21492F] opacity-40 uppercase tracking-widest">No Insights Available Yet</h3>
+                                    <h3 className="text-xl font-bold text-[#214a32] opacity-40 uppercase tracking-widest">No Insights Available Yet</h3>
                                     <p className="text-sm font-bold text-gray-400 mt-2 italic">New blogs will appear here once published from the admin panel.</p>
                                 </div>
                             )}
@@ -267,7 +267,7 @@ export default function DermatologistInsightsPage() {
                                 className="bg-white rounded-[40px] border border-[#D1D9CA] overflow-hidden"
                             >
                                 <div className="p-8 border-b border-[#F4F4EB]">
-                                    <h2 className="text-2xl font-bold text-[#21492F]">Top Insights Sidebar</h2>
+                                    <h2 className="text-2xl font-bold text-[#214a32]">Top Insights Sidebar</h2>
                                 </div>
                                 <div className="p-8 space-y-6">
                                     {sidebarInsights.map((item, idx) => (
@@ -276,7 +276,7 @@ export default function DermatologistInsightsPage() {
                                                 <Image src={item.img} alt={item.title} fill className="object-cover group-hover:scale-110 transition-transform duration-500" />
                                             </div>
                                             <div className="flex flex-col">
-                                                <h3 className="text-sm font-bold text-[#21492F] group-hover:text-green-600 transition-colors leading-tight">
+                                                <h3 className="text-sm font-bold text-[#214a32] group-hover:text-green-600 transition-colors leading-tight">
                                                     {idx + 1}. {item.title}
                                                 </h3>
                                             </div>

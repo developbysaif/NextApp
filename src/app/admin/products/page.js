@@ -210,7 +210,7 @@ export default function AdminProductsPage() {
                                             )}
                                         </div>
                                         <div>
-                                            <p className="font-bold text-[#21492f] leading-tight">{product.name}</p>
+                                            <p className="font-bold text-[#214a32] leading-tight">{product.name}</p>
                                             <p className="text-[10px] font-black text-gray-400 uppercase mt-1">ID: {product.id || 'N/A'}</p>
                                         </div>
                                     </div>
@@ -218,7 +218,7 @@ export default function AdminProductsPage() {
                                 <td className="px-8 py-5 text-xs font-bold text-gray-500">
                                     {product.category || 'General'}
                                 </td>
-                                <td className="px-8 py-5 font-bold text-[#21492f]">
+                                <td className="px-8 py-5 font-bold text-[#214a32]">
                                     ${product.price?.toLocaleString()}
                                 </td>
                                 <td className="px-8 py-5 text-xs font-black text-red-500">
@@ -253,7 +253,7 @@ export default function AdminProductsPage() {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            className="absolute inset-0 bg-[#21492f]/20 backdrop-blur-md"
+                            className="absolute inset-0 bg-[#214a32]/20 backdrop-blur-md"
                             onClick={() => setShowModal(false)}
                         />
                         <motion.div
@@ -265,7 +265,7 @@ export default function AdminProductsPage() {
                             <div className="flex h-[80vh]">
                                 {/* Left Content: Preview / Images */}
                                 <div className="hidden lg:block w-1/3 bg-[#F8F7F4] p-10 border-r border-gray-100">
-                                    <h3 className="text-xl font-black font-outfit text-[#21492f] mb-8 group-hover:tracking-tighter transition-all">Product Media</h3>
+                                    <h3 className="text-xl font-black font-outfit text-[#214a32] mb-8 group-hover:tracking-tighter transition-all">Product Media</h3>
                                     <div className="aspect-square bg-white rounded-3xl border-2 border-dashed border-gray-200 flex flex-col items-center justify-center relative overflow-hidden group cursor-pointer transition-all hover:border-green-400">
                                         {formData.image ? (
                                             <img src={formData.image} alt="Preview" className="w-full h-full object-cover" />
@@ -293,7 +293,7 @@ export default function AdminProductsPage() {
                                 {/* Right Content: Form */}
                                 <div className="flex-1 p-10 overflow-y-auto no-scrollbar">
                                     <div className="flex items-center justify-between mb-10">
-                                        <h2 className="text-2xl font-black font-outfit text-[#21492f]">Add New Product</h2>
+                                        <h2 className="text-2xl font-black font-outfit text-[#214a32]">Add New Product</h2>
                                         <button onClick={() => setShowModal(false)} className="p-2 hover:bg-gray-100 rounded-full transition-colors">
                                             <X size={24} className="text-gray-400" />
                                         </button>

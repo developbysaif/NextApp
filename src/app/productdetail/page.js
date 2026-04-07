@@ -192,7 +192,7 @@ function ProductDetailContent() {
                                         <Zap size={12} /> No Chemicals
                                     </span>
                                 </div>
-                                <h1 className="text-4xl md:text-5xl font-extrabold text-[#21492f] mb-4 leading-tight">
+                                <h1 className="text-4xl md:text-5xl font-extrabold text-[#214a32] mb-4 leading-tight">
                                     {product.name}
                                 </h1>
                                 <div className="flex items-center gap-4">
@@ -327,7 +327,7 @@ function ProductDetailContent() {
                                 >
                                     {activeTab === 'description' && (
                                         <div className="max-w-4xl">
-                                            <h3 className="text-3xl font-black text-[#21492f] mb-6">Discover Nature&apos;s Best</h3>
+                                            <h3 className="text-3xl font-black text-[#214a32] mb-6">Discover Nature&apos;s Best</h3>
                                             <p className="text-gray-600 text-lg leading-relaxed mb-8">
                                                 {product.description || "Our organic selection brings you the freshest flavors directly from sustainable farms. Every item is hand-picked to ensure it meets our rigorous standards for quality, taste, and nutritional value."}
                                             </p>
@@ -346,7 +346,7 @@ function ProductDetailContent() {
 
                                     {activeTab === 'what it fixes' && (
                                         <div className="max-w-4xl">
-                                            <h3 className="text-3xl font-black text-[#21492f] mb-8">Targeted Healing</h3>
+                                            <h3 className="text-3xl font-black text-[#214a32] mb-8">Targeted Healing</h3>
                                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                                 {[
                                                     { t: "Joint & Bone Pain", d: "Reduces inflammation and strengthens structure." },
@@ -355,11 +355,11 @@ function ProductDetailContent() {
                                                     { t: "Hair Fall", d: "Nourishes roots and improves scalp health." }
                                                 ].map((item, i) => (
                                                     <div key={i} className="flex gap-4 p-6 bg-stone-50 rounded-3xl border border-stone-100">
-                                                        <div className="size-10 rounded-xl bg-white flex items-center justify-center text-[#22aa4f] shadow-sm">
+                                                        <div className="size-10 rounded-xl bg-white flex items-center justify-center text-[#214a32] shadow-sm">
                                                             <Check size={20} />
                                                         </div>
                                                         <div>
-                                                            <h4 className="font-bold text-[#21492f]">{item.t}</h4>
+                                                            <h4 className="font-bold text-[#214a32]">{item.t}</h4>
                                                             <p className="text-sm text-gray-500">{item.d}</p>
                                                         </div>
                                                     </div>
@@ -370,7 +370,7 @@ function ProductDetailContent() {
 
                                     {activeTab === 'how to use' && (
                                         <div className="max-w-4xl">
-                                            <h3 className="text-3xl font-black text-[#21492f] mb-8">Step-by-Step Guide</h3>
+                                            <h3 className="text-3xl font-black text-[#214a32] mb-8">Step-by-Step Guide</h3>
                                             <div className="space-y-6">
                                                 {[
                                                     { s: "Step 1: Preparation", d: "Ensure the area is clean or the water is warm." },
@@ -378,9 +378,9 @@ function ProductDetailContent() {
                                                     { s: "Step 3: Consistency", d: "Used daily for 21 days for visible healing results." }
                                                 ].map((step, i) => (
                                                     <div key={i} className="flex gap-6 items-start">
-                                                        <div className="size-12 rounded-full bg-[#21492f] text-white flex items-center justify-center font-black shrink-0">{i + 1}</div>
+                                                        <div className="size-12 rounded-full bg-[#214a32] text-white flex items-center justify-center font-black shrink-0">{i + 1}</div>
                                                         <div>
-                                                            <h4 className="text-xl font-bold text-[#21492f]">{step.s}</h4>
+                                                            <h4 className="text-xl font-bold text-[#214a32]">{step.s}</h4>
                                                             <p className="text-gray-500 leading-relaxed">{step.d}</p>
                                                         </div>
                                                     </div>
@@ -395,7 +395,7 @@ function ProductDetailContent() {
                                                 <div className="size-16 rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center">
                                                     <Heart size={32} />
                                                 </div>
-                                                <h3 className="text-3xl font-black text-[#21492f]">Sunnah Reference</h3>
+                                                <h3 className="text-3xl font-black text-[#214a32]">Sunnah Reference</h3>
                                             </div>
                                             <p className="text-xl italic font-medium text-gray-700 leading-relaxed mb-8">
                                                 &quot;Use this blessed seed/oil, for it is a healing for every disease except death.&quot;
@@ -417,7 +417,7 @@ function ProductDetailContent() {
                                                     <div className="inline-flex items-center gap-2 bg-green-500 text-white px-3 py-1 rounded-full text-[10px] font-black uppercase mb-4">
                                                         <Shield size={12} /> Expert Recommendation
                                                     </div>
-                                                    <h3 className="text-2xl font-black text-[#21492f] mb-2">Dr. Sarah Khan</h3>
+                                                    <h3 className="text-2xl font-black text-[#214a32] mb-2">Dr. Sarah Khan</h3>
                                                     <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">PhD in Clinical Nutrition</p>
                                                     <p className="text-gray-600 italic leading-relaxed">
                                                         &quot;I highly recommend this organic cold-pressed oil for patients looking for natural anti-inflammatory support. Its purity ensures maximum bioavailability of nutrients.&quot;
@@ -445,7 +445,7 @@ function ProductDetailContent() {
                                                     <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 ${b.c}`}>
                                                         <b.i size={32} />
                                                     </div>
-                                                    <h4 className="text-xl font-extrabold text-[#21492f] mb-3">{b.t}</h4>
+                                                    <h4 className="text-xl font-extrabold text-[#214a32] mb-3">{b.t}</h4>
                                                     <p className="text-gray-500 leading-relaxed text-sm">{b.d}</p>
                                                 </motion.div>
                                             ))}
@@ -456,7 +456,7 @@ function ProductDetailContent() {
                                         <div className="grid grid-cols-1 lg:grid-cols-4 gap-16">
                                             <div className="lg:col-span-1">
                                                 <div className="sticky top-8">
-                                                    <h3 className="text-2xl font-black text-[#21492f] mb-8">Overall Rating</h3>
+                                                    <h3 className="text-2xl font-black text-[#214a32] mb-8">Overall Rating</h3>
                                                     <div className="flex items-center gap-6 mb-8">
                                                         <span className="text-7xl font-black text-green-700">{product.rating || 5.0}</span>
                                                         <div>
@@ -482,7 +482,7 @@ function ProductDetailContent() {
 
                                             <div className="lg:col-span-3 space-y-12">
                                                 <div className="bg-gray-50 p-10 rounded-[2.5rem] border border-gray-100">
-                                                    <h4 className="text-xl font-black text-[#21492f] mb-6">Write a Review</h4>
+                                                    <h4 className="text-xl font-black text-[#214a32] mb-6">Write a Review</h4>
                                                     <div className="space-y-6">
                                                         <div className="flex items-center gap-4">
                                                             <span className="font-bold text-gray-500">Your Rating:</span>
@@ -565,7 +565,7 @@ function ProductDetailContent() {
                                                                         {rev.name.charAt(0)}
                                                                     </div>
                                                                     <div>
-                                                                        <h5 className="font-extrabold text-[#21492f]">{rev.name}</h5>
+                                                                        <h5 className="font-extrabold text-[#214a32]">{rev.name}</h5>
                                                                         <div className="flex gap-1">
                                                                             {renderStars(rev.rating)}
                                                                         </div>

@@ -65,8 +65,8 @@ export default function RecipeDetailPage() {
         <div className="space-y-8 pb-10">
             {/* Header / Nav */}
             <div className="flex items-center justify-between">
-                <Link href="/dashboard/menu" className="flex items-center gap-2 text-xs font-black uppercase tracking-widest text-[#2E7D32] group">
-                    <div className="p-2 bg-green-50 rounded-lg group-hover:-translate-x-1 transition-transform"><ChevronLeft size={16} /></div>
+                <Link href="/dashboard/menu" className="flex items-center gap-2 text-xs font-black uppercase tracking-widest text-[#214a32] group">
+                    <div className="p-2 bg-[#a4d9bc] rounded-lg group-hover:-translate-x-1 transition-transform"><ChevronLeft size={16} /></div>
                     Back to Menu
                 </Link>
                 <div className="flex items-center gap-2">
@@ -103,7 +103,7 @@ export default function RecipeDetailPage() {
 
                     <div className="grid grid-cols-3 gap-4">
                         {[
-                            { label: 'Servings', val: recipe.servings, icon: Users, color: 'text-emerald-500' },
+                            { label: 'Servings', val: recipe.servings, icon: Users, color: 'text-[#214a32]' },
                             { label: 'Cook Time', val: recipe.time, icon: Clock, color: 'text-indigo-500' },
                             { label: 'Calories', val: recipe.calories, unit: 'kcal', icon: Flame, color: 'text-rose-500' },
                         ].map((stat, i) => (
@@ -119,7 +119,7 @@ export default function RecipeDetailPage() {
                     </div>
 
                     <div className="flex items-center gap-4">
-                        <button className="flex-1 bg-[#2E7D32] text-white py-5 rounded-[2rem] font-black text-xs uppercase tracking-widest hover:bg-green-900 transition-all shadow-xl shadow-green-900/10 flex items-center justify-center gap-2">
+                        <button className="flex-1 bg-[#214a32] text-white py-5 rounded-[2rem] font-black text-xs uppercase tracking-widest hover:bg-black transition-all shadow-xl shadow-green-900/10 flex items-center justify-center gap-2">
                             <Plus size={18} /> Add to Meal Plan
                         </button>
                     </div>
@@ -137,7 +137,7 @@ export default function RecipeDetailPage() {
                                 onClick={() => setActiveTab(tab)}
                                 className={`
                                     px-8 py-4 rounded-3xl text-[10px] font-black uppercase tracking-widest transition-all
-                                    ${activeTab === tab ? 'bg-white text-green-700 shadow-sm' : 'text-gray-400 hover:text-gray-600'}
+                                    ${activeTab === tab ? 'bg-white text-[#214a32] shadow-sm' : 'text-gray-400 hover:text-gray-600'}
                                 `}
                             >
                                 {tab}
@@ -148,14 +148,14 @@ export default function RecipeDetailPage() {
                     {activeTab === 'directions' && (
                         <div className="bg-white p-8 md:p-12 rounded-[3.5rem] border border-gray-100 shadow-sm animate-in fade-in slide-in-from-bottom-5 duration-500">
                             <div className="flex items-center gap-4 mb-10">
-                                <div className="p-4 bg-green-50 text-green-700 rounded-3xl shadow-inner"><ChefHat size={28} /></div>
+                                <div className="p-4 bg-[#a4d9bc] text-[#214a32] rounded-3xl shadow-inner"><ChefHat size={28} /></div>
                                 <h3 className="text-2xl font-black font-outfit uppercase tracking-tight">Step-by-Step Directions</h3>
                             </div>
                             <div className="space-y-10">
                                 {recipe.directions.map((step, i) => (
                                     <div key={i} className="flex gap-8 group">
                                         <div className="shrink-0">
-                                            <div className="size-10 rounded-2xl bg-[#2E7D32] text-white flex items-center justify-center font-black text-sm shadow-xl shadow-green-900/10 relative z-10 transition-transform group-hover:scale-110">
+                                            <div className="size-10 rounded-2xl bg-[#214a32] text-white flex items-center justify-center font-black text-sm shadow-xl shadow-green-900/10 relative z-10 transition-transform group-hover:scale-110">
                                                 {i + 1}
                                             </div>
                                             {i !== recipe.directions.length - 1 && (
@@ -174,18 +174,18 @@ export default function RecipeDetailPage() {
                     {activeTab === 'ingredients' && (
                         <div className="bg-white p-8 md:p-12 rounded-[3.5rem] border border-gray-100 shadow-sm animate-in fade-in slide-in-from-bottom-5 duration-500">
                             <div className="flex items-center gap-4 mb-10">
-                                <div className="p-4 bg-green-50 text-green-700 rounded-3xl shadow-inner"><ShoppingBasket size={28} /></div>
+                                <div className="p-4 bg-[#a4d9bc] text-[#214a32] rounded-3xl shadow-inner"><ShoppingBasket size={28} /></div>
                                 <h3 className="text-2xl font-black font-outfit uppercase tracking-tight">Ingredients List</h3>
                             </div>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 {recipe.ingredients.map((ing, i) => (
                                     <div key={i} className="flex items-center justify-between p-5 rounded-3xl bg-gray-50/50 hover:bg-gray-50 transition-colors border border-transparent hover:border-gray-100">
                                         <div className="flex items-center gap-3">
-                                            <div className="size-3 rounded-full bg-green-500" />
+                                            <div className="size-3 rounded-full bg-[#a4d9bc]0" />
                                             <span className="text-[11px] font-black uppercase text-gray-800">{ing.item}</span>
                                         </div>
                                         <div className="text-right">
-                                            <span className="text-[11px] font-black text-[#2E7D32] block">{ing.qty}</span>
+                                            <span className="text-[11px] font-black text-[#214a32] block">{ing.qty}</span>
                                             <span className="text-[9px] font-bold text-gray-400 italic block">{ing.note}</span>
                                         </div>
                                     </div>
@@ -197,7 +197,7 @@ export default function RecipeDetailPage() {
                     {activeTab === 'reviews' && (
                          <div className="bg-white p-8 md:p-12 rounded-[3.5rem] border border-gray-100 shadow-sm animate-in fade-in slide-in-from-bottom-5 duration-500">
                             <div className="flex items-center gap-4 mb-10">
-                                <div className="p-4 bg-green-50 text-green-700 rounded-3xl shadow-inner"><MessageSquare size={28} /></div>
+                                <div className="p-4 bg-[#a4d9bc] text-[#214a32] rounded-3xl shadow-inner"><MessageSquare size={28} /></div>
                                 <h3 className="text-2xl font-black font-outfit uppercase tracking-tight">User Reviews</h3>
                             </div>
                             <div className="space-y-8">
@@ -242,13 +242,13 @@ export default function RecipeDetailPage() {
                                 </div>
                             ))}
                         </div>
-                        <button className="mt-10 w-full py-4 bg-gray-50 rounded-2xl text-[10px] font-black uppercase tracking-widest text-[#2E7D32] hover:bg-green-50 transition-colors">
+                        <button className="mt-10 w-full py-4 bg-gray-50 rounded-2xl text-[10px] font-black uppercase tracking-widest text-[#214a32] hover:bg-[#a4d9bc] transition-colors">
                             Full Daily Analysis
                         </button>
                     </div>
 
                     {/* Tools & Note */}
-                    <div className="bg-[#2E7D32] p-8 rounded-[3.5rem] text-white shadow-xl shadow-green-900/10">
+                    <div className="bg-[#214a32] p-8 rounded-[3.5rem] text-white shadow-xl shadow-green-900/10">
                         <h3 className="text-md font-black font-outfit uppercase mb-6 flex items-center gap-2">
                             <ChefHat size={20} /> Tools Needed
                         </h3>

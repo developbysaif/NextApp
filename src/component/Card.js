@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { MoveRight } from "lucide-react";
 
-export default function Card({ label, title, href = "#", img, imgWidth = 96, imgHeight = 96, bg = "#ffffff", textClass = "text-[#21492f]" }) {
+export default function Card({ label, title, href = "#", img, imgWidth = 96, imgHeight = 96, bg = "#ffffff", textClass = "text-[#214a32]" }) {
     return (
         <Link
             href={href}

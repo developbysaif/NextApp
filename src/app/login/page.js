@@ -58,7 +58,7 @@ export default function LoginPage() {
                                     type="email"
                                     required
                                     placeholder="Enter your email"
-                                    className="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-xl text-sm focus:ring-2 focus:ring-[#21492f] focus:border-[#21492f] outline-none transition-all text-gray-800 placeholder:text-gray-400"
+                                    className="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-xl text-sm focus:ring-2 focus:ring-[#214a32] focus:border-[#214a32] outline-none transition-all text-gray-800 placeholder:text-gray-400"
                                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                                 />
                             </div>
@@ -72,12 +72,12 @@ export default function LoginPage() {
                                     type="password"
                                     required
                                     placeholder="Enter your password"
-                                    className="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-xl text-sm focus:ring-2 focus:ring-[#21492f] focus:border-[#21492f] outline-none transition-all text-gray-800 placeholder:text-gray-400"
+                                    className="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-xl text-sm focus:ring-2 focus:ring-[#214a32] focus:border-[#214a32] outline-none transition-all text-gray-800 placeholder:text-gray-400"
                                     onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                                 />
                             </div>
                             <div className="flex justify-end pt-0.5">
-                                <Link href="#" className="text-xs text-[#21492f] font-semibold hover:underline">
+                                <Link href="#" className="text-xs text-[#214a32] font-semibold hover:underline">
                                     Forgot Password?
                                 </Link>
                             </div>
@@ -86,13 +86,13 @@ export default function LoginPage() {
                         <div className="grid grid-cols-2 gap-3 pt-2">
                             <button
                                 type="submit"
-                                className="w-full bg-[#21492f] text-white rounded-xl py-2.5 text-sm font-black hover:bg-[#183522] transition-colors shadow-lg active:scale-95"
+                                className="w-full bg-[#214a32] text-white rounded-xl py-2.5 text-sm font-black hover:bg-[#183522] transition-colors shadow-lg active:scale-95"
                             >
                                 Sign In
                             </button>
                             <Link
                                 href="/signup"
-                                className="w-full border-2 border-[#21492f] text-[#21492f] rounded-xl py-2.5 text-sm font-black flex items-center justify-center hover:bg-[#21492f] hover:text-white transition-all shadow-md active:scale-95"
+                                className="w-full border-2 border-[#214a32] text-[#214a32] rounded-xl py-2.5 text-sm font-black flex items-center justify-center hover:bg-[#214a32] hover:text-white transition-all shadow-md active:scale-95"
                             >
                                 Sign Up
                             </Link>
@@ -121,9 +121,9 @@ export default function LoginPage() {
                 </div>
 
                 {/* Right Side - Content */}
-                <div className="hidden lg:flex lg:w-1/2 bg-[#21492f] p-10 flex-col justify-center relative bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] bg-blend-soft-light">
+                <div className="hidden lg:flex lg:w-1/2 bg-[#214a32] p-10 flex-col justify-center relative bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] bg-blend-soft-light">
                     {/* Gradient Overlay for subtle texturing */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#183522]/40 to-[#21492f]/40 pointer-events-none"></div>
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#183522]/40 to-[#214a32]/40 pointer-events-none"></div>
 
                     {/* Top Right Logo */}
                     <div className="absolute top-12 right-12 z-20 flex items-center bg-white/10 backdrop-blur-md px-5 py-2.5 rounded-2xl border border-white/20">

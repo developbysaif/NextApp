@@ -90,7 +90,7 @@ export default function ProgressDashboard() {
                         <img 
                             src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=100&h=100&fit=crop" 
                             alt="User" 
-                            className="w-10 h-10 rounded-xl object-cover border-2 border-[#B4E567]/20"
+                            className="w-10 h-10 rounded-xl object-cover border-2 border-[#a4d9bc]/20"
                         />
                         <div className="hidden sm:block text-left">
                             <p className="text-xs font-bold text-gray-900 leading-tight">Adam Vasylenko</p>
@@ -123,7 +123,7 @@ export default function ProgressDashboard() {
                                 Your diet and exercise are perfectly aligned.
                             </h2>
                             <p className="text-white/70 text-xs font-medium leading-relaxed max-w-2xl">
-                                We analyzed your recent meals from the <strong className="text-white">Diet Plan</strong> and your activity in <strong className="text-white">Exercises</strong>. With <strong className="text-[#B4E567]">{completedExercises > 0 ? completedExercises : 4} completed exercises</strong> actively tracked, your high protein intake is optimally supporting your strength training recovery. Great job maintaining the 400 kcal deficit!
+                                We analyzed your recent meals from the <strong className="text-white">Diet Plan</strong> and your activity in <strong className="text-white">Exercises</strong>. With <strong className="text-[#a4d9bc]">{completedExercises > 0 ? completedExercises : 4} completed exercises</strong> actively tracked, your high protein intake is optimally supporting your strength training recovery. Great job maintaining the 400 kcal deficit!
                             </p>
                         </div>
                         
@@ -141,7 +141,7 @@ export default function ProgressDashboard() {
                         {/* Body Anatomy Card */}
                         <div className="bg-white rounded-[3rem] p-8 shadow-sm border border-gray-100 relative min-h-[500px]">
                             <div className="flex items-center justify-between mb-2">
-                                <button className="bg-[#B4E567]/20 text-[#21492f] px-4 py-2 rounded-xl text-[10px] font-bold uppercase tracking-widest flex items-center gap-2">
+                                <button className="bg-[#a4d9bc]/20 text-[#214a32] px-4 py-2 rounded-xl text-[10px] font-bold uppercase tracking-widest flex items-center gap-2">
                                     Today <ChevronDown size={12} />
                                 </button>
                             </div>
@@ -181,7 +181,7 @@ export default function ProgressDashboard() {
                                     </div>
                                     <div>
                                         <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Current Weight</p>
-                                        <p className="text-xl font-bold text-[#FF9F43]">78 <span className="text-xs text-gray-400 ml-0.5">Kg</span></p>
+                                        <p className="text-xl font-bold text-[#214a32]">78 <span className="text-xs text-gray-400 ml-0.5">Kg</span></p>
                                     </div>
                                     <div>
                                         <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Weight Goal</p>
@@ -194,11 +194,11 @@ export default function ProgressDashboard() {
                                         <AreaChart data={weightData}>
                                             <defs>
                                                 <linearGradient id="colorWt" x1="0" y1="0" x2="0" y2="1">
-                                                    <stop offset="5%" stopColor="#FF9F43" stopOpacity={0.2}/>
-                                                    <stop offset="95%" stopColor="#FF9F43" stopOpacity={0}/>
+                                                    <stop offset="5%" stopColor="#214a32" stopOpacity={0.2}/>
+                                                    <stop offset="95%" stopColor="#214a32" stopOpacity={0}/>
                                                 </linearGradient>
                                             </defs>
-                                            <Area type="monotone" dataKey="weight" stroke="#FF9F43" strokeWidth={3} fillOpacity={1} fill="url(#colorWt)" />
+                                            <Area type="monotone" dataKey="weight" stroke="#214a32" strokeWidth={3} fillOpacity={1} fill="url(#colorWt)" />
                                             <XAxis dataKey="name" hide />
                                             <Tooltip content={<CustomTooltip />} />
                                         </AreaChart>
@@ -214,19 +214,19 @@ export default function ProgressDashboard() {
                             <div className="bg-white rounded-[3rem] p-8 shadow-sm border border-gray-100">
                                 <div className="flex items-center justify-between mb-6">
                                     <h3 className="text-lg font-bold text-gray-900">Progress Photos</h3>
-                                    <button className="bg-[#B4E567] text-[#21492f] px-4 py-1.5 rounded-lg text-[9px] font-bold uppercase tracking-widest hover:bg-[#a3d45c] transition-all">View All</button>
+                                    <button className="bg-[#a4d9bc] text-[#214a32] px-4 py-1.5 rounded-lg text-[9px] font-bold uppercase tracking-widest hover:bg-[#a3d45c] transition-all">View All</button>
                                 </div>
                                 <div className="flex gap-4">
                                     <div className="flex-1 rounded-3xl overflow-hidden relative h-[160px] shadow-sm">
                                         <img src="/progress_before_after_photos_1775483974784.png" className="w-full h-full object-cover" alt="Before" />
                                         <div className="absolute top-3 left-4 bg-white/90 px-2 py-1 rounded-md text-[8px] font-bold text-gray-800 uppercase tracking-widest shadow-sm">July 2028</div>
-                                        <div className="absolute top-3 right-4 bg-[#B4E567] px-2 py-1 rounded-md text-[8px] font-bold text-[#21492f] uppercase tracking-widest">82 Kg</div>
+                                        <div className="absolute top-3 right-4 bg-[#a4d9bc] px-2 py-1 rounded-md text-[8px] font-bold text-[#214a32] uppercase tracking-widest">82 Kg</div>
                                     </div>
                                     <div className="flex-1 rounded-3xl overflow-hidden relative h-[160px] shadow-sm">
                                         <img src="/progress_before_after_photos_1775483974784.png" className="w-full h-full object-cover object-right" alt="After" />
                                         <div className="absolute top-3 left-4 bg-white/90 px-2 py-1 rounded-md text-[8px] font-bold text-gray-800 uppercase tracking-widest shadow-sm">Sept 2028</div>
                                         <div className="absolute bottom-3 right-4 bg-white p-2 rounded-full shadow-lg">
-                                            <Award size={14} className="text-[#FF9F43]" />
+                                            <Award size={14} className="text-[#214a32]" />
                                         </div>
                                     </div>
                                 </div>
@@ -273,7 +273,7 @@ export default function ProgressDashboard() {
                     <div className="bg-white rounded-[3rem] p-8 shadow-sm border border-gray-100">
                         <div className="flex items-center justify-between mb-4">
                             <h3 className="text-sm font-bold text-gray-900">Calories Activities</h3>
-                            <button className="bg-[#B4E567]/20 text-[#21492f] px-3 py-1.5 rounded-lg text-[9px] font-bold uppercase tracking-widest flex items-center gap-2">
+                            <button className="bg-[#a4d9bc]/20 text-[#214a32] px-3 py-1.5 rounded-lg text-[9px] font-bold uppercase tracking-widest flex items-center gap-2">
                                 Last 4 Days <ChevronDown size={10} />
                             </button>
                         </div>
@@ -306,7 +306,7 @@ export default function ProgressDashboard() {
                     <div className="bg-white rounded-[3rem] p-8 shadow-sm border border-gray-100">
                         <div className="flex items-center justify-between mb-6">
                             <h3 className="text-sm font-bold text-gray-900">Sleep Statistics</h3>
-                            <button className="bg-[#B4E567]/20 text-[#21492f] px-3 py-1.5 rounded-lg text-[9px] font-bold uppercase tracking-widest flex items-center gap-2">
+                            <button className="bg-[#a4d9bc]/20 text-[#214a32] px-3 py-1.5 rounded-lg text-[9px] font-bold uppercase tracking-widest flex items-center gap-2">
                                 Last 5 Days <ChevronDown size={10} />
                             </button>
                         </div>
@@ -315,9 +315,9 @@ export default function ProgressDashboard() {
                             {sleepData.map((d, i) => (
                                 <div key={i} className="flex-1 flex flex-col items-center gap-3">
                                     <div className="flex-1 w-4 sm:w-6 flex flex-col-reverse rounded-full overflow-hidden bg-gray-50 border border-gray-100">
-                                        <div style={{ height: `${(d.deep / 10) * 100}%` }} className="bg-[#FF9F43]"></div>
-                                        <div style={{ height: `${(d.light / 10) * 100}%` }} className="bg-[#FFD166]"></div>
-                                        <div style={{ height: `${(d.rem / 10) * 100}%` }} className="bg-[#B4E567]"></div>
+                                        <div style={{ height: `${(d.deep / 10) * 100}%` }} className="bg-[#214a32]"></div>
+                                        <div style={{ height: `${(d.light / 10) * 100}%` }} className="bg-[#989a69]"></div>
+                                        <div style={{ height: `${(d.rem / 10) * 100}%` }} className="bg-[#a4d9bc]"></div>
                                     </div>
                                     <div className="text-center">
                                         <p className="text-[8px] font-black text-gray-900 uppercase">{d.total}</p>
@@ -331,7 +331,7 @@ export default function ProgressDashboard() {
                     <div className="bg-white rounded-[3rem] p-8 shadow-sm border border-gray-100">
                         <div className="flex items-center justify-between mb-8">
                             <h3 className="text-sm font-bold text-gray-900">Hydration</h3>
-                            <button className="bg-[#B4E567]/20 text-[#21492f] px-3 py-1.5 rounded-lg text-[9px] font-bold uppercase tracking-widest flex items-center gap-2">
+                            <button className="bg-[#a4d9bc]/20 text-[#214a32] px-3 py-1.5 rounded-lg text-[9px] font-bold uppercase tracking-widest flex items-center gap-2">
                                 This Week <ChevronDown size={10} />
                             </button>
                         </div>
@@ -341,7 +341,7 @@ export default function ProgressDashboard() {
                                 <BarChart data={hydrationData}>
                                     <Bar dataKey="val" radius={[3, 3, 3, 3]}>
                                         {hydrationData.map((entry, index) => (
-                                             <Cell key={`cell-${index}`} fill={index === 2 || index === 4 || index === 6 ? '#B4E567' : '#EEEEEE'} />
+                                             <Cell key={`cell-${index}`} fill={index === 2 || index === 4 || index === 6 ? '#a4d9bc' : '#EEEEEE'} />
                                         ))}
                                     </Bar>
                                     <XAxis dataKey="day" axisLine={false} tickLine={false} tick={{ fontSize: 9, fill: '#D1D5DB', fontWeight: 'bold' }} dy={10} />

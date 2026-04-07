@@ -69,7 +69,7 @@ function SignupContent() {
                                     required
                                     placeholder="John Doe"
                                     value={formData.name}
-                                    className="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-xl text-sm focus:ring-2 focus:ring-[#21492f] focus:border-[#21492f] outline-none transition-all text-gray-800 placeholder:text-gray-400"
+                                    className="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-xl text-sm focus:ring-2 focus:ring-[#214a32] focus:border-[#214a32] outline-none transition-all text-gray-800 placeholder:text-gray-400"
                                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                                 />
                             </div>
@@ -84,7 +84,7 @@ function SignupContent() {
                                     required
                                     placeholder="hello@organic.com"
                                     value={formData.email}
-                                    className="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-xl text-sm focus:ring-2 focus:ring-[#21492f] focus:border-[#21492f] outline-none transition-all text-gray-800 placeholder:text-gray-400"
+                                    className="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-xl text-sm focus:ring-2 focus:ring-[#214a32] focus:border-[#214a32] outline-none transition-all text-gray-800 placeholder:text-gray-400"
                                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                                 />
                             </div>
@@ -97,11 +97,11 @@ function SignupContent() {
                                     type="button"
                                     onClick={() => setFormData({ ...formData, role: 'customer' })}
                                     className={`p-2.5 rounded-xl border transition-all flex items-center justify-center gap-2 ${formData.role === 'customer'
-                                        ? 'border-[#21492f] bg-[#21492f]/5 shadow-sm ring-1 ring-[#21492f]'
+                                        ? 'border-[#214a32] bg-[#214a32]/5 shadow-sm ring-1 ring-[#214a32]'
                                         : 'border-gray-200 bg-white hover:border-gray-300'}`}
                                 >
-                                    <User size={14} className={formData.role === 'customer' ? 'text-[#21492f]' : 'text-gray-400'} />
-                                    <span className={`text-[10px] font-bold uppercase tracking-wider ${formData.role === 'customer' ? 'text-[#21492f]' : 'text-gray-500'}`}>
+                                    <User size={14} className={formData.role === 'customer' ? 'text-[#214a32]' : 'text-gray-400'} />
+                                    <span className={`text-[10px] font-bold uppercase tracking-wider ${formData.role === 'customer' ? 'text-[#214a32]' : 'text-gray-500'}`}>
                                         Organic Lover
                                     </span>
                                 </button>
@@ -110,11 +110,11 @@ function SignupContent() {
                                     type="button"
                                     onClick={() => setFormData({ ...formData, role: 'doctor' })}
                                     className={`p-2.5 rounded-xl border transition-all flex items-center justify-center gap-2 ${formData.role === 'doctor'
-                                        ? 'border-[#21492f] bg-[#21492f]/5 shadow-sm ring-1 ring-[#21492f]'
+                                        ? 'border-[#214a32] bg-[#214a32]/5 shadow-sm ring-1 ring-[#214a32]'
                                         : 'border-gray-200 bg-white hover:border-gray-300'}`}
                                 >
-                                    <Stethoscope size={14} className={formData.role === 'doctor' ? 'text-[#21492f]' : 'text-gray-400'} />
-                                    <span className={`text-[10px] font-bold uppercase tracking-wider ${formData.role === 'doctor' ? 'text-[#21492f]' : 'text-gray-500'}`}>
+                                    <Stethoscope size={14} className={formData.role === 'doctor' ? 'text-[#214a32]' : 'text-gray-400'} />
+                                    <span className={`text-[10px] font-bold uppercase tracking-wider ${formData.role === 'doctor' ? 'text-[#214a32]' : 'text-gray-500'}`}>
                                         Medical Expert
                                     </span>
                                 </button>
@@ -129,7 +129,7 @@ function SignupContent() {
                                     type="password"
                                     required
                                     placeholder="••••••••"
-                                    className="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-xl text-sm focus:ring-2 focus:ring-[#21492f] focus:border-[#21492f] outline-none transition-all text-gray-800 placeholder:text-gray-400"
+                                    className="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-xl text-sm focus:ring-2 focus:ring-[#214a32] focus:border-[#214a32] outline-none transition-all text-gray-800 placeholder:text-gray-400"
                                     onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                                 />
                             </div>
@@ -137,7 +137,7 @@ function SignupContent() {
 
                         <button
                             type="submit"
-                            className="w-full bg-[#21492f] text-white rounded-xl py-2.5 text-sm font-semibold hover:bg-[#183522] transition-colors mt-1"
+                            className="w-full bg-[#214a32] text-white rounded-xl py-2.5 text-sm font-semibold hover:bg-[#183522] transition-colors mt-1"
                         >
                             Create Account
                         </button>
@@ -166,16 +166,16 @@ function SignupContent() {
 
                     <p className="mt-4 text-center text-xs text-gray-600">
                         Already have an account?{" "}
-                        <Link href="/login" className="text-[#21492f] font-semibold hover:underline">
+                        <Link href="/login" className="text-[#214a32] font-semibold hover:underline">
                             Sign In
                         </Link>
                     </p>
                 </div>
 
                 {/* Right Side - Content */}
-                <div className="hidden lg:flex lg:w-1/2 bg-[#21492f] p-8 flex-col justify-center relative bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] bg-blend-soft-light">
+                <div className="hidden lg:flex lg:w-1/2 bg-[#214a32] p-8 flex-col justify-center relative bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] bg-blend-soft-light">
                     {/* Gradient Overlay for subtle texturing */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#183522]/40 to-[#21492f]/40 pointer-events-none"></div>
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#183522]/40 to-[#214a32]/40 pointer-events-none"></div>
 
                     {/* Top Right Logo */}
                     <div className="absolute top-8 right-8 z-20 flex items-center bg-white/10 backdrop-blur-md px-4 py-2 rounded-xl border border-white/20">
@@ -225,7 +225,7 @@ export default function SignupPage() {
     return (
         <Suspense fallback={
             <div className="min-h-screen flex items-center justify-center bg-white">
-                <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-[#22aa4f]"></div>
+                <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-[#214a32]"></div>
             </div>
         }>
             <SignupContent />

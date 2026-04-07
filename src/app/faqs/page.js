@@ -35,7 +35,7 @@ export default function FAQPage() {
     );
 
     return (
-        <div className="min-h-screen bg-[#FDFCF8] font-sans selection:bg-[#22aa4f]/20">
+        <div className="min-h-screen bg-[#FDFCF8] font-sans selection:bg-[#214a32]/20">
             <PageHeader
                 title="FAQs & Support"
                 description="Find answers to your questions and learn how we can help you."
@@ -57,7 +57,7 @@ export default function FAQPage() {
                                 fill
                                 className="object-cover"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-[#21492f] to-transparent/20" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-[#214a32] to-transparent/20" />
                             <div className="absolute bottom-8 left-8 right-8 text-white">
                                 <h3 className="text-2xl font-black mb-2">We're here to help!</h3>
                                 <p className="text-white/80 text-sm">Our support team is available 24/7 to assist you with any questions or medical inquiries.</p>
@@ -65,33 +65,33 @@ export default function FAQPage() {
                         </motion.div>
 
                         <div className="bg-white p-8 rounded-[32px] shadow-[0_20px_50px_rgba(33,73,47,0.06)] border border-stone-100">
-                            <h4 className="text-lg font-black text-[#21492f] mb-6">Quick Contact</h4>
+                            <h4 className="text-lg font-black text-[#214a32] mb-6">Quick Contact</h4>
                             <div className="space-y-6">
                                 <div className="flex items-center gap-4">
-                                    <div className="size-12 rounded-2xl bg-[#22aa4f]/10 flex items-center justify-center text-[#22aa4f]">
+                                    <div className="size-12 rounded-2xl bg-[#214a32]/10 flex items-center justify-center text-[#214a32]">
                                         <MessageCircle size={20} />
                                     </div>
                                     <div>
                                         <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Live Chat</p>
-                                        <p className="font-bold text-[#21492f]">Talk to an agent</p>
+                                        <p className="font-bold text-[#214a32]">Talk to an agent</p>
                                     </div>
                                 </div>
                                 <div className="flex items-center gap-4">
-                                    <div className="size-12 rounded-2xl bg-[#22aa4f]/10 flex items-center justify-center text-[#22aa4f]">
+                                    <div className="size-12 rounded-2xl bg-[#214a32]/10 flex items-center justify-center text-[#214a32]">
                                         <Phone size={20} />
                                     </div>
                                     <div>
                                         <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Phone Support</p>
-                                        <p className="font-bold text-[#21492f]">+92 300 1234567</p>
+                                        <p className="font-bold text-[#214a32]">+92 300 1234567</p>
                                     </div>
                                 </div>
                                 <div className="flex items-center gap-4">
-                                    <div className="size-12 rounded-2xl bg-[#22aa4f]/10 flex items-center justify-center text-[#22aa4f]">
+                                    <div className="size-12 rounded-2xl bg-[#214a32]/10 flex items-center justify-center text-[#214a32]">
                                         <Mail size={20} />
                                     </div>
                                     <div>
                                         <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Email Us</p>
-                                        <p className="font-bold text-[#21492f]">support@ilajbilghiza.com</p>
+                                        <p className="font-bold text-[#214a32]">support@ilajbilghiza.com</p>
                                     </div>
                                 </div>
                             </div>
@@ -101,7 +101,7 @@ export default function FAQPage() {
                     {/* Right Column - FAQs */}
                     <div className="lg:col-span-7">
                         <div className="mb-10">
-                            <h2 className="text-4xl md:text-5xl font-black text-[#21492f] mb-6 tracking-tight">How can we <span className="text-[#22aa4f]">help you?</span></h2>
+                            <h2 className="text-4xl md:text-5xl font-black text-[#214a32] mb-6 tracking-tight">How can we <span className="text-[#214a32]">help you?</span></h2>
 
                             {/* Search Bar */}
                             <div className="relative">
@@ -111,7 +111,7 @@ export default function FAQPage() {
                                     placeholder="Search for answers..."
                                     value={searchQuery}
                                     onChange={(e) => setSearchQuery(e.target.value)}
-                                    className="w-full bg-white border-2 border-stone-100 rounded-full py-5 pl-14 pr-6 focus:outline-none focus:border-[#22aa4f] focus:ring-4 focus:ring-[#22aa4f]/10 transition-all font-bold text-gray-700 shadow-sm"
+                                    className="w-full bg-white border-2 border-stone-100 rounded-full py-5 pl-14 pr-6 focus:outline-none focus:border-[#214a32] focus:ring-4 focus:ring-[#214a32]/10 transition-all font-bold text-gray-700 shadow-sm"
                                 />
                             </div>
                         </div>
@@ -123,16 +123,16 @@ export default function FAQPage() {
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: idx * 0.1 }}
                                     key={idx}
-                                    className={`bg-white rounded-[24px] border-2 transition-all duration-300 overflow-hidden ${activeIndex === idx ? 'border-[#22aa4f] shadow-[0_10px_40px_rgba(34,170,79,0.12)]' : 'border-stone-100 hover:border-gray-300'}`}
+                                    className={`bg-white rounded-[24px] border-2 transition-all duration-300 overflow-hidden ${activeIndex === idx ? 'border-[#214a32] shadow-[0_10px_40px_rgba(34,170,79,0.12)]' : 'border-stone-100 hover:border-gray-300'}`}
                                 >
                                     <button
                                         onClick={() => setActiveIndex(activeIndex === idx ? null : idx)}
                                         className="w-full px-8 py-6 flex items-center justify-between text-left focus:outline-none"
                                     >
-                                        <span className={`text-lg font-black pr-8 ${activeIndex === idx ? 'text-[#21492f]' : 'text-gray-700'}`}>
+                                        <span className={`text-lg font-black pr-8 ${activeIndex === idx ? 'text-[#214a32]' : 'text-gray-700'}`}>
                                             {faq.question}
                                         </span>
-                                        <div className={`shrink-0 size-8 rounded-full flex items-center justify-center transition-all duration-300 ${activeIndex === idx ? 'bg-[#22aa4f] text-white rotate-180' : 'bg-stone-100 text-gray-500'}`}>
+                                        <div className={`shrink-0 size-8 rounded-full flex items-center justify-center transition-all duration-300 ${activeIndex === idx ? 'bg-[#214a32] text-white rotate-180' : 'bg-stone-100 text-gray-500'}`}>
                                             {activeIndex === idx ? <Minus size={16} /> : <Plus size={16} />}
                                         </div>
                                     </button>
@@ -151,20 +151,20 @@ export default function FAQPage() {
 
                                                 {/* If it's the first question, add the bullet points from the original */}
                                                 {idx === 0 && (
-                                                    <ul className="mt-4 grid sm:grid-cols-2 gap-3 text-sm font-bold text-[#21492f]">
-                                                        <li className="flex gap-3 items-center bg-stone-50 p-3 rounded-xl"><div className="w-1.5 h-1.5 rounded-full bg-[#22aa4f]" /> Identify the right foods</li>
-                                                        <li className="flex gap-3 items-center bg-stone-50 p-3 rounded-xl"><div className="w-1.5 h-1.5 rounded-full bg-[#22aa4f]" /> Personalized daily diet plans</li>
-                                                        <li className="flex gap-3 items-center bg-stone-50 p-3 rounded-xl"><div className="w-1.5 h-1.5 rounded-full bg-[#22aa4f]" /> Consult certified doctors</li>
-                                                        <li className="flex gap-3 items-center bg-stone-50 p-3 rounded-xl"><div className="w-1.5 h-1.5 rounded-full bg-[#22aa4f]" /> Minimal medicine dependency</li>
+                                                    <ul className="mt-4 grid sm:grid-cols-2 gap-3 text-sm font-bold text-[#214a32]">
+                                                        <li className="flex gap-3 items-center bg-stone-50 p-3 rounded-xl"><div className="w-1.5 h-1.5 rounded-full bg-[#214a32]" /> Identify the right foods</li>
+                                                        <li className="flex gap-3 items-center bg-stone-50 p-3 rounded-xl"><div className="w-1.5 h-1.5 rounded-full bg-[#214a32]" /> Personalized daily diet plans</li>
+                                                        <li className="flex gap-3 items-center bg-stone-50 p-3 rounded-xl"><div className="w-1.5 h-1.5 rounded-full bg-[#214a32]" /> Consult certified doctors</li>
+                                                        <li className="flex gap-3 items-center bg-stone-50 p-3 rounded-xl"><div className="w-1.5 h-1.5 rounded-full bg-[#214a32]" /> Minimal medicine dependency</li>
                                                     </ul>
                                                 )}
                                                 {/* If it's the AI diet planner question */}
                                                 {idx === 2 && (
                                                     <div className="mt-4 grid grid-cols-2 md:grid-cols-4 gap-2 text-center text-[10px] font-bold">
-                                                        <div className="bg-[#21492f] text-white p-2.5 rounded-xl">Meal plans</div>
-                                                        <div className="bg-[#21492f] text-white p-2.5 rounded-xl">Quantities</div>
-                                                        <div className="bg-[#21492f] text-white p-2.5 rounded-xl">Nutrients</div>
-                                                        <div className="bg-[#21492f] text-white p-2.5 rounded-xl">Progress</div>
+                                                        <div className="bg-[#214a32] text-white p-2.5 rounded-xl">Meal plans</div>
+                                                        <div className="bg-[#214a32] text-white p-2.5 rounded-xl">Quantities</div>
+                                                        <div className="bg-[#214a32] text-white p-2.5 rounded-xl">Nutrients</div>
+                                                        <div className="bg-[#214a32] text-white p-2.5 rounded-xl">Progress</div>
                                                     </div>
                                                 )}
                                             </motion.div>

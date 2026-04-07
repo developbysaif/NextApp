@@ -61,31 +61,31 @@ export default function HealthAIPage() {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 py-12">
+        <div className="min-h-screen bg-gradient-to-br from-[#fdfbf7] to-[#a4d9bc]/10 py-12">
             <div className="container mx-auto px-4 max-w-4xl">
 
                 {/* Header */}
                 <div className="text-center mb-12">
-                    <span className="inline-flex items-center gap-2 bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-semibold mb-4">
+                    <span className="inline-flex items-center gap-2 bg-[#214a32]/10 text-[#214a32] px-4 py-1.5 rounded-full text-[11px] font-black uppercase tracking-widest mb-4">
                         <Sparkles size={16} />
                         Powered by Advanced AI
                     </span>
-                    <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 bg-clip-text text-transparent bg-gradient-to-r from-green-600 to-blue-600">
+                    <h1 className="text-4xl md:text-5xl font-black text-[#214a32] font-outfit uppercase tracking-tight mb-4">
                         Personalized Health & Diet
                     </h1>
-                    <p className="text-gray-600 text-lg">
+                    <p className="text-gray-500 text-lg font-medium">
                         Tell us about your health profile, and our AI Doctor will prescribe the perfect fruits and vegetables for you.
                     </p>
                 </div>
 
                 {/* Input Form */}
-                <div className="bg-white rounded-2xl shadow-xl p-8 mb-12 border border-gray-100">
-                    <form onSubmit={handleSubmit} className="space-y-8">
+                <div className="bg-white rounded-[3rem] shadow-xl p-10 mb-12 border border-gray-100/50">
+                    <form onSubmit={handleSubmit} className="space-y-10">
 
                         {/* Conditions */}
                         <div>
-                            <label className="flex items-center gap-2 text-lg font-semibold text-gray-800 mb-4">
-                                <Activity className="text-red-500" />
+                            <label className="flex items-center gap-2 text-lg font-black text-gray-800 mb-6 uppercase tracking-tight font-outfit">
+                                <Activity className="text-rose-500" />
                                 Do you have any existing health conditions?
                             </label>
                             <div className="flex flex-wrap gap-3">
@@ -94,9 +94,9 @@ export default function HealthAIPage() {
                                         key={item}
                                         type="button"
                                         onClick={() => handleToggle('conditions', item)}
-                                        className={`px-4 py-2 rounded-lg border transition-all ${formData.conditions.includes(item)
-                                            ? 'bg-red-50 border-red-500 text-red-600 font-medium scale-105'
-                                            : 'border-gray-200 text-gray-600 hover:bg-gray-50'
+                                        className={`px-6 py-3 rounded-2xl border transition-all font-bold text-xs uppercase tracking-widest ${formData.conditions.includes(item)
+                                            ? 'bg-rose-50 border-rose-500 text-rose-600 scale-105 shadow-lg shadow-rose-100'
+                                            : 'border-gray-100 text-gray-400 hover:bg-gray-50 hover:text-gray-900 shadow-sm'
                                             }`}
                                     >
                                         {item}
@@ -107,8 +107,8 @@ export default function HealthAIPage() {
 
                         {/* Diet */}
                         <div>
-                            <label className="flex items-center gap-2 text-lg font-semibold text-gray-800 mb-4">
-                                <Heart className="text-green-500" />
+                            <label className="flex items-center gap-2 text-lg font-black text-gray-800 mb-6 uppercase tracking-tight font-outfit">
+                                <Heart className="text-[#214a32]" />
                                 Dietary Preferences
                             </label>
                             <div className="flex flex-wrap gap-3">
@@ -117,9 +117,9 @@ export default function HealthAIPage() {
                                         key={item}
                                         type="button"
                                         onClick={() => handleToggle('diet', item)}
-                                        className={`px-4 py-2 rounded-lg border transition-all ${formData.diet.includes(item)
-                                            ? 'bg-green-50 border-green-500 text-green-600 font-medium scale-105'
-                                            : 'border-gray-200 text-gray-600 hover:bg-gray-50'
+                                        className={`px-6 py-3 rounded-2xl border transition-all font-bold text-xs uppercase tracking-widest ${formData.diet.includes(item)
+                                            ? 'bg-[#a4d9bc]/30 border-[#214a32] text-[#214a32] scale-105 shadow-lg shadow-green-100'
+                                            : 'border-gray-100 text-gray-400 hover:bg-gray-50 hover:text-gray-900 shadow-sm'
                                             }`}
                                     >
                                         {item}
@@ -131,13 +131,13 @@ export default function HealthAIPage() {
                         <button
                             type="submit"
                             disabled={loading}
-                            className="w-full bg-gradient-to-r from-green-600 to-emerald-600 text-white py-4 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                            className="w-full bg-[#214a32] text-white py-5 rounded-[2rem] font-black text-sm uppercase tracking-[0.2em] shadow-xl hover:bg-black hover:shadow-green-900/10 transition-all disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-3"
                         >
                             {loading ? (
                                 <>Processing Health Data...</>
                             ) : (
                                 <>
-                                    <Sparkles className="animate-pulse" />
+                                    <Sparkles size={20} className="animate-pulse" />
                                     Generate My Prescription
                                 </>
                             )}

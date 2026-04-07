@@ -102,11 +102,11 @@ export default function Testimonials() {
             {/* Section Header */}
             <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
                 <div>
-                    <span className="text-[#22aa4f] font-black text-[10px] tracking-[0.25em] uppercase mb-3 block">
+                    <span className="text-[#214a32] font-black text-[10px] tracking-[0.25em] uppercase mb-3 block">
                         Real People, Real Results
                     </span>
-                    <h2 className="text-3xl md:text-4xl font-black text-[#21492f] leading-tight">
-                        What Our <span className="text-[#22aa4f]">Community</span> Says
+                    <h2 className="text-3xl md:text-4xl font-black text-[#214a32] leading-tight">
+                        What Our <span className="text-[#214a32]">Community</span> Says
                     </h2>
                     <p className="text-gray-400 text-sm font-medium mt-2">
                         Hazaron khushaal customers ki gawahi — qudrat ki taqat ka saboot
@@ -120,7 +120,7 @@ export default function Testimonials() {
                         { value: '4.9★', label: 'Average Rating' },
                     ].map((stat, i) => (
                         <div key={i} className="text-center">
-                            <div className="text-2xl font-black text-[#21492f]">{stat.value}</div>
+                            <div className="text-2xl font-black text-[#214a32]">{stat.value}</div>
                             <div className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">{stat.label}</div>
                         </div>
                     ))}
@@ -136,7 +136,7 @@ export default function Testimonials() {
                 {/* Left Arrow */}
                 <button
                     onClick={goPrev}
-                    className={`absolute -left-5 top-1/2 -translate-y-1/2 z-20 w-10 h-10 flex items-center justify-center rounded-full bg-[#21492f] shadow-lg text-white hover:bg-[#22aa4f] transition-all duration-300 ${isHovered ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}
+                    className={`absolute -left-5 top-1/2 -translate-y-1/2 z-20 w-10 h-10 flex items-center justify-center rounded-full bg-[#214a32] shadow-lg text-white hover:bg-[#214a32] transition-all duration-300 ${isHovered ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}
                 >
                     <ChevronLeft size={18} />
                 </button>
@@ -169,7 +169,7 @@ export default function Testimonials() {
 
                                     {/* Product used */}
                                     <div className="mb-5">
-                                        <span className="text-[10px] font-black uppercase tracking-widest text-[#22aa4f] bg-[#edf7ef] px-3 py-1 rounded-full">
+                                        <span className="text-[10px] font-black uppercase tracking-widest text-[#214a32] bg-[#edf7ef] px-3 py-1 rounded-full">
                                             Used: {t.product}
                                         </span>
                                     </div>
@@ -178,12 +178,12 @@ export default function Testimonials() {
                                     <div className="border-t border-stone-100 pt-4 flex items-center gap-3">
                                         {/* Avatar */}
                                         <div className="relative w-11 h-11 rounded-full overflow-hidden bg-[#edf7ef] border-2 border-[#c8e6d0] flex-shrink-0">
-                                            <div className="w-full h-full flex items-center justify-center text-[#21492f] font-black text-lg">
+                                            <div className="w-full h-full flex items-center justify-center text-[#214a32] font-black text-lg">
                                                 {t.name.charAt(0)}
                                             </div>
                                         </div>
                                         <div>
-                                            <h4 className="font-black text-sm text-[#21492f]">{t.name}</h4>
+                                            <h4 className="font-black text-sm text-[#214a32]">{t.name}</h4>
                                             <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">{t.role} • {t.location}</p>
                                         </div>
                                     </div>
@@ -196,7 +196,7 @@ export default function Testimonials() {
                 {/* Right Arrow */}
                 <button
                     onClick={goNext}
-                    className={`absolute -right-5 top-1/2 -translate-y-1/2 z-20 w-10 h-10 flex items-center justify-center rounded-full bg-[#21492f] shadow-lg text-white hover:bg-[#22aa4f] transition-all duration-300 ${isHovered ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}
+                    className={`absolute -right-5 top-1/2 -translate-y-1/2 z-20 w-10 h-10 flex items-center justify-center rounded-full bg-[#214a32] shadow-lg text-white hover:bg-[#214a32] transition-all duration-300 ${isHovered ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}
                 >
                     <ChevronRight size={18} />
                 </button>
@@ -208,7 +208,7 @@ export default function Testimonials() {
                     <button
                         key={i}
                         onClick={() => setCurrent(i)}
-                        className={`transition-all duration-300 rounded-full ${current === i ? 'w-6 h-2 bg-[#22aa4f]' : 'w-2 h-2 bg-stone-300 hover:bg-stone-400'}`}
+                        className={`transition-all duration-300 rounded-full ${current === i ? 'w-6 h-2 bg-[#214a32]' : 'w-2 h-2 bg-stone-300 hover:bg-stone-400'}`}
                     />
                 ))}
             </div>

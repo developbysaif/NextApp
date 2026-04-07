@@ -45,7 +45,7 @@ export default function HealthDashboard() {
 
     const metrics = [
         { name: 'Current Weight', value: '78', unit: 'kg', target: '65', icon: TrendingDown, color: 'text-rose-500', bg: 'bg-rose-50', progress: 13/20 * 100 },
-        { name: 'Steps Taken', value: '8,050', unit: 'steps', target: '10,000', icon: Activity, color: 'text-emerald-500', bg: 'bg-emerald-50', progress: 80.5 },
+        { name: 'Steps Taken', value: '8,050', unit: 'steps', target: '10,000', icon: Activity, color: 'text-[#214a32]', bg: 'bg-[#a4d9bc]', progress: 80.5 },
         { name: 'Sleep Quality', value: '6.5', unit: 'hours', target: '8.0', icon: Moon, color: 'text-indigo-500', bg: 'bg-indigo-50', progress: 81.25 },
         { name: 'Water Intake', value: '1.3', unit: 'L', target: '2.0', icon: Droplets, color: 'text-sky-500', bg: 'bg-sky-50', progress: 65 },
     ];
@@ -66,7 +66,7 @@ export default function HealthDashboard() {
                     <p className="text-gray-500 font-medium">Here's what's happening with your health today.</p>
                 </div>
                 <div className="bg-white px-6 py-2 rounded-2xl shadow-sm border border-gray-100 flex items-center gap-3">
-                    <div className="size-3 rounded-full bg-emerald-500 animate-pulse" />
+                    <div className="size-3 rounded-full bg-[#214a32] animate-pulse" />
                     <span className="text-xs font-black uppercase tracking-widest text-gray-600">Syncing Data...</span>
                 </div>
             </div>
@@ -162,10 +162,10 @@ export default function HealthDashboard() {
                                     <div className="space-y-2">
                                         <div className="flex justify-between text-[10px] font-black uppercase tracking-widest">
                                             <span>Protein</span>
-                                            <span className="text-emerald-600">120g / 93%</span>
+                                            <span className="text-[#214a32]">120g / 93%</span>
                                         </div>
                                         <div className="h-1.5 w-full bg-gray-100 rounded-full overflow-hidden">
-                                            <div className="h-full w-[93%] bg-emerald-500 rounded-full" />
+                                            <div className="h-full w-[93%] bg-[#214a32] rounded-full" />
                                         </div>
                                     </div>
                                     <div className="space-y-2">
@@ -211,10 +211,10 @@ export default function HealthDashboard() {
                                             <p className="text-[10px] text-gray-400 font-bold uppercase">10km Track</p>
                                         </div>
                                     </div>
-                                    <span className="text-xs font-black text-emerald-600">75%</span>
+                                    <span className="text-xs font-black text-[#214a32]">75%</span>
                                 </div>
                                 <div className="h-1.5 w-full bg-gray-100 rounded-full overflow-hidden">
-                                    <div className="h-full w-3/4 bg-emerald-500 rounded-full" />
+                                    <div className="h-full w-3/4 bg-[#214a32] rounded-full" />
                                 </div>
                             </div>
                         </div>
@@ -250,7 +250,7 @@ export default function HealthDashboard() {
                 {/* Sidebar Column */}
                 <div className="space-y-6">
                     {/* Recommended Menu */}
-                    <div className="bg-[#2E7D32] p-8 rounded-[2.5rem] shadow-lg shadow-green-900/10 text-white relative overflow-hidden group">
+                    <div className="bg-[#214a32] p-8 rounded-[2.5rem] shadow-lg shadow-green-900/10 text-white relative overflow-hidden group">
                         <div className="absolute top-0 right-0 p-8 transform translate-x-4 -translate-y-4 text-white/10 rotate-12 group-hover:rotate-0 transition-transform duration-700">
                             <Utensils size={120} strokeWidth={1} />
                         </div>
@@ -275,7 +275,7 @@ export default function HealthDashboard() {
                                     </motion.div>
                                 ))}
                             </div>
-                            <Link href="/dashboard/menu" className="mt-6 flex items-center justify-center gap-2 w-full py-4 bg-white text-green-800 rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-green-50 transition-colors">
+                            <Link href="/dashboard/menu" className="mt-6 flex items-center justify-center gap-2 w-full py-4 bg-white text-green-800 rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-[#a4d9bc] transition-colors">
                                 View Full Menu
                             </Link>
                         </div>
@@ -288,7 +288,7 @@ export default function HealthDashboard() {
                             {[1, 2, 3].map((_, idx) => (
                                 <div key={idx} className="flex gap-4 group cursor-pointer">
                                     <div className="relative">
-                                        <div className="size-10 rounded-2xl bg-gray-50 flex items-center justify-center group-hover:bg-[#2E7D32] group-hover:text-white transition-all">
+                                        <div className="size-10 rounded-2xl bg-gray-50 flex items-center justify-center group-hover:bg-[#214a32] group-hover:text-white transition-all">
                                             <CheckCircle2 size={18} />
                                         </div>
                                         {idx !== 2 && <div className="absolute top-10 left-1/2 w-px h-8 bg-gray-100 -translate-x-1/2" />}

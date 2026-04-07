@@ -18,10 +18,10 @@ export default function InfoBoxSection({
 }) {
     // We are replacing the image icons with Lucide icons to match the green line-art style from the user's reference image.
     const items = [
-        { icon: <Leaf strokeWidth={1.5} className="w-8 h-8 text-[#22aa4f]" />, title: "100% Natural", desc: desc1 },
-        { icon: <Sprout strokeWidth={1.5} className="w-8 h-8 text-[#22aa4f]" />, title: "100% Organic", desc: desc2 },
-        { icon: <ShoppingBag strokeWidth={1.5} className="w-8 h-8 text-[#22aa4f]" />, title: "Fresh Product", desc: desc3 },
-        { icon: <Award strokeWidth={1.5} className="w-8 h-8 text-[#22aa4f]" />, title: "Best Quality", desc: desc4 },
+        { icon: <Leaf strokeWidth={1.5} className="w-8 h-8 text-[#214a32]" />, title: "100% Natural", desc: desc1 },
+        { icon: <Sprout strokeWidth={1.5} className="w-8 h-8 text-[#214a32]" />, title: "100% Organic", desc: desc2 },
+        { icon: <ShoppingBag strokeWidth={1.5} className="w-8 h-8 text-[#214a32]" />, title: "Fresh Product", desc: desc3 },
+        { icon: <Award strokeWidth={1.5} className="w-8 h-8 text-[#214a32]" />, title: "Best Quality", desc: desc4 },
     ];
 
     // Alternatively, if the user really wanted their existing titles, we could use title1, title2. 
@@ -30,22 +30,22 @@ export default function InfoBoxSection({
     // Let's use the exact dummy text from the image for descriptions to make it look exactly like the design.
     const styledItems = [
         {
-            icon: <Leaf strokeWidth={1.5} className="w-8 h-8 text-[#22aa4f]" />,
+            icon: <Leaf strokeWidth={1.5} className="w-8 h-8 text-[#214a32]" />,
             title: "100% Natural",
             desc: "Consectetur adipiscing elit. Enim, nec ut iaculis in. Faucibus arcu varius"
         },
         {
-            icon: <Sprout strokeWidth={1.5} className="w-8 h-8 text-[#22aa4f]" />,
+            icon: <Sprout strokeWidth={1.5} className="w-8 h-8 text-[#214a32]" />,
             title: "100% Organic",
             desc: "Consectetur adipiscing elit. Enim, nec ut iaculis in. Faucibus arcu varius"
         },
         {
-            icon: <ShoppingBag strokeWidth={1.5} className="w-8 h-8 text-[#22aa4f]" />,
+            icon: <ShoppingBag strokeWidth={1.5} className="w-8 h-8 text-[#214a32]" />,
             title: "Fresh Product",
             desc: "Consectetur adipiscing elit. Enim, nec ut iaculis in. Faucibus arcu varius"
         },
         {
-            icon: <Award strokeWidth={1.5} className="w-8 h-8 text-[#22aa4f]" />,
+            icon: <Award strokeWidth={1.5} className="w-8 h-8 text-[#214a32]" />,
             title: "Best Quality",
             desc: "Consectetur adipiscing elit. Enim, nec ut iaculis in. Faucibus arcu varius"
         },
@@ -61,7 +61,7 @@ export default function InfoBoxSection({
                         className="group flex flex-col items-center text-center p-8 rounded-xl transition-all duration-300 hover:bg-white hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] bg-transparent cursor-pointer"
                     >
                         {/* Icon - Circular with border */}
-                        <div className="w-[84px] h-[84px] rounded-full border-[1.5px] border-gray-200 flex items-center justify-center mb-6 group-hover:border-[#22aa4f] transition-colors duration-300 bg-white">
+                        <div className="w-[84px] h-[84px] rounded-full border-[1.5px] border-gray-200 flex items-center justify-center mb-6 group-hover:border-[#214a32] transition-colors duration-300 bg-white">
                             {item.icon}
                         </div>
 
@@ -76,7 +76,7 @@ export default function InfoBoxSection({
                         </p>
 
                         {/* Button */}
-                        <button className="px-8 py-2.5 rounded-full border-[1.5px] border-gray-200 text-gray-800 font-bold text-sm hover:border-[#22aa4f] group-hover:text-[#22aa4f] transition-all duration-300">
+                        <button className="px-8 py-2.5 rounded-full border-[1.5px] border-gray-200 text-gray-800 font-bold text-sm hover:border-[#214a32] group-hover:text-[#214a32] transition-all duration-300">
                             Read More
                         </button>
                     </div>

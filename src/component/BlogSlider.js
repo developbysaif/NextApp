@@ -6,11 +6,11 @@ import Image from 'next/image';
 import { ArrowRight, ArrowLeft, Clock, ChevronRight } from 'lucide-react';
 
 const CAT_COLORS = {
-    'Cardiologist Insights': '#21492f',
-    'Nutritionist Insights': '#22aa4f',
+    'Cardiologist Insights': '#214a32',
+    'Nutritionist Insights': '#214a32',
     'Dermatologist Insights': '#a6763f',
     'Pediatrician Insights': '#8c8c4f',
-    Disease: '#22aa4f', Superfood: '#e67e22', Health: '#2980b9',
+    Disease: '#214a32', Superfood: '#e67e22', Health: '#2980b9',
     Herbal: '#8e44ad', Nutrition: '#c0392b', Sunnah: '#d4a017', Lifestyle: '#16a085',
 };
 
@@ -102,7 +102,7 @@ export default function BlogSlider() {
     }, [isHovered, goNext, blogs.length]);
 
     return (
-        <section className="relative overflow-hidden rounded-3xl" style={{ background: 'linear-gradient(135deg, #1a3a25 0%, #21492f 50%, #1e3d28 100%)' }}>
+        <section className="relative overflow-hidden rounded-3xl" style={{ background: 'linear-gradient(135deg, #1a3a25 0%, #214a32 50%, #1e3d28 100%)' }}>
             {/* Organic Background Patterns */}
             <div className="absolute inset-0 pointer-events-none overflow-hidden">
                 <svg className="absolute -top-32 -right-32 w-[500px] h-[500px] opacity-[0.06]" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -175,7 +175,7 @@ export default function BlogSlider() {
                         {/* Left Arrow */}
                         <button
                             onClick={goPrev}
-                            className={`absolute -left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 flex items-center justify-center rounded-full bg-white/90 shadow-lg text-[#21492f] hover:bg-white transition-all duration-300 ${isHovered ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}`}
+                            className={`absolute -left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 flex items-center justify-center rounded-full bg-white/90 shadow-lg text-[#214a32] hover:bg-white transition-all duration-300 ${isHovered ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}`}
                         >
                             <ArrowLeft size={18} />
                         </button>
@@ -195,7 +195,7 @@ export default function BlogSlider() {
                                     >
                                         <div className="rounded-[20px] overflow-hidden bg-white/10 backdrop-blur-md border border-white/10 shadow-xl hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-500">
                                             {/* Image */}
-                                            <div className="relative w-full aspect-[16/10] overflow-hidden bg-[#21492f]/20">
+                                            <div className="relative w-full aspect-[16/10] overflow-hidden bg-[#214a32]/20">
                                                 <img
                                                     src={post.image || '/header.jpg'}
                                                     alt={post.title}
@@ -205,7 +205,7 @@ export default function BlogSlider() {
                                                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
                                                 <span
                                                     className="absolute top-3 left-3 text-white text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-md"
-                                                    style={{ backgroundColor: CAT_COLORS[post.category] || '#22aa4f' }}
+                                                    style={{ backgroundColor: CAT_COLORS[post.category] || '#214a32' }}
                                                 >
                                                     {post.category || 'Blog'}
                                                 </span>
@@ -237,7 +237,7 @@ export default function BlogSlider() {
                         {/* Right Arrow */}
                         <button
                             onClick={goNext}
-                            className={`absolute -right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 flex items-center justify-center rounded-full bg-white/90 shadow-lg text-[#21492f] hover:bg-white transition-all duration-300 ${isHovered ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'}`}
+                            className={`absolute -right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 flex items-center justify-center rounded-full bg-white/90 shadow-lg text-[#214a32] hover:bg-white transition-all duration-300 ${isHovered ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'}`}
                         >
                             <ArrowRight size={18} />
                         </button>

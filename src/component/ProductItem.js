@@ -13,7 +13,7 @@ import './productcard.css';
 const LeafDecoration = () => (
     <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden rounded-[1.5rem]">
         {/* Blurry Shadow Overlay to match photo aesthetic */}
-        <svg viewBox="0 0 200 300" className="absolute -top-16 -right-16 w-56 h-72 sm:w-64 sm:h-80 text-[#21492f] opacity-[0.06] blur-[12px] transform rotate-[110deg]" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 200 300" className="absolute -top-16 -right-16 w-56 h-72 sm:w-64 sm:h-80 text-[#214a32] opacity-[0.06] blur-[12px] transform rotate-[110deg]" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path d="M 120 300 C 120 250 140 150 150 50" stroke="currentColor" strokeWidth="8" fill="none" strokeLinecap="round" />
             <path d="M 128 250 C 60 230 30 200 40 150 C 80 150 110 190 135 220" />
             <path d="M 140 180 C 70 160 20 120 30 70 C 70 70 110 120 145 150" />

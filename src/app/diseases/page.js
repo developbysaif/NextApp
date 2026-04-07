@@ -34,7 +34,7 @@ export default function DiseasesAndAilmentsPage() {
                     <motion.div 
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
-                        className="inline-flex items-center gap-2 bg-[#B4E567] px-6 py-2 rounded-full border-2 border-white/40 mb-8 font-bold text-[10px] uppercase tracking-[0.25em] text-[#21492f] shadow-2xl"
+                        className="inline-flex items-center gap-2 bg-[#B4E567] px-6 py-2 rounded-full border-2 border-white/40 mb-8 font-bold text-[10px] uppercase tracking-[0.25em] text-[#214a32] shadow-2xl"
                     >
                          Certified Holistic Healing
                     </motion.div>
@@ -65,7 +65,7 @@ export default function DiseasesAndAilmentsPage() {
                         transition={{ delay: 0.3 }}
                         className="flex items-center gap-6"
                     >
-                         <Link href="/book-appointment" className="bg-[#B4E567] text-[#21492f] px-8 py-4 rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-white transition-all shadow-xl">Consult Specialist</Link>
+                         <Link href="/book-appointment" className="bg-[#B4E567] text-[#214a32] px-8 py-4 rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-white transition-all shadow-xl">Consult Specialist</Link>
                          <div className="flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/20 px-6 py-3.5 rounded-2xl">
                              <div className="size-2 bg-[#B4E567] rounded-full animate-pulse" />
                              <span className="text-white text-[10px] font-black uppercase tracking-widest">Active Research Lab</span>
@@ -82,7 +82,7 @@ export default function DiseasesAndAilmentsPage() {
             <section className="pt-16 pb-12 px-4 relative">
                 {/* Subtle leaf background SVG strokes */}
                 <div className="absolute left-0 top-10 opacity-10 pointer-events-none hidden md:block">
-                    <svg width="200" height="400" viewBox="0 0 200 400" fill="none" stroke="#21492f" strokeWidth="2">
+                    <svg width="200" height="400" viewBox="0 0 200 400" fill="none" stroke="#214a32" strokeWidth="2">
                         <path d="M-50,200 Q50,150 100,50 Q120,100 80,180 Q150,250 -20,350" />
                     </svg>
                 </div>
@@ -308,7 +308,7 @@ export default function DiseasesAndAilmentsPage() {
                 >
                     {/* Wavy overlapping SVGs simulating paper cut layers */}
                     <svg className="absolute top-0 left-0 w-full h-[60%] opacity-20 pointer-events-none" viewBox="0 0 100 100" preserveAspectRatio="none">
-                        <path d="M0,0 L100,0 L100,50 C70,100 30,0 0,60 Z" fill="#22aa4f" />
+                        <path d="M0,0 L100,0 L100,50 C70,100 30,0 0,60 Z" fill="#214a32" />
                     </svg>
                     <svg className="absolute bottom-0 left-0 w-full h-[60%] opacity-20 pointer-events-none" viewBox="0 0 100 100" preserveAspectRatio="none">
                         <path d="M0,100 L100,100 L100,50 C70,0 30,100 0,40 Z" fill="#4ade80" />
@@ -326,7 +326,7 @@ export default function DiseasesAndAilmentsPage() {
                         <div className="flex justify-center gap-4">
                             <Link
                                 href="/diet-plan"
-                                className="bg-white text-[#21492f] px-6 py-3 rounded-full text-xs font-bold shadow-md hover:bg-gray-100 transition-colors"
+                                className="bg-white text-[#214a32] px-6 py-3 rounded-full text-xs font-bold shadow-md hover:bg-gray-100 transition-colors"
                             >
                                 Request a nutrition plan
                             </Link>

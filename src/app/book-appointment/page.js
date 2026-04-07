@@ -38,8 +38,8 @@ export default function BookAppointmentPage() {
     if (submitted) {
         return (
             <div className="min-h-screen bg-[#FDF9F1] flex flex-col items-center justify-center p-6 text-center relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#22aa4f]/10 rounded-full blur-[100px]" />
-                <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#22aa4f]/10 rounded-full blur-[100px]" />
+                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#214a32]/10 rounded-full blur-[100px]" />
+                <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#214a32]/10 rounded-full blur-[100px]" />
 
                 <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} className="relative z-10 w-28 h-28 bg-[#1a3b2b]/10 rounded-full flex items-center justify-center text-[#1a3b2b] mb-8 shadow-2xl shadow-[#1a3b2b]/20">
                     <CheckCircle2 size={56} />
@@ -51,7 +51,7 @@ export default function BookAppointmentPage() {
                 <motion.button
                     initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}
                     onClick={() => window.location.href = '/'}
-                    className="bg-[#1a3b2b] text-white px-10 py-5 rounded-2xl font-bold uppercase tracking-widest text-sm shadow-xl shadow-gray-200 hover:-translate-y-1 hover:bg-[#22aa4f] transition-all flex items-center gap-3"
+                    className="bg-[#1a3b2b] text-white px-10 py-5 rounded-2xl font-bold uppercase tracking-widest text-sm shadow-xl shadow-gray-200 hover:-translate-y-1 hover:bg-[#214a32] transition-all flex items-center gap-3"
                 >
                     Back to Home <ChevronRight size={18} />
                 </motion.button>
@@ -60,7 +60,7 @@ export default function BookAppointmentPage() {
     }
 
     return (
-        <div className="min-h-screen bg-[#FDF9F1] text-gray-800 antialiased font-[Poppins] selection:bg-[#22aa4f]/20 pb-32 relative">
+        <div className="min-h-screen bg-[#FDF9F1] text-gray-800 antialiased font-[Poppins] selection:bg-[#214a32]/20 pb-32 relative">
 
             {/* Custom Banner */}
             <div className="px-4 md:px-8 pt-6">
@@ -332,13 +332,13 @@ export default function BookAppointmentPage() {
                                 fill
                                 className="object-cover"
                             />
-                            <div className="absolute right-0 bottom-0 bg-[#22aa4f] text-white rounded-full p-0.5 shadow-sm border border-white z-10">
+                            <div className="absolute right-0 bottom-0 bg-[#214a32] text-white rounded-full p-0.5 shadow-sm border border-white z-10">
                                 <CheckCircle2 size={10} strokeWidth={4} />
                             </div>
                         </div>
                         <div>
                             <h4 className="font-bold text-[#1a3b2b] flex items-center gap-1.5 leading-tight text-sm">
-                                Dr. Ayesha <BadgeCheck size={16} className="text-[#22aa4f]" fill="#e6f5ea" />
+                                Dr. Ayesha <BadgeCheck size={16} className="text-[#214a32]" fill="#e6f5ea" />
                             </h4>
                             <p className="text-[10px] text-[#1a3b2b]/60 font-bold uppercase tracking-widest mt-0.5">Certified Nutritionist</p>
                         </div>

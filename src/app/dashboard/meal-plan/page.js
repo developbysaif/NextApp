@@ -58,7 +58,7 @@ export default function MealPlanPage() {
 
     const mealCategories = [
         { name: 'Breakfast', icon: Clock, color: 'text-amber-500', bg: 'bg-amber-50' },
-        { name: 'Lunch', icon: Utensils, color: 'text-emerald-500', bg: 'bg-emerald-50' },
+        { name: 'Lunch', icon: Utensils, color: 'text-[#214a32]', bg: 'bg-[#a4d9bc]' },
         { name: 'Snack', icon: Zap, color: 'text-rose-500', bg: 'bg-rose-50' },
         { name: 'Dinner', icon: Flame, color: 'text-indigo-500', bg: 'bg-indigo-50' },
     ];
@@ -77,15 +77,15 @@ export default function MealPlanPage() {
                             <button 
                                 key={w}
                                 onClick={() => setCurrentWeek(w)}
-                                className={`px-5 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all ${currentWeek === w ? "bg-[#2E7D32] text-white shadow-md" : "text-gray-400 hover:bg-gray-50"}`}
+                                className={`px-5 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all ${currentWeek === w ? "bg-[#214a32] text-white shadow-md" : "text-gray-400 hover:bg-gray-50"}`}
                             >
                                 {w.split(' ')[1]}
                             </button>
                         ))}
                     </div>
                     <div className="flex items-center gap-2">
-                        <button className="p-4 bg-white border border-gray-100 rounded-2xl text-gray-400 hover:text-green-600 shadow-sm transition-all"><Share2 size={18} /></button>
-                        <button className="p-4 bg-white border border-gray-100 rounded-2xl text-gray-400 hover:text-green-600 shadow-sm transition-all"><Download size={18} /></button>
+                        <button className="p-4 bg-white border border-gray-100 rounded-2xl text-gray-400 hover:text-[#214a32] shadow-sm transition-all"><Share2 size={18} /></button>
+                        <button className="p-4 bg-white border border-gray-100 rounded-2xl text-gray-400 hover:text-[#214a32] shadow-sm transition-all"><Download size={18} /></button>
                     </div>
                 </div>
             </div>
@@ -101,7 +101,7 @@ export default function MealPlanPage() {
                             transition={{ delay: dIdx * 0.05 }}
                             className={`
                                 flex-1 rounded-[3rem] p-6 border transition-all flex flex-col gap-6
-                                ${day.name === 'Tuesday' ? 'bg-[#2E7D32] border-transparent shadow-2xl shadow-green-900/20 text-white' : 'bg-white border-gray-100 shadow-sm'}
+                                ${day.name === 'Tuesday' ? 'bg-[#214a32] border-transparent shadow-2xl shadow-green-900/20 text-white' : 'bg-white border-gray-100 shadow-sm'}
                             `}
                         >
                             <div className="text-center space-y-1">
@@ -114,7 +114,7 @@ export default function MealPlanPage() {
                                     <div key={cIdx} className="space-y-3 group/meal">
                                         <div className="flex items-center justify-between">
                                             <div className="flex items-center gap-2">
-                                                <div className={`p-2 rounded-xl bg-gray-50/10 backdrop-blur-md ${day.name === 'Tuesday' ? 'text-white/80' : 'text-gray-300'} group-hover/meal:text-[#2E7D32] transition-colors`}>
+                                                <div className={`p-2 rounded-xl bg-gray-50/10 backdrop-blur-md ${day.name === 'Tuesday' ? 'text-white/80' : 'text-gray-300'} group-hover/meal:text-[#214a32] transition-colors`}>
                                                     <cat.icon size={14} />
                                                 </div>
                                                 <span className={`text-[9px] font-black uppercase tracking-[0.1em] ${day.name === 'Tuesday' ? 'text-white/50' : 'text-gray-400'}`}>{cat.name}</span>
@@ -145,7 +145,7 @@ export default function MealPlanPage() {
 
             {/* Nutrition Overview & Quick Add */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <div className="lg:col-span-2 bg-[#21492f] p-8 md:p-12 rounded-[3.5rem] text-white flex flex-col md:flex-row items-center gap-10 shadow-2xl shadow-green-900/20 relative overflow-hidden group">
+                <div className="lg:col-span-2 bg-[#214a32] p-8 md:p-12 rounded-[3.5rem] text-white flex flex-col md:flex-row items-center gap-10 shadow-2xl shadow-green-900/20 relative overflow-hidden group">
                     <div className="absolute -right-10 -bottom-10 p-10 text-white/5 rotate-12 transition-transform duration-700 group-hover:rotate-0">
                         <BarChart3 size={150} strokeWidth={1} />
                     </div>
@@ -156,7 +156,7 @@ export default function MealPlanPage() {
                         
                         <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
                             {[
-                                { name: 'Protein', val: '240g/300g', prog: 80, color: 'bg-emerald-500' },
+                                { name: 'Protein', val: '240g/300g', prog: 80, color: 'bg-[#214a32]' },
                                 { name: 'Carbs', val: '450g/500g', prog: 90, color: 'bg-amber-500' },
                                 { name: 'Fats', val: '80g/100g', prog: 80, color: 'bg-rose-500' },
                                 { name: 'Fiber', val: '35g/40g', prog: 87, color: 'bg-indigo-500' },
@@ -184,7 +184,7 @@ export default function MealPlanPage() {
                 <div className="bg-white p-8 rounded-[3.5rem] border border-gray-100 shadow-sm space-y-8">
                     <div className="flex items-center justify-between">
                         <h3 className="text-sm font-black uppercase font-outfit">Quick Add to Grocery</h3>
-                        <label className="text-[10px] font-black uppercase tracking-widest text-[#2E7D32] flex items-center gap-1 cursor-pointer">
+                        <label className="text-[10px] font-black uppercase tracking-widest text-[#214a32] flex items-center gap-1 cursor-pointer">
                             Select All <Settings2 size={12} />
                         </label>
                     </div>
@@ -195,9 +195,9 @@ export default function MealPlanPage() {
                             { name: 'Salmon fillets', cat: 'Protein', checked: false },
                             { name: 'Almond Milk', cat: 'Dairy', checked: true },
                         ].map((item, i) => (
-                            <div key={i} className={`flex items-center justify-between p-4 rounded-2xl border transition-all ${item.checked ? 'bg-green-50 border-green-100 text-[#2E7D32]' : 'bg-white border-gray-50 text-gray-500'}`}>
+                            <div key={i} className={`flex items-center justify-between p-4 rounded-2xl border transition-all ${item.checked ? 'bg-[#a4d9bc] border-green-100 text-[#214a32]' : 'bg-white border-gray-50 text-gray-500'}`}>
                                 <div className="flex items-center gap-3">
-                                    <div className={`size-5 rounded-lg border-2 flex items-center justify-center transition-all ${item.checked ? 'bg-green-500 border-green-500' : 'border-gray-100'}`}>
+                                    <div className={`size-5 rounded-lg border-2 flex items-center justify-center transition-all ${item.checked ? 'bg-[#a4d9bc]0 border-green-500' : 'border-gray-100'}`}>
                                         {item.checked && <CheckCircle2 size={12} className="text-white" />}
                                     </div>
                                     <div>
@@ -209,7 +209,7 @@ export default function MealPlanPage() {
                             </div>
                         ))}
                     </div>
-                    <button className="w-full py-5 bg-gray-50 rounded-2xl text-[10px] font-black uppercase tracking-widest text-gray-500 hover:bg-green-50 hover:text-[#2E7D32] transition-all">
+                    <button className="w-full py-5 bg-gray-50 rounded-2xl text-[10px] font-black uppercase tracking-widest text-gray-500 hover:bg-[#a4d9bc] hover:text-[#214a32] transition-all">
                         Edit Full Grocery List
                     </button>
                 </div>

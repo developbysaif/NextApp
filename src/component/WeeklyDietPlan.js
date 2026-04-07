@@ -62,7 +62,7 @@ export default function WeeklyDietPlan() {
     <section className="bg-[#fcfdfa] py-24 px-6 md:px-12 relative overflow-hidden">
       {/* Decorative Blobs */}
       <div className="absolute top-0 right-0 size-96 bg-[#6bb300]/5 rounded-full blur-[100px] pointer-events-none translate-x-1/2 -translate-y-1/2" />
-      <div className="absolute bottom-0 left-0 size-96 bg-[#22aa4f]/5 rounded-full blur-[100px] pointer-events-none -translate-x-1/2 translate-y-1/2" />
+      <div className="absolute bottom-0 left-0 size-96 bg-[#214a32]/5 rounded-full blur-[100px] pointer-events-none -translate-x-1/2 translate-y-1/2" />
 
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8 mb-20 bg-white/50 backdrop-blur-md p-10 rounded-[3rem] border border-gray-100 shadow-xl">
@@ -70,7 +70,7 @@ export default function WeeklyDietPlan() {
                 <div className="inline-flex items-center gap-2 bg-[#f4f5ee] px-4 py-1.5 rounded-full text-[#6bb300] font-black tracking-widest text-[10px] uppercase mb-4 border border-[#6bb300]/10 shadow-sm">
                     <Sparkles size={14} className="text-[#6bb300]" /> 7-Day Healthy Journey
                 </div>
-                <h2 className="text-4xl md:text-5xl font-black text-[#21492f] leading-tight mb-6">
+                <h2 className="text-4xl md:text-5xl font-black text-[#214a32] leading-tight mb-6">
                     Weekly Nutritional <br /> <span className="text-[#6bb300]">Master Plan</span>
                 </h2>
                 <p className="text-lg text-gray-600 font-medium leading-relaxed italic border-l-4 border-[#6bb300] pl-6 py-2">
@@ -84,7 +84,7 @@ export default function WeeklyDietPlan() {
                     <p className="font-black text-2xl uppercase">21</p>
                     <p className="text-[10px] font-black tracking-widest uppercase">Unique Meals</p>
                 </div>
-                <div className="bg-[#21492f] text-white p-8 rounded-[2.5rem] shadow-2xl flex flex-col items-center justify-center text-center transform rotate-3 hover:rotate-0 transition-transform duration-500">
+                <div className="bg-[#214a32] text-white p-8 rounded-[2.5rem] shadow-2xl flex flex-col items-center justify-center text-center transform rotate-3 hover:rotate-0 transition-transform duration-500">
                     <Leaf size={48} className="mb-4 text-[#6bb300]" />
                     <p className="font-black text-2xl uppercase">100%</p>
                     <p className="text-[10px] font-black tracking-widest uppercase">Organic Focus</p>
@@ -129,7 +129,7 @@ export default function WeeklyDietPlan() {
                     {dietPlan[activeDay].day.charAt(0)}
                 </div>
                 <div>
-                    <h3 className="text-3xl font-black text-[#21492f] uppercase tracking-tight">{dietPlan[activeDay].day} Schedule</h3>
+                    <h3 className="text-3xl font-black text-[#214a32] uppercase tracking-tight">{dietPlan[activeDay].day} Schedule</h3>
                     <p className="text-[#6bb300] font-black text-[10px] uppercase tracking-[0.3em] mt-1">Recommended by Specialists</p>
                 </div>
              </div>
@@ -142,7 +142,7 @@ export default function WeeklyDietPlan() {
                   </div>
                   <div className="flex-1">
                     <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#6bb300] mb-1 block">07:00 AM - Breakfast</span>
-                    <h4 className="text-xl font-bold text-[#21492f] group-hover/item:text-[#6bb300] transition-colors">{dietPlan[activeDay].breakfast}</h4>
+                    <h4 className="text-xl font-bold text-[#214a32] group-hover/item:text-[#6bb300] transition-colors">{dietPlan[activeDay].breakfast}</h4>
                   </div>
                   <div className="hidden md:flex items-center gap-2 text-[#6bb300] font-black text-[10px] opacity-0 group-hover/item:opacity-100 transition-opacity uppercase tracking-widest">
                     Pure Energy <Check size={16} />
@@ -156,7 +156,7 @@ export default function WeeklyDietPlan() {
                   </div>
                   <div className="flex-1">
                     <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#6bb300] mb-1 block">01:00 PM - Lunch</span>
-                    <h4 className="text-xl font-bold text-[#21492f] group-hover/item:text-[#6bb300] transition-colors">{dietPlan[activeDay].lunch}</h4>
+                    <h4 className="text-xl font-bold text-[#214a32] group-hover/item:text-[#6bb300] transition-colors">{dietPlan[activeDay].lunch}</h4>
                   </div>
                   <div className="hidden md:flex items-center gap-2 text-[#6bb300] font-black text-[10px] opacity-0 group-hover/item:opacity-100 transition-opacity uppercase tracking-widest">
                     Nutrient Power <Check size={16} />
@@ -170,7 +170,7 @@ export default function WeeklyDietPlan() {
                   </div>
                   <div className="flex-1">
                     <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#6bb300] mb-1 block">08:00 PM - Dinner</span>
-                    <h4 className="text-xl font-bold text-[#21492f] group-hover/item:text-[#6bb300] transition-colors">{dietPlan[activeDay].dinner}</h4>
+                    <h4 className="text-xl font-bold text-[#214a32] group-hover/item:text-[#6bb300] transition-colors">{dietPlan[activeDay].dinner}</h4>
                   </div>
                   <div className="hidden md:flex items-center gap-2 text-[#6bb300] font-black text-[10px] opacity-0 group-hover/item:opacity-100 transition-opacity uppercase tracking-widest">
                     Easy Digest <Check size={16} />

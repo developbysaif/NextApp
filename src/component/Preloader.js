@@ -53,7 +53,7 @@ export default function Preloader() {
               initial={{ width: 0 }}
               animate={{ width: "100%" }}
               transition={{ duration: 2.2, ease: "easeInOut" }}
-              className="h-full rounded-full bg-gradient-to-r from-[#f5c518] to-[#22aa4f]"
+              className="h-full rounded-full bg-gradient-to-r from-[#f5c518] to-[#214a32]"
             />
           </div>
 
@@ -62,7 +62,7 @@ export default function Preloader() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 }}
-            className="relative z-10 mt-8 text-[#21492f] font-black uppercase tracking-[0.4em] text-xs"
+            className="relative z-10 mt-8 text-[#214a32] font-black uppercase tracking-[0.4em] text-xs"
           >
             Organic Healing
           </motion.p>

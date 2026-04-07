@@ -9,7 +9,7 @@ import { ChevronRight, Home } from 'lucide-react';
 export default function PageHeader({ title, description, backgroundImage, titleClassName = "", breadcrumbClassName = "" }) {
     return (
         <header
-            className="relative bg-[#21492f] text-white w-full min-h-[200px] md:min-h-[280px] overflow-hidden"
+            className="relative bg-[#214a32] text-white w-full min-h-[200px] md:min-h-[280px] overflow-hidden"
         >
             {/* Background Image */}
             {backgroundImage ? (
@@ -21,10 +21,10 @@ export default function PageHeader({ title, description, backgroundImage, titleC
                         className="object-cover"
                         priority
                     />
-                    <div className="absolute inset-0 bg-[#21492f]/70 backdrop-blur-[2px]"></div>
+                    <div className="absolute inset-0 bg-[#214a32]/70 backdrop-blur-[2px]"></div>
                 </>
             ) : (
-                <div className="absolute inset-0 bg-[#21492f]"></div>
+                <div className="absolute inset-0 bg-[#214a32]"></div>
             )}
 
             <div className="relative z-10 flex flex-col items-center justify-center text-center h-full px-4 py-12 md:py-16">
@@ -50,9 +50,9 @@ export default function PageHeader({ title, description, backgroundImage, titleC
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.2 }}
-                    className={`flex items-center gap-2 text-xs font-bold px-5 py-2 rounded-full shadow-md ${breadcrumbClassName || 'text-[#21492f] bg-white/95'}`}
+                    className={`flex items-center gap-2 text-xs font-bold px-5 py-2 rounded-full shadow-md ${breadcrumbClassName || 'text-[#214a32] bg-white/95'}`}
                 >
-                    <Link href="/" className="flex items-center gap-1.5 hover:text-[#22aa4f] transition-colors">
+                    <Link href="/" className="flex items-center gap-1.5 hover:text-[#214a32] transition-colors">
                         <Home size={12} />
                         <span>Home</span>
                     </Link>

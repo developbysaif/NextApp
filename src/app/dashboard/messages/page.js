@@ -114,7 +114,7 @@ export default function MessagesPage() {
                 
                 <div className="relative mb-6">
                     <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={16} />
-                    <input type="text" placeholder="Search name, chat, etc" className="w-full bg-[#FDFBF7] border border-gray-100 rounded-[1.2rem] py-3.5 pl-11 pr-10 text-[11px] font-bold text-gray-700 focus:outline-none focus:ring-1 focus:ring-[#B4E567]" />
+                    <input type="text" placeholder="Search name, chat, etc" className="w-full bg-[#FDFBF7] border border-gray-100 rounded-[1.2rem] py-3.5 pl-11 pr-10 text-[11px] font-bold text-gray-700 focus:outline-none focus:ring-1 focus:ring-[#a4d9bc]" />
                     <SlidersHorizontal size={14} strokeWidth={2.5} className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 cursor-pointer hover:text-gray-900" />
                 </div>
 
@@ -124,7 +124,7 @@ export default function MessagesPage() {
                             key={contact.id} 
                             onClick={() => setActiveContactId(contact.id)}
                             className={`flex items-center gap-3 p-3 rounded-2xl cursor-pointer transition-all border border-transparent
-                                ${activeContactId === contact.id ? 'bg-[#FF9F43]/10 border-[#FF9F43]/20' : 'hover:bg-gray-50'}`}
+                                ${activeContactId === contact.id ? 'bg-[#214a32]/10 border-[#214a32]/20' : 'hover:bg-gray-50'}`}
                         >
                             <img src={contact.avatar} className="w-12 h-12 rounded-full object-cover shrink-0 bg-gray-100" />
                             <div className="flex-1 min-w-0">
@@ -135,7 +135,7 @@ export default function MessagesPage() {
                                     <p className={`text-[10px] truncate ${activeContactId===contact.id ? 'text-gray-900 font-bold' : 'text-gray-500 font-medium'}`}>{contact.text}</p>
                                     <div className="flex flex-col items-end gap-1">
                                         <span className="text-[9px] font-bold text-gray-400 whitespace-nowrap">{contact.time}</span>
-                                        {contact.unread > 0 && <span className="w-[18px] h-[18px] rounded-full bg-[#FF9F43] text-white flex items-center justify-center text-[9px] font-bold">{contact.unread}</span>}
+                                        {contact.unread > 0 && <span className="w-[18px] h-[18px] rounded-full bg-[#214a32] text-white flex items-center justify-center text-[9px] font-bold">{contact.unread}</span>}
                                     </div>
                                 </div>
                             </div>
@@ -144,7 +144,7 @@ export default function MessagesPage() {
                 </div>
 
                 <div className="absolute bottom-6 left-6 right-6">
-                     <button className="w-full bg-[#B4E567] text-gray-900 text-xs font-bold py-4 rounded-[1.2rem] hover:bg-[#a6d85a] transition-all shadow-sm">
+                     <button className="w-full bg-[#a4d9bc] text-gray-900 text-xs font-bold py-4 rounded-[1.2rem] hover:bg-[#a6d85a] transition-all shadow-sm">
                          NEW MESSAGE
                      </button>
                 </div>
@@ -160,7 +160,7 @@ export default function MessagesPage() {
                     </div>
                     <div className="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center text-gray-400 cursor-pointer hover:bg-gray-50 border border-gray-100 transition-colors relative">
                         <Bell size={18} />
-                        <span className="absolute top-2.5 right-2 w-2 h-2 bg-[#FF9F43] rounded-full border border-white"></span>
+                        <span className="absolute top-2.5 right-2 w-2 h-2 bg-[#214a32] rounded-full border border-white"></span>
                     </div>
                     <div className="bg-white rounded-full py-1.5 pl-1.5 pr-4 flex items-center gap-3 shadow-sm border border-gray-100 cursor-pointer">
                         <img src="https://i.pravatar.cc/150?u=adam" alt="Adam" className="w-8 h-8 rounded-full object-cover bg-gray-100" />
@@ -184,7 +184,7 @@ export default function MessagesPage() {
                     <div className="flex items-center gap-2">
                         <button className="w-9 h-9 rounded-xl bg-gray-50 flex items-center justify-center text-gray-500 hover:text-gray-900 hover:bg-gray-100 transition-colors"><Phone size={16} strokeWidth={2.5}/></button>
                         <button className="w-9 h-9 rounded-xl bg-gray-50 flex items-center justify-center text-gray-500 hover:text-gray-900 hover:bg-gray-100 transition-colors"><Video size={16} strokeWidth={2.5}/></button>
-                        <button className="w-9 h-9 rounded-xl bg-[#B4E567] flex items-center justify-center text-gray-900 shadow-sm"><PanelRight size={16} strokeWidth={2.5}/></button>
+                        <button className="w-9 h-9 rounded-xl bg-[#a4d9bc] flex items-center justify-center text-gray-900 shadow-sm"><PanelRight size={16} strokeWidth={2.5}/></button>
                     </div>
                 </div>
 
@@ -198,7 +198,7 @@ export default function MessagesPage() {
                             <div key={msg.id} className={`flex flex-col mb-4 w-full ${msg.isMe ? 'items-end' : 'items-start'}`}>
                                 <div className="flex items-end gap-2 max-w-[80%]">
                                     <div className={`p-5 text-[11px] font-bold leading-relaxed shadow-sm
-                                        ${msg.isMe ? 'bg-[#FFD166] text-gray-900 rounded-[1.5rem] rounded-br-[0.5rem]' : 'bg-white text-gray-700 border border-gray-100 rounded-[1.5rem] rounded-bl-[0.5rem]'}
+                                        ${msg.isMe ? 'bg-[#989a69] text-gray-900 rounded-[1.5rem] rounded-br-[0.5rem]' : 'bg-white text-gray-700 border border-gray-100 rounded-[1.5rem] rounded-bl-[0.5rem]'}
                                     `}>
                                         {msg.text}
                                     </div>
@@ -228,7 +228,7 @@ export default function MessagesPage() {
                              placeholder="Type a message.." 
                              className="w-full bg-transparent border-none text-[11px] font-bold text-gray-700 focus:outline-none focus:ring-0 py-3"
                          />
-                         <button type="submit" disabled={!inputMsg.trim()} className="shrink-0 bg-[#B4E567] text-gray-900 px-6 py-3 rounded-xl text-[11px] font-bold flex items-center gap-2 hover:bg-[#a6d85a] transition-all disabled:opacity-50 disabled:cursor-not-allowed">
+                         <button type="submit" disabled={!inputMsg.trim()} className="shrink-0 bg-[#a4d9bc] text-gray-900 px-6 py-3 rounded-xl text-[11px] font-bold flex items-center gap-2 hover:bg-[#a6d85a] transition-all disabled:opacity-50 disabled:cursor-not-allowed">
                              Send <Send size={14} />
                          </button>
                      </form>
@@ -245,7 +245,7 @@ export default function MessagesPage() {
                  <div className="flex flex-col items-center mb-8 px-8">
                      <img src={activeContact.avatar} className="w-20 h-20 rounded-full object-cover mb-4 border-2 border-white shadow-sm" />
                      <h2 className="text-lg font-bold text-gray-900 leading-tight mb-2">{activeContact.name}</h2>
-                     <div className="bg-[#B4E567]/20 text-[#6a8c35] px-4 py-1.5 rounded-lg text-[9px] font-bold tracking-wide">
+                     <div className="bg-[#a4d9bc]/20 text-[#214a32] px-4 py-1.5 rounded-lg text-[9px] font-bold tracking-wide">
                          {activeContact.role}
                      </div>
                  </div>
@@ -287,21 +287,21 @@ export default function MessagesPage() {
                      </div>
                      <div className="space-y-3 w-full">
                          <div className="flex gap-3 items-center w-full group cursor-pointer hover:bg-gray-50 p-2 -ml-2 rounded-xl transition-colors">
-                             <div className="p-2.5 bg-[#B4E567]/20 text-[#6a8c35] rounded-xl shrink-0"><FileText size={16} strokeWidth={2.5} /></div>
+                             <div className="p-2.5 bg-[#a4d9bc]/20 text-[#214a32] rounded-xl shrink-0"><FileText size={16} strokeWidth={2.5} /></div>
                              <div className="flex-1 min-w-0">
                                  <h4 className="text-[10px] font-bold text-gray-900 truncate">Customized workout plan.pdf</h4>
                                  <span className="text-[9px] font-bold text-gray-400">2.5 mb</span>
                              </div>
                          </div>
                          <div className="flex gap-3 items-center w-full group cursor-pointer hover:bg-gray-50 p-2 -ml-2 rounded-xl transition-colors">
-                             <div className="p-2.5 bg-[#B4E567]/20 text-[#6a8c35] rounded-xl shrink-0"><FileText size={16} strokeWidth={2.5} /></div>
+                             <div className="p-2.5 bg-[#a4d9bc]/20 text-[#214a32] rounded-xl shrink-0"><FileText size={16} strokeWidth={2.5} /></div>
                              <div className="flex-1 min-w-0">
                                  <h4 className="text-[10px] font-bold text-gray-900 truncate">Nutritional guide for muscle rec...</h4>
                                  <span className="text-[9px] font-bold text-gray-400">1.45 mb</span>
                              </div>
                          </div>
                          <div className="flex gap-3 items-center w-full group cursor-pointer hover:bg-gray-50 p-2 -ml-2 rounded-xl transition-colors">
-                             <div className="p-2.5 bg-[#FFD166]/20 text-[#e6a800] rounded-xl shrink-0"><FileText size={16} strokeWidth={2.5} /></div>
+                             <div className="p-2.5 bg-[#989a69]/20 text-[#e6a800] rounded-xl shrink-0"><FileText size={16} strokeWidth={2.5} /></div>
                              <div className="flex-1 min-w-0">
                                  <h4 className="text-[10px] font-bold text-gray-900 truncate">Weekly progress report.xls</h4>
                                  <span className="text-[9px] font-bold text-gray-400">1.96 mb</span>
@@ -330,7 +330,7 @@ export default function MessagesPage() {
                              <MoreHorizontal size={14} className="text-gray-400 shrink-0" />
                          </div>
                          <div className="flex items-center gap-3 w-full bg-[#FDFBF7] p-3 rounded-xl border border-gray-100 hover:border-gray-200 cursor-pointer transition-colors shadow-sm">
-                             <Youtube size={14} className="text-[#B4E567] shrink-0" />
+                             <Youtube size={14} className="text-[#a4d9bc] shrink-0" />
                              <span className="text-[10px] font-bold text-gray-900 truncate flex-1 leading-none pt-0.5">Alex Foster Fitness Tips</span>
                              <MoreHorizontal size={14} className="text-gray-400 shrink-0" />
                          </div>

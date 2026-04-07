@@ -50,7 +50,7 @@ export default function CardiologistInsightsPage() {
                     <Heart size={48} className="text-[#A13124]" strokeWidth={1.5} />
                 </div>
                 <div className="absolute bottom-10 right-20 opacity-20 hidden lg:block animate-bounce">
-                    <Stethoscope size={56} className="text-[#21492F]" strokeWidth={1} />
+                    <Stethoscope size={56} className="text-[#214a32]" strokeWidth={1} />
                 </div>
                 <div className="absolute top-20 right-10 opacity-15 hidden lg:block">
                     <div className="w-40 h-40 rounded-full shadow-2xl border-4 border-white overflow-hidden">
@@ -75,7 +75,7 @@ export default function CardiologistInsightsPage() {
                             <Activity className="text-[#E15B3A]" size={24} />
                         </div>
                         <div className="absolute -bottom-6 -right-6 bg-white p-4 rounded-3xl shadow-lg border border-[#F4F4EB]">
-                            <Heart className="text-[#22AA4F]" size={24} />
+                            <Heart className="text-[#214a32]" size={24} />
                         </div>
 
                         <h1 className="text-4xl md:text-6xl font-serif font-black text-[#142A1D] mb-4 tracking-tight">
@@ -86,7 +86,7 @@ export default function CardiologistInsightsPage() {
                         </p>
 
                         <div className="inline-flex items-center gap-2 bg-white/80 px-6 py-2 rounded-full text-xs font-bold text-[#142A1D] border border-white shadow-sm">
-                            <Link href="/" className="hover:text-[#22AA4F] transition-colors flex items-center gap-1.5">
+                            <Link href="/" className="hover:text-[#214a32] transition-colors flex items-center gap-1.5">
                                 <Home size={14} /> Home
                             </Link>
                             <ChevronRight size={14} className="text-[#D1D9CA]" />
@@ -136,7 +136,7 @@ export default function CardiologistInsightsPage() {
                                         </div>
 
                                         <div className="p-8 flex flex-col flex-1">
-                                            <h3 className="text-xl font-serif font-bold text-[#142A1D] mb-4 leading-snug group-hover:text-[#22AA4F] transition-colors line-clamp-2 uppercase tracking-tight">
+                                            <h3 className="text-xl font-serif font-bold text-[#142A1D] mb-4 leading-snug group-hover:text-[#214a32] transition-colors line-clamp-2 uppercase tracking-tight">
                                                 {article.title}
                                             </h3>
                                             <p className="text-[#4F5E4B] text-sm leading-relaxed mb-6 flex-1 line-clamp-3 font-medium">
@@ -152,7 +152,7 @@ export default function CardiologistInsightsPage() {
                                                         <span className="text-[11px] font-bold text-[#142A1D] uppercase tracking-wide">Expert Insight</span>
                                                     </div>
                                                 </div>
-                                                <Link href={`/blogs/${article.slug}`} className="w-8 h-8 rounded-full bg-[#F4F4EB] flex items-center justify-center text-[#142A1D] hover:bg-[#22AA4F] hover:text-white transition-all shadow-sm">
+                                                <Link href={`/blogs/${article.slug}`} className="w-8 h-8 rounded-full bg-[#F4F4EB] flex items-center justify-center text-[#142A1D] hover:bg-[#214a32] hover:text-white transition-all shadow-sm">
                                                     <ArrowRight size={14} />
                                                 </Link>
                                             </div>
@@ -181,7 +181,7 @@ export default function CardiologistInsightsPage() {
                                             <Image src={doc.img} alt={doc.name} fill className="object-cover group-hover:scale-110 transition-transform" />
                                         </div>
                                     ))}
-                                    <div className="w-14 h-14 rounded-full border-4 border-white bg-[#F4F4EB] flex items-center justify-center text-[#142A1D] shadow-lg cursor-pointer hover:bg-[#22AA4F] hover:text-white transition-all">
+                                    <div className="w-14 h-14 rounded-full border-4 border-white bg-[#F4F4EB] flex items-center justify-center text-[#142A1D] shadow-lg cursor-pointer hover:bg-[#214a32] hover:text-white transition-all">
                                         <ChevronRight size={20} />
                                     </div>
                                 </div>
@@ -206,9 +206,9 @@ export default function CardiologistInsightsPage() {
                                     "Contact Us"
                                 ].map((topic, i) => (
                                     <li key={i}>
-                                        <Link href="#" className="group flex items-center justify-between text-sm font-bold text-[#4F5E4B] hover:text-[#22AA4F] transition-colors">
+                                        <Link href="#" className="group flex items-center justify-between text-sm font-bold text-[#4F5E4B] hover:text-[#214a32] transition-colors">
                                             <span className="leading-tight">{topic}</span>
-                                            <ArrowRight size={14} className="opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all text-[#22AA4F]" />
+                                            <ArrowRight size={14} className="opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all text-[#214a32]" />
                                         </Link>
                                     </li>
                                 ))}
@@ -219,7 +219,7 @@ export default function CardiologistInsightsPage() {
                         <div className="bg-white p-10 rounded-[40px] shadow-sm border border-[#F4F4EB]">
                             <h3 className="text-xl font-serif font-bold text-[#142A1D] mb-8">Filter by Topic</h3>
                             <div className="relative">
-                                <select className="w-full bg-[#F4F4EB] border-2 border-transparent rounded-2xl px-6 py-4 text-sm font-bold text-[#142A1D] appearance-none focus:bg-white focus:border-[#22AA4F] outline-none transition-all shadow-inner">
+                                <select className="w-full bg-[#F4F4EB] border-2 border-transparent rounded-2xl px-6 py-4 text-sm font-bold text-[#142A1D] appearance-none focus:bg-white focus:border-[#214a32] outline-none transition-all shadow-inner">
                                     <option>All Topic</option>
                                     <option>Hypertension</option>
                                     <option>Diet</option>

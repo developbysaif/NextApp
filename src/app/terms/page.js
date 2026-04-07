@@ -61,7 +61,7 @@ export default function TermsAndConditions() {
                                     IlajBilGhiza is a platform for nutritional guidance and organic food. Content provided by our AI, blogs, or product descriptions is for informational purposes only.
                                 </p>
                                 <div className="bg-[#EFECE0] p-6 md:p-8 rounded-[20px] shadow-sm text-gray-700 border border-white/50">
-                                    <ul className="list-disc list-inside space-y-3 marker:text-[#21492f]">
+                                    <ul className="list-disc list-inside space-y-3 marker:text-[#214a32]">
                                         <li className="leading-relaxed font-medium">We do not provide medical diagnosis or treatment.</li>
                                         <li className="leading-relaxed font-medium">Always consult a qualified healthcare provider for any medical condition.</li>
                                         <li className="leading-relaxed font-medium">Do not disregard professional medical advice because of something you have read on this site.</li>
@@ -85,7 +85,7 @@ export default function TermsAndConditions() {
                                 <p className="text-gray-700 leading-relaxed mb-5 font-medium">
                                     To use certain features like the AI Diet Planner or to place an order, you may be required to register an account. You agree to:
                                 </p>
-                                <ul className="list-disc list-inside space-y-3 text-gray-700 marker:text-[#21492f]">
+                                <ul className="list-disc list-inside space-y-3 text-gray-700 marker:text-[#214a32]">
                                     <li className="leading-relaxed font-medium">Provide accurate and current information.</li>
                                     <li className="leading-relaxed font-medium">Maintain the security of your password.</li>
                                     <li className="leading-relaxed font-medium">Accept responsibility for all activities that occur under your account.</li>
@@ -168,7 +168,7 @@ export default function TermsAndConditions() {
                                     06. Contact Information
                                 </h2>
                                 <p className="text-gray-700 leading-relaxed font-medium">
-                                    Questions about the Terms of Service should be sent to us at <strong className="text-[#21492f] cursor-pointer hover:underline">support@ilajbilghiza.com</strong>.
+                                    Questions about the Terms of Service should be sent to us at <strong className="text-[#214a32] cursor-pointer hover:underline">support@ilajbilghiza.com</strong>.
                                 </p>
                             </div>
                         </div>

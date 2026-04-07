@@ -163,7 +163,7 @@ function DoctorCard({ doc }) {
                         </Link>
                         <Link
                             href={`/book-appointment?doctor=${doc.id}`}
-                            className="w-full bg-[#22aa4f] text-white rounded-2xl py-4 font-black uppercase tracking-widest text-[10px] flex items-center justify-center gap-2 hover:bg-[#21492f] transition-all shadow-xl shadow-green-200 font-outfit"
+                            className="w-full bg-[#214a32] text-white rounded-2xl py-4 font-black uppercase tracking-widest text-[10px] flex items-center justify-center gap-2 hover:bg-[#214a32] transition-all shadow-xl shadow-green-200 font-outfit"
                         >
                             Appointment <Calendar size={14} />
                         </Link>

@@ -28,12 +28,12 @@ export default function GroceryListPage() {
 
     const stats = [
         { name: 'Estimated Cost', value: '$157.00', trend: '+2.08%', isPositive: false, icon: DollarSign, color: 'text-rose-500', bg: 'bg-rose-50' },
-        { name: 'Total Items', value: '40', trend: 'Items count', isPositive: true, icon: ShoppingCart, color: 'text-[#2E7D32]', bg: 'bg-green-50' },
+        { name: 'Total Items', value: '40', trend: 'Items count', isPositive: true, icon: ShoppingCart, color: 'text-[#214a32]', bg: 'bg-[#a4d9bc]' },
         { name: 'Total Calories', value: '21,615', trend: '-3.56%', isPositive: true, icon: Flame, color: 'text-amber-500', bg: 'bg-amber-50' },
     ];
 
     const breakdown = [
-        { name: 'Protein', percentage: 30, color: 'bg-emerald-500' },
+        { name: 'Protein', percentage: 30, color: 'bg-[#214a32]' },
         { name: 'Grains', percentage: 25, color: 'bg-amber-500' },
         { name: 'Fruits', percentage: 18, color: 'bg-rose-500' },
         { name: 'Veggies', percentage: 15, color: 'bg-indigo-500' },
@@ -68,10 +68,10 @@ export default function GroceryListPage() {
                     <p className="text-gray-500 font-medium tracking-tight">Manage your food budget and nutrition inventory.</p>
                 </div>
                 <div className="flex items-center gap-3">
-                    <button className="bg-[#2E7D32] text-white px-8 py-4 rounded-[2rem] font-black text-xs uppercase tracking-widest flex items-center gap-3 hover:bg-green-900 transition-all shadow-xl shadow-green-900/10">
+                    <button className="bg-[#214a32] text-white px-8 py-4 rounded-[2rem] font-black text-xs uppercase tracking-widest flex items-center gap-3 hover:bg-black transition-all shadow-xl shadow-green-900/10">
                         <Plus size={18} /> Add New Item
                     </button>
-                    <button className="p-4 bg-white border border-gray-100 rounded-2xl text-gray-400 hover:text-green-600 transition-all"><BarChart3 size={20} /></button>
+                    <button className="p-4 bg-white border border-gray-100 rounded-2xl text-gray-400 hover:text-[#214a32] transition-all"><BarChart3 size={20} /></button>
                 </div>
             </div>
 
@@ -88,7 +88,7 @@ export default function GroceryListPage() {
                         <div className="flex-1">
                             <div className="flex items-center justify-between">
                                 <h3 className="text-2xl font-black font-outfit">{stat.value}</h3>
-                                <div className={`flex items-center gap-1 text-[9px] font-black uppercase tracking-widest ${stat.isPositive ? 'text-emerald-500' : 'text-rose-500'}`}>
+                                <div className={`flex items-center gap-1 text-[9px] font-black uppercase tracking-widest ${stat.isPositive ? 'text-[#214a32]' : 'text-rose-500'}`}>
                                     {stat.isPositive ? <TrendingUp size={10} /> : <TrendingDown size={10} />}
                                     {stat.trend}
                                 </div>
@@ -105,7 +105,7 @@ export default function GroceryListPage() {
                     <div className="bg-white p-8 rounded-[3rem] border border-gray-100 shadow-sm">
                         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
                             <div className="relative group/search flex-1">
-                                <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within/search:text-green-600 transition-colors" size={18} />
+                                <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within/search:text-[#214a32] transition-colors" size={18} />
                                 <input 
                                     type="text" 
                                     placeholder="Search your list..." 
@@ -119,12 +119,12 @@ export default function GroceryListPage() {
                                     <button
                                         key={cat}
                                         onClick={() => setActiveCategory(cat)}
-                                        className={`px-5 py-3 rounded-xl text-[9px] font-black uppercase tracking-widest transition-all ${activeCategory === cat ? 'bg-[#2E7D32] text-white' : 'bg-gray-100 text-gray-400 hover:bg-gray-200'}`}
+                                        className={`px-5 py-3 rounded-xl text-[9px] font-black uppercase tracking-widest transition-all ${activeCategory === cat ? 'bg-[#214a32] text-white' : 'bg-gray-100 text-gray-400 hover:bg-gray-200'}`}
                                     >
                                         {cat}
                                     </button>
                                 ))}
-                                <button className="p-3 bg-gray-100 rounded-xl text-gray-400 hover:text-green-600"><Filter size={14} /></button>
+                                <button className="p-3 bg-gray-100 rounded-xl text-gray-400 hover:text-[#214a32]"><Filter size={14} /></button>
                             </div>
                         </div>
 
@@ -160,7 +160,7 @@ export default function GroceryListPage() {
                                                     </div>
                                                 </td>
                                                 <td className="py-6 px-4">
-                                                    <span className="text-[9px] font-black uppercase tracking-widest text-[#2E7D32] px-3 py-1 bg-green-50 rounded-lg">{item.category}</span>
+                                                    <span className="text-[9px] font-black uppercase tracking-widest text-[#214a32] px-3 py-1 bg-[#a4d9bc] rounded-lg">{item.category}</span>
                                                 </td>
                                                 <td className="py-6 px-4 text-[11px] font-black text-gray-500 uppercase">{item.qty}</td>
                                                 <td className="py-6 px-4 text-[11px] font-black text-gray-500 uppercase">{item.calories}</td>
@@ -168,14 +168,14 @@ export default function GroceryListPage() {
                                                 <td className="py-6 px-4 text-right">
                                                     <span className={`
                                                         px-3 py-1 rounded-lg text-[9px] font-black uppercase tracking-widest
-                                                        ${item.status === 'Purchased' ? 'bg-emerald-50 text-emerald-600' : 'bg-amber-50 text-amber-600'}
+                                                        ${item.status === 'Purchased' ? 'bg-[#a4d9bc] text-[#214a32]' : 'bg-amber-50 text-amber-600'}
                                                     `}>
                                                         {item.status}
                                                     </span>
                                                 </td>
                                                 <td className="py-6 px-4 text-right">
                                                     <div className="flex items-center justify-end gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                                                        <button className="p-2 hover:bg-green-50 rounded-lg text-gray-300 hover:text-green-600"><Edit2 size={12} /></button>
+                                                        <button className="p-2 hover:bg-[#a4d9bc] rounded-lg text-gray-300 hover:text-[#214a32]"><Edit2 size={12} /></button>
                                                         <button className="p-2 hover:bg-rose-50 rounded-lg text-gray-300 hover:text-rose-600"><Trash2 size={12} /></button>
                                                     </div>
                                                 </td>
@@ -204,7 +204,7 @@ export default function GroceryListPage() {
                                         <circle 
                                             cx="96" cy="96" r="80" 
                                             fill="transparent" 
-                                            stroke="#2E7D32" 
+                                            stroke="#214a32" 
                                             strokeWidth="24" 
                                             strokeDasharray={502.4} 
                                             strokeDashoffset={502.4 * (1 - 0.7)} 
@@ -237,7 +237,7 @@ export default function GroceryListPage() {
                         </div>
                     </div>
 
-                    <div className="bg-[#2E7D32] p-8 rounded-[3.5rem] shadow-xl shadow-green-900/10 text-white group cursor-pointer relative overflow-hidden">
+                    <div className="bg-[#214a32] p-8 rounded-[3.5rem] shadow-xl shadow-green-900/10 text-white group cursor-pointer relative overflow-hidden">
                          <div className="absolute -right-4 -bottom-4 p-8 text-white/5 rotate-12 group-hover:rotate-0 transition-transform duration-700">
                             <CheckCircle2 size={120} strokeWidth={1} />
                         </div>

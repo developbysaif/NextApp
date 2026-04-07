@@ -141,7 +141,7 @@ export default function ContentPortal() {
                         initial={{ y: -40, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         exit={{ y: -40, opacity: 0 }}
-                        className={`fixed top-6 right-6 z-[200] px-8 py-5 rounded-[2rem] font-black text-xs uppercase tracking-widest shadow-2xl flex items-center gap-3 ${toast.type === 'success' ? 'bg-[#21492f] text-white' : 'bg-red-600 text-white'}`}
+                        className={`fixed top-6 right-6 z-[200] px-8 py-5 rounded-[2rem] font-black text-xs uppercase tracking-widest shadow-2xl flex items-center gap-3 ${toast.type === 'success' ? 'bg-[#214a32] text-white' : 'bg-red-600 text-white'}`}
                     >
                         {toast.type === 'success' ? <CheckCircle2 size={18} /> : <Zap size={18} />}
                         {toast.msg}

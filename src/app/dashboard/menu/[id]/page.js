@@ -49,7 +49,7 @@ export default function BlogDetailPage({ params }) {
 
     if (loading) return (
         <div className="flex min-h-screen items-center justify-center bg-[#FDFBF7]">
-            <div className="animate-spin rounded-full h-12 w-12 border-4 border-[#B4E567] border-t-transparent"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-4 border-[#214a32] border-t-transparent shadow-sm"></div>
         </div>
     );
     
@@ -58,7 +58,7 @@ export default function BlogDetailPage({ params }) {
             <div className="text-6xl mb-4">🥗</div>
             <h1 className="text-2xl font-bold text-gray-900 mb-2">Post not found</h1>
             <p className="text-gray-500 text-sm mb-6">This menu post doesn't exist or was removed.</p>
-            <button onClick={() => router.back()} className="px-6 py-3 bg-[#B4E567] rounded-xl font-bold text-gray-900 hover:bg-[#a6d85a]">← Go Back</button>
+            <button onClick={() => router.back()} className="px-6 py-3 bg-[#214a32] rounded-xl font-bold text-white hover:bg-black transition-all shadow-sm">← Go Back</button>
         </div>
     );
 
@@ -67,7 +67,7 @@ export default function BlogDetailPage({ params }) {
         return (
             <div className="flex gap-1 justify-center mt-2">
                 {[...Array(10)].map((_, i) => (
-                    <div key={i} className={`w-2 h-6 rounded-full ${i < fullBars ? 'bg-[#FF9F43]' : 'bg-gray-200'}`} />
+                    <div key={i} className={`w-2 h-6 rounded-full ${i < fullBars ? 'bg-[#989a69]' : 'bg-gray-200'}`} />
                 ))}
             </div>
         );
@@ -82,15 +82,15 @@ export default function BlogDetailPage({ params }) {
         <div className="font-sans text-gray-800 bg-[#FDFBF7] min-h-screen w-full pb-24">
             
             {/* Sticky Top Nav */}
-            <div className="w-full bg-white/95 backdrop-blur-sm px-6 md:px-10 py-4 sticky top-0 z-50 shadow-sm border-b border-gray-100 flex items-center justify-between">
-                <button onClick={() => router.back()} className="flex items-center gap-2 text-gray-500 hover:text-gray-900 font-bold text-xs transition-colors">
+            <div className="w-full bg-white px-6 md:px-10 py-4 sticky top-0 z-50 shadow-sm border-b border-gray-100 flex items-center justify-between">
+                <button onClick={() => router.back()} className="flex items-center gap-2 text-gray-500 hover:text-[#214a32] font-bold text-xs transition-colors">
                     <ChevronLeft size={18} strokeWidth={2.5}/>
                     <span className="hidden sm:inline">Back to Menu</span>
                 </button>
-                <span className="text-[10px] font-bold tracking-widest uppercase text-gray-400">Nutrigo · Healthy Menu</span>
+                <span className="text-[10px] font-bold tracking-widest uppercase text-gray-400">IlajBilGhiza · Healthy Menu</span>
                 <div className="flex items-center gap-2">
-                    <button className="w-9 h-9 flex items-center justify-center bg-gray-50 rounded-xl hover:bg-gray-100 text-gray-500 hover:text-gray-900 border border-gray-100"><Bookmark size={16} /></button>
-                    <button className="w-9 h-9 flex items-center justify-center bg-gray-50 rounded-xl hover:bg-gray-100 text-gray-500 hover:text-gray-900 border border-gray-100"><Share2 size={16} /></button>
+                    <button className="w-9 h-9 flex items-center justify-center bg-gray-50 rounded-xl hover:bg-gray-100 text-gray-500 hover:text-[#214a32] border border-gray-100 transition-all"><Bookmark size={16} /></button>
+                    <button className="w-9 h-9 flex items-center justify-center bg-gray-50 rounded-xl hover:bg-gray-100 text-gray-500 hover:text-[#214a32] border border-gray-100 transition-all"><Share2 size={16} /></button>
                 </div>
             </div>
 

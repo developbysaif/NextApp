@@ -39,27 +39,27 @@ export default function PediatricianInsightsPage() {
     const specializations = [
         {
             title: "Child Nutrition & Growth",
-            icon: <Milk className="w-8 h-8 text-[#21492F]" />,
+            icon: <Milk className="w-8 h-8 text-[#214a32]" />,
             link: "#"
         },
         {
             title: "Preventive Care & Immunization Support",
-            icon: <ShieldCheck className="w-8 h-8 text-[#21492F]" />,
+            icon: <ShieldCheck className="w-8 h-8 text-[#214a32]" />,
             link: "#"
         },
         {
             title: "Holistic Child Development",
-            icon: <Baby className="w-8 h-8 text-[#21492F]" />,
+            icon: <Baby className="w-8 h-8 text-[#214a32]" />,
             link: "#"
         },
         {
             title: "Organic Allergy Management",
-            icon: <HeartPulse className="w-8 h-8 text-[#21492F]" />,
+            icon: <HeartPulse className="w-8 h-8 text-[#214a32]" />,
             link: "#"
         },
         {
             title: "Behavioral Health & Wellness",
-            icon: <Brain className="w-8 h-8 text-[#21492F]" />,
+            icon: <Brain className="w-8 h-8 text-[#214a32]" />,
             link: "#"
         }
     ];
@@ -77,7 +77,7 @@ export default function PediatricianInsightsPage() {
             {/* Hero Section */}
             <section className="relative h-[400px] flex items-center justify-center overflow-hidden">
                 {/* Background Image with Overlay */}
-                <div className="absolute inset-0 z-0 bg-[#21492F]">
+                <div className="absolute inset-0 z-0 bg-[#214a32]">
                     <img
                         src="https://images.unsplash.com/photo-1589927986089-35812388d1f4?q=80&w=2000&auto=format&fit=crop"
                         alt="Background"
@@ -124,10 +124,10 @@ export default function PediatricianInsightsPage() {
                 <div className="container mx-auto px-4 md:px-6">
                     <div className="bg-[#EFF4E8] rounded-[40px] p-8 md:p-12 border border-[#DBE4D0]">
                         <div className="flex items-center justify-between mb-10">
-                            <h2 className="text-2xl font-black text-[#21492F] uppercase tracking-wider">
+                            <h2 className="text-2xl font-black text-[#214a32] uppercase tracking-wider">
                                 Pediatrician Specialization
                             </h2>
-                            <Link href="#" className="flex items-center gap-1 text-[#21492F] text-xs font-black uppercase tracking-widest hover:underline">
+                            <Link href="#" className="flex items-center gap-1 text-[#214a32] text-xs font-black uppercase tracking-widest hover:underline">
                                 ← View All Specialities
                             </Link>
                         </div>
@@ -142,10 +142,10 @@ export default function PediatricianInsightsPage() {
                                     <div className="mb-4 bg-[#F8FAF5] p-4 rounded-2xl">
                                         {item.icon}
                                     </div>
-                                    <h3 className="text-[#21492F] font-black text-sm md:text-base mb-4 min-h-[40px] flex items-center justify-center leading-tight">
+                                    <h3 className="text-[#214a32] font-black text-sm md:text-base mb-4 min-h-[40px] flex items-center justify-center leading-tight">
                                         {item.title}
                                     </h3>
-                                    <button className="text-[10px] font-black uppercase tracking-widest text-[#21492F] bg-[#F8FAF5] px-4 py-2 rounded-xl hover:bg-[#21492F] hover:text-white transition-all border border-[#21492F]/10">
+                                    <button className="text-[10px] font-black uppercase tracking-widest text-[#214a32] bg-[#F8FAF5] px-4 py-2 rounded-xl hover:bg-[#214a32] hover:text-white transition-all border border-[#214a32]/10">
                                         Read Insights
                                     </button>
                                 </motion.div>
@@ -153,7 +153,7 @@ export default function PediatricianInsightsPage() {
                         </div>
 
                         <div className="mt-10 text-center">
-                            <Link href="#" className="text-[#21492F] font-black text-sm border-b-2 border-[#21492F] pb-1 inline-block uppercase tracking-widest">
+                            <Link href="#" className="text-[#214a32] font-black text-sm border-b-2 border-[#214a32] pb-1 inline-block uppercase tracking-widest">
                                 View all Recent Blogs
                             </Link>
                         </div>
@@ -170,7 +170,7 @@ export default function PediatricianInsightsPage() {
                         <div className="lg:col-span-8 space-y-8">
                             {loading ? (
                                 <div className="flex items-center justify-center py-20">
-                                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#21492F]"></div>
+                                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#214a32]"></div>
                                 </div>
                             ) : blogs.length > 0 ? (
                                 <>
@@ -191,7 +191,7 @@ export default function PediatricianInsightsPage() {
                                                 />
                                             </div>
                                             <div className="p-8 md:p-10 flex flex-col justify-center">
-                                                <h2 className="text-2xl md:text-3xl font-black text-[#21492F] mb-4 leading-tight uppercase">
+                                                <h2 className="text-2xl md:text-3xl font-black text-[#214a32] mb-4 leading-tight uppercase">
                                                     {blogs[0].title}
                                                 </h2>
                                                 <p className="text-[#4F5E4B] text-sm leading-relaxed mb-6 font-medium line-clamp-3">
@@ -201,9 +201,9 @@ export default function PediatricianInsightsPage() {
                                                     <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-[#EFF4E8] bg-gray-50">
                                                         <User size={20} className="m-auto mt-2 text-gray-300" />
                                                     </div>
-                                                    <span className="text-[11px] font-black uppercase tracking-tight text-[#21492F]">Expert Insight</span>
+                                                    <span className="text-[11px] font-black uppercase tracking-tight text-[#214a32]">Expert Insight</span>
                                                 </div>
-                                                <Link href={`/blogs/${blogs[0].slug}`} className="w-fit bg-[#21492F] text-white font-black text-xs uppercase tracking-widest px-8 py-3 rounded-full hover:bg-[#22aa4f] transition-all duration-300">
+                                                <Link href={`/blogs/${blogs[0].slug}`} className="w-fit bg-[#214a32] text-white font-black text-xs uppercase tracking-widest px-8 py-3 rounded-full hover:bg-[#214a32] transition-all duration-300">
                                                     Read More
                                                 </Link>
                                             </div>
@@ -231,11 +231,11 @@ export default function PediatricianInsightsPage() {
                                                         />
                                                     </div>
                                                     <div className="flex flex-col justify-center py-2 overflow-hidden">
-                                                        <h3 className="text-sm font-black text-[#21492F] mb-1 line-clamp-2 leading-snug uppercase tracking-tight">
+                                                        <h3 className="text-sm font-black text-[#214a32] mb-1 line-clamp-2 leading-snug uppercase tracking-tight">
                                                             {post.title}
                                                         </h3>
                                                         <p className="text-[10px] text-[#8D9F91] font-black mb-3">Expert Insight</p>
-                                                        <Link href={`/blogs/${post.slug}`} className="text-[#21492F] text-[10px] font-black uppercase tracking-widest border border-[#21492F]/20 px-3 py-1 rounded-lg w-fit group-hover:bg-[#21492F] group-hover:text-white transition-all">
+                                                        <Link href={`/blogs/${post.slug}`} className="text-[#214a32] text-[10px] font-black uppercase tracking-widest border border-[#214a32]/20 px-3 py-1 rounded-lg w-fit group-hover:bg-[#214a32] group-hover:text-white transition-all">
                                                             Read More
                                                         </Link>
                                                     </div>
@@ -246,7 +246,7 @@ export default function PediatricianInsightsPage() {
                                 </>
                             ) : (
                                 <div className="p-20 text-center bg-gray-50 rounded-[40px] border-2 border-dashed border-gray-200">
-                                    <h3 className="text-xl font-black text-[#21492F] opacity-40 uppercase tracking-widest">No Insights Available Yet</h3>
+                                    <h3 className="text-xl font-black text-[#214a32] opacity-40 uppercase tracking-widest">No Insights Available Yet</h3>
                                     <p className="text-sm font-bold text-gray-400 mt-2 italic">New blogs will appear here once published from the admin panel.</p>
                                 </div>
                             )}
@@ -261,7 +261,7 @@ export default function PediatricianInsightsPage() {
                                 className="bg-white rounded-[40px] border border-[#D1D9CA] overflow-hidden sticky top-32"
                             >
                                 <div className="p-8 border-b border-[#F4F4EB] bg-[#EFF4E8]/50">
-                                    <h2 className="text-xl font-black text-[#21492F] uppercase tracking-widest">Recent Insights</h2>
+                                    <h2 className="text-xl font-black text-[#214a32] uppercase tracking-widest">Recent Insights</h2>
                                 </div>
                                 <div className="p-8 space-y-6">
                                     {sidebarInsights.map((item, idx) => (
@@ -270,7 +270,7 @@ export default function PediatricianInsightsPage() {
                                                 <Image src={item.img} alt={item.title} fill className="object-cover group-hover:scale-110 transition-transform duration-500" />
                                             </div>
                                             <div className="flex flex-col">
-                                                <h3 className="text-sm font-black text-[#21492F] group-hover:text-green-600 transition-colors leading-tight">
+                                                <h3 className="text-sm font-black text-[#214a32] group-hover:text-green-600 transition-colors leading-tight">
                                                     {idx + 1}. {item.title}
                                                 </h3>
                                             </div>

@@ -12,7 +12,7 @@ export default function Subscribe() {
           flex flex-col items-center text-center group">
 
                     {/* Decorative Elements */}
-                    <div className="absolute top-0 left-0 w-72 h-72 bg-[#22aa4f]/5 
+                    <div className="absolute top-0 left-0 w-72 h-72 bg-[#214a32]/5 
         rounded-full -translate-x-1/2 -translate-y-1/2 blur-3xl" />
 
                     <div className="absolute bottom-0 right-0 w-72 h-72 bg-[#a6763f]/5 
@@ -34,18 +34,18 @@ export default function Subscribe() {
 
                         {/* Badge */}
                         <div className="inline-flex items-center gap-2 
-          bg-[#22aa4f]/10 px-4 py-1.5 rounded-full 
-          text-[10px] font-bold tracking-widest text-[#22aa4f] 
-          mb-5 border border-[#22aa4f]/10">
+          bg-[#214a32]/10 px-4 py-1.5 rounded-full 
+          text-[10px] font-bold tracking-widest text-[#214a32] 
+          mb-5 border border-[#214a32]/10">
 
                             <Leaf size={12} />
                             ilajbilghiza Family
                         </div>
 
                         {/* Heading */}
-                        <h2 className="text-3xl md:text-5xl font-black text-[#21492f] 
+                        <h2 className="text-3xl md:text-5xl font-black text-[#214a32] 
           leading-tight mb-5">
-                            Aapki Sehat, <span className="text-[#22aa4f]">Hamara Junoon</span>
+                            Aapki Sehat, <span className="text-[#214a32]">Hamara Junoon</span>
                         </h2>
 
                         {/* Description */}
@@ -65,17 +65,17 @@ export default function Subscribe() {
                                     type="email"
                                     placeholder="Enter your email address"
                                     className="w-full bg-transparent px-4 py-3 
-                text-[#21492f] focus:outline-none text-base 
+                text-[#214a32] focus:outline-none text-base 
                 font-semibold placeholder-gray-400"
                                 />
                             </div>
 
                             {/* Button */}
                             <button
-                                className="bg-[#21492f] text-white px-7 py-3 
+                                className="bg-[#214a32] text-white px-7 py-3 
               font-bold text-xs uppercase tracking-widest 
               rounded-xl flex items-center justify-center gap-2 
-              transition-all hover:bg-[#22aa4f] 
+              transition-all hover:bg-[#214a32] 
               hover:scale-105 active:scale-95">
 
                                 Join Family <Send size={16} />

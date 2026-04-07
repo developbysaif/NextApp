@@ -85,9 +85,9 @@ export default function SpecialtiesPage() {
                     <motion.div 
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="inline-flex items-center gap-2 bg-[#B4E567] px-6 py-2 rounded-full border-2 border-white/40 mb-8 font-bold text-[10px] uppercase tracking-[0.25em] text-[#21492f] shadow-2xl"
+                        className="inline-flex items-center gap-2 bg-[#B4E567] px-6 py-2 rounded-full border-2 border-white/40 mb-8 font-bold text-[10px] uppercase tracking-[0.25em] text-[#214a32] shadow-2xl"
                     >
-                        <Leaf size={14} className="text-[#21492f]" /> Curated Health &amp; Vitality
+                        <Leaf size={14} className="text-[#214a32]" /> Curated Health &amp; Vitality
                     </motion.div>
                     
                     <motion.h1 
@@ -116,7 +116,7 @@ export default function SpecialtiesPage() {
                         className="flex items-center gap-4 bg-white/10 backdrop-blur-2xl border border-white/20 px-8 py-4 rounded-3xl"
                     >
                          <div className="flex -space-x-3">
-                             {[1,2,3].map(i => <div key={i} className="size-8 rounded-full border-2 border-[#21492f] bg-stone-200 overflow-hidden shadow-lg"><img src={`https://i.pravatar.cc/100?u=${i+10}`} className="size-full object-cover" /></div>)}
+                             {[1,2,3].map(i => <div key={i} className="size-8 rounded-full border-2 border-[#214a32] bg-stone-200 overflow-hidden shadow-lg"><img src={`https://i.pravatar.cc/100?u=${i+10}`} className="size-full object-cover" /></div>)}
                          </div>
                          <p className="text-[11px] font-black uppercase tracking-widest text-white">Joined by 2.4k+ Health Enthusiasts</p>
                     </motion.div>
@@ -133,7 +133,7 @@ export default function SpecialtiesPage() {
                     <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 mb-10 border-b border-gray-50 pb-8">
                         <div>
                             <div className="flex items-center gap-3 mb-2">
-                                <span className="bg-[#B4E567]/20 text-[#21492f] p-2 rounded-xl"><Calendar size={18} /></span>
+                                <span className="bg-[#B4E567]/20 text-[#214a32] p-2 rounded-xl"><Calendar size={18} /></span>
                                 <h2 className="text-2xl font-black text-gray-900 tracking-tight">Your Weekly Diet Plan</h2>
                             </div>
                             <p className="text-gray-500 text-sm font-medium">Synced instantly from your diet administrator via our portal.</p>
@@ -142,7 +142,7 @@ export default function SpecialtiesPage() {
                             <div className="flex items-center gap-6 bg-gray-50 px-6 py-4 rounded-3xl border border-gray-100 shadow-inner">
                                 <div className="text-center border-r border-gray-200 pr-6">
                                     <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-0.5">Week Status</p>
-                                    <p className="text-[#22aa4f] font-black text-sm">{currentWeekPlan.status}</p>
+                                    <p className="text-[#214a32] font-black text-sm">{currentWeekPlan.status}</p>
                                 </div>
                                 <div className="text-center border-r border-gray-200 pr-6">
                                     <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-0.5">Duration</p>
@@ -170,11 +170,11 @@ export default function SpecialtiesPage() {
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: idx * 0.1 }}
                                     key={day.id} 
-                                    className="bg-[#FCFAEF] rounded-[2rem] p-6 border border-[#21492f]/5 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group"
+                                    className="bg-[#FCFAEF] rounded-[2rem] p-6 border border-[#214a32]/5 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group"
                                 >
                                     <div className="flex items-center justify-between mb-6 pb-4 border-b border-gray-200/50">
                                         <h4 className="font-black text-gray-900 text-lg">{day.name}</h4>
-                                        <span className={`px-3 py-1 rounded-lg text-[9px] font-bold uppercase tracking-widest ${day.status === 'Completed' ? 'bg-[#B4E567] text-[#21492f]' : day.status === 'Today' ? 'bg-[#FFD166] text-[#856312]' : 'bg-white border border-gray-200 text-gray-500'}`}>
+                                        <span className={`px-3 py-1 rounded-lg text-[9px] font-bold uppercase tracking-widest ${day.status === 'Completed' ? 'bg-[#B4E567] text-[#214a32]' : day.status === 'Today' ? 'bg-[#FFD166] text-[#856312]' : 'bg-white border border-gray-200 text-gray-500'}`}>
                                             {day.status}
                                         </span>
                                     </div>
@@ -195,7 +195,7 @@ export default function SpecialtiesPage() {
                                     </div>
                                     
                                     <div className="mt-8">
-                                         <Link href="/dashboard/meal-plan" className="w-full py-3 bg-white border border-gray-100 rounded-xl flex items-center justify-center gap-2 text-[10px] font-black uppercase tracking-widest text-[#21492f] hover:bg-[#21492f] hover:text-white transition-colors shadow-sm">
+                                         <Link href="/dashboard/meal-plan" className="w-full py-3 bg-white border border-gray-100 rounded-xl flex items-center justify-center gap-2 text-[10px] font-black uppercase tracking-widest text-[#214a32] hover:bg-[#214a32] hover:text-white transition-colors shadow-sm">
                                             View Full Plan <ChevronRight size={14} />
                                          </Link>
                                     </div>
@@ -213,7 +213,7 @@ export default function SpecialtiesPage() {
                         <h2 className="text-3xl font-black text-gray-900 tracking-tight">Hand-Picked Organics</h2>
                         <p className="text-gray-500 font-medium mt-2">Recommended ingredients for your diet regimens.</p>
                     </div>
-                     <Link href="/products" className="hidden md:flex items-center gap-2 text-[#22aa4f] font-bold hover:text-[#1a7a36] transition-colors">
+                     <Link href="/products" className="hidden md:flex items-center gap-2 text-[#214a32] font-bold hover:text-[#1a7a36] transition-colors">
                         Explore Shop <ArrowRight size={18} />
                     </Link>
                 </div>

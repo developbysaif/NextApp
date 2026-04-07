@@ -94,9 +94,9 @@ export default function CalendarPage() {
     };
 
     const typeColors = {
-        meal: { bg: 'bg-[#B4E567]', border: 'border-[#B4E567]', text: 'text-gray-900', badge: 'bg-[#B4E567]/20 text-[#6a8c35]' },
-        physical: { bg: 'bg-[#FFD166]', border: 'border-[#FFD166]', text: 'text-gray-900', badge: 'bg-[#FFD166]/20 text-[#e6a800]' },
-        appointment: { bg: 'bg-[#FF9F43]', border: 'border-[#FF9F43]', text: 'text-white', badge: 'bg-[#FF9F43]/20 text-[#d87c25]' }
+        meal: { bg: 'bg-[#a4d9bc]', border: 'border-[#a4d9bc]', text: 'text-gray-900', badge: 'bg-[#a4d9bc]/20 text-[#214a32]' },
+        physical: { bg: 'bg-[#989a69]', border: 'border-[#989a69]', text: 'text-gray-900', badge: 'bg-[#989a69]/20 text-[#e6a800]' },
+        appointment: { bg: 'bg-[#214a32]', border: 'border-[#214a32]', text: 'text-white', badge: 'bg-[#214a32]/20 text-[#d87c25]' }
     };
 
     const filteredEvents = events.filter(e => filters[e.type]);
@@ -127,7 +127,7 @@ export default function CalendarPage() {
                             <Search size={18} />
                         </div>
                         <div className="bg-white rounded-full py-1.5 pl-1.5 pr-4 flex items-center gap-3 shadow-sm border border-gray-100 cursor-pointer">
-                            <div className="w-8 h-8 rounded-full flex items-center justify-center bg-[#B4E567] text-gray-900 font-bold">{currentUser?.name?.charAt(0) || 'A'}</div>
+                            <div className="w-8 h-8 rounded-full flex items-center justify-center bg-[#a4d9bc] text-gray-900 font-bold">{currentUser?.name?.charAt(0) || 'A'}</div>
                             <div className="flex flex-col">
                                 <span className="text-xs font-bold text-gray-900 leading-tight">{currentUser?.name || 'Adam Vasylenko'}</span>
                                 <span className="text-[10px] text-gray-400 font-medium">Platform User</span>
@@ -141,21 +141,21 @@ export default function CalendarPage() {
                     <div className="bg-white rounded-[1.5rem] p-5 shadow-sm border border-gray-100">
                         <h4 className="text-[11px] font-bold text-gray-400 mb-4 tracking-wide">Total Meal Agendas</h4>
                         <div className="flex items-center gap-3">
-                            <div className="w-10 h-10 rounded-xl bg-[#B4E567] flex items-center justify-center text-gray-900"><Utensils size={18} /></div>
+                            <div className="w-10 h-10 rounded-xl bg-[#a4d9bc] flex items-center justify-center text-gray-900"><Utensils size={18} /></div>
                             <h2 className="text-3xl font-black text-gray-900 leading-none">{events.filter(e => e.type === 'meal').length} <span className="text-sm font-medium text-gray-600">agendas</span></h2>
                         </div>
                     </div>
                     <div className="bg-white rounded-[1.5rem] p-5 shadow-sm border border-gray-100">
                         <h4 className="text-[11px] font-bold text-gray-400 mb-4 tracking-wide">Physical Activities</h4>
                         <div className="flex items-center gap-3">
-                            <div className="w-10 h-10 rounded-xl bg-[#FFD166] flex items-center justify-center text-gray-900"><Activity size={18} /></div>
+                            <div className="w-10 h-10 rounded-xl bg-[#989a69] flex items-center justify-center text-gray-900"><Activity size={18} /></div>
                             <h2 className="text-3xl font-black text-gray-900 leading-none">{events.filter(e => e.type === 'physical').length} <span className="text-sm font-medium text-gray-600">agendas</span></h2>
                         </div>
                     </div>
                     <div className="bg-white rounded-[1.5rem] p-5 shadow-sm border border-gray-100">
                         <h4 className="text-[11px] font-bold text-gray-400 mb-4 tracking-wide">Appointments</h4>
                         <div className="flex items-center gap-3">
-                            <div className="w-10 h-10 rounded-xl bg-[#FF9F43] flex items-center justify-center text-white"><CalendarIcon size={18} /></div>
+                            <div className="w-10 h-10 rounded-xl bg-[#214a32] flex items-center justify-center text-white"><CalendarIcon size={18} /></div>
                             <h2 className="text-3xl font-black text-gray-900 leading-none">{events.filter(e => e.type === 'appointment').length} <span className="text-sm font-medium text-gray-600">agendas</span></h2>
                         </div>
                     </div>
@@ -170,7 +170,7 @@ export default function CalendarPage() {
                     </div>
 
                     <div className="flex items-center gap-4">
-                        <button onClick={() => setIsModalOpen(true)} className="bg-[#B4E567] text-gray-900 px-5 py-2.5 rounded-full text-xs font-bold flex items-center shadow-sm hover:bg-[#a6d85a] transition-all border border-[#a1cb5d]">
+                        <button onClick={() => setIsModalOpen(true)} className="bg-[#a4d9bc] text-gray-900 px-5 py-2.5 rounded-full text-xs font-bold flex items-center shadow-sm hover:bg-[#a6d85a] transition-all border border-[#a1cb5d]">
                             <Plus size={16} className="mr-1"/> New Schedule 
                         </button>
                     </div>
@@ -207,7 +207,7 @@ export default function CalendarPage() {
                                             onClick={() => { if(cell.isCurrent) setSelectedDate(cell.d); }}
                                             className={`min-h-[140px] border-r border-b border-gray-100 p-2 flex flex-col relative cursor-pointer transition-colors ${!cell.isCurrent ? 'bg-gray-50/50 opacity-80 cursor-default' : isSelected ? 'bg-gray-50/80 shadow-inner' : 'hover:bg-gray-50'}`}
                                         >
-                                             <span className={`text-[11px] font-bold z-10 w-6 h-6 flex items-center justify-center rounded-full ${!cell.isCurrent ? 'text-gray-300' : isToday ? 'bg-[#FF9F43] text-white shadow-sm' : isSelected ? 'bg-gray-900 text-white' : 'text-gray-900'} mb-1`}>{cell.d}</span>
+                                             <span className={`text-[11px] font-bold z-10 w-6 h-6 flex items-center justify-center rounded-full ${!cell.isCurrent ? 'text-gray-300' : isToday ? 'bg-[#214a32] text-white shadow-sm' : isSelected ? 'bg-gray-900 text-white' : 'text-gray-900'} mb-1`}>{cell.d}</span>
                                              
                                              <div className="flex-1 overflow-y-auto no-scrollbar space-y-1 mt-1">
                                                  {cellEvents.map(evt => (
@@ -287,21 +287,21 @@ export default function CalendarPage() {
                         <form onSubmit={handleAddEvent} className="space-y-4">
                             <div>
                                 <label className="text-xs font-bold text-gray-500 mb-1 block">Event Title</label>
-                                <input required type="text" value={newEvt.title} onChange={e => setNewEvt({...newEvt, title: e.target.value})} className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm font-medium focus:border-[#B4E567] outline-none" placeholder="e.g. Morning Jog" />
+                                <input required type="text" value={newEvt.title} onChange={e => setNewEvt({...newEvt, title: e.target.value})} className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm font-medium focus:border-[#a4d9bc] outline-none" placeholder="e.g. Morning Jog" />
                             </div>
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
                                     <label className="text-xs font-bold text-gray-500 mb-1 block">Date</label>
-                                    <input required type="date" value={newEvt.date} onChange={e => setNewEvt({...newEvt, date: e.target.value})} className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm font-medium focus:border-[#B4E567] outline-none" />
+                                    <input required type="date" value={newEvt.date} onChange={e => setNewEvt({...newEvt, date: e.target.value})} className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm font-medium focus:border-[#a4d9bc] outline-none" />
                                 </div>
                                 <div>
                                     <label className="text-xs font-bold text-gray-500 mb-1 block">Time</label>
-                                    <input required type="time" value={newEvt.time} onChange={e => setNewEvt({...newEvt, time: e.target.value})} className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm font-medium focus:border-[#B4E567] outline-none" />
+                                    <input required type="time" value={newEvt.time} onChange={e => setNewEvt({...newEvt, time: e.target.value})} className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm font-medium focus:border-[#a4d9bc] outline-none" />
                                 </div>
                             </div>
                             <div>
                                 <label className="text-xs font-bold text-gray-500 mb-1 block">Category</label>
-                                <select value={newEvt.type} onChange={e => setNewEvt({...newEvt, type: e.target.value})} className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm font-medium focus:border-[#B4E567] outline-none cursor-pointer">
+                                <select value={newEvt.type} onChange={e => setNewEvt({...newEvt, type: e.target.value})} className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm font-medium focus:border-[#a4d9bc] outline-none cursor-pointer">
                                     <option value="meal">Meal Planning</option>
                                     <option value="physical">Physical Activity</option>
                                     <option value="appointment">Appointment/Event</option>
@@ -309,13 +309,13 @@ export default function CalendarPage() {
                             </div>
                             <div>
                                 <label className="text-xs font-bold text-gray-500 mb-1 block">Location</label>
-                                <input type="text" value={newEvt.location} onChange={e => setNewEvt({...newEvt, location: e.target.value})} className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm font-medium focus:border-[#B4E567] outline-none" placeholder="e.g. Golden Gym" />
+                                <input type="text" value={newEvt.location} onChange={e => setNewEvt({...newEvt, location: e.target.value})} className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm font-medium focus:border-[#a4d9bc] outline-none" placeholder="e.g. Golden Gym" />
                             </div>
                             <div>
                                 <label className="text-xs font-bold text-gray-500 mb-1 block">Note</label>
-                                <textarea rows="2" value={newEvt.note} onChange={e => setNewEvt({...newEvt, note: e.target.value})} className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm font-medium focus:border-[#B4E567] outline-none" placeholder="Any extra details..." />
+                                <textarea rows="2" value={newEvt.note} onChange={e => setNewEvt({...newEvt, note: e.target.value})} className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm font-medium focus:border-[#a4d9bc] outline-none" placeholder="Any extra details..." />
                             </div>
-                            <button type="submit" className="w-full bg-[#B4E567] text-gray-900 font-bold py-3 rounded-xl mt-4 hover:bg-[#a6d85a] transition-colors shadow-sm">Save Schedule</button>
+                            <button type="submit" className="w-full bg-[#a4d9bc] text-gray-900 font-bold py-3 rounded-xl mt-4 hover:bg-[#a6d85a] transition-colors shadow-sm">Save Schedule</button>
                         </form>
                     </div>
                 </div>

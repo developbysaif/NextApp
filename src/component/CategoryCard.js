@@ -4,8 +4,8 @@ import Link from 'next/link';
 export default function CategoryCard({ title, subtitle, bg, image, href }) {
     // Elegant text color calculation
     const isLightBg = bg === '#ffffff' || bg === '#f8faf9' || bg === '#ffeb3b';
-    const textColor = isLightBg ? 'text-[#21492f]' : 'text-white';
-    const borderColor = isLightBg ? 'border-[#21492f]/20' : 'border-white/30';
+    const textColor = isLightBg ? 'text-[#214a32]' : 'text-white';
+    const borderColor = isLightBg ? 'border-[#214a32]/20' : 'border-white/30';
 
     return (
         <div
@@ -23,7 +23,7 @@ export default function CategoryCard({ title, subtitle, bg, image, href }) {
                 </h2>
                 <Link
                     href={href}
-                    className={`inline-block text-[10px] font-black uppercase tracking-widest border-b-2 ${borderColor} pb-1 hover:border-[#22aa4f] hover:text-[#22aa4f] transition-all mt-auto`}
+                    className={`inline-block text-[10px] font-black uppercase tracking-widest border-b-2 ${borderColor} pb-1 hover:border-[#214a32] hover:text-[#214a32] transition-all mt-auto`}
                 >
                     Browse Now
                 </Link>

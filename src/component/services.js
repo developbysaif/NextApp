@@ -8,10 +8,10 @@ export default function ServicesCards() {
     <section className="bg-[#d9dbc9] py-24 px-6 md:px-12">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <p className="text-[#22aa4f] font-black uppercase tracking-[0.35em] text-[10px] mb-4">
+          <p className="text-[#214a32] font-black uppercase tracking-[0.35em] text-[10px] mb-4">
             Expert Guidance
           </p>
-          <h2 className="text-4xl md:text-5xl font-black text-[#21492f]">
+          <h2 className="text-4xl md:text-5xl font-black text-[#214a32]">
             Our Professional Services
           </h2>
         </div>
@@ -53,8 +53,8 @@ export default function ServicesCards() {
               {/* Curved Corner + Arrow */}
               <div className="absolute bottom-0 right-0 w-24 h-24 bg-[#d9dbc9] rounded-tl-[50px] flex items-center justify-center">
                 <div className="w-12 h-12 rounded-full flex items-center justify-center
-                bg-[#22aa4f] text-white
-                group-hover:bg-white group-hover:text-[#22aa4f]
+                bg-[#214a32] text-white
+                group-hover:bg-white group-hover:text-[#214a32]
                 transition-all duration-500 shadow-lg group-hover:scale-110">
                   <ArrowUpRight size={22} strokeWidth={3} />
                 </div>
@@ -65,4 +65,4 @@ export default function ServicesCards() {
       </div>
     </section>
   );
-}
+}

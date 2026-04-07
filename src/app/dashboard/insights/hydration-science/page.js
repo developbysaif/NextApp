@@ -25,8 +25,8 @@ export default function ArticleDetailPage() {
             {/* Header & Meta */}
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
                 <div className="space-y-6 flex-1">
-                    <Link href="/dashboard/insights" className="flex items-center gap-2 text-xs font-black uppercase tracking-widest text-[#2E7D32] group w-fit">
-                        <div className="p-2 bg-green-50 rounded-lg group-hover:-translate-x-1 transition-transform"><ChevronLeft size={16} /></div>
+                    <Link href="/dashboard/insights" className="flex items-center gap-2 text-xs font-black uppercase tracking-widest text-[#214a32] group w-fit">
+                        <div className="p-2 bg-[#a4d9bc] rounded-lg group-hover:-translate-x-1 transition-transform"><ChevronLeft size={16} /></div>
                         Back to Insights
                     </Link>
                     <h1 className="text-4xl md:text-6xl font-black font-outfit uppercase tracking-tight leading-tight text-gray-900">
@@ -48,8 +48,8 @@ export default function ArticleDetailPage() {
                     </div>
                 </div>
                 <div className="flex items-center gap-3">
-                    <button className="p-5 bg-white border border-gray-100 rounded-[2rem] text-gray-400 hover:text-green-600 hover:shadow-lg transition-all flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em]"><Share2 size={18} /> Share Insight</button>
-                    <button className="p-5 bg-white border border-gray-100 rounded-[2rem] text-gray-400 hover:text-green-600 hover:shadow-lg transition-all"><Bookmark size={20} /></button>
+                    <button className="p-5 bg-white border border-gray-100 rounded-[2rem] text-gray-400 hover:text-[#214a32] hover:shadow-lg transition-all flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em]"><Share2 size={18} /> Share Insight</button>
+                    <button className="p-5 bg-white border border-gray-100 rounded-[2rem] text-gray-400 hover:text-[#214a32] hover:shadow-lg transition-all"><Bookmark size={20} /></button>
                 </div>
             </div>
 
@@ -72,7 +72,7 @@ export default function ArticleDetailPage() {
                         </p>
                         
                         <div className="p-10 md:p-14 bg-gray-50 rounded-[3rem] border border-gray-100 my-16 relative overflow-hidden group">
-                           <div className="absolute -right-6 top-0 p-8 text-green-700/5 rotate-12 transition-transform duration-700 group-hover:rotate-0">
+                           <div className="absolute -right-6 top-0 p-8 text-[#214a32]/5 rotate-12 transition-transform duration-700 group-hover:rotate-0">
                                 <Zap size={150} strokeWidth={1} />
                            </div>
                            <h3 className="text-2xl mb-8 relative z-10">How Much Water Do You Really Need?</h3>
@@ -110,8 +110,8 @@ export default function ArticleDetailPage() {
                                 { title: 'Eat Water-Rich Foods', desc: 'Incorporate watermelon, cucumber, and oranges into your daily diet.' },
                                 { title: 'First Thing in Morning', desc: 'Start your day with two large glasses of water to boost metabolism.' }
                             ].map((tip, i) => (
-                                <div key={i} className="p-8 bg-green-50/50 rounded-[2rem] border border-green-100 group hover:bg-green-50 transition-colors">
-                                    <h4 className="text-sm font-black uppercase text-[#2E7D32] mb-3 flex items-center gap-2">
+                                <div key={i} className="p-8 bg-[#a4d9bc]/50 rounded-[2rem] border border-green-100 group hover:bg-[#a4d9bc] transition-colors">
+                                    <h4 className="text-sm font-black uppercase text-[#214a32] mb-3 flex items-center gap-2">
                                         <CheckCircle2 size={16} /> {tip.title}
                                     </h4>
                                     <p className="text-[10px] font-bold text-green-900/60 leading-relaxed uppercase tracking-widest">{tip.desc}</p>
@@ -127,7 +127,7 @@ export default function ArticleDetailPage() {
 
                     {/* Bottom Actions */}
                     <div className="flex items-center gap-3 pt-12 border-t border-gray-50">
-                        <button className="px-10 py-5 bg-gray-50 rounded-[2.5rem] flex items-center gap-4 text-[10px] font-black uppercase tracking-[0.2em] text-[#2E7D32] hover:bg-green-50 transition-all">
+                        <button className="px-10 py-5 bg-gray-50 rounded-[2.5rem] flex items-center gap-4 text-[10px] font-black uppercase tracking-[0.2em] text-[#214a32] hover:bg-[#a4d9bc] transition-all">
                             <ThumbsUp size={18} fill="currentColor" /> Helpful (2.4k)
                         </button>
                         <button className="px-10 py-5 bg-gray-50 rounded-[2.5rem] flex items-center gap-4 text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 hover:bg-gray-100 transition-all">
@@ -146,7 +146,7 @@ export default function ArticleDetailPage() {
                 <div className="space-y-8">
                     {/* Related Articles */}
                     <div className="bg-white p-8 md:p-10 rounded-[3.5rem] border border-gray-100 shadow-sm space-y-10 group overflow-hidden relative">
-                         <div className="absolute -right-6 top-0 p-8 text-green-700/5 rotate-12 transition-transform duration-700 group-hover:rotate-0">
+                         <div className="absolute -right-6 top-0 p-8 text-[#214a32]/5 rotate-12 transition-transform duration-700 group-hover:rotate-0">
                             <BookOpen size={120} strokeWidth={1} />
                         </div>
                         <h3 className="text-sm font-black font-outfit uppercase tracking-wider relative z-10">Related Insights</h3>
@@ -157,13 +157,13 @@ export default function ArticleDetailPage() {
                                         <img src={`https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=200&h=200&fit=crop`} className="w-full h-full object-cover group-hover/item:scale-110 transition-transform duration-700" />
                                     </div>
                                     <div className="flex flex-col justify-between py-1">
-                                        <h4 className="text-[11px] font-black uppercase tracking-tight leading-tight group-hover/item:text-[#2E7D32] transition-colors">Benefits of Intermittent Fasting</h4>
+                                        <h4 className="text-[11px] font-black uppercase tracking-tight leading-tight group-hover/item:text-[#214a32] transition-colors">Benefits of Intermittent Fasting</h4>
                                         <span className="text-[9px] font-black text-gray-300 uppercase tracking-widest">8 min read</span>
                                     </div>
                                 </div>
                             ))}
                         </div>
-                        <button className="w-full py-5 bg-[#2E7D32] text-white rounded-[2rem] font-black text-[10px] uppercase tracking-[0.2em] hover:bg-green-900 transition-all shadow-xl shadow-green-900/10 flex items-center justify-center gap-2">
+                        <button className="w-full py-5 bg-[#214a32] text-white rounded-[2rem] font-black text-[10px] uppercase tracking-[0.2em] hover:bg-black transition-all shadow-xl shadow-green-900/10 flex items-center justify-center gap-2">
                             Explore library <ArrowRight size={16} />
                         </button>
                     </div>

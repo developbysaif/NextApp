@@ -60,7 +60,7 @@ export default function AppointmentForm() {
            className="w-full lg:w-1/2 bg-white p-8 md:p-14 rounded-[3rem] shadow-xl border border-gray-100"
         >
           <div className="mb-10">
-            <h2 className="text-4xl font-black text-[#21492f] uppercase tracking-tighter mb-2">Appointment</h2>
+            <h2 className="text-4xl font-black text-[#214a32] uppercase tracking-tighter mb-2">Appointment</h2>
             <p className="text-[#6bb300] font-bold text-sm tracking-widest uppercase">You Can React Us Anytime</p>
           </div>
 

@@ -3,9 +3,9 @@ import Card from "./Card";
 export default function OrganicSection() {
     const cards = [
         { label: "Enjoy", title: "Organic Meals", img: "/Fruits.png", imgWidth: 120, imgHeight: 120, bg: "#a6763f", textClass: "text-white" },
-        { label: "NEW", title: "Organic Snacks", img: "/Poradge.png", imgWidth: 120, imgHeight: 120, bg: "#22aa4f", textClass: "text-white" },
+        { label: "NEW", title: "Organic Snacks", img: "/Poradge.png", imgWidth: 120, imgHeight: 120, bg: "#214a32", textClass: "text-white" },
         { label: "Enjoy", title: "Dry Fruits", img: "/Dry Fruit.png", imgWidth: 120, imgHeight: 120, bg: "#a6763f", textClass: "text-white" },
-        { label: "New", title: "Organic Herbs", img: "/Herbs.png", imgWidth: 120, imgHeight: 120, bg: "#22aa4f", textClass: "text-white" },
+        { label: "New", title: "Organic Herbs", img: "/Herbs.png", imgWidth: 120, imgHeight: 120, bg: "#214a32", textClass: "text-white" },
     ];
 
     return (

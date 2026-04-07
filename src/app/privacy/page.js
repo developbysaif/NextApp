@@ -50,7 +50,7 @@ export default function PrivacyPolicy() {
     }, []);
 
     return (
-        <div className="min-h-screen bg-[#FDFCF8] font-sans selection:bg-[#22aa4f]/20">
+        <div className="min-h-screen bg-[#FDFCF8] font-sans selection:bg-[#214a32]/20">
             <PageHeader
                 title="Privacy Policy"
                 description="Your privacy is extremely important to us. Learn how we protect your data."
@@ -62,7 +62,7 @@ export default function PrivacyPolicy() {
                     {/* Left Sidebar - Navigation */}
                     <div className="lg:col-span-4 hidden lg:block">
                         <div className="sticky top-32 bg-white p-6 rounded-[32px] shadow-[0_20px_50px_rgba(33,73,47,0.06)] border border-stone-100">
-                            <h3 className="text-xl font-black text-[#21492f] mb-6">Contents</h3>
+                            <h3 className="text-xl font-black text-[#214a32] mb-6">Contents</h3>
                             <nav className="space-y-2">
                                 {sections.map((section) => {
                                     const Icon = section.icon;
@@ -70,7 +70,7 @@ export default function PrivacyPolicy() {
                                         <button
                                             key={section.id}
                                             onClick={() => scrollTo(section.id)}
-                                            className={`w-full flex items-center gap-4 px-4 py-3 rounded-2xl text-left transition-all ${activeSection === section.id ? 'bg-[#22aa4f] text-white shadow-lg shadow-[#22aa4f]/20' : 'text-gray-500 hover:bg-stone-50 hover:text-[#21492f]'}`}
+                                            className={`w-full flex items-center gap-4 px-4 py-3 rounded-2xl text-left transition-all ${activeSection === section.id ? 'bg-[#214a32] text-white shadow-lg shadow-[#214a32]/20' : 'text-gray-500 hover:bg-stone-50 hover:text-[#214a32]'}`}
                                         >
                                             <Icon size={18} className={activeSection === section.id ? 'text-white' : 'text-gray-400'} />
                                             <span className="font-bold text-sm">{section.title}</span>
@@ -79,16 +79,16 @@ export default function PrivacyPolicy() {
                                 })}
                             </nav>
 
-                            <div className="mt-8 p-6 bg-[#21492f] rounded-[24px] text-white overflow-hidden relative group">
+                            <div className="mt-8 p-6 bg-[#214a32] rounded-[24px] text-white overflow-hidden relative group">
                                 <div className="relative z-10">
-                                    <Shield size={32} className="text-[#22aa4f] mb-4" />
+                                    <Shield size={32} className="text-[#214a32] mb-4" />
                                     <p className="font-bold mb-2">Need help with your data?</p>
                                     <p className="text-white/70 text-xs mb-4">Contact our DPO for any privacy related queries.</p>
-                                    <button className="text-[10px] font-black uppercase tracking-wider bg-white text-[#21492f] px-4 py-2 rounded-full hover:bg-[#22aa4f] hover:text-white transition-colors">
+                                    <button className="text-[10px] font-black uppercase tracking-wider bg-white text-[#214a32] px-4 py-2 rounded-full hover:bg-[#214a32] hover:text-white transition-colors">
                                         Email Support
                                     </button>
                                 </div>
-                                <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-2xl group-hover:bg-[#22aa4f]/20 transition-all duration-500" />
+                                <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-2xl group-hover:bg-[#214a32]/20 transition-all duration-500" />
                             </div>
                         </div>
                     </div>
@@ -96,7 +96,7 @@ export default function PrivacyPolicy() {
                     {/* Right Content */}
                     <div className="lg:col-span-8 space-y-16">
                         <div className="mb-12">
-                            <h1 className="text-4xl md:text-5xl font-black text-[#21492f] mb-6 tracking-tight">Our Commitment to <span className="text-[#22aa4f]">Privacy</span></h1>
+                            <h1 className="text-4xl md:text-5xl font-black text-[#214a32] mb-6 tracking-tight">Our Commitment to <span className="text-[#214a32]">Privacy</span></h1>
                             <p className="text-gray-600 text-lg leading-relaxed font-medium">
                                 At IlajbilGhiza, your privacy is extremely important to us. This Privacy Policy explains how we collect, use, protect, and share your personal information when you use our website, mobile application, AI diet planner, and related services.
                             </p>
@@ -113,29 +113,29 @@ export default function PrivacyPolicy() {
                         {/* Section 1 */}
                         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} id="info" className="scroll-mt-32">
                             <div className="flex items-center gap-4 mb-8">
-                                <div className="size-12 rounded-2xl bg-[#22aa4f]/10 flex items-center justify-center text-[#22aa4f]">
+                                <div className="size-12 rounded-2xl bg-[#214a32]/10 flex items-center justify-center text-[#214a32]">
                                     <Database size={24} />
                                 </div>
-                                <h2 className="text-3xl font-black text-[#21492f]">Information We Collect</h2>
+                                <h2 className="text-3xl font-black text-[#214a32]">Information We Collect</h2>
                             </div>
 
                             <div className="grid md:grid-cols-2 gap-6">
-                                <div className="bg-white p-8 rounded-[32px] shadow-sm border border-stone-100 hover:shadow-xl hover:border-[#22aa4f]/30 transition-all">
-                                    <h3 className="text-xl font-black text-[#21492f] mb-4">Personal Data</h3>
+                                <div className="bg-white p-8 rounded-[32px] shadow-sm border border-stone-100 hover:shadow-xl hover:border-[#214a32]/30 transition-all">
+                                    <h3 className="text-xl font-black text-[#214a32] mb-4">Personal Data</h3>
                                     <ul className="space-y-3">
                                         {['Full name & Email', 'Phone number', 'Age and gender'].map((item, i) => (
                                             <li key={i} className="flex gap-3 items-center text-gray-600 font-medium">
-                                                <div className="w-1.5 h-1.5 rounded-full bg-[#22aa4f]" /> {item}
+                                                <div className="w-1.5 h-1.5 rounded-full bg-[#214a32]" /> {item}
                                             </li>
                                         ))}
                                     </ul>
                                 </div>
-                                <div className="bg-white p-8 rounded-[32px] shadow-sm border border-stone-100 hover:shadow-xl hover:border-[#22aa4f]/30 transition-all">
-                                    <h3 className="text-xl font-black text-[#21492f] mb-4">Health & Lifestyle</h3>
+                                <div className="bg-white p-8 rounded-[32px] shadow-sm border border-stone-100 hover:shadow-xl hover:border-[#214a32]/30 transition-all">
+                                    <h3 className="text-xl font-black text-[#214a32] mb-4">Health & Lifestyle</h3>
                                     <ul className="space-y-3">
                                         {['Height and weight', 'Dietary preferences', 'Health conditions'].map((item, i) => (
                                             <li key={i} className="flex gap-3 items-center text-gray-600 font-medium">
-                                                <div className="w-1.5 h-1.5 rounded-full bg-[#22aa4f]" /> {item}
+                                                <div className="w-1.5 h-1.5 rounded-full bg-[#214a32]" /> {item}
                                             </li>
                                         ))}
                                     </ul>
@@ -146,10 +146,10 @@ export default function PrivacyPolicy() {
                         {/* Section 2 */}
                         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} id="usage" className="scroll-mt-32">
                             <div className="flex items-center gap-4 mb-8">
-                                <div className="size-12 rounded-2xl bg-[#22aa4f]/10 flex items-center justify-center text-[#22aa4f]">
+                                <div className="size-12 rounded-2xl bg-[#214a32]/10 flex items-center justify-center text-[#214a32]">
                                     <Eye size={24} />
                                 </div>
-                                <h2 className="text-3xl font-black text-[#21492f]">How We Use Your Info</h2>
+                                <h2 className="text-3xl font-black text-[#214a32]">How We Use Your Info</h2>
                             </div>
 
                             <div className="bg-white p-8 rounded-[32px] shadow-sm border border-stone-100">
@@ -161,7 +161,7 @@ export default function PrivacyPolicy() {
                                         "To improve our services and user experience"
                                     ].map((item, index) => (
                                         <li key={index} className="flex gap-4 items-start bg-stone-50 p-4 rounded-2xl">
-                                            <div className="mt-1 size-6 rounded-full bg-[#22aa4f] text-white flex items-center justify-center shrink-0 text-xs font-bold">{index + 1}</div>
+                                            <div className="mt-1 size-6 rounded-full bg-[#214a32] text-white flex items-center justify-center shrink-0 text-xs font-bold">{index + 1}</div>
                                             <span className="font-bold text-gray-700">{item}</span>
                                         </li>
                                     ))}
@@ -171,11 +171,11 @@ export default function PrivacyPolicy() {
 
                         {/* Section 3 */}
                         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} id="ai" className="scroll-mt-32">
-                            <div className="bg-gradient-to-br from-[#21492f] to-[#163321] rounded-[40px] p-10 md:p-12 text-white shadow-2xl relative overflow-hidden">
-                                <div className="absolute top-0 right-0 w-64 h-64 bg-[#22aa4f]/20 rounded-full blur-[80px]" />
+                            <div className="bg-gradient-to-br from-[#214a32] to-[#163321] rounded-[40px] p-10 md:p-12 text-white shadow-2xl relative overflow-hidden">
+                                <div className="absolute top-0 right-0 w-64 h-64 bg-[#214a32]/20 rounded-full blur-[80px]" />
                                 <div className="relative z-10">
                                     <div className="flex items-center gap-4 mb-6">
-                                        <div className="size-12 rounded-2xl bg-white/10 flex items-center justify-center text-[#22aa4f] backdrop-blur-md">
+                                        <div className="size-12 rounded-2xl bg-white/10 flex items-center justify-center text-[#214a32] backdrop-blur-md">
                                             <Shield size={24} />
                                         </div>
                                         <h2 className="text-3xl font-black text-white">AI Diet Planner Data</h2>
@@ -201,8 +201,8 @@ export default function PrivacyPolicy() {
                         {/* Section 4 & 5 */}
                         <div className="grid md:grid-cols-2 gap-12">
                             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} id="sharing" className="scroll-mt-32">
-                                <h2 className="text-2xl font-black text-[#21492f] mb-6 flex items-center gap-3">
-                                    <Share2 className="text-[#22aa4f]" /> Data Sharing
+                                <h2 className="text-2xl font-black text-[#214a32] mb-6 flex items-center gap-3">
+                                    <Share2 className="text-[#214a32]" /> Data Sharing
                                 </h2>
                                 <p className="text-gray-600 mb-6 font-medium">We only share limited information with trusted service providers or doctors (with your consent). We never sell your data.</p>
                                 <div className="flex items-center gap-4 bg-amber-50 p-4 rounded-xl text-amber-800 font-bold text-sm">
@@ -212,13 +212,13 @@ export default function PrivacyPolicy() {
                             </motion.div>
 
                             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} id="security" className="scroll-mt-32">
-                                <h2 className="text-2xl font-black text-[#21492f] mb-6 flex items-center gap-3">
-                                    <Lock className="text-[#22aa4f]" /> Data Security
+                                <h2 className="text-2xl font-black text-[#214a32] mb-6 flex items-center gap-3">
+                                    <Lock className="text-[#214a32]" /> Data Security
                                 </h2>
                                 <p className="text-gray-600 mb-6 font-medium">We implement appropriate security measures to protect your data, including secure servers and encrypted transmission.</p>
                                 <div className="grid grid-cols-2 gap-3">
-                                    <div className="bg-[#21492f] text-white p-4 rounded-xl text-center text-xs font-bold tracking-widest uppercase">Secure Servers</div>
-                                    <div className="bg-[#21492f] text-white p-4 rounded-xl text-center text-xs font-bold tracking-widest uppercase">Encryption</div>
+                                    <div className="bg-[#214a32] text-white p-4 rounded-xl text-center text-xs font-bold tracking-widest uppercase">Secure Servers</div>
+                                    <div className="bg-[#214a32] text-white p-4 rounded-xl text-center text-xs font-bold tracking-widest uppercase">Encryption</div>
                                 </div>
                             </motion.div>
                         </div>
@@ -226,16 +226,16 @@ export default function PrivacyPolicy() {
                         {/* Section 6 */}
                         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} id="rights" className="scroll-mt-32">
                             <div className="bg-stone-100 p-8 md:p-12 rounded-[40px] border border-stone-200">
-                                <h2 className="text-3xl font-black text-[#21492f] mb-8 flex items-center gap-4">
-                                    <UserCheck className="text-[#22aa4f]" size={32} /> Your Rights
+                                <h2 className="text-3xl font-black text-[#214a32] mb-8 flex items-center gap-4">
+                                    <UserCheck className="text-[#214a32]" size={32} /> Your Rights
                                 </h2>
                                 <div className="grid sm:grid-cols-2 gap-4">
                                     {['Access your personal data', 'Update or correct information', 'Request account deletion', 'Opt out of communications'].map((right, idx) => (
                                         <div key={idx} className="bg-white p-6 rounded-2xl shadow-sm flex items-center gap-4">
-                                            <div className="size-8 rounded-full bg-[#22aa4f]/10 flex items-center justify-center text-[#22aa4f] shrink-0">
-                                                <div className="w-2 h-2 rounded-full bg-[#22aa4f]" />
+                                            <div className="size-8 rounded-full bg-[#214a32]/10 flex items-center justify-center text-[#214a32] shrink-0">
+                                                <div className="w-2 h-2 rounded-full bg-[#214a32]" />
                                             </div>
-                                            <p className="font-bold text-[#21492f]">{right}</p>
+                                            <p className="font-bold text-[#214a32]">{right}</p>
                                         </div>
                                     ))}
                                 </div>

@@ -84,15 +84,15 @@ export default function DashboardLayout({ children }) {
                 <div className="px-6 mb-12 flex items-center justify-between">
                     <Link href="/" className="flex items-center gap-3 group">
                         <div className="flex flex-col gap-0.5">
-                            <div className="w-5 h-2 bg-[#FFD166] rounded-t-full group-hover:scale-110 transition-transform"></div>
-                            <div className="w-5 h-2 bg-[#B4E567] rounded-b-full group-hover:scale-110 transition-transform"></div>
+                            <div className="w-5 h-2 bg-[#a4d9bc] rounded-t-full group-hover:scale-110 transition-transform shadow-sm"></div>
+                            <div className="w-5 h-2 bg-[#214a32] rounded-b-full group-hover:scale-110 transition-transform shadow-sm"></div>
                         </div>
                         {isSidebarOpen && (
-                            <span className="text-xl font-black text-gray-900 tracking-tighter uppercase italic">Nutrigo</span>
+                            <span className="text-xl font-black text-[#214a32] tracking-tighter uppercase italic">IlajBilGhiza</span>
                         )}
                     </Link>
                     {isLoaded && isSidebarOpen && typeof window !== 'undefined' && window.innerWidth < 1024 && (
-                        <button onClick={() => setIsSidebarOpen(false)} className="text-gray-300 hover:text-gray-900">
+                        <button onClick={() => setIsSidebarOpen(false)} className="text-gray-300 hover:text-[#214a32]">
                             <ChevronLeft size={20} />
                         </button>
                     )}
@@ -108,12 +108,12 @@ export default function DashboardLayout({ children }) {
                                 className={`
                                     flex items-center gap-4 px-4 py-3 rounded-2xl transition-all duration-200
                                     ${isActive 
-                                        ? 'bg-[#122A1A] text-white shadow-lg shadow-green-900/10 font-bold' 
-                                        : 'text-gray-400 hover:bg-gray-50 hover:text-gray-900'}
+                                        ? 'bg-[#214a32] text-white shadow-lg shadow-emerald-900/20 font-bold' 
+                                        : 'text-gray-400 hover:bg-gray-50 hover:text-[#214a32]'}
                                 `}
                             >
                                 <item.icon size={20} strokeWidth={isActive ? 2.5 : 2} />
-                                {isSidebarOpen && <span className="text-sm tracking-tight">{item.name}</span>}
+                                {isSidebarOpen && <span className="text-[13px] tracking-tight font-bold">{item.name}</span>}
                             </Link>
                         );
                     })}
@@ -142,8 +142,8 @@ export default function DashboardLayout({ children }) {
                     <button onClick={() => setIsSidebarOpen(true)} className="text-gray-900">
                         <Menu size={24} />
                     </button>
-                    <span className="text-lg font-black text-gray-900 tracking-tighter uppercase italic">Nutrigo</span>
-                    <div className="w-8 h-8 rounded-full bg-[#B4E567]" />
+                    <span className="text-lg font-black text-[#214a32] tracking-tighter uppercase italic">IlajBilGhiza</span>
+                    <div className="w-8 h-8 rounded-full bg-[#a4d9bc]" />
                 </header>
 
                 <div className="p-4 md:p-8 max-w-7xl mx-auto">

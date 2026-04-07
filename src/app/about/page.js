@@ -31,8 +31,8 @@ export default function AboutPage() {
                 </div>
 
                 <div className="max-w-7xl mx-auto px-6 relative z-10 w-full flex flex-col items-start lg:items-center lg:text-center text-left pt-10">
-                    <div className="inline-flex items-center gap-3 bg-[#B4E567] px-8 py-2.5 rounded-full border-2 border-white/40 mb-8 font-bold text-[11px] uppercase tracking-[0.3em] text-[#21492f] shadow-2xl">
-                        <Leaf size={14} className="text-[#21492f]" /> Our Heritage
+                    <div className="inline-flex items-center gap-3 bg-[#B4E567] px-8 py-2.5 rounded-full border-2 border-white/40 mb-8 font-bold text-[11px] uppercase tracking-[0.3em] text-[#214a32] shadow-2xl">
+                        <Leaf size={14} className="text-[#214a32]" /> Our Heritage
                     </div>
                     
                     <h1 className="text-4xl md:text-7xl font-black text-white tracking-tight leading-[0.9] mb-8" style={{ fontFamily: 'var(--font-serif), serif' }}>
@@ -74,7 +74,7 @@ export default function AboutPage() {
                         <div>
                             <div className="flex items-center gap-3 mb-4">
                                 <span className="w-8 h-0.5 bg-[#a6763f] rounded-full" />
-                                <h2 className="text-2xl md:text-3xl font-black text-[#21492f]">Who we are</h2>
+                                <h2 className="text-2xl md:text-3xl font-black text-[#214a32]">Who we are</h2>
                             </div>
                             <p className="text-gray-700 text-sm md:text-base leading-relaxed">
                                 IlajbilGhiza is built on the philosophy of &quot;Dawai se pehle Ghiza&quot;. Our platform connects
@@ -85,8 +85,8 @@ export default function AboutPage() {
 
                         {/* Philosophy Card */}
                         <div className="bg-white rounded-3xl p-6 md:p-8 shadow border border-stone-100">
-                            <h3 className="text-xl md:text-2xl font-black text-[#21492f] mb-1">Our philosophy</h3>
-                            <p className="text-[#22aa4f] font-bold italic text-sm mb-4">Dawai se pehle ghiza</p>
+                            <h3 className="text-xl md:text-2xl font-black text-[#214a32] mb-1">Our philosophy</h3>
+                            <p className="text-[#214a32] font-bold italic text-sm mb-4">Dawai se pehle ghiza</p>
                             <p className="text-gray-600 text-sm leading-relaxed mb-6">
                                 We believe food is the body&apos;s first and most powerful form of medicine. By returning to
                                 organic, seasonal, and locally available foods, the body can restore balance and heal naturally.
@@ -95,10 +95,10 @@ export default function AboutPage() {
 
                             {/* Social icons */}
                             <div className="flex gap-3 mb-7">
-                                <span className="w-9 h-9 bg-[#21492f] text-white rounded-lg flex items-center justify-center">
+                                <span className="w-9 h-9 bg-[#214a32] text-white rounded-lg flex items-center justify-center">
                                     <Instagram size={16} />
                                 </span>
-                                <span className="w-9 h-9 bg-[#22aa4f] text-white rounded-lg flex items-center justify-center">
+                                <span className="w-9 h-9 bg-[#214a32] text-white rounded-lg flex items-center justify-center">
                                     <Twitter size={16} />
                                 </span>
                                 <span className="w-9 h-9 bg-[#a6763f] text-white rounded-lg flex items-center justify-center">
@@ -115,7 +115,7 @@ export default function AboutPage() {
                                 </Link>
                                 <Link
                                     href="/products"
-                                    className="bg-[#21492f] text-white px-5 py-2.5 rounded-xl font-bold text-xs hover:bg-[#22aa4f] transition-all"
+                                    className="bg-[#214a32] text-white px-5 py-2.5 rounded-xl font-bold text-xs hover:bg-[#214a32] transition-all"
                                 >
                                     View products
                                 </Link>
@@ -134,7 +134,7 @@ export default function AboutPage() {
                             />
                         </div>
                         {/* Decorative blob */}
-                        <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-[#22aa4f]/15 rounded-full blur-xl -z-10" />
+                        <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-[#214a32]/15 rounded-full blur-xl -z-10" />
                     </div>
                 </div>
             </section>
@@ -155,7 +155,7 @@ export default function AboutPage() {
                             />
                         </div>
                         <div>
-                            <h2 className="text-3xl md:text-4xl font-black text-[#21492f] mb-3">What we offer</h2>
+                            <h2 className="text-3xl md:text-4xl font-black text-[#214a32] mb-3">What we offer</h2>
                             <p className="text-gray-500 text-sm max-w-xl font-medium">
                                 A comprehensive ecosystem designed for your natural health and wellness.
                             </p>
@@ -170,7 +170,7 @@ export default function AboutPage() {
                                 img: "/organic_foods.png",
                                 icon: Leaf,
                                 bg: "bg-green-50",
-                                iconColor: "text-[#22aa4f]",
+                                iconColor: "text-[#214a32]",
                                 border: "border-green-100"
                             },
                             {
@@ -220,7 +220,7 @@ export default function AboutPage() {
                                     <div className={`w-10 h-10 rounded-xl bg-white flex items-center justify-center mb-4 shadow-sm ${item.iconColor}`}>
                                         <item.icon size={20} />
                                     </div>
-                                    <h3 className="text-base font-black text-[#21492f] mb-2 leading-snug">{item.title}</h3>
+                                    <h3 className="text-base font-black text-[#214a32] mb-2 leading-snug">{item.title}</h3>
                                     <p className="text-gray-500 text-xs leading-relaxed font-medium">{item.desc}</p>
                                 </div>
                             </div>
@@ -264,7 +264,7 @@ export default function AboutPage() {
             <section className="pb-16 bg-white">
                 <div className="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-6">
                     {/* Mission — green */}
-                    <div className="bg-[#22aa4f] rounded-3xl p-8 md:p-10 relative overflow-hidden">
+                    <div className="bg-[#214a32] rounded-3xl p-8 md:p-10 relative overflow-hidden">
                         <div className="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" />
                         <div className="relative z-10">
                             <h3 className="text-xl md:text-2xl font-black text-white mb-3">Our mission</h3>
@@ -299,7 +299,7 @@ export default function AboutPage() {
             <section className="pb-10 px-4">
                 <div
                     className="max-w-6xl mx-auto rounded-3xl py-14 px-8 md:px-16 text-center relative overflow-hidden"
-                    style={{ background: 'linear-gradient(135deg, #1a3a25 0%, #21492f 100%)' }}
+                    style={{ background: 'linear-gradient(135deg, #1a3a25 0%, #214a32 100%)' }}
                 >
                     {/* Decorative leaf top-right */}
                     <div className="absolute top-0 right-0 w-56 h-56 opacity-10 pointer-events-none">
@@ -328,7 +328,7 @@ export default function AboutPage() {
                         <div className="flex flex-wrap justify-center gap-4">
                             <Link
                                 href="/diet-plan"
-                                className="inline-flex items-center gap-2 bg-white text-[#21492f] px-7 py-3.5 rounded-xl font-black text-xs hover:bg-[#4ade80] hover:text-white transition-all shadow-lg"
+                                className="inline-flex items-center gap-2 bg-white text-[#214a32] px-7 py-3.5 rounded-xl font-black text-xs hover:bg-[#4ade80] hover:text-white transition-all shadow-lg"
                             >
                                 Request a nutrition plan
                                 <ArrowRight size={15} />

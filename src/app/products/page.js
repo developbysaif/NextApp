@@ -145,7 +145,7 @@ function ProductsContent({ initialCategory = "All", initialSeason = "All" }) {
                                 key={cat}
                                 onClick={() => setCategory(cat)}
                                 className={`px-6 py-2.5 rounded-full font-bold transition-all text-[11px] whitespace-nowrap border ${category === cat
-                                    ? 'bg-[#22aa4f] text-white border-[#22aa4f] shadow-md shadow-green-200'
+                                    ? 'bg-[#214a32] text-white border-[#214a32] shadow-md shadow-green-200'
                                     : 'bg-white text-gray-600 border-stone-200 hover:border-green-300 hover:text-green-600'
                                     }`}
                             >

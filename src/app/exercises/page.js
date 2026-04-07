@@ -273,7 +273,7 @@ export default function ExercisesListingPage() {
                                   <img src="https://images.unsplash.com/photo-1548690312-e3b507d17a4d?w=100" className="w-full h-full object-cover" />
                               </div>
                               <div className="pr-10">
-                                  <p className="text-[10px] font-black text-[#22aa4f] uppercase tracking-widest mb-1">Join the community</p>
+                                  <p className="text-[10px] font-black text-[#214a32] uppercase tracking-widest mb-1">Join the community</p>
                                   <h4 className="text-lg font-black text-gray-900 leading-tight">Start with 14-days for free.</h4>
                                   <Link href="/signup" className="text-[#215b33] font-black text-[10px] flex items-center gap-1 mt-2 uppercase tracking-widest hover:gap-2 transition-all">Sign Up Now <ArrowRight size={14} /></Link>
                               </div>

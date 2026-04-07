@@ -9,18 +9,18 @@ import {
 import { motion, AnimatePresence } from 'framer-motion';
 
 const defaultExercises = [
-    { id: 1, name: 'Squats', sets: 4, reps: '12 repetitions', rest: '60 sec', weight: '45 kg', calories: '180 cal', status: 'Completed', color: 'bg-[#B4E567]', iconColor: 'text-[#215b33]' },
-    { id: 2, name: 'Deadlifts', sets: 3, reps: '10 repetitions', rest: '90 sec', weight: '60 kg', calories: '220 cal', status: 'Completed', color: 'bg-[#FFD166]', iconColor: 'text-[#856312]' },
-    { id: 3, name: 'Bench Press', sets: 3, reps: '8 repetitions', rest: '60 sec', weight: '40 kg', calories: '150 cal', status: 'In Progress', color: 'bg-[#FF9F43]', iconColor: 'text-[#6b3a04]' },
-    { id: 4, name: 'Pull-Ups', sets: 4, reps: '8 repetitions', rest: '90 sec', weight: 'Bodyweight', calories: '120 cal', status: 'Skipped', color: 'bg-[#B4E567]', iconColor: 'text-[#215b33]' },
-    { id: 5, name: 'Plank', sets: 3, reps: '60 repetitions', rest: '30 sec', weight: '-', calories: '90 cal', status: 'Completed', color: 'bg-[#FFD166]', iconColor: 'text-[#856312]' },
-    { id: 6, name: 'Running', sets: 1, reps: '30 minutes', rest: 'N/A', weight: '-', calories: '300 cal', status: 'Completed', color: 'bg-[#FF9F43]', iconColor: 'text-[#6b3a04]' },
-    { id: 7, name: 'Lunges', sets: 3, reps: '15 repetitions', rest: '60 sec', weight: '20 kg', calories: '160 cal', status: 'Not Started', color: 'bg-[#B4E567]', iconColor: 'text-[#215b33]' },
-    { id: 8, name: 'Shoulder Press', sets: 3, reps: '10 repetitions', rest: '60 sec', weight: '25 kg', calories: '140 cal', status: 'Not Started', color: 'bg-[#FFD166]', iconColor: 'text-[#856312]' },
-    { id: 9, name: 'Bicep Curls', sets: 3, reps: '12 repetitions', rest: '45 sec', weight: '15 kg', calories: '110 cal', status: 'Skipped', color: 'bg-[#FF9F43]', iconColor: 'text-[#6b3a04]' },
-    { id: 10, name: 'Cycling', sets: 1, reps: '45 minutes', rest: 'N/A', weight: '-', calories: '350 cal', status: 'Completed', color: 'bg-[#B4E567]', iconColor: 'text-[#215b33]' },
-    { id: 11, name: 'Mountain Climbers', sets: 4, reps: '20 repetitions', rest: '30 sec', weight: '-', calories: '200 cal', status: 'In Progress', color: 'bg-[#FFD166]', iconColor: 'text-[#856312]' },
-    { id: 12, name: 'Yoga (Stretching)', sets: 1, reps: '60 minutes', rest: 'N/A', weight: '-', calories: '150 cal', status: 'Not Started', color: 'bg-[#FF9F43]', iconColor: 'text-[#6b3a04]' },
+    { id: 1, name: 'Squats', sets: 4, reps: '12 repetitions', rest: '60 sec', weight: '45 kg', calories: '180 cal', status: 'Completed', color: 'bg-[#a4d9bc]', iconColor: 'text-[#215b33]' },
+    { id: 2, name: 'Deadlifts', sets: 3, reps: '10 repetitions', rest: '90 sec', weight: '60 kg', calories: '220 cal', status: 'Completed', color: 'bg-[#989a69]', iconColor: 'text-[#856312]' },
+    { id: 3, name: 'Bench Press', sets: 3, reps: '8 repetitions', rest: '60 sec', weight: '40 kg', calories: '150 cal', status: 'In Progress', color: 'bg-[#214a32]', iconColor: 'text-[#6b3a04]' },
+    { id: 4, name: 'Pull-Ups', sets: 4, reps: '8 repetitions', rest: '90 sec', weight: 'Bodyweight', calories: '120 cal', status: 'Skipped', color: 'bg-[#a4d9bc]', iconColor: 'text-[#215b33]' },
+    { id: 5, name: 'Plank', sets: 3, reps: '60 repetitions', rest: '30 sec', weight: '-', calories: '90 cal', status: 'Completed', color: 'bg-[#989a69]', iconColor: 'text-[#856312]' },
+    { id: 6, name: 'Running', sets: 1, reps: '30 minutes', rest: 'N/A', weight: '-', calories: '300 cal', status: 'Completed', color: 'bg-[#214a32]', iconColor: 'text-[#6b3a04]' },
+    { id: 7, name: 'Lunges', sets: 3, reps: '15 repetitions', rest: '60 sec', weight: '20 kg', calories: '160 cal', status: 'Not Started', color: 'bg-[#a4d9bc]', iconColor: 'text-[#215b33]' },
+    { id: 8, name: 'Shoulder Press', sets: 3, reps: '10 repetitions', rest: '60 sec', weight: '25 kg', calories: '140 cal', status: 'Not Started', color: 'bg-[#989a69]', iconColor: 'text-[#856312]' },
+    { id: 9, name: 'Bicep Curls', sets: 3, reps: '12 repetitions', rest: '45 sec', weight: '15 kg', calories: '110 cal', status: 'Skipped', color: 'bg-[#214a32]', iconColor: 'text-[#6b3a04]' },
+    { id: 10, name: 'Cycling', sets: 1, reps: '45 minutes', rest: 'N/A', weight: '-', calories: '350 cal', status: 'Completed', color: 'bg-[#a4d9bc]', iconColor: 'text-[#215b33]' },
+    { id: 11, name: 'Mountain Climbers', sets: 4, reps: '20 repetitions', rest: '30 sec', weight: '-', calories: '200 cal', status: 'In Progress', color: 'bg-[#989a69]', iconColor: 'text-[#856312]' },
+    { id: 12, name: 'Yoga (Stretching)', sets: 1, reps: '60 minutes', rest: 'N/A', weight: '-', calories: '150 cal', status: 'Not Started', color: 'bg-[#214a32]', iconColor: 'text-[#6b3a04]' },
 ];
 
 export default function ExercisesPage() {
@@ -62,7 +62,7 @@ export default function ExercisesPage() {
 
     const handleAddExercise = (e) => {
         e.preventDefault();
-        const colors = ['bg-[#B4E567]', 'bg-[#FFD166]', 'bg-[#FF9F43]'];
+        const colors = ['bg-[#a4d9bc]', 'bg-[#989a69]', 'bg-[#214a32]'];
         const iconColors = ['text-[#215b33]', 'text-[#856312]', 'text-[#6b3a04]'];
         const randIndex = Math.floor(Math.random() * colors.length);
 
@@ -88,9 +88,9 @@ export default function ExercisesPage() {
 
     const getStatusStyle = (status) => {
         switch (status) {
-            case 'Completed': return 'bg-[#B4E567] text-[#215b33]';
-            case 'In Progress': return 'bg-[#FFD166] text-[#856312]';
-            case 'Skipped': return 'bg-[#FF9F43] text-white';
+            case 'Completed': return 'bg-[#a4d9bc] text-[#215b33]';
+            case 'In Progress': return 'bg-[#989a69] text-[#856312]';
+            case 'Skipped': return 'bg-[#214a32] text-white';
             case 'Not Started': return 'bg-gray-100 text-gray-500';
             default: return 'bg-gray-100 text-gray-500';
         }
@@ -133,7 +133,7 @@ export default function ExercisesPage() {
                         exit={{ opacity: 0, scale: 0.9 }}
                         className="fixed top-8 left-1/2 -translate-x-1/2 z-50 bg-[#1E1B4B] text-white px-6 py-3 rounded-2xl shadow-xl flex items-center gap-3 border border-indigo-500/30"
                     >
-                        <Activity size={18} className="text-[#B4E567]" />
+                        <Activity size={18} className="text-[#a4d9bc]" />
                         <span className="text-sm font-bold tracking-wide">{healthSyncMessage}</span>
                     </motion.div>
                 )}
@@ -167,7 +167,7 @@ export default function ExercisesPage() {
                     </button>
                     <button 
                         onClick={() => setIsAddModalOpen(true)}
-                        className="bg-[#B4E567] text-[#215b33] px-5 py-3 rounded-[1.25rem] font-bold text-[13px] flex items-center gap-2 hover:bg-[#a5db56] transition-colors shadow-sm"
+                        className="bg-[#a4d9bc] text-[#215b33] px-5 py-3 rounded-[1.25rem] font-bold text-[13px] flex items-center gap-2 hover:bg-[#a5db56] transition-colors shadow-sm"
                     >
                         <Plus size={16} strokeWidth={2.5} /> Add Exercise
                     </button>
@@ -213,9 +213,9 @@ export default function ExercisesPage() {
                                             
                                             {/* Status Dropdown on Hover/Click */}
                                             <div className="absolute top-1/2 -translate-y-1/2 right-full mr-2 bg-white shadow-xl rounded-xl border border-gray-100 p-2 flex flex-col gap-1 opacity-0 pointer-events-none group-hover/status:opacity-100 group-hover/status:pointer-events-auto transition-all scale-95 group-hover/status:scale-100 z-10 w-32">
-                                                <button onClick={() => updateExerciseStatus(exercise.id, 'Completed')} className="text-left px-3 py-1.5 text-xs font-bold text-[#215b33] hover:bg-[#B4E567]/20 rounded-md">Mark Completed</button>
-                                                <button onClick={() => updateExerciseStatus(exercise.id, 'In Progress')} className="text-left px-3 py-1.5 text-xs font-bold text-[#856312] hover:bg-[#FFD166]/20 rounded-md">Set In Progress</button>
-                                                <button onClick={() => updateExerciseStatus(exercise.id, 'Skipped')} className="text-left px-3 py-1.5 text-xs font-bold text-[#6b3a04] hover:bg-[#FF9F43]/20 rounded-md">Mark Skipped</button>
+                                                <button onClick={() => updateExerciseStatus(exercise.id, 'Completed')} className="text-left px-3 py-1.5 text-xs font-bold text-[#215b33] hover:bg-[#a4d9bc]/20 rounded-md">Mark Completed</button>
+                                                <button onClick={() => updateExerciseStatus(exercise.id, 'In Progress')} className="text-left px-3 py-1.5 text-xs font-bold text-[#856312] hover:bg-[#989a69]/20 rounded-md">Set In Progress</button>
+                                                <button onClick={() => updateExerciseStatus(exercise.id, 'Skipped')} className="text-left px-3 py-1.5 text-xs font-bold text-[#6b3a04] hover:bg-[#214a32]/20 rounded-md">Mark Skipped</button>
                                             </div>
                                         </div>
                                     </td>
@@ -236,7 +236,7 @@ export default function ExercisesPage() {
                     </div>
                     <div className="flex items-center gap-1.5">
                         <button className="w-8 h-8 flex items-center justify-center text-gray-400 hover:text-gray-900">&lt;</button>
-                        <button className="w-8 h-8 rounded-lg bg-[#B4E567] text-[#215b33] font-bold shadow-sm">1</button>
+                        <button className="w-8 h-8 rounded-lg bg-[#a4d9bc] text-[#215b33] font-bold shadow-sm">1</button>
                         <button className="w-8 h-8 rounded-lg hover:bg-gray-50 text-gray-600 font-bold">2</button>
                         <button className="w-8 h-8 rounded-lg hover:bg-gray-50 text-gray-600 font-bold">3</button>
                         <button className="w-8 h-8 flex items-center justify-center text-gray-400 hover:text-gray-900">&gt;</button>
@@ -295,7 +295,7 @@ export default function ExercisesPage() {
                                     </div>
                                 </div>
                                 <div className="pt-4">
-                                    <button type="submit" className="w-full bg-[#B4E567] text-[#215b33] font-black uppercase tracking-widest text-xs py-4 rounded-xl hover:bg-[#a5dc57] transition-all shadow-md">
+                                    <button type="submit" className="w-full bg-[#a4d9bc] text-[#215b33] font-black uppercase tracking-widest text-xs py-4 rounded-xl hover:bg-[#a5dc57] transition-all shadow-md">
                                         Save Exercise
                                     </button>
                                 </div>

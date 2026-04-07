@@ -71,7 +71,7 @@ export default function HealthInsightsPage() {
                 </div>
                 <div className="flex items-center gap-3">
                     <div className="relative group/search lg:max-w-md w-full">
-                        <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within/search:text-green-600 transition-colors" size={18} />
+                        <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within/search:text-[#214a32] transition-colors" size={18} />
                         <input 
                             type="text" 
                             placeholder="Search articles..." 
@@ -84,7 +84,7 @@ export default function HealthInsightsPage() {
             {/* Featured Article - Big Banner */}
             <div className="relative group overflow-hidden">
                 <Link href="/dashboard/insights/hydration-science">
-                <div className="bg-[#2E7D32] rounded-[4rem] p-10 md:p-16 flex flex-col md:flex-row items-center gap-12 text-white shadow-2xl shadow-green-900/20 group-hover:scale-[1.01] transition-transform duration-700 cursor-pointer overflow-hidden border border-white/5">
+                <div className="bg-[#214a32] rounded-[4rem] p-10 md:p-16 flex flex-col md:flex-row items-center gap-12 text-white shadow-2xl shadow-green-900/20 group-hover:scale-[1.01] transition-transform duration-700 cursor-pointer overflow-hidden border border-white/5">
                     <div className="absolute inset-0 bg-gradient-to-br from-green-400 to-green-600 opacity-20 group-hover:opacity-30 transition-opacity" />
                     <div className="flex-1 space-y-6 relative z-10 transition-transform duration-700 group-hover:translate-x-2">
                         <div className="flex items-center gap-4">
@@ -123,7 +123,7 @@ export default function HealthInsightsPage() {
                                 onClick={() => setActiveTab(tab)}
                                 className={`
                                     px-8 py-4 rounded-3xl text-[10px] font-black uppercase tracking-widest transition-all
-                                    ${activeTab === tab ? 'bg-white text-green-700 shadow-sm' : 'text-gray-400 hover:text-gray-600'}
+                                    ${activeTab === tab ? 'bg-white text-[#214a32] shadow-sm' : 'text-gray-400 hover:text-gray-600'}
                                 `}
                             >
                                 {tab}
@@ -141,7 +141,7 @@ export default function HealthInsightsPage() {
                                 className="bg-white rounded-[3.5rem] border border-gray-100 shadow-sm overflow-hidden hover:shadow-xl hover:shadow-gray-100 transition-all group flex flex-col cursor-pointer"
                             >
                                 <div className="relative overflow-hidden aspect-[16/10]">
-                                    <div className="absolute top-6 left-6 z-10 px-4 py-2 bg-white/90 backdrop-blur-md rounded-2xl text-[9px] font-black uppercase tracking-widest text-[#2E7D32] shadow-sm">
+                                    <div className="absolute top-6 left-6 z-10 px-4 py-2 bg-white/90 backdrop-blur-md rounded-2xl text-[9px] font-black uppercase tracking-widest text-[#214a32] shadow-sm">
                                         {article.category}
                                     </div>
                                     <div className="absolute top-6 right-6 z-10 p-3 bg-white/90 backdrop-blur-md rounded-2xl text-gray-400 hover:text-rose-500 shadow-sm transition-all">
@@ -151,7 +151,7 @@ export default function HealthInsightsPage() {
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent group-hover:from-black/60 transition-all" />
                                 </div>
                                 <div className="p-8 flex-1 flex flex-col justify-between space-y-6">
-                                    <h4 className="text-xl font-black font-outfit uppercase tracking-tight leading-tight group-hover:text-[#2E7D32] transition-colors">{article.title}</h4>
+                                    <h4 className="text-xl font-black font-outfit uppercase tracking-tight leading-tight group-hover:text-[#214a32] transition-colors">{article.title}</h4>
                                     
                                     <div className="flex items-center justify-between border-t border-gray-50 pt-6">
                                         <div className="flex items-center gap-3">
@@ -176,13 +176,13 @@ export default function HealthInsightsPage() {
                 <div className="space-y-8">
                     {/* Trending Tags */}
                     <div className="bg-white p-8 rounded-[3.5rem] border border-gray-100 shadow-sm space-y-6 overflow-hidden relative group">
-                        <div className="absolute -right-4 top-0 p-8 text-[#2E7D32]/5 rotate-12 transition-transform duration-700 group-hover:rotate-0">
+                        <div className="absolute -right-4 top-0 p-8 text-[#214a32]/5 rotate-12 transition-transform duration-700 group-hover:rotate-0">
                             <TrendingUp size={100} strokeWidth={1} />
                         </div>
                         <h3 className="text-sm font-black font-outfit uppercase tracking-wider relative z-10">Trending Tags</h3>
                         <div className="flex flex-wrap gap-2 relative z-10">
                             {trendingTags.map((tag, i) => (
-                                <span key={i} className="px-5 py-2.5 bg-gray-50 rounded-2xl text-[10px] font-black uppercase tracking-widest text-gray-400 hover:bg-[#2E7D32] hover:text-white transition-all cursor-pointer">
+                                <span key={i} className="px-5 py-2.5 bg-gray-50 rounded-2xl text-[10px] font-black uppercase tracking-widest text-gray-400 hover:bg-[#214a32] hover:text-white transition-all cursor-pointer">
                                     {tag}
                                 </span>
                             ))}
@@ -191,7 +191,7 @@ export default function HealthInsightsPage() {
 
                     {/* Top Authors */}
                     <div className="bg-white p-8 rounded-[3.5rem] border border-gray-100 shadow-sm space-y-8 overflow-hidden relative group">
-                        <div className="absolute -right-6 -bottom-6 p-8 text-[#2E7D32]/5 rotate-12 transition-transform duration-700 group-hover:rotate-0">
+                        <div className="absolute -right-6 -bottom-6 p-8 text-[#214a32]/5 rotate-12 transition-transform duration-700 group-hover:rotate-0">
                             <User size={120} strokeWidth={1} />
                         </div>
                         <h3 className="text-sm font-black font-outfit uppercase tracking-wider relative z-10">Top Authors</h3>
@@ -205,14 +205,14 @@ export default function HealthInsightsPage() {
                                     <div className="flex items-center gap-4">
                                         <div className="relative shrink-0">
                                             <img src={author.img} className="size-12 rounded-[1.5rem] group-hover/author:scale-110 transition-transform border border-gray-50" />
-                                            <div className="absolute -bottom-1 -right-1 size-4 bg-[#2E7D32] border-4 border-white rounded-full" />
+                                            <div className="absolute -bottom-1 -right-1 size-4 bg-[#214a32] border-4 border-white rounded-full" />
                                         </div>
                                         <div>
-                                            <h4 className="text-[11px] font-black uppercase tracking-tight group-hover/author:text-[#2E7D32] transition-colors">{author.name}</h4>
+                                            <h4 className="text-[11px] font-black uppercase tracking-tight group-hover/author:text-[#214a32] transition-colors">{author.name}</h4>
                                             <p className="text-[9px] font-bold text-gray-400 mt-1 uppercase tracking-widest">{author.role} • {author.followers}</p>
                                         </div>
                                     </div>
-                                    <button className="p-2.5 bg-gray-50 rounded-xl text-gray-300 hover:text-green-600 transition-colors group-hover/author:translate-x-1 transition-transform">
+                                    <button className="p-2.5 bg-gray-50 rounded-xl text-gray-300 hover:text-[#214a32] transition-colors group-hover/author:translate-x-1 transition-transform">
                                         <ChevronRight size={14} />
                                     </button>
                                 </div>

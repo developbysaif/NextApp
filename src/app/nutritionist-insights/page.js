@@ -67,7 +67,7 @@ export default function NutritionistInsightsPage() {
                         </p>
 
                         <div className="inline-flex items-center gap-2 bg-white/95 px-6 py-2.5 rounded-full text-xs font-bold text-[#142A1D] shadow-xl">
-                            <Link href="/" className="hover:text-[#22AA4F] transition-colors flex items-center gap-1.5">
+                            <Link href="/" className="hover:text-[#214a32] transition-colors flex items-center gap-1.5">
                                 <Home size={14} /> Home
                             </Link>
                             <ChevronRight size={14} className="text-[#D1D9CA]" />
@@ -105,7 +105,7 @@ export default function NutritionistInsightsPage() {
                                         </div>
 
                                         <div className="p-6 flex flex-col flex-1">
-                                            <h3 className="text-sm font-bold text-[#142A1D] mb-3 leading-snug group-hover:text-[#22AA4F] transition-colors line-clamp-2 uppercase tracking-tight">
+                                            <h3 className="text-sm font-bold text-[#142A1D] mb-3 leading-snug group-hover:text-[#214a32] transition-colors line-clamp-2 uppercase tracking-tight">
                                                 {article.title}
                                             </h3>
                                             <p className="text-[#4F5E4B] text-[11px] leading-relaxed mb-6 flex-1 line-clamp-3 font-medium">
@@ -121,7 +121,7 @@ export default function NutritionistInsightsPage() {
                                                         <span className="text-[9px] font-black text-[#142A1D] uppercase tracking-wide leading-none">Expert Insight</span>
                                                     </div>
                                                 </div>
-                                                <ArrowRight size={14} className="text-[#22AA4F] group-hover:translate-x-1 transition-transform" />
+                                                <ArrowRight size={14} className="text-[#214a32] group-hover:translate-x-1 transition-transform" />
                                             </div>
                                         </div>
                                     </Link>
@@ -151,7 +151,7 @@ export default function NutritionistInsightsPage() {
                                             <h4 className="text-sm font-bold text-[#142A1D] leading-none mb-1">{expert.name}</h4>
                                             <p className="text-[10px] text-[#8D9F91] font-bold uppercase tracking-wider">{expert.role}</p>
                                         </div>
-                                        <Link href="#" className="text-[10px] font-bold text-[#22AA4F] hover:underline uppercase tracking-widest leading-none">
+                                        <Link href="#" className="text-[10px] font-bold text-[#214a32] hover:underline uppercase tracking-widest leading-none">
                                             View Profile
                                         </Link>
                                     </div>
@@ -167,7 +167,7 @@ export default function NutritionistInsightsPage() {
                                     <Link
                                         key={i}
                                         href="#"
-                                        className="px-4 py-2 bg-[#F4F4EB] hover:bg-[#22AA4F] hover:text-white rounded-full text-[10px] font-bold text-[#142A1D] uppercase tracking-widest transition-all shadow-sm"
+                                        className="px-4 py-2 bg-[#F4F4EB] hover:bg-[#214a32] hover:text-white rounded-full text-[10px] font-bold text-[#142A1D] uppercase tracking-widest transition-all shadow-sm"
                                     >
                                         {tag}
                                     </Link>

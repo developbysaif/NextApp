@@ -131,7 +131,7 @@ export default function HomePage() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-white">
-        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-[#22aa4f]"></div>
+        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-[#214a32]"></div>
       </div>
     );
   }
@@ -144,7 +144,7 @@ export default function HomePage() {
     { title: "Organic Fruits", subtitle: "Enjoy", bg: "#a6763f", image: "/Fruits.png", href: "/grocery/category/vegetables-fruits" },
     { title: "Healthy Snacks", subtitle: "New", bg: "#ffffff", image: "/Poradge.png", href: "/products" },
     { title: "Dry Fruits", subtitle: "Popular", bg: "#a6763f", image: "/Dry Fruit.png", href: "/grocery/category/dry-nuts" },
-    { title: "Fresh Herbs", subtitle: "Fresh", bg: "#22aa4f", image: "/Herbs.png", href: "/products" },
+    { title: "Fresh Herbs", subtitle: "Fresh", bg: "#214a32", image: "/Herbs.png", href: "/products" },
     { title: "Moringa Powder", subtitle: "Superfood", bg: "#8c8c4f", image: "/mor.png", href: "/products?search=moringa" },
   ];
 
@@ -159,14 +159,14 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center mb-12 gap-4">
             <div className="text-center md:text-left">
-              <h2 className="text-3xl md:text-4xl font-black text-[#21492f] leading-tight">
+              <h2 className="text-3xl md:text-4xl font-black text-[#214a32] leading-tight">
                 Nature's Finest Harvest
               </h2>
               <p className="text-gray-500 mt-2 text-base md:text-lg">
                 Handpicked organic goodness for your family.
               </p>
             </div>
-            <Link href="/products" className="hidden md:flex items-center gap-2 text-[#22aa4f] font-extrabold text-sm uppercase tracking-widest hover:translate-x-1 transition-transform">
+            <Link href="/products" className="hidden md:flex items-center gap-2 text-[#214a32] font-extrabold text-sm uppercase tracking-widest hover:translate-x-1 transition-transform">
               Explore all harvest <ArrowRight size={16} />
             </Link>
           </div>
@@ -178,7 +178,7 @@ export default function HomePage() {
           </div>
 
           <div className="mt-16 flex justify-center">
-            <Link href="/products" className="flex items-center gap-3 bg-[#22aa4f] text-white px-10 py-4 rounded-xl font-black text-sm uppercase tracking-widest hover:bg-[#21492f] transition-all shadow-xl shadow-green-200">
+            <Link href="/products" className="flex items-center gap-3 bg-[#214a32] text-white px-10 py-4 rounded-xl font-black text-sm uppercase tracking-widest hover:bg-[#214a32] transition-all shadow-xl shadow-green-200">
               View All Products <ArrowRight size={18} />
             </Link>
           </div>
@@ -193,12 +193,12 @@ export default function HomePage() {
           <div className="text-white max-w-xl relative z-10 text-center md:text-left mb-8 md:mb-0">
             <h3 className="text-green-900 font-bold text-xs mb-3">A Gift For You</h3>
             <h2 className="text-3xl md:text-5xl font-black mb-4 leading-tight">
-              A New Beginning For <br /><span className="text-[#21492f]">Your Healthy Life</span>
+              A New Beginning For <br /><span className="text-[#214a32]">Your Healthy Life</span>
             </h2>
             <p className="text-green-900 text-base md:text-lg font-medium mb-6 leading-relaxed">
               Take the first step towards a pain-free future. Start your healing journey today with a special welcome gift.
             </p>
-            <Link href="/products" className="inline-block bg-[#21492f] text-white px-8 py-3 rounded-xl font-bold text-sm hover:bg-green-700 transition-all shadow-lg shadow-black/10">
+            <Link href="/products" className="inline-block bg-[#214a32] text-white px-8 py-3 rounded-xl font-bold text-sm hover:bg-green-700 transition-all shadow-lg shadow-black/10">
               Shop now
             </Link>
           </div>
