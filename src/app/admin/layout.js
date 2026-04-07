@@ -67,9 +67,10 @@ export default function AdminLayout({ children }) {
 
     const menuItems = [
         { name: 'Dashboard', icon: LayoutDashboard, path: '/admin' },
-        { name: 'Universal Portal', icon: Globe, path: '/admin/portal' },
-        { name: 'Ecommerce', icon: ShoppingBag, path: '/admin/orders' },
-        { name: 'Inventory', icon: Package, path: '/admin/products' },
+        // Universal Portal, Inventory, Clinicians, User Directory, Revenue Wall, Disease Database, Analytics removed as per request
+        // { name: 'Universal Portal', icon: Globe, path: '/admin/portal' },
+        // { name: 'Ecommerce', icon: ShoppingBag, path: '/admin/orders' },
+        // { name: 'Inventory', icon: Package, path: '/admin/products' },
         { name: 'Healthy Menu (Blogs)', icon: BookOpen, path: '/admin/blogs' },
         { 
             name: 'Meal & Diet', 
@@ -81,12 +82,12 @@ export default function AdminLayout({ children }) {
                 { name: 'Grocery List', path: '/admin/grocery' }
             ]
         },
-        { name: 'Clinicians', icon: ShieldCheck, path: '/admin/doctors' },
-        { name: 'User Directory', icon: Users, path: '/admin/users' },
-        { name: 'Revenue Wall', icon: DollarSign, path: '/admin/revenue' },
-        { name: 'Disease Database', icon: ShieldCheck, path: '/admin/diseases' },
+        // { name: 'Clinicians', icon: ShieldCheck, path: '/admin/doctors' },
+        // { name: 'User Directory', icon: Users, path: '/admin/users' },
+        // { name: 'Revenue Wall', icon: DollarSign, path: '/admin/revenue' },
+        // { name: 'Disease Database', icon: ShieldCheck, path: '/admin/diseases' },
         { name: 'Exercises', icon: Dumbbell, path: '/admin/exercises' },
-        { name: 'Analytics', icon: BarChart3, path: '/admin/reports' },
+        // { name: 'Analytics', icon: BarChart3, path: '/admin/reports' },
     ];
 
     const [openSubMenus, setOpenSubMenus] = useState(['Meal & Diet']);
@@ -104,7 +105,7 @@ export default function AdminLayout({ children }) {
 
     if (!isAdmin && pathname !== '/admin/login' && pathname !== '/admin/signup') {
         return <div className="min-h-screen bg-[#FDFBF7] flex items-center justify-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#B4E567]"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#a4d9bc]"></div>
         </div>;
     }
 
@@ -122,13 +123,10 @@ export default function AdminLayout({ children }) {
             >
                 {/* Logo Area */}
                 <div className={`px-6 pb-6 flex items-center gap-3 ${!isSidebarOpen ? 'justify-center' : ''}`}>
-                    <div className="relative w-7 h-7 flex-shrink-0 flex flex-col overflow-hidden">
-                        <div className="w-full h-1/2 bg-[#FFD166] rounded-t-full"></div>
-                        <div className="w-full h-1/2 bg-[#B4E567] rounded-b-full"></div>
-                    </div>
+                    {/* Circle logo removed as per request */}
                     {isSidebarOpen && (
-                        <span className="font-bold text-lg tracking-tight text-gray-900">
-                            Nutrigo
+                        <span className="font-black text-xl tracking-tight text-[#214a32] uppercase italic">
+                            IlajBilGhiza
                         </span>
                     )}
                 </div>
@@ -146,14 +144,14 @@ export default function AdminLayout({ children }) {
                                         onClick={() => toggleSubMenu(item.name)}
                                         className={`
                                             flex items-center gap-3 px-3 py-3 rounded-[1.5rem] transition-all group w-full font-medium
-                                            ${isActive ? 'bg-[#B4E567] text-gray-900' : 'text-gray-500 hover:text-gray-900'}
+                                            ${isActive ? 'bg-[#a4d9bc] text-[#214a32]' : 'text-gray-500 hover:text-[#214a32]'}
                                             ${!isSidebarOpen ? 'justify-center px-0' : ''}
                                         `}
                                     >
                                         <item.icon size={18} strokeWidth={isActive ? 2.5 : 2} />
                                         {isSidebarOpen && (
                                             <>
-                                                <span className="text-[13px] tracking-wide flex-1 text-left">{item.name}</span>
+                                                <span className="text-[13px] tracking-wide flex-1 text-left font-bold">{item.name}</span>
                                                 <ChevronDown size={14} className={`transition-transform ${isSubMenuOpen ? 'rotate-180' : ''}`} />
                                             </>
                                         )}
@@ -166,7 +164,7 @@ export default function AdminLayout({ children }) {
                                                 href={child.path}
                                                 className={`
                                                     ml-8 flex items-center gap-3 px-4 py-2.5 rounded-2xl text-[12px] font-bold transition-all
-                                                    ${isChildActive ? 'bg-[#B4E567] text-gray-900 shadow-sm' : 'text-gray-400 hover:text-gray-900'}
+                                                    ${isChildActive ? 'bg-[#a4d9bc] text-[#214a32] shadow-sm' : 'text-gray-400 hover:text-[#214a32]'}
                                                 `}
                                             >
                                                 {child.name}
@@ -184,73 +182,59 @@ export default function AdminLayout({ children }) {
                                 className={`
                                     flex items-center gap-3 px-3 py-3 rounded-[1.5rem] transition-all group w-full font-medium
                                     ${isActive
-                                        ? 'bg-[#B4E567] text-gray-900 shadow-sm'
-                                        : 'text-gray-500 hover:text-gray-900'}
+                                        ? 'bg-[#a4d9bc] text-[#214a32] shadow-sm'
+                                        : 'text-gray-500 hover:text-[#214a32]'}
                                     ${!isSidebarOpen ? 'justify-center px-0' : ''}
                                 `}
                             >
-                                <item.icon size={18} className={`${isActive ? 'text-gray-900' : 'group-hover:text-gray-900'} shrink-0`} strokeWidth={isActive ? 2.5 : 2} />
-                                {isSidebarOpen && <span className="text-[13px] tracking-wide">{item.name}</span>}
+                                <item.icon size={18} className={`${isActive ? 'text-[#214a32]' : 'group-hover:text-[#214a32]'} shrink-0`} strokeWidth={isActive ? 2.5 : 2} />
+                                {isSidebarOpen && <span className="text-[13px] tracking-wide font-bold">{item.name}</span>}
                             </Link>
                         );
                     })}
 
-                    {/* Promo Widget (Nutrigo style) */}
+                    {/* Promo Widget (Color Updated) */}
                     {isSidebarOpen && (
-                        <div className="mt-8 mb-4 bg-[#FFD166] rounded-[1.5rem] p-5 text-gray-900 shadow-sm mx-2 relative overflow-hidden group">
-                            <div className="absolute top-1 right-2 p-1 transform rotate-12 group-hover:scale-110 transition-transform">
-                                {/* Carrot/Leaf Illustration */}
-                                <div className="text-4xl">🥕</div>
+                        <div className="mt-8 mb-4 bg-[#989a69] rounded-[1.5rem] p-5 text-white shadow-sm mx-2 relative overflow-hidden group">
+                            <div className="relative z-10">
+                                <h4 className="text-xs font-black uppercase tracking-widest mb-1 opacity-80">System Stats</h4>
+                                <p className="text-[11px] font-bold leading-tight">Everything is running optimally today.</p>
                             </div>
-                            <p className="text-[11px] text-gray-800 mb-4 mt-16 relative z-10 font-medium pb-2 leading-snug">Start your health journey with a <strong>FREE 1-month</strong> access to Nutrigo!</p>
-                            <button className="bg-[#B4E567] text-gray-900 text-[11px] font-bold px-4 py-2.5 rounded-[1rem] transition-all relative z-10 shadow-sm w-[110px] text-center hover:bg-[#a6d85a]">
-                                Claim Now!
-                            </button>
                         </div>
                     )}
                 </nav>
 
-                {/* Logout Button */}
-                <div className="p-4 w-full">
-                    <button
-                        onClick={handleLogout}
-                        className={`
-                            w-full flex items-center gap-3 px-3 py-3 rounded-[1.5rem] text-gray-500 hover:bg-gray-100 hover:text-gray-900 transition-all font-medium border border-gray-100/50 bg-white shadow-sm
-                            ${!isSidebarOpen ? 'justify-center px-0' : ''}
-                        `}
-                    >
-                        <LogOut size={18} className="shrink-0" strokeWidth={2} />
-                        {isSidebarOpen && <span className="text-[13px] text-left flex-1">Logout</span>}
-                    </button>
+                {/* Bottom Profile */}
+                <div className={`mt-auto p-4 border-t border-gray-100 flex items-center gap-3 ${!isSidebarOpen ? 'justify-center' : ''}`}>
+                    <div className="w-10 h-10 rounded-full bg-[#a4d9bc] text-[#214a32] flex items-center justify-center font-bold shadow-sm">
+                        {currentUser?.name?.charAt(0) || 'A'}
+                    </div>
+                    {isSidebarOpen && (
+                        <div className="flex-1 min-w-0">
+                            <h4 className="text-xs font-bold text-gray-900 truncate">{currentUser?.name || 'Administrator'}</h4>
+                            <p className="text-[10px] text-gray-400 font-medium">Main Admin Portal</p>
+                        </div>
+                    )}
+                    {isSidebarOpen && (
+                        <button onClick={handleLogout} className="text-gray-400 hover:text-red-500 transition-colors">
+                            <LogOut size={18} />
+                        </button>
+                    )}
                 </div>
             </aside>
 
             {/* Main Content Area */}
-            <div className="flex-1 flex flex-col min-w-0 overflow-hidden bg-[#FDFBF7]">
-                {/* Mobile Top Header (Only visible on mobile) */}
-                <div className="lg:hidden h-[72px] bg-[#FDFBF7] flex items-center justify-between px-6 sticky top-0 z-40">
-                     <button
-                        onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-                        className="p-2 text-gray-500 hover:text-gray-900 bg-white rounded-xl shadow-sm"
-                    >
-                        <Menu size={20} />
-                    </button>
-                    <div className="font-bold text-gray-900">NUTRIGO</div>
-                </div>
+            <main className="flex-1 overflow-y-auto no-scrollbar relative p-4 lg:p-8 bg-white/50">
+                {children}
 
-                {/* Page Content */}
-                <main className="flex-1 overflow-y-auto no-scrollbar relative w-full lg:pt-0 pb-10">
-                    {children}
-                </main>
-            </div>
-
-            {/* Mobile Overlay */}
-            {isMobile && isSidebarOpen && (
-                <div
-                    className="fixed inset-0 bg-black/20 backdrop-blur-sm z-[45]"
-                    onClick={() => setIsSidebarOpen(false)}
-                />
-            )}
+                {/* Mobile Overlay */}
+                {isMobile && isSidebarOpen && (
+                    <div
+                        className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40 transition-opacity"
+                        onClick={() => setIsSidebarOpen(false)}
+                    />
+                )}
+            </main>
         </div>
     );
 }
