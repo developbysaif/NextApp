@@ -85,12 +85,8 @@ export default function DashboardLayout({ children }) {
                 {/* Logo Area */}
                 <div className="px-6 mb-12 flex items-center justify-between">
                     <Link href="/" className="flex items-center gap-3 group">
-                        <div className="flex flex-col gap-0.5">
-                            <div className="w-5 h-2 bg-[#a4d9bc] rounded-t-full group-hover:scale-110 transition-transform shadow-sm"></div>
-                            <div className="w-5 h-2 bg-[#214a32] rounded-b-full group-hover:scale-110 transition-transform shadow-sm"></div>
-                        </div>
                         {isSidebarOpen && (
-                            <img src="/Logo.png" alt="IlajBilGhiza Logo" className="h-10 object-contain ml-2" />
+                            <img src="/desk-top.png" alt="IlajBilGhiza Logo" className="h-10 object-contain ml-2" />
                         )}
                     </Link>
                     {isLoaded && isSidebarOpen && typeof window !== 'undefined' && window.innerWidth < 1024 && (
@@ -121,15 +117,7 @@ export default function DashboardLayout({ children }) {
                     })}
                 </nav>
 
-                <div className="px-3 mt-auto pt-6 border-t border-gray-50">
-                    <button
-                        onClick={handleLogout}
-                        className="flex items-center gap-4 px-4 py-3 w-full rounded-2xl text-gray-400 hover:bg-rose-50 hover:text-rose-600 transition-all duration-200"
-                    >
-                        <LogOut size={20} />
-                        {isSidebarOpen && <span className="text-sm font-bold">Logout</span>}
-                    </button>
-                </div>
+                {/* Bottom section removed */}
             </aside>
 
             {/* Main Content */}
@@ -148,10 +136,16 @@ export default function DashboardLayout({ children }) {
                     </div>
                     
                     <div className="lg:hidden flex-1 flex justify-center">
-                        <img src="/Logo.png" alt="IlajBilGhiza Logo" className="h-8 object-contain" />
+                        <img src="/desk-top.png" alt="IlajBilGhiza Logo" className="h-8 object-contain" />
                     </div>
 
-                    <div className="flex justify-end relative">
+                    <div className="flex justify-end items-center gap-4 relative">
+                        {/* Logout Button */}
+                        <button onClick={handleLogout} className="flex items-center gap-2 px-3 py-2 text-sm font-bold text-red-500 bg-red-50 hover:bg-red-100 rounded-xl transition-colors">
+                            <LogOut size={16} />
+                            <span className="hidden sm:inline">Logout</span>
+                        </button>
+                        
                         {/* Profile Dropdown */}
                         <div className="relative">
                             <button 

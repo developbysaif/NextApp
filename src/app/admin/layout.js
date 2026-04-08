@@ -200,23 +200,7 @@ export default function AdminLayout({ children }) {
                     })}
                 </nav>
 
-                {/* Bottom Profile */}
-                <div className={`mt-auto p-4 border-t border-gray-100 flex items-center gap-3 ${!isSidebarOpen ? 'justify-center' : ''}`}>
-                    <div className="w-10 h-10 rounded-full bg-[#a4d9bc] text-[#214a32] flex items-center justify-center font-bold shadow-sm">
-                        {currentUser?.name?.charAt(0) || 'A'}
-                    </div>
-                    {isSidebarOpen && (
-                        <div className="flex-1 min-w-0">
-                            <h4 className="text-xs font-bold text-gray-900 truncate">{currentUser?.name || 'Administrator'}</h4>
-                            <p className="text-[10px] text-gray-400 font-medium uppercase tracking-widest">Master Admin</p>
-                        </div>
-                    )}
-                    {isSidebarOpen && (
-                        <button onClick={handleLogout} className="text-gray-400 hover:text-red-500 transition-colors">
-                            <LogOut size={18} />
-                        </button>
-                    )}
-                </div>
+                {/* Bottom Profile Removed */}
             </aside>
 
             {/* Main Content Area */}
@@ -233,7 +217,13 @@ export default function AdminLayout({ children }) {
                         <img src="/desk-top.png" alt="IlajBilGhiza Logo" className="h-8 object-contain" />
                     </div>
 
-                    <div className="flex justify-end relative">
+                    <div className="flex justify-end items-center gap-4 relative">
+                        {/* Logout Button */}
+                        <button onClick={handleLogout} className="flex items-center gap-2 px-3 py-2 text-sm font-bold text-red-500 bg-red-50 hover:bg-red-100 rounded-xl transition-colors">
+                            <LogOut size={16} />
+                            <span className="hidden sm:inline">Logout</span>
+                        </button>
+                        
                         {/* Profile Dropdown */}
                         <div className="relative">
                             <button
