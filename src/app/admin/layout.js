@@ -77,9 +77,9 @@ export default function AdminLayout({ children }) {
         { name: 'Order Fulfillment', icon: ShoppingBag, path: '/admin/orders' },
         { name: 'Inventory', icon: Package, path: '/admin/products' },
         { name: 'Health Menu', icon: BookOpen, path: '/admin/blogs' },
-        { 
-            name: 'Meal & Diet', 
-            icon: Calendar, 
+        {
+            name: 'Meal & Diet',
+            icon: Calendar,
             path: '/admin/meal-plan',
             isParent: true,
             children: [
@@ -102,7 +102,7 @@ export default function AdminLayout({ children }) {
     const [openSubMenus, setOpenSubMenus] = useState(['Meal & Diet']);
 
     const toggleSubMenu = (name) => {
-        setOpenSubMenus(prev => 
+        setOpenSubMenus(prev =>
             prev.includes(name) ? prev.filter(n => n !== name) : [...prev, name]
         );
     };
@@ -133,7 +133,7 @@ export default function AdminLayout({ children }) {
                 {/* Logo Area */}
                 <div className={`px-6 pb-6 pt-2 flex items-center gap-3 ${!isSidebarOpen ? 'justify-center' : ''}`}>
                     {isSidebarOpen && (
-                        <img src="/Logo.png" alt="IlajBilGhiza Logo" className="h-10 object-contain ml-2 mt-4" />
+                        <img src="/desk-top.png" alt="IlajBilGhiza Logo" className="h-10 object-contain ml-2 mt-4" />
                     )}
                 </div>
 
@@ -228,15 +228,15 @@ export default function AdminLayout({ children }) {
                             <Menu size={24} />
                         </button>
                     </div>
-                    
+
                     <div className="lg:hidden flex-1 flex justify-center">
-                        <img src="/Logo.png" alt="IlajBilGhiza Logo" className="h-8 object-contain" />
+                        <img src="/desk-top.png" alt="IlajBilGhiza Logo" className="h-8 object-contain" />
                     </div>
 
                     <div className="flex justify-end relative">
                         {/* Profile Dropdown */}
                         <div className="relative">
-                            <button 
+                            <button
                                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                                 className="w-10 h-10 rounded-full bg-[#f0f9f4] text-[#214a32] flex items-center justify-center font-bold shadow-sm overflow-hidden border-2 border-transparent hover:border-[#a4d9bc] transition-all"
                             >
