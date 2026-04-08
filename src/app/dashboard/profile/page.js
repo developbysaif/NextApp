@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { useAuth } from '@/context/AuthContext';
 import { 
     User, Mail, Phone, MapPin, Calendar, Camera, 
@@ -143,12 +144,12 @@ export default function ProfilePage() {
                             <Shield size={16} /> Security
                         </h3>
                         <div className="space-y-3">
-                            <button className="w-full text-left px-4 py-3 rounded-xl border border-gray-100 font-bold text-gray-600 hover:border-[#a4d9bc] hover:bg-[#f0f9f4] hover:text-[#214a32] transition-colors">
+                            <Link href="/dashboard/profile/change-password" className="block w-full text-left px-4 py-3 rounded-xl border border-gray-100 font-bold text-gray-600 hover:border-[#a4d9bc] hover:bg-[#f0f9f4] hover:text-[#214a32] transition-colors">
                                 Change Password
-                            </button>
-                            <button className="w-full text-left px-4 py-3 rounded-xl border border-gray-100 font-bold text-gray-600 hover:border-[#a4d9bc] hover:bg-[#f0f9f4] hover:text-[#214a32] transition-colors">
+                            </Link>
+                            <Link href="/dashboard/profile/two-factor" className="block w-full text-left px-4 py-3 rounded-xl border border-gray-100 font-bold text-gray-600 hover:border-[#a4d9bc] hover:bg-[#f0f9f4] hover:text-[#214a32] transition-colors">
                                 Two-Factor Authentication
-                            </button>
+                            </Link>
                         </div>
                     </div>
                 </div>
