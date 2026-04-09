@@ -22,22 +22,18 @@ export function AuthProvider({ children }) {
 
     const signup = async (userData) => {
         try {
-            // Simulate network delay
-            await new Promise(resolve => setTimeout(resolve, 500));
-
-            const existingUsers = JSON.parse(localStorage.getItem("users") || "[]");
-            const userExists = existingUsers.find(u => u.email === userData.email);
-
-            if (userExists) {
-                throw new Error("User already exists");
+            const res = await fetch('/api/auth/signup', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(userData)
+            });
+            const data = await res.json();
+            
+            if (!res.ok) {
+                throw new Error(data.message || 'Something went wrong');
             }
 
-            const newUser = { ...userData, id: Date.now().toString() };
-            const updatedUsers = [...existingUsers, newUser];
-
-            localStorage.setItem("users", JSON.stringify(updatedUsers));
-
-            // Auto login
+            // Auto login after successful signup
             return await login(userData.email, userData.password);
         } catch (error) {
             throw error;
@@ -46,17 +42,18 @@ export function AuthProvider({ children }) {
 
     const login = async (email, password) => {
         try {
-            // Simulate network delay
-            await new Promise(resolve => setTimeout(resolve, 500));
+            const res = await fetch('/api/auth/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password })
+            });
+            const data = await res.json();
 
-            const existingUsers = JSON.parse(localStorage.getItem("users") || "[]");
-            const user = existingUsers.find(u => u.email === email && u.password === password);
-
-            if (!user) {
-                throw new Error("Invalid email or password");
+            if (!res.ok) {
+                throw new Error(data.message || 'Invalid email or password');
             }
 
-            const { password: _, ...userWithoutPassword } = user;
+            const userWithoutPassword = data.user;
             localStorage.setItem("currentUser", JSON.stringify(userWithoutPassword));
             setUser(userWithoutPassword);
             return userWithoutPassword;
