@@ -23,8 +23,8 @@ const UserSchema = new mongoose.Schema(
     },
     role: {
       type: String,
-      enum: ['user', 'admin'],
-      default: 'user',
+      enum: ['user', 'admin', 'customer', 'doctor'],
+      default: 'customer',
     },
     // Optional fields they might add during profile updates
     phone: { type: String, default: '+92 300 0000000' },
