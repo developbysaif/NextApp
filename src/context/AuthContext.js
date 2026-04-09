@@ -22,18 +22,22 @@ export function AuthProvider({ children }) {
 
     const signup = async (userData) => {
         try {
-            const res = await fetch('/api/auth/signup', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(userData)
-            });
-            const data = await res.json();
-            
-            if (!res.ok) {
-                throw new Error(data.message || 'Something went wrong');
+            // Simulate network delay
+            await new Promise(resolve => setTimeout(resolve, 500));
+
+            const existingUsers = JSON.parse(localStorage.getItem("users") || "[]");
+            const userExists = existingUsers.find(u => u.email === userData.email);
+
+            if (userExists) {
+                throw new Error("User already exists");
             }
 
-            // Auto login after successful signup
+            const newUser = { ...userData, id: Date.now().toString() };
+            const updatedUsers = [...existingUsers, newUser];
+
+            localStorage.setItem("users", JSON.stringify(updatedUsers));
+
+            // Auto login
             return await login(userData.email, userData.password);
         } catch (error) {
             throw error;
@@ -42,18 +46,17 @@ export function AuthProvider({ children }) {
 
     const login = async (email, password) => {
         try {
-            const res = await fetch('/api/auth/login', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email, password })
-            });
-            const data = await res.json();
+            // Simulate network delay
+            await new Promise(resolve => setTimeout(resolve, 500));
 
-            if (!res.ok) {
-                throw new Error(data.message || 'Invalid email or password');
+            const existingUsers = JSON.parse(localStorage.getItem("users") || "[]");
+            const user = existingUsers.find(u => u.email === email && u.password === password);
+
+            if (!user) {
+                throw new Error("Invalid email or password");
             }
 
-            const userWithoutPassword = data.user;
+            const { password: _, ...userWithoutPassword } = user;
             localStorage.setItem("currentUser", JSON.stringify(userWithoutPassword));
             setUser(userWithoutPassword);
             return userWithoutPassword;
