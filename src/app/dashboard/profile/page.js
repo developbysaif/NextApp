@@ -147,9 +147,6 @@ export default function ProfilePage() {
                             <Link href="/dashboard/profile/change-password" className="block w-full text-left px-4 py-3 rounded-xl border border-gray-100 font-bold text-gray-600 hover:border-[#a4d9bc] hover:bg-[#f0f9f4] hover:text-[#214a32] transition-colors">
                                 Change Password
                             </Link>
-                            <Link href="/dashboard/profile/two-factor" className="block w-full text-left px-4 py-3 rounded-xl border border-gray-100 font-bold text-gray-600 hover:border-[#a4d9bc] hover:bg-[#f0f9f4] hover:text-[#214a32] transition-colors">
-                                Two-Factor Authentication
-                            </Link>
                         </div>
                     </div>
                 </div>
