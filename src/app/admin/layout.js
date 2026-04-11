@@ -121,7 +121,7 @@ export default function AdminLayout({ children }) {
     if (pathname === '/admin/login' || pathname === '/admin/signup') return children;
 
     return (
-        <div className="min-h-screen bg-[#FDFBF7] flex overflow-hidden font-sans text-gray-800">
+        <div className="min-h-screen bg-[#FDFBF7] flex overflow-hidden font-sans-serif text-gray-800">
             {/* Sidebar */}
             <aside
                 className={`
@@ -131,14 +131,14 @@ export default function AdminLayout({ children }) {
                 `}
             >
                 {/* Logo Area */}
-                <div className={`px-6 pb-6 pt-2 flex items-center gap-3 ${!isSidebarOpen ? 'justify-center' : ''}`}>
+                <div className={`px-6 pb-2 pt-2 flex items-center gap-1 ${!isSidebarOpen ? 'justify-center' : ''}`}>
                     {isSidebarOpen && (
-                        <img src="/desk-top.png" alt="IlajBilGhiza Logo" className="h-10 object-contain ml-2 mt-4" />
+                        <img src="/desk-top.png" alt="IlajBilGhiza Logo" className="h-5 ml-2 mt-2" />
                     )}
                 </div>
 
                 {/* Navigation Menu */}
-                <nav className="flex-1 px-4 mt-2 overflow-y-auto w-full no-scrollbar flex flex-col gap-[2px] pb-10">
+                <nav className="flex-1 px-4 mt-2 overflow-y-auto w-full no-scrollbar flex flex-col gap-[1px] pb-4">
                     {menuItems.map((item) => {
                         const isActive = pathname === item.path || (item.children && item.children.some(c => c.path === pathname));
                         const isSubMenuOpen = openSubMenus.includes(item.name);
@@ -223,7 +223,7 @@ export default function AdminLayout({ children }) {
                             <LogOut size={16} />
                             <span className="hidden sm:inline">Logout</span>
                         </button>
-                        
+
                         {/* Profile Dropdown */}
                         <div className="relative">
                             <button
