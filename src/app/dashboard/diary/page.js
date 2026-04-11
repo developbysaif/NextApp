@@ -44,16 +44,24 @@ export default function FoodDiaryPage() {
     const [formError, setFormError] = useState('');
     const [page, setPage] = useState(1);
 
-    // Load from localStorage on mount
+    // Load from MongoDB backend on mount
     useEffect(() => {
-        const stored = localStorage.getItem('foodDiaryEntries_v2');
-        setEntries(stored ? JSON.parse(stored) : DEFAULT_ENTRIES);
+        const fetchEntries = async () => {
+            try {
+                const res = await fetch('/api/diary');
+                const result = await res.json();
+                if (result.success && result.data.length > 0) {
+                    setEntries(result.data);
+                } else {
+                    setEntries(DEFAULT_ENTRIES);
+                }
+            } catch (err) {
+                console.error(err);
+                setEntries(DEFAULT_ENTRIES);
+            }
+        };
+        fetchEntries();
     }, []);
-
-    const persist = (updated) => {
-        setEntries(updated);
-        localStorage.setItem('foodDiaryEntries_v2', JSON.stringify(updated));
-    };
 
     // Computed stats from all entries
     const totalCals = entries.reduce((s, e) => s + Number(e.calories || 0), 0);
@@ -92,30 +100,56 @@ export default function FoodDiaryPage() {
         setShowModal(true);
     };
 
-    const handleDelete = (id) => {
-        persist(entries.filter(e => e.id !== id));
+    const handleDelete = async (id) => {
+        try {
+            await fetch(`/api/diary/${id}`, { method: 'DELETE' });
+            setEntries(entries.filter(e => e.id !== id));
+        } catch (err) {
+            console.error(err);
+        }
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         if (!form.name.trim() || !form.amount.trim()) {
             setFormError('Food name and amount are required.');
             return;
         }
-        const entry = {
+        const entryData = {
             ...form,
             calories: Number(form.calories) || 0,
             carbs: Number(form.carbs) || 0,
             protein: Number(form.protein) || 0,
             fat: Number(form.fat) || 0,
         };
-        if (editEntry) {
-            persist(entries.map(e => e.id === editEntry.id ? { ...e, ...entry } : e));
-        } else {
-            persist([{ ...entry, id: Date.now() }, ...entries]);
-            setPage(1);
+
+        try {
+            if (editEntry) {
+                const res = await fetch(`/api/diary/${editEntry.id}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(entryData)
+                });
+                const result = await res.json();
+                if(result.success) {
+                    setEntries(entries.map(e => e.id === editEntry.id ? result.data : e));
+                }
+            } else {
+                const res = await fetch('/api/diary', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(entryData)
+                });
+                const result = await res.json();
+                if(result.success) {
+                    setEntries([{ ...result.data }, ...entries]);
+                    setPage(1);
+                }
+            }
+            setShowModal(false);
+        } catch (err) {
+            setFormError('Failed to save entry to database.');
         }
-        setShowModal(false);
     };
 
     const userName = user?.name || user?.fullName || user?.email?.split('@')[0] || 'you';

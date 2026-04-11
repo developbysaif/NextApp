@@ -36,16 +36,24 @@ export default function GroceryListPage() {
     const [form, setForm] = useState(EMPTY_FORM);
     const [formError, setFormError] = useState('');
 
-    // Load from localStorage
+    // Fetch from real Backend API (MongoDB)
     useEffect(() => {
-        const stored = localStorage.getItem('groceryItems_v2');
-        setItems(stored ? JSON.parse(stored) : DEFAULT_ITEMS);
+        const fetchItems = async () => {
+            try {
+                const res = await fetch('/api/grocery');
+                const result = await res.json();
+                if (result.success && result.data.length > 0) {
+                    setItems(result.data);
+                } else {
+                    setItems(DEFAULT_ITEMS);
+                }
+            } catch (err) {
+                console.error(err);
+                setItems(DEFAULT_ITEMS);
+            }
+        };
+        fetchItems();
     }, []);
-
-    const save = (updated) => {
-        setItems(updated);
-        localStorage.setItem('groceryItems_v2', JSON.stringify(updated));
-    };
 
     // Computed stats
     const totalCost = items.reduce((s, i) => s + Number(i.cost || 0), 0);
@@ -63,12 +71,23 @@ export default function GroceryListPage() {
         item.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
-    const togglePurchased = (id) => {
-        save(items.map(i => i.id === id ? { ...i, purchased: !i.purchased } : i));
+    const togglePurchased = async (id) => {
+        const item = items.find(i => i.id === id);
+        try {
+            await fetch(`/api/grocery/${id}`, {
+                method: 'PUT',
+                body: JSON.stringify({ purchased: !item.purchased }),
+                headers: { 'Content-Type': 'application/json' }
+            });
+            setItems(items.map(i => i.id === id ? { ...i, purchased: !item.purchased } : i));
+        } catch(e) { console.error(e) }
     };
 
-    const deleteItem = (id) => {
-        save(items.filter(i => i.id !== id));
+    const deleteItem = async (id) => {
+        try {
+            await fetch(`/api/grocery/${id}`, { method: 'DELETE' });
+            setItems(items.filter(i => i.id !== id));
+        } catch(e) { console.error(e) }
     };
 
     const openAdd = () => {
@@ -85,19 +104,41 @@ export default function GroceryListPage() {
         setShowModal(true);
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         if (!form.name.trim() || !form.qty.trim()) {
             setFormError('Name and quantity are required.');
             return;
         }
-        if (editItem) {
-            save(items.map(i => i.id === editItem.id ? { ...i, ...form, calories: Number(form.calories) || 0, cost: Number(form.cost) || 0 } : i));
-        } else {
-            const newItem = { ...form, id: Date.now(), purchased: false, calories: Number(form.calories) || 0, cost: Number(form.cost) || 0 };
-            save([...items, newItem]);
+
+        const payload = { ...form, calories: Number(form.calories) || 0, cost: Number(form.cost) || 0 };
+
+        try {
+            if (editItem) {
+                const res = await fetch(`/api/grocery/${editItem.id}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                const result = await res.json();
+                if(result.success) {
+                    setItems(items.map(i => i.id === editItem.id ? result.data : i));
+                }
+            } else {
+                const res = await fetch('/api/grocery', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ ...payload, purchased: false })
+                });
+                const result = await res.json();
+                if(result.success) {
+                    setItems([...items, result.data]);
+                }
+            }
+            setShowModal(false);
+        } catch (err) {
+            setFormError('Failed to save item to database.');
         }
-        setShowModal(false);
     };
 
     return (
