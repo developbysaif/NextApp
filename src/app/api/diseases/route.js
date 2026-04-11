@@ -1,48 +1,59 @@
 import { NextResponse } from 'next/server';
-import { ServerStorage } from '@/lib/server-storage';
+import connectDB from '@/lib/db';
+import Disease from '@/models/Disease';
 
-export const dynamic = 'force-dynamic';
-
-export async function GET(request) {
+export async function GET() {
     try {
-        const diseases = ServerStorage.getDiseases();
-        return NextResponse.json({ success: true, data: diseases }, { status: 200 });
+        await connectDB();
+        const diseases = await Disease.find({}).sort({ createdAt: -1 });
+        return NextResponse.json(diseases, { status: 200 });
     } catch (error) {
-        console.error('Error fetching diseases:', error);
-        return NextResponse.json({ success: false, error: error.message }, { status: 500 });
+        return NextResponse.json({ error: error.message }, { status: 500 });
     }
 }
 
-export async function POST(request) {
+export async function POST(req) {
     try {
-        const body = await request.json();
-        const diseases = ServerStorage.getDiseases();
+        await connectDB();
+        const data = await req.json();
+        
+        if (!data.name || !data.category) {
+            return NextResponse.json({ error: 'Name and Category are required' }, { status: 400 });
+        }
 
-        const newDisease = {
-            ...body,
-            _id: Date.now().toString(),
-            createdAt: new Date().toISOString()
-        };
-
-        diseases.push(newDisease);
-        ServerStorage.saveDiseases(diseases);
-
-        return NextResponse.json({ success: true, message: 'Disease added successfully', data: newDisease }, { status: 201 });
+        const disease = await Disease.create(data);
+        return NextResponse.json(disease, { status: 201 });
     } catch (error) {
-        console.error('Error adding disease:', error);
-        return NextResponse.json({ success: false, error: error.message }, { status: 500 });
+        return NextResponse.json({ error: error.message }, { status: 500 });
     }
 }
 
-export async function DELETE(request) {
+export async function DELETE(req) {
     try {
-        const { searchParams } = new URL(request.url);
+        await connectDB();
+        const { searchParams } = new URL(req.url);
         const id = searchParams.get('id');
-        let diseases = ServerStorage.getDiseases();
-        diseases = diseases.filter(d => d._id !== id && d.id != id);
-        ServerStorage.saveDiseases(diseases);
-        return NextResponse.json({ success: true, message: 'Disease deleted' }, { status: 200 });
+        
+        if (!id) return NextResponse.json({ error: 'ID required' }, { status: 400 });
+
+        await Disease.findByIdAndDelete(id);
+        return NextResponse.json({ message: 'Disease profile removed' }, { status: 200 });
     } catch (error) {
-        return NextResponse.json({ success: false, error: error.message }, { status: 500 });
+        return NextResponse.json({ error: error.message }, { status: 500 });
+    }
+}
+
+export async function PUT(req) {
+    try {
+        await connectDB();
+        const data = await req.json();
+        const { id, ...updateData } = data;
+
+        if (!id) return NextResponse.json({ error: 'ID required' }, { status: 400 });
+
+        const updated = await Disease.findByIdAndUpdate(id, updateData, { new: true });
+        return NextResponse.json(updated, { status: 200 });
+    } catch (error) {
+        return NextResponse.json({ error: error.message }, { status: 500 });
     }
 }

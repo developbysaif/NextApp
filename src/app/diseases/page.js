@@ -1,14 +1,42 @@
 "use client";
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
-    Droplets, Heart, Leaf, Bone, ArrowRight
+    Droplets, Heart, Leaf, Bone, ArrowRight, Activity, Zap, Flame, Layers
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function DiseasesAndAilmentsPage() {
+    const [diseases, setDiseases] = useState([]);
+
+    useEffect(() => {
+        const fetchDiseases = async () => {
+            try {
+                const res = await fetch('/api/diseases');
+                const data = await res.json();
+                if (Array.isArray(data)) setDiseases(data);
+            } catch (error) {
+                console.error("Error fetching diseases:", error);
+            }
+        };
+        fetchDiseases();
+    }, []);
+
+    const getIcon = (type) => {
+        const icons = {
+            'Activity': Activity,
+            'Zap': Zap,
+            'Heart': Heart,
+            'Flame': Flame,
+            'Layers': Layers,
+            'Droplets': Droplets,
+            'Leaf': Leaf,
+            'Bone': Bone
+        };
+        return icons[type] || Activity;
+    };
     return (
         <div className="font-sans antialiased text-gray-900 bg-[#fdfaf5]">
 
@@ -107,104 +135,62 @@ export default function DiseasesAndAilmentsPage() {
             </section>
 
             {/* ═══════════════════════════════════════════
-                3. 4 GRID CARDS
+                3. DYNAMIC DISEASE GRID
             ═══════════════════════════════════════════ */}
             <section className="pb-20 px-4 relative z-10">
-                <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-6">
-
-                    {/* Card 1: Diabetes */}
-                    <div className="bg-white/70 backdrop-blur-md rounded-3xl p-6 border border-[#e8dfcf] shadow-sm flex relative overflow-hidden group hover:shadow-lg transition-all">
-                        <div className="flex-1 pr-4 z-10">
-                            <div className="flex items-center gap-3 mb-3">
-                                <div className="w-10 h-10 rounded-xl bg-red-100/50 flex items-center justify-center">
-                                    <Droplets size={20} className="text-red-600" />
+                <div className="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {diseases.map((dis, idx) => {
+                        const Icon = getIcon(dis.iconType || 'Activity');
+                        return (
+                            <motion.div 
+                                key={dis._id || idx}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: idx * 0.1 }}
+                                className="bg-white/70 backdrop-blur-md rounded-[2.5rem] p-8 border border-[#e8dfcf] shadow-sm flex flex-col relative overflow-hidden group hover:shadow-2xl hover:shadow-[#214a32]/5 transition-all min-h-[320px]"
+                            >
+                                <div className="relative z-10 flex-1 flex flex-col">
+                                    <div className="flex items-center gap-4 mb-6">
+                                        <div className="w-14 h-14 rounded-2xl bg-[#f0f9f4] flex items-center justify-center text-[#214a32] group-hover:bg-[#214a32] group-hover:text-white transition-all transform group-hover:rotate-6 shadow-sm">
+                                            <Icon size={28} />
+                                        </div>
+                                        <div>
+                                            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#a4d9bc] mb-1 block">{dis.category}</span>
+                                            <h3 className="text-xl font-black text-[#2e4029] leading-tight group-hover:text-[#214a32] transition-colors">
+                                                {dis.name}
+                                            </h3>
+                                        </div>
+                                    </div>
+                                    <p className="text-[#555] text-[13px] leading-relaxed mb-8 font-medium line-clamp-3">
+                                        {dis.description || "Discover our certified holistic approach and organic restoration protocols for this condition."}
+                                    </p>
+                                    <div className="mt-auto">
+                                        <Link 
+                                            href={`/diseases/${dis._id || 'details'}`} 
+                                            className="inline-flex items-center gap-2 bg-[#c0a072] text-white px-8 py-3.5 rounded-full text-[11px] font-black uppercase tracking-widest hover:bg-[#214a32] hover:scale-105 transition-all shadow-lg shadow-[#c0a072]/20"
+                                        >
+                                            View Remedy <ArrowRight size={14} />
+                                        </Link>
+                                    </div>
                                 </div>
-                                <h3 className="text-lg font-black text-[#2e4029] leading-tight max-w-[150px]">
-                                    Type-2 Diabetes Management
-                                </h3>
-                            </div>
-                            <p className="text-[#555] text-xs leading-relaxed mb-6 font-medium">
-                                Custom illustrated with complex carbohydrates and spices sources.
-                            </p>
-                            <Link href="/diseases/diabetes" className="inline-block bg-[#c0a072] text-white px-5 py-2 rounded-full text-xs font-bold hover:bg-[#b08d5c] transition-colors">
-                                View Remedy
-                            </Link>
-                        </div>
-                        {/* Right side image */}
-                        <div className="absolute -right-4 top-1/2 -translate-y-1/2 w-40 h-40 z-0">
-                            <Image src="/Dry Fruit.png" alt="Oats and cinnamon" fill className="object-contain" />
-                        </div>
-                    </div>
-
-                    {/* Card 2: Blood Pressure */}
-                    <div className="bg-white/70 backdrop-blur-md rounded-3xl p-6 border border-[#e8dfcf] shadow-sm flex relative overflow-hidden group hover:shadow-lg transition-all">
-                        <div className="flex-1 pr-4 z-10">
-                            <div className="flex items-center gap-3 mb-3">
-                                <div className="w-10 h-10 rounded-xl bg-red-100/50 flex items-center justify-center">
-                                    <Heart size={20} className="text-red-600" />
+                                {/* Decorative Element */}
+                                <div className="absolute -right-10 -bottom-10 w-40 h-40 opacity-[0.03] group-hover:opacity-[0.08] transition-opacity pointer-events-none">
+                                    <Icon size={160} />
                                 </div>
-                                <h3 className="text-lg font-black text-[#2e4029] leading-tight max-w-[150px]">
-                                    Blood Pressure Balance
-                                </h3>
-                            </div>
-                            <p className="text-[#555] text-xs leading-relaxed mb-6 font-medium">
-                                Hibiscus flowers, with hibiscus, powers, gentian, and natural natural fonts.
-                            </p>
-                            <Link href="/diseases/blood-pressure" className="inline-block bg-[#2f4d36] text-white px-5 py-2 rounded-full text-xs font-bold hover:bg-[#203625] transition-colors">
-                                View Remedy
-                            </Link>
-                        </div>
-                        <div className="absolute right-0 top-1/2 -translate-y-1/2 w-32 h-32 z-0">
-                            <Image src="/Anar.png" alt="Hibiscus and pomegranate" fill className="object-contain" />
-                        </div>
-                    </div>
+                            </motion.div>
+                        );
+                    })}
 
-                    {/* Card 3: Weight Control */}
-                    <div className="bg-white/70 backdrop-blur-md rounded-3xl p-6 border border-[#e8dfcf] shadow-sm flex relative overflow-hidden group hover:shadow-lg transition-all">
-                        <div className="flex-1 pr-4 z-10">
-                            <div className="flex items-center gap-3 mb-3">
-                                <div className="w-10 h-10 rounded-xl bg-green-100/50 flex items-center justify-center">
-                                    <Leaf size={20} className="text-green-600" />
-                                </div>
-                                <h3 className="text-lg font-black text-[#2e4029] leading-tight max-w-[150px]">
-                                    Natural Weight Control
-                                </h3>
+                    {/* Show placeholder if no diseases */}
+                    {diseases.length === 0 && (
+                        <div className="col-span-full py-20 text-center">
+                            <div className="animate-pulse flex flex-col items-center gap-4">
+                                <Activity className="text-[#a4d9bc]" size={48} />
+                                <p className="text-[10px] font-black uppercase tracking-widest text-gray-400">Updating medical database...</p>
                             </div>
-                            <p className="text-[#555] text-xs leading-relaxed mb-6 font-medium">
-                                High-fiber foods and water in measured whole natural health water.
-                            </p>
-                            <Link href="/diseases/weight" className="inline-block bg-[#2f4d36] text-white px-5 py-2 rounded-full text-xs font-bold hover:bg-[#203625] transition-colors">
-                                Read More
-                            </Link>
                         </div>
-                        <div className="absolute right-2 top-1/2 -translate-y-1/2 w-36 h-36 z-0">
-                            <Image src="/Mint.png" alt="Salad and water" fill className="object-contain" />
-                        </div>
-                    </div>
-
-                    {/* Card 4: Joint Pain */}
-                    <div className="bg-white/70 backdrop-blur-md rounded-3xl p-6 border border-[#e8dfcf] shadow-sm flex relative overflow-hidden group hover:shadow-lg transition-all">
-                        <div className="flex-1 pr-4 z-10">
-                            <div className="flex items-center gap-3 mb-3">
-                                <div className="w-10 h-10 rounded-xl bg-orange-100/50 flex items-center justify-center">
-                                    <Bone size={20} className="text-[#a6763f]" />
-                                </div>
-                                <h3 className="text-lg font-black text-[#2e4029] leading-tight max-w-[150px]">
-                                    Joint Pain Relief
-                                </h3>
-                            </div>
-                            <p className="text-[#555] text-xs leading-relaxed mb-6 font-medium">
-                                Custom-healthy recipe with joint-healthy ginger, turmeric, and walnuts.
-                            </p>
-                            <Link href="/diseases/joints" className="inline-block bg-[#c0a072] text-white px-5 py-2 rounded-full text-xs font-bold hover:bg-[#b08d5c] transition-colors">
-                                Read More
-                            </Link>
-                        </div>
-                        <div className="absolute -right-2 top-1/2 -translate-y-1/2 w-40 h-40 z-0 opacity-90">
-                            <Image src="/Herbs.png" alt="Ginger and knee joint" fill className="object-contain" />
-                        </div>
-                    </div>
-
+                    )}
                 </div>
             </section>
 

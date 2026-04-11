@@ -31,10 +31,10 @@ export default function AdminDashboardPage() {
     const barHeights = [20, 60, 40, 80, 50, 90, 70, 30];
     
     return (
-        <div className="font-sans text-gray-800 bg-[#FDFBF7] min-h-screen flex flex-col lg:flex-row pb-10">
+        <div className="font-sans text-gray-800 bg-[#FDFBF7] min-h-screen flex flex-col lg:flex-row pb-6">
             
             {/* Center Content */}
-            <div className="flex-1 px-8 pt-8 flex flex-col gap-6 w-full lg:w-3/4">
+            <div className="flex-1 px-6 pt-6 flex flex-col gap-5 w-full lg:w-3/4">
                 
                 {/* Header Row */}
                 <div className="flex items-center justify-between">
@@ -370,7 +370,7 @@ export default function AdminDashboardPage() {
                     </div>
                 </div>
 
-                <div className="mb-10 w-full">
+                <div className="mb-6 w-full">
                     <div className="flex items-center justify-between mb-4">
                         <span className="text-xs font-black text-[#214a32] uppercase tracking-widest">System Calendar</span>
                         <div className="flex gap-1">
@@ -380,7 +380,7 @@ export default function AdminDashboardPage() {
                     </div>
                     <div className="flex justify-between w-full">
                         {['M','T','W','T','F','S'].map((d, i) => (
-                            <div key={d} className={`flex flex-col items-center justify-center w-8 h-12 rounded-xl cursor-pointer ${i === 1 ? 'bg-[#214a32] text-white shadow-md' : 'hover:bg-white text-gray-400'}`}>
+                            <div key={i} className={`flex flex-col items-center justify-center w-8 h-12 rounded-xl cursor-pointer ${i === 1 ? 'bg-[#214a32] text-white shadow-md' : 'hover:bg-white text-gray-400'}`}>
                                 <span className="text-[9px] font-black mb-1">{d}</span>
                                 <span className="text-xs font-black tracking-tighter">{i + 4}</span>
                             </div>

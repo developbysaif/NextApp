@@ -16,8 +16,6 @@ import {
     CheckCircle2, 
     XCircle, 
     AlertCircle,
-    User,
-    Stethoscope,
     Filter,
     FilterX
 } from 'lucide-react';

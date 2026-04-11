@@ -30,7 +30,12 @@ import {
     Zap,
     Newspaper,
     Ticket,
-    User
+    User,
+    Moon,
+    Sun,
+    Sparkles,
+    Hexagon,
+    Activity
 } from 'lucide-react';
 
 export default function AdminLayout({ children }) {
@@ -54,6 +59,16 @@ export default function AdminLayout({ children }) {
     }, [pathname]);
 
     const [isMobile, setIsMobile] = useState(false);
+    const [isDarkMode, setIsDarkMode] = useState(false);
+    
+    const toggleDarkMode = () => {
+        setIsDarkMode(!isDarkMode);
+        if(!isDarkMode) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    };
 
     useEffect(() => {
         const handleResize = () => {
@@ -73,6 +88,17 @@ export default function AdminLayout({ children }) {
 
     const menuItems = [
         { name: 'Dashboard', icon: LayoutDashboard, path: '/admin' },
+        {
+            name: 'Diseases',
+            icon: Activity,
+            path: '/admin/diseases',
+            isParent: true,
+            children: [
+                { name: 'All Diseases', path: '/admin/diseases' },
+                { name: 'Add Category', path: '/admin/diseases/category' },
+                { name: 'Add Diseases', path: '/admin/diseases/add' }
+            ]
+        },
         { name: 'Universal Portal', icon: Globe, path: '/admin/portal' },
         { name: 'Order Fulfillment', icon: ShoppingBag, path: '/admin/orders' },
         { name: 'Inventory', icon: Package, path: '/admin/products' },
@@ -90,11 +116,8 @@ export default function AdminLayout({ children }) {
         { name: 'Clinician Registry', icon: ShieldCheck, path: '/admin/doctors' },
         { name: 'User Directory', icon: Users, path: '/admin/users' },
         { name: 'Revenue Wall', icon: DollarSign, path: '/admin/revenue' },
-        { name: 'Disease Database', icon: ShieldCheck, path: '/admin/diseases' },
         { name: 'Exercises', icon: Dumbbell, path: '/admin/exercises' },
         { name: 'Ecosystem Report', icon: BarChart3, path: '/admin/reports' },
-        { name: 'Appointments', icon: Clock, path: '/admin/appointments' },
-        { name: 'System Calendar', icon: Calendar, path: '/admin/calendar' },
         { name: 'Discount Manager', icon: Ticket, path: '/admin/discounts' },
         { name: 'News Archive', icon: Newspaper, path: '/admin/news' },
     ];
@@ -127,13 +150,13 @@ export default function AdminLayout({ children }) {
                 className={`
                     fixed inset-y-0 left-0 z-50 bg-[#FDFBF7] transition-all duration-300 ease-in-out
                     ${isSidebarOpen ? 'w-[250px] translate-x-0' : 'w-20 translate-x-0'}
-                    lg:relative flex flex-col pt-4 border-r border-[#D1D9CA]/30
+                    lg:relative flex flex-col pt-0 border-r border-[#D1D9CA]/30
                 `}
             >
                 {/* Logo Area */}
-                <div className={`px-6 pb-2 pt-2 flex items-center gap-1 ${!isSidebarOpen ? 'justify-center' : ''}`}>
+                <div className={`px-6 pb-2 pt-0 flex items-center gap-1 ${!isSidebarOpen ? 'justify-center' : ''}`}>
                     {isSidebarOpen && (
-                        <img src="/desk-top.png" alt="IlajBilGhiza Logo" className="h-5 ml-2 mt-2" />
+                        <img src="/desk-top.png" alt="IlajBilGhiza Logo" className="h-[4.5rem] ml-2 object-contain" />
                     )}
                 </div>
 
@@ -206,10 +229,13 @@ export default function AdminLayout({ children }) {
             {/* Main Content Area */}
             <main className="flex-1 overflow-y-auto no-scrollbar relative bg-white/50 flex flex-col h-screen">
                 {/* Admin Header */}
-                <header className="bg-white border-b border-gray-100 px-6 py-4 flex items-center justify-between sticky top-0 z-[100]">
+                <header className="bg-white border-b border-gray-100 px-6 py-2 flex items-center justify-between sticky top-0 z-[100]">
                     <div className="flex items-center gap-4">
                         <button onClick={() => setIsSidebarOpen(true)} className="text-gray-900 lg:hidden">
                             <Menu size={24} />
+                        </button>
+                        <button onClick={() => setIsSidebarOpen(!isSidebarOpen)} className="text-gray-500 hover:text-gray-900 hidden lg:flex hover:bg-gray-100 p-2 rounded-xl transition-colors">
+                            <Menu size={20} />
                         </button>
                     </div>
 
@@ -218,19 +244,34 @@ export default function AdminLayout({ children }) {
                     </div>
 
                     <div className="flex justify-end items-center gap-4 relative">
-                        {/* Logout Button */}
-                        <button onClick={handleLogout} className="flex items-center gap-2 px-3 py-2 text-sm font-bold text-red-500 bg-red-50 hover:bg-red-100 rounded-xl transition-colors">
-                            <LogOut size={16} />
-                            <span className="hidden sm:inline">Logout</span>
+                        {/* AI Assistance Button */}
+                        <button className="hidden md:flex items-center justify-center gap-2 bg-[#208b82] text-white px-4 py-2 rounded-xl text-[13px] font-bold shadow-sm transition-all hover:bg-[#1a756d]">
+                            <span>AI Assistance</span>
+                            <Sparkles size={14} className="ml-0.5" />
                         </button>
-
+                        
+                        {/* Interactive Icons */}
+                        <div className="hidden sm:flex items-center gap-2 mr-1">
+                            <Link href="/admin/profile" className="w-10 h-10 flex items-center justify-center text-[#374151] rounded-full border border-gray-200 transition-all hover:border-gray-300 hover:bg-gray-50 bg-white shadow-sm font-semibold">
+                                <Hexagon size={18} strokeWidth={2} />
+                            </Link>
+                            <button onClick={toggleDarkMode} className="w-10 h-10 flex items-center justify-center text-[#374151] rounded-full border border-gray-200 transition-all hover:border-gray-300 hover:bg-gray-50 bg-white shadow-sm font-semibold">
+                                {isDarkMode ? <Sun size={18} strokeWidth={2} /> : <Moon size={18} strokeWidth={2} />}
+                            </button>
+                            <button className="w-10 h-10 flex items-center justify-center text-[#374151] rounded-full border border-gray-200 transition-all hover:border-gray-300 hover:bg-gray-50 bg-white shadow-sm relative font-semibold">
+                                <Bell size={18} strokeWidth={2} />
+                                <span className="absolute top-[8px] right-[10px] w-2.5 h-2.5 bg-[#ff5a1f] border border-white rounded-full"></span>
+                            </button>
+                        </div>
+                        
                         {/* Profile Dropdown */}
-                        <div className="relative">
+                        <div className="relative flex items-center pl-1">
                             <button
                                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                                className="w-10 h-10 rounded-full bg-[#f0f9f4] text-[#214a32] flex items-center justify-center font-bold shadow-sm overflow-hidden border-2 border-transparent hover:border-[#a4d9bc] transition-all"
+                                className="w-10 h-10 rounded-full bg-indigo-50 border border-transparent flex items-center justify-center font-bold shadow-sm overflow-visible hover:border-[#a4d9bc] hover:shadow-md transition-all relative"
                             >
-                                <User size={20} />
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Profile" className="w-full h-full object-cover rounded-full" />
+                                <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-[#10b981] border-2 border-white rounded-full z-10"></div>
                             </button>
 
                             {isDropdownOpen && (
@@ -261,7 +302,7 @@ export default function AdminLayout({ children }) {
                     </div>
                 </header>
 
-                <div className="p-4 lg:p-8 flex-1 overflow-y-auto">
+                <div className="p-4 lg:p-4 flex-1 overflow-y-auto">
                     {children}
                 </div>
 
@@ -272,8 +313,27 @@ export default function AdminLayout({ children }) {
                         onClick={() => setIsSidebarOpen(false)}
                     />
                 )}
+                {isDarkMode && <DarkModeStyles />}
             </main>
         </div>
+    );
+}
+
+function DarkModeStyles() {
+    return (
+        <style dangerouslySetInnerHTML={{__html: `
+            .dark { color-scheme: dark; }
+            .dark body, .dark main { background-color: #121212 !important; color: #e5e5e5 !important; }
+            .dark aside, .dark header, .dark .bg-white, .dark .bg-\\[\\#FDFBF7\\] { background-color: #1e1e1e !important; }
+            .dark .bg-gray-50, .dark .bg-\\[\\#f0f9f4\\], .dark .bg-indigo-50 { background-color: #2a2a2a !important; }
+            .dark .border-gray-50, .dark .border-gray-100, .dark .border-gray-200, .dark .border-\\[\\#D1D9CA\\]\\/30 { border-color: #3f3f46 !important; }
+            .dark .text-gray-900, .dark .text-gray-800, .dark .text-\\[\\#214a32\\] { color: #f3f4f6 !important; }
+            .dark .text-gray-600, .dark .text-gray-500 { color: #d1d5db !important; }
+            .dark .text-gray-400 { color: #9ca3af !important; }
+            .dark .bg-\\[\\#a4d9bc\\] { background-color: #065f46 !important; color: white !important; }
+            .dark input, .dark textarea, .dark select { background-color: #2a2a2a !important; color: white !important; border-color: #3f3f46 !important; }
+            .dark .shadow-sm { box-shadow: 0 1px 2px 0 rgba(0,0,0,0.5) !important; }
+        `}} />
     );
 }
 

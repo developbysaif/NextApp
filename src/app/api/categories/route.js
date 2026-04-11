@@ -1,22 +1,47 @@
 import { NextResponse } from 'next/server';
+import connectDB from '@/lib/db';
+import Category from '@/models/Category';
 
-export const dynamic = 'force-dynamic';
+export async function GET() {
+    try {
+        await connectDB();
+        const categories = await Category.find({}).sort({ name: 1 });
+        return NextResponse.json(categories, { status: 200 });
+    } catch (error) {
+        return NextResponse.json({ error: error.message }, { status: 500 });
+    }
+}
 
-export async function GET(request) {
-    const categories = [
-        { id: 1, name: 'Fruits', slug: 'fruit', icon: 'Leaf' },
-        { id: 2, name: 'Vegetables', slug: 'vegetable', icon: 'Leaf' },
-        { id: 3, name: 'Meat', slug: 'meat', icon: 'Wind' },
-        { id: 4, name: 'Dairy', slug: 'dairy', icon: 'Sun' },
-        { id: 5, name: 'Herbs', slug: 'herbs', icon: 'Wind' },
-        { id: 6, name: 'Organic Seeds', slug: 'organic-seeds', icon: 'Leaf' },
-        { id: 7, name: 'Herbal Oils', slug: 'herbal-oils', icon: 'Droplets' },
-        { id: 8, name: 'Supplements', slug: 'supplements', icon: 'Activity' },
-        { id: 9, name: 'Beauty Care', slug: 'beauty-care', icon: 'Sparkles' },
-        { id: 10, name: 'Spices', slug: 'spices', icon: 'Flame' },
-        { id: 11, name: 'Superfoods', slug: 'superfoods', icon: 'Zap' },
-        { id: 12, name: 'Health Drinks', slug: 'health-drinks', icon: 'Coffee' }
-    ];
+export async function POST(req) {
+    try {
+        await connectDB();
+        const data = await req.json();
+        
+        if (!data.name) {
+            return NextResponse.json({ error: 'Name is required' }, { status: 400 });
+        }
 
-    return NextResponse.json({ success: true, data: categories }, { status: 200 });
+        const category = await Category.create(data);
+        return NextResponse.json(category, { status: 201 });
+    } catch (error) {
+        if (error.code === 11000) {
+            return NextResponse.json({ error: 'Category already exists' }, { status: 400 });
+        }
+        return NextResponse.json({ error: error.message }, { status: 500 });
+    }
+}
+
+export async function DELETE(req) {
+    try {
+        await connectDB();
+        const { searchParams } = new URL(req.url);
+        const name = searchParams.get('name');
+        
+        if (!name) return NextResponse.json({ error: 'Name required' }, { status: 400 });
+
+        await Category.findOneAndDelete({ name });
+        return NextResponse.json({ message: 'Category deleted' }, { status: 200 });
+    } catch (error) {
+        return NextResponse.json({ error: error.message }, { status: 500 });
+    }
 }
