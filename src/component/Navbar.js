@@ -213,7 +213,7 @@ export default function Navbar() {
                     {/* Icons */}
                     <div className="flex items-center gap-1 md:gap-1.5">
                         {user && (
-                            <Link href={user.role === 'admin' ? "/admin" : "/dashboard"} className="size-8 md:size-10 flex items-center justify-center rounded-lg md:rounded-xl bg-gradient-to-r from-[#214a32] via-[#1a7a36] to-[#214a32] text-white border border-transparent shadow-sm group">
+                            <Link href={user.role === 'admin' ? "/admin" : "/dashboard"} className="size-8 md:size-10 flex items-center justify-center rounded-lg md:rounded-xl bg-[#00a63e] text-white border border-transparent shadow-sm group">
                                 <span className=" text-[10px] md:text-xs font-black">{user.name?.charAt(0)}</span>
                             </Link>
                         )}
