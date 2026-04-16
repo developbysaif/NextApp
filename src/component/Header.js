@@ -102,6 +102,7 @@ export default function Header() {
                 src={slides[slide].image}
                 alt="Hero"
                 fill
+                sizes="100vw"
                 className="object-cover object-right"
                 priority
               />

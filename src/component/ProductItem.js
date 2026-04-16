@@ -50,7 +50,7 @@ const ProductItem = ({ product, index = 0 }) => {
         e.stopPropagation();
 
         if (!user) {
-            alert("Please sign up before buying any thing");
+            alert("you can signup first to get order");
             router.push('/signup');
             return;
         }
@@ -64,7 +64,7 @@ const ProductItem = ({ product, index = 0 }) => {
         e.stopPropagation();
 
         if (!user) {
-            alert("Please sign up before adding to wishlist");
+            alert("you can signup first to get order");
             router.push('/signup');
             return;
         }

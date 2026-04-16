@@ -20,6 +20,8 @@ export default function LoginPage() {
             const user = await login(formData.email, formData.password);
             if (user.role === 'admin') {
                 router.push("/admin");
+            } else if (user.role === 'doctor') {
+                router.push("/doctor");
             } else {
                 router.push("/dashboard");
             }
@@ -146,20 +148,19 @@ export default function LoginPage() {
                                     <img src="https://i.pravatar.cc/150?img=11" alt="Sana Ali" className="w-full h-full object-cover" />
                                 </div>
                                 <div className="flex flex-col">
-                                    <span className="text-white font-semibold text-sm">Design and Develop by Saif</span>
-                                    <span className="text-white/60 text-xs text-center lg:text-left">Mentor: Talha Mughal</span>
+                                    <span className="text-white font-semibold text-sm">Saif</span>
+                                    <span className="text-white/60 text-xs text-center lg:text-left">Design and Develop by Saif</span>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    {/* Logos section - as requested: right side per logo add karu ilagbilghiza ka */}
-                    <div className="absolute bottom-12 left-16 right-16 pt-6 border-t border-white/10 z-10">
+                    <div className="absolute bottom-12 left-16 right-16 pt-6 border-t border-white/10 z-10 flex flex-col items-center lg:items-start">
                         <p className="text-[10px] font-bold text-white/50 tracking-[0.15em] uppercase mb-4">
-                            Mentor
+                            Developer
                         </p>
-                        <div className="flex items-center justify-center gap-4 text-white/80 w-full bg-white/5 backdrop-blur-sm p-4 rounded-xl border border-white/10 shadow-lg">
-                            <span className="text-white font-black text-2xl tracking-tighter italic drop-shadow-lg">Talha Mughal</span>
+                        <div className="flex items-center justify-center gap-4 text-white/80 w-max bg-white/5 backdrop-blur-sm px-6 py-2 rounded-xl border border-white/10 shadow-lg">
+                            <span className="text-white font-black text-xl tracking-tighter italic drop-shadow-lg">Saif</span>
                         </div>
                     </div>
                 </div>

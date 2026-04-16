@@ -34,6 +34,7 @@ export default function CategoryCard({ title, subtitle, bg, image, href }) {
                     src={image}
                     alt={title}
                     fill
+                    sizes="112px"
                     className="object-contain drop-shadow-2xl"
                 />
             </div>

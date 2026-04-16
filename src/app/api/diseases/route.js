@@ -6,9 +6,9 @@ export async function GET() {
     try {
         await connectDB();
         const diseases = await Disease.find({}).sort({ createdAt: -1 });
-        return NextResponse.json(diseases, { status: 200 });
+        return NextResponse.json({ success: true, data: diseases }, { status: 200 });
     } catch (error) {
-        return NextResponse.json({ error: error.message }, { status: 500 });
+        return NextResponse.json({ success: false, error: error.message }, { status: 500 });
     }
 }
 
@@ -18,13 +18,13 @@ export async function POST(req) {
         const data = await req.json();
         
         if (!data.name || !data.category) {
-            return NextResponse.json({ error: 'Name and Category are required' }, { status: 400 });
+            return NextResponse.json({ success: false, error: 'Name and Category are required' }, { status: 400 });
         }
 
         const disease = await Disease.create(data);
-        return NextResponse.json(disease, { status: 201 });
+        return NextResponse.json({ success: true, data: disease }, { status: 201 });
     } catch (error) {
-        return NextResponse.json({ error: error.message }, { status: 500 });
+        return NextResponse.json({ success: false, error: error.message }, { status: 500 });
     }
 }
 

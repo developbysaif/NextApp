@@ -58,18 +58,7 @@ export default function HealthDashboard() {
     return (
         <div className="space-y-8 pb-10">
             {/* Header Greeting */}
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
-                <div>
-                    <h1 className="text-3xl font-black text-gray-900 font-outfit uppercase tracking-tight">
-                        Hello, {user?.name || 'Adam'}! 🥰
-                    </h1>
-                    <p className="text-gray-500 font-medium">Here's what's happening with your health today.</p>
-                </div>
-                <div className="bg-white px-6 py-2 rounded-2xl shadow-sm border border-gray-100 flex items-center gap-3">
-                    <div className="size-3 rounded-full bg-[#214a32] animate-pulse" />
-                    <span className="text-xs font-black uppercase tracking-widest text-gray-600">Syncing Data...</span>
-                </div>
-            </div>
+
 
             {/* Quick Metrics Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -107,12 +96,12 @@ export default function HealthDashboard() {
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                {/* Calories Analysis */}
+                {/* Calories & Disease Info */}
                 <div className="lg:col-span-2 space-y-6">
                     <div className="bg-white p-8 rounded-[2.5rem] shadow-sm border border-gray-100 relative overflow-hidden group">
                         <div className="relative z-10">
                             <div className="flex items-center justify-between mb-8">
-                                <h3 className="text-xl font-black font-outfit uppercase tracking-tight">Calories Intake</h3>
+                                <h3 className="text-xl font-black font-outfit uppercase tracking-tight text-gray-900">Health Intake</h3>
                                 <div className="p-2 bg-orange-50 text-orange-600 rounded-xl">
                                     <Flame size={20} />
                                 </div>
@@ -122,17 +111,21 @@ export default function HealthDashboard() {
                                 <div className="space-y-4">
                                     <div className="text-center md:text-left">
                                         <div className="flex items-baseline justify-center md:justify-start gap-1">
-                                            <span className="text-4xl font-black font-outfit">1,750</span>
+                                            <span className="text-4xl font-black font-outfit text-gray-900">1,750</span>
                                             <span className="text-sm font-bold text-gray-400 uppercase">kcal</span>
                                         </div>
-                                        <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mt-1">Eaten Today</p>
+                                        <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mt-1">Today's Intake</p>
                                     </div>
-                                    <div className="text-center md:text-left">
-                                        <div className="flex items-baseline justify-center md:justify-start gap-1">
-                                            <span className="text-4xl font-black font-outfit">510</span>
-                                            <span className="text-sm font-bold text-gray-400 uppercase">kcal</span>
+                                    <div className="text-center md:text-left pt-4 border-t border-gray-50">
+                                        <div className="flex items-center gap-3 justify-center md:justify-start">
+                                            <div className="size-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center">
+                                                <Target size={16} />
+                                            </div>
+                                            <div>
+                                                <p className="text-xs font-black text-gray-900">85%</p>
+                                                <p className="text-[9px] font-bold text-gray-400 uppercase">Compliance</p>
+                                            </div>
                                         </div>
-                                        <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mt-1">Burned (Lost)</p>
                                     </div>
                                 </div>
 
@@ -144,7 +137,7 @@ export default function HealthDashboard() {
                                         />
                                         <motion.circle
                                             cx="80" cy="80" r="70"
-                                            className="stroke-orange-500" strokeWidth="12" fill="transparent"
+                                            className="stroke-[#214a32]" strokeWidth="12" fill="transparent"
                                             strokeDasharray={440}
                                             initial={{ strokeDashoffset: 440 }}
                                             animate={{ strokeDashoffset: 440 * (1 - 1750/2200) }}
@@ -153,15 +146,15 @@ export default function HealthDashboard() {
                                         />
                                     </svg>
                                     <div className="absolute inset-0 flex flex-col items-center justify-center">
-                                        <span className="text-2xl font-black font-outfit">450</span>
-                                        <span className="text-[10px] font-black text-gray-400 uppercase">Left</span>
+                                        <span className="text-2xl font-black font-outfit text-gray-900">450</span>
+                                        <span className="text-[10px] font-black text-gray-400 uppercase italic">Left</span>
                                     </div>
                                 </div>
 
                                 <div className="space-y-6 self-center">
                                     <div className="space-y-2">
                                         <div className="flex justify-between text-[10px] font-black uppercase tracking-widest">
-                                            <span>Protein</span>
+                                            <span className="text-gray-400">Protein</span>
                                             <span className="text-[#214a32]">120g / 93%</span>
                                         </div>
                                         <div className="h-1.5 w-full bg-gray-100 rounded-full overflow-hidden">
@@ -170,7 +163,7 @@ export default function HealthDashboard() {
                                     </div>
                                     <div className="space-y-2">
                                         <div className="flex justify-between text-[10px] font-black uppercase tracking-widest">
-                                            <span>Carbs</span>
+                                            <span className="text-gray-400">Carbs</span>
                                             <span className="text-amber-600">37%</span>
                                         </div>
                                         <div className="h-1.5 w-full bg-gray-100 rounded-full overflow-hidden">
@@ -179,7 +172,7 @@ export default function HealthDashboard() {
                                     </div>
                                     <div className="space-y-2">
                                         <div className="flex justify-between text-[10px] font-black uppercase tracking-widest">
-                                            <span>Fats</span>
+                                            <span className="text-gray-400">Fats</span>
                                             <span className="text-rose-600">45%</span>
                                         </div>
                                         <div className="h-1.5 w-full bg-gray-100 rounded-full overflow-hidden">
@@ -191,111 +184,67 @@ export default function HealthDashboard() {
                         </div>
                     </div>
 
-                    {/* Workout Progress */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div className="bg-white p-6 rounded-[2.5rem] border border-gray-100 shadow-sm">
-                            <div className="flex items-center gap-3 mb-6">
-                                <div className="p-3 bg-purple-50 text-purple-600 rounded-2xl">
-                                    <Activity size={20} />
-                                </div>
-                                <h4 className="text-md font-black font-outfit uppercase tracking-tight">Workout Status</h4>
-                            </div>
-                            <div className="space-y-4">
-                                <div className="flex items-center justify-between">
-                                    <div className="flex items-center gap-3">
-                                        <div className="size-10 rounded-xl bg-orange-100 flex items-center justify-center text-orange-600">
-                                            <Target size={18} />
-                                        </div>
-                                        <div>
-                                            <p className="text-xs font-black uppercase tracking-widest">Running</p>
-                                            <p className="text-[10px] text-gray-400 font-bold uppercase">10km Track</p>
-                                        </div>
-                                    </div>
-                                    <span className="text-xs font-black text-[#214a32]">75%</span>
-                                </div>
-                                <div className="h-1.5 w-full bg-gray-100 rounded-full overflow-hidden">
-                                    <div className="h-full w-3/4 bg-[#214a32] rounded-full" />
-                                </div>
-                            </div>
+                    {/* Today's Diet Plan */}
+                    <div className="bg-white p-8 rounded-[2.5rem] border border-gray-100 shadow-sm">
+                        <div className="flex items-center justify-between mb-8">
+                            <h3 className="text-xl font-black font-outfit uppercase tracking-tight text-gray-900">Today's Diet Plan</h3>
+                            <Link href="/dashboard/diet-plan" className="text-[10px] font-black text-[#214a32] uppercase tracking-widest hover:underline">Full Plan</Link>
                         </div>
-
-                        <div className="bg-white p-6 rounded-[2.5rem] border border-gray-100 shadow-sm">
-                            <div className="flex items-center gap-3 mb-6">
-                                <div className="p-3 bg-indigo-50 text-indigo-600 rounded-2xl">
-                                    <Dumbbell size={20} />
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            {[
+                                { name: 'Breakfast', menu: 'Oats & Berries', icon: '🌅', color: 'bg-amber-50 text-amber-600' },
+                                { name: 'Lunch', menu: 'Grilled Fish', icon: '☀️', color: 'bg-orange-50 text-orange-600' },
+                                { name: 'Dinner', menu: 'Leafy Salad', icon: '🌙', color: 'bg-indigo-50 text-indigo-600' },
+                            ].map((meal, idx) => (
+                                <div key={idx} className={`${meal.color} p-5 rounded-3xl border border-transparent hover:border-current/10 transition-all`}>
+                                    <span className="text-2xl mb-2 block">{meal.icon}</span>
+                                    <p className="text-[10px] font-black uppercase tracking-[0.2em] opacity-60">{meal.name}</p>
+                                    <p className="text-xs font-black mt-1">{meal.menu}</p>
                                 </div>
-                                <h4 className="text-md font-black font-outfit uppercase tracking-tight">Strength Goal</h4>
-                            </div>
-                            <div className="space-y-4">
-                                <div className="flex items-center justify-between">
-                                    <div className="flex items-center gap-3">
-                                        <div className="size-10 rounded-xl bg-indigo-100 flex items-center justify-center text-indigo-600">
-                                            <Target size={18} />
-                                        </div>
-                                        <div>
-                                            <p className="text-xs font-black uppercase tracking-widest">Squats</p>
-                                            <p className="text-[10px] text-gray-400 font-bold uppercase">50kg Max</p>
-                                        </div>
-                                    </div>
-                                    <span className="text-xs font-black text-indigo-600">60%</span>
-                                </div>
-                                <div className="h-1.5 w-full bg-gray-100 rounded-full overflow-hidden">
-                                    <div className="h-full w-[60%] bg-indigo-600 rounded-full" />
-                                </div>
-                            </div>
+                            ))}
                         </div>
                     </div>
                 </div>
 
                 {/* Sidebar Column */}
                 <div className="space-y-6">
-                    {/* Recommended Menu */}
+                    {/* Disease Info Card */}
                     <div className="bg-[#214a32] p-8 rounded-[2.5rem] shadow-lg shadow-green-900/10 text-white relative overflow-hidden group">
                         <div className="absolute top-0 right-0 p-8 transform translate-x-4 -translate-y-4 text-white/10 rotate-12 group-hover:rotate-0 transition-transform duration-700">
-                            <Utensils size={120} strokeWidth={1} />
+                            <Activity size={120} strokeWidth={1} />
                         </div>
                         <div className="relative z-10">
-                            <h3 className="text-xl font-black font-outfit uppercase tracking-tight mb-6">Recommended Menu</h3>
-                            <div className="space-y-4">
-                                {mealSuggestions.map((meal, idx) => (
-                                    <motion.div 
-                                        key={idx}
-                                        whileHover={{ x: 5 }}
-                                        className="bg-white/10 backdrop-blur-md rounded-2xl p-4 flex items-center gap-4 border border-white/10 cursor-pointer"
-                                    >
-                                        <img src={meal.image} alt={meal.name} className="size-12 rounded-xl object-cover shrink-0" />
-                                        <div className="flex-1 overflow-hidden">
-                                            <h4 className="text-sm font-black truncate">{meal.name}</h4>
-                                            <div className="flex items-center gap-3 mt-1">
-                                                <span className="text-[10px] font-bold text-white/60 flex items-center gap-1"><Flame size={10} /> {meal.calories} kcal</span>
-                                                <span className="text-[10px] font-bold text-white/60 flex items-center gap-1"><Clock size={10} /> {meal.time}</span>
-                                            </div>
-                                        </div>
-                                        <ChevronRight size={16} className="text-white/40" />
-                                    </motion.div>
-                                ))}
+                            <h3 className="text-[11px] font-black uppercase tracking-[0.2em] mb-4 text-[#a4d9bc]">Active Monitoring</h3>
+                            <h2 className="text-2xl font-black font-outfit mb-2">Diabetes Control</h2>
+                            <p className="text-xs text-[#a4d9bc] font-bold leading-relaxed mb-6">Monitoring blood sugar levels and insulin sensitivity through clinical diet.</p>
+                            
+                            <div className="space-y-3">
+                                <p className="text-[10px] font-black uppercase tracking-widest opacity-40">Primary Symptoms</p>
+                                <div className="flex flex-wrap gap-2">
+                                    {['Fatigue', 'Thirst', 'Blurred Vision'].map(s => (
+                                        <span key={s} className="bg-white/10 px-3 py-1.5 rounded-xl text-[10px] font-black uppercase tracking-tight">{s}</span>
+                                    ))}
+                                </div>
                             </div>
-                            <Link href="/dashboard/menu" className="mt-6 flex items-center justify-center gap-2 w-full py-4 bg-white text-green-800 rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-[#a4d9bc] transition-colors">
-                                View Full Menu
-                            </Link>
                         </div>
                     </div>
 
-                    {/* Recent Activity */}
-                    <div className="bg-white p-8 rounded-[2.5rem] shadow-sm border border-gray-100 overflow-hidden">
-                        <h3 className="text-xl font-black font-outfit uppercase tracking-tight mb-6">Activity Feed</h3>
+                    {/* Recent Activity Feed */}
+                    <div className="bg-white p-8 rounded-[2.5rem] shadow-sm border border-gray-100">
+                        <h3 className="text-xl font-black font-outfit uppercase tracking-tight mb-6 text-gray-900">Activity Feed</h3>
                         <div className="space-y-6">
-                            {[1, 2, 3].map((_, idx) => (
-                                <div key={idx} className="flex gap-4 group cursor-pointer">
-                                    <div className="relative">
-                                        <div className="size-10 rounded-2xl bg-gray-50 flex items-center justify-center group-hover:bg-[#214a32] group-hover:text-white transition-all">
-                                            <CheckCircle2 size={18} />
-                                        </div>
-                                        {idx !== 2 && <div className="absolute top-10 left-1/2 w-px h-8 bg-gray-100 -translate-x-1/2" />}
+                            {[
+                                { title: 'Diet Logged', time: '10:00 AM', icon: Utensils, color: 'text-emerald-500' },
+                                { title: 'Weight Synced', time: '08:30 AM', icon: Activity, color: 'text-blue-500' },
+                                { title: 'Water Goal Met', time: 'Yesterday', icon: Droplets, color: 'text-sky-500' }
+                            ].map((act, idx) => (
+                                <div key={idx} className="flex gap-4 group">
+                                    <div className="size-10 rounded-2xl bg-gray-50 flex items-center justify-center group-hover:bg-[#214a32] group-hover:text-white transition-all text-gray-400">
+                                        <act.icon size={18} />
                                     </div>
                                     <div>
-                                        <p className="text-xs font-black uppercase tracking-widest text-gray-900">Morning Yoga Complete</p>
-                                        <p className="text-[10px] font-bold text-gray-400 mt-1">30 min • Today, 7:00 AM</p>
+                                        <p className="text-xs font-black uppercase tracking-widest text-gray-900">{act.title}</p>
+                                        <p className="text-[10px] font-bold text-gray-400 mt-1 uppercase italic">{act.time}</p>
                                     </div>
                                 </div>
                             ))}

@@ -22,22 +22,15 @@ export function AuthProvider({ children }) {
 
     const signup = async (userData) => {
         try {
-            // Simulate network delay
-            await new Promise(resolve => setTimeout(resolve, 500));
-
-            const existingUsers = JSON.parse(localStorage.getItem("users") || "[]");
-            const userExists = existingUsers.find(u => u.email === userData.email);
-
-            if (userExists) {
-                throw new Error("User already exists");
-            }
-
-            const newUser = { ...userData, id: Date.now().toString() };
-            const updatedUsers = [...existingUsers, newUser];
-
-            localStorage.setItem("users", JSON.stringify(updatedUsers));
-
-            // Auto login
+            const res = await fetch("/api/auth/signup", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(userData),
+            });
+            const data = await res.json();
+            if (!data.success) throw new Error(data.message || "Signup failed");
+            
+            // Auto login after signup
             return await login(userData.email, userData.password);
         } catch (error) {
             throw error;
@@ -46,20 +39,17 @@ export function AuthProvider({ children }) {
 
     const login = async (email, password) => {
         try {
-            // Simulate network delay
-            await new Promise(resolve => setTimeout(resolve, 500));
+            const res = await fetch("/api/auth/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email, password }),
+            });
+            const data = await res.json();
+            if (!data.success) throw new Error(data.message || "Login failed");
 
-            const existingUsers = JSON.parse(localStorage.getItem("users") || "[]");
-            const user = existingUsers.find(u => u.email === email && u.password === password);
-
-            if (!user) {
-                throw new Error("Invalid email or password");
-            }
-
-            const { password: _, ...userWithoutPassword } = user;
-            localStorage.setItem("currentUser", JSON.stringify(userWithoutPassword));
-            setUser(userWithoutPassword);
-            return userWithoutPassword;
+            localStorage.setItem("currentUser", JSON.stringify(data.user));
+            setUser(data.user);
+            return data.user;
         } catch (error) {
             throw error;
         }
@@ -72,10 +62,23 @@ export function AuthProvider({ children }) {
 
     const updateProfile = async (updatedData) => {
         if (!user) return;
-        // In a real app, this would call an API
-        const newUser = { ...user, ...updatedData };
-        localStorage.setItem("currentUser", JSON.stringify(newUser));
-        setUser(newUser);
+        try {
+            const res = await fetch("/api/auth/update", {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ userId: user._id || user.id, ...updatedData }),
+            });
+            const data = await res.json();
+            if (!data.success) throw new Error(data.message);
+
+            const newUser = { ...user, ...data.user };
+            localStorage.setItem("currentUser", JSON.stringify(newUser));
+            setUser(newUser);
+            return newUser;
+        } catch (error) {
+            console.error("Update failed:", error);
+            throw error;
+        }
     };
 
     return (

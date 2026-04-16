@@ -42,6 +42,7 @@ export default function AppointmentForm() {
             src="/appointment_hero.png" 
             alt="Healthy Lifestyle" 
             fill 
+            sizes="(max-width: 768px) 100vw, 50vw"
             className="object-cover" 
             priority
             onError={(e) => {

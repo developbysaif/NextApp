@@ -87,39 +87,65 @@ export default function AdminLayout({ children }) {
     }, []);
 
     const menuItems = [
-        { name: 'Dashboard', icon: LayoutDashboard, path: '/admin' },
+        {
+            name: 'Dashboard',
+            icon: LayoutDashboard,
+            isParent: false,
+            path: '/admin'
+        },
         {
             name: 'Diseases',
             icon: Activity,
             path: '/admin/diseases',
             isParent: true,
             children: [
-                { name: 'All Diseases', path: '/admin/diseases' },
-                { name: 'Add Category', path: '/admin/diseases/category' },
-                { name: 'Add Diseases', path: '/admin/diseases/add' }
+                { name: 'Add Diseases', path: '/admin/diseases/add' },
+                { name: 'Disease Category', path: '/admin/diseases/category' }
             ]
         },
-        { name: 'Universal Portal', icon: Globe, path: '/admin/portal' },
-        { name: 'Order Fulfillment', icon: ShoppingBag, path: '/admin/orders' },
-        { name: 'Inventory', icon: Package, path: '/admin/products' },
-        { name: 'Health Menu', icon: BookOpen, path: '/admin/blogs' },
         {
-            name: 'Meal & Diet',
+            name: 'Meal & Diet Plans',
             icon: Calendar,
             path: '/admin/meal-plan',
             isParent: true,
             children: [
-                { name: 'Meal Plan', path: '/admin/meal-plan' },
-                { name: 'Grocery List', path: '/admin/grocery' }
+                { name: 'Meal Plans', path: '/admin/meal-plan' },
+                { name: 'Diet Plans', path: '/admin/diet-plan' },
+                { name: 'Diet & Meal Stock', path: '/admin/stock' }
             ]
         },
+        {
+            name: 'Exercises',
+            icon: Dumbbell,
+            path: '/admin/exercises',
+            isParent: true,
+            children: [
+                { name: 'Add Exercise', path: '/admin/exercises/add' },
+                { name: 'Daily Home Exercises', path: '/admin/exercises/home' },
+                { name: 'Daily Walk Time', path: '/admin/exercises/walk' },
+                { name: 'Gym Exercise', path: '/admin/exercises/gym' }
+            ]
+        },
+        { name: 'Universal Portal', icon: Globe, path: '/admin/portal' },
+        { name: 'Order Fulfillment', icon: ShoppingBag, path: '/admin/orders' },
+        {
+            name: 'Products',
+            icon: Package,
+            path: '/admin/products',
+            isParent: true,
+            children: [
+                { name: 'All Products', path: '/admin/products' },
+                { name: 'Add Category', path: '/admin/products/category' },
+                { name: 'Add Product', path: '/admin/products/add' }
+            ]
+        },
+        { name: 'Health Menu', icon: BookOpen, path: '/admin/blogs' },
         { name: 'Clinician Registry', icon: ShieldCheck, path: '/admin/doctors' },
         { name: 'User Directory', icon: Users, path: '/admin/users' },
         { name: 'Revenue Wall', icon: DollarSign, path: '/admin/revenue' },
-        { name: 'Exercises', icon: Dumbbell, path: '/admin/exercises' },
         { name: 'Ecosystem Report', icon: BarChart3, path: '/admin/reports' },
         { name: 'Discount Manager', icon: Ticket, path: '/admin/discounts' },
-        { name: 'News Archive', icon: Newspaper, path: '/admin/news' },
+        { name: 'News Archive', icon: Newspaper, path: '/admin/news' }
     ];
 
     const [openSubMenus, setOpenSubMenus] = useState(['Meal & Diet']);
@@ -132,7 +158,7 @@ export default function AdminLayout({ children }) {
 
     const handleLogout = () => {
         localStorage.removeItem("currentUser");
-        router.push('/login');
+        router.push('/');
     };
 
     if (!isAdmin && pathname !== '/admin/login' && pathname !== '/admin/signup') {
@@ -144,7 +170,7 @@ export default function AdminLayout({ children }) {
     if (pathname === '/admin/login' || pathname === '/admin/signup') return children;
 
     return (
-        <div className="min-h-screen bg-[#FDFBF7] flex overflow-hidden font-sans-serif text-gray-800">
+        <div className="h-screen bg-[#FDFBF7] flex overflow-hidden font-sans-serif text-gray-800">
             {/* Sidebar */}
             <aside
                 className={`
@@ -189,7 +215,7 @@ export default function AdminLayout({ children }) {
                                         const isChildActive = pathname === child.path;
                                         return (
                                             <Link
-                                                key={child.path}
+                                                key={child.name}
                                                 href={child.path}
                                                 className={`
                                                     ml-8 flex items-center gap-3 px-4 py-2.5 rounded-2xl text-[11px] font-bold transition-all
@@ -227,20 +253,28 @@ export default function AdminLayout({ children }) {
             </aside>
 
             {/* Main Content Area */}
-            <main className="flex-1 overflow-y-auto no-scrollbar relative bg-white/50 flex flex-col h-screen">
+            <main className="flex-1 h-full overflow-hidden flex flex-col relative bg-white/50">
                 {/* Admin Header */}
-                <header className="bg-white border-b border-gray-100 px-6 py-2 flex items-center justify-between sticky top-0 z-[100]">
-                    <div className="flex items-center gap-4">
-                        <button onClick={() => setIsSidebarOpen(true)} className="text-gray-900 lg:hidden">
-                            <Menu size={24} />
-                        </button>
-                        <button onClick={() => setIsSidebarOpen(!isSidebarOpen)} className="text-gray-500 hover:text-gray-900 hidden lg:flex hover:bg-gray-100 p-2 rounded-xl transition-colors">
+                <header className="bg-white border-b border-gray-100 px-6 py-2 flex items-center justify-between sticky top-0 z-[100] shrink-0">
+                    <div className="flex items-center gap-2 flex-1">
+                         {/* Menu Toggle */}
+                         <button onClick={() => setIsSidebarOpen(!isSidebarOpen)} className="text-gray-500 hover:text-[#214a32] hover:bg-gray-100 p-2 rounded-xl transition-colors shrink-0">
                             <Menu size={20} />
                         </button>
-                    </div>
+                        
+                        {/* Desktop Search */}
+                        <div className="hidden lg:block relative max-w-sm w-full ml-1">
+                            <Search size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 shrink-0" />
+                            <input 
+                                type="text"
+                                placeholder="Search admin panel..."
+                                className="w-full bg-gray-50 border border-gray-200 rounded-xl py-2 pl-10 pr-4 text-sm focus:outline-none focus:ring-1 focus:ring-[#214a32]/20 focus:border-[#214a32] text-gray-700 transition-all"
+                            />
+                        </div>
 
-                    <div className="lg:hidden flex-1 flex justify-center">
-                        <img src="/desk-top.png" alt="IlajBilGhiza Logo" className="h-8 object-contain" />
+                        <div className="lg:hidden flex-1 flex justify-center">
+                            <img src="/desk-top.png" alt="IlajBilGhiza Logo" className="h-8 object-contain" />
+                        </div>
                     </div>
 
                     <div className="flex justify-end items-center gap-4 relative">
@@ -302,7 +336,7 @@ export default function AdminLayout({ children }) {
                     </div>
                 </header>
 
-                <div className="p-4 lg:p-4 flex-1 overflow-y-auto">
+                <div className="flex-1 overflow-y-auto p-4 lg:p-4 no-scrollbar">
                     {children}
                 </div>
 

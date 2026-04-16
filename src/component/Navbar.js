@@ -48,7 +48,7 @@ export default function Navbar() {
     const handleCartClick = (e) => {
         if (!user) {
             e.preventDefault();
-            alert("Please sign up before buying any thing");
+            alert("you can signup first to get order");
             router.push('/signup');
         }
     }
@@ -56,7 +56,7 @@ export default function Navbar() {
     const handleWishlistClick = (e) => {
         if (!user) {
             e.preventDefault();
-            alert("Please sign up before viewing your wishlist");
+            alert("you can signup first to get order");
             router.push('/signup');
         }
     }
@@ -212,9 +212,11 @@ export default function Navbar() {
 
                     {/* Icons */}
                     <div className="flex items-center gap-1 md:gap-1.5">
-                        <Link href={user ? (user.role === 'admin' ? "/admin" : "/dashboard") : "/login"} className="size-8 md:size-10 flex items-center justify-center rounded-lg md:rounded-xl bg-gradient-to-r from-[#214a32] via-[#1a7a36] to-[#214a32] text-white border border-transparent shadow-sm group">
-                            {user ? <span className=" text-[10px] md:text-xs font-black">{user.name?.charAt(0)}</span> : <User className="w-3.5 h-3.5 md:w-4 md:h-4 " />}
-                        </Link>
+                        {user && (
+                            <Link href={user.role === 'admin' ? "/admin" : "/dashboard"} className="size-8 md:size-10 flex items-center justify-center rounded-lg md:rounded-xl bg-gradient-to-r from-[#214a32] via-[#1a7a36] to-[#214a32] text-white border border-transparent shadow-sm group">
+                                <span className=" text-[10px] md:text-xs font-black">{user.name?.charAt(0)}</span>
+                            </Link>
+                        )}
                         <Link href="/wishlist" onClick={handleWishlistClick} className="size-8 md:size-10 flex items-center justify-center rounded-lg md:rounded-xl bg-stone-50 text-stone-600 border border-stone-100 relative group">
                             <Heart className="w-3.5 h-3.5 md:w-4 md:h-4" />
                             <span className="absolute -top-1 -right-1 bg-[#214a32] text-white text-[8px] md:text-[9px] font-black rounded-full min-w-3.5 md:min-w-4 h-3.5 md:h-4 flex items-center justify-center border-2 border-white">

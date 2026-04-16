@@ -1,36 +1,18 @@
 import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import Product from '@/models/Product';
-import { ServerStorage } from '@/lib/server-storage';
 
 export const dynamic = 'force-dynamic';
 
 export async function GET(request) {
     try {
-        let products = [];
-        let source = 'memory';
-
-        try {
-            // Try MongoDB first if URI is provided
-            if (process.env.MONGODB_URI) {
-                await dbConnect();
-                products = await Product.find({}).lean();
-                source = 'mongodb';
-            }
-        } catch (dbError) {
-            console.error('MongoDB connection failed, falling back to JSON:', dbError.message);
-        }
-
-        // If no products found via MongoDB (or DB failed), use JSON file
-        if (products.length === 0) {
-            products = ServerStorage.getProducts();
-            source = 'json';
-        }
-
+        await dbConnect();
+        const products = await Product.find({}).sort({ createdAt: -1 });
+        
         return NextResponse.json(
             {
                 success: true,
-                message: `Products fetched successfully from ${source}`,
+                message: 'Products fetched successfully from MongoDB',
                 data: products,
             },
             { status: 200 }
@@ -50,46 +32,22 @@ export async function GET(request) {
 
 export async function POST(request) {
     try {
+        await dbConnect();
         const body = await request.json();
-        let savedProduct;
-        let source = 'memory';
+        
+        // Ensure discount is a string if the schema expects it
+        const productData = {
+            ...body,
+            discount: body.discount ? String(body.discount) : "0"
+        };
 
-        try {
-            if (process.env.MONGODB_URI) {
-                await dbConnect();
-                const newProduct = new Product(body);
-                savedProduct = await newProduct.save();
-                source = 'mongodb';
-            }
-        } catch (dbError) {
-            console.error('MongoDB POST failed, falling back to JSON:', dbError.message);
-        }
-
-        // If MongoDB failed or not available, save to JSON file
-        if (!savedProduct) {
-            const products = ServerStorage.getProducts();
-
-            // Generate a numeric ID if not provided
-            const nextId = products.length > 0
-                ? Math.max(...products.map(p => typeof p.id === 'number' ? p.id : 0)) + 1
-                : 1;
-
-            savedProduct = {
-                ...body,
-                id: body.id || nextId,
-                _id: Date.now().toString(), // Fallback _id
-                createdAt: new Date().toISOString()
-            };
-
-            products.push(savedProduct);
-            ServerStorage.saveProducts(products);
-            source = 'json';
-        }
+        const newProduct = new Product(productData);
+        const savedProduct = await newProduct.save();
 
         return NextResponse.json(
             {
                 success: true,
-                message: `Product created successfully in ${source}`,
+                message: 'Product created successfully in MongoDB',
                 data: savedProduct,
             },
             { status: 201 }
@@ -109,14 +67,27 @@ export async function POST(request) {
 
 export async function DELETE(request) {
     try {
+        await dbConnect();
         const { searchParams } = new URL(request.url);
         const id = searchParams.get('id');
-        let products = ServerStorage.getProducts();
-        products = products.filter(p => String(p._id) !== String(id) && String(p.id) !== String(id));
-        ServerStorage.saveProducts(products);
         
-        return NextResponse.json({ success: true, message: 'Product deleted' }, { status: 200 });
+        if (!id) {
+            return NextResponse.json({ success: false, message: 'ID is required' }, { status: 400 });
+        }
+
+        const deletedProduct = await Product.findByIdAndDelete(id);
+        
+        if (!deletedProduct) {
+            return NextResponse.json({ success: false, message: 'Product not found' }, { status: 404 });
+        }
+
+        return NextResponse.json({ 
+            success: true, 
+            message: 'Product deleted from MongoDB',
+            data: deletedProduct 
+        }, { status: 200 });
     } catch (error) {
+        console.error('Error deleting product:', error);
         return NextResponse.json({ success: false, error: error.message }, { status: 500 });
     }
 }

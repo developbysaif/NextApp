@@ -1,310 +1,184 @@
 "use client"
 
 import React, { useState, useEffect } from 'react';
-import { 
-    Search, Bell, ChevronDown, Plus, 
-    MoreHorizontal, Filter, FastForward, Activity,
-    X
-} from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { Plus, Trash2, Dumbbell, Timer, Target, Search, Filter } from 'lucide-react';
+import { motion } from 'framer-motion';
 
-const defaultExercises = [
-    { id: 1, name: 'Squats', sets: 4, reps: '12 repetitions', rest: '60 sec', weight: '45 kg', calories: '180 cal', status: 'Completed', color: 'bg-[#a4d9bc]', iconColor: 'text-[#215b33]' },
-    { id: 2, name: 'Deadlifts', sets: 3, reps: '10 repetitions', rest: '90 sec', weight: '60 kg', calories: '220 cal', status: 'Completed', color: 'bg-[#989a69]', iconColor: 'text-[#856312]' },
-    { id: 3, name: 'Bench Press', sets: 3, reps: '8 repetitions', rest: '60 sec', weight: '40 kg', calories: '150 cal', status: 'In Progress', color: 'bg-[#214a32]', iconColor: 'text-[#6b3a04]' },
-    { id: 4, name: 'Pull-Ups', sets: 4, reps: '8 repetitions', rest: '90 sec', weight: 'Bodyweight', calories: '120 cal', status: 'Skipped', color: 'bg-[#a4d9bc]', iconColor: 'text-[#215b33]' },
-    { id: 5, name: 'Plank', sets: 3, reps: '60 repetitions', rest: '30 sec', weight: '-', calories: '90 cal', status: 'Completed', color: 'bg-[#989a69]', iconColor: 'text-[#856312]' },
-    { id: 6, name: 'Running', sets: 1, reps: '30 minutes', rest: 'N/A', weight: '-', calories: '300 cal', status: 'Completed', color: 'bg-[#214a32]', iconColor: 'text-[#6b3a04]' },
-    { id: 7, name: 'Lunges', sets: 3, reps: '15 repetitions', rest: '60 sec', weight: '20 kg', calories: '160 cal', status: 'Not Started', color: 'bg-[#a4d9bc]', iconColor: 'text-[#215b33]' },
-    { id: 8, name: 'Shoulder Press', sets: 3, reps: '10 repetitions', rest: '60 sec', weight: '25 kg', calories: '140 cal', status: 'Not Started', color: 'bg-[#989a69]', iconColor: 'text-[#856312]' },
-    { id: 9, name: 'Bicep Curls', sets: 3, reps: '12 repetitions', rest: '45 sec', weight: '15 kg', calories: '110 cal', status: 'Skipped', color: 'bg-[#214a32]', iconColor: 'text-[#6b3a04]' },
-    { id: 10, name: 'Cycling', sets: 1, reps: '45 minutes', rest: 'N/A', weight: '-', calories: '350 cal', status: 'Completed', color: 'bg-[#a4d9bc]', iconColor: 'text-[#215b33]' },
-    { id: 11, name: 'Mountain Climbers', sets: 4, reps: '20 repetitions', rest: '30 sec', weight: '-', calories: '200 cal', status: 'In Progress', color: 'bg-[#989a69]', iconColor: 'text-[#856312]' },
-    { id: 12, name: 'Yoga (Stretching)', sets: 1, reps: '60 minutes', rest: 'N/A', weight: '-', calories: '150 cal', status: 'Not Started', color: 'bg-[#214a32]', iconColor: 'text-[#6b3a04]' },
-];
-
-export default function ExercisesPage() {
+export default function UserExercisesPage() {
     const [exercises, setExercises] = useState([]);
-    const [healthSyncMessage, setHealthSyncMessage] = useState('');
-    const [isAddModalOpen, setIsAddModalOpen] = useState(false);
-    const [newExercise, setNewExercise] = useState({ name: '', sets: '', reps: '', rest: '', weight: '', calories: '' });
-    const [searchTerm, setSearchTerm] = useState('');
+    const [filter, setFilter] = useState('all');
+    const [loading, setLoading] = useState(false);
+    
+    const [form, setForm] = useState({
+        title: '',
+        type: 'home',
+        duration: '',
+        instructions: '',
+        difficulty: 'beginner'
+    });
+
+    const fetchExercises = async () => {
+        try {
+            const res = await fetch(`/api/exercises${filter !== 'all' ? `?type=${filter}` : ''}`);
+            const data = await res.json();
+            if (Array.isArray(data)) setExercises(data);
+        } catch (error) {
+            console.error("Error fetching exercises:", error);
+        }
+    };
 
     useEffect(() => {
-        const stored = localStorage.getItem('userExercises');
-        if (stored) {
-            setExercises(JSON.parse(stored));
-        } else {
-            setExercises(defaultExercises);
-            localStorage.setItem('userExercises', JSON.stringify(defaultExercises));
-        }
-    }, []);
+        fetchExercises();
+    }, [filter]);
 
-    const updateExerciseStatus = (id, newStatus) => {
-        const updated = exercises.map(ex => {
-            if (ex.id === id) {
-                return { ...ex, status: newStatus };
-            }
-            return ex;
-        });
-        setExercises(updated);
-        localStorage.setItem('userExercises', JSON.stringify(updated));
-
-        // Evaluate backend health report sync logic
-        if (newStatus === 'Completed') {
-            const completedCount = updated.filter(e => e.status === 'Completed').length;
-            setHealthSyncMessage(`Awesome! ${completedCount} exercises completed. Health report updated.`);
-            // Update the generalized progress health score in local storage
-            localStorage.setItem('healthScoreUpdate', Date.now().toString());
-            setTimeout(() => setHealthSyncMessage(''), 4000);
-        }
-    };
-
-    const handleAddExercise = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        const colors = ['bg-[#a4d9bc]', 'bg-[#989a69]', 'bg-[#214a32]'];
-        const iconColors = ['text-[#215b33]', 'text-[#856312]', 'text-[#6b3a04]'];
-        const randIndex = Math.floor(Math.random() * colors.length);
-
-        const newEx = {
-            id: Date.now(),
-            name: newExercise.name || 'Custom Exercise',
-            sets: newExercise.sets || 1,
-            reps: newExercise.reps || '10 repetitions',
-            rest: newExercise.rest || '60 sec',
-            weight: newExercise.weight || '-',
-            calories: newExercise.calories ? newExercise.calories + ' cal' : '100 cal',
-            status: 'Not Started',
-            color: colors[randIndex],
-            iconColor: iconColors[randIndex]
-        };
-
-        const updated = [newEx, ...exercises];
-        setExercises(updated);
-        localStorage.setItem('userExercises', JSON.stringify(updated));
-        setIsAddModalOpen(false);
-        setNewExercise({ name: '', sets: '', reps: '', rest: '', weight: '', calories: '' });
-    };
-
-    const getStatusStyle = (status) => {
-        switch (status) {
-            case 'Completed': return 'bg-[#a4d9bc] text-[#215b33]';
-            case 'In Progress': return 'bg-[#989a69] text-[#856312]';
-            case 'Skipped': return 'bg-[#214a32] text-white';
-            case 'Not Started': return 'bg-gray-100 text-gray-500';
-            default: return 'bg-gray-100 text-gray-500';
+        setLoading(true);
+        try {
+            const res = await fetch('/api/exercises', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ ...form, status: 'published' })
+            });
+            if (res.ok) {
+                setForm({ title: '', type: 'home', duration: '', instructions: '', difficulty: 'beginner' });
+                fetchExercises();
+            }
+        } catch (err) {
+            console.error(err);
+        } finally {
+            setLoading(false);
         }
     };
 
-    const filteredExercises = exercises.filter(ex => ex.name.toLowerCase().includes(searchTerm.toLowerCase()));
+    const handleDelete = async (id) => {
+        if(!window.confirm("Delete this routine from your list?")) return;
+        try {
+            await fetch(`/api/exercises?id=${id}`, { method: 'DELETE' });
+            setExercises(exercises.filter(e => e._id !== id));
+        } catch (error) {
+            console.error(error);
+        }
+    };
 
     return (
-        <div className="bg-[#FCFAEF] min-h-screen text-gray-800 p-8 font-sans relative">
-            
-            {/* Top Header */}
-            <header className="flex items-center justify-between mb-8">
-                <h1 className="text-2xl font-bold text-gray-900 leading-tight">Exercises</h1>
-                <div className="flex items-center gap-4">
-                    <div className="relative bg-white p-2.5 rounded-xl shadow-[0_2px_10px_rgba(0,0,0,0.02)] cursor-pointer">
-                        <Bell size={20} className="text-gray-400" />
-                        <span className="absolute top-2 right-2.5 w-2 h-2 bg-orange-400 rounded-full"></span>
-                    </div>
-                    <div className="flex items-center gap-3 bg-white pr-4 pl-2 py-1.5 rounded-2xl shadow-[0_2px_10px_rgba(0,0,0,0.02)] cursor-pointer">
-                        <img 
-                            src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=100&h=100&fit=crop" 
-                            alt="User" 
-                            className="w-8 h-8 rounded-xl object-cover"
-                        />
-                        <div className="hidden sm:block text-left">
-                            <p className="text-xs font-bold text-gray-900 leading-tight">Adam Vasylenko</p>
-                            <p className="text-[10px] font-medium text-gray-400">Member</p>
-                        </div>
-                        <ChevronDown size={14} className="text-gray-400 ml-1" />
-                    </div>
+        <div className="space-y-8 pb-20">
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 px-4">
+                <div>
+                    <h1 className="text-3xl font-black text-gray-900 uppercase tracking-tight">My Workout Routines</h1>
+                    <p className="text-sm font-bold text-gray-400 uppercase tracking-widest mt-1">Manage your physical activity plans</p>
                 </div>
-            </header>
-
-            {/* Sync Feedback Toast */}
-            <AnimatePresence>
-                {healthSyncMessage && (
-                    <motion.div 
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, scale: 0.9 }}
-                        className="fixed top-8 left-1/2 -translate-x-1/2 z-50 bg-[#1E1B4B] text-white px-6 py-3 rounded-2xl shadow-xl flex items-center gap-3 border border-indigo-500/30"
-                    >
-                        <Activity size={18} className="text-[#a4d9bc]" />
-                        <span className="text-sm font-bold tracking-wide">{healthSyncMessage}</span>
-                    </motion.div>
-                )}
-            </AnimatePresence>
-
-            {/* Action Bar */}
-            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-6">
-                <div className="flex flex-wrap items-center gap-3">
-                    <div className="relative flex-1 min-w-[200px] lg:min-w-[280px]">
-                        <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={16} />
-                        <input 
-                            type="text" 
-                            placeholder="Search for exercise" 
-                            value={searchTerm}
-                            onChange={(e) => setSearchTerm(e.target.value)}
-                            className="w-full pl-11 pr-4 py-3 bg-white border border-transparent rounded-[1.25rem] text-[13px] font-medium shadow-[0_2px_15px_rgba(0,0,0,0.02)] outline-none focus:ring-1 focus:ring-green-500 placeholder-gray-400"
-                        />
-                    </div>
-                    
-                    <button className="flex items-center gap-2 px-5 py-3 bg-white text-gray-500 text-[13px] font-bold rounded-[1.25rem] shadow-[0_2px_15px_rgba(0,0,0,0.02)]">
-                        Status <ChevronDown size={14} strokeWidth={2.5} />
-                    </button>
-                    <button className="flex items-center gap-2 px-5 py-3 bg-white text-gray-500 text-[13px] font-bold rounded-[1.25rem] shadow-[0_2px_15px_rgba(0,0,0,0.02)]">
-                        This Week <ChevronDown size={14} strokeWidth={2.5} />
-                    </button>
-                </div>
-
-                <div className="flex items-center gap-3">
-                    <button className="flex items-center gap-2 text-[13px] font-bold text-gray-500 pr-2">
-                        Popular <ChevronDown size={14} strokeWidth={2.5} className="text-gray-400" />
-                    </button>
-                    <button 
-                        onClick={() => setIsAddModalOpen(true)}
-                        className="bg-[#a4d9bc] text-[#215b33] px-5 py-3 rounded-[1.25rem] font-bold text-[13px] flex items-center gap-2 hover:bg-[#a5db56] transition-colors shadow-sm"
-                    >
-                        <Plus size={16} strokeWidth={2.5} /> Add Exercise
-                    </button>
-                </div>
-            </div>
-
-            {/* Table Container */}
-            <div className="bg-white rounded-[2rem] shadow-[0_8px_30px_rgba(0,0,0,0.04)] border border-gray-50 overflow-hidden">
-                <div className="overflow-x-auto">
-                    <table className="w-full min-w-[900px]">
-                        <thead>
-                            <tr className="border-b border-gray-100">
-                                <th className="text-left py-5 px-6 text-[11px] font-bold text-gray-400 uppercase tracking-widest flex items-center gap-1">Exercise Name <ChevronDown size={10} /></th>
-                                <th className="text-left py-5 px-4 text-[11px] font-bold text-gray-400 uppercase tracking-widest">Sets <ChevronDown size={10} className="inline ml-0.5" /></th>
-                                <th className="text-left py-5 px-4 text-[11px] font-bold text-gray-400 uppercase tracking-widest">Reps <ChevronDown size={10} className="inline ml-0.5" /></th>
-                                <th className="text-left py-5 px-4 text-[11px] font-bold text-gray-400 uppercase tracking-widest">Rest <ChevronDown size={10} className="inline ml-0.5" /></th>
-                                <th className="text-left py-5 px-4 text-[11px] font-bold text-gray-400 uppercase tracking-widest">Weight <ChevronDown size={10} className="inline ml-0.5" /></th>
-                                <th className="text-left py-5 px-4 text-[11px] font-bold text-gray-400 uppercase tracking-widest">Calories <ChevronDown size={10} className="inline ml-0.5" /></th>
-                                <th className="text-right py-5 px-8 text-[11px] font-bold text-gray-400 uppercase tracking-widest">Status <ChevronDown size={10} className="inline ml-0.5" /></th>
-                            </tr>
-                        </thead>
-                        <tbody className="divide-y divide-gray-50">
-                            {filteredExercises.map((exercise) => (
-                                <tr key={exercise.id} className="hover:bg-gray-50/30 transition-colors group">
-                                    <td className="py-4 px-6">
-                                        <div className="flex items-center gap-4">
-                                            <div className={`w-10 h-10 ${exercise.color} ${exercise.iconColor} rounded-xl flex items-center justify-center font-black `}>
-                                               {exercise.name.substring(0, 2).toUpperCase()}
-                                            </div>
-                                            <span className="font-bold text-[13px] text-gray-900">{exercise.name}</span>
-                                        </div>
-                                    </td>
-                                    <td className="py-4 px-4 text-[13px] font-black text-gray-600">{exercise.sets}</td>
-                                    <td className="py-4 px-4 text-[13px] font-medium text-gray-500">{exercise.reps}</td>
-                                    <td className="py-4 px-4 text-[13px] font-black text-gray-500 tracking-tight">{exercise.rest}</td>
-                                    <td className="py-4 px-4 text-[13px] font-black text-gray-700 tracking-tight">{exercise.weight}</td>
-                                    <td className="py-4 px-4 text-[13px] font-medium text-gray-500">{exercise.calories}</td>
-                                    <td className="py-4 px-6 text-right relative">
-                                        <div className="flex justify-end relative group/status">
-                                            <button className={`px-4 py-1.5 rounded-lg text-[11px] font-bold whitespace-nowrap min-w-[90px] text-center border border-transparent shadow-sm ${getStatusStyle(exercise.status)}`}>
-                                                {exercise.status}
-                                            </button>
-                                            
-                                            {/* Status Dropdown on Hover/Click */}
-                                            <div className="absolute top-1/2 -translate-y-1/2 right-full mr-2 bg-white shadow-xl rounded-xl border border-gray-100 p-2 flex flex-col gap-1 opacity-0 pointer-events-none group-hover/status:opacity-100 group-hover/status:pointer-events-auto transition-all scale-95 group-hover/status:scale-100 z-10 w-32">
-                                                <button onClick={() => updateExerciseStatus(exercise.id, 'Completed')} className="text-left px-3 py-1.5 text-xs font-bold text-[#215b33] hover:bg-[#a4d9bc]/20 rounded-md">Mark Completed</button>
-                                                <button onClick={() => updateExerciseStatus(exercise.id, 'In Progress')} className="text-left px-3 py-1.5 text-xs font-bold text-[#856312] hover:bg-[#989a69]/20 rounded-md">Set In Progress</button>
-                                                <button onClick={() => updateExerciseStatus(exercise.id, 'Skipped')} className="text-left px-3 py-1.5 text-xs font-bold text-[#6b3a04] hover:bg-[#214a32]/20 rounded-md">Mark Skipped</button>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </div>
-                
-                {/* Pagination (Static UI from screenshot) */}
-                <div className="border-t border-gray-50 px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-                    <div className="flex items-center gap-2 text-[12px] font-medium text-gray-400">
-                        Showing 
-                        <button className="flex items-center gap-1 font-bold text-gray-700 mx-1 border border-gray-100 px-2 py-1 rounded-md">
-                            12 <ChevronDown size={12} />
-                        </button> 
-                        out of {exercises.length}
-                    </div>
-                    <div className="flex items-center gap-1.5">
-                        <button className="w-8 h-8 flex items-center justify-center text-gray-400 hover:text-gray-900">&lt;</button>
-                        <button className="w-8 h-8 rounded-lg bg-[#a4d9bc] text-[#215b33] font-bold shadow-sm">1</button>
-                        <button className="w-8 h-8 rounded-lg hover:bg-gray-50 text-gray-600 font-bold">2</button>
-                        <button className="w-8 h-8 rounded-lg hover:bg-gray-50 text-gray-600 font-bold">3</button>
-                        <button className="w-8 h-8 flex items-center justify-center text-gray-400 hover:text-gray-900">&gt;</button>
-                    </div>
-                </div>
-            </div>
-
-            {/* Modal for adding exercise */}
-            <AnimatePresence>
-                {isAddModalOpen && (
-                    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-                        <motion.div 
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            className="absolute inset-0 bg-black/20 backdrop-blur-sm"
-                            onClick={() => setIsAddModalOpen(false)}
-                        ></motion.div>
-                        <motion.div 
-                            initial={{ scale: 0.95, opacity: 0 }}
-                            animate={{ scale: 1, opacity: 1 }}
-                            exit={{ scale: 0.95, opacity: 0 }}
-                            className="bg-white rounded-[2rem] shadow-2xl relative z-10 w-full max-w-lg overflow-hidden border border-gray-100"
+                <div className="flex bg-white p-2 rounded-2xl shadow-sm border border-gray-100">
+                    {['all', 'home', 'walk', 'gym'].map(t => (
+                        <button 
+                            key={t}
+                            onClick={() => setFilter(t)}
+                            className={`px-6 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all ${filter === t ? 'bg-[#214a32] text-white shadow-md' : 'text-gray-400 hover:text-gray-600'}`}
                         >
-                            <div className="p-6 border-b border-gray-50 flex justify-between items-center">
-                                <h3 className="text-xl font-bold text-gray-900">Add New Exercise</h3>
-                                <button onClick={() => setIsAddModalOpen(false)} className="text-gray-400 hover:text-gray-700 bg-gray-50 p-2 rounded-xl"><X size={18} /></button>
+                            {t}
+                        </button>
+                    ))}
+                </div>
+            </div>
+
+            <div className="grid grid-cols-1 xl:grid-cols-[400px_1fr] gap-8 px-4">
+                {/* Add Exercise Form */}
+                <div className="bg-white p-10 rounded-[3rem] border border-gray-100 shadow-sm h-fit">
+                    <h2 className="text-sm font-black text-[#214a32] uppercase tracking-widest flex items-center gap-3 mb-8">
+                        <Plus size={18}/> New Exercise
+                    </h2>
+                    <form onSubmit={handleSubmit} className="space-y-6">
+                        <div className="space-y-2">
+                            <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest ml-1">Routine Title</label>
+                            <input type="text" required value={form.title} onChange={e => setForm({...form, title: e.target.value})} className="w-full bg-gray-50 border-none rounded-2xl px-6 py-4 text-sm font-bold focus:ring-2 focus:ring-[#a4d9bc]" placeholder="Morning Yoga..." />
+                        </div>
+                        
+                        <div className="grid grid-cols-2 gap-4">
+                            <div className="space-y-2">
+                                <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest ml-1">Type</label>
+                                <select value={form.type} onChange={e => setForm({...form, type: e.target.value})} className="w-full bg-gray-50 border-none rounded-2xl px-6 py-4 text-sm font-bold focus:ring-2 focus:ring-[#a4d9bc] outline-none">
+                                    <option value="home">Home</option>
+                                    <option value="walk">Walk</option>
+                                    <option value="gym">Gym</option>
+                                </select>
                             </div>
-                            <form onSubmit={handleAddExercise} className="p-6 space-y-4">
-                                <div>
-                                    <label className="block text-xs font-bold text-gray-500 mb-1.5 uppercase tracking-widest">Exercise Name *</label>
-                                    <input required value={newExercise.name} onChange={e => setNewExercise({...newExercise, name: e.target.value})} type="text" className="w-full bg-gray-50 border border-gray-100 rounded-xl px-4 py-3 text-sm font-bold focus:ring-2 focus:border-transparent focus:ring-green-400 outline-none" placeholder="e.g. Weighted Squats" />
-                                </div>
-                                <div className="grid grid-cols-2 gap-4">
-                                     <div>
-                                        <label className="block text-xs font-bold text-gray-500 mb-1.5 uppercase tracking-widest">Sets</label>
-                                        <input value={newExercise.sets} onChange={e => setNewExercise({...newExercise, sets: e.target.value})} type="text" className="w-full bg-gray-50 border border-gray-100 rounded-xl px-4 py-3 text-sm font-bold focus:ring-2 focus:border-transparent focus:ring-green-400 outline-none" placeholder="e.g. 3" />
+                            <div className="space-y-2">
+                                <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest ml-1">Duration</label>
+                                <input type="text" required value={form.duration} onChange={e => setForm({...form, duration: e.target.value})} className="w-full bg-gray-50 border-none rounded-2xl px-6 py-4 text-sm font-bold focus:ring-2 focus:ring-[#a4d9bc]" placeholder="20 min" />
+                            </div>
+                        </div>
+
+                        <div className="space-y-2">
+                            <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest ml-1">Difficulty</label>
+                            <div className="grid grid-cols-3 gap-2">
+                                {['beginner', 'intermediate', 'advanced'].map(lvl => (
+                                    <button 
+                                        type="button"
+                                        key={lvl}
+                                        onClick={() => setForm({...form, difficulty: lvl})}
+                                        className={`py-3 rounded-xl text-[9px] font-black uppercase tracking-tight transition-all border ${form.difficulty === lvl ? 'bg-indigo-50 border-indigo-200 text-indigo-600' : 'bg-white border-gray-100 text-gray-400'}`}
+                                    >
+                                        {lvl}
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
+
+                        <div className="space-y-2">
+                            <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest ml-1">Step-by-step Instructions</label>
+                            <textarea required value={form.instructions} onChange={e => setForm({...form, instructions: e.target.value})} className="w-full bg-gray-50 border-none rounded-2xl px-6 py-4 text-sm font-bold focus:ring-2 focus:ring-[#a4d9bc] h-32 resize-none" placeholder="Describe the steps..."></textarea>
+                        </div>
+                        
+                        <button type="submit" disabled={loading} className="w-full bg-[#214a32] text-white py-5 rounded-[1.5rem] text-[11px] font-black uppercase tracking-[0.2em] shadow-lg shadow-[#214a32]/20 hover:scale-[1.02] active:scale-95 transition-all">
+                            {loading ? 'Processing...' : 'Add to My List'}
+                        </button>
+                    </form>
+                </div>
+
+                {/* Exercise List */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 h-fit">
+                    {exercises.length === 0 && (
+                        <div className="col-span-full py-20 bg-white rounded-[3rem] border border-gray-100 text-center flex flex-col items-center">
+                            <div className="size-20 rounded-full bg-gray-50 flex items-center justify-center text-gray-200 mb-4">
+                                <Dumbbell size={40} />
+                            </div>
+                            <h3 className="text-lg font-black text-gray-900">No Routines Yet</h3>
+                            <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mt-2">Start by adding your favorite exercise</p>
+                        </div>
+                    )}
+                    {exercises.map(ex => (
+                        <motion.div 
+                            layout
+                            key={ex._id} 
+                            className="bg-white p-8 rounded-[2.5rem] border border-gray-100 shadow-sm flex flex-col justify-between group hover:shadow-xl transition-all duration-500"
+                        >
+                            <div>
+                                <div className="flex justify-between items-start mb-6">
+                                    <div className={`size-12 rounded-2xl flex items-center justify-center ${ex.type === 'home' ? 'bg-orange-50 text-orange-500' : ex.type === 'gym' ? 'bg-blue-50 text-blue-500' : 'bg-emerald-50 text-emerald-500'}`}>
+                                        <Dumbbell size={24} />
                                     </div>
-                                    <div>
-                                        <label className="block text-xs font-bold text-gray-500 mb-1.5 uppercase tracking-widest">Reps</label>
-                                        <input value={newExercise.reps} onChange={e => setNewExercise({...newExercise, reps: e.target.value})} type="text" className="w-full bg-gray-50 border border-gray-100 rounded-xl px-4 py-3 text-sm font-bold focus:ring-2 focus:border-transparent focus:ring-green-400 outline-none" placeholder="e.g. 10 repetitions" />
-                                    </div>
-                                </div>
-                                <div className="grid grid-cols-3 gap-4">
-                                     <div>
-                                        <label className="block text-xs font-bold text-gray-500 mb-1.5 uppercase tracking-widest">Rest</label>
-                                        <input value={newExercise.rest} onChange={e => setNewExercise({...newExercise, rest: e.target.value})} type="text" className="w-full bg-gray-50 border border-gray-100 rounded-xl px-4 py-3 text-sm font-bold focus:ring-2 focus:border-transparent focus:ring-green-400 outline-none" placeholder="60 sec" />
-                                    </div>
-                                    <div>
-                                        <label className="block text-xs font-bold text-gray-500 mb-1.5 uppercase tracking-widest">Weight</label>
-                                        <input value={newExercise.weight} onChange={e => setNewExercise({...newExercise, weight: e.target.value})} type="text" className="w-full bg-gray-50 border border-gray-100 rounded-xl px-4 py-3 text-sm font-bold focus:ring-2 focus:border-transparent focus:ring-green-400 outline-none" placeholder="45 kg" />
-                                    </div>
-                                    <div>
-                                        <label className="block text-xs font-bold text-gray-500 mb-1.5 uppercase tracking-widest">Calories</label>
-                                        <input value={newExercise.calories} onChange={e => setNewExercise({...newExercise, calories: e.target.value})} type="text" className="w-full bg-gray-50 border border-gray-100 rounded-xl px-4 py-3 text-sm font-bold focus:ring-2 focus:border-transparent focus:ring-green-400 outline-none" placeholder="150" />
-                                    </div>
-                                </div>
-                                <div className="pt-4">
-                                    <button type="submit" className="w-full bg-[#a4d9bc] text-[#215b33] font-black uppercase tracking-widest text-xs py-4 rounded-xl hover:bg-[#a5dc57] transition-all shadow-md">
-                                        Save Exercise
+                                    <button onClick={() => handleDelete(ex._id)} className="p-3 text-gray-200 hover:text-rose-500 hover:bg-rose-50 rounded-2xl transition-all">
+                                        <Trash2 size={18} />
                                     </button>
                                 </div>
-                            </form>
+                                <h3 className="text-xl font-black text-gray-900 mb-3">{ex.title}</h3>
+                                <p className="text-xs font-bold text-gray-500 leading-relaxed line-clamp-3">{ex.instructions}</p>
+                            </div>
+                            
+                            <div className="mt-8 pt-6 border-t border-gray-50 flex items-center justify-between">
+                                <div className="flex items-center gap-2">
+                                    <span className={`px-3 py-1.5 rounded-lg text-[9px] font-black uppercase tracking-widest ${ex.difficulty === 'beginner' ? 'bg-emerald-50 text-emerald-600' : ex.difficulty === 'intermediate' ? 'bg-amber-50 text-amber-600' : 'bg-rose-50 text-rose-600'}`}>
+                                        {ex.difficulty}
+                                    </span>
+                                </div>
+                                <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest flex items-center gap-2">
+                                    <Timer size={14} className="text-[#214a32]"/> {ex.duration}
+                                </span>
+                            </div>
                         </motion.div>
-                    </div>
-                )}
-            </AnimatePresence>
-
+                    ))}
+                </div>
+            </div>
         </div>
     );
 }
