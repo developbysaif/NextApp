@@ -1,7 +1,7 @@
 "use client";
 
 import React, { use } from 'react';
-import PageHeader from '@/component/PageHeader';
+import PageHeader from '@/components/PageHeader';
 import { diseases } from '@/data/diseases';
 import Link from 'next/link';
 import Image from 'next/image';

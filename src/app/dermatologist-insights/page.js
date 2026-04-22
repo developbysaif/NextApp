@@ -19,7 +19,7 @@ import {
     Wind,
     ArrowUpRight
 } from 'lucide-react';
-import BlogSlider from '@/component/BlogSlider';
+import BlogSlider from '@/components/BlogSlider';
 
 export default function DermatologistInsightsPage() {
     const [blogs, setBlogs] = React.useState([]);

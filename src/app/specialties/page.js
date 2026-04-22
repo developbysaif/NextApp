@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import ProductItem from '@/component/ProductItem';
+import ProductItem from '@/components/ProductItem';
 import { Search, Flame, Droplets, Leaf, ArrowRight, CheckCircle2, ChevronRight, Activity, Calendar } from 'lucide-react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';

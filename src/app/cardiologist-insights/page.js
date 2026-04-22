@@ -16,7 +16,7 @@ import {
     Activity,
     Stethoscope
 } from 'lucide-react';
-import BlogSlider from '@/component/BlogSlider';
+import BlogSlider from '@/components/BlogSlider';
 export default function CardiologistInsightsPage() {
     const [blogs, setBlogs] = React.useState([]);
     const [loading, setLoading] = React.useState(true);

@@ -73,7 +73,7 @@ export default function Footer() {
                                 { name: 'Health Blogs', path: '/blogs' },
                                 { name: 'Diet Tips', path: '/blogs' },
                                 { name: 'FAQs', path: '/faqs' },
-                                { name: 'Support', path: '/Contact' }
+                                { name: 'Support', path: '/contact' }
                             ].map(item => (
                                 <li key={item.name}>
                                     <Link href={item.path} className="text-sm font-bold text-gray-400 hover:text-white transition-colors">{item.name}</Link>

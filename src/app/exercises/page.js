@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState, useEffect } from 'react';
-import Header from '@/component/Header';
+import Header from '@/components/Header';
 import { Dumbbell, Timer, Search } from 'lucide-react';
 import { motion } from 'framer-motion';
 

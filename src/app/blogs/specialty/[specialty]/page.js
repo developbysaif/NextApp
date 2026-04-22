@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, use } from 'react';
-import PageHeader from '@/component/PageHeader';
+import PageHeader from '@/components/PageHeader';
 import { BookOpen, User, Clock, ArrowLeft, ShieldCheck, HeartPulse, Activity, Apple, Baby } from 'lucide-react';
 import Link from 'next/link';
 

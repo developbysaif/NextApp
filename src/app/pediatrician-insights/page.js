@@ -15,7 +15,7 @@ import {
     Brain,
     ArrowUpRight
 } from 'lucide-react';
-import BlogSlider from '@/component/BlogSlider';
+import BlogSlider from '@/components/BlogSlider';
 export default function PediatricianInsightsPage() {
     const [blogs, setBlogs] = React.useState([]);
     const [loading, setLoading] = React.useState(true);

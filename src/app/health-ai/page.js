@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { Sparkles, Activity, Heart, Apple, Info } from 'lucide-react';
-import ProductItem from '@/component/ProductItem';
+import ProductItem from '@/components/ProductItem';
 
 export default function HealthAIPage() {
     const [formData, setFormData] = useState({

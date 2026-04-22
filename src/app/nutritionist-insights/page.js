@@ -13,7 +13,7 @@ import {
     Clock,
     Sprout
 } from 'lucide-react';
-import BlogSlider from '@/component/BlogSlider';
+import BlogSlider from '@/components/BlogSlider';
 
 export default function NutritionistInsightsPage() {
     const [blogs, setBlogs] = React.useState([]);

@@ -2,12 +2,12 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import PageHeader from '../../component/PageHeader';
+import PageHeader from '../../components/PageHeader';
 import { ShoppingBag, ArrowRight } from 'lucide-react';
-import NewsUpdate from '../../component/NewsUpdate';
-import Subscribe from '../../component/Subscribe';
+import NewsUpdate from '../../components/NewsUpdate';
+import Subscribe from '../../components/Subscribe';
 import { useCart } from '@/context/CartContext';
-import ProductItem from '../../component/ProductItem';
+import ProductItem from '../../components/ProductItem';
 
 export default function Store() {
     const { addToCart } = useCart();

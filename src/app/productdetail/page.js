@@ -11,7 +11,7 @@ import {
 import { useCart } from '@/context/CartContext';
 import { useSearchParams } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import '@/component/productcard.css';
+import '@/components/productcard.css';
 
 function ProductDetailContent() {
     const searchParams = useSearchParams();

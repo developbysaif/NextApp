@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import PageHeader from '../../component/PageHeader';
+import PageHeader from '../../components/PageHeader';
 import { Briefcase, Key, ShoppingCart, MessageCircle, Lock, Mail } from 'lucide-react';
 
 export default function TermsAndConditions() {

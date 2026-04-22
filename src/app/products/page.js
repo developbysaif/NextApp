@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect, Suspense } from 'react';
-import ProductItem from '@/component/ProductItem';
+import ProductItem from '@/components/ProductItem';
 import { Search, Filter, Leaf, Sun, Wind, ChevronDown } from 'lucide-react';
 import { useSearchParams } from 'next/navigation';
 import { motion } from 'framer-motion';

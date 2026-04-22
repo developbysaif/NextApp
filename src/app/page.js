@@ -3,24 +3,24 @@
 import React from 'react';
 import Image from 'next/image';
 import { ShoppingBag, ArrowRight, Leaf, Heart, Shield, Truck, Zap, Activity, Brain, Bone, Star, Quote } from 'lucide-react';
-import Header from '../component/Header';
-import Disease from '../component/diseases-semtum';
-import Calcuateindex from '../component/Calculateindex';
-import ServicesCards from '../component/services';
-import CategoryCard from '../component/CategoryCard';
-import Subscribe from '../component/Subscribe';
-import ProductItem from '../component/ProductItem';
-import BlogSlider from '../component/BlogSlider';
-import NewsUpdate from '../component/NewsUpdate';
+import Header from '../components/Header';
+import Disease from '../components/diseases-semtum';
+import Calcuateindex from '../components/Calculateindex';
+import ServicesCards from '../components/services';
+import CategoryCard from '../components/CategoryCard';
+import Subscribe from '../components/Subscribe';
+import ProductItem from '../components/ProductItem';
+import BlogSlider from '../components/BlogSlider';
+import NewsUpdate from '../components/NewsUpdate';
 import { useAuth } from '@/context/AuthContext';
 import { useCart } from '@/context/CartContext';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import WeeklyDietPlan from '../component/WeeklyDietPlan';
-import StatsCounter from '../component/StatsCounter';
-import AppointmentForm from '../component/AppointmentForm';
+import WeeklyDietPlan from '../components/WeeklyDietPlan';
+import StatsCounter from '../components/StatsCounter';
+import AppointmentForm from '../components/AppointmentForm';
 
 export default function HomePage() {
   const { user, loading } = useAuth();

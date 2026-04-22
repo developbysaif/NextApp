@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import PageHeader from '../../component/PageHeader';
+import PageHeader from '../../components/PageHeader';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Plus, Minus, Search, MessageCircle, Mail, Phone, HelpCircle } from 'lucide-react';
 import Image from 'next/image';

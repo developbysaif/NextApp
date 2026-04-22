@@ -18,7 +18,7 @@ import {
     Star
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import WhyChooseUs from '@/component/WhyChooseUs';
+import WhyChooseUs from '@/components/WhyChooseUs';
 
 export default function DietPlanPage() {
     const [loading, setLoading] = useState(false);

@@ -12,7 +12,7 @@ import {
 import Image from 'next/image';
 import { products as allProducts } from '@/data/products';
 import { useCart } from '@/context/CartContext';
-import ProductItem from '@/component/ProductItem';
+import ProductItem from '@/components/ProductItem';
 
 // --- Theme Colors ---
 const COLORS = {

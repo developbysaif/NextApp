@@ -7,7 +7,7 @@ import {
     Leaf, Activity, Brain, Stethoscope,
     ArrowRight, Instagram, Twitter, Facebook
 } from 'lucide-react';
-import BlogSlider from '@/component/BlogSlider';
+import BlogSlider from '@/components/BlogSlider';
 
 export default function AboutPage() {
     return (

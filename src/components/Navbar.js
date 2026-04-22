@@ -203,7 +203,7 @@ export default function Navbar() {
                                 </NavigationMenuItem>
                                 <NavigationMenuItem>
                                     <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), "bg-transparent font-bold text-stone-600 text-sm hover:text-[#214a32] hover:bg-stone-50 px-2")}>
-                                        <Link href="/Contact">Contact Us</Link>
+                                        <Link href="/contact">Contact Us</Link>
                                     </NavigationMenuLink>
                                 </NavigationMenuItem>
                             </NavigationMenuList>
@@ -267,7 +267,7 @@ export default function Navbar() {
                         <div className="pt-2 border-t border-stone-100">
                             <p className="text-[10px] font-bold text-stone-300 uppercase mb-3">Company</p>
                             <Link href="/about" className="block text-sm font-bold text-stone-500 mb-3" onClick={() => setOpen(false)}>About Us</Link>
-                            <Link href="/Contact" className="block text-sm font-bold text-[#214a32] mb-3" onClick={() => setOpen(false)}>Contact Us</Link>
+                            <Link href="/contact" className="block text-sm font-bold text-[#214a32] mb-3" onClick={() => setOpen(false)}>Contact Us</Link>
                             <Link href="/faqs" className="block text-sm font-bold text-stone-500 mb-3" onClick={() => setOpen(false)}>FAQs</Link>
                         </div>
                     </nav>

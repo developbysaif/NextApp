@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import PageHeader from '../../component/PageHeader';
+import PageHeader from '../../components/PageHeader';
 import { motion } from 'framer-motion';
 import { Shield, Lock, Eye, Database, Share2, UserCheck, AlertTriangle } from 'lucide-react';
 import Image from 'next/image';
