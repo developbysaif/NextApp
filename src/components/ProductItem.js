@@ -5,7 +5,7 @@ import { useWishlist } from '@/context/WishlistContext';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { Heart, ShoppingCart } from 'lucide-react';
+import { Heart, ShoppingCart, ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useAuth } from '@/context/AuthContext';
 import './productcard.css';
@@ -44,6 +44,21 @@ const ProductItem = ({ product, index = 0 }) => {
     const router = useRouter();
     const { isInWishlist, addToWishlist, removeFromWishlist } = useWishlist();
     const isWishlisted = isInWishlist(product._id || product.id);
+
+    const [currentImgIndex, setCurrentImgIndex] = React.useState(0);
+    const images = product.images && product.images.length > 0 ? product.images : [product.image || '/placeholder.png'];
+
+    const nextImage = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        setCurrentImgIndex((prev) => (prev + 1) % images.length);
+    };
+
+    const prevImage = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        setCurrentImgIndex((prev) => (prev - 1 + images.length) % images.length);
+    };
 
     const handleAddToCart = (e) => {
         e.preventDefault();
@@ -98,28 +113,55 @@ const ProductItem = ({ product, index = 0 }) => {
     return (
         <motion.div
             initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{
-                duration: 0.6,
-                delay: index * 0.1,
-                ease: [0.34, 1.56, 0.64, 1]
+                duration: 0.5,
+                delay: index * 0.05,
+                ease: "easeOut"
             }}
             className="product-card group relative"
         >
             <LeafDecoration />
 
-            <div className="product-image-wrapper relative z-10">
+            <div className="product-image-wrapper relative z-10 overflow-hidden">
                 <Link href={`/productdetail?id=${product._id || product.id}`} className="w-full h-full block">
-                    <Image
-                        src={product.image || '/placeholder.png'}
-                        alt={product.name}
-                        width={400}
-                        height={400}
-                        className="product-image"
-                        priority={index < 4}
-                    />
+                    <div className="relative w-full h-full">
+                        <Image
+                            src={images[currentImgIndex]}
+                            alt={product.name}
+                            width={400}
+                            height={400}
+                            className="product-image transition-all duration-500 ease-in-out"
+                            priority={index < 4}
+                        />
+                    </div>
                 </Link>
+
+                {/* Slider Controls - Only show if multiple images */}
+                {images.length > 1 && (
+                    <>
+                        <button 
+                            onClick={prevImage}
+                            className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center text-[#214a32] opacity-0 group-hover:opacity-100 transition-opacity z-20 hover:bg-white"
+                        >
+                            <ChevronLeft size={16} />
+                        </button>
+                        <button 
+                            onClick={nextImage}
+                            className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center text-[#214a32] opacity-0 group-hover:opacity-100 transition-opacity z-20 hover:bg-white"
+                        >
+                            <ChevronRight size={16} />
+                        </button>
+                        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-20">
+                            {images.map((_, i) => (
+                                <div 
+                                    key={i}
+                                    className={`w-1.5 h-1.5 rounded-full transition-all ${i === currentImgIndex ? 'bg-[#214a32] w-3' : 'bg-[#214a32]/30'}`}
+                                />
+                            ))}
+                        </div>
+                    </>
+                )}
 
                 {/* Wishlist Heart Icon */}
                 <button

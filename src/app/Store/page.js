@@ -213,7 +213,7 @@ export default function Store() {
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
                         {[
-                            { id: 101, name: "Skin care", price: 21.00, img: "/P-1.png" },
+                            { id: 101, name: "Skin care", price: 21.00, img: "/P-1.png", images: ["/P-1.png", "/P-2.png", "/P-3.png"] },
                             { id: 102, name: "VITAITY", price: 44.00, img: "/P-2.png" },
                             { id: 103, name: "EARLYBIRD", price: 44.00, img: "/P-3.png" },
                             { id: 104, name: "MARIO BADESCU", price: 14.00, img: "/P-4.png" },
@@ -229,6 +229,7 @@ export default function Store() {
                                     name: product.name,
                                     price: product.price,
                                     image: product.img,
+                                    images: product.images,
                                     rating: 5,
                                     reviews: 128
                                 }}
